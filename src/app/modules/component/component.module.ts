@@ -61,7 +61,7 @@ const components = [
   ButtonDemo3Component,
   ButtonDemo4Component,
   AccordionDocsComponent,
-  AccordionDemo1Component,  
+  AccordionDemo1Component,
   DividerDocsComponent,
   DividerDemo1Component,
 ];
