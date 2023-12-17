@@ -1,5 +1,5 @@
-export interface Tab{
-    isActive:boolean;
-    label:string;
-    disabled:boolean;
+export interface Tab {
+  isActive: boolean;
+  label: string;
+  disabled: boolean;
 }

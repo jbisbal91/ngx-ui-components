@@ -1,14 +1,64 @@
 :host {
-    width: 100%;
+  width: 100%;
 }
 
 ul {
-    padding: 20px 10px 2px 10px !important;
-    li {
-        border-bottom: 2px solid transparent;
-        &.active {            
-            border-bottom: 2px solid #3F51B5;
-           
-        }
+  padding: 20px 10px 2px 10px !important;
+  li {
+    border-bottom: 2px solid transparent;
+    &.active {
+      border-bottom: 2px solid #e8eaed;
     }
+  }
+}
+
+.animation-right-center {
+  position: relative;
+  animation-name: animation-right-center-frames;
+  animation-duration: 0.3s;
+}
+
+@keyframes animation-right-center-frames {
+  0% {
+    left: 100%;
+    top: 0px;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+
+.animation-center-left {
+  position: relative;
+  animation-name: animation-center-left-frames;
+  animation-duration: 0.3s;
+}
+
+@keyframes animation-center-left-frames {
+  0% {
+    right: 0%;
+    top: 0px;
+  }
+  100% {
+    right: 100%;
+    top: 0px;
+  }
+}
+
+.animation-left-center {
+  position: relative;
+  animation-name: animation-left-center-frames;
+  animation-duration: 0.3s;
+}
+
+@keyframes animation-left-center-frames {
+  0% {
+    right: 100%;
+    top: 0px;
+  }
+  100% {
+    right: 0%;
+    top: 0px;
+  }
 }
