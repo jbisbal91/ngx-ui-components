@@ -2,7 +2,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
-import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highlightjs';
+import {
+  HighlightModule,
+  HIGHLIGHT_OPTIONS,
+  HighlightOptions,
+} from 'ngx-highlightjs';
 
 import { ComponentRoutingModule } from './component-routing.module';
 
@@ -11,7 +15,14 @@ import { ComponentNavComponent } from './components/component-nav/component-nav.
 import { ComponentSidenavComponent } from './pages/component-sidenav/component-sidenav.component';
 import { ComponentViewerComponent } from './components/component-viewer/component-viewer.component';
 import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
-import { ButtonModule, DialogModule, DividerModule, ExpansionPanelModule, IconModule, TabModule } from 'projects/ngx-ui-components/src/public-api';
+import {
+  ButtonModule,
+  DialogModule,
+  DividerModule,
+  ExpansionPanelModule,
+  IconModule,
+  TabModule,
+} from 'projects/ngx-ui-components/src/public-api';
 import { TabDemo1Component } from './demos/tabs-demos/tab-demo1/tab-demo1.component';
 import { DialogDocsComponent } from './docs/dialog-docs/dialog-docs.component';
 import { DialogDemo1Component } from './demos/dialog-demos/dialog-demo1/dialog-demo1.component';
@@ -24,33 +35,42 @@ import { AccordionDemo1Component } from './demos/accordion/accordion-demo1/accor
 import { AccordionDocsComponent } from './docs/accordion-docs/accordion-docs.component';
 import { DividerDocsComponent } from './docs/divider-docs/divider-docs.component';
 import { DividerDemo1Component } from './demos/divider/divider-demo1/divider-demo1.component';
+import { GuidesComponent } from '../guides/pages/guides/guides.component';
 
 export function getHighlightLanguages() {
   return {
     typescript: () => import('highlight.js/lib/languages/typescript'),
     css: () => import('highlight.js/lib/languages/css'),
-    xml: () => import('highlight.js/lib/languages/xml')
+    xml: () => import('highlight.js/lib/languages/xml'),
   };
 }
 
 const components = [
   ComponentCategoryListComponent,
+  GuidesComponent,
   ComponentNavComponent,
   ComponentSidenavComponent,
   ComponentViewerComponent,
   TabDocsComponent,
-  TabDemo1Component
+  TabDemo1Component,
+  DialogDocsComponent,
+  DialogDemo1Component,
+  ButtonDemo1Component,
+  ButtonDocsComponent,
+  ButtonDemo2Component,
+  ButtonDemo3Component,
+  ButtonDemo4Component,
+  AccordionDocsComponent,
+  AccordionDemo1Component,  
+  DividerDocsComponent,
+  DividerDemo1Component,
 ];
 
 @NgModule({
-  declarations: [    
-    components, DialogDocsComponent, DialogDemo1Component, ButtonDemo1Component, ButtonDocsComponent, ButtonDemo2Component, ButtonDemo3Component, ButtonDemo4Component, AccordionDemo1Component, AccordionDocsComponent, DividerDocsComponent, DividerDemo1Component
-  ],
-  exports: [
-    components
-  ],
+  declarations: [components],
+  exports: [components],
   imports: [
-    CommonModule,    
+    CommonModule,
     ComponentRoutingModule,
     HttpClientModule,
     HighlightModule,
@@ -59,7 +79,7 @@ const components = [
     DividerModule,
     DialogModule,
     ExpansionPanelModule,
-    IconModule
+    IconModule,
   ],
   providers: [
     {
@@ -67,9 +87,9 @@ const components = [
       useValue: {
         coreLibraryLoader: () => import('highlight.js/lib/core'),
         lineNumbers: true,
-        languages: getHighlightLanguages()
-      } as HighlightOptions
+        languages: getHighlightLanguages(),
+      } as HighlightOptions,
     },
   ],
 })
-export class ComponentModule { }
+export class ComponentModule {}

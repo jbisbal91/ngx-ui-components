@@ -9,19 +9,21 @@ import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
 import { ButtonDocsComponent } from './docs/button-docs/button-docs.component';
 import { AccordionDocsComponent } from './docs/accordion-docs/accordion-docs.component';
 import { DividerDocsComponent } from './docs/divider-docs/divider-docs.component';
+import { GuidesComponent } from '../guides/pages/guides/guides.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ComponentSidenavComponent,
     children: [
+      { path: 'guides', component: GuidesComponent },
       { path: 'buttons', component: ButtonDocsComponent },
       { path: 'tabs', component: TabDocsComponent },
       { path: 'dialog', component: DialogDocsComponent },
       { path: 'divider', component: DividerDocsComponent },      
       { path: 'category', component: ComponentCategoryListComponent },
       { path: 'expansion', component: AccordionDocsComponent },
-      { path: '**', redirectTo: 'category', pathMatch: 'full' },
+      { path: '**', redirectTo: 'guides', pathMatch: 'full' },
 
     ]
   }
