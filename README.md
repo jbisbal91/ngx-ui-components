@@ -1,1 +1,1 @@
-# ngx-ui-components
+# ngx-ui

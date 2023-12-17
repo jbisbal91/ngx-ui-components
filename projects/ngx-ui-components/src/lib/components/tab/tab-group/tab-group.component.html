@@ -1,0 +1,12 @@
+<ul class="z-50 flex justify-around list-none m-0 relative w-full">
+    <li class="flex justify-center w-full text-lg font-semibold text-black cursor-pointer h-10 items-center"
+        *ngFor="let tab of tabs"
+        [ngClass]="{'active text-blue-800 opacity-100':tab.isActive,'opacity-50 cursor-no-drop ':tab.disabled}"
+        (click)="selectTab(tab)">
+        {{tab.label}}
+    </li>
+</ul>
+
+<div class="mt-2">
+    <ng-content></ng-content>
+</div>

@@ -1,0 +1,25 @@
+<!--Side Navigation Panel-->
+<nav class="docs-side-nav scroll fixed bg-white leading-normal overflow-auto pt-5 mt-px">
+  <ul>
+    <!-- Components Category-->
+    <div #componentCategory class="sidenav-menu-item sidenav-main-menu-item"
+      [class.active]="checkActivatedRoute('/components')">
+      <a class="sidenav-category sidenav-link" routerLink="/components"
+        (click)="toggleMenuItem(componentCategory,componentCategory.className)">
+        Components
+      </a>
+      <ul style="margin-top: 20px;">
+        <li class="sidenav-menu-item" *ngFor="let route of routes" [class.selected]="checkActivatedRoute(route.path)">
+          <a class="sidenav-sub-link" (click)="goComponent(route.path)">{{route.title}}</a>
+        </li>
+      </ul>
+    </div>
+  </ul>
+</nav>
+
+<!--Document Panel-->
+<div class="document-panel">
+  <section>
+    <router-outlet></router-outlet>
+  </section>
+</div>

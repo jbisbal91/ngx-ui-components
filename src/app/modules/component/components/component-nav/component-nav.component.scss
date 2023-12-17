@@ -1,0 +1,117 @@
+  /*Side Navigation Panel*/
+  .docs-side-nav {
+    height: calc(100vh - 56px);
+    width: 250px;
+    color: #1d2935;
+    font-size: 14px;
+    box-shadow: 0 0 2px darkgrey;
+  }
+
+  .docs-side-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto-Regular, Helvetica, Arial, sans-serif;
+  }
+
+  .docs-side-nav ul li ul {
+    display: none;
+  }
+
+  .active ul {
+    display: block !important;
+  }
+
+  .sidenav-category {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .sidenav-menu-item {
+    cursor: pointer;
+    padding: 0;
+    line-height: 20px;
+  }
+
+  .document-panel {
+    background: #fff;
+    overflow: auto;
+    height: calc(100vh - 56px);
+    width: calc(100vw - 250px);
+    margin-left: 250px;
+    padding-top: 20px;
+    padding-right: 50px;
+    padding-left: 50px;
+
+  }
+
+  .selected {
+    border-right: 3px solid #3F51B5;
+    font-weight: bold;
+    background: #BABFDD;
+    &:hover{
+      background: #BABFDD;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: #565353;
+  }
+
+  li:hover {
+    background: #DEE1F0;
+  }
+
+  .sidenav-link {
+    padding: 12px 24px;
+  }
+
+  .sidenav-sub-link {
+    padding: 12px 48px;
+    display: flex;
+    font-size: 16px;
+  }
+
+  .sidenav-main-menu-item {
+    padding-bottom: 10px;
+  }
+
+  .scroll {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    $scrollbar-1-thumb-width: 0.25rem;
+    $scrollbar-1-thumb-color: #B9B9B9;
+    $scrollbar-1-track-color: transparent;
+
+    // Chrome & Opera
+    &::-webkit-scrollbar {
+      width: $scrollbar-1-thumb-width;
+      height: $scrollbar-1-thumb-width;
+      background: $scrollbar-1-track-color;
+
+      &-track {
+        background-clip: content-box;
+        border: calc($scrollbar-1-thumb-width/4) solid transparent;
+      }
+
+      &-thumb {
+        background-color: $scrollbar-1-thumb-color;
+
+        &:hover {
+          background-color: mix($scrollbar-1-thumb-color, #000, 90%);
+        }
+      }
+
+      &-corner,
+      &-track {
+        background-color: $scrollbar-1-track-color;
+      }
+    }
+
+    // Firefox
+    scrollbar-width: thin;
+    //scrollbar-width: none;
+    scrollbar-color: $scrollbar-1-thumb-color $scrollbar-1-track-color;
+  }

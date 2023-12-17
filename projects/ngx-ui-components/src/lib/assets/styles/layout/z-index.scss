@@ -1,0 +1,10 @@
+$max: 50;
+@for $i from 0 through $max {
+    .z-#{$i} {
+        z-index: $i;
+    }  
+}
+
+.z-auto {
+    z-index: auto;
+}

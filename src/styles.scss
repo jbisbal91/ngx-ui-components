@@ -1,0 +1,51 @@
+@import "./assets/styles/github.scss";
+@import "./assets/styles/styles.scss";
+
+html,
+body {
+    height: 100vh
+}
+
+body {
+    font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+    margin: 0
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+article {
+  padding: 30px 30px 30px 50px;
+}
+
+.breadcrumb-item-template {
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+.main-article-template blockquote {
+  color: #697b8c;
+  border-left: 4px solid #ebedf0;
+  padding-left: .8em;
+}
+
+.visible {
+  display: block !important;
+}
+
+.main-article-template code {
+  margin: 0 1px;
+  padding: .2em .4em;
+  font-size: .9em;
+  background: #f2f4f5;
+  border: 1px solid #eee;
+  border-radius: 3px;
+}
+
+app-demo-viewer p {
+  margin-bottom: 2px;
+}

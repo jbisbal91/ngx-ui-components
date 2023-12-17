@@ -1,0 +1,14 @@
+:host {
+    width: 100%;
+}
+
+ul {
+    padding: 20px 10px 2px 10px !important;
+    li {
+        border-bottom: 2px solid transparent;
+        &.active {            
+            border-bottom: 2px solid #3F51B5;
+           
+        }
+    }
+}
