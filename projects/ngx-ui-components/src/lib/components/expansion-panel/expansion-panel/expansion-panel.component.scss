@@ -1,6 +1,10 @@
 :host {
   width: 100%;
-  background-color: transparent;
+}
+
+.card-epanel {
+  background-color: var(--ngx-theme-bg-epanel);
+  color: var(--ngx-theme-color-epanel);
 }
 
 .rotate {

@@ -1,18 +1,17 @@
 <div
-  class="mb-4 p-4"
+  class="card-epanel mb-4 p-4"
   [ngClass]="{ 'rounded-lg box-shadow': ngxType === 'card' }"
 >
   <div
     (click)="expand()"
-    class="flex justify-between w-full text-lg font-semibold text-white cursor-pointer h-10 items-center"
+    class="flex justify-between w-full text-lg font-semibold cursor-pointer h-10 items-center"
   >
-    <span [ngStyle]="{ color: color }">{{ label }}</span>
+    <span>{{ label }}</span>
     <span
       class="flex justify-center items-center"
       [ngClass]="expanded ? 'rotate' : 'no-rotate'"
     >
       <svg
-        [ngStyle]="{ fill: color }"
         xmlns="http://www.w3.org/2000/svg"
         height="24"
         viewBox="0 -960 960 960"

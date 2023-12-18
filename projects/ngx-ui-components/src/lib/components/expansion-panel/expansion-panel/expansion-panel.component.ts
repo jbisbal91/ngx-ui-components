@@ -16,8 +16,6 @@ export class ExpansionPanelComponent implements ExpansionPanel, OnInit {
   @Input() label: string = '';
   @Input() ngxType: 'card' | 'normal' = 'normal';
 
-  @Input() color: string = '#000';
-
   constructor() {}
 
   ngOnInit(): void {
