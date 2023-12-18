@@ -161,6 +161,9 @@
 @import "./svg/stroke-width.scss";
 
 
-@import "./theme/dark.scss";
-@import "./theme/light.scss";
-@import "./theme/default.scss";
+@import "./theme/ngx-theme-dark.scss";
+@import "./theme/ngx-theme-light.scss";
+@import "./theme/ngx-theme-default.scss";
+
+@import "./github/github.scss";
+
