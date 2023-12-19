@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { CardComponent } from './card.component';
 import { CardHeaderComponent } from './components/card-header/card-header.component';
 import { CardContentComponent } from './components/card-content/card-content.component';
