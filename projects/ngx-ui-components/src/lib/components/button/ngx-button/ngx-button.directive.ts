@@ -35,20 +35,17 @@ export class NgxButtonDirective implements OnInit {
       }
       case 'default': {
         this.renderer2.setStyle(this.elementRef.nativeElement, 'background-color', 'transparent');
-        this.renderer2.setStyle(this.elementRef.nativeElement, 'color', '#000000');
         this.hover(this.disabled);
         break;
       }
       case 'dashed': {
         this.renderer2.setStyle(this.elementRef.nativeElement, 'background-color', 'transparent');
-        this.renderer2.setStyle(this.elementRef.nativeElement, 'color', '#000000');
         this.renderer2.setStyle(this.elementRef.nativeElement, 'border', '1px dashed');
         this.hover(this.disabled);
         break;
       }
       case 'text': {
         this.renderer2.setStyle(this.elementRef.nativeElement, 'background-color', 'transparent');
-        this.renderer2.setStyle(this.elementRef.nativeElement, 'color', '#000000');
         this.renderer2.setStyle(this.elementRef.nativeElement, 'border', 'none');
         break;
       }
