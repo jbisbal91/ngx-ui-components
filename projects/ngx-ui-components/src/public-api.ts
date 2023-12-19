@@ -27,5 +27,13 @@ export * from './lib/components/expansion-panel/expansion-panel.module';
 export * from './lib/components/expansion-panel/accordion/accordion.component';
 export * from './lib/components/expansion-panel/expansion-panel/expansion-panel.component';
 
+export * from './lib/components/card/card.module';
+export * from './lib/components/card/card.component';
+export * from './lib/components/card/components/card-header/card-header.component';
+export * from './lib/components/card/components/card-content/card-content.component';
+export * from './lib/components/card/components/card-actions/card-actions.component';
+export * from './lib/components/card/directives/card-avatar.directive';
+export * from './lib/components/card/directives/card-image.directive';
+
 export * from './lib/components/icon/icon.module';
 export * from './lib/components/icon/icon.directive';

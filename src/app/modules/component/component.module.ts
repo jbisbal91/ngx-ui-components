@@ -18,6 +18,7 @@ import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
 import {
   ButtonModule,
+  CardModule,
   DialogModule,
   DividerModule,
   ExpansionPanelModule,
@@ -36,6 +37,8 @@ import { AccordionDocsComponent } from './docs/accordion-docs/accordion-docs.com
 import { AccordionDemo1Component } from './demos/accordion/accordion-demo1/accordion-demo1.component';
 import { DividerDocsComponent } from './docs/divider-docs/divider-docs.component';
 import { DividerDemo1Component } from './demos/divider/divider-demo1/divider-demo1.component';
+import { CardDocsComponent } from './docs/card-docs/card-docs.component';
+import { CardDemo1Component } from './demos/card/card-demo1/card-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -64,10 +67,12 @@ const components = [
   AccordionDemo1Component,
   DividerDocsComponent,
   DividerDemo1Component,
+  CardDocsComponent,
+  CardDemo1Component
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, CardDocsComponent, CardDemo1Component],
   exports: [components],
   imports: [
     CommonModule,
@@ -79,6 +84,7 @@ const components = [
     DividerModule,
     DialogModule,
     ExpansionPanelModule,
+    CardModule,
     IconModule,
   ],
   providers: [

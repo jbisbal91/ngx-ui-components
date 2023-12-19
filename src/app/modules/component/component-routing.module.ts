@@ -10,6 +10,7 @@ import { ButtonDocsComponent } from './docs/button-docs/button-docs.component';
 import { AccordionDocsComponent } from './docs/accordion-docs/accordion-docs.component';
 import { DividerDocsComponent } from './docs/divider-docs/divider-docs.component';
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
+import { CardDocsComponent } from './docs/card-docs/card-docs.component';
 
 const routes: Routes = [
   {
@@ -17,21 +18,20 @@ const routes: Routes = [
     component: ComponentSidenavComponent,
     children: [
       { path: 'guides', component: GuidesComponent },
+      { path: 'card', component: CardDocsComponent },
       { path: 'buttons', component: ButtonDocsComponent },
       { path: 'tabs', component: TabDocsComponent },
       { path: 'dialog', component: DialogDocsComponent },
-      { path: 'divider', component: DividerDocsComponent },      
+      { path: 'divider', component: DividerDocsComponent },
       { path: 'category', component: ComponentCategoryListComponent },
       { path: 'expansion', component: AccordionDocsComponent },
       { path: '**', redirectTo: 'guides', pathMatch: 'full' },
-
-    ]
-  }
+    ],
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ComponentRoutingModule { }
+export class ComponentRoutingModule {}
