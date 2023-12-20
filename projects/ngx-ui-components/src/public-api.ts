@@ -35,5 +35,8 @@ export * from './lib/components/card/components/card-actions/card-actions.compon
 export * from './lib/components/card/directives/card-avatar.directive';
 export * from './lib/components/card/directives/card-image.directive';
 
+export * from './lib/components/carousel/carousel.module';
+export * from './lib/components/carousel/carousel.component';
+
 export * from './lib/components/icon/icon.module';
 export * from './lib/components/icon/icon.directive';

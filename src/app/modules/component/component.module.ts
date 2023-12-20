@@ -19,6 +19,7 @@ import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
 import {
   ButtonModule,
   CardModule,
+  CarouselModule,
   DialogModule,
   DividerModule,
   ExpansionPanelModule,
@@ -39,6 +40,8 @@ import { DividerDocsComponent } from './docs/divider-docs/divider-docs.component
 import { DividerDemo1Component } from './demos/divider/divider-demo1/divider-demo1.component';
 import { CardDocsComponent } from './docs/card-docs/card-docs.component';
 import { CardDemo1Component } from './demos/card/card-demo1/card-demo1.component';
+import { CarouselDocsComponent } from './docs/carousel-docs/carousel-docs.component';
+import { CarouselDemo1Component } from './demos/carousel/carousel-demo1/carousel-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -68,11 +71,15 @@ const components = [
   DividerDocsComponent,
   DividerDemo1Component,
   CardDocsComponent,
-  CardDemo1Component
+  CardDemo1Component,
+  CardDocsComponent,
+  CardDemo1Component,
+  CarouselDocsComponent,
+  CarouselDemo1Component,
 ];
 
 @NgModule({
-  declarations: [components, CardDocsComponent, CardDemo1Component],
+  declarations: [components],
   exports: [components],
   imports: [
     CommonModule,
@@ -86,6 +93,7 @@ const components = [
     ExpansionPanelModule,
     CardModule,
     IconModule,
+    CarouselModule,
   ],
   providers: [
     {

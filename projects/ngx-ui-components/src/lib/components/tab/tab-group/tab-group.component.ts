@@ -12,7 +12,6 @@ export class TabGroupComponent {
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;
   animationToLeft: boolean = false;
   animationToRigth: boolean = false;
-  animationToCenter: boolean = false;
 
   private subscription: Subscription = new Subscription();
 
