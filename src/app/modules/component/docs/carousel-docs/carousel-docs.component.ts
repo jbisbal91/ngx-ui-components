@@ -8,17 +8,17 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./carousel-docs.component.scss']
 })
 export class CarouselDocsComponent implements OnInit {
-  variation1DemoCard!: Tabs[];
+  variation1DemoCarousel!: Tabs[];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.variation1DemoCard = [
+    this.variation1DemoCarousel = [
       {
         tabTitle: 'HTML',
         tabContent: {
           code: this.http.get(
-            'assets/demos/card/card-demo1/card-demo1.component.html',
+            'assets/demos/carousel/carousel-demo1/carousel-demo1.component.html',
             { responseType: 'text' }
           ),
         },
@@ -27,7 +27,7 @@ export class CarouselDocsComponent implements OnInit {
         tabTitle: 'TS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/card/card-demo1/card-demo1.component.ts',
+            'assets/demos/carousel/carousel-demo1/carousel-demo1.component.ts',
             { responseType: 'text' }
           ),
         },
@@ -36,7 +36,7 @@ export class CarouselDocsComponent implements OnInit {
         tabTitle: 'SCSS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/card/card-demo1/card-demo1.component.scss',
+            'assets/demos/carousel/carousel-demo1/carousel-demo1.component.scss',
             { responseType: 'text' }
           ),
         },
