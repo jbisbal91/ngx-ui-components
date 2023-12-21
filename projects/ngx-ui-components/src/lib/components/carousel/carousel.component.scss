@@ -36,23 +36,6 @@
   transition: background-color 0.4s ease-out;
 }
 
-.animation-right-center {
-  position: relative;
-  animation-name: animation-right-center-frames;
-  animation-duration: 0.5s;
-}
-
-@keyframes animation-right-center-frames {
-  0% {
-    left: 100%;
-    top: 0px;
-  }
-  100% {
-    left: 0px;
-    top: 0px;
-  }
-}
-
 .animation-center-left {
   position: relative;
   animation-name: animation-center-left-frames;
@@ -83,6 +66,23 @@
   }
   100% {
     right: 0%;
+    top: 0px;
+  }
+}
+
+.animation-right-center {
+  position: relative;
+  animation-name: animation-right-center-frames;
+  animation-duration: 0.5s;
+}
+
+@keyframes animation-right-center-frames {
+  0% {
+    left: 100%;
+    top: 0px;
+  }
+  100% {
+    left: 0%;
     top: 0px;
   }
 }

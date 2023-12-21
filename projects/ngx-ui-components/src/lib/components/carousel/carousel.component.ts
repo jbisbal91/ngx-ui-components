@@ -10,8 +10,10 @@ import { Carousel } from './carousel.interface';
 export class CarouselComponent {
   @ContentChildren(CarouselItemComponent)
   public carouselItems!: QueryList<CarouselItemComponent>;
+
   animationToLeft: boolean = false;
   animationToRigth: boolean = false;
+  animationRightToCenter: boolean = false;
 
   ngAfterContentInit(): void {
     this.carouselItems.first.isActive = true;
@@ -24,27 +26,28 @@ export class CarouselComponent {
     if (carouselItem === this.carouselItems.first) {
       return this.animationmoveToRight(carouselItem);
     }
-    if (carouselItem === this.carouselItems.last) {
-      return this.animationmoveToLeft(carouselItem);
-    }
     return this.animationmoveToLeft(carouselItem);
   }
 
-  animationmoveToLeft(ci: Carousel) {
+  animationmoveToLeft(carousel: CarouselItemComponent) {
     this.animationToLeft = true;
     setTimeout(() => {
-      this.carouselItems.forEach((ci) => (ci.isActive = false));
-      ci.isActive = true;
       this.animationToLeft = false;
-    }, 500);
+      carousel.isActive = true;
+      this.carouselItems.forEach((ci) => {
+        if (carousel.id !== ci.id) {
+          ci.isActive = false;
+        }
+      });
+    }, 300);
   }
 
-  animationmoveToRight(ci: Carousel) {
+  animationmoveToRight(carousel: CarouselItemComponent) {
     this.animationToRigth = true;
     this.carouselItems.forEach((ci) => (ci.isActive = false));
-    ci.isActive = true;
+    carousel.isActive = true;
     setTimeout(() => {
       this.animationToRigth = false;
-    }, 500);
+    }, 300);
   }
 }
