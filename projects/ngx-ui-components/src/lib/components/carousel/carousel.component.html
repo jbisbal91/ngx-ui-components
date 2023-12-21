@@ -10,7 +10,7 @@
       <li
         [class.slick-active]="carouselItem.isActive"
         *ngFor="let carouselItem of carouselItems"
-        (click)="selectItem(carouselItem)"
+        (click)="onClick(carouselItem)"
       >
         <button>{{ carouselItem.id }}</button>
       </li>
