@@ -6,19 +6,9 @@ import { DividerModule } from '../divider/divider.module';
 import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.component';
 import { AccordionComponent } from './accordion/accordion.component';
 
-
 @NgModule({
-  declarations: [
-    AccordionComponent,
-    ExpansionPanelComponent
-  ],
-  exports: [
-    AccordionComponent,
-    ExpansionPanelComponent
-  ],
-  imports: [
-    CommonModule,    
-    DividerModule
-  ]
+  declarations: [AccordionComponent, ExpansionPanelComponent],
+  exports: [AccordionComponent, ExpansionPanelComponent],
+  imports: [CommonModule, DividerModule],
 })
-export class ExpansionPanelModule { }
+export class ExpansionPanelModule {}

@@ -8,7 +8,6 @@
 
     <ul class="slick-list slick-dots slick-dots-bottom">
       <li
-        [id]="carouselItem.id"
         [class.slick-active]="carouselItem.isActive"
         *ngFor="let carouselItem of carouselItems"
         (click)="selectItem(carouselItem)"
