@@ -1,18 +1,20 @@
 <div class="ngx-carousel">
-  <div
-    class="mt-2"
-    [class.animation-center-left]="animationToLeft"
-    [class.animation-left-center]="animationToRigth"
-    [class.animation-right-center]="animationRightToCenter"
-  >
-    <ng-content></ng-content>
-  </div>
-  <div class="ngx-carousel-action-container">
-    <div
-      class="ngx-carousel-action"
-      [class.active]="carouselItem.isActive"
-      *ngFor="let carouselItem of carouselItems"
-      (click)="selectItem(carouselItem)"
-    ></div>
+  <div class="slick-initialized slick-slider">
+    <div class="slick-list">
+      <div class="slick-track">
+        <ng-content></ng-content>
+      </div>
+    </div>
+
+    <ul class="slick-list slick-dots slick-dots-bottom">
+      <li
+        [id]="carouselItem.id"
+        [class.slick-active]="carouselItem.isActive"
+        *ngFor="let carouselItem of carouselItems"
+        (click)="selectItem(carouselItem)"
+      >
+        <button>{{ carouselItem.id }}</button>
+      </li>
+    </ul>
   </div>
 </div>
