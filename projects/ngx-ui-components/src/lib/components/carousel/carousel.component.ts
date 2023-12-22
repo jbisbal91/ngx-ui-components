@@ -5,7 +5,9 @@ import {
   Component,
   ContentChildren,
   Input,
+  OnChanges,
   QueryList,
+  SimpleChanges,
   booleanAttribute,
   numberAttribute,
 } from '@angular/core';
@@ -17,7 +19,7 @@ import { CarouselItemComponent } from './carousel-item/carousel-item.component';
   styleUrls: ['./carousel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CarouselComponent implements AfterContentInit {
+export class CarouselComponent implements AfterContentInit, OnChanges {
   @ContentChildren(CarouselItemComponent)
   public carouselItems!: QueryList<CarouselItemComponent>;
   @Input({ transform: booleanAttribute }) ngxAutoPlay: boolean = false;
@@ -25,11 +27,18 @@ export class CarouselComponent implements AfterContentInit {
 
   currentItem!: CarouselItemComponent;
 
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['ngxAutoPlay'].currentValue === '' || changes['ngxAutoPlay'].currentValue) {
+      this.autoPlay();
+    }
+  }
 
   ngAfterContentInit(): void {
     this.carouselItems.first.isActive = true;
     this.currentItem = this.carouselItems.first;
+    this.cdr.markForCheck();
     if (this.ngxAutoPlay) {
       this.autoPlay();
     }
