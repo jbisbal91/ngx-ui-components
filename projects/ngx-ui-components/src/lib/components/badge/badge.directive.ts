@@ -1,4 +1,14 @@
-import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Directive,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  Renderer2,
+  SimpleChanges,
+  booleanAttribute,
+} from '@angular/core';
 
 @Directive({
   selector: '[ngxBadge]',
@@ -7,33 +17,38 @@ import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
   },
   standalone: true,
 })
-export class BadgeDirective implements OnInit {
+export class BadgeDirective implements OnInit, OnChanges {
   @Input() ngxBadge: any;
   @Input() ngxBadgePosition: 'before' | 'after' = 'after';
+  @Input() ngxBadgeSize: 'small' | 'medium' | 'large' = 'small';
+  @Input({ alias: 'ngxBadgeHidden', transform: booleanAttribute })
+  hidden: boolean = false;
+
+  newSpan = document.createElement('span');
 
   constructor(public elementRef: ElementRef, private renderer2: Renderer2) {}
 
-  ngOnInit(): void {
-    const newSpan = document.createElement('span');
-    newSpan.textContent = this.ngxBadge;
-    this.renderer2.addClass(newSpan, 'ngx-badge-content');
-    switch (this.elementRef.nativeElement.tagName.toLowerCase()) {
-      case 'button': {
-        console.log('button');
-        this.renderer2.addClass(newSpan, 'ngx-badge-btn');
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['hidden'].currentValue) {
+      this.renderer2.addClass(this.newSpan, 'ngx-badge-hidden');
+    } else {
+      this.renderer2.removeClass(this.newSpan, 'ngx-badge-hidden');
+    }
+  }
 
-        break;
-      }
-      case 'div': {
-        console.log('div');
-        break;
-      }
+  ngOnInit(): void {
+    this.newSpan.textContent = this.ngxBadge;
+    this.renderer2.addClass(this.newSpan, 'ngx-badge-content');
+
+    if (this.elementRef.nativeElement.tagName.toLowerCase() === 'button') {
+      this.renderer2.addClass(this.newSpan, 'ngx-badge-btn');
     }
 
     if (this.ngxBadgePosition == 'before') {
-      this.renderer2.addClass(newSpan, 'ngx-badge-before');
+      this.renderer2.addClass(this.newSpan, 'ngx-badge-before');
     }
 
-    this.renderer2.appendChild(this.elementRef.nativeElement, newSpan);
+    this.renderer2.addClass(this.newSpan, `ngx-badge-${this.ngxBadgeSize}`);
+    this.renderer2.appendChild(this.elementRef.nativeElement, this.newSpan);
   }
 }
