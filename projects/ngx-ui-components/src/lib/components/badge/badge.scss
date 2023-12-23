@@ -1,0 +1,30 @@
+.ngx-badge-content {
+  position: absolute;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  background-color: var(--ngx-theme-badge-background-color);
+  color: var(--ngx-theme-badge-color);
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  height: 1.2rem;
+  width: 1.2rem;
+  padding-top: 0.075rem;
+  padding-bottom: 0.075rem;
+  margin-top: -0.5rem;
+}
+
+.ngx-badge-btn {
+  margin-left: 0.25rem;
+  margin-top: -1rem;
+}
+
+.ngx-badge-before {
+  left: 0px;
+}

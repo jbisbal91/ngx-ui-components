@@ -17,6 +17,7 @@ import { ComponentViewerComponent } from './components/component-viewer/componen
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
 import {
+  BadgeModule,
   ButtonModule,
   CardModule,
   CarouselModule,
@@ -42,6 +43,8 @@ import { CardDocsComponent } from './docs/card-docs/card-docs.component';
 import { CardDemo1Component } from './demos/card/card-demo1/card-demo1.component';
 import { CarouselDocsComponent } from './docs/carousel-docs/carousel-docs.component';
 import { CarouselDemo1Component } from './demos/carousel/carousel-demo1/carousel-demo1.component';
+import { BadgeDemo1Component } from './demos/badge/badge-demo1/badge-demo1.component';
+import { BadgeDocsComponent } from './docs/badge-docs/badge-docs.component';
 
 export function getHighlightLanguages() {
   return {
@@ -79,7 +82,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, BadgeDemo1Component, BadgeDocsComponent],
   exports: [components],
   imports: [
     CommonModule,
@@ -94,6 +97,7 @@ const components = [
     CardModule,
     IconModule,
     CarouselModule,
+    BadgeModule
   ],
   providers: [
     {

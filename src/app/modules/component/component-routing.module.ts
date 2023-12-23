@@ -12,6 +12,7 @@ import { DividerDocsComponent } from './docs/divider-docs/divider-docs.component
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { CardDocsComponent } from './docs/card-docs/card-docs.component';
 import { CarouselDocsComponent } from './docs/carousel-docs/carousel-docs.component';
+import { BadgeDocsComponent } from './docs/badge-docs/badge-docs.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     component: ComponentSidenavComponent,
     children: [
       { path: 'guides', component: GuidesComponent },
+      { path: 'badge', component: BadgeDocsComponent },
       { path: 'card', component: CardDocsComponent },
       { path: 'carousel', component: CarouselDocsComponent },
       { path: 'buttons', component: ButtonDocsComponent },

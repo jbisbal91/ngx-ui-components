@@ -50,8 +50,6 @@
 
 @import "./sizing/dimensions.scss";
 
-
-
 @import "./typography/font-family.scss";
 @import "./typography/font-size.scss";
 @import "./typography/font-smoothing.scss";
@@ -160,10 +158,10 @@
 @import "./svg/stroke.scss";
 @import "./svg/stroke-width.scss";
 
-
 @import "./theme/ngx-theme-dark.scss";
 @import "./theme/ngx-theme-light.scss";
 @import "./theme/ngx-theme-default.scss";
 
 @import "./github/github.scss";
 
+@import "./badge/badge.scss";
