@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './badge-demo1.component.html',
   styleUrls: ['./badge-demo1.component.scss'],
 })
-export class BadgeDemo1Component {}
+export class BadgeDemo1Component {
+  hidden = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
+}

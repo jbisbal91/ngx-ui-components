@@ -6,7 +6,6 @@
   position: absolute;
   text-align: center;
   display: inline-block;
-  border-radius: 50%;
   transition: transform 0.2s ease-in-out;
   overflow: hidden;
   white-space: nowrap;
@@ -20,38 +19,52 @@
 
 .ngx-badge-small {
   height: 1.2rem;
-  width: 1.2rem;
+  min-width: 1.2rem;
   font-size: 0.875rem;
   padding-top: 0.075rem;
   padding-bottom: 0.075rem;
   margin-top: -0.5rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  border-radius: 10px;
+  &.ngx-badge-before {
+    left: -1rem;
+  }
 }
 
 .ngx-badge-medium {
-  height: 1.6rem;
-  width: 1.6rem;
+  height: 1.65rem;
+  min-width: 1.65rem;
   font-size: 1rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  margin-top: -0.8rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  margin-top: -0.875rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  border-radius: 20px;
+  &.ngx-badge-before {
+    left: -1.5rem;
+  }
 }
 
 .ngx-badge-large {
-  height: 2rem;
-  width: 2rem;
-  font-size: 1.25rem;
-  padding-top: 0.35rem;
-  padding-bottom: 0.35rem;
-  margin-top: -1.2rem;
+  height: 2.45rem;
+  min-width: 2.45rem;
+  font-size: 1.125rem;
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+  margin-top: -1.5rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  border-radius: 30px;
+  &.ngx-badge-before {
+    left: -2.25rem;
+  }
 }
 
 .ngx-badge-btn {
   margin-left: 0.25rem;
   margin-top: -1rem;
-}
-
-.ngx-badge-before {
-  left: -1rem;
 }
 
 .ngx-badge-hidden {
