@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { BadgeDirective } from './badge.directive';
 
 @NgModule({
-  imports: [CommonModule, BadgeDirective],
-  exports: [BadgeDirective]
+  declarations:[BadgeDirective],
+  exports: [BadgeDirective],
+  imports: [CommonModule ]
 })
+
 export class BadgeModule {}

@@ -13,22 +13,21 @@ import {
   selector: '[ngxBadge]',
   host: {
     class: 'ngx-badge',
-  },
-  standalone: true,
+  }
 })
 export class BadgeDirective implements OnInit, OnChanges {
   @Input() ngxBadge: any;
   @Input() ngxBadgePosition: 'before' | 'after' = 'after';
   @Input() ngxBadgeSize: 'small' | 'medium' | 'large' = 'small';
-  @Input({ alias: 'ngxBadgeHidden', transform: booleanAttribute })
-  hidden: boolean = false;
+  @Input()
+  ngxBadgeHidden: boolean = false;
 
   newSpan = document.createElement('span');
 
   constructor(public elementRef: ElementRef, private renderer2: Renderer2) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['hidden'].currentValue) {
+    if (changes['ngxBadgeHidden']?.currentValue) {
       this.renderer2.addClass(this.newSpan, 'ngx-badge-hidden');
     } else {
       this.renderer2.removeClass(this.newSpan, 'ngx-badge-hidden');
