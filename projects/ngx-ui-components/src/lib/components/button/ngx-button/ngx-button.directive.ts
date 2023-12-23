@@ -51,7 +51,6 @@ export class NgxButtonDirective implements OnInit {
       }
       case 'link': {
         this.renderer2.setStyle(this.elementRef.nativeElement, 'background-color', 'transparent');
-        this.renderer2.setStyle(this.elementRef.nativeElement, 'color', '#1890FF');
         this.renderer2.setStyle(this.elementRef.nativeElement, 'border', 'none');
         break;
       }
