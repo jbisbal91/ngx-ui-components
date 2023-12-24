@@ -54,6 +54,9 @@ button:disabled {
   }
   &:hover {
     color: #1890ff;
+    &.ngx-danger {
+      color: #ff4d4f;
+    }
   }
 }
 
@@ -70,6 +73,9 @@ button:disabled {
   }
   &:hover {
     color: #1890ff;
+    &.ngx-danger {
+      color: #ff4d4f;
+    }
   }
 }
 
@@ -87,5 +93,8 @@ button:disabled {
   }
   &:hover {
     color: #1890ff;
+    &.ngx-danger {
+      color: #ff4d4f;
+    }
   }
 }
