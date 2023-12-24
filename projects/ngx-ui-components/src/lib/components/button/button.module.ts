@@ -7,13 +7,17 @@ import { BlockButtonDirective } from './block-button/block-button.directive';
 import { GhostButtonDirective } from './ghost-button/ghost-button.directive';
 import { SuccessButtonDirective } from './success-button/success-button.directive';
 
-const directives = [NgxButtonDirective,SuccessButtonDirective, DangerButtonDirective, GhostButtonDirective, BlockButtonDirective]
+const directives = [
+  NgxButtonDirective,
+  SuccessButtonDirective,
+  DangerButtonDirective,
+  GhostButtonDirective,
+  BlockButtonDirective,
+];
 
 @NgModule({
   declarations: [directives],
   exports: [directives],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
 })
-export class ButtonModule { }
+export class ButtonModule {}

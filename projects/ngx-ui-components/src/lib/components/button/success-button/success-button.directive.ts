@@ -2,7 +2,10 @@ import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { NgxButtonDirective } from '../ngx-button/ngx-button.directive';
 
 @Directive({
-  selector: '[ngxSuccess]'
+  selector: '[ngxSuccess]',
+  host: {
+    class: 'ngx-success',
+  },
 })
 export class SuccessButtonDirective extends NgxButtonDirective implements OnInit {
 

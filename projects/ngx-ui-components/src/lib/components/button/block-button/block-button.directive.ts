@@ -1,16 +1,12 @@
-import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Directive, OnInit } from '@angular/core';
 import { NgxButtonDirective } from '../ngx-button/ngx-button.directive';
 
 @Directive({
-  selector: '[ngxBlock]'
+  selector: '[ngxBlock]',
+  host: {
+    class: 'ngx-block',
+  },
 })
-export class BlockButtonDirective extends NgxButtonDirective implements OnInit {
-
-  constructor(private element: ElementRef, private renderer: Renderer2) {
-    super(element, renderer);
-  }
-
-  override ngOnInit() {
-    this.renderer.setStyle(this.element.nativeElement, 'width', '100%');
-  }
-}
+export class BlockButtonDirective
+  extends NgxButtonDirective
+  implements OnInit {}

@@ -1,0 +1,91 @@
+.ngx-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: 1px solid;
+  &.ngx-block {
+    width: 100%;
+  }
+}
+
+button:disabled {
+  pointer-events: none;
+  opacity: 0.7;
+  &.ngx-button-primary {
+    background-color: #dcdcdc;
+    border: none;
+    &.ngx-danger {
+      background-color: #ffc1c1;
+    }
+    &.ngx-ghost {
+      border: 1px solid;
+      background-color: transparent;
+      color: #1890ff;
+    }
+  }
+}
+
+.ngx-button-primary {
+  background-color: #1890ff;
+  color: #ffffff;
+  &.ngx-danger {
+    background-color: #ff4d4f;
+  }
+  &.ngx-ghost {
+    background-color: transparent;
+    color: #1890ff;
+  }
+  transition: opacity 0.4s ease-out;
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+.ngx-button-default {
+  background-color: transparent;
+  transition: color 0.4s ease-out;
+  &.ngx-danger {
+    color: #ff4d4f;
+  }
+  &.ngx-ghost {
+    background-color: transparent;
+    color: #ffffff;
+  }
+  &:hover {
+    color: #1890ff;
+  }
+}
+
+.ngx-button-dashed {
+  background-color: transparent;
+  border: 1px dashed;
+  transition: color 0.4s ease-out;
+  &.ngx-danger {
+    color: #ff4d4f;
+  }
+  &.ngx-ghost {
+    background-color: transparent;
+    color: #ffffff;
+  }
+  &:hover {
+    color: #1890ff;
+  }
+}
+
+.ngx-button-text,
+.ngx-button-link {
+  background-color: transparent;
+  border: none;
+  transition: color 0.4s ease-out;
+  &.ngx-danger {
+    color: #ff4d4f;
+  }
+  &.ngx-ghost {
+    background-color: transparent;
+    color: #ffffff;
+  }
+  &:hover {
+    color: #1890ff;
+  }
+}

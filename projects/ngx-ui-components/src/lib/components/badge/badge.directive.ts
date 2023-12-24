@@ -6,14 +6,13 @@ import {
   OnInit,
   Renderer2,
   SimpleChanges,
-  booleanAttribute,
 } from '@angular/core';
 
 @Directive({
   selector: '[ngxBadge]',
   host: {
     class: 'ngx-badge',
-  }
+  },
 })
 export class BadgeDirective implements OnInit, OnChanges {
   @Input() ngxBadge: any;
