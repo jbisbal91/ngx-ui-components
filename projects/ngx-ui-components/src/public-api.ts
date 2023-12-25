@@ -35,6 +35,9 @@ export * from './lib/components/expansion-panel/expansion-panel.module';
 export * from './lib/components/expansion-panel/accordion/accordion.component';
 export * from './lib/components/expansion-panel/expansion-panel/expansion-panel.component';
 
+export * from './lib/components/switch/switch.module';
+export * from './lib/components/switch/switch.component';
+
 export * from './lib/components/tab/tab.module';
 export * from './lib/components/tab/tab/tab.component';
 export * from './lib/components/tab/tab-group/tab-group.component';

@@ -3,22 +3,22 @@ import { Tabs } from '../../interfaces/tabs.interface';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-tag-docs',
-  templateUrl: './tag-docs.component.html',
-  styleUrls: ['./tag-docs.component.scss'],
+  selector: 'app-switch-docs',
+  templateUrl: './switch-docs.component.html',
+  styleUrls: ['./switch-docs.component.scss'],
 })
-export class TagDocsComponent implements OnInit {
-  variation1DemoTags!: Tabs[];
+export class SwitchDocsComponent implements OnInit {
+  variation1DemoSwitch!: Tabs[];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.variation1DemoTags = [
+    this.variation1DemoSwitch = [
       {
         tabTitle: 'HTML',
         tabContent: {
           code: this.http.get(
-            'assets/demos/tag/tag-demo1/tag-demo1.component.html',
+            'assets/demos/switch/switch-demo1/switch-demo1.component.html',
             { responseType: 'text' }
           ),
         },
@@ -27,7 +27,7 @@ export class TagDocsComponent implements OnInit {
         tabTitle: 'TS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/tag/tag-demo1/tag-demo1.component.ts',
+            'assets/demos/switch/switch-demo1/switch-demo1.component.ts',
             { responseType: 'text' }
           ),
         },
@@ -36,7 +36,7 @@ export class TagDocsComponent implements OnInit {
         tabTitle: 'SCSS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/tag/tag-demo1/tag-demo1.component.scss',
+            'assets/demos/switch/switch-demo1/switch-demo1.component.scss',
             { responseType: 'text' }
           ),
         },

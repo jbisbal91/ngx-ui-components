@@ -14,6 +14,7 @@ import { CardDocsComponent } from './docs/card-docs/card-docs.component';
 import { CarouselDocsComponent } from './docs/carousel-docs/carousel-docs.component';
 import { BadgeDocsComponent } from './docs/badge-docs/badge-docs.component';
 import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
+import { SwitchDocsComponent } from './docs/switch-docs/switch-docs.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: 'divider', component: DividerDocsComponent },
       { path: 'category', component: ComponentCategoryListComponent },
       { path: 'expansion', component: AccordionDocsComponent },
+      { path: 'switch', component: SwitchDocsComponent },
       { path: '**', redirectTo: 'guides', pathMatch: 'full' },
     ],
   },

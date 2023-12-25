@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import {
   HighlightModule,
@@ -25,6 +26,7 @@ import {
   DividerModule,
   ExpansionPanelModule,
   IconModule,
+  SwitchModule,
   TabModule,
   TagModule,
 } from 'projects/ngx-ui-components/src/public-api';
@@ -48,6 +50,8 @@ import { BadgeDemo1Component } from './demos/badge/badge-demo1/badge-demo1.compo
 import { BadgeDocsComponent } from './docs/badge-docs/badge-docs.component';
 import { TagDemo1Component } from './demos/tag/tag-demo1/tag-demo1.component';
 import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
+import { SwitchDocsComponent } from './docs/switch-docs/switch-docs.component';
+import { SwitchDemo1Component } from './demos/switch/switch-demo1/switch-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -86,6 +90,8 @@ const components = [
   CarouselDemo1Component,
   BadgeDocsComponent,
   BadgeDemo1Component,
+  SwitchDocsComponent,
+  SwitchDemo1Component,
 ];
 
 @NgModule({
@@ -106,6 +112,8 @@ const components = [
     IconModule,
     CarouselModule,
     BadgeModule,
+    SwitchModule,
+    FormsModule 
   ],
   providers: [
     {

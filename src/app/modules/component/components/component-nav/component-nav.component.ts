@@ -58,6 +58,7 @@ export class ComponentNavComponent {
     { path: '/components/snack-bar', title: 'Snackbar' },
     { path: '/components/sort', title: 'Sort header' },
     { path: '/components/stepper', title: 'Stepper' },
+    { path: '/components/switch', title: 'Switch' },
     { path: '/components/table', title: 'Table' },
     { path: '/components/tabs', title: 'Tabs' },
     { path: '/components/tags', title: 'Tags' },
