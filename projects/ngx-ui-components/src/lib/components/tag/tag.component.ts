@@ -1,5 +1,4 @@
 import {
-  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -31,7 +30,6 @@ export class TagComponent {
   @Output() readonly ngxCheckedChange = new EventEmitter<boolean>();
 
   constructor(
-    private cdr: ChangeDetectorRef,
     private renderer: Renderer2,
     private elementRef: ElementRef
   ) {}
