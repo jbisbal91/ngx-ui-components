@@ -26,6 +26,7 @@ import {
   ExpansionPanelModule,
   IconModule,
   TabModule,
+  TagModule,
 } from 'projects/ngx-ui-components/src/public-api';
 import { TabDemo1Component } from './demos/tabs-demos/tab-demo1/tab-demo1.component';
 import { DialogDocsComponent } from './docs/dialog-docs/dialog-docs.component';
@@ -45,6 +46,8 @@ import { CarouselDocsComponent } from './docs/carousel-docs/carousel-docs.compon
 import { CarouselDemo1Component } from './demos/carousel/carousel-demo1/carousel-demo1.component';
 import { BadgeDemo1Component } from './demos/badge/badge-demo1/badge-demo1.component';
 import { BadgeDocsComponent } from './docs/badge-docs/badge-docs.component';
+import { TagDemo1Component } from './demos/tag/tag-demo1/tag-demo1.component';
+import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
 
 export function getHighlightLanguages() {
   return {
@@ -62,6 +65,8 @@ const components = [
   ComponentViewerComponent,
   TabDocsComponent,
   TabDemo1Component,
+  TagDocsComponent,
+  TagDemo1Component,
   DialogDocsComponent,
   DialogDemo1Component,
   ButtonDemo1Component,
@@ -79,10 +84,12 @@ const components = [
   CardDemo1Component,
   CarouselDocsComponent,
   CarouselDemo1Component,
+  BadgeDocsComponent,
+  BadgeDemo1Component,
 ];
 
 @NgModule({
-  declarations: [components, BadgeDemo1Component, BadgeDocsComponent],
+  declarations: [components],
   exports: [components],
   imports: [
     CommonModule,
@@ -90,6 +97,7 @@ const components = [
     HttpClientModule,
     HighlightModule,
     TabModule,
+    TagModule,
     ButtonModule,
     DividerModule,
     DialogModule,
@@ -97,7 +105,7 @@ const components = [
     CardModule,
     IconModule,
     CarouselModule,
-    BadgeModule
+    BadgeModule,
   ],
   providers: [
     {

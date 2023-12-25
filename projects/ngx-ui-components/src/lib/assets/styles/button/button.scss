@@ -29,10 +29,12 @@ button:disabled {
 .ngx-button-primary {
   background-color: #1890ff;
   color: #ffffff;
+  border: none;
   &.ngx-danger {
     background-color: #ff4d4f;
   }
   &.ngx-ghost {
+    border: 1px solid;
     background-color: transparent;
     color: #1890ff;
   }

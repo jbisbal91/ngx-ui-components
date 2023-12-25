@@ -13,6 +13,7 @@ import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { CardDocsComponent } from './docs/card-docs/card-docs.component';
 import { CarouselDocsComponent } from './docs/carousel-docs/carousel-docs.component';
 import { BadgeDocsComponent } from './docs/badge-docs/badge-docs.component';
+import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: 'carousel', component: CarouselDocsComponent },
       { path: 'buttons', component: ButtonDocsComponent },
       { path: 'tabs', component: TabDocsComponent },
+      { path: 'tags', component: TagDocsComponent },
       { path: 'dialog', component: DialogDocsComponent },
       { path: 'divider', component: DividerDocsComponent },
       { path: 'category', component: ComponentCategoryListComponent },

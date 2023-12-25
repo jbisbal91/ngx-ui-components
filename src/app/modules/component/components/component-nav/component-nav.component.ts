@@ -60,6 +60,7 @@ export class ComponentNavComponent {
     { path: '/components/stepper', title: 'Stepper' },
     { path: '/components/table', title: 'Table' },
     { path: '/components/tabs', title: 'Tabs' },
+    { path: '/components/tags', title: 'Tags' },
     { path: '/components/toolbar', title: 'Toolbar' },
     { path: '/components/tooltip', title: 'Tooltip' },
     { path: '/components/tree', title: 'tree' }
