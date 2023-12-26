@@ -1,6 +1,6 @@
-export interface ExpansionPanel{
-    id:string;
-    disabled:boolean; 
-    expanded:boolean;
-    label:string;
+export interface ExpansionPanel {
+  id: string;
+  disabled: boolean;
+  expanded: boolean;
+  label: string;
 }
