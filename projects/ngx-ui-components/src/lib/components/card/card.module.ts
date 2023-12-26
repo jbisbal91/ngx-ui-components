@@ -8,23 +8,18 @@ import { CardActionsComponent } from './components/card-actions/card-actions.com
 import { CardAvatarDirective } from './directives/card-avatar.directive';
 import { CardImageDirective } from './directives/card-image.directive';
 
+const components = [
+  CardComponent,
+  CardHeaderComponent,
+  CardContentComponent,
+  CardActionsComponent,
+  CardAvatarDirective,
+  CardImageDirective
+];
+
 @NgModule({
-  declarations: [
-    CardComponent,
-    CardHeaderComponent,
-    CardContentComponent,
-    CardActionsComponent,
-    CardAvatarDirective,
-    CardImageDirective,
-  ],
-  exports: [
-    CardComponent,
-    CardHeaderComponent,
-    CardContentComponent,
-    CardActionsComponent,
-    CardAvatarDirective,
-    CardImageDirective,
-  ],
-  imports: [CommonModule],
+  declarations: [components],
+  exports: [components],
+  imports: [CommonModule]
 })
 export class CardModule {}

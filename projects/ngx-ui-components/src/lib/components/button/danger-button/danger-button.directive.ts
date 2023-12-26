@@ -1,5 +1,5 @@
-import { OnInit, Directive } from '@angular/core';
-import { NgxButtonDirective } from '../ngx-button/ngx-button.directive';
+import { Directive } from '@angular/core';
+import { ButtonDirective } from '../button/button.directive';
 
 @Directive({
   selector: '[ngxDanger]',
@@ -7,6 +7,4 @@ import { NgxButtonDirective } from '../ngx-button/ngx-button.directive';
     class: 'ngx-danger',
   },
 })
-export class DangerButtonDirective
-  extends NgxButtonDirective
-  implements OnInit {}
+export class DangerButtonDirective extends ButtonDirective {}

@@ -1,6 +1,7 @@
 {
   "name": "ngx-ui-components",
   "version": "0.0.1",
+  "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
     "@angular/core": "^16.2.0"

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
 @Directive({
   selector: '[ngx-button]',
@@ -11,21 +11,8 @@ import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
     '[class.ngx-button-link]': 'ngxType === "link"',
   },
 })
-export class NgxButtonDirective implements OnInit {
+export class ButtonDirective {
   @Input() ngxType: 'primary' | 'default' | 'dashed' | 'text' | 'link' =
     'default';
   disabled: boolean = false;
-  constructor(public elementRef: ElementRef, private renderer2: Renderer2) {}
-
-  ngOnInit() {
-    this.setStyle();
-  }
-
-  setStyle() {
- 
-  }
-
-  hover(disabled: boolean) {
-
-  }
 }

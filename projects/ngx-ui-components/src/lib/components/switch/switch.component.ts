@@ -1,4 +1,11 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, forwardRef } from '@angular/core';
+import {
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  forwardRef,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -11,10 +18,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       useExisting: forwardRef(() => SwitchComponent),
       multi: true,
     },
-  ],  
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SwitchComponent implements ControlValueAccessor,AfterContentInit {
+export class SwitchComponent implements ControlValueAccessor, AfterContentInit {
   isChecked = false;
   onChange: any = () => {};
   onTouched: any = () => {};

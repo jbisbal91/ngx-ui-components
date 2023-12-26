@@ -2,19 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ComponentSidenavComponent } from './pages/component-sidenav/component-sidenav.component';
-
-import { ComponentCategoryListComponent } from './components/component-category-list/component-category-list.component';
-import { DialogDocsComponent } from './docs/dialog-docs/dialog-docs.component';
-import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
-import { ButtonDocsComponent } from './docs/button-docs/button-docs.component';
-import { AccordionDocsComponent } from './docs/accordion-docs/accordion-docs.component';
-import { DividerDocsComponent } from './docs/divider-docs/divider-docs.component';
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
+import { BadgeDocsComponent } from './docs/badge-docs/badge-docs.component';
+import { ButtonDocsComponent } from './docs/button-docs/button-docs.component';
 import { CardDocsComponent } from './docs/card-docs/card-docs.component';
 import { CarouselDocsComponent } from './docs/carousel-docs/carousel-docs.component';
-import { BadgeDocsComponent } from './docs/badge-docs/badge-docs.component';
-import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
+import { DialogDocsComponent } from './docs/dialog-docs/dialog-docs.component';
+import { DividerDocsComponent } from './docs/divider-docs/divider-docs.component';
+import { AccordionDocsComponent } from './docs/accordion-docs/accordion-docs.component';
 import { SwitchDocsComponent } from './docs/switch-docs/switch-docs.component';
+import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
+import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
 
 const routes: Routes = [
   {
@@ -23,16 +21,15 @@ const routes: Routes = [
     children: [
       { path: 'guides', component: GuidesComponent },
       { path: 'badge', component: BadgeDocsComponent },
+      { path: 'buttons', component: ButtonDocsComponent },
       { path: 'card', component: CardDocsComponent },
       { path: 'carousel', component: CarouselDocsComponent },
-      { path: 'buttons', component: ButtonDocsComponent },
-      { path: 'tabs', component: TabDocsComponent },
-      { path: 'tags', component: TagDocsComponent },
       { path: 'dialog', component: DialogDocsComponent },
       { path: 'divider', component: DividerDocsComponent },
-      { path: 'category', component: ComponentCategoryListComponent },
       { path: 'expansion', component: AccordionDocsComponent },
       { path: 'switch', component: SwitchDocsComponent },
+      { path: 'tabs', component: TabDocsComponent },
+      { path: 'tags', component: TagDocsComponent },
       { path: '**', redirectTo: 'guides', pathMatch: 'full' },
     ],
   },
