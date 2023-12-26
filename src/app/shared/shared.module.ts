@@ -16,4 +16,4 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ]
 })
-export class CoreModule { }
+export class SharedModule { }

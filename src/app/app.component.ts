@@ -11,7 +11,6 @@ import { filter } from 'rxjs';
 export class AppComponent {
   title = 'NGX UI';
 
-
   constructor(private titleService: Title, private router: Router) { }
 
   ngOnInit(): void {
