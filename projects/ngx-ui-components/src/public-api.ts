@@ -1,11 +1,3 @@
-/*
- * Public API Surface of ngx-ui-components
- */
-
-export * from './lib/ngx-ui-components.service';
-export * from './lib/ngx-ui-components.component';
-export * from './lib/ngx-ui-components.module';
-
 export * from './lib/components/badge/badge.module';
 export * from './lib/components/badge/badge.directive';
 
@@ -27,18 +19,12 @@ export * from './lib/components/carousel/carousel.module';
 export * from './lib/components/carousel/carousel.component';
 export * from './lib/components/carousel/carousel-item/carousel-item.component';
 
-export * from './lib/components/dialog/dialog.module';
-export * from './lib/components/dialog/dialog/dialog.component';
-
 export * from './lib/components/divider/divider.module';
 export * from './lib/components/divider/divider/divider.component';
 
 export * from './lib/components/expansion-panel/expansion-panel.module';
 export * from './lib/components/expansion-panel/accordion/accordion.component';
 export * from './lib/components/expansion-panel/expansion-panel/expansion-panel.component';
-
-export * from './lib/components/icon/icon.module';
-export * from './lib/components/icon/icon.directive';
 
 export * from './lib/components/switch/switch.module';
 export * from './lib/components/switch/switch.component';
@@ -49,3 +35,4 @@ export * from './lib/components/tab/tab-group/tab-group.component';
 
 export * from './lib/components/tag/tag.module';
 export * from './lib/components/tag/tag.component';
+
