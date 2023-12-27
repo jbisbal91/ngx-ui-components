@@ -9,19 +9,17 @@ import {
   HighlightOptions,
 } from 'ngx-highlightjs';
 
-import {
-  BadgeModule,
-  ButtonModule,
-  CardModule,
-  CarouselModule,
-  DividerModule,
-  ExpansionPanelModule,
-  SwitchModule,
-  TabModule,
-  TagModule,
-} from 'ngx-ui-components';
-
 import { ComponentRoutingModule } from './component-routing.module';
+
+import { BadgeModule } from 'ngx-ui-jbisbal/badge';
+import { ButtonModule } from 'ngx-ui-jbisbal/button';
+import { CardModule } from 'ngx-ui-jbisbal/card';
+import { CarouselModule } from 'ngx-ui-jbisbal/carousel';
+import { DividerModule } from 'ngx-ui-jbisbal/divider';
+import { ExpansionPanelModule } from 'ngx-ui-jbisbal/expansion-panel';
+import { SwitchModule } from 'ngx-ui-jbisbal/switch';
+import { TabModule } from 'ngx-ui-jbisbal/tab';
+import { TagModule } from 'ngx-ui-jbisbal/tag';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';
