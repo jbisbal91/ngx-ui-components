@@ -4,5 +4,10 @@
   "lib": {
     "entryFile": "./public_api.ts"
   },
-  "assets": ["./ngx-ui-components.min.scss","./assets/styles/**","./**/style/**"]
+  "assets": [
+    "./**/style/**",
+    "./**/theme/**",
+    "./theme/**",
+    "./ngx-ui-components.min.scss"
+  ]
 }

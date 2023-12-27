@@ -1,0 +1,9 @@
+@import "../button/theme/ngx-theme-dark";
+@import "../expansion-panel/theme/ngx-theme-dark";
+
+:root[theme="dark"] {
+  --ngx-theme-bg-card: rgb(66, 66, 66);
+  --ngx-theme-bg-act-carousel: rgb(232, 234, 237);
+  --ngx-theme-badge-background-color: rgb(244, 67, 54);
+  --ngx-theme-badge-color: rgb(255, 255, 255);
+}
