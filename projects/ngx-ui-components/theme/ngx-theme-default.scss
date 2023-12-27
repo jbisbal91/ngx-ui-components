@@ -1,9 +1,4 @@
 @import "../button/theme/ngx-theme-default";
 @import "../expansion-panel/theme/ngx-theme-default";
-:root {
-  --ngx-theme-bg-card: transparent;
-  --ngx-theme-bg-act-carousel: #7282a1;
-  --ngx-theme-bg-act-carousel-active: rgb(255, 255, 255);
-  --ngx-theme-badge-background-color: rgb(244, 67, 54);
-  --ngx-theme-badge-color: rgb(255, 255, 255);
-}
+@import "../card/theme/ngx-theme-default";
+@import "../badge/theme/ngx-theme-default";
