@@ -18,8 +18,7 @@ export class BadgeDirective implements OnInit, OnChanges {
   @Input() ngxBadge: any;
   @Input() ngxBadgePosition: 'before' | 'after' = 'after';
   @Input() ngxBadgeSize: 'small' | 'medium' | 'large' = 'small';
-  @Input()
-  ngxBadgeHidden: boolean = false;
+  @Input() ngxBadgeHidden: boolean = false;
 
   newSpan = document.createElement('span');
 

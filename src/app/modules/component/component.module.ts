@@ -19,7 +19,7 @@ import {
   SwitchModule,
   TabModule,
   TagModule,
-} from 'projects/ngx-ui-components/src/public-api';
+} from 'ngx-ui-components';
 
 import { ComponentRoutingModule } from './component-routing.module';
 
