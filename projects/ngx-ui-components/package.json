@@ -1,6 +1,6 @@
 {
   "name": "ngx-ui-jbisbal",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
