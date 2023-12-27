@@ -31,7 +31,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "projects/ngx-ui-components/assets/styles/main.scss"
+              "projects/ngx-ui-components/ngx-ui-components.min.scss"
             ],
             "scripts": []
           },

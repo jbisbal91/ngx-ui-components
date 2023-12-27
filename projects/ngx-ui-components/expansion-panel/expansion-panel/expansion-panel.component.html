@@ -5,11 +5,11 @@
 >
   <div
     (click)="expand()"
-    class="flex justify-between w-full text-lg font-semibold cursor-pointer h-10 items-center"
+    class="card-header"
   >
     <span>{{ label }}</span>
     <span
-      class="arrow flex justify-center items-center"
+      class="arrow flex"
       [ngClass]="expanded ? 'rotate' : 'no-rotate'"
     >
       <svg
