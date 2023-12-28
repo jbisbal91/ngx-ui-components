@@ -49,6 +49,8 @@ import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
 import { TabDemo1Component } from './demos/tabs-demos/tab-demo1/tab-demo1.component';
 import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
 import { TagDemo1Component } from './demos/tag/tag-demo1/tag-demo1.component';
+import { GridDocsComponent } from './docs/grid-docs/grid-docs.component';
+import { GridDemo1Component } from './demos/grid/grid-demo1/grid-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -82,6 +84,8 @@ const components = [
   AccordionDemo1Component,
   SwitchDocsComponent,
   SwitchDemo1Component,
+  GridDocsComponent,
+  GridDemo1Component,
   TabDocsComponent,
   TabDemo1Component,
   TagDocsComponent,

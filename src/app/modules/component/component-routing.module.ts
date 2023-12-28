@@ -13,6 +13,7 @@ import { AccordionDocsComponent } from './docs/accordion-docs/accordion-docs.com
 import { SwitchDocsComponent } from './docs/switch-docs/switch-docs.component';
 import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
 import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
+import { GridDocsComponent } from './docs/grid-docs/grid-docs.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path: 'dialog', component: DialogDocsComponent },
       { path: 'divider', component: DividerDocsComponent },
       { path: 'expansion', component: AccordionDocsComponent },
+      { path: 'grid', component: GridDocsComponent },
       { path: 'switch', component: SwitchDocsComponent },
       { path: 'tabs', component: TabDocsComponent },
       { path: 'tags', component: TagDocsComponent },

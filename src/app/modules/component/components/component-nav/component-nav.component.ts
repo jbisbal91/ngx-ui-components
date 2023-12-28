@@ -40,7 +40,7 @@ export class ComponentNavComponent {
     { path: '/components/divider', title: 'Divider' },
     { path: '/components/expansion', title: 'Expansion Panel' },
     { path: '/components/form-field', title: 'Form field' },
-    { path: '/components/grid-list', title: 'Grid List' },
+    { path: '/components/grid', title: 'Grid' },
     { path: '/components/icon', title: 'Icon' },
     { path: '/components/input', title: 'Input' },
     { path: '/components/list', title: 'List' },
