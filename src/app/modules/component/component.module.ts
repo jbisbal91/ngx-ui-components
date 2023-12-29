@@ -52,6 +52,7 @@ import { TagDemo1Component } from './demos/tag/tag-demo1/tag-demo1.component';
 import { GridDocsComponent } from './docs/grid-docs/grid-docs.component';
 import { GridDemo1Component } from './demos/grid/grid-demo1/grid-demo1.component';
 import { GridModule } from 'projects/ngx-ui-components/grid/grid.module';
+import { GridDemo2Component } from './demos/grid/grid-demo2/grid-demo2.component';
 
 export function getHighlightLanguages() {
   return {
@@ -87,6 +88,7 @@ const components = [
   SwitchDemo1Component,
   GridDocsComponent,
   GridDemo1Component,
+  GridDemo2Component,
   TabDocsComponent,
   TabDemo1Component,
   TagDocsComponent,

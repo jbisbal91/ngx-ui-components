@@ -1,4 +1,6 @@
 import {
+  AfterContentInit,
+  ChangeDetectorRef,
   Directive,
   ElementRef,
   Input,
@@ -14,21 +16,17 @@ import { GridService } from '../service/grid.service';
   host: {
     class: 'ngx-row',
   },
-  standalone: true,
+  providers: [GridService]
 })
-export class RowDirective implements OnChanges {
+export class RowDirective {
   @Input() ngxGutter: string | number | null = null;
-  @Input({ transform: numberAttribute }) ngxSpan: number  = 0;
 
   constructor(
     public elementRef: ElementRef,
-    private renderer2: Renderer2,
-    private gridService: GridService
-  ) {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['ngxSpan'].currentValue) {
-      this.gridService.setNgxSpan(changes['ngxSpan'].currentValue);
-    }
+    private gridService: GridService,
+  ) {
   }
+
+ 
+
 }

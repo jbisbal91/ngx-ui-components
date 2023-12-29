@@ -1,10 +1,10 @@
 import {
   AfterContentInit,
-  ChangeDetectorRef,
   Directive,
   ElementRef,
   Input,
   OnDestroy,
+  OnInit,
   Renderer2,
   numberAttribute,
 } from '@angular/core';
@@ -16,28 +16,19 @@ import { GridService } from '../service/grid.service';
   host: {
     class: 'ngx-col',
   },
-  standalone: true,
+  providers: [GridService],
 })
-export class ColDirective implements AfterContentInit, OnDestroy {
-  @Input({ transform: numberAttribute }) ngxSpan: number = 0;
-  private subscription: Subscription = new Subscription();
+export class ColDirective implements OnInit {
+  @Input({ transform: numberAttribute, required: true }) ngxSpan: number = 24;
 
   constructor(
     public elementRef: ElementRef,
     private renderer2: Renderer2,
-    private gridService: GridService,
-    private cdr: ChangeDetectorRef
+    private gridService: GridService
   ) {}
 
-  ngAfterContentInit(): void {
-    this.cdr.markForCheck();
-    this.subscription.add(
-      this.gridService.ngxSpan$.subscribe((totalCols) => {
-        if (totalCols) {
-          this.setMaxWidthCols(totalCols);
-        }
-      })
-    );
+  ngOnInit(): void {
+    this.setMaxWidthCols(24);
   }
 
   setMaxWidthCols(totalCols: number) {
@@ -53,9 +44,5 @@ export class ColDirective implements AfterContentInit, OnDestroy {
       'flex',
       `0 0 ${maxWidth}%`
     );
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 }

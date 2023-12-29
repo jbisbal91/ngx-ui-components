@@ -3,7 +3,8 @@ import { RowDirective } from './row/row.directive';
 import { ColDirective } from './col/col.directive';
 
 @NgModule({
+  declarations:[RowDirective, ColDirective],
   exports: [RowDirective, ColDirective],
-  imports: [RowDirective, ColDirective],
+  imports: [],
 })
 export class GridModule {}

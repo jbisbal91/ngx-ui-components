@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GridDocsComponent implements OnInit{
   variation1DemoGrid!: Tabs[];
-
+  variation2DemoGrid!: Tabs[];
   constructor(private http: HttpClient) { }
   
   ngOnInit() {
@@ -30,6 +30,26 @@ export class GridDocsComponent implements OnInit{
         tabTitle: 'SCSS',
         tabContent: {
           code: this.http.get('assets/demos/grid/grid-demo1/grid-demo1.component.scss', { responseType: 'text' })
+        }
+      }
+    ];
+    this.variation2DemoGrid = [
+      {
+        tabTitle: 'HTML',
+        tabContent: {
+          code: this.http.get('assets/demos/grid/grid-demo2/grid-demo2.component.html', { responseType: 'text' })        
+        }
+      },
+      {
+        tabTitle: 'TS',
+        tabContent: {
+          code: this.http.get('assets/demos/grid/grid-demo2/grid-demo2.component.ts', { responseType: 'text' })
+        }
+      },
+      {
+        tabTitle: 'SCSS',
+        tabContent: {
+          code: this.http.get('assets/demos/grid/grid-demo2/grid-demo2.component.scss', { responseType: 'text' })
         }
       }
     ];
