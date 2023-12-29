@@ -31,7 +31,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/ngx-ui-jbisbal/ngx-ui-components.min.scss"
+              "node_modules/ngx-ui-jbisbal/ngx-ui-components.min.scss",              
+              "projects/ngx-ui-components/ngx-ui-components.min.scss"
             ],
             "scripts": []
           },

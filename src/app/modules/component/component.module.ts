@@ -51,6 +51,7 @@ import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
 import { TagDemo1Component } from './demos/tag/tag-demo1/tag-demo1.component';
 import { GridDocsComponent } from './docs/grid-docs/grid-docs.component';
 import { GridDemo1Component } from './demos/grid/grid-demo1/grid-demo1.component';
+import { GridModule } from 'projects/ngx-ui-components/grid/grid.module';
 
 export function getHighlightLanguages() {
   return {
@@ -107,6 +108,7 @@ const components = [
     CarouselModule,
     DividerModule,
     ExpansionPanelModule,
+    GridModule,
     SwitchModule,
     TabModule,
     TagModule,

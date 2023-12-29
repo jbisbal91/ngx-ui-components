@@ -21,7 +21,7 @@ ul {
     cursor: pointer;
     align-items: center;
     &.active {
-      border-bottom: 2px solid #e8eaed;
+      border-bottom: var(--ngx-theme-bbottom-tab);
       font-weight: 700;
       opacity: 1;
     }
