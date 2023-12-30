@@ -1,5 +1,5 @@
 .col {
-  height: 2.5rem;
+  height: 3rem;
   color: #fff;
   background: #0092ff;
   width: 100%;
@@ -10,4 +10,12 @@
 
 h1 {
   margin-bottom: 1rem;
+}
+
+div[ngx-row] > .col:nth-child(odd) {
+  background-color: #40adff;
+}
+
+div[ngx-row] > .col:nth-child(even) {
+  background-color: #7fc8ff;
 }

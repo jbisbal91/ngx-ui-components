@@ -20,7 +20,7 @@ import { RowDirective } from '../row/row.directive';
   standalone: true,
 })
 export class ColDirective implements OnInit, OnDestroy {
-  @Input({ transform: numberAttribute, required: true }) ngxSpan: number = 24;
+  @Input({ transform: numberAttribute }) ngxSpan: number = 24;
   private subscription: Subscription = new Subscription();
   constructor(
     public elementRef: ElementRef,

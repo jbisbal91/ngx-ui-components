@@ -1,0 +1,17 @@
+.col {
+  height: 6rem;
+  color: #fff;
+  background: #0092ff;
+  width: 100%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+div[ngx-row] > .col:nth-child(odd) {
+  background-color: #40adff;
+}
+
+div[ngx-row] > .col:nth-child(even) {
+  background-color: #7fc8ff;
+}

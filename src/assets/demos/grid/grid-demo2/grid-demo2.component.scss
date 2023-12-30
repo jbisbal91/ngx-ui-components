@@ -1,8 +1,7 @@
-div {
+.col {
   border: 1px solid;
-  background-color: #0092ff;
   color: #fff;
-  height: 2.5rem;
+  height: 3.5rem;
   align-items: center;
   display: flex !important;
   justify-content: center;
@@ -10,4 +9,12 @@ div {
 
 h1 {
   margin-bottom: 1rem;
+}
+
+div[ngx-row] > .col:nth-child(odd) {
+  background-color: #40adff;
+}
+
+div[ngx-row] > .col:nth-child(even) {
+  background-color: #7fc8ff;
 }
