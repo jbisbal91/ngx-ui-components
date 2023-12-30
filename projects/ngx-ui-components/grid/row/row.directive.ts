@@ -35,7 +35,7 @@ export type NgxAlign = 'top' | 'middle' | 'bottom';
 export class RowDirective implements AfterContentInit {
   @Input({ transform: numberAttribute }) ngxSpan: number = 24;
   @Input() ngxGutter!: string;
-  @Input() ngxAlign!: NgxJustify;
+  @Input() ngxAlign!: NgxAlign;
   @Input() ngxJustify!: NgxJustify;
 
   readonly currentSpan$ = new ReplaySubject<number>(24);
