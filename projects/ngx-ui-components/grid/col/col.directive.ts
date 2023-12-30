@@ -17,7 +17,6 @@ import { RowDirective } from '../row/row.directive';
   host: {
     class: 'ngx-col',
   },
-  standalone: true,
 })
 export class ColDirective implements OnInit, OnDestroy {
   @Input({ transform: numberAttribute }) ngxSpan: number = 24;
