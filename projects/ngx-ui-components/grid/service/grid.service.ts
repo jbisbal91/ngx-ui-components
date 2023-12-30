@@ -5,11 +5,12 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class GridService {
-  ngxSpan = 0;
+  private ngxGutter = new BehaviorSubject<number>(0);
+  public ngxGutter$ = this.ngxGutter.asObservable();
 
   constructor() {}
 
-  setNgxSpan(ngxSpan: number) {
-    this.ngxSpan = ngxSpan;
+  setNgxGutter(ngxGutter: number) {
+    this.ngxGutter.next(ngxGutter);
   }
 }

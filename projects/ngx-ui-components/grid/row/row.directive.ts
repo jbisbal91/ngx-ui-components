@@ -5,6 +5,7 @@ import {
   ElementRef,
   Input,
   OnChanges,
+  OnInit,
   Renderer2,
   SimpleChanges,
   numberAttribute,
@@ -16,17 +17,18 @@ import { GridService } from '../service/grid.service';
   host: {
     class: 'ngx-row',
   },
-  providers: [GridService]
+  providers: [GridService],
 })
-export class RowDirective {
-  @Input() ngxGutter: string | number | null = null;
+export class RowDirective implements OnInit {
+  @Input({ transform: numberAttribute }) ngxSpan!: number;
+  @Input({ transform: numberAttribute }) ngxGutter!: number;
 
   constructor(
     public elementRef: ElementRef,
-    private gridService: GridService,
-  ) {
+    private gridService: GridService
+  ) {}
+
+  ngOnInit(): void {
+    this.gridService.setNgxGutter(this.ngxGutter);
   }
-
- 
-
 }

@@ -1,9 +1,7 @@
 import {
-  AfterContentInit,
   Directive,
   ElementRef,
   Input,
-  OnDestroy,
   OnInit,
   Renderer2,
   numberAttribute,
@@ -28,7 +26,15 @@ export class ColDirective implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.setMaxWidthCols(24);
+    const totalCols =
+      this.elementRef.nativeElement.parentElement.attributes['ngxspan']
+        ?.nodeValue;
+    this.setMaxWidthCols(totalCols ? totalCols : 24);
+
+    const gutter =
+      this.elementRef.nativeElement.parentElement.attributes['ngxgutter']
+        ?.nodeValue;
+    this.setGutter(gutter ? gutter : 0);
   }
 
   setMaxWidthCols(totalCols: number) {
@@ -43,6 +49,19 @@ export class ColDirective implements OnInit {
       this.elementRef.nativeElement,
       'flex',
       `0 0 ${maxWidth}%`
+    );
+  }
+
+  setGutter(gutter: number) {
+    this.renderer2.setStyle(
+      this.elementRef.nativeElement,
+      'padding-left',
+      `${gutter / 32}rem`
+    );
+    this.renderer2.setStyle(
+      this.elementRef.nativeElement,
+      'padding-right',
+      `${gutter / 32}rem`
     );
   }
 }
