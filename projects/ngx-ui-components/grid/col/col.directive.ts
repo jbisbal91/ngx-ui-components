@@ -17,6 +17,7 @@ import { RowDirective } from '../row/row.directive';
   host: {
     class: 'ngx-col',
   },
+  standalone: true,
 })
 export class ColDirective implements OnInit, OnDestroy {
   @Input({ transform: numberAttribute, required: true }) ngxSpan: number = 24;
@@ -35,8 +36,11 @@ export class ColDirective implements OnInit, OnDestroy {
     );
     this.subscription.add(
       this.rowDirective.currentGutter$.subscribe((currentGutter) => {
-        if (typeof currentGutter === 'string') {
-          this.setGutter(parseFloat(currentGutter));
+        if (currentGutter) {
+          const gutter = JSON.parse(currentGutter)
+            .map((val: any) => val + 'px')
+            .join(' ');
+          this.setGutter(gutter);
         }
       })
     );
@@ -61,16 +65,11 @@ export class ColDirective implements OnInit, OnDestroy {
     );
   }
 
-  setGutter(gutter: number) {
+  setGutter(gutter: string) {
     this.renderer2.setStyle(
       this.elementRef.nativeElement,
-      'padding-left',
-      `${gutter / 32}rem`
-    );
-    this.renderer2.setStyle(
-      this.elementRef.nativeElement,
-      'padding-right',
-      `${gutter / 32}rem`
+      'margin',
+      `${gutter}`
     );
   }
 }

@@ -1,13 +1,10 @@
 .col {
   height: 2.5rem;
-}
-
-.inner-box {
   color: #fff;
   background: #0092ff;
-  padding: 8px 0;
   width: 100%;
   display: flex !important;
+  align-items: center;
   justify-content: center;
 }
 

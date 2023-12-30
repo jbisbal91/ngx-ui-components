@@ -12,16 +12,15 @@ import { ReplaySubject } from 'rxjs';
   host: {
     class: 'ngx-row',
   },
+  standalone: true,
 })
 export class RowDirective implements AfterContentInit {
   @Input({ transform: numberAttribute }) ngxSpan: number = 24;
-  @Input() ngxGutter: string | number | [number, number] | null = null;
+  @Input() ngxGutter!: string;
 
   readonly currentSpan$ = new ReplaySubject<number>(24);
 
-  readonly currentGutter$ = new ReplaySubject<
-    string | number | [number, number] | null
-  >(1);
+  readonly currentGutter$ = new ReplaySubject<string>(1);
 
   constructor(private cdr: ChangeDetectorRef) {}
 
