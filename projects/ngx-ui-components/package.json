@@ -1,6 +1,6 @@
 {
   "name": "ngx-ui-jbisbal",
-  "version": "0.0.7",  
+  "version": "0.0.8",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
@@ -17,8 +17,10 @@
   },
   "keywords": [
     "angular",
+    "design concept",
     "framework",
     "frontend",
+    "grid",
     "lib",
     "ngx",
     "ui"
