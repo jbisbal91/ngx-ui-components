@@ -2,33 +2,32 @@ import {
   AfterContentInit,
   ChangeDetectorRef,
   Directive,
-  ElementRef,
   Input,
-  OnChanges,
-  OnInit,
-  Renderer2,
-  SimpleChanges,
   numberAttribute,
 } from '@angular/core';
-import { GridService } from '../service/grid.service';
+import { ReplaySubject } from 'rxjs';
 
 @Directive({
   selector: '[ngx-row]',
   host: {
     class: 'ngx-row',
   },
-  providers: [GridService],
 })
-export class RowDirective implements OnInit {
-  @Input({ transform: numberAttribute }) ngxSpan!: number;
-  @Input({ transform: numberAttribute }) ngxGutter!: number;
+export class RowDirective implements AfterContentInit {
+  @Input({ transform: numberAttribute }) ngxSpan: number = 24;
+  @Input() ngxGutter: string | number | [number, number] | null = null;
 
-  constructor(
-    public elementRef: ElementRef,
-    private gridService: GridService
-  ) {}
+  readonly currentSpan$ = new ReplaySubject<number>(24);
 
-  ngOnInit(): void {
-    this.gridService.setNgxGutter(this.ngxGutter);
+  readonly currentGutter$ = new ReplaySubject<
+    string | number | [number, number] | null
+  >(1);
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngAfterContentInit(): void {
+    this.currentSpan$.next(this.ngxSpan);
+    this.currentGutter$.next(this.ngxGutter);
+    this.cdr.markForCheck();
   }
 }

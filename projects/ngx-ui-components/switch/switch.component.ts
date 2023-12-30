@@ -40,13 +40,11 @@ export class SwitchComponent implements ControlValueAccessor, AfterContentInit {
   }
 
   registerOnChange(fn: any): void {
-    console.log(fn);
     //this.onChange = fn;
   }
 
   registerOnTouched(fn: any): void {
     //this.onTouched = fn;
-    console.log(fn);
   }
   setDisabledState(disabled: boolean): void {
     //this.cdr.markForCheck();

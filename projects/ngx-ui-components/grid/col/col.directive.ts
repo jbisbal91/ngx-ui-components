@@ -1,40 +1,49 @@
 import {
   Directive,
   ElementRef,
+  Host,
   Input,
+  OnDestroy,
   OnInit,
+  Optional,
   Renderer2,
   numberAttribute,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { GridService } from '../service/grid.service';
+import { RowDirective } from '../row/row.directive';
 
 @Directive({
   selector: '[ngx-col]',
   host: {
     class: 'ngx-col',
   },
-  providers: [GridService],
 })
-export class ColDirective implements OnInit {
+export class ColDirective implements OnInit, OnDestroy {
   @Input({ transform: numberAttribute, required: true }) ngxSpan: number = 24;
-
+  private subscription: Subscription = new Subscription();
   constructor(
     public elementRef: ElementRef,
     private renderer2: Renderer2,
-    private gridService: GridService
+    @Optional() @Host() public rowDirective: RowDirective
   ) {}
 
   ngOnInit(): void {
-    const totalCols =
-      this.elementRef.nativeElement.parentElement.attributes['ngxspan']
-        ?.nodeValue;
-    this.setMaxWidthCols(totalCols ? totalCols : 24);
+    this.subscription.add(
+      this.rowDirective.currentSpan$.subscribe((currentSpan) => {
+        this.setMaxWidthCols(currentSpan);
+      })
+    );
+    this.subscription.add(
+      this.rowDirective.currentGutter$.subscribe((currentGutter) => {
+        if (typeof currentGutter === 'string') {
+          this.setGutter(parseFloat(currentGutter));
+        }
+      })
+    );
+  }
 
-    const gutter =
-      this.elementRef.nativeElement.parentElement.attributes['ngxgutter']
-        ?.nodeValue;
-    this.setGutter(gutter ? gutter : 0);
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   setMaxWidthCols(totalCols: number) {
