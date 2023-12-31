@@ -1,29 +1,54 @@
 import {
+  AfterContentInit,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
+  ElementRef,
+  Input,
   OnDestroy,
   QueryList,
+  Renderer2,
 } from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
-import { Subscription } from 'rxjs';
+import { ReplaySubject, Subscription } from 'rxjs';
 import { Tab } from '../tab/tab.interface';
+
+export type NgxJustify =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'space-around'
+  | 'space-between'
+  | 'space-evenly';
+
+export type NgxMode = 'default' | 'closeable';
 
 @Component({
   selector: 'ngx-tab-group',
   templateUrl: './tab-group.component.html',
   styleUrls: ['./tab-group.component.scss'],
 })
-export class TabGroupComponent implements OnDestroy {
+export class TabGroupComponent implements AfterContentInit, OnDestroy {
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;
   animationToLeft: boolean = false;
   animationToRigth: boolean = false;
+  @Input() ngxMode: NgxMode = 'default';
 
+  readonly currentNgxMode$ = new ReplaySubject<NgxMode>();
   private subscription: Subscription = new Subscription();
 
+  constructor(
+    private renderer: Renderer2,
+    private elementRef: ElementRef,
+    private cdr: ChangeDetectorRef
+  ) {}
+
   ngAfterContentInit(): void {
+    this.currentNgxMode$.next(this.ngxMode);
     setTimeout(() => {
       this.selectTab(this.tabs.first);
     });
+    this.cdr.markForCheck();
   }
 
   ngOnDestroy(): void {
@@ -59,5 +84,18 @@ export class TabGroupComponent implements OnDestroy {
     setTimeout(() => {
       this.animationToRigth = false;
     }, 300);
+  }
+
+  closeTab(tab: any): void {
+    const tabs = this.tabs.toArray();
+    let index = tabs.findIndex((tb) => tb.id === tab.id);
+    tabs.splice(index, 1);
+    this.tabs = new QueryList<TabComponent>();
+    this.tabs.reset(tabs);
+    const tabContent = document.getElementById(tab.id);
+    this.renderer.removeChild(tabContent?.parentNode, tabContent);
+    if (tab.isActive) {
+      this.selectTab(this.tabs.first);
+    }
   }
 }

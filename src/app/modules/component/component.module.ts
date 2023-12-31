@@ -18,7 +18,7 @@ import { CarouselModule } from 'ngx-ui-jbisbal/carousel';
 import { DividerModule } from 'ngx-ui-jbisbal/divider';
 import { ExpansionPanelModule } from 'ngx-ui-jbisbal/expansion-panel';
 import { SwitchModule } from 'ngx-ui-jbisbal/switch';
-import { TabModule } from 'ngx-ui-jbisbal/tab';
+//import { TabModule } from 'ngx-ui-jbisbal/tab';
 import { TagModule } from 'ngx-ui-jbisbal/tag';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
@@ -55,6 +55,7 @@ import { GridDemo2Component } from './demos/grid/grid-demo2/grid-demo2.component
 import { GridDemo3Component } from './demos/grid/grid-demo3/grid-demo3.component';
 import { GridModule } from 'projects/ngx-ui-components/grid/grid.module';
 import { GridDemo4Component } from './demos/grid/grid-demo4/grid-demo4.component';
+import { TabModule } from 'projects/ngx-ui-components/tab';
 
 export function getHighlightLanguages() {
   return {

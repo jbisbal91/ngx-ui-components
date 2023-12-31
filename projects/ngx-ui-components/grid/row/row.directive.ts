@@ -29,7 +29,7 @@ export type NgxAlign = 'top' | 'middle' | 'bottom';
     '[class.ngx-row-space-around]': `ngxJustify === 'space-around'`,
     '[class.ngx-row-space-between]': `ngxJustify === 'space-between'`,
     '[class.ngx-row-space-evenly]': `ngxJustify === 'space-evenly'`,
-  }
+  },
 })
 export class RowDirective implements AfterContentInit {
   @Input({ transform: numberAttribute }) ngxSpan: number = 24;

@@ -7,6 +7,8 @@ import {
   Renderer2,
 } from '@angular/core';
 
+export type ngxMode = 'default' | 'closeable' | 'checkable' | 'sync';
+
 @Component({
   selector: 'ngx-tag',
   templateUrl: './tag.component.html',
@@ -17,22 +19,18 @@ import {
     '[class.ngx-tag-checkable]': `ngxMode === 'checkable'`,
     '[class.ngx-tag-sync]': `ngxMode === 'sync'`,
     '[class.ngx-tag-checkable-checked]': `ngxChecked`,
-    '(click)': 'updateCheckedStatus()'
+    '(click)': 'updateCheckedStatus()',
   },
 })
 export class TagComponent {
-  @Input() ngxMode: 'default' | 'closeable' | 'checkable' | 'sync' = 'default';
+  @Input() ngxMode: ngxMode = 'default';
   @Input() ngxColor?: string;
-
-  @Input() ngxChecked = false;
+  @Input() ngxChecked: boolean = false;
 
   @Output() readonly ngxOnClose = new EventEmitter<MouseEvent>();
   @Output() readonly ngxCheckedChange = new EventEmitter<boolean>();
 
-  constructor(
-    private renderer: Renderer2,
-    private elementRef: ElementRef
-  ) {}
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
 
   updateCheckedStatus(): void {
     if (this.ngxMode === 'checkable') {
