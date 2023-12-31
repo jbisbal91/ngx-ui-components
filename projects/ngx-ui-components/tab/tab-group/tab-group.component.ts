@@ -13,14 +13,7 @@ import { TabComponent } from '../tab/tab.component';
 import { ReplaySubject, Subscription } from 'rxjs';
 import { Tab } from '../tab/tab.interface';
 
-export type NgxJustify =
-  | 'start'
-  | 'end'
-  | 'center'
-  | 'space-around'
-  | 'space-between'
-  | 'space-evenly';
-
+export type NgxAlignTabs = 'start' | 'end' | 'center';
 export type NgxMode = 'default' | 'closeable';
 
 @Component({
@@ -33,6 +26,7 @@ export class TabGroupComponent implements AfterContentInit, OnDestroy {
   animationToLeft: boolean = false;
   animationToRigth: boolean = false;
   @Input() ngxMode: NgxMode = 'default';
+  @Input() ngxAlignTabs: NgxAlignTabs = 'start';
 
   readonly currentNgxMode$ = new ReplaySubject<NgxMode>();
   private subscription: Subscription = new Subscription();

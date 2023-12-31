@@ -1,4 +1,9 @@
-<ul *ngIf="tabs.length > 0">
+<ul
+  [class.ngx-tab-group-start]="ngxAlignTabs === 'start'"
+  [class.ngx-tab-group-end]="ngxAlignTabs === 'end'"
+  [class.ngx-tab-group-center]="ngxAlignTabs === 'center'"
+  *ngIf="tabs.length > 0"
+>
   <li
     *ngFor="let tab of tabs"
     [ngClass]="{

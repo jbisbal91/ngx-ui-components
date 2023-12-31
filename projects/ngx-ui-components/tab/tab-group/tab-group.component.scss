@@ -2,12 +2,22 @@ ul {
   padding: 0px !important;
   z-index: 40;
   display: flex;
-  justify-content: flex-start;
   list-style-type: none;
   margin: 0px;
   position: relative;
   gap: 2rem;
   border-bottom: 1px solid #f0f0f0;
+  &.ngx-tab-group-start {
+    justify-content: flex-start !important;
+  }
+
+  &.ngx-tab-group-end {
+    justify-content: flex-end !important;
+  }
+
+  &.ngx-tab-group-center {
+    justify-content: center !important;
+  }
   li {
     display: flex;
     justify-content: center;
