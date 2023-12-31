@@ -1,3 +1,5 @@
 :root[theme="dark"] {
-    --ngx-theme-bbottom-tab: 2px solid rgb(63, 81, 181);
+  --ngx-theme-color-tab-hover: rgb(255, 255, 255);
+  --ngx-theme-color-tab-active: rgb(255, 255, 255);
+  --ngx-theme-bbottom-tab: 2px solid rgb(255, 255, 255);
 }

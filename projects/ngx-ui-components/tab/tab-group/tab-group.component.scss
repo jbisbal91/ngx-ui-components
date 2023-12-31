@@ -21,6 +21,7 @@ ul {
     cursor: pointer;
     align-items: center;
     &.active {
+      color: var(--ngx-theme-color-tab-active);
       border-bottom: var(--ngx-theme-bbottom-tab);
       font-weight: 700;
       opacity: 1;
@@ -28,6 +29,9 @@ ul {
     &.disabled {
       opacity: 0.5;
       cursor: no-drop;
+    }
+    &:hover {
+      color: var(--ngx-theme-color-tab-hover);
     }
   }
 }

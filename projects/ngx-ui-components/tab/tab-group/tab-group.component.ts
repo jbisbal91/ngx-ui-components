@@ -1,4 +1,9 @@
-import { Component, ContentChildren, OnDestroy, QueryList } from '@angular/core';
+import {
+  Component,
+  ContentChildren,
+  OnDestroy,
+  QueryList,
+} from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
 import { Subscription } from 'rxjs';
 import { Tab } from '../tab/tab.interface';
@@ -8,7 +13,7 @@ import { Tab } from '../tab/tab.interface';
   templateUrl: './tab-group.component.html',
   styleUrls: ['./tab-group.component.scss'],
 })
-export class TabGroupComponent implements OnDestroy{
+export class TabGroupComponent implements OnDestroy {
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;
   animationToLeft: boolean = false;
   animationToRigth: boolean = false;
