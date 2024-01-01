@@ -3,9 +3,9 @@ import {
   ChangeDetectorRef,
   Component,
   ContentChildren,
-  ElementRef,
   Input,
   OnDestroy,
+  OnInit,
   QueryList,
   Renderer2,
 } from '@angular/core';
@@ -27,7 +27,7 @@ export type NgxMode = 'default' | 'closeable';
     '[class.ngx-tab-position-right]': `ngxTabPosition === 'right'`,
   },
 })
-export class TabGroupComponent implements AfterContentInit, OnDestroy {
+export class TabGroupComponent implements OnInit, AfterContentInit, OnDestroy {
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;
   animationToLeft: boolean = false;
   animationToRigth: boolean = false;
@@ -36,20 +36,20 @@ export class TabGroupComponent implements AfterContentInit, OnDestroy {
   @Input() ngxMode: NgxMode = 'default';
   @Input() ngxAlignTabs: NgxAlignTabs = 'start';
 
-  readonly currentNgxMode$ = new ReplaySubject<NgxMode>();
+  readonly currentNgxMode$ = new ReplaySubject<NgxMode>(0);
   private subscription: Subscription = new Subscription();
 
-  constructor(
-    private renderer: Renderer2,
-    private elementRef: ElementRef,
-    private cdr: ChangeDetectorRef
-  ) {}
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
-  ngAfterContentInit(): void {
-    this.currentNgxMode$.next(this.ngxMode);
+  ngOnInit(): void {
     setTimeout(() => {
       this.selectTab(this.tabs.first);
     });
+  }
+
+  ngAfterContentInit(): void {
+    this.currentNgxMode$.next(this.ngxMode);
+    this.cdr.markForCheck();
     this.cdr.markForCheck();
   }
 

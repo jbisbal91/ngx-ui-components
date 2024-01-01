@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   Component,
   Host,
   Input,
@@ -8,7 +9,7 @@ import {
 } from '@angular/core';
 import { Tab } from './tab.interface';
 
-import { TabGroupComponent } from '../tab-group/tab-group.component';
+import { NgxMode, TabGroupComponent } from '../tab-group/tab-group.component';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -21,7 +22,7 @@ export class TabComponent implements Tab, OnInit, OnDestroy {
   public isActive: boolean = false;
   @Input() disabled: boolean = false;
   public id: string = '';
-  ngxMode: any;
+  ngxMode: NgxMode = 'default';
 
   private subscription: Subscription = new Subscription();
 
@@ -32,8 +33,7 @@ export class TabComponent implements Tab, OnInit, OnDestroy {
   ngOnInit(): void {
     this.id = this.guid();
     this.subscription.add(
-      this.tabGroupComponent.currentNgxMode$.subscribe((currentNgxMode) => {
-        console.log(currentNgxMode);
+      this.tabGroupComponent?.currentNgxMode$.subscribe((currentNgxMode) => {
         this.ngxMode = currentNgxMode;
       })
     );

@@ -29,12 +29,12 @@ export class ColDirective implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.add(
-      this.rowDirective.currentSpan$.subscribe((currentSpan) => {
+      this.rowDirective?.currentSpan$.subscribe((currentSpan) => {
         this.setMaxWidthCols(currentSpan);
       })
     );
     this.subscription.add(
-      this.rowDirective.currentGutter$.subscribe((currentGutter) => {
+      this.rowDirective?.currentGutter$.subscribe((currentGutter) => {
         if (currentGutter) {
           const gutter = JSON.parse(currentGutter)
             .map((val: any) => val + 'px')
