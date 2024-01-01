@@ -46,7 +46,7 @@ import { AccordionDemo1Component } from './demos/accordion/accordion-demo1/accor
 import { SwitchDocsComponent } from './docs/switch-docs/switch-docs.component';
 import { SwitchDemo1Component } from './demos/switch/switch-demo1/switch-demo1.component';
 import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
-import { TabDemo1Component } from './demos/tabs-demos/tab-demo1/tab-demo1.component';
+import { TabDemo1Component } from './demos/tabs/tab-demo1/tab-demo1.component';
 import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
 import { TagDemo1Component } from './demos/tag/tag-demo1/tag-demo1.component';
 import { GridDocsComponent } from './docs/grid-docs/grid-docs.component';
@@ -56,6 +56,8 @@ import { GridDemo3Component } from './demos/grid/grid-demo3/grid-demo3.component
 import { GridModule } from 'projects/ngx-ui-components/grid/grid.module';
 import { GridDemo4Component } from './demos/grid/grid-demo4/grid-demo4.component';
 import { TabModule } from 'projects/ngx-ui-components/tab';
+import { TabDemo2Component } from './demos/tabs/tab-demo2/tab-demo2.component';
+import { TabDemo3Component } from './demos/tabs/tab-demo3/tab-demo3.component';
 
 export function getHighlightLanguages() {
   return {
@@ -98,6 +100,8 @@ const components = [
   TabDemo1Component,
   TagDocsComponent,
   TagDemo1Component,
+  TabDemo2Component,
+  TabDemo3Component,
 ];
 
 @NgModule({

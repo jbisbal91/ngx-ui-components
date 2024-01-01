@@ -71,6 +71,9 @@ ul {
       &.ngx-tab-position-left {
         border-right: var(--ngx-theme-bbottom-tab);
       }
+      &.ngx-tab-position-right {
+        border-left: var(--ngx-theme-bbottom-tab);
+      }
       color: var(--ngx-theme-color-tab-active);
       opacity: 1;
     }
