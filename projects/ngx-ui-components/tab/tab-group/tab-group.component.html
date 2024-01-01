@@ -2,9 +2,15 @@
   [class.ngx-tab-group-start]="ngxAlignTabs === 'start'"
   [class.ngx-tab-group-end]="ngxAlignTabs === 'end'"
   [class.ngx-tab-group-center]="ngxAlignTabs === 'center'"
+  [class.ngx-tab-position-top]="ngxTabPosition === 'top'"
+  [class.ngx-tab-position-left]="ngxTabPosition === 'left'"
+  [class.ngx-tab-position-right]="ngxTabPosition === 'right'"
   *ngIf="tabs.length > 0"
 >
   <li
+    [class.ngx-tab-position-top]="ngxTabPosition === 'top'"
+    [class.ngx-tab-position-left]="ngxTabPosition === 'left'"
+    [class.ngx-tab-position-right]="ngxTabPosition === 'right'"
     *ngFor="let tab of tabs"
     [ngClass]="{
       active: tab.isActive,
@@ -12,9 +18,17 @@
     }"
     (click)="selectTab(tab)"
   >
-    {{ tab.label }}
+    <span
+      [class.ml-4]="ngxTabPosition === 'left'"
+      [class.mr-2]="ngxTabPosition === 'left'"
+      [class.ml-2]="ngxTabPosition === 'right'"
+      >{{ tab.label }}</span
+    >
+
     <svg
       class="ngx-tab-close"
+      [class.ngx-tab-position-left]="ngxTabPosition === 'left'"
+      [class.ngx-tab-position-right]="ngxTabPosition === 'right'"
       *ngIf="ngxMode === 'closeable'"
       (click)="closeTab(tab)"
       xmlns="http://www.w3.org/2000/svg"
@@ -31,6 +45,9 @@
 
 <div
   class="mt-2"
+  [class.ml-4]="ngxTabPosition === 'left'"
+  [class.mr-4]="ngxTabPosition === 'right'"
+
   [class.animation-center-left]="animationToLeft"
   [class.animation-left-center]="animationToRigth"
 >

@@ -13,6 +13,7 @@ import { TabComponent } from '../tab/tab.component';
 import { ReplaySubject, Subscription } from 'rxjs';
 import { Tab } from '../tab/tab.interface';
 
+export type NgxTabPosition = 'top' | 'left' | 'right';
 export type NgxAlignTabs = 'start' | 'end' | 'center';
 export type NgxMode = 'default' | 'closeable';
 
@@ -20,11 +21,18 @@ export type NgxMode = 'default' | 'closeable';
   selector: 'ngx-tab-group',
   templateUrl: './tab-group.component.html',
   styleUrls: ['./tab-group.component.scss'],
+  host: {
+    '[class.ngx-tab-position-top]': `ngxTabPosition === 'top'`,
+    '[class.ngx-tab-position-left]': `ngxTabPosition === 'left'`,
+    '[class.ngx-tab-position-right]': `ngxTabPosition === 'right'`,
+  },
 })
 export class TabGroupComponent implements AfterContentInit, OnDestroy {
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;
   animationToLeft: boolean = false;
   animationToRigth: boolean = false;
+
+  @Input() ngxTabPosition: NgxTabPosition = 'top';
   @Input() ngxMode: NgxMode = 'default';
   @Input() ngxAlignTabs: NgxAlignTabs = 'start';
 

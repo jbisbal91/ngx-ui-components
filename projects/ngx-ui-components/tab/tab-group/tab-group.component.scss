@@ -1,12 +1,21 @@
+:host {
+  &.ngx-tab-position-left {
+    display: flex;
+  }
+  &.ngx-tab-position-right {
+    display: flex;
+    direction: rtl;
+  }
+}
+
 ul {
   padding: 0px !important;
-  z-index: 40;
+  z-index: 50;
   display: flex;
   list-style-type: none;
   margin: 0px;
   position: relative;
   gap: 2rem;
-  border-bottom: 1px solid #f0f0f0;
   &.ngx-tab-group-start {
     justify-content: flex-start !important;
   }
@@ -18,19 +27,51 @@ ul {
   &.ngx-tab-group-center {
     justify-content: center !important;
   }
+
+  &.ngx-tab-position-right,
+  &.ngx-tab-position-left {
+    display: block;
+  }
+
+  &.ngx-tab-position-top {
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  &.ngx-tab-position-left {
+    border-right: 1px solid #f0f0f0;
+  }
+
+  &.ngx-tab-position-right {
+    border-left: 1px solid #f0f0f0;
+  }
+
   li {
     display: flex;
     justify-content: center;
     max-width: max-content;
-    border-bottom: 2px solid transparent;
+    min-width: max-content;
     font-weight: 400;
     height: 2.5rem;
     cursor: pointer;
     align-items: center;
     gap: 0.5rem;
+
+    &.ngx-tab-position-top {
+      border-bottom: 2px solid transparent;
+    }
+
+    &.ngx-tab-position-left {
+      border-right: 2px solid transparent;
+    }
+
     &.active {
+      &.ngx-tab-position-top {
+        border-bottom: var(--ngx-theme-bbottom-tab);
+      }
+      &.ngx-tab-position-left {
+        border-right: var(--ngx-theme-bbottom-tab);
+      }
       color: var(--ngx-theme-color-tab-active);
-      border-bottom: var(--ngx-theme-bbottom-tab);
       opacity: 1;
     }
     &.disabled {
@@ -100,6 +141,32 @@ ul {
   /* 8px */
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+  /* 8px */
+}
+
+.ml-4 {
+  margin-left: 1rem;
+  /* 16px */
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+  /* 8px */
+}
+
+.mr-4 {
+  margin-right: 1rem;
+  /* 16px */
+}
+
 .ngx-tab-close {
   filter: var(--ngx-theme-filter-close-tab);
+  &.ngx-tab-position-left {
+    margin-right: 0.5rem;
+  }
+  &.ngx-tab-position-right {
+    margin-left: 0.5rem;
+  }
 }
