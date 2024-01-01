@@ -22,12 +22,13 @@ export class TabComponent implements Tab, OnInit, OnDestroy {
   public isActive: boolean = false;
   @Input() disabled: boolean = false;
   public id: string = '';
-  ngxMode: any = 'default';
+  ngxMode = 'default';
 
   private subscription: Subscription = new Subscription();
 
-  @Optional() @Host() public tabGroupComponent!: TabGroupComponent;
-  constructor() {}
+  constructor(
+    @Optional() @Host() public tabGroupComponent: TabGroupComponent
+  ) {}
 
   ngOnInit(): void {
     this.id = this.guid();
