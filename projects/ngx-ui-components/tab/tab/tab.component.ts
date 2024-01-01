@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { Tab } from './tab.interface';
 
-import { NgxMode, TabGroupComponent } from '../tab-group/tab-group.component';
+import { TabGroupComponent } from '../tab-group/tab-group.component';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -22,13 +22,12 @@ export class TabComponent implements Tab, OnInit, OnDestroy {
   public isActive: boolean = false;
   @Input() disabled: boolean = false;
   public id: string = '';
-  ngxMode: NgxMode = 'default';
+  ngxMode: any = 'default';
 
   private subscription: Subscription = new Subscription();
 
-  constructor(
-    @Optional() @Host() public tabGroupComponent: TabGroupComponent
-  ) {}
+  @Optional() @Host() public tabGroupComponent!: TabGroupComponent;
+  constructor() {}
 
   ngOnInit(): void {
     this.id = this.guid();

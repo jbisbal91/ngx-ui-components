@@ -50,7 +50,6 @@ export class TabGroupComponent implements OnInit, AfterContentInit, OnDestroy {
   ngAfterContentInit(): void {
     this.currentNgxMode$.next(this.ngxMode);
     this.cdr.markForCheck();
-    this.cdr.markForCheck();
   }
 
   ngOnDestroy(): void {
