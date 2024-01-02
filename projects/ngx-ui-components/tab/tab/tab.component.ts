@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'ngx-tab',
   templateUrl: './tab.component.html',
-  styleUrls: ['./tab.component.scss'],
+  styleUrls: ['./tab.component.scss']
 })
 export class TabComponent implements Tab, OnInit, OnDestroy {
   @Input() label: string = '';

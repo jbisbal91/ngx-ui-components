@@ -12,10 +12,8 @@
     [class.ngx-tab-position-left]="ngxTabPosition === 'left'"
     [class.ngx-tab-position-right]="ngxTabPosition === 'right'"
     *ngFor="let tab of tabs"
-    [ngClass]="{
-      active: tab.isActive,
-      disabled: tab.disabled
-    }"
+    [class.active]="tab.isActive"
+    [class.disabled]="tab.disabled"
     (click)="selectTab(tab)"
   >
     <span
