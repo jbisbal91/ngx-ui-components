@@ -1,5 +1,7 @@
 import { Directive, Input } from '@angular/core';
 
+export type NgxType = 'primary' | 'default' | 'dashed' | 'text' | 'link';
+
 @Directive({
   selector: '[ngx-button]',
   host: {
@@ -10,9 +12,9 @@ import { Directive, Input } from '@angular/core';
     '[class.ngx-button-text]': 'ngxType === "text"',
     '[class.ngx-button-link]': 'ngxType === "link"',
   },
+  standalone:true
 })
 export class ButtonDirective {
-  @Input() ngxType: 'primary' | 'default' | 'dashed' | 'text' | 'link' =
-    'default';
+  @Input() ngxType: NgxType = 'primary';
   disabled: boolean = false;
 }

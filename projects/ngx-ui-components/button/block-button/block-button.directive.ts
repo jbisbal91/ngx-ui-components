@@ -6,5 +6,6 @@ import { ButtonDirective } from '../button/button.directive';
   host: {
     class: 'ngx-block',
   },
+  standalone: true,
 })
 export class BlockButtonDirective extends ButtonDirective {}

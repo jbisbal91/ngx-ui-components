@@ -1,6 +1,6 @@
 {
   "name": "ngx-ui-jbisbal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {

@@ -6,5 +6,6 @@ import { ButtonDirective } from '../button/button.directive';
   host: {
     class: 'ngx-ghost',
   },
+  standalone: true,
 })
 export class GhostButtonDirective extends ButtonDirective {}

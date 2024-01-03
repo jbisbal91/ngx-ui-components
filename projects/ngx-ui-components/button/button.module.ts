@@ -10,12 +10,11 @@ const directives = [
   BlockButtonDirective,
   ButtonDirective,
   DangerButtonDirective,
-  GhostButtonDirective
+  GhostButtonDirective,
 ];
 
 @NgModule({
-  declarations: [directives],
   exports: [directives],
-  imports: [CommonModule]
+  imports: [directives, CommonModule],
 })
 export class ButtonModule {}

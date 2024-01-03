@@ -18,7 +18,7 @@ export class DialogDocsComponent implements OnInit {
         tabTitle: 'HTML',
         tabContent: {
           code: this.http.get(
-            'assets/demos/dialog-demos/dialog-demo1/dialog-demo1.component.html',
+            'assets/demos/dialog/dialog-demo1/dialog-demo1.component.html',
             { responseType: 'text' }
           ),
         },
@@ -27,7 +27,7 @@ export class DialogDocsComponent implements OnInit {
         tabTitle: 'TS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/dialog-demos/dialog-demo1/dialog-demo1.component.ts',
+            'assets/demos/dialog/dialog-demo1/dialog-demo1.component.ts',
             { responseType: 'text' }
           ),
         },
@@ -36,7 +36,7 @@ export class DialogDocsComponent implements OnInit {
         tabTitle: 'SCSS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/dialog-demos/dialog-demo1/dialog-demo1.component.scss',
+            'assets/demos/dialog/dialog-demo1/dialog-demo1.component.scss',
             { responseType: 'text' }
           ),
         },

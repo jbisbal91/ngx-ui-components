@@ -15,7 +15,8 @@ import { BadgeModule } from 'ngx-ui-jbisbal/badge';
 import { ButtonModule } from 'ngx-ui-jbisbal/button';
 import { CardModule } from 'ngx-ui-jbisbal/card';
 import { CarouselModule } from 'ngx-ui-jbisbal/carousel';
-//import { DialogModule } from 'ngx-ui-jbisbal/dialog';
+import { DialogModule } from 'ngx-ui-jbisbal/dialog';
+//import { DialogModule } from 'projects/ngx-ui-components/dialog';
 import { DividerModule } from 'ngx-ui-jbisbal/divider';
 import { ExpansionPanelModule } from 'ngx-ui-jbisbal/expansion-panel';
 import { SwitchModule } from 'ngx-ui-jbisbal/switch';
@@ -40,7 +41,7 @@ import { CardDemo1Component } from './demos/card/card-demo1/card-demo1.component
 import { CarouselDocsComponent } from './docs/carousel-docs/carousel-docs.component';
 import { CarouselDemo1Component } from './demos/carousel/carousel-demo1/carousel-demo1.component';
 import { DialogDocsComponent } from './docs/dialog-docs/dialog-docs.component';
-import { DialogDemo1Component } from './demos/dialog-demos/dialog-demo1/dialog-demo1.component';
+import { DialogDemo1Component } from './demos/dialog/dialog-demo1/dialog-demo1.component';
 import { DividerDocsComponent } from './docs/divider-docs/divider-docs.component';
 import { DividerDemo1Component } from './demos/divider/divider-demo1/divider-demo1.component';
 import { AccordionDocsComponent } from './docs/accordion-docs/accordion-docs.component';
@@ -59,6 +60,7 @@ import { GridDemo2Component } from './demos/grid/grid-demo2/grid-demo2.component
 import { GridDemo3Component } from './demos/grid/grid-demo3/grid-demo3.component';
 import { GridModule } from 'projects/ngx-ui-components/grid/grid.module';
 import { GridDemo4Component } from './demos/grid/grid-demo4/grid-demo4.component';
+import { DialogRef1Component } from './demos/dialog/dialog-ref1/dialog-ref1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -86,6 +88,7 @@ const components = [
   CarouselDemo1Component,
   DialogDocsComponent,
   DialogDemo1Component,
+  DialogRef1Component,
   DividerDocsComponent,
   DividerDemo1Component,
   AccordionDocsComponent,
@@ -118,7 +121,7 @@ const components = [
     ButtonModule,
     CardModule,
     CarouselModule,
-   //DialogModule,
+    DialogModule,
     DividerModule,
     ExpansionPanelModule,
     GridModule,
