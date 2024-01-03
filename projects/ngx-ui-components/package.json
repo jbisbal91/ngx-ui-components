@@ -1,6 +1,6 @@
 {
   "name": "ngx-ui-jbisbal",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
@@ -17,13 +17,21 @@
   },
   "keywords": [
     "angular",
-    "design concept",
-    "framework",
     "frontend",
+    "ngx",
     "grid",
     "lib",
-    "ngx",
-    "ui"
+    "badge",
+    "button",
+    "carousel",
+    "card",
+    "dialog",
+    "divider",
+    "expansion panel",
+    "grid",
+    "switch",
+    "tabs",
+    "tags"
   ],
   "homepage": "https://jbisbal91.github.io/ngx-ui"
 }
