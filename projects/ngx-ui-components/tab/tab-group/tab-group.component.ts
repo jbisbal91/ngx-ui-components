@@ -9,7 +9,6 @@ import {
   Renderer2,
 } from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
-import { ReplaySubject, Subscription } from 'rxjs';
 import { Tab } from '../tab/tab.interface';
 
 export type NgxTabPosition = 'top' | 'left' | 'right';
