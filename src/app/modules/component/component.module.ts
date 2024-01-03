@@ -20,8 +20,8 @@ import { DialogModule } from 'ngx-ui-jbisbal/dialog';
 import { DividerModule } from 'ngx-ui-jbisbal/divider';
 import { ExpansionPanelModule } from 'ngx-ui-jbisbal/expansion-panel';
 import { SwitchModule } from 'ngx-ui-jbisbal/switch';
-//import { TabModule } from 'ngx-ui-jbisbal/tab';
-import { TabModule } from 'projects/ngx-ui-components/tab';
+import { TabModule } from 'ngx-ui-jbisbal/tab';
+//import { TabModule } from 'projects/ngx-ui-components/tab';
 import { TagModule } from 'ngx-ui-jbisbal/tag';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';

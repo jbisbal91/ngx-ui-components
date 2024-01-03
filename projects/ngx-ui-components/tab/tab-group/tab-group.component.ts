@@ -1,10 +1,9 @@
 import {
-  AfterContentInit,
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChildren,
   Input,
-  OnDestroy,
   OnInit,
   QueryList,
   Renderer2,
@@ -26,32 +25,22 @@ export type NgxMode = 'default' | 'closeable';
     '[class.ngx-tab-position-left]': `ngxTabPosition === 'left'`,
     '[class.ngx-tab-position-right]': `ngxTabPosition === 'right'`,
   },
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TabGroupComponent implements OnInit, AfterContentInit, OnDestroy {
+export class TabGroupComponent implements OnInit {
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;
 
   @Input() ngxTabPosition: NgxTabPosition = 'top';
   @Input() ngxMode: NgxMode = 'default';
   @Input() ngxAlignTabs: NgxAlignTabs = 'start';
 
-  readonly currentNgxMode$ = new ReplaySubject<NgxMode>(0);
-  private subscription: Subscription = new Subscription();
-
   constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.selectTab(this.tabs.first);
+      this.selectTab(this.tabs?.first);
+      this.cdr.detectChanges();
     });
-  }
-
-  ngAfterContentInit(): void {
-    this.currentNgxMode$.next(this.ngxMode);
-    this.cdr.markForCheck();
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
   selectTab(tab: Tab) {
