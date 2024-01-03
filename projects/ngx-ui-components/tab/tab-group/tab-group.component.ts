@@ -20,8 +20,8 @@ export type NgxMode = 'default' | 'closeable';
 @Component({
   selector: 'ngx-tab-group',
   templateUrl: './tab-group.component.html',
-  styleUrls: ['./tab-group.component.scss'],
   host: {
+    class: 'ngx-tab-group',
     '[class.ngx-tab-position-top]': `ngxTabPosition === 'top'`,
     '[class.ngx-tab-position-left]': `ngxTabPosition === 'left'`,
     '[class.ngx-tab-position-right]': `ngxTabPosition === 'right'`,
@@ -29,8 +29,6 @@ export type NgxMode = 'default' | 'closeable';
 })
 export class TabGroupComponent implements OnInit, AfterContentInit, OnDestroy {
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;
-  animationToLeft: boolean = false;
-  animationToRigth: boolean = false;
 
   @Input() ngxTabPosition: NgxTabPosition = 'top';
   @Input() ngxMode: NgxMode = 'default';
@@ -57,34 +55,14 @@ export class TabGroupComponent implements OnInit, AfterContentInit, OnDestroy {
   }
 
   selectTab(tab: Tab) {
-    if (tab.disabled) {
+    if (tab?.disabled) {
       return;
     }
-    if (tab === this.tabs.first) {
-      return this.animationmoveToRight(tab);
+    this.tabs?.forEach((tab) => (tab.isActive = false));
+    if (tab) {
+      tab.isActive = true;
     }
-    if (tab === this.tabs.last) {
-      return this.animationmoveToLeft(tab);
-    }
-    return this.animationmoveToLeft(tab);
-  }
-
-  animationmoveToLeft(tab: Tab) {
-    this.animationToLeft = true;
-    this.tabs.forEach((tab) => (tab.isActive = false));
-    tab.isActive = true;
-    setTimeout(() => {
-      this.animationToLeft = false;
-    }, 300);
-  }
-
-  animationmoveToRight(tab: Tab) {
-    this.animationToRigth = true;
-    this.tabs.forEach((tab) => (tab.isActive = false));
-    tab.isActive = true;
-    setTimeout(() => {
-      this.animationToRigth = false;
-    }, 300);
+    this.cdr.markForCheck();
   }
 
   closeTab(tab: any): void {

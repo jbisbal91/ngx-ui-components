@@ -1,5 +1,6 @@
 import {
   AfterContentInit,
+  ChangeDetectorRef,
   Component,
   Host,
   Input,
@@ -14,10 +15,9 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'ngx-tab',
-  templateUrl: './tab.component.html',
-  styleUrls: ['./tab.component.scss']
+  templateUrl: './tab.component.html'
 })
-export class TabComponent implements Tab, OnInit, OnDestroy {
+export class TabComponent implements Tab, OnInit, AfterContentInit, OnDestroy {
   @Input() label: string = '';
   public isActive: boolean = false;
   @Input() disabled: boolean = false;
@@ -27,16 +27,21 @@ export class TabComponent implements Tab, OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
 
   constructor(
-    @Optional() @Host() public tabGroupComponent: TabGroupComponent
+    @Optional() @Host() public tabGroupComponent: TabGroupComponent,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.id = this.guid();
+  }
+
+  ngAfterContentInit(): void {
     this.subscription.add(
       this.tabGroupComponent?.currentNgxMode$.subscribe((currentNgxMode) => {
         this.ngxMode = currentNgxMode;
       })
     );
+    this.cdr.markForCheck();
   }
 
   guid() {
