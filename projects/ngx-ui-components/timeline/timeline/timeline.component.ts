@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ContentChildren,
   Input,
@@ -24,16 +23,16 @@ export class TimelineComponent implements AfterViewInit {
 
   @Input() ngxMode: NgxTimelineMode = 'left';
 
-  constructor(private cdr: ChangeDetectorRef) {}
-
   ngAfterViewInit(): void {
-    this.timelineItems.forEach((tl) => {
-      if (this.timelineItems.first === tl) {
-        tl.first = true;
-      }
-      if (this.timelineItems.last === tl) {
-        tl.last = true;
-      }
+    setTimeout(() => {
+      this.timelineItems.forEach((tl) => {
+        if (this.timelineItems.first === tl) {
+          tl.first = true;
+        }
+        if (this.timelineItems.last === tl) {
+          tl.last = true;
+        }
+      });
     });
   }
 }

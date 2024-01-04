@@ -5,5 +5,6 @@ import { Directive } from '@angular/core';
   host: {
     class: 'ngx-card-avatar',
   },
+  standalone: true,
 })
 export class CardAvatarDirective {}

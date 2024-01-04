@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   host: {
     class: 'ngx-card-header',
   },
+  standalone: true,
 })
 export class CardHeaderComponent {}

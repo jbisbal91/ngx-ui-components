@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   host: {
     class: 'ngx-card-actions',
   },
+  standalone: true,
 })
 export class CardActionsComponent {}

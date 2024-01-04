@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { CardComponent } from './card.component';
 import { CardHeaderComponent } from './components/card-header/card-header.component';
@@ -14,12 +13,11 @@ const components = [
   CardContentComponent,
   CardActionsComponent,
   CardAvatarDirective,
-  CardImageDirective
+  CardImageDirective,
 ];
 
 @NgModule({
-  declarations: [components],
+  imports: [components],
   exports: [components],
-  imports: [CommonModule]
 })
 export class CardModule {}

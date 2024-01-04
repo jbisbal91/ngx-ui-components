@@ -22,6 +22,7 @@ import { ExpansionPanelModule } from 'ngx-ui-jbisbal/expansion-panel';
 import { SwitchModule } from 'ngx-ui-jbisbal/switch';
 import { TabModule } from 'ngx-ui-jbisbal/tab';
 import { TagModule } from 'ngx-ui-jbisbal/tag';
+//import { TimelineModule } from 'projects/ngx-ui-components/timeline';
 import { TimelineModule } from 'projects/ngx-ui-components/timeline';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
