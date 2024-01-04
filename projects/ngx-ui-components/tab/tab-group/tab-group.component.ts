@@ -24,7 +24,7 @@ export type NgxMode = 'default' | 'closeable';
     '[class.ngx-tab-position-left]': `ngxTabPosition === 'left'`,
     '[class.ngx-tab-position-right]': `ngxTabPosition === 'right'`,
   },
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabGroupComponent implements OnInit {
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;

@@ -1,0 +1,45 @@
+.ngx-timeline-item {
+  display: flex;
+}
+
+.timeline {
+  max-width: fit-content;
+}
+
+.ngx-timeline-item-content {
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ngx-timeline-item-tail {
+  height: calc(100% - 1rem);
+  width: 0px;
+  border-right: 1px solid #d5d5d5;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ngx-timeline-arrow {
+  border-top: 7px solid #d5d5d5;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  height: 0px;
+}
+
+.ngx-timeline-end {
+  width: 12px;
+  border-top: 1px solid #d5d5d5;
+}
+
+.ngx-timeline-item-head {
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border: 2px solid transparent;
+  border-radius: 100px;
+}
+
+.ngx-timeline-item-head-blue {
+  color: #1890ff;
+  border-color: #1890ff;
+}

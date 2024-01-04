@@ -1,0 +1,11 @@
+<div class="ngx-timeline-item">
+  <div class="timeline">
+    <div class="ngx-timeline-item-head ngx-timeline-item-head-blue"></div>
+    <div class="ngx-timeline-item-tail"></div>
+    <div class="ngx-timeline-arrow" *ngIf="!last"></div>
+    <div class="ngx-timeline-end" *ngIf="last"></div>
+  </div>
+  <div class="ngx-timeline-item-content">
+    <ng-content></ng-content>
+  </div>
+</div>

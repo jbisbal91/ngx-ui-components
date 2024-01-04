@@ -30,7 +30,8 @@
     "grid",
     "switch",
     "tabs",
-    "tags"
+    "tags",
+    "timeline"
   ],
   "homepage": "https://jbisbal91.github.io/ngx-ui"
 }

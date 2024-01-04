@@ -21,8 +21,8 @@ import { DividerModule } from 'ngx-ui-jbisbal/divider';
 import { ExpansionPanelModule } from 'ngx-ui-jbisbal/expansion-panel';
 import { SwitchModule } from 'ngx-ui-jbisbal/switch';
 import { TabModule } from 'ngx-ui-jbisbal/tab';
-//import { TabModule } from 'projects/ngx-ui-components/tab';
 import { TagModule } from 'ngx-ui-jbisbal/tag';
+import { TimelineModule } from 'projects/ngx-ui-components/timeline';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';
@@ -61,6 +61,8 @@ import { GridDemo3Component } from './demos/grid/grid-demo3/grid-demo3.component
 import { GridModule } from 'projects/ngx-ui-components/grid/grid.module';
 import { GridDemo4Component } from './demos/grid/grid-demo4/grid-demo4.component';
 import { DialogRef1Component } from './demos/dialog/dialog-ref1/dialog-ref1.component';
+import { TimelineDemo1Component } from './demos/timeline/timeline-demo1/timeline-demo1.component';
+import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.component';
 
 export function getHighlightLanguages() {
   return {
@@ -106,6 +108,8 @@ const components = [
   TagDemo1Component,
   TabDemo2Component,
   TabDemo3Component,
+  TimelineDocsComponent,
+  TimelineDemo1Component,
 ];
 
 @NgModule({
@@ -128,6 +132,7 @@ const components = [
     SwitchModule,
     TabModule,
     TagModule,
+    TimelineModule,
   ],
   providers: [
     {

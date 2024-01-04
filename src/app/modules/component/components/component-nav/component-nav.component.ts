@@ -64,6 +64,7 @@ export class ComponentNavComponent {
       { path: '/components/table', title: 'Table' },
       { path: '/components/tabs', title: 'Tabs' },
       { path: '/components/tags', title: 'Tags' },
+      { path: '/components/timeline', title: 'Timeline' },
       { path: '/components/toolbar', title: 'Toolbar' },
       { path: '/components/tooltip', title: 'Tooltip' },
       { path: '/components/tree', title: 'Tree' },

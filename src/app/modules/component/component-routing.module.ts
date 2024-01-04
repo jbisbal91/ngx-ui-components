@@ -14,6 +14,7 @@ import { SwitchDocsComponent } from './docs/switch-docs/switch-docs.component';
 import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
 import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
 import { GridDocsComponent } from './docs/grid-docs/grid-docs.component';
+import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'switch', component: SwitchDocsComponent },
       { path: 'tabs', component: TabDocsComponent },
       { path: 'tags', component: TagDocsComponent },
+      { path: 'timeline', component: TimelineDocsComponent },
       { path: '**', redirectTo: 'guides', pathMatch: 'full' },
     ],
   },
