@@ -1,24 +1,24 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Tabs } from '../../interfaces/tabs.interface';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-divider-docs',
-  templateUrl: './divider-docs.component.html',
-  styleUrls: ['./divider-docs.component.scss'],
+  selector: 'app-pie-chart-docs',
+  templateUrl: './pie-chart-docs.component.html',
+  styleUrls: ['./pie-chart-docs.component.scss'],
 })
-export class DividerDocsComponent implements OnInit {
-  variation1DemoDivider!: Tabs[];
+export class PieChartDocsComponent implements OnInit {
+  variation1DemoPieChart!: Tabs[];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.variation1DemoDivider = [
+    this.variation1DemoPieChart = [
       {
         tabTitle: 'HTML',
         tabContent: {
           code: this.http.get(
-            'assets/demos/divider/divider-demo1/divider-demo1.component.html',
+            'assets/demos/pie-chart/pie-chart-demo1/pie-chart-demo1.component.html',
             { responseType: 'text' }
           ),
         },
@@ -27,7 +27,7 @@ export class DividerDocsComponent implements OnInit {
         tabTitle: 'TS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/divider/divider-demo1/divider-demo1.component.ts',
+            'assets/demos/pie-chart/pie-chart-demo1/pie-chart-demo1.component.ts',
             { responseType: 'text' }
           ),
         },
@@ -36,7 +36,7 @@ export class DividerDocsComponent implements OnInit {
         tabTitle: 'SCSS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/divider/divider-demo1/divider-demo1.component.scss',
+            'assets/demos/pie-chart/pie-chart-demo1/pie-chart-demo1.component.scss',
             { responseType: 'text' }
           ),
         },

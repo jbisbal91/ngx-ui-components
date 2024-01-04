@@ -62,6 +62,9 @@ import { GridDemo4Component } from './demos/grid/grid-demo4/grid-demo4.component
 import { DialogRef1Component } from './demos/dialog/dialog-ref1/dialog-ref1.component';
 import { TimelineDemo1Component } from './demos/timeline/timeline-demo1/timeline-demo1.component';
 import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.component';
+import { PieChartModule } from 'projects/ngx-ui-components/pie-chart';
+import { PieChartDocsComponent } from './docs/pie-chart-docs/pie-chart-docs.component';
+import { PieChartDemo1Component } from './demos/pie-chart/pie-chart-demo1/pie-chart-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -101,6 +104,8 @@ const components = [
   GridDemo2Component,
   GridDemo3Component,
   GridDemo4Component,
+  PieChartDocsComponent,
+  PieChartDemo1Component,
   TabDocsComponent,
   TabDemo1Component,
   TagDocsComponent,
@@ -128,6 +133,7 @@ const components = [
     DividerModule,
     ExpansionPanelModule,
     GridModule,
+    PieChartModule,
     SwitchModule,
     TabModule,
     TagModule,

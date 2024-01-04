@@ -15,6 +15,7 @@ import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
 import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
 import { GridDocsComponent } from './docs/grid-docs/grid-docs.component';
 import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.component';
+import { PieChartDocsComponent } from './docs/pie-chart-docs/pie-chart-docs.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: 'divider', component: DividerDocsComponent },
       { path: 'expansion', component: AccordionDocsComponent },
       { path: 'grid', component: GridDocsComponent },
+      { path: 'pie-chart', component: PieChartDocsComponent },
       { path: 'switch', component: SwitchDocsComponent },
       { path: 'tabs', component: TabDocsComponent },
       { path: 'tags', component: TagDocsComponent },
