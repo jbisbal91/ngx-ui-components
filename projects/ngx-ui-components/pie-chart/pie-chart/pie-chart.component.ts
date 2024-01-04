@@ -46,23 +46,22 @@ export class PieChartComponent implements OnInit {
         0
       );
 
-      let inicioAngulo = -Math.PI / 2;
+      let initAngle = -Math.PI / 2;
 
       for (let i = 0; i < value.length; i++) {
         const porcentaje = value[i].value / total;
-        const angulo = Math.PI * 2 * porcentaje;
+        const angle = Math.PI * 2 * porcentaje;
 
         ctx.beginPath();
         ctx.moveTo(centroX, centroY);
-        ctx.arc(centroX, centroY, radio, inicioAngulo, inicioAngulo + angulo);
+        ctx.arc(centroX, centroY, radio, initAngle, initAngle + angle);
         ctx.closePath();
         ctx.fillStyle = value[i].color;
         ctx.fill();
-
-        inicioAngulo += angulo;
+        initAngle += angle;
       }
     } else {
-      console.error('Contexto 2D nulo.');
+      console.error('Null 2D context.');
     }
   }
 }
