@@ -16,13 +16,11 @@ import { ButtonModule } from 'ngx-ui-jbisbal/button';
 import { CardModule } from 'ngx-ui-jbisbal/card';
 import { CarouselModule } from 'ngx-ui-jbisbal/carousel';
 import { DialogModule } from 'ngx-ui-jbisbal/dialog';
-//import { DialogModule } from 'projects/ngx-ui-components/dialog';
 import { DividerModule } from 'ngx-ui-jbisbal/divider';
 import { ExpansionPanelModule } from 'ngx-ui-jbisbal/expansion-panel';
 import { SwitchModule } from 'ngx-ui-jbisbal/switch';
 import { TabModule } from 'ngx-ui-jbisbal/tab';
 import { TagModule } from 'ngx-ui-jbisbal/tag';
-//import { TimelineModule } from 'projects/ngx-ui-components/timeline';
 import { TimelineModule } from 'projects/ngx-ui-components/timeline';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
