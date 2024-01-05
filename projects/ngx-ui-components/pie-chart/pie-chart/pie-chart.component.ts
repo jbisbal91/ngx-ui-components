@@ -40,8 +40,8 @@ export class PieChartComponent implements OnInit {
         const mouseY = event.clientY - rect.top;
 
         // Aquí realiza tu lógica para determinar a qué parte del gráfico corresponde el mouse
-        const parteDelGrafico = this.detectPart(mouseX, mouseY);
-        console.log('Parte del gráfico:', parteDelGrafico);
+        const partChart = this.detectPart(mouseX, mouseY);
+        console.log('Parte del gráfico:', partChart);
       });
 
       this.cdr.detectChanges();
