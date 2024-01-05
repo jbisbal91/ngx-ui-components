@@ -6,13 +6,16 @@ import {
   Input,
   OnInit,
   ViewChild,
+  numberAttribute,
 } from '@angular/core';
 import { PieChart } from '../models';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'ngx-pie-chart',
   templateUrl: './pie-chart.component.html',
   standalone: true,
+  imports: [NgForOf],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PieChartComponent implements OnInit {
@@ -22,6 +25,7 @@ export class PieChartComponent implements OnInit {
   @Input() width = 300;
   @Input() height = 300;
   @Input() value: PieChart[] = [];
+  @Input({ transform: numberAttribute }) ngxGutter: number = 0;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -35,7 +39,6 @@ export class PieChartComponent implements OnInit {
 
   drawPieChart(value: PieChart[]) {
     const ctx = this.context;
-
     if (ctx) {
       const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
       const centroX = canvasEl.width / 2;
@@ -60,6 +63,12 @@ export class PieChartComponent implements OnInit {
         ctx.fill();
         initAngle += angle;
       }
+
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.beginPath();
+      ctx.arc(centroX, centroY, radio * this.ngxGutter, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.globalCompositeOperation = 'source-over';
     } else {
       console.error('Null 2D context.');
     }
