@@ -7,11 +7,11 @@ import { Component } from '@angular/core';
 })
 export class PieChartDemo1Component {
   values: any = [
-    { label: 'Transporte', value: 11, color: '#E31A1C' },
+    { label: 'Transporte', value: 11, color: 'blue' },
     { label: 'Suministro de electricidad', value: 26, color: '#FB9A99' },
-    { label: 'Pesca', value: 11, color: '#33A02C' },
-    { label: 'Comercio', value: 10, color: '#B2DF8A' },
-    { label: 'Alojamiento', value: 19, color: '#1F78B4' },
-    { label: 'Agricultura', value: 22, color: '#A6CEE3' },
+    // { label: 'Pesca', value: 11, color: '#33A02C' },
+    // { label: 'Comercio', value: 10, color: '#B2DF8A' },
+    // { label: 'Alojamiento', value: 19, color: '#1F78B4' },
+    { label: 'Agricultura', value: 22, color: 'yellow' },
   ];
 }

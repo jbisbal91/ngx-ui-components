@@ -40,7 +40,7 @@ export class PieChartComponent implements OnInit {
         const mouseY = event.clientY - rect.top;
 
         // Aquí realiza tu lógica para determinar a qué parte del gráfico corresponde el mouse
-        const parteDelGrafico = this.detectarParteDelGrafico(mouseX, mouseY);
+        const parteDelGrafico = this.detectPart(mouseX, mouseY);
         console.log('Parte del gráfico:', parteDelGrafico);
       });
 
@@ -54,7 +54,7 @@ export class PieChartComponent implements OnInit {
       const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
       const centerX = canvasEl.width / 2;
       const centerY = canvasEl.height / 2;
-      const radius = Math.min(canvasEl.width, canvasEl.height) / 2 - 10;
+      const radius = Math.min(canvasEl.width, canvasEl.height) / 2;
       const total = this.value.reduce(
         (total, currentValue) => total + currentValue.value,
         0
@@ -62,7 +62,7 @@ export class PieChartComponent implements OnInit {
 
       let initAngle = -Math.PI / 2;
 
-      for (let i = 0; i < value.length; i++) {
+      for (let i = 0; i < value.length; ++i) {
         const percent = value[i].value / total;
         const angle = Math.PI * 2 * percent;
         ctx.beginPath();
@@ -90,38 +90,57 @@ export class PieChartComponent implements OnInit {
     }
   }
 
-  detectarParteDelGrafico(mouseX: number, mouseY: number): string {
+  detectPart(mouseX: number, mouseY: number): number {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
     const centroX = canvasEl.width / 2;
     const centroY = canvasEl.height / 2;
-    const radio = Math.min(canvasEl.width, canvasEl.height) / 2 - 10;
+    const radio = Math.min(canvasEl.width, canvasEl.height) / 2;
     const total = this.value.reduce(
       (total, currentValue) => total + currentValue.value,
       0
     );
     // Calcula el ángulo y la distancia desde el centro del círculo hasta el puntero del mouse
-    const angulo = Math.atan2(mouseY - centroY, mouseX - centroX);
-    const distancia = Math.sqrt(
+    const angleExt = Math.atan2(mouseY - centroY, mouseX - centroX);
+    const distance = Math.sqrt(
       (mouseX - centroX) ** 2 + (mouseY - centroY) ** 2
     );
 
     // Verifica si el puntero está dentro del círculo
-    if (distancia >= 10 && distancia <= radio) {
+    if (distance <= radio && this.detectFill(mouseX, mouseY)) {
       let initAngle = -Math.PI / 2;
-
-      for (let i = 0; i < this.value.length; i++) {
-        const porcentaje = this.value[i].value / total;
-        const angle = Math.PI * 2 * porcentaje;
+      for (let i = 0; i < this.value.length; ++i) {
+        const percent = this.value[i].value / total;
+        const angle = Math.PI * 2 * percent;
 
         // Verifica si el ángulo del puntero está en esta porción
-        if (angulo <= initAngle && angulo <= initAngle + angle) {
-          return `Parte ${i}`; // Retorna la parte del gráfico
+        if (angleExt <= initAngle && angleExt <= initAngle + angle) {
+          return i; // Retorna la parte del gráfico
         }
 
         initAngle += angle;
       }
     }
 
-    return 'Fuera del gráfico'; // Si no está dentro del gráfico
+    return -1; // Si no está dentro del gráfico
+  }
+
+  detectFill(mouseX: number, mouseY: number): boolean {
+    const ctx = this.context;
+    if (ctx) {
+      // Get the image data in a small area around the mouse point
+      const imageData = ctx.getImageData(mouseX - 1, mouseY - 1, 2, 2); // Small area around the mouse pointer
+      // Check if any pixel in the area has a color other than transparent
+      for (let i = 0; i < imageData.data.length; i += 4) {
+        // Check if channels R, G, B are different from 0 (transparent)
+        if (
+          imageData.data[i] !== 0 ||
+          imageData.data[i + 1] !== 0 ||
+          imageData.data[i + 2] !== 0
+        ) {
+          return true; // Area has colored pixels, it is filled
+        }
+      }
+    }
+    return false; // The area is empty or transparent
   }
 }
