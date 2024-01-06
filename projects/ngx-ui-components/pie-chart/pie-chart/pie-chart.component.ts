@@ -40,40 +40,45 @@ export class PieChartComponent implements OnInit {
         const mouseY = event.clientY - rect.top;
 
         // Logic to determine which part of the graph the mouse corresponds to
-        const partChart = this.detectPart(mouseX, mouseY);
-        console.log('Parte del gráfico:', partChart);
+        const partChartId = this.detectPart(mouseX, mouseY);
+        this.drawPieChart(this.value, partChartId);
       });
 
       this.cdr.detectChanges();
     });
   }
 
-  drawPieChart(value: PieChart[]) {
+  drawPieChart(value: PieChart[], partGraphId: number = -1) {
     const ctx = this.context;
     if (ctx) {
       const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
+      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
       const centerX = canvasEl.width / 2;
       const centerY = canvasEl.height / 2;
-      const radius = Math.min(canvasEl.width, canvasEl.height) / 2;
+      const defaultRadius = Math.min(canvasEl.width, canvasEl.height) / 2 - 10;
+      const increasedRadius = defaultRadius + defaultRadius * 0.1; // Aumentar el radio para la porción
       const total = this.value.reduce(
         (total, currentValue) => total + currentValue.value,
         0
       );
-
       let initAngle = 0;
-
       for (let i = 0; i < value.length; ++i) {
         const percent = value[i].value / total;
         const angle = Math.PI * 2 * percent;
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
+        // Utilizar el radio aumentado para la porción específica
+        const radius =
+          partGraphId !== -1 && partGraphId === i
+            ? increasedRadius
+            : defaultRadius;
         ctx.arc(centerX, centerY, radius, initAngle, initAngle + angle);
         ctx.closePath();
         ctx.fillStyle = value[i].color;
         ctx.fill();
         initAngle += angle;
       }
-      this.drawRing(centerX, centerY, radius);
+      this.drawRing(centerX, centerY, defaultRadius);
     } else {
       console.error('Null 2D context.');
     }
@@ -92,9 +97,9 @@ export class PieChartComponent implements OnInit {
 
   detectPart(mouseX: number, mouseY: number): number {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
-    const centroX = canvasEl.width / 2;
-    const centroY = canvasEl.height / 2;
-    const radio = Math.min(canvasEl.width, canvasEl.height) / 2;
+    const centroX = canvasEl.width / 2 - 10;
+    const centroY = canvasEl.height / 2 - 10;
+    const radius = Math.min(canvasEl.width, canvasEl.height) / 2 - 10;
     const total = this.value.reduce(
       (total, currentValue) => total + currentValue.value,
       0
@@ -106,7 +111,7 @@ export class PieChartComponent implements OnInit {
       (mouseX - centroX) ** 2 + (mouseY - centroY) ** 2
     );
     // Check if the pointer is inside the circle
-    if (distance <= radio && this.detectFill(mouseX, mouseY)) {
+    if (distance <= radius && this.detectFill(mouseX, mouseY)) {
       let initAngle = 0;
       for (let i = 0; i < this.value.length; i++) {
         const percent = this.value[i].value / total;
@@ -114,10 +119,12 @@ export class PieChartComponent implements OnInit {
         initAngle += angle;
         // Check if the angle of the pointer is in this portion
         if (this.radianToDegree(initAngle) >= this.radianToDegree(angleExt)) {
+          this.canvas.nativeElement.style.cursor = 'pointer';
           return i; // Returns the part of the graph
         }
       }
     }
+    this.canvas.nativeElement.style.cursor = 'default';
     return -1; // If it is not within the graph
   }
 
