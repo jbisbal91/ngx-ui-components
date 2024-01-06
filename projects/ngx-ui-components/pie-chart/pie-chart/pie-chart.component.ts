@@ -39,7 +39,7 @@ export class PieChartComponent implements OnInit {
         const mouseX = event.clientX - rect.left;
         const mouseY = event.clientY - rect.top;
 
-        // Aquí realiza tu lógica para determinar a qué parte del gráfico corresponde el mouse
+        // Logic to determine which part of the graph the mouse corresponds to
         const partChart = this.detectPart(mouseX, mouseY);
         console.log('Parte del gráfico:', partChart);
       });
@@ -99,27 +99,26 @@ export class PieChartComponent implements OnInit {
       (total, currentValue) => total + currentValue.value,
       0
     );
-    // Calcula el ángulo y la distancia desde el centro del círculo hasta el puntero del mouse
+    //calculates the central angle formed with the mouse pointer
     const angleExt = Math.atan2(mouseY - centroY, mouseX - centroX);
+    //calculate the distance between the pointer and the center of the circle
     const distance = Math.sqrt(
       (mouseX - centroX) ** 2 + (mouseY - centroY) ** 2
     );
-
-    // Verifica si el puntero está dentro del círculo
+    // Check if the pointer is inside the circle
     if (distance <= radio && this.detectFill(mouseX, mouseY)) {
       let initAngle = 0;
       for (let i = 0; i < this.value.length; i++) {
         const percent = this.value[i].value / total;
         const angle = Math.PI * 2 * percent;
         initAngle += angle;
-        // Verifica si el ángulo del puntero está en esta porción
+        // Check if the angle of the pointer is in this portion
         if (this.radianToDegree(initAngle) >= this.radianToDegree(angleExt)) {
-          return i; // Retorna la parte del gráfico
+          return i; // Returns the part of the graph
         }
       }
     }
-
-    return -1; // Si no está dentro del gráfico
+    return -1; // If it is not within the graph
   }
 
   radianToDegree(rad: number) {
