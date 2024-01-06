@@ -41,6 +41,8 @@ export class PieChartComponent implements OnInit {
 
         // Logic to determine which part of the graph the mouse corresponds to
         const partChartId = this.detectPart(mouseX, mouseY);
+        this.canvas.nativeElement.style.cursor =
+          partChartId !== -1 ? 'pointer' : 'default';
         this.drawPieChart(this.value, partChartId);
       });
 
@@ -119,12 +121,10 @@ export class PieChartComponent implements OnInit {
         initAngle += angle;
         // Check if the angle of the pointer is in this portion
         if (this.radianToDegree(initAngle) >= this.radianToDegree(angleExt)) {
-          this.canvas.nativeElement.style.cursor = 'pointer';
           return i; // Returns the part of the graph
         }
       }
     }
-    this.canvas.nativeElement.style.cursor = 'default';
     return -1; // If it is not within the graph
   }
 

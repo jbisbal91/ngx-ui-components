@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./pie-chart-demo1.component.scss'],
 })
 export class PieChartDemo1Component {
-  values: any = [
+  values2: any = [
     { label: 'Transporte', value: 11, color: '#E31A1C' },
     { label: 'Suministro de electricidad', value: 26, color: '#FB9A99' },
     { label: 'Pesca', value: 11, color: '#33A02C' },
@@ -24,7 +24,7 @@ export class PieChartDemo1Component {
     { label: 'Agricultura', value: 10, color: 'yellow' },
   ];
 
-  values2: any = [
+  values: any = [
     { label: 'Transporte', value: 10, color: 'blue' },
     { label: 'Suministro de electricidad', value: 10, color: '#FB9A99' },
     { label: 'Pesca', value: 10, color: '#33A02C' },
