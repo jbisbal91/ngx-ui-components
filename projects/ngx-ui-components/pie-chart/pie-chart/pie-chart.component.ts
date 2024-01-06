@@ -60,7 +60,7 @@ export class PieChartComponent implements OnInit {
         0
       );
 
-      let initAngle = -Math.PI / 2;
+      let initAngle = 0;
 
       for (let i = 0; i < value.length; ++i) {
         const percent = value[i].value / total;
@@ -107,21 +107,23 @@ export class PieChartComponent implements OnInit {
 
     // Verifica si el puntero está dentro del círculo
     if (distance <= radio && this.detectFill(mouseX, mouseY)) {
-      let initAngle = -Math.PI / 2;
-      for (let i = 0; i < this.value.length; ++i) {
+      let initAngle = 0;
+      for (let i = 0; i < this.value.length; i++) {
         const percent = this.value[i].value / total;
         const angle = Math.PI * 2 * percent;
-
+        initAngle += angle;
         // Verifica si el ángulo del puntero está en esta porción
-        if (angleExt <= initAngle && angleExt <= initAngle + angle) {
+        if (this.radianToDegree(initAngle) >= this.radianToDegree(angleExt)) {
           return i; // Retorna la parte del gráfico
         }
-
-        initAngle += angle;
       }
     }
 
     return -1; // Si no está dentro del gráfico
+  }
+
+  radianToDegree(rad: number) {
+    return rad >= 0 ? rad * (180 / Math.PI) : 360 + rad * (180 / Math.PI);
   }
 
   detectFill(mouseX: number, mouseY: number): boolean {
