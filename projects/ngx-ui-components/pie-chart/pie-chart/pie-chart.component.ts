@@ -50,6 +50,7 @@ export class PieChartComponent implements OnInit {
     });
   }
 
+  //Create the graph
   drawPieChart(value: PieChart[], partGraphId: number = -1) {
     const ctx = this.context;
     if (ctx) {
@@ -58,7 +59,7 @@ export class PieChartComponent implements OnInit {
       const centerX = canvasEl.width / 2;
       const centerY = canvasEl.height / 2;
       const defaultRadius = Math.min(canvasEl.width, canvasEl.height) / 2 - 10;
-      const increasedRadius = defaultRadius + defaultRadius * 0.06; // Aumentar el radio para la porción
+      const increasedRadius = defaultRadius + defaultRadius * 0.06; // Increase radius for portion
       const total = this.value.reduce(
         (total, currentValue) => total + currentValue.value,
         0
@@ -69,7 +70,7 @@ export class PieChartComponent implements OnInit {
         const angle = Math.PI * 2 * percent;
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
-        // Utilizar el radio aumentado para la porción específica
+        // Use the increased radius for the specific portion
         const radius =
           partGraphId !== -1 && partGraphId === i
             ? increasedRadius
@@ -99,6 +100,7 @@ export class PieChartComponent implements OnInit {
     }
   }
 
+  //Adds a ring in the center of the graph the value depends on ngGutter [0-1]
   drawRing(centerX: number, centerY: number, radius: number) {
     const ctx = this.context;
     if (ctx) {
@@ -110,6 +112,7 @@ export class PieChartComponent implements OnInit {
     }
   }
 
+  //Determines if the mouse pointer is on top of the graph
   detectPart(mouseX: number, mouseY: number): number {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
     const centroX = canvasEl.width / 2 - 10;
