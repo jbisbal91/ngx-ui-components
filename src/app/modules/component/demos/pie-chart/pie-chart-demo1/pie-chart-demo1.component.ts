@@ -15,16 +15,14 @@ export class PieChartDemo1Component {
     { label: 'Agricultura', value: 22, color: '#A6CEE3' },
   ];
 
-  values3: any = [
-    { label: 'Transporte', value: 10, color: 'blue' },
-    { label: 'Suministro de electricidad', value: 10, color: '#FB9A99' },
-    { label: 'Pesca', value: 10, color: '#33A02C' },
-    // { label: 'Comercio', value: 10, color: '#B2DF8A' },
-    // { label: 'Alojamiento', value: 19, color: '#1F78B4' },
-    { label: 'Agricultura', value: 10, color: 'yellow' },
+  values: any = [
+    { label: 'Transporte', value: 40, color: '#F44336' },
+    { label: 'Suministro de electricidad', value: 20, color: '#FF9E43' },
+    //{ label: 'Pesca', value: 10, color: '#FFC107' },
+    { label: 'Agricultura', value: 15, color: '#7467EF' },
   ];
 
-  values: any = [
+  values3: any = [
     { label: 'Transporte', value: 10, color: 'blue' },
     { label: 'Suministro de electricidad', value: 10, color: '#FB9A99' },
     { label: 'Pesca', value: 10, color: '#33A02C' },

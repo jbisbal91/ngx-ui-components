@@ -58,7 +58,7 @@ export class PieChartComponent implements OnInit {
       const centerX = canvasEl.width / 2;
       const centerY = canvasEl.height / 2;
       const defaultRadius = Math.min(canvasEl.width, canvasEl.height) / 2 - 10;
-      const increasedRadius = defaultRadius + defaultRadius * 0.1; // Aumentar el radio para la porción
+      const increasedRadius = defaultRadius + defaultRadius * 0.06; // Aumentar el radio para la porción
       const total = this.value.reduce(
         (total, currentValue) => total + currentValue.value,
         0
@@ -76,6 +76,19 @@ export class PieChartComponent implements OnInit {
             : defaultRadius;
         ctx.arc(centerX, centerY, radius, initAngle, initAngle + angle);
         ctx.closePath();
+        if (
+          partGraphId !== -1 &&
+          partGraphId === i &&
+          increasedRadius > defaultRadius
+        ) {
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+          ctx.shadowBlur = 6;
+        } else {
+          ctx.shadowBlur = 0;
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 0;
+        }
+
         ctx.fillStyle = value[i].color;
         ctx.fill();
         initAngle += angle;
