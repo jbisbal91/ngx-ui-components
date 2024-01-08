@@ -16,10 +16,9 @@ export class PieChartDemo1Component {
   ];
 
   values: any = [
-    { label: 'Transporte', value: 40, color: '#F44336' },
-    { label: 'Suministro de electricidad', value: 20, color: '#FF9E43' },
-    //{ label: 'Pesca', value: 10, color: '#FFC107' },
-    { label: 'Agricultura', value: 15, color: '#7467EF' },
+    { label: 'Google', value: 40, color: '#F44336' },
+    { label: 'Facebook', value: 20, color: '#FF9E43' },
+    { label: 'Others', value: 15, color: '#7467EF' },
   ];
 
   values3: any = [

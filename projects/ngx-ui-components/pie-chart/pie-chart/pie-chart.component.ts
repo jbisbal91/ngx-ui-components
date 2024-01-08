@@ -26,7 +26,6 @@ export class PieChartComponent implements OnInit {
   @Input() height = 300;
   @Input() value: PieChart[] = [];
   @Input({ transform: numberAttribute }) ngxGutter: number = 0;
-
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
@@ -95,6 +94,25 @@ export class PieChartComponent implements OnInit {
         initAngle += angle;
       }
       this.drawRing(centerX, centerY, defaultRadius);
+
+      //Check if the graph can have space in the center
+      if (partGraphId !== -1 && this.ngxGutter > 0 && this.ngxGutter < 1) {
+        const percent = (value[partGraphId].value / total) * 100;
+        const text = value[partGraphId].label + ' (' + percent.toFixed(2) + '%)';
+        const font = '12px Arial';
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
+        //Add text in the center of the graph
+        this.drawCenteredText(
+          ctx,
+          text,
+          centerX,
+          centerY,
+          font,
+          value[partGraphId].color
+        );
+      }
     } else {
       console.error('Null 2D context.');
     }
@@ -110,6 +128,23 @@ export class PieChartComponent implements OnInit {
       ctx.fill();
       ctx.globalCompositeOperation = 'source-over';
     }
+  }
+
+  drawCenteredText(
+    ctx: CanvasRenderingContext2D,
+    text: string,
+    x: number,
+    y: number,
+    font: string,
+    color = 'black'
+  ) {
+    ctx.font = font;
+    const textWidth = ctx.measureText(text).width;
+    const xPos = x - textWidth / 2;
+    const yPos = y;
+
+    ctx.fillStyle = color; // Color del texto
+    ctx.fillText(text, xPos, yPos);
   }
 
   //Determines if the mouse pointer is on top of the graph
