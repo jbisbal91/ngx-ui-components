@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-.legend-item {
+.ngx-pie-chart .legend-item {
   display: flex;
   max-width: -moz-fit-content;
   max-width: fit-content;
@@ -15,12 +15,12 @@
   cursor: pointer;
 }
 
-.legend-color {
+.ngx-pie-chart .legend-color {
   height: 0.75rem;
   width: 0.75rem;
   border-radius: 50%;
 }
 
-.legend-label {
+.ngx-pie-chart .legend-label {
   font-size: 0.875rem;
 }

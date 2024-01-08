@@ -21,7 +21,8 @@ import { ExpansionPanelModule } from 'ngx-ui-jbisbal/expansion-panel';
 import { SwitchModule } from 'ngx-ui-jbisbal/switch';
 import { TabModule } from 'ngx-ui-jbisbal/tab';
 import { TagModule } from 'ngx-ui-jbisbal/tag';
-import { TimelineModule } from 'projects/ngx-ui-components/timeline';
+import { TimelineModule } from 'ngx-ui-jbisbal/timeline';
+import { PieChartModule } from 'ngx-ui-jbisbal/pie-chart';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';
@@ -62,7 +63,6 @@ import { GridDemo4Component } from './demos/grid/grid-demo4/grid-demo4.component
 import { DialogRef1Component } from './demos/dialog/dialog-ref1/dialog-ref1.component';
 import { TimelineDemo1Component } from './demos/timeline/timeline-demo1/timeline-demo1.component';
 import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.component';
-import { PieChartModule } from 'projects/ngx-ui-components/pie-chart';
 import { PieChartDocsComponent } from './docs/pie-chart-docs/pie-chart-docs.component';
 import { PieChartDemo1Component } from './demos/pie-chart/pie-chart-demo1/pie-chart-demo1.component';
 
