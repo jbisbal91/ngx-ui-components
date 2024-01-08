@@ -49,7 +49,11 @@ export class PieChartComponent implements OnInit {
     });
   }
 
-  //Create the graph
+  /**
+   * Create the graph
+   * @param value is of type PieChart[], partGraphId will be the id obtained by hovering the mouse
+   * over each part of the graph.
+   */
   drawPieChart(value: PieChart[], partGraphId: number = -1) {
     const ctx = this.context;
     if (ctx) {
@@ -88,37 +92,53 @@ export class PieChartComponent implements OnInit {
           ctx.shadowOffsetX = 0;
           ctx.shadowOffsetY = 0;
         }
-
         ctx.fillStyle = value[i].color;
         ctx.fill();
         initAngle += angle;
       }
       this.drawRing(centerX, centerY, defaultRadius);
-
-      //Check if the graph can have space in the center
-      if (partGraphId !== -1 && this.ngxGutter > 0 && this.ngxGutter < 1) {
-        const percent = (value[partGraphId].value / total) * 100;
-        const text = value[partGraphId].label + ' (' + percent.toFixed(2) + '%)';
-        const font = '12px Arial';
-        ctx.shadowBlur = 0;
-        ctx.shadowOffsetX = 0;
-        ctx.shadowOffsetY = 0;
-        //Add text in the center of the graph
-        this.drawCenteredText(
-          ctx,
-          text,
-          centerX,
-          centerY,
-          font,
-          value[partGraphId].color
-        );
-      }
+      this.buildCenteredText(value, total, partGraphId, centerX, centerY);
     } else {
       console.error('Null 2D context.');
     }
   }
 
-  //Adds a ring in the center of the graph the value depends on ngGutter [0-1]
+  /**
+   * Build the text that will be centered in the graphic
+   * @param The value is of type PieChart[], total is the sum of all the values of PieChart[],
+   * partGraphId will be the id obtained by hovering the mouse, centerX and centerY is the center of the graph
+   */
+  buildCenteredText(
+    value: PieChart[],
+    total: number,
+    partGraphId: number = -1,
+    centerX: number,
+    centerY: number
+  ) {
+    const ctx = this.context;
+    //Check if the graph can have space in the center
+    if (ctx && partGraphId !== -1 && this.ngxGutter > 0 && this.ngxGutter < 1) {
+      const percent = (value[partGraphId].value / total) * 100;
+      const text = value[partGraphId].label + ' (' + percent.toFixed(2) + '%)';
+      const font = '12px Arial';
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      //Add text in the center of the graph
+      this.drawCenteredText(
+        text,
+        centerX,
+        centerY,
+        font,
+        value[partGraphId].color
+      );
+    }
+  }
+
+  /**
+   * Adds a ring in the center of the graph the value depends on ngGutter [0-1]
+   * @param Radius of the graph, centerX and centerY is the center of the graph
+   */
   drawRing(centerX: number, centerY: number, radius: number) {
     const ctx = this.context;
     if (ctx) {
@@ -130,21 +150,28 @@ export class PieChartComponent implements OnInit {
     }
   }
 
+  /**
+   * Builds the text and centers it in the empty space in the center of the graphic
+   * @param text that will be added in the center of the graph, color is the color of
+   * the text that matches the color of the part of the graph that is selected,
+   * centerX and centerY is the center of the graph
+   */
   drawCenteredText(
-    ctx: CanvasRenderingContext2D,
     text: string,
-    x: number,
-    y: number,
+    centerX: number,
+    centerY: number,
     font: string,
     color = 'black'
   ) {
-    ctx.font = font;
-    const textWidth = ctx.measureText(text).width;
-    const xPos = x - textWidth / 2;
-    const yPos = y;
-
-    ctx.fillStyle = color; // Color del texto
-    ctx.fillText(text, xPos, yPos);
+    const ctx = this.context;
+    if (ctx) {
+      ctx.font = font;
+      const textWidth = ctx.measureText(text).width;
+      const xPos = centerX - textWidth / 2;
+      const yPos = centerY;
+      ctx.fillStyle = color;
+      ctx.fillText(text, xPos, yPos);
+    }
   }
 
   //Determines if the mouse pointer is on top of the graph
