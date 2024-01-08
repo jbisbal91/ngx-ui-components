@@ -3,8 +3,10 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
   ViewChild,
   numberAttribute,
 } from '@angular/core';
@@ -30,6 +32,8 @@ export class PieChartComponent implements OnInit {
   @Input() value: PieChart[] = [];
   @Input({ transform: numberAttribute }) ngxGutter: number = 0;
 
+  @Output() partChartIndex = new EventEmitter<number>();
+
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
@@ -44,6 +48,7 @@ export class PieChartComponent implements OnInit {
 
         // Logic to determine which part of the graph the mouse corresponds to
         const partChartId = this.detectPart(mouseX, mouseY);
+        this.partChartIndex.emit(partChartId);
         this.canvas.nativeElement.style.cursor =
           partChartId !== -1 ? 'pointer' : 'default';
         this.drawPieChart(this.value, partChartId);
@@ -55,11 +60,13 @@ export class PieChartComponent implements OnInit {
 
   mouseenter(val: PieChart) {
     const partChartId = this.value.findIndex((v) => v === val);
+    this.partChartIndex.emit(partChartId);
     this.drawPieChart(this.value, partChartId);
   }
 
   mouseleave() {
-    this.drawPieChart(this.value, -1); 
+    this.partChartIndex.emit(-1);
+    this.drawPieChart(this.value, -1);
   }
 
   /**
@@ -132,7 +139,7 @@ export class PieChartComponent implements OnInit {
     //Check if the graph can have space in the center
     if (ctx && partGraphId !== -1 && this.ngxGutter > 0 && this.ngxGutter < 1) {
       const percent = (value[partGraphId].value / total) * 100;
-      const text = value[partGraphId].label + ' (' + percent.toFixed(2) + '%)';
+      const text = value[partGraphId].label + '\n' + percent.toFixed(2) + '%';
       const font = '12px Arial';
       ctx.shadowBlur = 0;
       ctx.shadowOffsetX = 0;
@@ -178,12 +185,15 @@ export class PieChartComponent implements OnInit {
   ) {
     const ctx = this.context;
     if (ctx) {
+      const allText = text.split('\n');
       ctx.font = font;
-      const textWidth = ctx.measureText(text).width;
-      const xPos = centerX - textWidth / 2;
-      const yPos = centerY;
       ctx.fillStyle = color;
-      ctx.fillText(text, xPos, yPos);
+      allText.forEach((txt, index) => {
+        const medidaTexto = ctx.measureText(txt);
+        const textWidth = medidaTexto.width;
+        const xPos = centerX - textWidth / 2; //Adjust to center horizontally
+        ctx.fillText(txt, xPos, centerY - (txt.length - 1) / 2 + index * 15);
+      });
     }
   }
 
