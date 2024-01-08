@@ -1,6 +1,6 @@
 {
   "name": "ngx-ui-jbisbal",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
@@ -29,6 +29,7 @@
     "expansion panel",
     "grid",
     "switch",
+    "pie chart",
     "tabs",
     "tags",
     "timeline"
