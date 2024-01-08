@@ -1,0 +1,26 @@
+.ngx-pie-chart {
+  display: inline-flex;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.35rem;
+  cursor: pointer;
+}
+
+.legend-color {
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 50%;
+}
+
+.legend-label {
+  font-size: 0.875rem;
+}

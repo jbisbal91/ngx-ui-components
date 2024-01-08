@@ -9,13 +9,16 @@ import {
   numberAttribute,
 } from '@angular/core';
 import { PieChart } from '../models';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'ngx-pie-chart',
   templateUrl: './pie-chart.component.html',
   standalone: true,
-  imports: [NgForOf],
+  host: {
+    class: 'ngx-pie-chart',
+  },
+  imports: [NgForOf, NgStyle],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PieChartComponent implements OnInit {
@@ -26,6 +29,7 @@ export class PieChartComponent implements OnInit {
   @Input() height = 300;
   @Input() value: PieChart[] = [];
   @Input({ transform: numberAttribute }) ngxGutter: number = 0;
+
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
@@ -47,6 +51,15 @@ export class PieChartComponent implements OnInit {
 
       this.cdr.detectChanges();
     });
+  }
+
+  mouseenter(val: PieChart) {
+    const partChartId = this.value.findIndex((v) => v === val);
+    this.drawPieChart(this.value, partChartId);
+  }
+
+  mouseleave() {
+    this.drawPieChart(this.value, -1); 
   }
 
   /**

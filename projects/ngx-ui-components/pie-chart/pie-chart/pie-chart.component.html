@@ -1,1 +1,12 @@
 <canvas #pieChartCanvas [width]="width" [height]="height"></canvas>
+<div>
+  <div class="legend-item" *ngFor="let val of value"
+  (mouseenter)="mouseenter(val)" (mouseleave)="mouseleave()"
+  >
+    <div
+      class="legend-color"
+      [ngStyle]="{ 'background-color': val.color }"
+    ></div>
+    <p class="legend-label">{{ val.label }}</p>
+  </div>
+</div>
