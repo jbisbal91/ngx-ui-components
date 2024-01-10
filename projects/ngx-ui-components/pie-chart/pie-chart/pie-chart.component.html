@@ -1,7 +1,10 @@
 <canvas #pieChartCanvas [width]="width" [height]="height"></canvas>
 <div>
-  <div class="legend-item" *ngFor="let val of value"
-  (mouseenter)="mouseenter(val)" (mouseleave)="mouseleave()"
+  <div
+    class="legend-item"
+    *ngFor="let val of value"
+    (mouseenter)="mouseenter(val)"
+    (mouseleave)="mouseleave()"
   >
     <div
       class="legend-color"

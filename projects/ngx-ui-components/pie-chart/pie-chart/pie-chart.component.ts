@@ -13,12 +13,16 @@ import {
 import { PieChart } from '../models';
 import { NgForOf, NgStyle } from '@angular/common';
 
+export type NgxPosition = 'bottom' | 'left' | 'right';
+
 @Component({
   selector: 'ngx-pie-chart',
   templateUrl: './pie-chart.component.html',
   standalone: true,
   host: {
     class: 'ngx-pie-chart',
+    '[class.ngx-pie-chart-position-right]': `ngxPosition === 'right'`,
+    '[class.ngx-pie-chart-position-bottom]': `ngxPosition === 'bottom'`,
   },
   imports: [NgForOf, NgStyle],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,6 +34,7 @@ export class PieChartComponent implements OnInit {
   @Input() width = 300;
   @Input() height = 300;
   @Input() value: PieChart[] = [];
+  @Input() ngxPosition: string = 'right';
   @Input({ transform: numberAttribute }) ngxGutter: number = 0;
 
   @Output() partChartIndex = new EventEmitter<number>();
@@ -81,8 +86,7 @@ export class PieChartComponent implements OnInit {
       ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
       const centerX = canvasEl.width / 2;
       const centerY = canvasEl.height / 2;
-      const defaultRadius = Math.min(canvasEl.width, canvasEl.height) / 2 - 10;
-      const increasedRadius = defaultRadius + defaultRadius * 0.06; // Increase radius for portion
+      const radius = Math.min(canvasEl.width, canvasEl.height) / 2 - 10;
       const total = this.value.reduce(
         (total, currentValue) => total + currentValue.value,
         0
@@ -91,35 +95,32 @@ export class PieChartComponent implements OnInit {
       for (let i = 0; i < value.length; ++i) {
         const percent = value[i].value / total;
         const angle = Math.PI * 2 * percent;
+        const _radius =
+          partGraphId !== -1 && partGraphId === i ? radius * 1.065 : radius;
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
-        // Use the increased radius for the specific portion
-        const radius =
-          partGraphId !== -1 && partGraphId === i
-            ? increasedRadius
-            : defaultRadius;
-        ctx.arc(centerX, centerY, radius, initAngle, initAngle + angle);
+        ctx.arc(centerX, centerY, _radius, initAngle, initAngle + angle);
         ctx.closePath();
-        if (
-          partGraphId !== -1 &&
-          partGraphId === i &&
-          increasedRadius > defaultRadius
-        ) {
-          ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
-          ctx.shadowBlur = 6;
-        } else {
-          ctx.shadowBlur = 0;
-          ctx.shadowOffsetX = 0;
-          ctx.shadowOffsetY = 0;
-        }
         ctx.fillStyle = value[i].color;
+        this.setShadow(ctx, partGraphId, i);
         ctx.fill();
         initAngle += angle;
       }
-      this.drawRing(centerX, centerY, defaultRadius);
+      this.drawRing(centerX, centerY, radius);
       this.buildCenteredText(value, total, partGraphId, centerX, centerY);
     } else {
       console.error('Null 2D context.');
+    }
+  }
+
+  setShadow(ctx: CanvasRenderingContext2D, partGraphId: number, index: number) {
+    if (ctx && partGraphId !== -1 && partGraphId === index) {
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+      ctx.shadowBlur = 6;
+    } else {
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
     }
   }
 
@@ -140,7 +141,7 @@ export class PieChartComponent implements OnInit {
     if (ctx && partGraphId !== -1 && this.ngxGutter > 0 && this.ngxGutter < 1) {
       const percent = (value[partGraphId].value / total) * 100;
       const text = value[partGraphId].label + '\n' + percent.toFixed(2) + '%';
-      const font = '12px Arial';
+      const font = `14px Arial`;
       ctx.shadowBlur = 0;
       ctx.shadowOffsetX = 0;
       ctx.shadowOffsetY = 0;
@@ -189,8 +190,8 @@ export class PieChartComponent implements OnInit {
       ctx.font = font;
       ctx.fillStyle = color;
       allText.forEach((txt, index) => {
-        const medidaTexto = ctx.measureText(txt);
-        const textWidth = medidaTexto.width;
+        const textLength = ctx.measureText(txt);
+        const textWidth = textLength.width;
         const xPos = centerX - textWidth / 2; //Adjust to center horizontally
         ctx.fillText(txt, xPos, centerY - (txt.length - 1) / 2 + index * 15);
       });

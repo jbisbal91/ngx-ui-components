@@ -1,8 +1,15 @@
 .ngx-pie-chart {
-  display: inline-flex;
   max-width: -moz-fit-content;
   max-width: fit-content;
   align-items: center;
+}
+
+.ngx-pie-chart.ngx-pie-chart-position-right {
+  display: inline-flex !important;
+}
+
+.ngx-pie-chart.ngx-pie-chart-position-bottom {
+  display: inline-block !important;
 }
 
 .ngx-pie-chart .legend-item {

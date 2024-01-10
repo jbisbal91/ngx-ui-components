@@ -22,7 +22,8 @@ import { SwitchModule } from 'ngx-ui-jbisbal/switch';
 import { TabModule } from 'ngx-ui-jbisbal/tab';
 import { TagModule } from 'ngx-ui-jbisbal/tag';
 import { TimelineModule } from 'ngx-ui-jbisbal/timeline';
-import { PieChartModule } from 'ngx-ui-jbisbal/pie-chart';
+//import { PieChartModule } from 'ngx-ui-jbisbal/pie-chart';
+
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';
@@ -65,6 +66,7 @@ import { TimelineDemo1Component } from './demos/timeline/timeline-demo1/timeline
 import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.component';
 import { PieChartDocsComponent } from './docs/pie-chart-docs/pie-chart-docs.component';
 import { PieChartDemo1Component } from './demos/pie-chart/pie-chart-demo1/pie-chart-demo1.component';
+import { PieChartModule } from 'projects/ngx-ui-components/pie-chart';
 
 export function getHighlightLanguages() {
   return {
