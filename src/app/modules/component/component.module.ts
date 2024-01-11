@@ -11,18 +11,18 @@ import {
 
 import { ComponentRoutingModule } from './component-routing.module';
 
-import { BadgeModule } from 'ngx-ui-jbisbal/badge';
-import { ButtonModule } from 'ngx-ui-jbisbal/button';
-import { CardModule } from 'ngx-ui-jbisbal/card';
-import { CarouselModule } from 'ngx-ui-jbisbal/carousel';
-import { DialogModule } from 'ngx-ui-jbisbal/dialog';
-import { DividerModule } from 'ngx-ui-jbisbal/divider';
-import { ExpansionPanelModule } from 'ngx-ui-jbisbal/expansion-panel';
-import { SwitchModule } from 'ngx-ui-jbisbal/switch';
-import { TabModule } from 'ngx-ui-jbisbal/tab';
-import { TagModule } from 'ngx-ui-jbisbal/tag';
-import { TimelineModule } from 'ngx-ui-jbisbal/timeline';
-//import { PieChartModule } from 'ngx-ui-jbisbal/pie-chart';
+import { BadgeModule } from 'ngx-eagle/badge';
+import { ButtonModule } from 'ngx-eagle/button';
+import { CardModule } from 'ngx-eagle/card';
+import { CarouselModule } from 'ngx-eagle/carousel';
+import { DialogModule } from 'ngx-eagle/dialog';
+import { DividerModule } from 'ngx-eagle/divider';
+import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
+import { SwitchModule } from 'ngx-eagle/switch';
+import { TabModule } from 'ngx-eagle/tab';
+import { TagModule } from 'ngx-eagle/tag';
+import { TimelineModule } from 'ngx-eagle/timeline';
+//import { PieChartModule } from 'ngx-eagle/pie-chart';
 
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
@@ -59,15 +59,15 @@ import { GridDocsComponent } from './docs/grid-docs/grid-docs.component';
 import { GridDemo1Component } from './demos/grid/grid-demo1/grid-demo1.component';
 import { GridDemo2Component } from './demos/grid/grid-demo2/grid-demo2.component';
 import { GridDemo3Component } from './demos/grid/grid-demo3/grid-demo3.component';
-import { GridModule } from 'projects/ngx-ui-components/grid/grid.module';
+import { GridModule } from 'projects/ngx-eagle/grid/grid.module';
 import { GridDemo4Component } from './demos/grid/grid-demo4/grid-demo4.component';
 import { DialogRef1Component } from './demos/dialog/dialog-ref1/dialog-ref1.component';
 import { TimelineDemo1Component } from './demos/timeline/timeline-demo1/timeline-demo1.component';
 import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.component';
 import { PieChartDocsComponent } from './docs/pie-chart-docs/pie-chart-docs.component';
 import { PieChartDemo1Component } from './demos/pie-chart/pie-chart-demo1/pie-chart-demo1.component';
-import { PieChartModule } from 'projects/ngx-ui-components/pie-chart';
-import { LineChartModule } from 'projects/ngx-ui-components/line-chart';
+import { PieChartModule } from 'projects/ngx-eagle/pie-chart';
+import { LineChartModule } from 'projects/ngx-eagle/line-chart';
 import { LineChartDemo1Component } from './demos/line-chart/line-chart-demo1/line-chart-demo1.component';
 import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
 

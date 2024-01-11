@@ -19,7 +19,7 @@ export class GuidesComponent implements OnInit {
 <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">import</span> { AppRoutingModule } from <span class="hljs-string" style="color: rgb(221, 17, 68);">'./app-routing.module'</span>;
 <span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">import</span> { AppComponent } from <span class="hljs-string" style="color: rgb(221, 17, 68);">'./app.component'</span>;
 
-<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">import</span> {TabModule} from <span class="hljs-string" style="color: rgb(221, 17, 68);">'ngx-ui-components'</span>;
+<span class="hljs-keyword" style="color: rgb(51, 51, 51); font-weight: 700;">import</span> {TabModule} from <span class="hljs-string" style="color: rgb(221, 17, 68);">'ngx-eagle'</span>;
 
 
 @NgModule({
@@ -45,7 +45,7 @@ export class GuidesComponent implements OnInit {
    ],
    <span class="hljs-attr">"styles"</span>: [
       <span class="hljs-string" style="color: rgb(221, 17, 68);">"src/styles.scss"</span>,
-      <span class="hljs-string" style="color: rgb(221, 17, 68);">"node_modules/ngx-ui-components/src/lib/assets/styles/main.scss"</span>
+      <span class="hljs-string" style="color: rgb(221, 17, 68);">"node_modules/ngx-eagle/src/lib/assets/styles/main.scss"</span>
     ]
 }`;
 

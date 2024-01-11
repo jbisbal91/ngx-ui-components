@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgxDialog } from 'ngx-ui-jbisbal/dialog';
+import { NgxDialog } from 'ngx-eagle/dialog';
 
 
 @Component({

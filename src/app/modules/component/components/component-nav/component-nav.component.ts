@@ -47,7 +47,7 @@ export class ComponentNavComponent {
       { path: '/components/input', title: 'Input' },
       { path: '/components/list', title: 'List' },
       { path: '/components/menu', title: 'Menu' },
-      { path: '/components/paginator', title: 'Paginator' },      
+      { path: '/components/paginator', title: 'Paginator' },
       { path: '/components/line-chart', title: 'Line Chart' },
       { path: '/components/pie-chart', title: 'Pie Chart' },
       { path: '/components/progress-bar', title: 'Progress bar' },

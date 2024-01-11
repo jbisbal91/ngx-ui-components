@@ -12,8 +12,8 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
-      "ngx-ui-components": [
-        "dist/ngx-ui-components"
+      "ngx-eagle": [
+        "dist/ngx-eagle"
       ]
     },
     "declaration": false,

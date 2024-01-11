@@ -1,5 +1,5 @@
 {
-  "name": "ngx-ui-jbisbal",
+  "name": "ngx-eagle",
   "version": "0.1.5",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
@@ -33,6 +33,5 @@
     "tabs",
     "tags",
     "timeline"
-  ],
-  "homepage": "https://jbisbal91.github.io/ngx-ui"
+  ]
 }

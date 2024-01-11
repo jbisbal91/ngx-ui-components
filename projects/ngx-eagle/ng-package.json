@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/ngx-ui-components",
+  "dest": "../../dist/ngx-eagle",
   "lib": {
     "entryFile": "./public_api.ts"
   },
@@ -8,6 +8,6 @@
     "./**/style/**",
     "./**/theme/**",
     "./theme/**",
-    "./ngx-ui-components.min.scss"
+    "./ngx-eagle.min.scss"
   ]
 }

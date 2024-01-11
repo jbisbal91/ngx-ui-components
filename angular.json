@@ -26,7 +26,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.scss",
-              "projects/ngx-ui-components/ngx-ui-components.min.scss"
+              "projects/ngx-eagle/ngx-eagle.min.scss"
             ],
             "scripts": []
           },
@@ -88,23 +88,23 @@
         }
       }
     },
-    "ngx-ui-components": {
+    "ngx-eagle": {
       "projectType": "library",
-      "root": "projects/ngx-ui-components",
-      "sourceRoot": "projects/ngx-ui-components/src",
+      "root": "projects/ngx-eagle",
+      "sourceRoot": "projects/ngx-eagle/src",
       "prefix": "ngx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ngx-ui-components/ng-package.json"
+            "project": "projects/ngx-eagle/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-ui-components/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-eagle/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ngx-ui-components/tsconfig.lib.json"
+              "tsConfig": "projects/ngx-eagle/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -112,7 +112,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/ngx-ui-components/tsconfig.spec.json",
+            "tsConfig": "projects/ngx-eagle/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"]
           }
         }

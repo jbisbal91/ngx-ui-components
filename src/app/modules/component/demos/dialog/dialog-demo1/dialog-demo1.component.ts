@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-//import { NgxDialog } from 'projects/ngx-ui-components/dialog';
+//import { NgxDialog } from 'projects/ngx-eagle/dialog';
 import { DialogRef1Component } from '../dialog-ref1/dialog-ref1.component';
-import { NgxDialog } from 'ngx-ui-jbisbal/dialog';
+import { NgxDialog } from 'ngx-eagle/dialog';
 
 @Component({
   selector: 'app-dialog-demo1',
