@@ -67,6 +67,9 @@ import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.compon
 import { PieChartDocsComponent } from './docs/pie-chart-docs/pie-chart-docs.component';
 import { PieChartDemo1Component } from './demos/pie-chart/pie-chart-demo1/pie-chart-demo1.component';
 import { PieChartModule } from 'projects/ngx-ui-components/pie-chart';
+import { LineChartModule } from 'projects/ngx-ui-components/line-chart';
+import { LineChartDemo1Component } from './demos/line-chart/line-chart-demo1/line-chart-demo1.component';
+import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
 
 export function getHighlightLanguages() {
   return {
@@ -116,6 +119,8 @@ const components = [
   TabDemo3Component,
   TimelineDocsComponent,
   TimelineDemo1Component,
+  LineChartDocsComponent,
+  LineChartDemo1Component
 ];
 
 @NgModule({
@@ -136,6 +141,7 @@ const components = [
     ExpansionPanelModule,
     GridModule,
     PieChartModule,
+    LineChartModule,
     SwitchModule,
     TabModule,
     TagModule,
