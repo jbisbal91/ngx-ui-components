@@ -20,7 +20,7 @@ import { DividerModule } from 'ngx-eagle/divider';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
 import { SwitchModule } from 'ngx-eagle/switch';
 import { TabModule } from 'ngx-eagle/tab';
-//import { TagModule } from 'ngx-eagle/tag';
+import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
 import { PieChartModule } from 'ngx-eagle/pie-chart';
 
@@ -68,8 +68,6 @@ import { PieChartDemo1Component } from './demos/pie-chart/pie-chart-demo1/pie-ch
 import { LineChartModule } from 'projects/ngx-eagle/line-chart';
 import { LineChartDemo1Component } from './demos/line-chart/line-chart-demo1/line-chart-demo1.component';
 import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
-import { TagModule } from 'projects/ngx-eagle/tag';
-
 
 export function getHighlightLanguages() {
   return {
@@ -120,7 +118,7 @@ const components = [
   TimelineDocsComponent,
   TimelineDemo1Component,
   LineChartDocsComponent,
-  LineChartDemo1Component
+  LineChartDemo1Component,
 ];
 
 @NgModule({

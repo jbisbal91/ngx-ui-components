@@ -12,7 +12,7 @@ import { NgxTimelineMode } from '../typings';
 
 @Component({
   selector: 'ngx-timeline',
-  templateUrl: './timeline.component.html',
+  template: `<ng-content></ng-content>`,
   standalone: true,
   imports: [NgForOf],
   changeDetection: ChangeDetectionStrategy.OnPush,

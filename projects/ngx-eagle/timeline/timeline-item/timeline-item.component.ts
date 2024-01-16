@@ -4,7 +4,26 @@ import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'ngx-timeline-item',
-  templateUrl: './timeline-item.component.html',
+  template: `
+    <div class="ngx-timeline-item">
+      <div class="timeline">
+        <div
+          class="ngx-timeline-item-head"
+          [class.ngx-timeline-item-head-blue]="ngxColor === 'blue'"
+          [class.ngx-timeline-item-head-red]="ngxColor === 'red'"
+          [class.ngx-timeline-item-head-green]="ngxColor === 'green'"
+          [class.ngx-timeline-item-head-gray]="ngxColor === 'gray'"
+          [class.ngx-timeline-item-head-grey]="ngxColor === 'grey'"
+        ></div>
+        <div class="ngx-timeline-item-tail"></div>
+        <div class="ngx-timeline-arrow" *ngIf="!last"></div>
+        <div class="ngx-timeline-end" *ngIf="last"></div>
+      </div>
+      <div class="ngx-timeline-item-content">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  `,
   host: {
     class: 'timeline-item',
   },
