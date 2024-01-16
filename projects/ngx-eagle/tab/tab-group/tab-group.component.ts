@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
 import { Tab } from '../tab/tab.interface';
+import { NgForOf, NgIf } from '@angular/common';
 
 export type NgxTabPosition = 'top' | 'left' | 'right';
 export type NgxAlignTabs = 'start' | 'end' | 'center';
@@ -17,7 +18,58 @@ export type NgxMode = 'default' | 'closeable';
 
 @Component({
   selector: 'ngx-tab-group',
-  templateUrl: './tab-group.component.html',
+  template: `
+    <ul
+      [class.ngx-tab-group-start]="ngxAlignTabs === 'start'"
+      [class.ngx-tab-group-end]="ngxAlignTabs === 'end'"
+      [class.ngx-tab-group-center]="ngxAlignTabs === 'center'"
+      [class.ngx-tab-position-top]="ngxTabPosition === 'top'"
+      [class.ngx-tab-position-left]="ngxTabPosition === 'left'"
+      [class.ngx-tab-position-right]="ngxTabPosition === 'right'"
+      *ngIf="tabs.length > 0"
+    >
+      <li
+        [class.ngx-tab-position-top]="ngxTabPosition === 'top'"
+        [class.ngx-tab-position-left]="ngxTabPosition === 'left'"
+        [class.ngx-tab-position-right]="ngxTabPosition === 'right'"
+        *ngFor="let tab of tabs"
+        [class.active]="tab.isActive"
+        [class.disabled]="tab.disabled"
+        (click)="selectTab(tab)"
+      >
+        <span
+          [class.ml-4]="ngxTabPosition === 'left'"
+          [class.mr-2]="ngxTabPosition === 'left'"
+          [class.ml-2]="ngxTabPosition === 'right'"
+          >{{ tab.label }}</span
+        >
+
+        <svg
+          class="ngx-tab-close"
+          [class.ngx-tab-position-left]="ngxTabPosition === 'left'"
+          [class.ngx-tab-position-right]="ngxTabPosition === 'right'"
+          *ngIf="ngxMode === 'closeable'"
+          (click)="closeTab(tab)"
+          xmlns="http://www.w3.org/2000/svg"
+          height="1em"
+          viewBox="0 -960 960 960"
+          width="1em"
+        >
+          <path
+            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+          />
+        </svg>
+      </li>
+    </ul>
+
+    <div
+      class="mt-2"
+      [class.ml-4]="ngxTabPosition === 'left'"
+      [class.mr-4]="ngxTabPosition === 'right'"
+    >
+      <ng-content></ng-content>
+    </div>
+  `,
   host: {
     class: 'ngx-tab-group',
     '[class.ngx-tab-position-top]': `ngxTabPosition === 'top'`,
@@ -25,6 +77,8 @@ export type NgxMode = 'default' | 'closeable';
     '[class.ngx-tab-position-right]': `ngxTabPosition === 'right'`,
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgForOf,NgIf],
 })
 export class TabGroupComponent implements OnInit {
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;

@@ -1,9 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Tab } from './tab.interface';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'ngx-tab',
-  templateUrl: './tab.component.html',
+  template: `
+    <div [id]="id" *ngIf="isActive">
+      <ng-content></ng-content>
+    </div>
+  `,
+  standalone: true,
+  imports: [NgIf],
 })
 export class TabComponent implements Tab, OnInit {
   public id: string = '';

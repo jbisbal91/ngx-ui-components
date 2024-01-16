@@ -17,12 +17,12 @@ import { CardModule } from 'ngx-eagle/card';
 import { CarouselModule } from 'ngx-eagle/carousel';
 import { DialogModule } from 'ngx-eagle/dialog';
 import { DividerModule } from 'ngx-eagle/divider';
-//import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
-//import { SwitchModule } from 'ngx-eagle/switch';
+import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
+import { SwitchModule } from 'ngx-eagle/switch';
 import { TabModule } from 'ngx-eagle/tab';
-import { TagModule } from 'ngx-eagle/tag';
+//import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
-//import { PieChartModule } from 'ngx-eagle/pie-chart';
+import { PieChartModule } from 'ngx-eagle/pie-chart';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';
@@ -65,15 +65,10 @@ import { TimelineDemo1Component } from './demos/timeline/timeline-demo1/timeline
 import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.component';
 import { PieChartDocsComponent } from './docs/pie-chart-docs/pie-chart-docs.component';
 import { PieChartDemo1Component } from './demos/pie-chart/pie-chart-demo1/pie-chart-demo1.component';
-import { PieChartModule } from 'projects/ngx-eagle/pie-chart';
 import { LineChartModule } from 'projects/ngx-eagle/line-chart';
 import { LineChartDemo1Component } from './demos/line-chart/line-chart-demo1/line-chart-demo1.component';
 import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
-import { ExpansionPanelModule } from 'projects/ngx-eagle/expansion-panel';
-import { SwitchModule } from 'projects/ngx-eagle/switch';
-
-
-
+import { TagModule } from 'projects/ngx-eagle/tag';
 
 
 export function getHighlightLanguages() {
