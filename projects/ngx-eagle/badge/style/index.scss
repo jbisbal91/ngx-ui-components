@@ -27,9 +27,6 @@
   padding-left: 0.3rem;
   padding-right: 0.3rem;
   border-radius: 10px;
-  &.ngx-badge-before {
-    left: -1rem;
-  }
 }
 
 .ngx-badge-medium {
@@ -42,9 +39,6 @@
   padding-left: 0.3rem;
   padding-right: 0.3rem;
   border-radius: 20px;
-  &.ngx-badge-before {
-    left: -1.5rem;
-  }
 }
 
 .ngx-badge-large {
@@ -57,9 +51,18 @@
   padding-left: 0.3rem;
   padding-right: 0.3rem;
   border-radius: 30px;
-  &.ngx-badge-before {
-    left: -2.25rem;
-  }
+}
+
+.ngx-badge-small.ngx-badge-before {
+  left: -1rem;
+}
+
+.ngx-badge-medium.ngx-badge-before {
+  left: -1.5rem;
+}
+
+.ngx-badge-large.ngx-badge-before {
+  left: -2.25rem;
 }
 
 .ngx-badge-btn {

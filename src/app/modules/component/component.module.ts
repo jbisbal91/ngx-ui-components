@@ -14,7 +14,7 @@ import { ComponentRoutingModule } from './component-routing.module';
 import { BadgeModule } from 'ngx-eagle/badge';
 import { ButtonModule } from 'ngx-eagle/button';
 import { CardModule } from 'ngx-eagle/card';
-import { CarouselModule } from 'ngx-eagle/carousel';
+//import { CarouselModule } from 'ngx-eagle/carousel';
 import { DialogModule } from 'ngx-eagle/dialog';
 import { DividerModule } from 'ngx-eagle/divider';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
@@ -23,7 +23,6 @@ import { TabModule } from 'ngx-eagle/tab';
 import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
 //import { PieChartModule } from 'ngx-eagle/pie-chart';
-
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';
@@ -70,6 +69,7 @@ import { PieChartModule } from 'projects/ngx-eagle/pie-chart';
 import { LineChartModule } from 'projects/ngx-eagle/line-chart';
 import { LineChartDemo1Component } from './demos/line-chart/line-chart-demo1/line-chart-demo1.component';
 import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
+import { CarouselModule } from 'projects/ngx-eagle/carousel';
 
 export function getHighlightLanguages() {
   return {

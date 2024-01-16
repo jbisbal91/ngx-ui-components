@@ -3,8 +3,15 @@ import { Carousel } from '../carousel.interface';
 
 @Component({
   selector: 'ngx-carousel-item',
-  templateUrl: './carousel-item.component.html',
-  styleUrls: ['./carousel-item.component.scss'],
+  template: `
+    <div class="ngx-carousel-item" [id]="id">
+      <ng-content></ng-content>
+    </div>
+  `,
+  host: {
+    class: 'ngx-carousel-item',
+  },
+  standalone: true,
 })
 export class CarouselItemComponent implements Carousel, OnInit {
   public id: string = '';

@@ -13,7 +13,7 @@ import {
   host: {
     class: 'ngx-badge',
   },
-  standalone: true
+  standalone: true,
 })
 export class BadgeDirective implements OnInit, OnChanges {
   @Input() ngxBadge: any;

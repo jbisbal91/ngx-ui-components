@@ -9,12 +9,37 @@ import {
   booleanAttribute,
 } from '@angular/core';
 import { CarouselItemComponent } from './carousel-item/carousel-item.component';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'ngx-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss'],
+  template: `
+    <div class="ngx-carousel">
+      <div class="slick-initialized slick-slider">
+        <div class="slick-list">
+          <div class="slick-track">
+            <ng-content></ng-content>
+          </div>
+        </div>
+
+        <ul class="slick-list slick-dots slick-dots-bottom">
+          <li
+            [class.slick-active]="carouselItem.isActive"
+            *ngFor="let carouselItem of carouselItems"
+            (click)="onClick(carouselItem)"
+          >
+            <button>{{ carouselItem.id }}</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'ngx-carousel',
+  },
+  standalone: true,
+  imports: [NgForOf],
 })
 export class CarouselComponent implements AfterContentInit {
   @ContentChildren(CarouselItemComponent)
