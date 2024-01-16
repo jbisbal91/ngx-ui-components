@@ -9,8 +9,8 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'ngx-accordion',
-  templateUrl: './accordion.component.html',
-  styleUrls: ['./accordion.component.scss'],
+  template: `<ng-content></ng-content>`,
+  standalone:true
 })
 export class AccordionComponent implements OnDestroy {
   @ContentChildren(ExpansionPanelComponent)

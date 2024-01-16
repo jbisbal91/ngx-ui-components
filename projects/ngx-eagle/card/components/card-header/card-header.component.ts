@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'ngx-card-header',
-  templateUrl: './card-header.component.html',
+  template: `<ng-content></ng-content>`,
   host: {
     class: 'ngx-card-header',
   },

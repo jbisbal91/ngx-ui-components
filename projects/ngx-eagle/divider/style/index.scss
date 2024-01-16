@@ -1,4 +1,4 @@
-:host {
+.ngx-divider {
   display: flex;
   color: #6b727c;
   font-weight: 500;
@@ -22,7 +22,7 @@
   }
 }
 
-span {
+.ngx-divider span {
   font-size: 1rem;
   line-height: 1.5rem;
   padding-left: 0.625rem;
