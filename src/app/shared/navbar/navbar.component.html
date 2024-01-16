@@ -1,16 +1,43 @@
-<nav
-  class="z-50 h-14 docs-nav-layout flex items-center gap-1_5 w-full fixed text-white bg-blue-900 pl-5 shadow-lg"
->
-  <button
-    class="bg-transparent border-0 h-10 flex items-center text-white cursor-pointer rounded text-base gap-2"
-    (click)="goHome()"
-  >
-    <img
-      draggable="false"
-      class="w-8 h-8"
-      alt="logo"
-      src="assets/img/homepage/angular-white-transparent.svg"
-    />
-    Angular Components
-  </button>
+<nav class="justify-between">
+  <ul class="flex items-center list-none gap-10">
+    <li #logo (click)="navigateByUrl('overview')">
+      <img class="logo" draggable="false" src="assets/images/favicon.png" alt="logo"/>
+      <strong>NGX-EAGLE</strong>
+    </li>
+    <li class="li-item"
+      [class.selected]="checkActivatedRoute('/components')"
+      (click)="navigateByUrl('components/basic')"
+    >
+      Components
+    </li>
+  </ul>
+
+  <ul class="flex items-center list-none gap-10">
+    <li class="flex items-center cursor-pointer" (click)="setTheme()">
+      <img
+        class="theme-img"
+        draggable="false"
+        [src]="
+          theme === 'light'
+            ? 'assets/icons/icon-dark-mode.svg'
+            : 'assets/icons/icon-light-mode.svg'
+        "
+        [alt]="theme === 'light' ? 'icon-dark-mode' : 'icon-light-mode'"
+      />
+    </li>
+    <li>
+      <a
+        class="flex items-center gap-2"
+        href="https://github.com/jbisbal91/ngx-ui"
+        target="_blank"
+        ><img
+          draggable="false"
+          src="assets/icons/icon-github-w.svg"
+          alt="icon-github"
+        />
+        GitHub</a
+      >
+    </li>
+  </ul>
 </nav>
+
