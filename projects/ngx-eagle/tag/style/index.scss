@@ -1,60 +1,59 @@
 .ngx-tag {
-    box-sizing: border-box;
-    margin: 0 0.5rem 0.5rem 0;
-    font-size: 0.875rem;
-    line-height: 1.5715;
-    list-style: none;
-    font-feature-settings: "tnum";
-    display: inline-flex;
-    align-items: center;
-    height: auto;
-    padding: 0 0.4375rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    white-space: nowrap;
-    border: 1px solid #d9d9d9;
-    border-radius: 2px;
-    opacity: 1;
-    transition: all 0.3s;
+  box-sizing: border-box;
+  margin: 0 0.5rem 0.5rem 0;
+  font-size: 0.875rem;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: "tnum";
+  display: inline-flex;
+  align-items: center;
+  height: auto;
+  padding: 0 0.4375rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  white-space: nowrap;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.ngx-tag .ngx-tag-close {
+  margin-left: 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ngx-tag .ngx-tag-icon-sync {
+  animation: loadingCircle 1s infinite linear;
+}
+
+@keyframes loadingCircle {
+  to {
+    transform: rotate(360deg);
   }
-  
-  .ngx-tag-close {
-    margin-left: 3px;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  
-  .ngx-tag-icon-sync {
-    animation: loadingCircle 1s infinite linear;
-  }
-  
-  @keyframes loadingCircle {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .ngx-tag-has-color {
-    border-color: transparent;
-  }
-  
-  .ngx-tag-has-color,
-  .ngx-tag-has-color a,
-  .ngx-tag-has-color a:hover,
-  .ngx-tag-has-color .ngx-tag-has-color {
-    color: #fff;
-  }
-  
-  .ngx-tag-sync,
-  .ngx-tag-checkable {
-    cursor: pointer;
-    border-color: transparent;
-    color: #1890ff;
-  }
-  
-  .ngx-tag-checkable:active,
-  .ngx-tag-checkable-checked {
-    color: #fff;
-    background-color: #1890ff !important;
-  }
-  
+}
+
+.ngx-tag .ngx-tag-has-color {
+  border-color: transparent;
+}
+
+.ngx-tag-has-color,
+.ngx-tag-has-color a,
+.ngx-tag-has-color a:hover,
+.ngx-tag-has-color .ngx-tag-has-color {
+  color: #fff;
+}
+
+.ngx-tag-sync,
+.ngx-tag-checkable {
+  cursor: pointer;
+  border-color: transparent;
+  color: #1890ff;
+}
+
+.ngx-tag-checkable:active,
+.ngx-tag-checkable-checked {
+  color: #fff;
+  background-color: #1890ff !important;
+}
