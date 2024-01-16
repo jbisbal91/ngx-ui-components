@@ -10,8 +10,17 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'ngx-switch',
-  templateUrl: './switch.component.html',
-  styleUrls: ['./switch.component.scss'],
+  template: `
+    <button
+      [disabled]="ngxDisabled"
+      class="ngx-switch"
+      [class.ngx-switch-checked]="isChecked"
+      (click)="toggle()"
+    >
+      <span class="ngx-switch-knob"></span>
+      <span class="ngx-switch-inner"></span>
+    </button>
+  `,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -20,6 +29,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'ngx-switch',
+  },
+  standalone: true,
 })
 export class SwitchComponent implements ControlValueAccessor, AfterContentInit {
   isChecked = false;

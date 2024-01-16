@@ -28,7 +28,7 @@
   user-select: none;
 }
 
-.ngx-switch-knob {
+.ngx-switch .ngx-switch-knob {
   position: absolute;
   top: 2px;
   left: 2px;
@@ -37,7 +37,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.ngx-switch-knob:before {
+.ngx-switch .ngx-switch-knob:before {
   position: absolute;
   inset: 0;
   background-color: #fff;
@@ -47,15 +47,15 @@
   content: "";
 }
 
-.ngx-switch-checked {
+.ngx-switch.ngx-switch-checked {
   background: #1890ff;
 }
 
-.ngx-switch-checked .ngx-switch-knob {
+.ngx-switch.ngx-switch-checked .ngx-switch-knob {
   left: calc(100% - 20px) !important;
 }
 
-.ngx-switch-inner {
+.ngx-switch .ngx-switch-inner {
   display: block;
   margin: 0 7px 0 25px;
   color: #fff;

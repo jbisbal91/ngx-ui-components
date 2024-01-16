@@ -17,7 +17,23 @@ export type NgxPosition = 'bottom' | 'left' | 'right';
 
 @Component({
   selector: 'ngx-pie-chart',
-  templateUrl: './pie-chart.component.html',
+  template: `
+    <canvas #pieChartCanvas [width]="width" [height]="height"></canvas>
+    <div>
+      <div
+        class="legend-item"
+        *ngFor="let val of value"
+        (mouseenter)="mouseenter(val)"
+        (mouseleave)="mouseleave()"
+      >
+        <div
+          class="legend-color"
+          [ngStyle]="{ 'background-color': val.color }"
+        ></div>
+        <p class="legend-label">{{ val.label }}</p>
+      </div>
+    </div>
+  `,
   standalone: true,
   host: {
     class: 'ngx-pie-chart',

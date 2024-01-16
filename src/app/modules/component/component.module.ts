@@ -18,7 +18,7 @@ import { CarouselModule } from 'ngx-eagle/carousel';
 import { DialogModule } from 'ngx-eagle/dialog';
 import { DividerModule } from 'ngx-eagle/divider';
 //import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
-import { SwitchModule } from 'ngx-eagle/switch';
+//import { SwitchModule } from 'ngx-eagle/switch';
 import { TabModule } from 'ngx-eagle/tab';
 import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
@@ -70,6 +70,7 @@ import { LineChartModule } from 'projects/ngx-eagle/line-chart';
 import { LineChartDemo1Component } from './demos/line-chart/line-chart-demo1/line-chart-demo1.component';
 import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
 import { ExpansionPanelModule } from 'projects/ngx-eagle/expansion-panel';
+import { SwitchModule } from 'projects/ngx-eagle/switch';
 
 
 
