@@ -1,3 +1,19 @@
-.example-card {
+ngx-card {
   max-width: 400px;
+}
+
+div[ngx-card-avatar] {
+  background-color: #006847;
+  color: #ffffff;
+}
+
+img[ngx-card-image] {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+ngx-card-actions {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
 }
