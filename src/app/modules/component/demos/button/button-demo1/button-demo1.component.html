@@ -1,15 +1,33 @@
-<div class="flex gap-2">
-    <button ngx-button ngxType="primary">Primary Button</button>
-    <button ngx-button ngxType="default">Default Button</button>
-    <button ngx-button ngxType="dashed">Dashed Button</button>
-    <button ngx-button ngxType="text">Text Button</button>
-    <button ngx-button ngxType="link">Link Button</button>
+<div class="flex items-center mb-4">
+  <label for="size">SIZE:</label>
+  <select name="size" id="cars" [(ngModel)]="size">
+    <option value="small">small</option>
+    <option value="medium">medium</option>
+    <option value="large">large</option>
+  </select>
+
+  <label for="rounded">ROUNDED:</label>
+  <select name="rounded" id="rounded" [(ngModel)]="rounded">
+    <option value="small">small</option>
+    <option value="medium">medium</option>
+    <option value="large">large</option>
+    <option value="full">full</option>
+  </select>
+
+  <label for="fillMode">Fill Mode:</label>
+  <select name="fillMode" id="fillMode" [(ngModel)]="fillMode">
+    <option value="filled">filled</option>
+    <option value="outlined">outlined</option>
+    <option value="text">text</option>
+    <option value="elevated">elevated</option>
+  </select>
 </div>
 
-<div class="flex gap-2 mt-4">
-    <button ngx-button ngxType="primary" disabled>Primary Button (disabled)</button>
-    <button ngx-button ngxType="default" disabled>Default Button (disabled)</button>
-    <button ngx-button ngxType="dashed" disabled>Dashed Button (disabled)</button>
-    <button ngx-button ngxType="text" disabled>Text Button (disabled)</button>
-    <button ngx-button ngxType="link" disabled>Link Button (disabled)</button>
-</div>
+<button
+  ngx-button
+  [ngxSize]="size"
+  [ngxRounded]="rounded"
+  [ngxFillMode]="fillMode"
+>
+  Label
+</button>

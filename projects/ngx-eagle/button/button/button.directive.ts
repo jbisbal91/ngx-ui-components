@@ -1,20 +1,26 @@
 import { Directive, Input } from '@angular/core';
-
-export type NgxType = 'primary' | 'default' | 'dashed' | 'text' | 'link';
+import { NgxFillMode, NgxRounded, NgxSize } from '../typings';
 
 @Directive({
   selector: '[ngx-button]',
   host: {
     class: 'ngx-button',
-    '[class.ngx-button-primary]': 'ngxType === "primary"',
-    '[class.ngx-button-default]': 'ngxType === "default"',
-    '[class.ngx-button-dashed]': 'ngxType === "dashed"',
-    '[class.ngx-button-text]': 'ngxType === "text"',
-    '[class.ngx-button-link]': 'ngxType === "link"',
+    '[class.ngx-button-sm]': `ngxSize === 'small'`,
+    '[class.ngx-button-md]': `ngxSize === 'medium'`,
+    '[class.ngx-button-lg]': `ngxSize === 'large'`,
+    '[class.ngx-rounded-sm]': `ngxRounded === 'small'`,
+    '[class.ngx-rounded-md]': `ngxRounded === 'medium'`,
+    '[class.ngx-rounded-lg]': `ngxRounded === 'large'`,
+    '[class.ngx-rounded-full]': `ngxRounded === 'full'`,
+    '[class.ngx-button-filled]': `ngxFillMode === 'filled'`,
+    '[class.ngx-button-outlined]': `ngxFillMode === 'outlined'`,
+    '[class.ngx-button-text]': `ngxFillMode === 'text'`,
+    '[class.ngx-button-elevated]': `ngxFillMode === 'elevated'`,
   },
-  standalone:true
+  standalone: true,
 })
 export class ButtonDirective {
-  @Input() ngxType: NgxType = 'primary';
-  disabled: boolean = false;
+  @Input() ngxSize: NgxSize = 'medium';
+  @Input() ngxRounded: NgxRounded = 'medium';
+  @Input() ngxFillMode: NgxFillMode = 'elevated';
 }

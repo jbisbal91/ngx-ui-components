@@ -1,113 +1,99 @@
 .ngx-button {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  border-radius: 0.25rem;
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  color: inherit;
+  background: none;
+  font-family: inherit;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
-  border: 1px solid;
-}
-
-.ngx-button.ngx-block {
-  width: 100%;
+  outline: none;
+  -webkit-appearance: none;
+  position: relative;
+  transition: color 0.2s ease-in-out;
 }
 
 button:disabled {
-  pointer-events: none;
   opacity: 0.7;
+  cursor: default;
 }
 
-button:disabled .ngx-button-primary {
-  background-color: #8eb4a8;
+.ngx-button-sm {
+  padding-block: 0.125rem;
+  padding-inline: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4285714286;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  height: 1.5rem;
+}
+
+.ngx-button-md {
+  padding-block: 0.5rem;
+  padding-inline: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4285714286;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  height: 2.25rem;
+}
+
+.ngx-button-lg {
+  padding-block: 0.5rem;
+  padding-inline: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  height: 2.5rem;
+}
+
+.ngx-rounded-sm {
+  border-radius: 2px;
+}
+
+.ngx-rounded-md {
+  border-radius: 4px;
+}
+
+.ngx-rounded-lg {
+  border-radius: 6px;
+}
+
+.ngx-rounded-full {
+  border-radius: 9999px;
+}
+
+.ngx-button-filled {
   border: none;
+  background-color: var(--ngx-comp-button-filled-bg-color);
+  color: var(--ngx-comp-button-filled-color);
 }
 
-button:disabled .ngx-danger {
-  background-color: #ffc1c1;
+.ngx-button-outlined {
+  border-color: var(--ngx-comp-button-outlined-border-color);
+  color: var(--ngx-comp-button-outlined-color);
 }
 
-button:disabled .ngx-ghost {
-  border: 1px solid;
-  background-color: transparent;
-  color: #006847;
-}
-
-.ngx-button-primary {
-  background-color: #006847;
-  color: #ffffff;
+.ngx-button-text {
   border: none;
-  transition: opacity 0.4s ease-out;
-}
-
-.ngx-button-primary.ngx-danger {
-  background-color: #ff4d4f;
-}
-
-.ngx-button-primary.ngx-ghost {
-  border: 1px solid;
   background-color: transparent;
-  color: #006847;
+  color: var(--ngx-comp-button-text-color);
 }
 
-.ngx-button-primary:hover {
-  opacity: 0.75;
-}
-
-.ngx-button-default {
-  background-color: transparent;
-  transition: color 0.4s ease-out;
-  color: var(--ngx-button-default-color);
-}
-
-.ngx-button-default.ngx-ghost {
-  background-color: transparent;
-  color: #ffffff;
-}
-
-.ngx-button-dashed {
-  background-color: transparent;
-  border: 1px dashed;
-  color: var(--ngx-button-dashed-color);
-  transition: color 0.4s ease-out;
-}
-
-.ngx-button-dashed.ngx-ghost {
-  background-color: transparent;
-  color: #ffffff;
-}
-
-.ngx-button-text,
-.ngx-button-link {
-  background-color: transparent;
+.ngx-button-elevated {
   border: none;
-  color: var(--ngx-button-text-color);
-  transition: color 0.4s ease-out;
-}
-
-.ngx-button-default.ngx-danger,
-.ngx-button-dashed.ngx-danger,
-.ngx-button-text.ngx-danger,
-.ngx-button-link.ngx-danger {
-  color: #ff4d4f;
-}
-
-.ngx-button-default.ngx-danger:hover,
-.ngx-button-dashed.ngx-danger:hover,
-.ngx-button-text.ngx-danger:hover,
-.ngx-button-link.ngx-danger:hover {
-  color: #ff4d4f;
-}
-
-.ngx-button-text.ngx-ghost,
-.ngx-button-link.ngx-ghost {
-  color: #ffffff;
-}
-
-.ngx-button-default:hover,
-.ngx-button-dashed:hover,
-.ngx-button-text:hover,
-.ngx-button-link:hover,
-.ngx-button-default.ngx-ghost:hover,
-.ngx-button-dashed.ngx-ghost:hover,
-.ngx-button-text.ngx-ghost:hover,
-.ngx-button-link.ngx-ghost:hover {
-  color: #006847;
+  background-color: var(--ngx-comp-button-elevated-bg-color);
+  color: var(--ngx-comp-button-elevated-color);
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
 }

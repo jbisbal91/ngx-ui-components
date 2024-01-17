@@ -1,7 +1,7 @@
 :root[theme="dark"] {
-  --ngx-theme-background: rgb(31, 31, 31);
-  --ngx-theme-color: rgb(232, 234, 237);
-  --ngx-theme-bg-navbar: rgb(43, 43, 43);
+  --ngx-theme-background: rgb(20, 18, 24);
+  --ngx-theme-color: var(--md-sys-color-on-background-dark);
+  --ngx-theme-bg-navbar: rgb(20, 18, 24);
   --ngx-theme-bg-navbar-selected: rgb(51, 54, 56);
   --ngx-theme-bg-component-nav: rgb(43, 43, 43);
   --ngx-theme-color-component-nav: rgb(232, 234, 237);

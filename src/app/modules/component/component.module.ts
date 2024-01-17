@@ -12,7 +12,7 @@ import {
 import { ComponentRoutingModule } from './component-routing.module';
 
 import { BadgeModule } from 'ngx-eagle/badge';
-import { ButtonModule } from 'ngx-eagle/button';
+//import { ButtonModule } from 'ngx-eagle/button';
 import { CardModule } from 'ngx-eagle/card';
 import { CarouselModule } from 'ngx-eagle/carousel';
 import { DialogModule } from 'ngx-eagle/dialog';
@@ -68,6 +68,7 @@ import { PieChartDemo1Component } from './demos/pie-chart/pie-chart-demo1/pie-ch
 import { LineChartModule } from 'projects/ngx-eagle/line-chart';
 import { LineChartDemo1Component } from './demos/line-chart/line-chart-demo1/line-chart-demo1.component';
 import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
+import { ButtonModule } from 'projects/ngx-eagle/button';
 
 export function getHighlightLanguages() {
   return {
