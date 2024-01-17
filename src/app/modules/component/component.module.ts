@@ -33,9 +33,6 @@ import { BadgeDocsComponent } from './docs/badge-docs/badge-docs.component';
 import { BadgeDemo1Component } from './demos/badge/badge-demo1/badge-demo1.component';
 import { ButtonDocsComponent } from './docs/button-docs/button-docs.component';
 import { ButtonDemo1Component } from './demos/button/button-demo1/button-demo1.component';
-import { ButtonDemo2Component } from './demos/button/button-demo2/button-demo2.component';
-import { ButtonDemo3Component } from './demos/button/button-demo3/button-demo3.component';
-import { ButtonDemo4Component } from './demos/button/button-demo4/button-demo4.component';
 import { CardDocsComponent } from './docs/card-docs/card-docs.component';
 import { CardDemo1Component } from './demos/card/card-demo1/card-demo1.component';
 import { CarouselDocsComponent } from './docs/carousel-docs/carousel-docs.component';
@@ -87,9 +84,6 @@ const components = [
   BadgeDemo1Component,
   ButtonDocsComponent,
   ButtonDemo1Component,
-  ButtonDemo2Component,
-  ButtonDemo3Component,
-  ButtonDemo4Component,
   CardDocsComponent,
   CardDemo1Component,
   CarouselDocsComponent,
