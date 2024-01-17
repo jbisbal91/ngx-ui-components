@@ -1,5 +1,5 @@
 ngx-card {
-  max-width: 400px;
+  max-width: 360px;
 }
 
 div[ngx-card-avatar] {
@@ -14,6 +14,7 @@ img[ngx-card-image] {
 
 ngx-card-actions {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+  margin-top: 1rem;
   gap: 0.5rem;
 }
