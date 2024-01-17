@@ -14,6 +14,6 @@ img[ngx-card-image] {
 
 ngx-card-actions {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 0.5rem;
 }
