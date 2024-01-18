@@ -9,8 +9,7 @@
   max-width: max-content;
 }
 
-
-.ngx-form-field-sm>[ngx-input] {
+.ngx-form-field.ngx-form-field-sm>[ngx-input] {
   font-size: 0.875rem;
   line-height: 1.4285714286;
   padding-left: 0.5rem;
@@ -18,14 +17,14 @@
   height: 1.5rem;
 }
 
-.ngx-form-field-md>[ngx-input] {
+.ngx-form-field.ngx-form-field-md>[ngx-input] {
   font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   height: 2rem;
 }
 
-.ngx-form-field-lg>[ngx-input] {
+.ngx-form-field.ngx-form-field-lg>[ngx-input] {
   font-size: 1rem;
   line-height: 1.5;
   padding-left: 0.5rem;
@@ -33,37 +32,37 @@
   height: 2.5rem;
 }
 
-.ngx-rounded-sm {
+.ngx-form-field.ngx-rounded-sm {
   border-radius: 2px;
 }
 
-.ngx-rounded-md {
+.ngx-form-field.ngx-rounded-md {
   border-radius: 4px;
 }
 
-.ngx-rounded-lg {
+.ngx-form-field.ngx-rounded-lg {
   border-radius: 6px;
 }
 
-.ngx-rounded-full {
+.ngx-form-field.ngx-rounded-full {
   border-radius: 9999px;
 }
 
-.ngx-form-field-filled {
+.ngx-form-field.ngx-form-field-filled {
   border: none;
   background-color: var(--ngx-comp-form-field-filled-background-color);
   border-bottom: 2px solid;
 }
 
-.ngx-form-field-filled>[ngx-label] {
+.ngx-form-field.ngx-form-field-filled>[ngx-label] {
   margin-top: 0.25rem
 }
 
-.ngx-form-field-outlined {
+.ngx-form-field.ngx-form-field-outlined {
   border: 1px solid;
 }
 
-.ngx-form-field-outlined>[ngx-label] {
+.ngx-form-field.ngx-form-field-outlined>[ngx-label] {
   margin-top: -0.5rem;
   background: #fff;
 }
