@@ -1,5 +1,5 @@
 import { Directive, Input } from '@angular/core';
-import { NgxFillMode, NgxRounded, NgxSize } from '../typings';
+import { NgxFillMode, NgxRounded, NgxSize } from './typings';
 
 @Directive({
   selector: 'button[ngx-button]',

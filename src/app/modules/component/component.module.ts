@@ -69,6 +69,7 @@ import { ButtonModule } from 'projects/ngx-eagle/button';
 import { InputDemo1Component } from './demos/input/input-demo1/input-demo1.component';
 import { InputModule } from 'projects/ngx-eagle/input';
 import { InputDocsComponent } from './docs/input-docs/input-docs.component';
+import { FormFieldModule } from 'projects/ngx-eagle/form-field';
 
 export function getHighlightLanguages() {
   return {
@@ -144,7 +145,8 @@ const components = [
     TabModule,
     TagModule,
     TimelineModule,
-    InputModule
+    InputModule,
+    FormFieldModule
   ],
   providers: [
     {

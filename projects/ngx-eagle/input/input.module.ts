@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { InputDirective } from './input.directive';
+import { LabelDirective } from './label.directive';
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule],
+  exports: [InputDirective, LabelDirective],
+  imports: [InputDirective, LabelDirective],
 })
 export class InputModule {}
