@@ -2,7 +2,7 @@ import { Directive, Input } from '@angular/core';
 import { NgxFillMode, NgxRounded, NgxSize } from '../typings';
 
 @Directive({
-  selector: '[ngx-button]',
+  selector: 'button[ngx-button]',
   host: {
     class: 'ngx-button',
     '[class.ngx-button-sm]': `ngxSize === 'small'`,
