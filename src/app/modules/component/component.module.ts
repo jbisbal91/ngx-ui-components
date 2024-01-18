@@ -66,6 +66,9 @@ import { LineChartModule } from 'projects/ngx-eagle/line-chart';
 import { LineChartDemo1Component } from './demos/line-chart/line-chart-demo1/line-chart-demo1.component';
 import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
 import { ButtonModule } from 'projects/ngx-eagle/button';
+import { InputDemo1Component } from './demos/input/input-demo1/input-demo1.component';
+import { InputModule } from 'projects/ngx-eagle/input';
+import { InputDocsComponent } from './docs/input-docs/input-docs.component';
 
 export function getHighlightLanguages() {
   return {
@@ -114,6 +117,8 @@ const components = [
   TimelineDemo1Component,
   LineChartDocsComponent,
   LineChartDemo1Component,
+  InputDocsComponent,
+  InputDemo1Component
 ];
 
 @NgModule({
@@ -139,6 +144,7 @@ const components = [
     TabModule,
     TagModule,
     TimelineModule,
+    InputModule
   ],
   providers: [
     {
