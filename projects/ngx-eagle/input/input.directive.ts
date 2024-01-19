@@ -18,10 +18,9 @@ export class InputDirective implements OnInit, AfterViewInit {
   inputFocus = false;
   inputValue = '';
   labelNode: any;
-  //inputNode: any;
   placeholder: string = '';
 
-  constructor(public elementRef: ElementRef, private renderer2: Renderer2) {}
+  constructor(public elementRef: ElementRef) {}
 
   ngOnInit(): void {
     this.getLabelNode();
@@ -33,9 +32,6 @@ export class InputDirective implements OnInit, AfterViewInit {
       if (adjacentNodes[i].nodeName.toLowerCase() === 'label') {
         this.labelNode = adjacentNodes[i];
       }
-      if (adjacentNodes[i].nodeName.toLowerCase() === 'input') {
-        //this.inputNode = adjacentNodes[i];
-      }
     }
   }
 
@@ -46,12 +42,10 @@ export class InputDirective implements OnInit, AfterViewInit {
       this.positionLabel();
     });
     this.elementRef.nativeElement.addEventListener('focus', () => {
-      console.log('Se ha realizado el focus en el input');
       this.inputFocus = true;
       this.positionLabel();
     });
     this.elementRef.nativeElement.addEventListener('blur', () => {
-      console.log('Se ha quitado el focus del input');
       this.inputFocus = false;
       this.positionLabel();
     });
@@ -64,12 +58,10 @@ export class InputDirective implements OnInit, AfterViewInit {
 
   positionLabel() {
     if (this.inputFocus || this.inputValue !== '') {
-      console.log('label arriba');
       this.labelNode.style.transform = 'translateY(0px)';
       this.labelNode.style.transition = 'transform ease-in-out 0.125s';
       this.elementRef.nativeElement.placeholder = this.placeholder;
     } else {
-      console.log('label al centro');
       this.labelNode.style.transform = 'translateY(1rem)';
       this.labelNode.style.transition = 'transform ease-in-out 0.125s';
       this.elementRef.nativeElement.placeholder = '';
