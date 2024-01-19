@@ -2,56 +2,77 @@ import {
   AfterViewInit,
   Directive,
   ElementRef,
-  Input,
   OnInit,
   Renderer2,
 } from '@angular/core';
-
-import { InputService } from './service/input.service';
 
 @Directive({
   selector: 'input[ngx-input]',
   host: {
     class: 'ngx-input',
-    '[class.ngx-input-focus]': 'inputFocus',
     '(input)': 'onInputChange($event)',
   },
   standalone: true,
-  providers: [InputService],
 })
-export class InputDirective implements AfterViewInit {
+export class InputDirective implements OnInit, AfterViewInit {
   inputFocus = false;
   inputValue = '';
-  constructor(
-    public elementRef: ElementRef,
-    private renderer2: Renderer2,
-    private inputService: InputService
-  ) {}
+  labelNode: any;
+  //inputNode: any;
+  placeholder: string = '';
+
+  constructor(public elementRef: ElementRef, private renderer2: Renderer2) {}
+
+  ngOnInit(): void {
+    this.getLabelNode();
+  }
+
+  getLabelNode() {
+    const adjacentNodes = this.elementRef.nativeElement.parentElement.children;
+    for (let i = 0; i < adjacentNodes.length; ++i) {
+      if (adjacentNodes[i].nodeName.toLowerCase() === 'label') {
+        this.labelNode = adjacentNodes[i];
+      }
+      if (adjacentNodes[i].nodeName.toLowerCase() === 'input') {
+        //this.inputNode = adjacentNodes[i];
+      }
+    }
+  }
 
   ngAfterViewInit() {
     setTimeout(() => {
+      this.placeholder = this.elementRef.nativeElement.placeholder;
       this.inputValue = this.elementRef.nativeElement.value;
-      this.inputService.setCurrentValue(this.inputValue);
-      this.inputFocus = this.inputValue !== '' ? true : false;
+      this.positionLabel();
     });
     this.elementRef.nativeElement.addEventListener('focus', () => {
       console.log('Se ha realizado el focus en el input');
-      const value = this.elementRef.nativeElement.value;
       this.inputFocus = true;
-      if (value === '') {
-        this.inputService.setFocus(true);
-      }
+      this.positionLabel();
     });
     this.elementRef.nativeElement.addEventListener('blur', () => {
-      this.inputFocus = false;
       console.log('Se ha quitado el focus del input');
-      this.inputService.setFocus(false);
+      this.inputFocus = false;
+      this.positionLabel();
     });
   }
 
   onInputChange(event: Event): void {
     this.inputValue = (event.target as HTMLInputElement).value;
-    this.inputService.setCurrentValue(this.inputValue);
-    this.inputFocus = this.inputValue !== '' ? true : false;
+    this.positionLabel();
+  }
+
+  positionLabel() {
+    if (this.inputFocus || this.inputValue !== '') {
+      console.log('label arriba');
+      this.labelNode.style.transform = 'translateY(0px)';
+      this.labelNode.style.transition = 'transform ease-in-out 0.125s';
+      this.elementRef.nativeElement.placeholder = this.placeholder;
+    } else {
+      console.log('label al centro');
+      this.labelNode.style.transform = 'translateY(1rem)';
+      this.labelNode.style.transition = 'transform ease-in-out 0.125s';
+      this.elementRef.nativeElement.placeholder = '';
+    }
   }
 }

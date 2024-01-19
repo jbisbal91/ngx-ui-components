@@ -9,5 +9,6 @@ export class InputDemo1Component {
   ngxSize: any = 'medium';
   ngxRounded: any = 'medium';
   ngxFillMode: any = 'filled';
-  input = 'input';
+  input1 = '';
+  input2 = '';
 }

@@ -4,7 +4,7 @@
   max-width: max-content;
 }
 
-.ngx-label {
+.ngx-form-field .ngx-label {
   max-width: max-content;
   margin-left: 0.5rem;
   padding-left: 0.125rem;
@@ -12,7 +12,7 @@
   font-size: 0.75rem;
 }
 
-.ngx-input {
+.ngx-form-field .ngx-input {
   box-sizing: border-box;
   border-width: 1px;
   border-style: solid;
@@ -30,11 +30,6 @@
   position: relative;
   transition: color 0.2s ease-in-out;
   border: none;
-}
-
-.ngx-form-field.ngx-form-field-outlined {
-  border: 1px solid;
-  border-radius: 6px;
 }
 
 .ngx-form-field.ngx-form-field-sm>[ngx-input] {
@@ -102,7 +97,7 @@
 }
 
 .ngx-form-field.ngx-form-field-outlined {
-  border: 1px solid;
+  border: 1px solid ;
 }
 
 .ngx-form-field.ngx-form-field-outlined>[ngx-label] {
