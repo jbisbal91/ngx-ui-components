@@ -116,8 +116,24 @@
   border-bottom: 2px solid;
 }
 
-.ngx-form-field.ngx-form-field-filled>[ngx-label] {
-  margin-top: 0.25rem
+.ngx-form-field.ngx-form-field-filled.ngx-form-field-sm>[ngx-label] {
+  margin-top: -0.2rem
+}
+
+.ngx-form-field.ngx-form-field-filled.ngx-form-field-md>[ngx-label] {
+  margin-top: 0rem
+}
+
+.ngx-form-field.ngx-form-field-filled.ngx-form-field-lg>[ngx-label] {
+  margin-top: 0.3rem
+}
+
+.ngx-form-field.ngx-form-field-outlined.ngx-form-field-md>[ngx-label] {
+  margin-top: -0.3rem
+}
+
+.ngx-form-field.ngx-form-field-outlined.ngx-form-field-lg>[ngx-label] {
+  margin-top: -0.3rem
 }
 
 .ngx-form-field.ngx-form-field-outlined {
