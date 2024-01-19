@@ -60,10 +60,12 @@ export class InputDirective implements OnInit, AfterViewInit {
     if (this.inputFocus || this.inputValue !== '') {
       this.labelNode.style.transform = 'translateY(0px)';
       this.labelNode.style.transition = 'transform ease-in-out 0.125s';
+      this.labelNode.style.fontSize = '0.75rem';
       this.elementRef.nativeElement.placeholder = this.placeholder;
     } else {
       this.labelNode.style.transform = 'translateY(1rem)';
       this.labelNode.style.transition = 'transform ease-in-out 0.125s';
+      this.labelNode.style.fontSize = '1rem';
       this.elementRef.nativeElement.placeholder = '';
     }
   }
