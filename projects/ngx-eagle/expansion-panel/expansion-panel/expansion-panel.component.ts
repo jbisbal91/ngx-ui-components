@@ -27,7 +27,6 @@ import { NgClass, NgIf, NgStyle } from '@angular/common';
       <div class="divider mt-4" *ngIf="ngxType === 'normal'"></div>
     </div>
   `,
-  styleUrls: ['./expansion-panel.component.scss'],
   standalone: true,
   host: {
     class: 'ngx-expansion-panel',

@@ -7,6 +7,4 @@ import { Directive } from '@angular/core';
   },
   standalone: true,
 })
-export class LabelDirective {
-  constructor() {}
-}
+export class LabelDirective {}

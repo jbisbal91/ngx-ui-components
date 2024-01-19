@@ -1,37 +1,57 @@
-import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
-import { NgxFillMode, NgxSize } from './typings';
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  Input,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
+
+import { InputService } from './service/input.service';
 
 @Directive({
   selector: 'input[ngx-input]',
   host: {
     class: 'ngx-input',
+    '[class.ngx-input-focus]': 'inputFocus',
+    '(input)': 'onInputChange($event)',
   },
   standalone: true,
+  providers: [InputService],
 })
-export class InputDirective implements OnInit {
+export class InputDirective implements AfterViewInit {
+  inputFocus = false;
+  inputValue = '';
+  constructor(
+    public elementRef: ElementRef,
+    private renderer2: Renderer2,
+    private inputService: InputService
+  ) {}
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.inputValue = this.elementRef.nativeElement.value;
+      this.inputService.setCurrentValue(this.inputValue);
+      this.inputFocus = this.inputValue !== '' ? true : false;
+    });
+    this.elementRef.nativeElement.addEventListener('focus', () => {
+      console.log('Se ha realizado el focus en el input');
+      const value = this.elementRef.nativeElement.value;
+      this.inputFocus = true;
+      if (value === '') {
+        this.inputService.setFocus(true);
+      }
+    });
+    this.elementRef.nativeElement.addEventListener('blur', () => {
+      this.inputFocus = false;
+      console.log('Se ha quitado el focus del input');
+      this.inputService.setFocus(false);
+    });
+  }
 
-  newDiv = document.createElement('div');
-
-  constructor(public elementRef: ElementRef, private renderer2: Renderer2) {}
-
-  ngOnInit(): void {
-    // Crear un div overlay
-    const overlayDiv = this.renderer2.createElement('div');
-
-    // Agregar clases y estilos al div overlay (puedes personalizar según tus necesidades)
-    this.renderer2.addClass(overlayDiv, 'ngx-input-sm');
-    this.renderer2.setStyle(overlayDiv, 'position', 'relative');
-
-    // Obtener el input y su valor actual
-    const inputElement = this.elementRef.nativeElement;
-    const inputValue = inputElement.value;
-
-    // Crear un nodo de texto con el valor del input
-    const textNode = this.renderer2.createText(inputValue);
-
-    // Agregar el texto al div overlay
-    this.renderer2.appendChild(overlayDiv, textNode);
-
+  onInputChange(event: Event): void {
+    this.inputValue = (event.target as HTMLInputElement).value;
+    this.inputService.setCurrentValue(this.inputValue);
+    this.inputFocus = this.inputValue !== '' ? true : false;
   }
 }

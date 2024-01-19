@@ -1,3 +1,17 @@
+.ngx-form-field {
+  display: flex;
+  flex-direction: column;
+  max-width: max-content;
+}
+
+.ngx-label {
+  max-width: max-content;
+  margin-left: 0.5rem;
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
+  font-size: 0.75rem;
+}
+
 .ngx-input {
   box-sizing: border-box;
   border-width: 1px;
@@ -13,16 +27,85 @@
   -ms-user-select: none;
   user-select: none;
   outline: none;
-  -webkit-appearance: none;
   position: relative;
   transition: color 0.2s ease-in-out;
   border: none;
 }
 
-.ngx-label {
-  max-width: max-content;
-  margin-left: 0.5rem;
-  padding-left: 0.125rem;
-  padding-right: 0.125rem;
-  font-size: 0.75rem;
+.ngx-form-field.ngx-form-field-outlined {
+  border: 1px solid;
+  border-radius: 6px;
+}
+
+.ngx-form-field.ngx-form-field-sm>[ngx-input] {
+  font-size: 0.875rem;
+  line-height: 1.4285714286;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  height: 1.5rem;
+}
+
+.ngx-form-field.ngx-form-field-md>[ngx-input] {
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  height: 2rem;
+}
+
+.ngx-form-field.ngx-form-field-lg>[ngx-input] {
+  font-size: 1rem;
+  line-height: 1.5;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  height: 2.5rem;
+}
+
+.ngx-form-field.ngx-form-field-outlined.ngx-rounded-sm {
+  border-radius: 2px;
+}
+
+.ngx-form-field.ngx-form-field-outlined.ngx-rounded-md {
+  border-radius: 4px;
+}
+
+.ngx-form-field.ngx-form-field-outlined.ngx-rounded-lg {
+  border-radius: 6px;
+}
+
+.ngx-form-field.ngx-form-field-outlined.ngx-rounded-full {
+  border-radius: 9999px;
+}
+
+.ngx-form-field.ngx-form-field-filled.ngx-rounded-sm {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.ngx-form-field.ngx-form-field-filled.ngx-rounded-md {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.ngx-form-field.ngx-form-field-filled.ngx-rounded-lg {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.ngx-form-field.ngx-form-field-filled {
+  border: none;
+  background-color: var(--ngx-comp-form-field-filled-background-color);
+  border-bottom: 2px solid;
+}
+
+.ngx-form-field.ngx-form-field-filled>[ngx-label] {
+  margin-top: 0.25rem
+}
+
+.ngx-form-field.ngx-form-field-outlined {
+  border: 1px solid;
+}
+
+.ngx-form-field.ngx-form-field-outlined>[ngx-label] {
+  margin-top: -0.5rem;
+  background: #fff;
 }
