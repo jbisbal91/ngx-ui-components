@@ -32,19 +32,30 @@
   border: none;
 }
 
+.ngx-form-field.ngx-form-field-sm {
+  height: 2.5rem;
+}
+
+.ngx-form-field.ngx-form-field-md {
+  height: 3rem;
+}
+
+.ngx-form-field.ngx-form-field-lg {
+  height: 3.5rem;
+}
+
 .ngx-form-field.ngx-form-field-sm>[ngx-input] {
   font-size: 0.875rem;
   line-height: 1.4285714286;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  height: 1.5rem;
 }
 
 .ngx-form-field.ngx-form-field-md>[ngx-input] {
-  font-size: 0.875rem;
+  font-size: 0.875rem;  
+  line-height: 1.4285714286;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  height: 2rem;
 }
 
 .ngx-form-field.ngx-form-field-lg>[ngx-input] {
@@ -52,19 +63,6 @@
   line-height: 1.5;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  height: 2.5rem;
-}
-
-.ngx-form-field.ngx-form-field-outlined.ngx-form-field-sm {
-  height: 2rem;
-}
-
-.ngx-form-field.ngx-form-field-outlined.ngx-form-field-md {
-  height: 2.5rem;
-}
-
-.ngx-form-field.ngx-form-field-outlined.ngx-form-field-lg {
-  height: 3rem;
 }
 
 .ngx-form-field.ngx-form-field-outlined.ngx-rounded-sm {
@@ -81,18 +79,6 @@
 
 .ngx-form-field.ngx-form-field-outlined.ngx-rounded-full {
   border-radius: 9999px;
-}
-
-.ngx-form-field.ngx-form-field-filled.ngx-form-field-sm {
-  height: 2.75rem;
-}
-
-.ngx-form-field.ngx-form-field-filled.ngx-form-field-md {
-  height: 3.25rem;
-}
-
-.ngx-form-field.ngx-form-field-filled.ngx-form-field-lg {
-  height: 3.75rem;
 }
 
 .ngx-form-field.ngx-form-field-filled.ngx-rounded-sm {
@@ -116,31 +102,10 @@
   border-bottom: 2px solid;
 }
 
-.ngx-form-field.ngx-form-field-filled.ngx-form-field-sm>[ngx-label] {
-  margin-top: -0.2rem
-}
-
-.ngx-form-field.ngx-form-field-filled.ngx-form-field-md>[ngx-label] {
-  margin-top: 0rem
-}
-
-.ngx-form-field.ngx-form-field-filled.ngx-form-field-lg>[ngx-label] {
-  margin-top: 0.3rem
-}
-
-.ngx-form-field.ngx-form-field-outlined.ngx-form-field-md>[ngx-label] {
-  margin-top: -0.3rem
-}
-
-.ngx-form-field.ngx-form-field-outlined.ngx-form-field-lg>[ngx-label] {
-  margin-top: -0.3rem
-}
-
 .ngx-form-field.ngx-form-field-outlined {
   border: 1px solid;
 }
 
 .ngx-form-field.ngx-form-field-outlined>[ngx-label] {
-  margin-top: -0.5rem;
   background: #fff;
 }
