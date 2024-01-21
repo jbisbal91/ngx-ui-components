@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./input-demo1.component.scss']
 })
 export class InputDemo1Component {
-
+  ngxSize: any = 'medium';
+  ngxRounded: any = 'medium';
+  ngxFillMode: any = 'filled';
+  input1 = '';
+  input2 = '';
 }
