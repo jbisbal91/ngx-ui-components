@@ -96,6 +96,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
       if (this.inputFocus || this.inputValue !== '') {
         const top = this.ngxFillMode === 'outlined' ? '-0.375rem ' : '0px';
         this.labelNode.style.top = top;
+        this.labelNode.style.color = 'var(--ngx-comp-form-field-filled-border-color)';
         this.labelNode.style.fontSize = '0.75rem';
         this.elementRef.nativeElement.placeholder = this.placeholder;
         setTimeout(() => {
@@ -105,6 +106,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
         });
       } else {
         this.labelNode.style.top = `${this.translateY()}rem`;
+        this.labelNode.style.color = 'currentColor';
         this.labelNode.style.fontSize = '1rem';
         this.elementRef.nativeElement.placeholder = '';
         this.drawLineTopBorder();
@@ -112,6 +114,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  //Calcula la posicion en la que esta la etiqueta con respetco al tope de form field
   translateY() {
     const formFieldHeight =
       this.elementRef.nativeElement.parentElement.offsetHeight;
@@ -123,6 +126,8 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
       this.ngxFillMode === 'outlined'
         ? 'linear-gradient(to right, transparent 0%, currentColor 0%) no-repeat top/100% 1px'
         : 'none';
+    const borderColor = `transparent currentColor currentColor`;
+    this.elementRef.nativeElement.parentElement.style.borderColor = borderColor;
     this.elementRef.nativeElement.parentElement.style.background = background;
   }
 
@@ -132,7 +137,12 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
       this.elementRef.nativeElement.parentElement.offsetWidth;
     const labelWidth = this.labelNode.offsetWidth;
     const percent = ((labelWidth + 10) / formFieldWidth) * 100;
-    const background = `linear-gradient(to right, currentColor 5px, transparent 5px, transparent ${percent}%, currentColor ${percent}%) no-repeat top/100% 1px`;
+    const color = this.inputFocus
+      ? 'var(--ngx-comp-form-field-filled-border-color)'
+      : 'currentColor'; // si esta el input con el focus activo coloca el color que le corresponde
+    const background = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
+    const borderColor = `transparent ${color} ${color}`;
+    this.elementRef.nativeElement.parentElement.style.borderColor = borderColor;
     this.elementRef.nativeElement.parentElement.style.background = background;
   }
 }
