@@ -3,6 +3,7 @@ import {
   Directive,
   ElementRef,
   Host,
+  OnDestroy,
   OnInit,
   Optional,
   Renderer2,
@@ -19,7 +20,7 @@ import { NgxFillMode, NgxSize } from './typings';
   },
   standalone: true,
 })
-export class InputDirective implements OnInit, AfterViewInit {
+export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
   inputFocus = false;
   inputValue = '';
   labelNode: any;
@@ -55,15 +56,6 @@ export class InputDirective implements OnInit, AfterViewInit {
     );
   }
 
-  getLabelNode() {
-    const adjacentNodes = this.elementRef.nativeElement.parentElement.children;
-    for (let i = 0; i < adjacentNodes.length; ++i) {
-      if (adjacentNodes[i].nodeName.toLowerCase() === 'label') {
-        this.labelNode = adjacentNodes[i];
-      }
-    }
-  }
-
   ngAfterViewInit() {
     setTimeout(() => {
       this.inputValue = this.elementRef.nativeElement.value;
@@ -77,6 +69,19 @@ export class InputDirective implements OnInit, AfterViewInit {
       this.inputFocus = false;
       this.positionLabel();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  getLabelNode() {
+    const adjacentNodes = this.elementRef.nativeElement.parentElement.children;
+    for (let i = 0; i < adjacentNodes.length; ++i) {
+      if (adjacentNodes[i].nodeName.toLowerCase() === 'label') {
+        this.labelNode = adjacentNodes[i];
+      }
+    }
   }
 
   onInputChange(event: Event): void {
@@ -121,7 +126,7 @@ export class InputDirective implements OnInit, AfterViewInit {
     this.elementRef.nativeElement.parentElement.style.background = background;
   }
 
-  //Genera el border top con el espacio necesario para insertar el label cuando esta en modo outlined
+  //Genera el border top con el espacio necesario para insertar la etiqueta cuando esta en modo outlined
   drawDashedTopBorder() {
     const formFieldWidth =
       this.elementRef.nativeElement.parentElement.offsetWidth;
