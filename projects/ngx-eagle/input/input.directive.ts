@@ -93,10 +93,16 @@ export class InputDirective implements OnInit, AfterViewInit {
         this.labelNode.style.top = top;
         this.labelNode.style.fontSize = '0.75rem';
         this.elementRef.nativeElement.placeholder = this.placeholder;
+        setTimeout(() => {
+          if (this.ngxFillMode === 'outlined') {
+            this.drawDashedTopBorder();
+          }
+        });
       } else {
         this.labelNode.style.top = `${this.translateY()}rem`;
         this.labelNode.style.fontSize = '1rem';
         this.elementRef.nativeElement.placeholder = '';
+        this.drawLineTopBorder();
       }
     }
   }
@@ -105,5 +111,22 @@ export class InputDirective implements OnInit, AfterViewInit {
     const formFieldHeight =
       this.elementRef.nativeElement.parentElement.offsetHeight;
     return (formFieldHeight * 0.333) / 16;
+  }
+
+  drawLineTopBorder() {
+    const background =
+      this.ngxFillMode === 'outlined'
+        ? 'linear-gradient(to right, transparent 0%, currentColor 0%) no-repeat top/100% 1px'
+        : 'none';
+    this.elementRef.nativeElement.parentElement.style.background = background;
+  }
+
+  //Genera el border top con el espacio necesario para insertar el label cuando esta en modo outlined
+  drawDashedTopBorder() {
+    const formFieldWidth =
+      this.elementRef.nativeElement.parentElement.offsetWidth;
+    const labelWidth = this.labelNode.offsetWidth;
+    const percent = ((labelWidth + 10) / formFieldWidth) * 100;
+    this.elementRef.nativeElement.parentElement.style.background = `linear-gradient(to right, currentColor 5px, transparent 5px, transparent ${percent}%, currentColor ${percent}%) no-repeat top/100% 1px`;
   }
 }

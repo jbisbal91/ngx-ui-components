@@ -46,11 +46,7 @@
   height: 3.5rem;
 }
 
-.ngx-form-field.ngx-form-field-sm>[ngx-input] {
-  font-size: 0.875rem;
-  line-height: 1.4285714286;
-}
-
+.ngx-form-field.ngx-form-field-sm>[ngx-input],
 .ngx-form-field.ngx-form-field-md>[ngx-input] {
   font-size: 0.875rem;
   line-height: 1.4285714286;
@@ -59,6 +55,11 @@
 .ngx-form-field.ngx-form-field-lg>[ngx-input] {
   font-size: 1rem;
   line-height: 1.5;
+}
+
+.ngx-form-field.ngx-form-field-outlined {
+  border: 1px solid;
+  border-top: 1px solid transparent;
 }
 
 .ngx-form-field.ngx-form-field-outlined.ngx-rounded-sm {
@@ -73,8 +74,14 @@
   border-radius: 6px;
 }
 
-.ngx-form-field.ngx-form-field-outlined.ngx-rounded-full {
-  border-radius: 9999px;
+.ngx-form-field.ngx-form-field-filled {
+  border: none;
+  background-color: var(--ngx-comp-form-field-filled-background-color) !important;
+  border-bottom: 1px solid;
+}
+
+.ngx-form-field.ngx-form-field-filled>[ngx-input]:focus {
+  border-bottom: 1px solid blue;
 }
 
 .ngx-form-field.ngx-form-field-filled.ngx-rounded-sm {
@@ -90,18 +97,4 @@
 .ngx-form-field.ngx-form-field-filled.ngx-rounded-lg {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-}
-
-.ngx-form-field.ngx-form-field-filled {
-  border: none;
-  background-color: var(--ngx-comp-form-field-filled-background-color);
-  border-bottom: 2px solid;
-}
-
-.ngx-form-field.ngx-form-field-outlined {
-  border: 1px solid;
-}
-
-.ngx-form-field.ngx-form-field-outlined>[ngx-label] {
-  background: #fff;
 }

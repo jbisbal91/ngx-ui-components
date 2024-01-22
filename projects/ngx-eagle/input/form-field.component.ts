@@ -21,7 +21,6 @@ import { ReplaySubject } from 'rxjs';
     '[class.ngx-rounded-sm]': `ngxRounded === 'small'`,
     '[class.ngx-rounded-md]': `ngxRounded === 'medium'`,
     '[class.ngx-rounded-lg]': `ngxRounded === 'large'`,
-    '[class.ngx-rounded-full]': `ngxRounded === 'full'`,
     '[class.ngx-form-field-filled]': `ngxFillMode === 'filled'`,
     '[class.ngx-form-field-outlined]': `ngxFillMode === 'outlined'`,
   },
@@ -30,7 +29,7 @@ import { ReplaySubject } from 'rxjs';
 })
 export class FormFieldComponent implements OnInit, OnChanges {
   @Input() ngxSize: NgxSize = 'medium';
-  @Input() ngxRounded: NgxRounded = 'full';
+  @Input() ngxRounded: NgxRounded = 'medium';
   @Input() ngxFillMode: NgxFillMode = 'filled';
 
   readonly ngxSize$ = new ReplaySubject<NgxSize>(1);
