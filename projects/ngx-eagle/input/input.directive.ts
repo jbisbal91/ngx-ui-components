@@ -132,6 +132,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
       this.elementRef.nativeElement.parentElement.offsetWidth;
     const labelWidth = this.labelNode.offsetWidth;
     const percent = ((labelWidth + 10) / formFieldWidth) * 100;
-    this.elementRef.nativeElement.parentElement.style.background = `linear-gradient(to right, currentColor 5px, transparent 5px, transparent ${percent}%, currentColor ${percent}%) no-repeat top/100% 1px`;
+    const background = `linear-gradient(to right, currentColor 5px, transparent 5px, transparent ${percent}%, currentColor ${percent}%) no-repeat top/100% 1px`;
+    this.elementRef.nativeElement.parentElement.style.background = background;
   }
 }
