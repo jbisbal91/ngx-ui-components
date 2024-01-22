@@ -86,16 +86,15 @@ export class InputDirective implements OnInit, AfterViewInit {
 
   positionLabel() {
     if (this.labelNode) {
+      this.labelNode.style.position = 'absolute';
+      this.labelNode.style.transition = 'top ease-in-out 0.125s';
       if (this.inputFocus || this.inputValue !== '') {
-        this.labelNode.style.transform = `translateY(-${
-          this.translateY() / (this.ngxFillMode === 'outlined' ? 2 : 16)
-        }rem)`;
-        this.labelNode.style.transition = 'transform ease-in-out 0.125s';
+        const top = this.ngxFillMode === 'outlined' ? '-0.375rem ' : '0px';
+        this.labelNode.style.top = top;
         this.labelNode.style.fontSize = '0.75rem';
         this.elementRef.nativeElement.placeholder = this.placeholder;
       } else {
-        this.labelNode.style.transform = `translateY(${this.translateY()}rem)`;
-        this.labelNode.style.transition = 'transform ease-in-out 0.125s';
+        this.labelNode.style.top = `${this.translateY()}rem`;
         this.labelNode.style.fontSize = '1rem';
         this.elementRef.nativeElement.placeholder = '';
       }
@@ -105,6 +104,6 @@ export class InputDirective implements OnInit, AfterViewInit {
   translateY() {
     const formFieldHeight =
       this.elementRef.nativeElement.parentElement.offsetHeight;
-    return (formFieldHeight / 16) * 0.3;
+    return (formFieldHeight * 0.333) / 16;
   }
 }

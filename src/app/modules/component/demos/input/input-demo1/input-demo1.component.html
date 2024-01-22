@@ -21,12 +21,27 @@
   </select>
 </div>
 
-<ngx-form-field
-  [ngxSize]="ngxSize"
-  [ngxRounded]="ngxRounded"
-  [ngxFillMode]="ngxFillMode"
->
-  <label ngx-label>Label</label>
-  <input ngx-input placeholder="Placeholder1" [(ngModel)]="input1" />
-</ngx-form-field>
+
+<div ngx-row ngxJustify="start">
+  <div ngx-col ngxSpan="4">
+    <ngx-form-field
+      [ngxSize]="ngxSize"
+      [ngxRounded]="ngxRounded"
+      [ngxFillMode]="ngxFillMode"
+    >
+      <label ngx-label>Label1</label>
+      <input ngx-input placeholder="Placeholder1" [(ngModel)]="input1" />
+    </ngx-form-field>
+  </div>
+  <div ngx-col ngxSpan="4">
+    <ngx-form-field
+      [ngxSize]="ngxSize"
+      [ngxRounded]="ngxRounded"
+      [ngxFillMode]="ngxFillMode"
+    >
+      <label ngx-label>Label2</label>
+      <input ngx-input placeholder="Placeholder2" [(ngModel)]="input2" />
+    </ngx-form-field>
+  </div>
+</div>
 

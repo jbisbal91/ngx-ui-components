@@ -1,33 +1,45 @@
 <div class="flex items-center mb-4">
-    <label for="size">SIZE:</label>
-    <select name="size" id="size" [(ngModel)]="ngxSize">
-      <option value="small">small</option>
-      <option value="medium">medium</option>
-      <option value="large">large</option>
-    </select>
-  
-    <label for="rounded">ROUNDED:</label>
-    <select name="rounded" id="rounded" [(ngModel)]="ngxRounded">
-      <option value="small">small</option>
-      <option value="medium">medium</option>
-      <option value="large">large</option>
-      <option value="full">full</option>
-    </select>
-  
-    <label for="fillMode">Fill Mode:</label>
-    <select name="fillMode" id="fillMode" [(ngModel)]="ngxFillMode">
-      <option value="filled">filled</option>
-      <option value="outlined">outlined</option>
-    </select>
+  <label for="size">SIZE:</label>
+  <select name="size" id="size" [(ngModel)]="ngxSize">
+    <option value="small">small</option>
+    <option value="medium">medium</option>
+    <option value="large">large</option>
+  </select>
+
+  <label for="rounded">ROUNDED:</label>
+  <select name="rounded" id="rounded" [(ngModel)]="ngxRounded">
+    <option value="small">small</option>
+    <option value="medium">medium</option>
+    <option value="large">large</option>
+    <option value="full">full</option>
+  </select>
+
+  <label for="fillMode">Fill Mode:</label>
+  <select name="fillMode" id="fillMode" [(ngModel)]="ngxFillMode">
+    <option value="filled">filled</option>
+    <option value="outlined">outlined</option>
+  </select>
+</div>
+
+<div ngx-row>
+  <div ngx-col ngxSpan="12">
+    <ngx-form-field
+      [ngxSize]="ngxSize"
+      [ngxRounded]="ngxRounded"
+      [ngxFillMode]="ngxFillMode"
+    >
+      <label ngx-label>Label1</label>
+      <input ngx-input placeholder="Placeholder1" [(ngModel)]="input1" />
+    </ngx-form-field>
   </div>
-  
-  <ngx-form-field
-    [ngxSize]="ngxSize"
-    [ngxRounded]="ngxRounded"
-    [ngxFillMode]="ngxFillMode"
-  >
-    <label ngx-label>Label</label>
-    <input ngx-input placeholder="Placeholder1" [(ngModel)]="input1" />
-  </ngx-form-field>
-  
-  
+  <div ngx-col ngxSpan="12">
+    <ngx-form-field
+      [ngxSize]="ngxSize"
+      [ngxRounded]="ngxRounded"
+      [ngxFillMode]="ngxFillMode"
+    >
+      <label ngx-label>Label2</label>
+      <input ngx-input placeholder="Placeholder2" [(ngModel)]="input2" />
+    </ngx-form-field>
+  </div>
+</div>
