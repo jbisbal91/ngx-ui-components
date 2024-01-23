@@ -26,6 +26,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
   inputValue = '';
   formFieldNode: any;
   labelNode: any;
+  spanErrorNode: any;
   placeholder: string = '';
   valid: boolean = true;
   ngxSize: NgxSize = 'medium';
@@ -42,12 +43,13 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
     setTimeout(() => {
       this.placeholder = this.elementRef.nativeElement.placeholder;
       this.formFieldNode = this.elementRef.nativeElement.parentElement;
-      this.getNgxLabelNode();
+      this.getNgxNodes();
     });
     this.subscription.add(
       this.formFieldComponent?.ngxSize$.subscribe((ngxSize) => {
         setTimeout(() => {
           this.setPositionLabel();
+          this.setPositionErrorNode();
         });
       })
     );
@@ -56,6 +58,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
         this.ngxFillMode = ngxFillMode;
         setTimeout(() => {
           this.setPositionLabel();
+          this.setPositionErrorNode();
           this.drawLineTopBorder();
         });
       })
@@ -66,18 +69,21 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
     setTimeout(() => {
       this.inputValue = this.elementRef.nativeElement.value;
       this.setPositionLabel();
+      this.setPositionErrorNode();
     });
     //Se lanza el evento cuando se esta haciendo focus en el input
     this.elementRef.nativeElement.addEventListener('focus', () => {
       this.inputFocus = true;
       this.validity();
       this.setPositionLabel();
+      this.setPositionErrorNode();
     });
     //Se lanza el evento cuando se desenfoca del input
     this.elementRef.nativeElement.addEventListener('blur', () => {
       this.inputFocus = false;
       this.validity();
       this.setPositionLabel();
+      this.setPositionErrorNode();
     });
   }
 
@@ -85,12 +91,21 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
     this.subscription.unsubscribe();
   }
 
-  //Obtiene el contenido del label correspondiente a la directiva ngx-label
-  getNgxLabelNode() {
+  //Obtiene los nodes que pertenecen a ngx
+  getNgxNodes() {
     const adjacentNodes = this.formFieldNode.children;
     for (let i = 0; i < adjacentNodes.length; ++i) {
-      if (adjacentNodes[i].nodeName.toLowerCase() === 'label') {
+      if (
+        adjacentNodes[i].nodeName.toLowerCase() === 'label' &&
+        adjacentNodes[i].attributes.getNamedItem('ngx-label')
+      ) {
         this.labelNode = adjacentNodes[i];
+      }
+      if (
+        adjacentNodes[i].nodeName.toLowerCase() === 'span' &&
+        adjacentNodes[i].attributes.getNamedItem('ngx-error')
+      ) {
+        this.spanErrorNode = adjacentNodes[i];
       }
     }
   }
@@ -98,7 +113,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
   onInputChange(event: Event): void {
     this.inputValue = (event.target as HTMLInputElement).value;
     this.validity();
-    this.setPositionLabel();
+    this.setPositionErrorNode();
   }
 
   setPositionLabel() {
@@ -124,6 +139,17 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
         this.drawLineTopBorder();
       }
     }
+  }
+
+  setPositionErrorNode() {
+    setTimeout(() => {
+      if (this.spanErrorNode) {
+        const formFieldHeight = this.formFieldNode.offsetHeight;
+        this.spanErrorNode.style.marginTop = `${(formFieldHeight + 5) / 16}rem`;
+        const display = this.valid? 'none':'flex';
+        this.spanErrorNode.style.display = display;
+      }
+    });
   }
 
   //Calcula la posicion en la que esta la etiqueta con respecto al tope de form field

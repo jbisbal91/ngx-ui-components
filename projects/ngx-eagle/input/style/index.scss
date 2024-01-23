@@ -1,7 +1,8 @@
 .ngx-form-field {
   display: flex;
   flex-direction: column;
-  max-width: max-content;
+  width: fit-content;
+  position: relative;
 }
 
 .ngx-form-field .ngx-label {
@@ -30,6 +31,11 @@
   position: relative;
   transition: color 0.2s ease-in-out;
   border: none;
+}
+
+.ngx-form-field .ngx-error {
+  font-size: 0.75rem;
+  position: absolute;
 }
 
 .ngx-form-field.ngx-form-field-sm {
