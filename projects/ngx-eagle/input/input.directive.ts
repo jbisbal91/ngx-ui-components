@@ -23,6 +23,7 @@ import { NgxFillMode, NgxSize } from './typings';
 export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
   inputFocus = false;
   inputValue = '';
+  formFieldNode: any;
   labelNode: any;
   placeholder: string = '';
   ngxSize: NgxSize = 'medium';
@@ -37,12 +38,13 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.placeholder = this.elementRef.nativeElement.placeholder;
-      this.getLabelNode();
+      this.formFieldNode = this.elementRef.nativeElement.parentElement;
+      this.getNgxLabelNode();
     });
     this.subscription.add(
       this.formFieldComponent?.ngxSize$.subscribe((ngxSize) => {
         setTimeout(() => {
-          this.positionLabel();
+          this.setPositionLabel();
         });
       })
     );
@@ -50,7 +52,8 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
       this.formFieldComponent?.ngxFillMode$.subscribe((ngxFillMode) => {
         this.ngxFillMode = ngxFillMode;
         setTimeout(() => {
-          this.positionLabel();
+          this.setPositionLabel();
+          this.drawLineTopBorder();
         });
       })
     );
@@ -59,15 +62,17 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.inputValue = this.elementRef.nativeElement.value;
-      this.positionLabel();
+      this.setPositionLabel();
     });
+    //Se lanza el evento cuando se esta haciendo focus en el input
     this.elementRef.nativeElement.addEventListener('focus', () => {
       this.inputFocus = true;
-      this.positionLabel();
+      this.setPositionLabel();
     });
+    //Se lanza el evento cuando se desenfoca del input
     this.elementRef.nativeElement.addEventListener('blur', () => {
       this.inputFocus = false;
-      this.positionLabel();
+      this.setPositionLabel();
     });
   }
 
@@ -75,8 +80,9 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
     this.subscription.unsubscribe();
   }
 
-  getLabelNode() {
-    const adjacentNodes = this.elementRef.nativeElement.parentElement.children;
+  //Obtiene el contenido del label correspondiente a la directiva ngx-label
+  getNgxLabelNode() {
+    const adjacentNodes = this.formFieldNode.children;
     for (let i = 0; i < adjacentNodes.length; ++i) {
       if (adjacentNodes[i].nodeName.toLowerCase() === 'label') {
         this.labelNode = adjacentNodes[i];
@@ -86,22 +92,21 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
 
   onInputChange(event: Event): void {
     this.inputValue = (event.target as HTMLInputElement).value;
-    this.positionLabel();
+    this.setPositionLabel();
   }
 
-  positionLabel() {
+  setPositionLabel() {
     if (this.labelNode) {
-      this.labelNode.style.position = 'absolute';
-      this.labelNode.style.transition = 'top ease-in-out 0.125s';
       if (this.inputFocus || this.inputValue !== '') {
         const top = this.ngxFillMode === 'outlined' ? '-0.375rem ' : '0px';
         this.labelNode.style.top = top;
-        this.labelNode.style.color = 'var(--ngx-comp-form-field-filled-border-color)';
+        this.labelNode.style.color =
+          'var(--ngx-comp-form-field-filled-border-color)';
         this.labelNode.style.fontSize = '0.75rem';
         this.elementRef.nativeElement.placeholder = this.placeholder;
         setTimeout(() => {
           if (this.ngxFillMode === 'outlined') {
-            this.drawDashedTopBorder();
+            this.buildBorderOutlined();
           }
         });
       } else {
@@ -114,10 +119,9 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  //Calcula la posicion en la que esta la etiqueta con respetco al tope de form field
+  //Calcula la posicion en la que esta la etiqueta con respecto al tope de form field
   translateY() {
-    const formFieldHeight =
-      this.elementRef.nativeElement.parentElement.offsetHeight;
+    const formFieldHeight = this.formFieldNode.offsetHeight;
     return (formFieldHeight * 0.333) / 16;
   }
 
@@ -127,14 +131,13 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
         ? 'linear-gradient(to right, transparent 0%, currentColor 0%) no-repeat top/100% 1px'
         : 'none';
     const borderColor = `transparent currentColor currentColor`;
-    this.elementRef.nativeElement.parentElement.style.borderColor = borderColor;
-    this.elementRef.nativeElement.parentElement.style.background = background;
+    this.formFieldNode.style.borderColor = borderColor;
+    this.formFieldNode.style.background = background;
   }
 
   //Genera el border top con el espacio necesario para insertar la etiqueta cuando esta en modo outlined
-  drawDashedTopBorder() {
-    const formFieldWidth =
-      this.elementRef.nativeElement.parentElement.offsetWidth;
+  buildBorderOutlined() {
+    const formFieldWidth = this.formFieldNode.offsetWidth;
     const labelWidth = this.labelNode.offsetWidth;
     const percent = ((labelWidth + 10) / formFieldWidth) * 100;
     const color = this.inputFocus
@@ -142,7 +145,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
       : 'currentColor'; // si esta el input con el focus activo coloca el color que le corresponde
     const background = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
     const borderColor = `transparent ${color} ${color}`;
-    this.elementRef.nativeElement.parentElement.style.borderColor = borderColor;
-    this.elementRef.nativeElement.parentElement.style.background = background;
+    this.formFieldNode.style.borderColor = borderColor;
+    this.formFieldNode.style.background = background;
   }
 }
