@@ -1,0 +1,24 @@
+<div class="grid gap-y-6">
+  <ngx-form-field ngxFillMode="outlined">
+    <label ngx-label>Label1</label>
+    <input ngx-input placeholder="Placeholder1" required />
+  </ngx-form-field>
+
+  <form>
+    <ngx-form-field ngxFillMode="outlined">
+      <label ngx-label>Label2</label>
+      <input
+        ngx-input
+        placeholder="Placeholder2"
+        [formControl]="inputFormControl"
+      />
+    </ngx-form-field>
+  </form>
+
+  <form [formGroup]="inputForm">
+    <ngx-form-field ngxFillMode="outlined">
+      <label ngx-label>Label3</label>
+      <input ngx-input placeholder="Placeholder3" formControlName="input3" />
+    </ngx-form-field>
+  </form>
+</div>

@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class InputDocsComponent implements OnInit {
   variation1DemoInput!: Tabs[];
+  variation2DemoInput!: Tabs[];
 
   constructor(private http: HttpClient) {}
 
@@ -37,6 +38,35 @@ export class InputDocsComponent implements OnInit {
         tabContent: {
           code: this.http.get(
             'assets/demos/input/input-demo1/input-demo1.component.scss',
+            { responseType: 'text' }
+          ),
+        },
+      },
+    ];
+    this.variation2DemoInput = [
+      {
+        tabTitle: 'HTML',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/input/input-demo2/input-demo2.component.html',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'TS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/input/input-demo2/input-demo2.component.ts',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'SCSS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/input/input-demo2/input-demo2.component.scss',
             { responseType: 'text' }
           ),
         },

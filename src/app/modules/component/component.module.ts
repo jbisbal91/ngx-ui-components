@@ -69,6 +69,7 @@ import { ButtonModule } from 'projects/ngx-eagle/button';
 import { InputDemo1Component } from './demos/input/input-demo1/input-demo1.component';
 import { InputModule } from 'projects/ngx-eagle/input';
 import { InputDocsComponent } from './docs/input-docs/input-docs.component';
+import { InputDemo2Component } from './demos/input/input-demo2/input-demo2.component';
 
 export function getHighlightLanguages() {
   return {
@@ -118,7 +119,8 @@ const components = [
   LineChartDocsComponent,
   LineChartDemo1Component,
   InputDocsComponent,
-  InputDemo1Component
+  InputDemo1Component,
+  InputDemo2Component
 ];
 
 @NgModule({
