@@ -26,6 +26,8 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
   formFieldNode: any;
   labelNode: any;
   placeholder: string = '';
+  required: boolean = false;
+  valid: boolean = false;
   ngxSize: NgxSize = 'medium';
   ngxFillMode: NgxFillMode = 'filled';
   private subscription: Subscription = new Subscription();
@@ -38,6 +40,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.placeholder = this.elementRef.nativeElement.placeholder;
+      this.required = this.elementRef.nativeElement.required;
       this.formFieldNode = this.elementRef.nativeElement.parentElement;
       this.getNgxLabelNode();
     });
@@ -67,11 +70,13 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
     //Se lanza el evento cuando se esta haciendo focus en el input
     this.elementRef.nativeElement.addEventListener('focus', () => {
       this.inputFocus = true;
+      this.validity();
       this.setPositionLabel();
     });
     //Se lanza el evento cuando se desenfoca del input
     this.elementRef.nativeElement.addEventListener('blur', () => {
       this.inputFocus = false;
+      this.validity();
       this.setPositionLabel();
     });
   }
@@ -92,6 +97,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
 
   onInputChange(event: Event): void {
     this.inputValue = (event.target as HTMLInputElement).value;
+    this.validity();
     this.setPositionLabel();
   }
 
@@ -100,8 +106,9 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
       if (this.inputFocus || this.inputValue !== '') {
         const top = this.ngxFillMode === 'outlined' ? '-0.375rem ' : '0px';
         this.labelNode.style.top = top;
-        this.labelNode.style.color =
-          'var(--ngx-comp-form-field-filled-border-color)';
+        this.labelNode.style.color = this.valid
+          ? 'var(--ngx-comp-form-field-filled-border-color)'
+          : '#F44336';
         this.labelNode.style.fontSize = '0.75rem';
         this.elementRef.nativeElement.placeholder = this.placeholder;
         setTimeout(() => {
@@ -140,12 +147,22 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
     const formFieldWidth = this.formFieldNode.offsetWidth;
     const labelWidth = this.labelNode.offsetWidth;
     const percent = ((labelWidth + 10) / formFieldWidth) * 100;
-    const color = this.inputFocus
-      ? 'var(--ngx-comp-form-field-filled-border-color)'
-      : 'currentColor'; // si esta el input con el focus activo coloca el color que le corresponde
+    let color = this.valid // validacion 
+      ? this.inputFocus // si esta el input con el focus activo coloca el color que le corresponde
+        ? 'var(--ngx-comp-form-field-filled-border-color)'
+        : 'currentColor'
+      : '#F44336';
     const background = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
     const borderColor = `transparent ${color} ${color}`;
     this.formFieldNode.style.borderColor = borderColor;
     this.formFieldNode.style.background = background;
+  }
+
+  validity() {
+    this.valid = this.required
+      ? this.elementRef.nativeElement.validity.valid
+      : true;
+    console.log('valid', this.valid);
+    this.formFieldNode.style.color = this.valid ? 'currentColor' : '#F44336';
   }
 }
