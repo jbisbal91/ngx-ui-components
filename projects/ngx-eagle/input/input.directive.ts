@@ -3,14 +3,16 @@ import {
   Directive,
   ElementRef,
   Host,
+  Input,
   OnDestroy,
   OnInit,
   Optional,
-  Renderer2,
+  Self,
 } from '@angular/core';
 import { FormFieldComponent } from './form-field.component';
 import { Subscription } from 'rxjs';
 import { NgxFillMode, NgxSize } from './typings';
+import { FormControl, NgControl } from '@angular/forms';
 
 @Directive({
   selector: 'input[ngx-input]',
@@ -26,23 +28,23 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
   formFieldNode: any;
   labelNode: any;
   placeholder: string = '';
-  required: boolean = false;
-  valid: boolean = false;
+  valid: boolean = true;
   ngxSize: NgxSize = 'medium';
   ngxFillMode: NgxFillMode = 'filled';
   private subscription: Subscription = new Subscription();
 
   constructor(
     public elementRef: ElementRef,
+    @Optional() @Self() public ngControl: NgControl,
     @Optional() @Host() public formFieldComponent: FormFieldComponent
   ) {}
 
   ngOnInit(): void {
     setTimeout(() => {
       this.placeholder = this.elementRef.nativeElement.placeholder;
-      this.required = this.elementRef.nativeElement.required;
       this.formFieldNode = this.elementRef.nativeElement.parentElement;
       this.getNgxLabelNode();
+      console.log(this.ngControl);
     });
     this.subscription.add(
       this.formFieldComponent?.ngxSize$.subscribe((ngxSize) => {
@@ -147,7 +149,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
     const formFieldWidth = this.formFieldNode.offsetWidth;
     const labelWidth = this.labelNode.offsetWidth;
     const percent = ((labelWidth + 10) / formFieldWidth) * 100;
-    let color = this.valid // validacion 
+    let color = this.valid // validacion
       ? this.inputFocus // si esta el input con el focus activo coloca el color que le corresponde
         ? 'var(--ngx-comp-form-field-filled-border-color)'
         : 'currentColor'
@@ -159,10 +161,18 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   validity() {
-    this.valid = this.required
-      ? this.elementRef.nativeElement.validity.valid
-      : true;
+    //this.valid = this.elementRef.nativeElement.validity.valid;
+    this.valid = this.ngControl
+      ? this.ngControl.status?.toLowerCase() === 'valid'
+        ? true
+        : false
+      : this.elementRef.nativeElement.validity.valid;
     console.log('valid', this.valid);
+    //console.log('ngControl', this.ngControl.status);
+
     this.formFieldNode.style.color = this.valid ? 'currentColor' : '#F44336';
+    this.elementRef.nativeElement.style.color = this.valid
+      ? 'var(--ngx-comp-form-field-filled-border-color)'
+      : '#F44336';
   }
 }

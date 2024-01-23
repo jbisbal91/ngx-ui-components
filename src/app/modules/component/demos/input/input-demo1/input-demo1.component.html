@@ -20,27 +20,22 @@
   </select>
 </div>
 
-
-<div ngx-row ngxJustify="start">
-  <div ngx-col ngxSpan="4">
-    <ngx-form-field
-      [ngxSize]="ngxSize"
-      [ngxRounded]="ngxRounded"
-      [ngxFillMode]="ngxFillMode"
-    >
-      <label ngx-label>Label1</label>
-      <input ngx-input placeholder="Placeholder1" [(ngModel)]="input1" required/>
-    </ngx-form-field>
-  </div>
-  <div ngx-col ngxSpan="4">
-    <ngx-form-field
+<form [formGroup]="formGroup">
+  <ngx-form-field
+    [ngxSize]="ngxSize"
+    [ngxRounded]="ngxRounded"
+    [ngxFillMode]="ngxFillMode"
+  >
+    <label ngx-label>Label1</label>
+    <input ngx-input type="text" placeholder="Ex. pat@example.com"/>
+  </ngx-form-field>
+  <!-- <ngx-form-field
       [ngxSize]="ngxSize"
       [ngxRounded]="ngxRounded"
       [ngxFillMode]="ngxFillMode"
     >
       <label ngx-label>Label2</label>
       <input ngx-input placeholder="Placeholder2" [(ngModel)]="input2" />
-    </ngx-form-field>
-  </div>
-</div>
+    </ngx-form-field> -->
+</form>
 
