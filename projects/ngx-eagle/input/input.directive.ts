@@ -159,7 +159,6 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   validity() {
-    //this.valid = this.elementRef.nativeElement.validity.valid;
     this.valid = this.ngControl
       ? this.ngControl.status?.toLowerCase() === 'valid'
         ? true
