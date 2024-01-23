@@ -8,7 +8,7 @@
   max-width: max-content;
   margin-left: 0.5rem;
   position: absolute;
-  transition:top ease-in-out 0.125s;
+  transition: top ease-in-out 0.125s;
 }
 
 .ngx-form-field .ngx-input {
@@ -17,12 +17,11 @@
   box-sizing: border-box;
   border-width: 1px;
   border-style: solid;
-  color: inherit;
+  color: var(--ngx-comp-input-color);
   background: none;
   font-family: inherit;
   text-decoration: none;
   white-space: nowrap;
-  gap: 0.25rem;
   vertical-align: middle;
   -webkit-user-select: none;
   -ms-user-select: none;
