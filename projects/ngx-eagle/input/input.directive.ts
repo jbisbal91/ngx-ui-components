@@ -3,7 +3,6 @@ import {
   Directive,
   ElementRef,
   Host,
-  Input,
   OnDestroy,
   OnInit,
   Optional,
@@ -12,7 +11,7 @@ import {
 import { FormFieldComponent } from './form-field.component';
 import { Subscription } from 'rxjs';
 import { NgxFillMode, NgxSize } from './typings';
-import { FormControl, NgControl } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 
 @Directive({
   selector: 'input[ngx-input]',
@@ -44,7 +43,6 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
       this.placeholder = this.elementRef.nativeElement.placeholder;
       this.formFieldNode = this.elementRef.nativeElement.parentElement;
       this.getNgxLabelNode();
-      console.log(this.ngControl);
     });
     this.subscription.add(
       this.formFieldComponent?.ngxSize$.subscribe((ngxSize) => {
@@ -167,9 +165,6 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
         ? true
         : false
       : this.elementRef.nativeElement.validity.valid;
-    console.log('valid', this.valid);
-    //console.log('ngControl', this.ngControl.status);
-
     this.formFieldNode.style.color = this.valid ? 'currentColor' : '#F44336';
     this.elementRef.nativeElement.style.color = this.valid
       ? 'var(--ngx-comp-form-field-filled-border-color)'
