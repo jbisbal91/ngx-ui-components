@@ -1,0 +1,40 @@
+<article class="main-article-template">
+    <!---------BREADCRUMBS---------->
+    <div class="breadcrumb-template">
+      <div class="breadcrumb-item-template">
+        <a routerLink="/components">Components</a>
+        <a routerLink="/components/select"> / Select</a>
+      </div>
+    </div>
+  
+    <!---------OVERVIEW---------->
+    <h1 class="mb-4">Select Overview</h1>
+  
+    <!---------BASIC USAGE---------->
+    <h1 class="mb-4">Basic Usage</h1>
+  
+    <!---------DEMO VIEWER---------->
+    <!---------Basic demo----------->
+    <app-component-viewer [tabs]="variation1DemoSelect">
+      <div demo-viewer-example>
+        <app-select-demo1></app-select-demo1>
+      </div>
+      <div demo-viewer-title>Properties.</div>
+      <div demo-viewer-description>
+        <p>Examples of select component properties.</p>
+      </div>
+    </app-component-viewer>
+
+    <app-component-viewer [tabs]="variation2DemoSelect">
+      <div demo-viewer-example>
+        <app-select-demo2></app-select-demo2>
+      </div>
+      <div demo-viewer-title>Required entries.</div>
+      <div demo-viewer-description>
+        <p>Examples of required entries.</p>
+      </div>
+    </app-component-viewer>
+
+  </article>
+  
+

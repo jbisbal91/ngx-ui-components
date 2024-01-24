@@ -18,6 +18,7 @@ import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.compon
 import { PieChartDocsComponent } from './docs/pie-chart-docs/pie-chart-docs.component';
 import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
 import { InputDocsComponent } from './docs/input-docs/input-docs.component';
+import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
       { path: 'input', component: InputDocsComponent },
       { path: 'line-chart', component: LineChartDocsComponent },
       { path: 'pie-chart', component: PieChartDocsComponent },
+      { path: 'select', component: SelectDocsComponent },
       { path: 'switch', component: SwitchDocsComponent },
       { path: 'tabs', component: TabDocsComponent },
       { path: 'tags', component: TagDocsComponent },

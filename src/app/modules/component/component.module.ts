@@ -70,6 +70,9 @@ import { InputDemo1Component } from './demos/input/input-demo1/input-demo1.compo
 import { InputModule } from 'projects/ngx-eagle/input';
 import { InputDocsComponent } from './docs/input-docs/input-docs.component';
 import { InputDemo2Component } from './demos/input/input-demo2/input-demo2.component';
+import { SelectDemo1Component } from './demos/select/select-demo1/select-demo1.component';
+import { SelectDemo2Component } from './demos/select/select-demo2/select-demo2.component';
+import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
 
 export function getHighlightLanguages() {
   return {
@@ -124,7 +127,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, SelectDemo1Component, SelectDemo2Component, SelectDocsComponent],
   exports: [components],
   imports: [
     CommonModule,
