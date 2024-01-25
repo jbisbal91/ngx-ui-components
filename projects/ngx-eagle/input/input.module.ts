@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
-import { InputDirective } from './input.directive';
-import { LabelDirective } from './label.directive';
-import { FormFieldComponent } from './form-field.component';
-import { ErrorDirective } from './error.directive';
+import { InputComponent } from './input.component';
 
 @NgModule({
-  exports: [FormFieldComponent, InputDirective, LabelDirective, ErrorDirective],
-  imports: [FormFieldComponent, InputDirective, LabelDirective, ErrorDirective],
+  exports: [InputComponent],
+  imports: [InputComponent],
 })
 export class InputModule {}

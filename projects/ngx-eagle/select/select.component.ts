@@ -75,11 +75,7 @@ export class SelectComponent implements AfterViewInit {
         this.labelRef.nativeElement.style.top = top;
         this.labelRef.nativeElement.style.fontSize = '0.75rem';
         this.inputRef.nativeElement.placeholder = this.placeholder;
-        setTimeout(() => {
-          if (this.ngxFillMode === 'outlined') {
-            this.buildBorderOutlined();
-          }
-        });
+        this.buildBorderOutlined();
       } else {
         const top = `${(inputHeight * 0.333) / 16}rem`;
         this.labelRef.nativeElement.style.top = top;
@@ -95,21 +91,22 @@ export class SelectComponent implements AfterViewInit {
   }
 
   buildBorderOutlined() {
-    const formFieldWidth = this.containerRef.nativeElement.offsetWidth;
-    const labelWidth = this.labelRef.nativeElement.offsetWidth;
-    const percent = ((labelWidth + 10) / formFieldWidth) * 100;
-    // let color = this.valid // validacion
-    //   ? this.inputFocus // si esta el input con el focus activo coloca el color que le corresponde
-    //     ? 'var(--ngx-comp-form-field-filled-border-color)'
-    //     : 'currentColor'
-    //   : '#F44336';
-    const color = '#F44336'
-    const background = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
-    const borderColor = `transparent ${color} ${color}`;
-    this.containerRef.nativeElement.style.borderColor = borderColor;
-    this.containerRef.nativeElement.style.background = background;
+    if (this.ngxFillMode === 'outlined') {
+      const formFieldWidth = this.containerRef.nativeElement.offsetWidth;
+      const labelWidth = this.labelRef.nativeElement.offsetWidth;
+      const percent = ((labelWidth + 10) / formFieldWidth) * 100;
+      // let color = this.valid // validacion
+      //   ? this.inputFocus // si esta el input con el focus activo coloca el color que le corresponde
+      //     ? 'var(--ngx-comp-form-field-filled-border-color)'
+      //     : 'currentColor'
+      //   : '#F44336';
+      const color = '#F44336';
+      const background = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
+      const borderColor = `transparent ${color} ${color}`;
+      this.containerRef.nativeElement.style.borderColor = borderColor;
+      this.containerRef.nativeElement.style.background = background;
+    }
   }
-
 
   drawLineTopBorder() {
     const background =

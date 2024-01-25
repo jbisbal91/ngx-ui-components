@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 export class InputDemo1Component {
   ngxSize: any = 'medium';
   ngxRounded: any = 'medium';
-  ngxFillMode: any = 'filled';
+  ngxFillMode: any = 'outlined';
   input = '';
 }
