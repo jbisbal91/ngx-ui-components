@@ -48,7 +48,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
     this.subscription.add(
       this.formFieldComponent?.ngxSize$.subscribe((ngxSize) => {
         setTimeout(() => {
-          this.setPositionLabel();
+          this.moveLabel();
           this.setPositionErrorNode();
         });
       })
@@ -57,7 +57,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
       this.formFieldComponent?.ngxFillMode$.subscribe((ngxFillMode) => {
         this.ngxFillMode = ngxFillMode;
         setTimeout(() => {
-          this.setPositionLabel();
+          this.moveLabel();
           this.setPositionErrorNode();
           this.drawLineTopBorder();
         });
@@ -68,21 +68,21 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.inputValue = this.elementRef.nativeElement.value;
-      this.setPositionLabel();
+      this.moveLabel();
       this.setPositionErrorNode();
     });
     //Se lanza el evento cuando se esta haciendo focus en el input
     this.elementRef.nativeElement.addEventListener('focus', () => {
       this.inputFocus = true;
       this.validity();
-      this.setPositionLabel();
+      this.moveLabel();
       this.setPositionErrorNode();
     });
     //Se lanza el evento cuando se desenfoca del input
     this.elementRef.nativeElement.addEventListener('blur', () => {
       this.inputFocus = false;
       this.validity();
-      this.setPositionLabel();
+      this.moveLabel();
       this.setPositionErrorNode();
     });
   }
@@ -116,7 +116,7 @@ export class InputDirective implements OnInit, OnDestroy, AfterViewInit {
     this.setPositionErrorNode();
   }
 
-  setPositionLabel() {
+  moveLabel() {
     if (this.labelNode) {
       if (this.inputFocus || this.inputValue !== '') {
         const top = this.ngxFillMode === 'outlined' ? '-0.375rem ' : '0px';

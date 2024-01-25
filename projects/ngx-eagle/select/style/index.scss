@@ -1,0 +1,111 @@
+.ngx-select {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: relative;
+}
+
+.ngx-select .ngx-select-label {
+  max-width: max-content;
+  margin-left: 0.5rem;
+  position: relative;
+  transition: top ease-in-out 0.125s;
+}
+
+
+.ngx-select .ngx-select-input {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  color: var(--ngx-comp-input-color);
+  background: none;
+  font-family: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  position: relative;
+  transition: color 0.2s ease-in-out;
+  border: none;
+  height: -webkit-fill-available;
+}
+
+
+.ngx-select .ngx-select-label {
+  position: absolute;
+}
+
+.ngx-select .ngx-option-container {}
+
+.ngx-select .ngx-option {}
+
+.ngx-select .ngx-error {
+  font-size: 0.75rem;
+  position: absolute;
+}
+
+.ngx-select.ngx-select-sm {
+  height: 2.5rem;
+}
+
+.ngx-select.ngx-select-md {
+  height: 3rem;
+}
+
+.ngx-select.ngx-select-lg {
+  height: 3.5rem;
+}
+
+.ngx-select.ngx-select-sm>[ngx-input],
+.ngx-select.ngx-select-md>[ngx-input] {
+  font-size: 0.875rem;
+  line-height: 1.4285714286;
+}
+
+.ngx-select.ngx-select-lg>[ngx-input] {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.ngx-select.ngx-select-outlined {
+  border: 1px solid;
+  border-top: 1px solid transparent;
+}
+
+.ngx-select.ngx-select-outlined.ngx-rounded-sm {
+  border-radius: 2px;
+}
+
+.ngx-select.ngx-select-outlined.ngx-rounded-md {
+  border-radius: 4px;
+}
+
+.ngx-select.ngx-select-outlined.ngx-rounded-lg {
+  border-radius: 6px;
+}
+
+.ngx-select.ngx-select-filled {
+  border: none;
+  background-color: var(--ngx-comp-form-field-filled-background-color) !important;
+  border-bottom: 1px solid;
+}
+
+.ngx-select.ngx-select-filled.ngx-rounded-sm {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.ngx-select.ngx-select-filled.ngx-rounded-md {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.ngx-select.ngx-select-filled.ngx-rounded-lg {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}

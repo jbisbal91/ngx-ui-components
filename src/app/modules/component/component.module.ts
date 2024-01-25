@@ -73,6 +73,7 @@ import { InputDemo2Component } from './demos/input/input-demo2/input-demo2.compo
 import { SelectDemo1Component } from './demos/select/select-demo1/select-demo1.component';
 import { SelectDemo2Component } from './demos/select/select-demo2/select-demo2.component';
 import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
+import { SelectModule } from 'projects/ngx-eagle/select';
 
 export function getHighlightLanguages() {
   return {
@@ -150,7 +151,8 @@ const components = [
     TabModule,
     TagModule,
     TimelineModule,
-    InputModule
+    InputModule,
+    SelectModule
   ],
   providers: [
     {
