@@ -118,7 +118,6 @@ export class InputComponent
       this.labelRef.nativeElement.style.position = 'absolute';
       this.placeholder = this.inputRef.nativeElement.placeholder;
       this.moveLabel();
-      this.validate();
     });
   }
 
