@@ -18,13 +18,19 @@
     <option value="filled">filled</option>
     <option value="outlined">outlined</option>
   </select>
+
+  <div>
+    <label>Disabled</label>
+    <ngx-switch [(ngModel)]="disabled"></ngx-switch>
+  </div>
 </div>
 
 <ngx-input
   [ngxSize]="ngxSize"
   [ngxRounded]="ngxRounded"
   [ngxFillMode]="ngxFillMode"
-  label="Label123"
+  label="Label1"
   [(ngModel)]="input"
+  [disabled]="disabled"
 >
 </ngx-input>

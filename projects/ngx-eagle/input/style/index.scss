@@ -34,9 +34,8 @@
   height: 100%;
 }
 
-.ngx-input .ngx-error {
-  font-size: 0.75rem;
-  position: absolute;
+.ngx-input .ngx-nat-input:disabled {
+  opacity: 0.75;
 }
 
 .ngx-input.ngx-input-outlined {

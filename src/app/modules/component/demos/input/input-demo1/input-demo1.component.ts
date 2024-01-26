@@ -10,4 +10,5 @@ export class InputDemo1Component {
   ngxRounded: any = 'medium';
   ngxFillMode: any = 'outlined';
   input = '';
+  disabled = false;
 }

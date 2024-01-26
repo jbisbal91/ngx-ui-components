@@ -12,7 +12,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   selector: 'ngx-switch',
   template: `
     <button
-      [disabled]="ngxDisabled"
+      [disabled]="disabled"
       class="ngx-switch"
       [class.ngx-switch-checked]="isChecked"
       (click)="toggle()"
@@ -38,29 +38,30 @@ export class SwitchComponent implements ControlValueAccessor, AfterContentInit {
   isChecked = false;
   onChange: any = () => {};
   onTouched: any = () => {};
-  @Input() ngxDisabled: boolean = false;
+  disabled: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngAfterContentInit(): void {
-    this.ngxDisabled = this.ngxDisabled;
     this.cdr.markForCheck();
   }
 
   writeValue(value: boolean): void {
     this.isChecked = value;
+    this.onChange(this.isChecked);
     this.cdr.markForCheck();
   }
 
   registerOnChange(fn: any): void {
-    //this.onChange = fn;
+    this.onChange = fn;
   }
 
   registerOnTouched(fn: any): void {
-    //this.onTouched = fn;
+    this.onTouched = fn;
   }
+
   setDisabledState(disabled: boolean): void {
-    //this.cdr.markForCheck();
+    this.disabled = disabled;
   }
 
   toggle(): void {

@@ -21,6 +21,11 @@
     <option value="text">text</option>
     <option value="elevated">elevated</option>
   </select>
+
+  <div>
+    <label>Disabled</label>
+    <ngx-switch [(ngModel)]="disabled"></ngx-switch>
+  </div>
 </div>
 
 <button
@@ -28,6 +33,7 @@
   [ngxSize]="size"
   [ngxRounded]="rounded"
   [ngxFillMode]="fillMode"
+  [disabled]="disabled"
 >
   Label
 </button>

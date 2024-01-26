@@ -18,7 +18,7 @@ import { CarouselModule } from 'ngx-eagle/carousel';
 import { DialogModule } from 'ngx-eagle/dialog';
 import { DividerModule } from 'ngx-eagle/divider';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
-import { SwitchModule } from 'ngx-eagle/switch';
+//import { SwitchModule } from 'ngx-eagle/switch';
 import { TabModule } from 'ngx-eagle/tab';
 import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
@@ -74,6 +74,7 @@ import { SelectDemo1Component } from './demos/select/select-demo1/select-demo1.c
 import { SelectDemo2Component } from './demos/select/select-demo2/select-demo2.component';
 import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
 import { SelectModule } from 'projects/ngx-eagle/select';
+import { SwitchModule } from 'projects/ngx-eagle/switch';
 
 export function getHighlightLanguages() {
   return {

@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
 export class SwitchDemo1Component {
   switch1Value:boolean = false;
   switch2Value:boolean = true;
+  switch3Value:boolean = false;
+  switch4Value:boolean = true;
 }

@@ -9,6 +9,7 @@ import {
   Self,
   SimpleChanges,
   ViewChild,
+  booleanAttribute,
 } from '@angular/core';
 import { NgxFillMode, NgxRounded, NgxSize } from './typings';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
@@ -47,6 +48,7 @@ const ngxRoundedfilledMap = {
         [placeholder]="placeholder"
         [value]="value"
         (input)="onInputChange($event)"
+        [disabled]="disabled"
       />
     </div>
   `,
@@ -60,11 +62,13 @@ export class InputComponent
   @Input() ngxFillMode: NgxFillMode = 'filled';
   @Input() label: string = '';
   @Input() placeholder: string = '';
-
+  disabled: boolean = false;
   @ViewChild('input_container') containerRef!: ElementRef;
   @ViewChild('input_label') labelRef!: ElementRef;
   @ViewChild('input') inputRef!: ElementRef;
 
+  onChange: any = () => {};
+  onTouched: any = () => {};
   value: any;
   valStatus: boolean = true;
 
@@ -103,7 +107,9 @@ export class InputComponent
     if (changes['ngxRounded']?.currentValue) {
       this.initialize();
     }
-
+    if (changes['disabled']?.currentValue) {
+      this.disabled = changes['disabled'].currentValue;
+    }
     this.cdr.markForCheck();
   }
 
@@ -123,22 +129,25 @@ export class InputComponent
 
   writeValue(value: any): void {
     this.value = value;
+    this.moveLabel();
+    this.onChange(this.value);
   }
 
   registerOnChange(fn: any): void {
-    //throw new Error('Method not implemented.');
+    this.onChange = fn;
   }
 
   registerOnTouched(fn: any): void {
-    //throw new Error('Method not implemented.');
+    this.onTouched = fn;
   }
 
-  setDisabledState?(isDisabled: boolean): void {
-    //throw new Error('Method not implemented.');
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+    console.log('input disabled', isDisabled);
   }
 
   moveLabel() {
-    if (this.labelRef.nativeElement) {
+    if (this.labelRef) {
       const containerHeight = this.containerRef.nativeElement.offsetHeight;
       if (this.inputFocus || this.value) {
         const top = this.ngxFillMode === 'outlined' ? '-0.375rem ' : '0px';
