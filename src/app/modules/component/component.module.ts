@@ -12,17 +12,18 @@ import {
 import { ComponentRoutingModule } from './component-routing.module';
 
 import { BadgeModule } from 'ngx-eagle/badge';
-//import { ButtonModule } from 'ngx-eagle/button';
+import { ButtonModule } from 'ngx-eagle/button';
 import { CardModule } from 'ngx-eagle/card';
 import { CarouselModule } from 'ngx-eagle/carousel';
 import { DialogModule } from 'ngx-eagle/dialog';
 import { DividerModule } from 'ngx-eagle/divider';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
-//import { SwitchModule } from 'ngx-eagle/switch';
+import { SwitchModule } from 'ngx-eagle/switch';
 import { TabModule } from 'ngx-eagle/tab';
 import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
 import { PieChartModule } from 'ngx-eagle/pie-chart';
+import { InputModule } from 'ngx-eagle/input';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';
@@ -65,16 +66,14 @@ import { PieChartDemo1Component } from './demos/pie-chart/pie-chart-demo1/pie-ch
 import { LineChartModule } from 'projects/ngx-eagle/line-chart';
 import { LineChartDemo1Component } from './demos/line-chart/line-chart-demo1/line-chart-demo1.component';
 import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
-import { ButtonModule } from 'projects/ngx-eagle/button';
 import { InputDemo1Component } from './demos/input/input-demo1/input-demo1.component';
-import { InputModule } from 'projects/ngx-eagle/input';
 import { InputDocsComponent } from './docs/input-docs/input-docs.component';
 import { InputDemo2Component } from './demos/input/input-demo2/input-demo2.component';
 import { SelectDemo1Component } from './demos/select/select-demo1/select-demo1.component';
 import { SelectDemo2Component } from './demos/select/select-demo2/select-demo2.component';
 import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
 import { SelectModule } from 'projects/ngx-eagle/select';
-import { SwitchModule } from 'projects/ngx-eagle/switch';
+
 
 export function getHighlightLanguages() {
   return {
