@@ -107,9 +107,6 @@ export class InputComponent
     if (changes['ngxRounded']?.currentValue) {
       this.initialize();
     }
-    if (changes['disabled']?.currentValue) {
-      this.disabled = changes['disabled'].currentValue;
-    }
     this.cdr.markForCheck();
   }
 
@@ -143,7 +140,6 @@ export class InputComponent
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
-    console.log('input disabled', isDisabled);
   }
 
   moveLabel() {
