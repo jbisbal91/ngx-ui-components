@@ -9,7 +9,6 @@ import {
   Self,
   SimpleChanges,
   ViewChild,
-  booleanAttribute,
 } from '@angular/core';
 import { NgxFillMode, NgxRounded, NgxSize } from './typings';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
@@ -47,8 +46,8 @@ const ngxRoundedfilledMap = {
         class="ngx-nat-input"
         [placeholder]="placeholder"
         [value]="value"
-        (input)="onInputChange($event)"
         [disabled]="disabled"
+        (input)="onInputChange($event)"
       />
     </div>
   `,
@@ -62,7 +61,7 @@ export class InputComponent
   @Input() ngxFillMode: NgxFillMode = 'filled';
   @Input() label: string = '';
   @Input() placeholder: string = '';
-  disabled: boolean = false;
+
   @ViewChild('input_container') containerRef!: ElementRef;
   @ViewChild('input_label') labelRef!: ElementRef;
   @ViewChild('input') inputRef!: ElementRef;
@@ -71,14 +70,17 @@ export class InputComponent
   onTouched: any = () => {};
   value: any;
   valStatus: boolean = true;
-
+  disabled: boolean = false;
   inputFocus = false;
+
   constructor(
     public elementRef: ElementRef,
     private cdr: ChangeDetectorRef,
     @Optional() @Self() public ngControl: NgControl
   ) {
-    this.ngControl.valueAccessor = this;
+    if (this.ngControl) {
+      this.ngControl.valueAccessor = this;
+    }
   }
 
   ngAfterViewInit() {

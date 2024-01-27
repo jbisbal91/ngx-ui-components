@@ -12,7 +12,7 @@ import {
   styleUrls: ['./input-demo2.component.scss'],
 })
 export class InputDemo2Component implements OnInit {
-  inputFormControl = new FormControl('', [Validators.required]);
+  inputFormControl = new FormControl(null, [Validators.required]);
   inputForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}

@@ -23,7 +23,7 @@ import { TabModule } from 'ngx-eagle/tab';
 import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
 import { PieChartModule } from 'ngx-eagle/pie-chart';
-import { InputModule } from 'ngx-eagle/input';
+//import { InputModule } from 'ngx-eagle/input';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';
@@ -73,6 +73,7 @@ import { SelectDemo1Component } from './demos/select/select-demo1/select-demo1.c
 import { SelectDemo2Component } from './demos/select/select-demo2/select-demo2.component';
 import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
 import { SelectModule } from 'projects/ngx-eagle/select';
+import { InputModule } from 'projects/ngx-eagle/input';
 
 
 export function getHighlightLanguages() {

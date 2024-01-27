@@ -1,11 +1,35 @@
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   Input,
+  OnChanges,
+  Optional,
+  Self,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { NgxFillMode, NgxRounded, NgxSize } from './typings';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
+
+const ngxSizeMap = {
+  small: '2.5rem',
+  medium: '3rem',
+  large: '3.5rem',
+};
+
+const ngxRoundedOutlinedMap = {
+  small: '2px',
+  medium: '4px',
+  large: '6px',
+};
+
+const ngxRoundedfilledMap = {
+  small: '2px 2px 0px 0px',
+  medium: '4px 4px 0px 0px',
+  large: '6px 6px 0px 0px',
+};
 
 @Component({
   selector: 'ngx-select',
@@ -13,12 +37,6 @@ import { NgxFillMode, NgxRounded, NgxSize } from './typings';
     <div
       #select_container
       class="ngx-select"
-      [class.ngx-select-sm]="ngxSize === 'small'"
-      [class.ngx-select-md]="ngxSize === 'medium'"
-      [class.ngx-select-lg]="ngxSize === 'large'"
-      [class.ngx-rounded-sm]="ngxRounded === 'small'"
-      [class.ngx-rounded-md]="ngxRounded === 'medium'"
-      [class.ngx-rounded-lg]="ngxRounded === 'large'"
       [class.ngx-select-filled]="ngxFillMode === 'filled'"
       [class.ngx-select-outlined]="ngxFillMode === 'outlined'"
     >
@@ -27,6 +45,8 @@ import { NgxFillMode, NgxRounded, NgxSize } from './typings';
         #select_input
         class="ngx-select-input"
         [placeholder]="placeholder"
+        [value]="value"
+        [disabled]="disabled"
         (input)="onInputChange($event)"
       />
     </div>
@@ -36,7 +56,9 @@ import { NgxFillMode, NgxRounded, NgxSize } from './typings';
   `,
   standalone: true,
 })
-export class SelectComponent implements AfterViewInit {
+export class SelectComponent
+  implements AfterViewInit, ControlValueAccessor, OnChanges
+{
   @Input() ngxSize: NgxSize = 'medium';
   @Input() ngxRounded: NgxRounded = 'medium';
   @Input() ngxFillMode: NgxFillMode = 'filled';
@@ -47,14 +69,25 @@ export class SelectComponent implements AfterViewInit {
   @ViewChild('select_label') labelRef!: ElementRef;
   @ViewChild('select_input') inputRef!: ElementRef;
 
+  onChange: any = () => {};
+  onTouched: any = () => {};
+  value: any;
+  valStatus: boolean = true;
+  disabled: boolean = false;
   inputFocus = false;
-  inputValue = '';
-  constructor(public elementRef: ElementRef) {}
+
+  constructor(
+    public elementRef: ElementRef,
+    private cdr: ChangeDetectorRef,
+    @Optional() @Self() public ngControl: NgControl
+  ) {
+    if (this.ngControl) {
+      this.ngControl.valueAccessor = this;
+    }
+  }
 
   ngAfterViewInit() {
-    this.inputValue = this.inputRef.nativeElement.value;
-    this.moveLabel();
-    this.placeholder = this.inputRef.nativeElement.placeholder;
+    this.initialize();
     //Se lanza el evento cuando se esta haciendo focus en el input
     this.inputRef.nativeElement.addEventListener('focus', () => {
       this.inputFocus = true;
@@ -67,17 +100,59 @@ export class SelectComponent implements AfterViewInit {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['ngxSize']?.currentValue) {
+      this.initialize();
+    }
+    if (changes['ngxFillMode']?.currentValue) {
+      this.initialize();
+    }
+    if (changes['ngxRounded']?.currentValue) {
+      this.initialize();
+    }
+    this.cdr.markForCheck();
+  }
+
+  initialize() {
+    setTimeout(() => {
+      this.ngControl.control?.setValue(this.value);
+      this.containerRef.nativeElement.style.height = ngxSizeMap[this.ngxSize];
+      this.containerRef.nativeElement.style.borderRadius =
+        this.ngxFillMode === 'outlined'
+          ? ngxRoundedOutlinedMap[this.ngxRounded]
+          : ngxRoundedfilledMap[this.ngxRounded];
+      this.labelRef.nativeElement.style.position = 'absolute';
+      this.placeholder = this.inputRef.nativeElement.placeholder;
+      this.moveLabel();
+    });
+  }
+
+  writeValue(value: any): void {
+    this.value = value;
+    this.moveLabel();
+    this.onChange(this.value);
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
   moveLabel() {
-    if (this.labelRef.nativeElement) {
-      const inputHeight = this.inputRef.nativeElement.offsetHeight;
-      if (this.inputFocus || this.inputValue !== '') {
+    if (this.labelRef) {
+      const containerHeight = this.containerRef.nativeElement.offsetHeight;
+      if (this.inputFocus || this.value !== '') {
         const top = this.ngxFillMode === 'outlined' ? '-0.375rem ' : '0px';
         this.labelRef.nativeElement.style.top = top;
         this.labelRef.nativeElement.style.fontSize = '0.75rem';
         this.inputRef.nativeElement.placeholder = this.placeholder;
         this.buildBorderOutlined();
       } else {
-        const top = `${(inputHeight * 0.333) / 16}rem`;
+        const top = `${(containerHeight * 0.333) / 16}rem`;
         this.labelRef.nativeElement.style.top = top;
         this.labelRef.nativeElement.style.fontSize = '1rem';
         this.inputRef.nativeElement.placeholder = '';
@@ -87,7 +162,8 @@ export class SelectComponent implements AfterViewInit {
   }
 
   onInputChange(event: Event): void {
-    this.inputValue = (event.target as HTMLInputElement).value;
+    this.value = (event.target as HTMLInputElement).value;
+    this.ngControl.control?.setValue(this.value);
   }
 
   buildBorderOutlined() {

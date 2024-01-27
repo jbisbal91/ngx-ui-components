@@ -1,24 +1,29 @@
-<div class="grid gap-y-6">
-  <ngx-form-field ngxFillMode="outlined">
-    <label ngx-label>Label1</label>
-    <input ngx-input placeholder="Placeholder1" required />
-  </ngx-form-field>
+<div class="flex gap-x-6">
+  <ngx-input
+    ngxFillMode="outlined"
+    label="Label1"
+    placeholder="Placeholder1"
+    [ngModel]="'Text1'"
+  >
+  </ngx-input>
 
   <form>
-    <ngx-form-field ngxFillMode="outlined">
-      <label ngx-label>Label2</label>
-      <input
-        ngx-input
-        placeholder="Placeholder2"
-        [formControl]="inputFormControl"
-      />
-    </ngx-form-field>
+    <ngx-input
+      ngxFillMode="outlined"
+      label="Label2"
+      placeholder="Placeholder2"
+      [formControl]="inputFormControl"
+    >
+    </ngx-input>
   </form>
 
   <form [formGroup]="inputForm">
-    <ngx-form-field ngxFillMode="outlined">
-      <label ngx-label>Label3</label>
-      <input ngx-input placeholder="Placeholder3" formControlName="input3" />
-    </ngx-form-field>
+    <ngx-input
+      ngxFillMode="outlined"
+      label="Label3"
+      placeholder="Placeholder3"
+      formControlName="input3"
+    >
+    </ngx-input>
   </form>
 </div>
