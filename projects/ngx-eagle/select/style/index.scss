@@ -3,6 +3,7 @@
   flex-direction: column;
   width: fit-content;
   position: relative;
+  display: block;
 }
 
 .ngx-select .ngx-select-label {
@@ -14,7 +15,7 @@
 
 .ngx-select .ngx-select-input {
   padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-right: 1.5rem;
   box-sizing: border-box;
   border-width: 1px;
   border-style: solid;

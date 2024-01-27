@@ -9,6 +9,7 @@ import {
   Self,
   SimpleChanges,
   ViewChild,
+  booleanAttribute,
 } from '@angular/core';
 import { NgxFillMode, NgxRounded, NgxSize } from './typings';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
@@ -47,8 +48,20 @@ const ngxRoundedfilledMap = {
         [placeholder]="placeholder"
         [value]="value"
         [disabled]="disabled"
+        [readonly]="!autocomplete"
         (input)="onInputChange($event)"
       />
+      <span style="position: absolute; right: 0px;">
+        <svg
+          #select_arrow
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 -960 960 960"
+          width="24"
+        >
+          <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+        </svg>
+      </span>
     </div>
     <div class="ngx-option-container">
       <ng-content></ng-content>
@@ -64,10 +77,12 @@ export class SelectComponent
   @Input() ngxFillMode: NgxFillMode = 'filled';
   @Input() label: string = '';
   @Input() placeholder: string = '';
+  @Input({ transform: booleanAttribute }) autocomplete: boolean = false;
 
   @ViewChild('select_container') containerRef!: ElementRef;
   @ViewChild('select_label') labelRef!: ElementRef;
   @ViewChild('select_input') inputRef!: ElementRef;
+  @ViewChild('select_arrow') arrowRef!: ElementRef;
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -103,9 +118,11 @@ export class SelectComponent
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ngxSize']?.currentValue) {
       this.initialize();
+      this.moveArrow();
     }
     if (changes['ngxFillMode']?.currentValue) {
       this.initialize();
+      this.moveArrow();
     }
     if (changes['ngxRounded']?.currentValue) {
       this.initialize();
@@ -124,6 +141,7 @@ export class SelectComponent
       this.labelRef.nativeElement.style.position = 'absolute';
       this.placeholder = this.inputRef.nativeElement.placeholder;
       this.moveLabel();
+      this.moveArrow();
     });
   }
 
@@ -158,6 +176,14 @@ export class SelectComponent
         this.inputRef.nativeElement.placeholder = '';
         this.drawLineTopBorder();
       }
+    }
+  }
+
+  moveArrow() {
+    if (this.arrowRef) {
+      const containerHeight = this.containerRef.nativeElement.offsetHeight;
+      const marginTop = `${(containerHeight * 0.282) / 16}rem`;
+      this.arrowRef.nativeElement.style.marginTop = marginTop;
     }
   }
 
