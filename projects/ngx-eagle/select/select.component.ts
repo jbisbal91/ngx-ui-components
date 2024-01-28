@@ -68,7 +68,7 @@ const ngxRoundedfilledMap = {
           </svg>
         </span>
       </div>
-      <div *ngIf="isOpenDropdown" class="ngx-option-container">
+      <div *ngIf="isOpenDropdown && !disabled" class="ngx-option-container">
         <ng-content></ng-content>
       </div>
     </div>
