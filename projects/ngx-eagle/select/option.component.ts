@@ -14,7 +14,9 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'ngx-option',
   template: `
-    <div #option_item class="ngx-option"><ng-content></ng-content></div>
+    <div (click)="onClick()" #option_item class="ngx-option">
+      <ng-content></ng-content>
+    </div>
   `,
   standalone: true,
 })
@@ -22,6 +24,7 @@ export class OptionComponent implements OnInit, OnDestroy {
   @ViewChild('option_item') optionItemRef!: ElementRef;
   @Input() value: string = '';
 
+  inputRef!: ElementRef;
   private subscription: Subscription = new Subscription();
 
   constructor(@Optional() @Host() public selectComponent: SelectComponent) {}
@@ -39,6 +42,16 @@ export class OptionComponent implements OnInit, OnDestroy {
         }rem`;
       })
     );
+    this.subscription.add(
+      this.selectComponent?.inputRef$.subscribe((inputRef) => {
+        this.inputRef = inputRef;
+      })
+    );
+  }
+
+  onClick() {
+    this.inputRef.nativeElement.value =
+      this.optionItemRef.nativeElement.textContent;
   }
 
   ngOnDestroy(): void {

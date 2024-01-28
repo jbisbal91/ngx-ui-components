@@ -104,6 +104,7 @@ export class SelectComponent
   @ViewChild('option_container') optContRef!: ElementRef;
 
   readonly containerRef$ = new ReplaySubject<ElementRef>();
+  readonly inputRef$ = new ReplaySubject<ElementRef>();
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -134,13 +135,17 @@ export class SelectComponent
     //Se lanza el evento cuando se desenfoca del input
     this.inputRef.nativeElement.addEventListener('blur', () => {
       this.inputFocus = false;
-      this.moveLabel();
+      if (!this.isOpenDropdown) {
+        this.moveLabel();
+      }
     });
   }
 
   @HostListener('document:mousedown', ['$event'])
   clickout(event: any): void {
     this.isOpenDropdown = this.selectRef.nativeElement.contains(event.target);
+    this.value = this.inputRef.nativeElement.value; // se actualiza el valor dependiendo del valor que fue selecionado en el dropdown
+    this.moveLabel();
     setTimeout(() => {
       if (this.optContRef) {
         this.optContRef.nativeElement.style.borderRadius =
@@ -155,17 +160,8 @@ export class SelectComponent
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['ngxSize']?.currentValue) {
-      this.initialize();
-      this.moveArrow();
-    }
-    if (changes['ngxFillMode']?.currentValue) {
-      this.initialize();
-      this.moveArrow();
-    }
-    if (changes['ngxRounded']?.currentValue) {
-      this.initialize();
-    }
+    this.initialize();
+    this.moveArrow();
     this.cdr.markForCheck();
   }
 
@@ -174,12 +170,12 @@ export class SelectComponent
       this.ngControl.control?.setValue(this.value);
       this.containerRef.nativeElement.style.height = ngxSizeMap[this.ngxSize];
       this.containerRef$.next(this.containerRef);
+      this.inputRef$.next(this.inputRef);
       this.containerRef.nativeElement.style.borderRadius =
         this.ngxFillMode === 'outlined'
           ? ngxRoundedOutlinedMap[this.ngxRounded]
           : ngxRoundedfilledMap[this.ngxRounded];
       this.labelRef.nativeElement.style.position = 'absolute';
-      this.placeholder = this.inputRef.nativeElement.placeholder;
       this.moveLabel();
       this.moveArrow();
     });

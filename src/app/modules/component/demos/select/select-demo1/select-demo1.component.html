@@ -23,6 +23,11 @@
     <label>Disabled</label>
     <ngx-switch [(ngModel)]="disabled"></ngx-switch>
   </div>
+  
+  <div>
+    <label>Autocomplete</label>
+    <ngx-switch [(ngModel)]="autocomplete"></ngx-switch>
+  </div>
 </div>
 
 <div class="flex gap-x-6">
@@ -31,37 +36,19 @@
     [ngxRounded]="ngxRounded"
     [ngxFillMode]="ngxFillMode"
     label="Label"
-    [(ngModel)]="input"
+    [(ngModel)]="input1"
+    placeholder="Placeholder1"
     [disabled]="disabled"
-    autocomplete
+    [autocomplete]="autocomplete"
   >
-    <ngx-option value="Opt1">Opt1</ngx-option>
-    <ngx-option value="Opt2">Opt2</ngx-option>
-    <ngx-option value="Opt3">Opt3</ngx-option>
-    <ngx-option value="Opt4">Opt4</ngx-option>
-    <ngx-option value="Opt5">Opt5</ngx-option>
-    <ngx-option value="Opt6">Opt6</ngx-option>
-    <ngx-option value="Opt7">Opt7</ngx-option>
-    <ngx-option value="Opt8">Opt8</ngx-option>
-    <ngx-option value="Opt9">Opt9</ngx-option>
-    <ngx-option value="Opt10">Opt10</ngx-option>
-    <ngx-option value="Opt11">Opt11</ngx-option>
-    <ngx-option value="Opt12">Opt12</ngx-option>
+    <ngx-option value="opt1">Option 1</ngx-option>
+    <ngx-option value="opt2">Option 2</ngx-option>
+    <ngx-option value="opt3">Option 3</ngx-option>
+    <ngx-option value="opt4">Option 4</ngx-option>
+    <ngx-option value="opt5">Option 5</ngx-option>
+    <ngx-option value="opt6">Option 6</ngx-option>
+    <ngx-option value="opt7">Option 7</ngx-option>
+    <ngx-option value="opt8">Option 8</ngx-option>
+    <ngx-option value="opt9">Option 9</ngx-option>
+    <ngx-option value="opt10">Option 10</ngx-option>
   </ngx-select>
-
-  <ngx-select
-    [ngxSize]="ngxSize"
-    [ngxRounded]="ngxRounded"
-    [ngxFillMode]="ngxFillMode"
-    label="Label"
-    [(ngModel)]="input"
-    [disabled]="disabled"
-    autocomplete
-  >
-    <ngx-option value="Opt1">Opt1</ngx-option>
-    <ngx-option value="Opt2">Opt2</ngx-option>
-    <ngx-option value="Opt3">Opt3</ngx-option>
-    <ngx-option value="Opt4">Opt4</ngx-option>
-    <ngx-option value="Opt5">Opt5</ngx-option>
-  </ngx-select>
-</div>
