@@ -78,3 +78,9 @@
   background-color: var(--ngx-comp-select-form-field-filled-background-color) !important;
   border-bottom: 1px solid;
 }
+
+.ngx-field-form-select>.ngx-select>.ngx-select-arrow {
+  filter: var(--ngx-comp-select-filter-arrow);
+  position: absolute;
+  right: 0px;
+}

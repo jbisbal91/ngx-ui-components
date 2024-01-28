@@ -55,7 +55,7 @@ const ngxRoundedfilledMap = {
           [readonly]="!autocomplete"
           (input)="onInputChange($event)"
         />
-        <span style="position: absolute; right: 0px;">
+        <span class="ngx-select-arrow">
           <svg
             #select_arrow
             xmlns="http://www.w3.org/2000/svg"
