@@ -35,6 +35,12 @@ const ngxRoundedfilledMap = {
   large: '6px 6px 0px 0px',
 };
 
+const ngxRoundedOptContMap = {
+  small: '0px 0px 2px 2px',
+  medium: '0px 0px 4px 4px',
+  large: '0px 0px 6px 6px',
+};
+
 @Component({
   selector: 'ngx-select',
   template: `
@@ -68,7 +74,11 @@ const ngxRoundedfilledMap = {
           </svg>
         </span>
       </div>
-      <div *ngIf="isOpenDropdown && !disabled" class="ngx-option-container">
+      <div
+        *ngIf="isOpenDropdown && !disabled"
+        #option_container
+        class="ngx-option-container"
+      >
         <ng-content></ng-content>
       </div>
     </div>
@@ -91,6 +101,7 @@ export class SelectComponent
   @ViewChild('select_label') labelRef!: ElementRef;
   @ViewChild('select_input') inputRef!: ElementRef;
   @ViewChild('select_arrow') arrowRef!: ElementRef;
+  @ViewChild('option_container') optContRef!: ElementRef;
 
   readonly containerRef$ = new ReplaySubject<ElementRef>();
 
@@ -130,6 +141,17 @@ export class SelectComponent
   @HostListener('document:mousedown', ['$event'])
   clickout(event: any): void {
     this.isOpenDropdown = this.selectRef.nativeElement.contains(event.target);
+    setTimeout(() => {
+      if (this.optContRef) {
+        this.optContRef.nativeElement.style.borderRadius =
+          ngxRoundedOptContMap[this.ngxRounded];
+      }
+      if (this.ngxFillMode === 'outlined') {
+        this.containerRef.nativeElement.style.borderRadius = this.isOpenDropdown
+          ? ngxRoundedfilledMap[this.ngxRounded]
+          : ngxRoundedOutlinedMap[this.ngxRounded];
+      }
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
