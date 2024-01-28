@@ -15,6 +15,7 @@ import {
 import { NgxFillMode, NgxRounded, NgxSize } from './typings';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { ReplaySubject } from 'rxjs';
 
 const ngxSizeMap = {
   small: '2.5rem',
@@ -67,11 +68,7 @@ const ngxRoundedfilledMap = {
           </svg>
         </span>
       </div>
-      <div
-        #option_container
-        *ngIf="isOpenDropdown"
-        class="ngx-option-container"
-      >
+      <div *ngIf="isOpenDropdown" class="ngx-option-container">
         <ng-content></ng-content>
       </div>
     </div>
@@ -94,7 +91,8 @@ export class SelectComponent
   @ViewChild('select_label') labelRef!: ElementRef;
   @ViewChild('select_input') inputRef!: ElementRef;
   @ViewChild('select_arrow') arrowRef!: ElementRef;
-  @ViewChild('option_container') optionRef!: ElementRef;
+
+  readonly containerRef$ = new ReplaySubject<ElementRef>();
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -153,6 +151,7 @@ export class SelectComponent
     setTimeout(() => {
       this.ngControl.control?.setValue(this.value);
       this.containerRef.nativeElement.style.height = ngxSizeMap[this.ngxSize];
+      this.containerRef$.next(this.containerRef);
       this.containerRef.nativeElement.style.borderRadius =
         this.ngxFillMode === 'outlined'
           ? ngxRoundedOutlinedMap[this.ngxRounded]

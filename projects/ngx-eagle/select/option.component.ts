@@ -1,12 +1,47 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Host,
+  Input,
+  OnDestroy,
+  OnInit,
+  Optional,
+  ViewChild,
+} from '@angular/core';
+import { SelectComponent } from './select.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'ngx-option',
   template: `
-  <div class="ngx-option">
-
-  </div>
+    <div #option_item class="ngx-option"><ng-content></ng-content></div>
   `,
   standalone: true,
 })
-export class OptionComponent {}
+export class OptionComponent implements OnInit, OnDestroy {
+  @ViewChild('option_item') optionItemRef!: ElementRef;
+  @Input() value: string = '';
+
+  private subscription: Subscription = new Subscription();
+
+  constructor(@Optional() @Host() public selectComponent: SelectComponent) {}
+
+  ngOnInit(): void {
+    this.subscription.add(
+      this.selectComponent?.containerRef$.subscribe((containerRef) => {
+        const containerWidth = containerRef.nativeElement.offsetWidth;
+        const containerHeight = containerRef.nativeElement.offsetHeight - 5;
+        this.optionItemRef.nativeElement.style.width = `${
+          containerWidth / 16
+        }rem`;
+        this.optionItemRef.nativeElement.style.height = `${
+          containerHeight / 16
+        }rem`;
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+}

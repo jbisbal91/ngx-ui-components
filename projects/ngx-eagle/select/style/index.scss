@@ -3,34 +3,46 @@
   width: fit-content;
 }
 
-.ngx-field-form-select .ngx-option-container {
-  background-color: #fff;
-  position: absolute;
-  pointer-events: auto;
+.ngx-field-form-select>.ngx-option-container {
+  background-color: var(--ngx-comp-select-form-field-filled-background-color);
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
-  z-index: 1000;
-  display: flex;
-  max-width: fit-content;
-  max-height: fit-content;
-}
-
-
-.ngx-select {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  position: relative;
   display: block;
+  max-height: 15rem;
+  max-width: fit-content;
+  overflow-y: scroll;
+  pointer-events: auto;
+  position: absolute;
+  z-index: 1000;
 }
 
-.ngx-select .ngx-select-label {
+.ngx-field-form-select>.ngx-option-container .ngx-option {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+}
+
+.ngx-field-form-select>.ngx-option-container .ngx-option:hover {
+  background-color: var(--ngx-comp-select-opt-bg-hover);
+}
+
+.ngx-field-form-select>.ngx-select {
+  display: block;
+  flex-direction: column;
+  position: relative;
+  width: fit-content;
+}
+
+.ngx-field-form-select>.ngx-select>.ngx-select-label {
   max-width: max-content;
   margin-left: 0.5rem;
   position: relative;
   transition: top ease-in-out 0.125s;
 }
 
-.ngx-select .ngx-select-input {
+.ngx-field-form-select>.ngx-select>.ngx-select-input {
   padding-left: 0.5rem;
   padding-right: 1.5rem;
   box-sizing: border-box;
@@ -52,17 +64,17 @@
   height: 100%;
 }
 
-.ngx-select .ngx-nat-input:disabled {
+.ngx-field-form-select>.ngx-select>.ngx-nat-input:disabled {
   opacity: 0.75;
 }
 
-.ngx-select.ngx-select-outlined {
+.ngx-field-form-select>.ngx-select.ngx-select-outlined {
   border: 1px solid;
   border-top: 1px solid transparent;
 }
 
-.ngx-select.ngx-select-filled {
+.ngx-field-form-select>.ngx-select.ngx-select-filled {
   border: none;
-  background-color: var(--ngx-comp-form-field-filled-background-color) !important;
+  background-color: var(--ngx-comp-select-form-field-filled-background-color) !important;
   border-bottom: 1px solid;
 }
