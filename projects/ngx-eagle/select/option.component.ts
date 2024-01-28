@@ -33,7 +33,7 @@ export class OptionComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.selectComponent?.containerRef$.subscribe((containerRef) => {
         const containerWidth = containerRef.nativeElement.offsetWidth;
-        const containerHeight = containerRef.nativeElement.offsetHeight - 5;
+        const containerHeight = containerRef.nativeElement.offsetHeight - 8;
         this.optionItemRef.nativeElement.style.width = `${
           containerWidth / 16
         }rem`;

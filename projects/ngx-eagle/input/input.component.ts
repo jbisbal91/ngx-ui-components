@@ -7,7 +7,6 @@ import {
   OnChanges,
   Optional,
   Self,
-  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { NgxFillMode, NgxRounded, NgxSize } from './typings';
@@ -98,17 +97,8 @@ export class InputComponent
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['ngxSize']?.currentValue) {
-      this.initialize();
-    }
-    if (changes['ngxFillMode']?.currentValue) {
-      this.initialize();
-    }
-
-    if (changes['ngxRounded']?.currentValue) {
-      this.initialize();
-    }
+  ngOnChanges(): void {
+    this.initialize();
     this.cdr.markForCheck();
   }
 

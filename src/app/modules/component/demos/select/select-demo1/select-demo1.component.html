@@ -23,11 +23,7 @@
     <label>Disabled</label>
     <ngx-switch [(ngModel)]="disabled"></ngx-switch>
   </div>
-  
-  <div>
-    <label>Autocomplete</label>
-    <ngx-switch [(ngModel)]="autocomplete"></ngx-switch>
-  </div>
+
 </div>
 
 <div class="flex gap-x-6">
@@ -39,7 +35,6 @@
     [(ngModel)]="input1"
     placeholder="Placeholder1"
     [disabled]="disabled"
-    [autocomplete]="autocomplete"
   >
     <ngx-option value="opt1">Option 1</ngx-option>
     <ngx-option value="opt2">Option 2</ngx-option>

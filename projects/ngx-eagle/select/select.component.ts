@@ -8,7 +8,6 @@ import {
   OnChanges,
   Optional,
   Self,
-  SimpleChanges,
   ViewChild,
   booleanAttribute,
 } from '@angular/core';
@@ -138,6 +137,7 @@ export class SelectComponent
       if (!this.isOpenDropdown) {
         this.moveLabel();
       }
+      this.validate();
     });
   }
 
@@ -167,7 +167,7 @@ export class SelectComponent
     this.moveLabel();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.initialize();
     this.moveArrow();
     this.cdr.markForCheck();
@@ -237,6 +237,8 @@ export class SelectComponent
   onInputChange(event: Event): void {
     this.value = (event.target as HTMLInputElement).value;
     this.ngControl.control?.setValue(this.value);
+    this.validate();
+    this.buildBorderOutlined();
   }
 
   buildBorderOutlined(): void {
@@ -244,12 +246,11 @@ export class SelectComponent
       const formFieldWidth = this.containerRef.nativeElement.offsetWidth;
       const labelWidth = this.labelRef.nativeElement.offsetWidth;
       const percent = ((labelWidth + 10) / formFieldWidth) * 100;
-      // let color = this.valid // validacion
-      //   ? this.inputFocus // si esta el input con el focus activo coloca el color que le corresponde
-      //     ? 'var(--ngx-comp-form-field-filled-border-color)'
-      //     : 'currentColor'
-      //   : '#F44336';
-      const color = '#F44336';
+      let color = this.valStatus // validacion
+        ? this.inputFocus // si esta el input con el focus activo coloca el color que le corresponde
+          ? 'var(--ngx-comp-form-field-filled-border-color)'
+          : 'currentColor'
+        : '#F44336';
       const background = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
       const borderColor = `transparent ${color} ${color}`;
       this.containerRef.nativeElement.style.borderColor = borderColor;
@@ -265,5 +266,17 @@ export class SelectComponent
     const borderColor = `transparent currentColor currentColor`;
     this.containerRef.nativeElement.style.borderColor = borderColor;
     this.containerRef.nativeElement.style.background = background;
+  }
+
+  validate() {
+    this.valStatus =
+      this.ngControl.status?.toLowerCase() === 'valid' ? true : false;
+    this.containerRef.nativeElement.style.color = this.valStatus
+      ? 'currentColor'
+      : '#F44336';
+
+    this.inputRef.nativeElement.style.color = this.valStatus
+      ? 'var(--ngx-comp-form-field-filled-border-color)'
+      : '#F44336';
   }
 }
