@@ -25,13 +25,28 @@
   </div>
 </div>
 
-<ngx-select
-  [ngxSize]="ngxSize"
-  [ngxRounded]="ngxRounded"
-  [ngxFillMode]="ngxFillMode"
-  label="Label"
-  [(ngModel)]="input"
-  [disabled]="disabled"
->
-  <ngx-option></ngx-option>
-</ngx-select>
+<div class="flex gap-x-6">
+  <ngx-select
+    [ngxSize]="ngxSize"
+    [ngxRounded]="ngxRounded"
+    [ngxFillMode]="ngxFillMode"
+    label="Label"
+    [(ngModel)]="input"
+    [disabled]="disabled"
+    autocomplete
+  >
+    <ngx-option></ngx-option>
+  </ngx-select>
+
+  <ngx-select
+    [ngxSize]="ngxSize"
+    [ngxRounded]="ngxRounded"
+    [ngxFillMode]="ngxFillMode"
+    label="Label"
+    [(ngModel)]="input"
+    [disabled]="disabled"
+    autocomplete
+  >
+    <ngx-option></ngx-option>
+  </ngx-select>
+</div>

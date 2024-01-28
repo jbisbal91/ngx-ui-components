@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostListener,
   Input,
   OnChanges,
   Optional,
@@ -13,6 +14,7 @@ import {
 } from '@angular/core';
 import { NgxFillMode, NgxRounded, NgxSize } from './typings';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 const ngxSizeMap = {
   small: '2.5rem',
@@ -35,39 +37,47 @@ const ngxRoundedfilledMap = {
 @Component({
   selector: 'ngx-select',
   template: `
-    <div
-      #select_container
-      class="ngx-select"
-      [class.ngx-select-filled]="ngxFillMode === 'filled'"
-      [class.ngx-select-outlined]="ngxFillMode === 'outlined'"
-    >
-      <label #select_label class="ngx-select-label">{{ label }}</label>
-      <input
-        #select_input
-        class="ngx-select-input"
-        [placeholder]="placeholder"
-        [value]="value"
-        [disabled]="disabled"
-        [readonly]="!autocomplete"
-        (input)="onInputChange($event)"
-      />
-      <span style="position: absolute; right: 0px;">
-        <svg
-          #select_arrow
-          xmlns="http://www.w3.org/2000/svg"
-          height="24"
-          viewBox="0 -960 960 960"
-          width="24"
-        >
-          <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
-        </svg>
-      </span>
-    </div>
-    <div class="ngx-option-container">
-      <ng-content></ng-content>
+    <div class="ngx-field-form-select" #field_form_select>
+      <div
+        #select_container
+        class="ngx-select"
+        [class.ngx-select-filled]="ngxFillMode === 'filled'"
+        [class.ngx-select-outlined]="ngxFillMode === 'outlined'"
+      >
+        <label #select_label class="ngx-select-label">{{ label }}</label>
+        <input
+          #select_input
+          class="ngx-select-input"
+          [placeholder]="placeholder"
+          [value]="value"
+          [disabled]="disabled"
+          [readonly]="!autocomplete"
+          (input)="onInputChange($event)"
+        />
+        <span style="position: absolute; right: 0px;">
+          <svg
+            #select_arrow
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path d="M7 10L12 15L17 10H7Z" fill="black" />
+          </svg>
+        </span>
+      </div>
+      <div
+        #option_container
+        *ngIf="isOpenDropdown"
+        class="ngx-option-container"
+      >
+        <ng-content></ng-content>
+      </div>
     </div>
   `,
   standalone: true,
+  imports: [NgIf],
 })
 export class SelectComponent
   implements AfterViewInit, ControlValueAccessor, OnChanges
@@ -79,10 +89,12 @@ export class SelectComponent
   @Input() placeholder: string = '';
   @Input({ transform: booleanAttribute }) autocomplete: boolean = false;
 
+  @ViewChild('field_form_select') selectRef!: ElementRef;
   @ViewChild('select_container') containerRef!: ElementRef;
   @ViewChild('select_label') labelRef!: ElementRef;
   @ViewChild('select_input') inputRef!: ElementRef;
   @ViewChild('select_arrow') arrowRef!: ElementRef;
+  @ViewChild('option_container') optionRef!: ElementRef;
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -90,6 +102,8 @@ export class SelectComponent
   valStatus: boolean = true;
   disabled: boolean = false;
   inputFocus = false;
+
+  isOpenDropdown: boolean = false;
 
   constructor(
     public elementRef: ElementRef,
@@ -101,7 +115,7 @@ export class SelectComponent
     }
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.initialize();
     //Se lanza el evento cuando se esta haciendo focus en el input
     this.inputRef.nativeElement.addEventListener('focus', () => {
@@ -113,6 +127,11 @@ export class SelectComponent
       this.inputFocus = false;
       this.moveLabel();
     });
+  }
+
+  @HostListener('document:mousedown', ['$event'])
+  clickout(event: any): void {
+    this.isOpenDropdown = this.selectRef.nativeElement.contains(event.target);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -130,7 +149,7 @@ export class SelectComponent
     this.cdr.markForCheck();
   }
 
-  initialize() {
+  initialize(): void {
     setTimeout(() => {
       this.ngControl.control?.setValue(this.value);
       this.containerRef.nativeElement.style.height = ngxSizeMap[this.ngxSize];
@@ -150,17 +169,20 @@ export class SelectComponent
     this.moveLabel();
     this.onChange(this.value);
   }
+
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
+
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
+
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
 
-  moveLabel() {
+  moveLabel(): void {
     if (this.labelRef) {
       const containerHeight = this.containerRef.nativeElement.offsetHeight;
       if (this.inputFocus || this.value !== '') {
@@ -179,7 +201,7 @@ export class SelectComponent
     }
   }
 
-  moveArrow() {
+  moveArrow(): void {
     if (this.arrowRef) {
       const containerHeight = this.containerRef.nativeElement.offsetHeight;
       const marginTop = `${(containerHeight * 0.282) / 16}rem`;
@@ -192,7 +214,7 @@ export class SelectComponent
     this.ngControl.control?.setValue(this.value);
   }
 
-  buildBorderOutlined() {
+  buildBorderOutlined(): void {
     if (this.ngxFillMode === 'outlined') {
       const formFieldWidth = this.containerRef.nativeElement.offsetWidth;
       const labelWidth = this.labelRef.nativeElement.offsetWidth;
@@ -210,7 +232,7 @@ export class SelectComponent
     }
   }
 
-  drawLineTopBorder() {
+  drawLineTopBorder(): void {
     const background =
       this.ngxFillMode === 'outlined'
         ? 'linear-gradient(to right, transparent 0%, currentColor 0%) no-repeat top/100% 1px'

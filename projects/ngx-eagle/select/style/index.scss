@@ -1,3 +1,20 @@
+.ngx-field-form-select {
+  display: block;
+  width: fit-content;
+}
+
+.ngx-field-form-select .ngx-option-container {
+  background-color: #fff;
+  position: absolute;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: fit-content;
+  max-height: fit-content;
+}
+
+
 .ngx-select {
   display: flex;
   flex-direction: column;
