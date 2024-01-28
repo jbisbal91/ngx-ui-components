@@ -141,9 +141,19 @@ export class SelectComponent
     });
   }
 
+  openDropdown(isOpenDropdown: boolean) {
+    setTimeout(() => {
+      if (isOpenDropdown) {
+        this.isOpenDropdown = this.isOpenDropdown ? false : true;
+      } else {
+        this.isOpenDropdown = isOpenDropdown;
+      }
+    }, 100);
+  }
+
   @HostListener('document:mousedown', ['$event'])
   clickout(event: any): void {
-    this.isOpenDropdown = this.selectRef.nativeElement.contains(event.target);
+    this.openDropdown(this.selectRef.nativeElement.contains(event.target));
     this.value = this.inputRef.nativeElement.value; // se actualiza el valor dependiendo del valor que fue selecionado en el dropdown
     this.moveLabel();
     setTimeout(() => {
