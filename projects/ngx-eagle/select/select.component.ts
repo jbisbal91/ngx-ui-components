@@ -148,15 +148,6 @@ export class SelectComponent
       } else {
         this.isOpenDropdown = isOpenDropdown;
       }
-    }, 100);
-  }
-
-  @HostListener('document:mousedown', ['$event'])
-  clickout(event: any): void {
-    this.openDropdown(this.selectRef.nativeElement.contains(event.target));
-    this.value = this.inputRef.nativeElement.value; // se actualiza el valor dependiendo del valor que fue selecionado en el dropdown
-    this.moveLabel();
-    setTimeout(() => {
       if (this.optContRef) {
         this.optContRef.nativeElement.style.borderRadius =
           ngxRoundedOptContMap[this.ngxRounded];
@@ -166,7 +157,14 @@ export class SelectComponent
           ? ngxRoundedfilledMap[this.ngxRounded]
           : ngxRoundedOutlinedMap[this.ngxRounded];
       }
-    });
+    }, 100);
+  }
+
+  @HostListener('document:mousedown', ['$event'])
+  clickout(event: any): void {
+    this.openDropdown(this.selectRef.nativeElement.contains(event.target));
+    this.value = this.inputRef.nativeElement.value; // se actualiza el valor dependiendo del valor que fue selecionado en el dropdown
+    this.moveLabel();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
