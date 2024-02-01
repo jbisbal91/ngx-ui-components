@@ -19,6 +19,7 @@ import { PieChartDocsComponent } from './docs/pie-chart-docs/pie-chart-docs.comp
 import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
 import { InputDocsComponent } from './docs/input-docs/input-docs.component';
 import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
+import { TableDocsComponent } from './docs/table-docs/table-docs.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,7 @@ const routes: Routes = [
       { path: 'pie-chart', component: PieChartDocsComponent },
       { path: 'select', component: SelectDocsComponent },
       { path: 'switch', component: SwitchDocsComponent },
+      { path: 'table', component: TableDocsComponent },
       { path: 'tabs', component: TabDocsComponent },
       { path: 'tags', component: TagDocsComponent },
       { path: 'timeline', component: TimelineDocsComponent },

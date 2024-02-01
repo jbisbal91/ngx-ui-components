@@ -75,7 +75,9 @@ import { SelectDemo2Component } from './demos/select/select-demo2/select-demo2.c
 import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
 //import { SelectModule } from 'projects/ngx-eagle/select';
 import { InputModule } from 'projects/ngx-eagle/input';
-
+import { TableDocsComponent } from './docs/table-docs/table-docs.component';
+import { TableDemo1Component } from './demos/table/table-demo1/table-demo1.component';
+import { TableModule } from 'projects/ngx-eagle/table';
 
 export function getHighlightLanguages() {
   return {
@@ -126,18 +128,23 @@ const components = [
   LineChartDemo1Component,
   InputDocsComponent,
   InputDemo1Component,
-  InputDemo2Component
+  InputDemo2Component,  
+  SelectDocsComponent,
+  SelectDemo1Component,
+  SelectDemo2Component,
+  TableDocsComponent,
+  TableDemo1Component
 ];
 
 @NgModule({
-  declarations: [components, SelectDemo1Component, SelectDemo2Component, SelectDocsComponent],
+  declarations: [components],
   exports: [components],
   imports: [
     CommonModule,
     ComponentRoutingModule,
     HttpClientModule,
     HighlightModule,
-    FormsModule,    
+    FormsModule,
     ReactiveFormsModule,
     BadgeModule,
     ButtonModule,
@@ -154,7 +161,8 @@ const components = [
     TagModule,
     TimelineModule,
     InputModule,
-    SelectModule
+    SelectModule,
+    TableModule
   ],
   providers: [
     {

@@ -1,0 +1,17 @@
+<table ngx-table [ngxScroll]="{ y: '300px' }">
+  <thead>
+    <tr>
+      <th *ngFor="let col of displayedColumns">{{ col }}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let val of values() | async">
+      <td>{{ val.col1 }}</td>
+      <td>{{ val.col2 }}</td>
+      <td>{{ val.col3 }}</td>
+      <td>{{ val.col4 }}</td>
+      <td>{{ val.col5 }}</td>
+    </tr>
+  </tbody>
+</table>
