@@ -27,7 +27,7 @@ export class TableDocsComponent implements OnInit {
         tabTitle: 'TS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/tabletable-demo1/table-demo1.component.ts',
+            'assets/demos/table/table-demo1/table-demo1.component.ts',
             { responseType: 'text' }
           ),
         },
@@ -36,7 +36,7 @@ export class TableDocsComponent implements OnInit {
         tabTitle: 'SCSS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/tabletable-demo1/table-demo1.component.scss',
+            'assets/demos/table/table-demo1/table-demo1.component.scss',
             { responseType: 'text' }
           ),
         },
