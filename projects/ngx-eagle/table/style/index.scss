@@ -9,6 +9,7 @@
     position: sticky;
     top: 0;
     font-weight: 600;
+    z-index: 100;
 }
 
 .ngx-table>.arrow-asc-icon,
@@ -30,8 +31,6 @@
 .ngx-table th,
 .ngx-table td {
     text-align: left;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     border-bottom: 1px solid #dddddd;
@@ -66,8 +65,9 @@
     white-space: nowrap;
 }
 
+.ngx-table thead>tr,
 .ngx-table tbody>tr {
-    height: 2.5rem;
+    height: 3rem;
 }
 
 .ngx-table tbody>tr:hover {

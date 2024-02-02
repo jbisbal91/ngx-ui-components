@@ -78,6 +78,7 @@ import { InputModule } from 'projects/ngx-eagle/input';
 import { TableDocsComponent } from './docs/table-docs/table-docs.component';
 import { TableDemo1Component } from './demos/table/table-demo1/table-demo1.component';
 import { TableModule } from 'projects/ngx-eagle/table';
+import { AvatarModule } from 'projects/ngx-eagle/avatar';
 
 export function getHighlightLanguages() {
   return {
@@ -146,6 +147,7 @@ const components = [
     HighlightModule,
     FormsModule,
     ReactiveFormsModule,
+    AvatarModule,
     BadgeModule,
     ButtonModule,
     CardModule,

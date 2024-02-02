@@ -19,10 +19,11 @@ export class TableDemo1Component {
     'Twitter',
     'Instagram',
   ];
-  ngxBordered: boolean = false;
+  ngxBordered: boolean = true;
 
   values(): Observable<any[]> {
     const values: {
+      picture: string;
       full_name: string;
       job_title: string;
       country: string;
@@ -35,6 +36,7 @@ export class TableDemo1Component {
       instagram: string;
     }[] = [
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Emily Thompson',
         job_title: 'Graphic Designer',
         country: 'ca',
@@ -47,6 +49,7 @@ export class TableDemo1Component {
         instagram: '@emilythompson_insta',
       },
       {
+        picture: '',
         full_name: 'Robert Davis',
         job_title: 'Financial Analyst',
         country: 'us',
@@ -59,8 +62,9 @@ export class TableDemo1Component {
         instagram: '@robertdavis_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Carlos Rodriguez',
-        job_title: 'Desarrollador de Software',
+        job_title: 'Software Developer',
         country: 'mx',
         status: 'Activo',
         phone: '55-1234-5678',
@@ -71,6 +75,7 @@ export class TableDemo1Component {
         instagram: '@carlosrodriguez_insta',
       },
       {
+        picture: '',
         full_name: 'Emma Watson',
         job_title: 'Marketing Coordinator',
         country: 'gb',
@@ -83,6 +88,7 @@ export class TableDemo1Component {
         instagram: '@emmawatson_insta',
       },
       {
+        picture: '',
         full_name: 'Michael Chen',
         job_title: 'Software Developer',
         country: 'ca',
@@ -95,6 +101,7 @@ export class TableDemo1Component {
         instagram: '@michaelchen_insta',
       },
       {
+        picture: '',
         full_name: 'John Doe',
         job_title: 'Software Engineer',
         country: 'ca',
@@ -107,6 +114,7 @@ export class TableDemo1Component {
         instagram: '@johndoe_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Elena Navarro',
         job_title: 'HR Manager',
         country: 'es',
@@ -119,6 +127,7 @@ export class TableDemo1Component {
         instagram: '@elenanavarro_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Alice Johnson',
         job_title: 'Data Scientist',
         country: 'ca',
@@ -131,6 +140,7 @@ export class TableDemo1Component {
         instagram: '@alicejohnson_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'David Wilson',
         job_title: 'Product Manager',
         country: 'ca',
@@ -143,6 +153,7 @@ export class TableDemo1Component {
         instagram: '@davidwilson_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Olivia White',
         job_title: 'HR Specialist',
         country: 'us',
@@ -155,6 +166,7 @@ export class TableDemo1Component {
         instagram: '@oliviawhite_insta',
       },
       {
+        picture: '',
         full_name: 'Daniel Miller',
         job_title: 'Sales Representative',
         country: 'us',
@@ -167,6 +179,7 @@ export class TableDemo1Component {
         instagram: '@danielmiller_insta',
       },
       {
+        picture: '',
         full_name: 'Sophia Brown',
         job_title: 'UX Designer',
         country: 'us',
@@ -179,6 +192,7 @@ export class TableDemo1Component {
         instagram: '@sophiabrown_insta',
       },
       {
+        picture: '',
         full_name: 'Pierre Dubois',
         job_title: 'Marketing Specialist',
         country: 'fr',
@@ -191,8 +205,9 @@ export class TableDemo1Component {
         instagram: '@pierredubois_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Miguel Hernández',
-        job_title: 'Analista Financiero',
+        job_title: 'Financial Analyst',
         country: 'mx',
         status: 'Activo',
         phone: '33-5555-1234',
@@ -203,6 +218,7 @@ export class TableDemo1Component {
         instagram: '@miguelhernandez_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Ana Rodriguez',
         job_title: 'UX/UI Designer',
         country: 'es',
@@ -215,8 +231,9 @@ export class TableDemo1Component {
         instagram: '@anarodriguez_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Ana Torres',
-        job_title: 'Gerente de Recursos Humanos',
+        job_title: 'Human Resources Manager',
         country: 'mx',
         status: 'Activo',
         phone: '81-7777-8888',
@@ -227,8 +244,9 @@ export class TableDemo1Component {
         instagram: '@anatorres_insta',
       },
       {
+        picture: '',
         full_name: 'Javier García',
-        job_title: 'Ingeniero de Ventas',
+        job_title: 'Sales Engineer',
         country: 'mx',
         status: 'Activo',
         phone: '33-9999-0000',
@@ -239,6 +257,7 @@ export class TableDemo1Component {
         instagram: '@javiergarcia_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Jane Smith',
         job_title: 'Marketing Manager',
         country: 'us',
@@ -251,6 +270,7 @@ export class TableDemo1Component {
         instagram: '@janesmith_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Sophie Martin',
         job_title: 'Software Developer',
         country: 'fr',
@@ -263,6 +283,7 @@ export class TableDemo1Component {
         instagram: '@sophiemartin_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Camille Lefevre',
         job_title: 'UX/UI Designer',
         country: 'fr',
@@ -275,6 +296,7 @@ export class TableDemo1Component {
         instagram: '@camillelefevre_insta',
       },
       {
+        picture: '',
         full_name: 'Javier Moreno',
         job_title: 'Financial Analyst',
         country: 'es',
@@ -287,6 +309,7 @@ export class TableDemo1Component {
         instagram: '@javiermoreno_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Lucas Chevalier',
         job_title: 'Financial Analyst',
         country: 'fr',
@@ -299,6 +322,7 @@ export class TableDemo1Component {
         instagram: '@lucaschevalier_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Isabelle Rousseau',
         job_title: 'HR Manager',
         country: 'fr',
@@ -311,6 +335,7 @@ export class TableDemo1Component {
         instagram: '@isabellerousseau_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'James Turner',
         job_title: 'Software Engineer',
         country: 'gb',
@@ -323,6 +348,7 @@ export class TableDemo1Component {
         instagram: '@jamesturner_insta',
       },
       {
+        picture: '',
         full_name: 'Elena Bianchi',
         job_title: 'Marketing Specialist',
         country: 'it',
@@ -335,6 +361,7 @@ export class TableDemo1Component {
         instagram: '@elenabianchi_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'William Knight',
         job_title: 'Product Manager',
         country: 'gb',
@@ -347,6 +374,7 @@ export class TableDemo1Component {
         instagram: '@williamknight_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Charlotte Brown',
         job_title: 'UX Designer',
         country: 'gb',
@@ -359,6 +387,7 @@ export class TableDemo1Component {
         instagram: '@charlottebrown_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Oliver Taylor',
         job_title: 'Financial Analyst',
         country: 'gb',
@@ -371,6 +400,7 @@ export class TableDemo1Component {
         instagram: '@olivertaylor_insta',
       },
       {
+        picture: '',
         full_name: 'Giuseppe Rossi',
         job_title: 'Software Developer',
         country: 'it',
@@ -383,6 +413,7 @@ export class TableDemo1Component {
         instagram: '@giusepperossi_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Marco Ferrari',
         job_title: 'UX/UI Designer',
         country: 'it',
@@ -395,6 +426,7 @@ export class TableDemo1Component {
         instagram: '@marcoferrari_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Sofia Ricci',
         job_title: 'Financial Analyst',
         country: 'it',
@@ -407,6 +439,7 @@ export class TableDemo1Component {
         instagram: '@sofiaricci_insta',
       },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Luca Moretti',
         job_title: 'HR Manager',
         country: 'it',
@@ -421,6 +454,7 @@ export class TableDemo1Component {
 
       // Spain
       {
+        picture: '',
         full_name: 'Maria Garcia',
         job_title: 'Software Engineer',
         country: 'es',
@@ -431,10 +465,11 @@ export class TableDemo1Component {
         linkedIn: 'linkedin.com/in/mariagarcia',
         twitter: '@mariagarcia',
         instagram: '@mariagarcia_insta',
-      },      
+      },
       {
+        picture: '/assets/images/avatar/man.png',
         full_name: 'Sofía López',
-        job_title: 'Diseñadora Gráfica',
+        job_title: 'Graphic Designer',
         country: 'mx',
         status: 'Activo',
         phone: '55-9876-5432',
@@ -445,6 +480,7 @@ export class TableDemo1Component {
         instagram: '@sofialopez_insta',
       },
       {
+        picture: '',
         full_name: 'Carlos Fernandez',
         job_title: 'Marketing Specialist',
         country: 'es',

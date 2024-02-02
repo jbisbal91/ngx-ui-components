@@ -19,10 +19,13 @@
 
   <tbody>
     <tr *ngFor="let val of values() | async">
-      <td>{{ val.full_name }}</td>
+      <td>
+        <ngx-avatar [ngxText]="val.full_name" [ngxSrc]="val.picture"></ngx-avatar>
+        {{ val.full_name }}
+      </td>
       <td>{{ val.job_title }}</td>
       <td class="td-flag">
-        <img class="flag" [src]="'/assets/flags/'+val.country+'.svg'" [alt]="'flag-'+val.country"/>
+        <img draggable="false" class="flag" [src]="'/assets/flags/'+val.country+'.svg'" [alt]="'flag-'+val.country"/>
       </td>
       <td>{{ val.status }}</td>
       <td>{{ val.phone }}</td>
