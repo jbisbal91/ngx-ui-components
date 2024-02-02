@@ -1,5 +1,6 @@
 import {
   AfterContentInit,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
   ElementRef,
@@ -19,22 +20,21 @@ import { AvatarComponent } from './avatar.component';
   },
   standalone: true,
 })
-export class AvatarGroupComponent implements OnChanges, AfterContentInit {
+export class AvatarGroupComponent implements AfterContentInit {
   @Input() maxVisibleAvatars: number | null = null;
 
   @ContentChildren(AvatarComponent)
   public avatars!: QueryList<AvatarComponent>;
 
-  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['maxVisibleAvatars'] && this.avatars) {
-      this.updateVisibleAvatars();
-    }
-  }
+  constructor(
+    private renderer: Renderer2,
+    private elementRef: ElementRef,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngAfterContentInit(): void {
     this.updateVisibleAvatars();
+    this.cdr.markForCheck();
   }
 
   private updateVisibleAvatars(): void {
