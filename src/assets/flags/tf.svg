@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="flag-icons-tf" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 800 480" style="enable-background:new 0 0 800 480;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#002395;}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:#ED2939;}
+</style>
+<path class="st0" d="M0,0h800v480H0V0z"/>
+<path class="st1" d="M0,0h366v196.8H0V0z"/>
+<path class="st0" d="M0,0h120v192H0V0z"/>
+<path class="st2" d="M240,0h120v192H240V0z"/>
+<g>
+	<path class="st1" d="M637.8,330v-47.4h19.8l14.7-23.4h-34.5v-15h44l15.4-24.6H550.8l15.4,24.6h44V330l-33-51.6l-44.4,70.8h21.6
+		l4.4-7.8h36.8l28.4,51l28.4-51h36.8l4.4,7.8h21.6l-44.4-70.8L637.8,330z M568.1,324.6l9.1-16.2l9,16.2H568.1z M661.8,324.6l9-16.2
+		l9.1,16.2H661.8z"/>
+	<polygon class="st1" points="629.6,426.6 624,409.2 618.4,426.6 600,426.6 614.9,437.4 609.2,454.8 624,444.1 638.8,454.8 
+		633.1,437.4 648,426.6 	"/>
+	<polygon class="st1" points="575.6,385.8 570,368.4 564.4,385.8 546,385.8 560.9,396.6 555.2,414 570,403.3 584.8,414 579.1,396.6 
+		594,385.8 	"/>
+	<polygon class="st1" points="683.6,385.8 678,368.4 672.4,385.8 654,385.8 668.9,396.6 663.2,414 678,403.3 692.8,414 687.1,396.6 
+		702,385.8 	"/>
+	<polygon class="st1" points="524.4,282.1 539.2,292.8 533.5,275.4 548.4,264.6 530,264.6 524.4,247.2 518.8,264.6 500.4,264.6 
+		515.3,275.4 509.6,292.8 	"/>
+	<polygon class="st1" points="732.7,275.4 747.6,264.6 729.2,264.6 723.6,247.2 718,264.6 699.6,264.6 714.5,275.4 708.8,292.8 
+		723.6,282.1 738.4,292.8 	"/>
+</g>
+</svg>

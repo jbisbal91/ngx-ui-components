@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="flag-icons-mu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 800 480" style="enable-background:new 0 0 800 480;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#00A04D;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#151F6D;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#EE2737;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#FFCD00;}
+</style>
+<g>
+	<path class="st0" d="M0,360h800v120H0V360z"/>
+	<path class="st1" d="M0,120h800v120H0V120z"/>
+	<path class="st2" d="M0,0h800v120H0V0z"/>
+	<path class="st3" d="M0,240h800v120H0V240z"/>
+</g>
+</svg>

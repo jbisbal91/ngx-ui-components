@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="flag-icons-mh" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 800 480" style="enable-background:new 0 0 800 480;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#3B5AA3;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#E2AE57;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+</style>
+<path class="st0" d="M0,0h799.9v480H0V0z"/>
+<path class="st1" d="M0,467L799.9,0v87L0,480V467z"/>
+<polygon class="st2" points="28,480 800,179.2 799.9,83.7 0,480 "/>
+<polygon class="st2" points="219.8,15.2 213.4,118 186.4,52.4 196.8,122.2 154.9,65.8 182.4,130.1 127.4,87.5 170.2,141.1 
+	108.2,113.5 162.6,154.7 94.9,145.7 158.9,171.1 58.4,180.3 159,187 95.3,213.2 162.3,204.2 108,244.2 171,216.6 128,270.6 
+	182.6,229.3 155.6,292.2 199.2,237.5 187.4,305.6 214.9,241.9 221.1,342.6 230.8,242.2 254.5,306.2 245.5,237.2 288.9,292 
+	260.3,228 314.9,272 271.5,217.1 336.4,244.1 279,202.2 348.9,214 281.9,188.3 386,181.8 282,172.1 350.5,149.3 279.5,158.3 
+	338.1,117.3 272.1,143.8 317.8,88.5 262.1,131.9 288.8,65.5 245.7,121.9 255,51.5 229.3,118 219.7,15.2 "/>
+</svg>

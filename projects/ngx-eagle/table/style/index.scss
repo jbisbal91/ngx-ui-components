@@ -4,7 +4,7 @@
     margin-bottom: 0;
 }
 
-.ngx-table th {
+.ngx-table thead {
     background-color: var(--ngx-comp-table-header-background-color);
     position: sticky;
     top: 0;
@@ -34,10 +34,13 @@
     padding-bottom: 1rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    border-bottom: 1px solid #dddddd;    
+    border-bottom: 1px solid #dddddd;
     font-size: 0.875rem;
 }
 
+.ngx-table-bordered .ngx-column-group th {
+    border-bottom: none;
+}
 
 /*** Start of border styles for ngx-table ***/
 /* Style for cells (th and td) of the ngx-table-bordered table with right border */
@@ -58,9 +61,9 @@
 }
 
 /*** End of border styles for ngx-table ***/
-
 .ngx-table td {
     border-bottom: 1px solid #dddddd;
+    white-space: nowrap;
 }
 
 .ngx-table tbody>tr {
@@ -78,4 +81,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+
+
+
+
+/* Barra de desplazamiento */
+
+
+.table-container::-webkit-scrollbar {
+    width: 8px;
+    /* Ancho para ambos scrolls */
+    height: 8px;
+    /* Altura para ambos scrolls */
+    background-color: #F1F1F1;
+    border-radius: 10px;
+    /* Radio de borde para ambos scrolls */
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #C1C1C1;
+    border-radius: 10px;
+    /* Radio de borde para ambos scrolls */
 }

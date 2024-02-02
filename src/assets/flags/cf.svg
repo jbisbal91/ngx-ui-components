@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="flag-icons-cf" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 800 480" style="enable-background:new 0 0 800 480;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_2_);fill-rule:evenodd;clip-rule:evenodd;fill:#0000FF;}
+	.st1{clip-path:url(#SVGID_2_);fill-rule:evenodd;clip-rule:evenodd;fill:#FFFF00;}
+	.st2{clip-path:url(#SVGID_2_);fill-rule:evenodd;clip-rule:evenodd;fill:#009A00;}
+	.st3{clip-path:url(#SVGID_2_);fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st4{clip-path:url(#SVGID_2_);fill-rule:evenodd;clip-rule:evenodd;fill:#FF0000;}
+	.st5{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFF00;}
+</style>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="0" y="0" width="800" height="480"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<path class="st0" d="M-49.5,0h899.1v119H-49.5V0z"/>
+	<path class="st1" d="M-49.5,359.6h899.1V480H-49.5V359.6z"/>
+	<path class="st2" d="M-49.5,239.3h899.1v120.3H-49.5V239.3z"/>
+	<path class="st3" d="M-49.5,119h899.1v120.3H-49.5V119z"/>
+	<path class="st4" d="M325.1,0.5H475V480H325.1V0.5z"/>
+</g>
+<path class="st5" d="M111.7,105.7L80.2,83.9l-31.3,22L59.8,69L29.3,46l38.2-1L80,8.7L92.7,45l38.1,0.7L100.6,69"/>
+</svg>

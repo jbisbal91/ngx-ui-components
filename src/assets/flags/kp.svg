@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="flag-icons-kp" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 800 480" style="enable-background:new 0 0 800 480;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;stroke:#000000;stroke-width:0.9383;stroke-miterlimit:3.7507;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#3E5698;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#C60000;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st4{fill-rule:evenodd;clip-rule:evenodd;fill:#C40000;}
+</style>
+<path class="st0" d="M800,479.5H0V0.4h800V479.5z"/>
+<path class="st1" d="M800,392.8H0v86.7h800V392.8z"/>
+<path class="st2" d="M800,372.7H0V107.2h800V372.7z"/>
+<path class="st1" d="M800,0.5H0v86.6h800V0.5z"/>
+<path class="st3" d="M383.2,239.9c0,59.5-49.7,107.8-111.2,107.8s-111.2-48.3-111.2-107.8S210.5,132.3,272,132.3
+	C333.4,132.3,383.2,180.5,383.2,239.9L383.2,239.9z"/>
+<polygon class="st4" points="360.8,214.6 294.2,215 274.5,153 253.2,215.3 186.6,215.5 240,253.6 218.7,315.8 273.1,277.1 
+	326.5,315.2 306.5,253.3 "/>
+</svg>

@@ -33,13 +33,14 @@ export class TableDirective implements AfterViewInit {
     if (this.ngxScroll) {
       const { x, y } = this.ngxScroll;
       const newDiv = this.renderer2.createElement('div');
+      this.renderer2.addClass(newDiv, 'table-container');
       if (x || y) {
-        this.renderer2.setStyle(newDiv, 'overflow', 'auto');
+        this.renderer2.setStyle(newDiv, 'overflow', 'scroll');
         if (x) {
-          this.renderer2.setStyle(newDiv, 'width', x);
+          this.renderer2.setStyle(newDiv, 'max-width', x);
         }
         if (y) {
-          this.renderer2.setStyle(newDiv, 'height', y);
+          this.renderer2.setStyle(newDiv, 'max-height', y);
         }
         this.renderer2.insertBefore(
           this.renderer2.parentNode(this.elementRef.nativeElement),

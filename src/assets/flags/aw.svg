@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="flag-icons-aw" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 800 480" style="enable-background:new 0 0 800 480;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_2_);}
+	.st1{fill:#3399CC;}
+	.st2{fill:#FFFF00;}
+	.st3{fill:#CC0000;stroke:#FFFFFF;stroke-width:3.7;}
+</style>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="0" width="800" height="480"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<g transform="scale(2.2222)" class="st0">
+		<path class="st1" d="M0,0v216h405V0H0z"/>
+		<path class="st2" d="M0,144v12h405v-12H0z M0,168v12h405v-12H0z"/>
+	</g>
+</g>
+<polygon class="st3" points="199,157.7 283.3,136.5 199,115.2 177.7,30.8 156.4,115.2 72,136.5 156.4,157.7 177.7,242.1 "/>
+</svg>

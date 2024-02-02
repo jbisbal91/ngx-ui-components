@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="flag-icons-tw" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 800 480" style="enable-background:new 0 0 800 480;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FF0000;}
+	.st1{fill:#000095;}
+	.st2{fill:#FFFFFF;}
+</style>
+<path class="st0" d="M0,0h800v480H0V0z"/>
+<path class="st1" d="M0,0h400v240H0V0z"/>
+<polygon class="st2" points="245.1,132 290,120 245.1,108 278,75.1 232.9,87.1 245.1,42 212,75.1 200,30 188,75.1 155.1,42 
+	167.1,87.1 122,75.1 155.1,108 110,120 155.1,132 122,165.1 167.1,152.9 155.1,198 188,165.1 200,210 212,165.1 245.1,198 
+	232.9,152.9 278,165.1 "/>
+<circle class="st1" cx="200" cy="120" r="51.1"/>
+<circle class="st2" cx="200" cy="120" r="45.1"/>
+</svg>

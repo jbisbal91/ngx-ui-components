@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="flag-icons-sy" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 800 480" style="enable-background:new 0 0 800 480;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FF0000;}
+	.st3{fill:#009900;}
+</style>
+<rect y="160" class="st0" width="800" height="160"/>
+<rect y="320" class="st1" width="800" height="160"/>
+<path class="st2" d="M0,0h800v160H0V0z"/>
+<g>
+	<polygon class="st3" points="275.1,281 275.1,281 275.1,281.1 	"/>
+	<polygon class="st3" points="257.3,225.4 246,191.4 235,225.5 199.6,225.8 228.3,247 217.6,281.2 246.3,260.1 275.1,281 
+		264.2,246.9 292.7,225.4 	"/>
+	<polygon class="st3" points="600.3,225.4 564.9,225.4 553.8,191.4 542.8,225.5 507.4,225.8 535.9,247 525.2,281.2 553.9,260.1 
+		582.8,281 582.8,281 571.8,246.8 	"/>
+</g>
+</svg>
