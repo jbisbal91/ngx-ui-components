@@ -1,21 +1,21 @@
 .ngx-tag {
   box-sizing: border-box;
-  margin: 0 0.5rem 0.5rem 0;
   font-size: 0.875rem;
   line-height: 1.5715;
   list-style: none;
   font-feature-settings: "tnum";
   display: inline-flex;
+  justify-content: center;
   align-items: center;
   height: auto;
   padding: 0 0.4375rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   white-space: nowrap;
-  border: 1px solid #d9d9d9;
   border-radius: 2px;
   opacity: 1;
   transition: all 0.3s;
+  white-space: nowrap;
 }
 
 .ngx-tag .ngx-tag-close {
@@ -50,6 +50,10 @@
   cursor: pointer;
   border-color: transparent;
   color: #1890ff;
+}
+
+.ngx-tag-default {
+  border: 1px solid currentColor;
 }
 
 .ngx-tag-checkable:active,

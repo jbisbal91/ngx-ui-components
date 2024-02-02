@@ -20,14 +20,26 @@
   <tbody>
     <tr *ngFor="let val of values() | async">
       <td>
-        <ngx-avatar [ngxText]="val.full_name" [ngxSrc]="val.picture"></ngx-avatar>
+        <ngx-avatar
+          [ngxText]="val.full_name"
+          [ngxSrc]="val.picture"
+        ></ngx-avatar>
         {{ val.full_name }}
       </td>
       <td>{{ val.job_title }}</td>
       <td class="td-flag">
-        <img draggable="false" class="flag" [src]="'/assets/flags/'+val.country+'.svg'" [alt]="'flag-'+val.country"/>
+        <img
+          draggable="false"
+          class="flag"
+          [src]="'/assets/flags/' + val.country + '.svg'"
+          [alt]="'flag-' + val.country"
+        />
       </td>
-      <td>{{ val.status }}</td>
+      <td>
+        <ngx-tag [ngxColor]="val.status === 'Active' ? '#278200' : '#D51923'">{{
+          val.status
+        }}</ngx-tag>
+      </td>
       <td>{{ val.phone }}</td>
       <td>{{ val.email }}</td>
       <td>{{ val.address }}</td>

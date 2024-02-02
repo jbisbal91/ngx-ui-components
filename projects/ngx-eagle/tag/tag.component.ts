@@ -7,8 +7,7 @@ import {
   Output,
   Renderer2,
 } from '@angular/core';
-
-export type ngxMode = 'default' | 'closeable' | 'checkable' | 'sync';
+import { NgxMode } from './typings';
 
 @Component({
   selector: 'ngx-tag',
@@ -55,6 +54,7 @@ export type ngxMode = 'default' | 'closeable' | 'checkable' | 'sync';
     class: 'ngx-tag',
     '[style.background-color]': 'ngxColor',
     '[class.ngx-tag-has-color]': 'ngxColor? true : false',
+    '[class.ngx-tag-default]': `ngxMode === 'default'`,
     '[class.ngx-tag-checkable]': `ngxMode === 'checkable'`,
     '[class.ngx-tag-sync]': `ngxMode === 'sync'`,
     '[class.ngx-tag-checkable-checked]': `ngxChecked`,
@@ -64,7 +64,7 @@ export type ngxMode = 'default' | 'closeable' | 'checkable' | 'sync';
   imports: [NgStyle, NgIf],
 })
 export class TagComponent {
-  @Input() ngxMode: ngxMode = 'default';
+  @Input() ngxMode: NgxMode = 'default';
   @Input() ngxColor?: string;
   @Input() ngxChecked: boolean = false;
 

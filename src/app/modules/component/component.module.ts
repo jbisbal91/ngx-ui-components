@@ -20,7 +20,7 @@ import { DividerModule } from 'ngx-eagle/divider';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
 import { SwitchModule } from 'ngx-eagle/switch';
 import { TabModule } from 'ngx-eagle/tab';
-import { TagModule } from 'ngx-eagle/tag';
+//import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
 import { PieChartModule } from 'ngx-eagle/pie-chart';
 //import { InputModule } from 'ngx-eagle/input';
@@ -79,6 +79,7 @@ import { TableDocsComponent } from './docs/table-docs/table-docs.component';
 import { TableDemo1Component } from './demos/table/table-demo1/table-demo1.component';
 import { TableModule } from 'projects/ngx-eagle/table';
 import { AvatarModule } from 'projects/ngx-eagle/avatar';
+import { TagModule } from 'projects/ngx-eagle/tag';
 
 export function getHighlightLanguages() {
   return {
