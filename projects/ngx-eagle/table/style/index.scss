@@ -4,22 +4,11 @@
     margin-bottom: 0;
 }
 
-.ngx-table>thead {
-    height: 3rem;
-    font-weight: 500;
-}
-
 .ngx-table th {
     background-color: var(--ngx-comp-table-header-background-color);
     position: sticky;
     top: 0;
     font-weight: 600;
-    font-size: 0.875rem;
-}
-
-.ngx-table>tbody>tr>td {
-    font-weight: 500;
-    font-size: 0.875rem;
 }
 
 .ngx-table>.arrow-asc-icon,
@@ -41,9 +30,12 @@
 .ngx-table th,
 .ngx-table td {
     text-align: left;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;    
+    font-size: 0.875rem;
 }
 
 
@@ -64,6 +56,7 @@
 .ngx-table-bordered th {
     border-top: 1px solid #dddddd;
 }
+
 /*** End of border styles for ngx-table ***/
 
 .ngx-table td {
