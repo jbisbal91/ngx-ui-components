@@ -62,6 +62,30 @@ export class AvatarGroupComponent implements AfterContentInit {
     nodeOverflow.classList.add('ngx-avatar');
     nodeOverflow.classList.add('ngx-avatar-circle');
     nodeOverflow.innerText = `+${overflow}`;
+    this.setSizeNodeOverflow(nodeOverflow, ngxSize);
     this.elementRef.nativeElement.appendChild(nodeOverflow);
+  }
+
+  setSizeNodeOverflow(nodeOverflow: any, ngxSize: any) {
+    if (typeof ngxSize === 'string') {
+      switch (ngxSize) {
+        case 'small':
+          nodeOverflow.classList.add('ngx-avatar-sm');
+          break;
+        case 'default':
+          nodeOverflow.classList.add('ngx-avatar-df');
+          break;
+        case 'large':
+          nodeOverflow.classList.add('ngx-avatar-lg');
+          break;
+      }
+    }
+
+    if (typeof ngxSize === 'number') {
+      const size = Number(ngxSize) / 16 + 'rem';
+      this.renderer.setStyle(nodeOverflow, 'width', size);
+      this.renderer.setStyle(nodeOverflow, 'height', size);
+      this.renderer.setStyle(nodeOverflow, 'line-height', size);
+    }
   }
 }

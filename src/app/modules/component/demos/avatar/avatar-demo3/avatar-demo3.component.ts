@@ -12,5 +12,8 @@ export class AvatarDemo3Component {
     { name: 'Robert Davis', picture: '/assets/images/avatar/man.png' },
     { name: 'John Doe', picture: '' },
     { name: 'Michael Chen', picture: '' },
+    { name: 'Pierre Dubois', picture: '' },
+    { name: 'Daniel Miller', picture: '' },
+    { name: 'Miguel Hernández', picture: '' },
   ];
 }
