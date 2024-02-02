@@ -1,4 +1,15 @@
-import { Component, ElementRef, Input, Renderer2 } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  Renderer2,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { NgxShape, NgxSize } from './typings';
 import { NgIf } from '@angular/common';
 
@@ -12,7 +23,7 @@ import { NgIf } from '@angular/common';
     />
     <span *ngIf="ngxText && !ngxSrc">{{ getInitials(ngxText) }}</span>
 
-    <span *ngIf="!ngxSrc && !ngxText" nz-icon="" class="ngx-avatar-user"
+    <span #ngx_avatar_user *ngIf="!ngxSrc && !ngxText" class="ngx-avatar-user"
       ><svg
         viewBox="64 64 896 896"
         focusable="false"
@@ -35,17 +46,48 @@ import { NgIf } from '@angular/common';
     '[class.ngx-avatar-df]': `ngxSize === 'default'`,
     '[class.ngx-avatar-lg]': `ngxSize === 'large'`,
   },
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [NgIf],
 })
-export class AvatarComponent {
+export class AvatarComponent implements OnInit {
   @Input() ngxIcon: string | null = null;
-  @Input() ngxShape: NgxShape | number = 'circle';
-  @Input() ngxSize: NgxSize = 'default';
+  @Input() ngxShape: NgxShape = 'circle';
+  @Input() ngxSize: NgxSize | number = 'default';
   @Input() ngxSrc: string | null = null;
   @Input() ngxText: string | null = null;
 
-  constructor(public elementRef: ElementRef, private renderer2: Renderer2) {}
+  @ViewChild('ngx_avatar_user') avatarUserRef!: ElementRef;
+
+  constructor(
+    public elementRef: ElementRef,
+    private renderer2: Renderer2,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    if (typeof this.ngxSize) {
+      this.setSizeInNumber();
+    }
+    this.cdr.markForCheck();
+  }
+
+  setSizeInNumber() {
+    const size = Number(this.ngxSize) / 16 + 'rem';
+    this.renderer2.setStyle(this.elementRef.nativeElement, 'width', size);
+    this.renderer2.setStyle(this.elementRef.nativeElement, 'height', size);
+    this.renderer2.setStyle(this.elementRef.nativeElement, 'line-height', size);
+    this.setFontSizeImgUser();
+  }
+
+  setFontSizeImgUser() {
+    setTimeout(() => {
+      if (this.avatarUserRef) {
+        this.avatarUserRef.nativeElement.style.fontSize =
+          (Number(this.ngxSize) * 0.5) / 16 + 'rem';
+      }
+    });
+  }
 
   getInitials(text: string): string {
     const words: string[] = text.split(' ');
@@ -56,13 +98,13 @@ export class AvatarComponent {
     this.renderer2.setStyle(
       this.elementRef.nativeElement,
       'background-color',
-      this.getColor(initials.join(''))
+      this.getBackgroundColor(initials.join(''))
     );
 
     return initials.join('');
   }
 
-  getColor(initials: string): string {
+  getBackgroundColor(initials: string): string {
     const colors = {
       A: '#FF5733', // Rojo
       B: '#33FF57', // Verde

@@ -1,3 +1,11 @@
+.ngx-avatar-group {
+  display: inline-flex;
+}
+
+.ngx-avatar-group .ngx-avatar:not(:first-child) {
+  margin-left: -0.5rem;
+}
+
 .ngx-avatar {
   box-sizing: border-box;
   margin: 0;
@@ -16,7 +24,7 @@
   white-space: nowrap;
   text-align: center;
   vertical-align: middle;
-  background: transparent;
+  background: #CCCCCC;
   width: 32px;
   height: 32px;
   line-height: 32px;
@@ -27,21 +35,19 @@
   width: 2.5rem;
   height: 2.5rem;
   line-height: 2.5rem;
-  border-radius: 50%;
 }
 
 .ngx-avatar-df {
   width: 2rem;
   height: 2rem;
   line-height: 2rem;
-  border-radius: 50%;
 }
 
 .ngx-avatar-sm {
   width: 1.5rem;
   height: 1.5rem;
   line-height: 1.5rem;
-  border-radius: 50%;
+
 }
 
 .ngx-avatar>img {
@@ -49,6 +55,14 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.ngx-avatar-circle {
+  border-radius: 50%;
+}
+
+.ngx-avatar-square {
+  border-radius: 2px;
 }
 
 .ngx-avatar-user {

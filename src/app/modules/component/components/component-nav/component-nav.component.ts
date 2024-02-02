@@ -27,7 +27,7 @@ export class ComponentNavComponent {
 
   ngOnInit() {
     this.routes = [
-      { path: '/components/autocomplete', title: 'Autocomplete' },
+      { path: '/components/avatar', title: 'Avatar' },
       { path: '/components/badge', title: 'Badge' },
       { path: '/components/bottom-sheet', title: 'Bottom Sheet' },
       { path: '/components/buttons', title: 'Button' },

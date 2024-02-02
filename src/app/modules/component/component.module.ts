@@ -80,6 +80,10 @@ import { TableDemo1Component } from './demos/table/table-demo1/table-demo1.compo
 import { TableModule } from 'projects/ngx-eagle/table';
 import { AvatarModule } from 'projects/ngx-eagle/avatar';
 import { TagModule } from 'projects/ngx-eagle/tag';
+import { AvatarDemo1Component } from './demos/avatar/avatar-demo1/avatar-demo1.component';
+import { AvatarDocsComponent } from './docs/avatar/avatar-docs.component';
+import { AvatarDemo2Component } from './demos/avatar/avatar-demo2/avatar-demo2.component';
+import { AvatarDemo3Component } from './demos/avatar/avatar-demo3/avatar-demo3.component';
 
 export function getHighlightLanguages() {
   return {
@@ -130,12 +134,16 @@ const components = [
   LineChartDemo1Component,
   InputDocsComponent,
   InputDemo1Component,
-  InputDemo2Component,  
+  InputDemo2Component,
   SelectDocsComponent,
   SelectDemo1Component,
   SelectDemo2Component,
   TableDocsComponent,
-  TableDemo1Component
+  TableDemo1Component,
+  AvatarDocsComponent,
+  AvatarDemo1Component,
+  AvatarDemo2Component,
+  AvatarDemo3Component,
 ];
 
 @NgModule({
@@ -165,7 +173,7 @@ const components = [
     TimelineModule,
     InputModule,
     SelectModule,
-    TableModule
+    TableModule,
   ],
   providers: [
     {

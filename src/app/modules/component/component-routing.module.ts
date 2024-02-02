@@ -20,6 +20,7 @@ import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.c
 import { InputDocsComponent } from './docs/input-docs/input-docs.component';
 import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
 import { TableDocsComponent } from './docs/table-docs/table-docs.component';
+import { AvatarDocsComponent } from './docs/avatar/avatar-docs.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     component: ComponentSidenavComponent,
     children: [
       { path: 'guides', component: GuidesComponent },
+      { path: 'avatar', component: AvatarDocsComponent },
       { path: 'badge', component: BadgeDocsComponent },
       { path: 'buttons', component: ButtonDocsComponent },
       { path: 'card', component: CardDocsComponent },
