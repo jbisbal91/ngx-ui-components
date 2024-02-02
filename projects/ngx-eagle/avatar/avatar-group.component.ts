@@ -47,5 +47,21 @@ export class AvatarGroupComponent implements AfterContentInit {
         );
       }
     });
+
+    if (
+      this.maxVisibleAvatars &&
+      this.avatars.length - this.maxVisibleAvatars > 0
+    ) {
+      this.createNodeOverflow(this.avatars.length - this.maxVisibleAvatars);
+    }
+  }
+
+  createNodeOverflow(overflow: number) {
+    const ngxSize = this.avatars.first.ngxSize;
+    const nodeOverflow = document.createElement('div');
+    nodeOverflow.classList.add('ngx-avatar');
+    nodeOverflow.classList.add('ngx-avatar-circle');
+    nodeOverflow.innerText = `+${overflow}`;
+    this.elementRef.nativeElement.appendChild(nodeOverflow);
   }
 }
