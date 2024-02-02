@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  AfterContentInit,
   Component,
   ContentChildren,
   ElementRef,
@@ -17,28 +17,35 @@ import { AvatarComponent } from './avatar.component';
   host: {
     class: 'ngx-avatar-group',
   },
-  standalone:true
+  standalone: true,
 })
-export class AvatarGroupComponent implements OnChanges, AfterViewInit {
-  @Input() maxVisibleAvatars: number = 0;
+export class AvatarGroupComponent implements OnChanges, AfterContentInit {
+  @Input() maxVisibleAvatars: number | null = null;
 
   @ContentChildren(AvatarComponent)
   public avatars!: QueryList<AvatarComponent>;
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
 
-
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['maxVisibleAvatars'] && this.avatars) {
-      this.addAvatar();
+      this.updateVisibleAvatars();
     }
   }
 
-  ngAfterViewInit(): void {
-    //this.updateVisibleAvatars();
+  ngAfterContentInit(): void {
+    this.updateVisibleAvatars();
   }
 
-  private addAvatar(): void {
-    
+  private updateVisibleAvatars(): void {
+    const avatarArray = this.avatars.toArray();
+    avatarArray.forEach((avatar, index) => {
+      if (this.maxVisibleAvatars && index >= this.maxVisibleAvatars) {
+        this.renderer.removeChild(
+          this.elementRef.nativeElement,
+          avatar.elementRef.nativeElement
+        );
+      }
+    });
   }
 }
