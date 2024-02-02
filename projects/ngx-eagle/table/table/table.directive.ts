@@ -1,12 +1,9 @@
 import {
   AfterViewInit,
-  ChangeDetectorRef,
   Directive,
   ElementRef,
   Input,
-  OnChanges,
   Renderer2,
-  SimpleChanges,
 } from '@angular/core';
 
 interface ScrollOptions {
