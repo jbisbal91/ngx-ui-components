@@ -1,4 +1,11 @@
-<table ngx-table [ngxScroll]="{ y: '300px' }">
+<div class="flex items-center mb-4">
+    <div>
+        <label>ngxBordered</label>
+        <ngx-switch [(ngModel)]="ngxBordered"></ngx-switch>
+      </div>
+</div>
+
+<table ngx-table [ngxScroll]="{ y: '300px' }" [ngxBordered]="ngxBordered">
   <thead>
     <tr>
       <th *ngFor="let col of displayedColumns">{{ col }}</th>
