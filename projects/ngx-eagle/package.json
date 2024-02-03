@@ -1,6 +1,6 @@
 {
   "name": "ngx-eagle",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
@@ -10,7 +10,7 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "homepage": "https://jbisbal91.github.io/ngx-ui",
+  "homepage": "https://xdevsolutions.com",
   "sideEffects": false,
   "author": {
     "name": "Jose Alberto Bisbal Marin",
