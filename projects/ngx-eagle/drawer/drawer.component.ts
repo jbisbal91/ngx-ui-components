@@ -50,7 +50,9 @@ export class DrawerComponent implements OnInit, OnChanges {
       if (changes['ngxVisible'].currentValue) {
         this.openDrawer();
       } else {
-        this.closingAction();
+        setTimeout(() => {
+          this.closingAction();
+        });
       }
     }
   }
@@ -85,16 +87,18 @@ export class DrawerComponent implements OnInit, OnChanges {
   }
 
   closingAction() {
-    const transformMap = {
-      bottom: 'translateY(100%)',
-      top: 'translateY(-100%)',
-      right: 'translateX(100%)',
-      left: 'translateX(-100%)',
-    };
-    this.drawerRef.nativeElement.style.transform =
-      transformMap[this.ngxPlacement];
-    setTimeout(() => {
-      this.ngxOnClose.emit();
-    }, 500);
+    if (this.drawerRef) {
+      const transformMap = {
+        bottom: 'translateY(100%)',
+        top: 'translateY(-100%)',
+        right: 'translateX(100%)',
+        left: 'translateX(-100%)',
+      };
+      this.drawerRef.nativeElement.style.transform =
+        transformMap[this.ngxPlacement];
+      setTimeout(() => {
+        this.ngxOnClose.emit();
+      }, 500);
+    }
   }
 }
