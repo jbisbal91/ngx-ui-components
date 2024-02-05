@@ -1,1 +1,5 @@
-<ngx-drawer></ngx-drawer>
+<button (click)="open()">Open</button>
+
+<ngx-drawer [ngxVisible]="visible" (ngxOnClose)="close()">
+  <div style="width: 20rem">testghjj</div>
+</ngx-drawer>

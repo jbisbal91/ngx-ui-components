@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./drawer-demo1.component.scss']
 })
 export class DrawerDemo1Component {
+  visible = false;
+  open() {
+    this.visible = true;
+  }
 
+  close(): void {
+    this.visible = false;
+  }
 }

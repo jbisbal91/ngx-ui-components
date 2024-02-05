@@ -1,8 +1,55 @@
-import { Component } from '@angular/core';
+import { NgIf } from '@angular/common';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
+import { NgxDrawerPlacement } from './typings';
 
 @Component({
   selector: 'ngx-drawer',
-  templateUrl: './drawer.component.html',
+  template: ` <div *ngIf="ngxVisible" class="ngx-drawer-backdrop">
+    <div
+      #drawer
+      class="ngx-drawer"
+      [class.ngx-drawer-placement-top]="ngxPlacement === 'top'"
+      [class.ngx-drawer-placement-right]="ngxPlacement === 'right'"
+      [class.ngx-drawer-placement-bottom]="ngxPlacement === 'bottom'"
+      [class.ngx-drawer-placement-left]="ngxPlacement === 'left'"
+    >
+      <ng-content></ng-content>
+    </div>
+  </div>`,
   standalone: true,
+  imports: [NgIf],
 })
-export class DrawerComponent {}
+export class DrawerComponent implements OnInit, OnChanges {
+  @Input() ngxVisible: boolean = false;
+  @Input() ngxPlacement: NgxDrawerPlacement = 'left';
+
+  @Output() readonly ngxOnClose = new EventEmitter<void>();
+
+  @ViewChild('drawer') drawerRef!: ElementRef;
+
+  ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['ngxVisible']) {
+      this.openDrawer();
+    }
+  }
+
+  openDrawer() {
+    setTimeout(() => {
+      if (this.drawerRef) {
+        this.drawerRef.nativeElement.style.transform = 'translateX(0px)';
+      }
+    });
+  }
+}
