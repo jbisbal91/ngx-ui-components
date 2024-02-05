@@ -84,6 +84,9 @@ import { AvatarDemo1Component } from './demos/avatar/avatar-demo1/avatar-demo1.c
 import { AvatarDocsComponent } from './docs/avatar/avatar-docs.component';
 import { AvatarDemo2Component } from './demos/avatar/avatar-demo2/avatar-demo2.component';
 import { AvatarDemo3Component } from './demos/avatar/avatar-demo3/avatar-demo3.component';
+import { DrawerModule } from 'projects/ngx-eagle/drawer';
+import { DrawerDemo1Component } from './demos/drawer/drawer-demo1/drawer-demo1.component';
+import { DrawerDocsComponent } from './docs/drawer-docs/drawer-docs.component';
 
 export function getHighlightLanguages() {
   return {
@@ -147,7 +150,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, DrawerDemo1Component, DrawerDocsComponent],
   exports: [components],
   imports: [
     CommonModule,
@@ -174,6 +177,7 @@ const components = [
     InputModule,
     SelectModule,
     TableModule,
+    DrawerModule
   ],
   providers: [
     {

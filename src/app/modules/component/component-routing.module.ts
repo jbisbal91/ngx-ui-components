@@ -21,6 +21,7 @@ import { InputDocsComponent } from './docs/input-docs/input-docs.component';
 import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
 import { TableDocsComponent } from './docs/table-docs/table-docs.component';
 import { AvatarDocsComponent } from './docs/avatar/avatar-docs.component';
+import { DrawerDocsComponent } from './docs/drawer-docs/drawer-docs.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
       { path: 'carousel', component: CarouselDocsComponent },
       { path: 'dialog', component: DialogDocsComponent },
       { path: 'divider', component: DividerDocsComponent },
+      { path: 'drawer', component: DrawerDocsComponent },
       { path: 'expansion', component: AccordionDocsComponent },
       { path: 'grid', component: GridDocsComponent },
       { path: 'input', component: InputDocsComponent },

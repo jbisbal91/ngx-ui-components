@@ -40,6 +40,7 @@ export class ComponentNavComponent {
       { path: '/components/datepicker', title: 'Datepicker' },
       { path: '/components/dialog', title: 'Dialog' },
       { path: '/components/divider', title: 'Divider' },
+      { path: '/components/drawer', title: 'Drawer' },
       { path: '/components/expansion', title: 'Expansion Panel' },
       { path: '/components/form-field', title: 'Form field' },
       { path: '/components/grid', title: 'Grid' },

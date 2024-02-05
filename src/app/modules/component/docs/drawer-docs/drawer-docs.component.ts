@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Tabs } from '../../interfaces/tabs.interface';
 
 @Component({
-  selector: 'app-divider-docs',
-  templateUrl: './divider-docs.component.html',
+  selector: 'app-drawer-docs',
+  templateUrl: './drawer-docs.component.html',
 })
-export class DividerDocsComponent implements OnInit {
-  variation1DemoDivider!: Tabs[];
+export class DrawerDocsComponent implements OnInit {
+  variation1DemoDrawer!: Tabs[];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.variation1DemoDivider = [
+    this.variation1DemoDrawer = [
       {
         tabTitle: 'HTML',
         tabContent: {
           code: this.http.get(
-            'assets/demos/divider/divider-demo1/divider-demo1.component.html',
+            'assets/demos/drawer/drawer-demo1/drawer-demo1.component.html',
             { responseType: 'text' }
           ),
         },
@@ -26,7 +26,7 @@ export class DividerDocsComponent implements OnInit {
         tabTitle: 'TS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/divider/divider-demo1/divider-demo1.component.ts',
+            'assets/demos/drawer/drawer-demo1/drawer-demo1.component.ts',
             { responseType: 'text' }
           ),
         },
@@ -35,7 +35,7 @@ export class DividerDocsComponent implements OnInit {
         tabTitle: 'SCSS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/divider/divider-demo1/divider-demo1.component.scss',
+            'assets/demos/drawer/drawer-demo1/drawer-demo1.component.scss',
             { responseType: 'text' }
           ),
         },
