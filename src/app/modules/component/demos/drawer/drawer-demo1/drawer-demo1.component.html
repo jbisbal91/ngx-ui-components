@@ -1,5 +1,22 @@
-<button (click)="open()">Open</button>
+<button
+  ngx-button
+  ngxRounded="full"
+  ngxFillMode="filled"
+  (click)="openDrawer()"
+>
+  Open Drawer
+</button>
 
-<ngx-drawer [ngxVisible]="visible" (ngxOnClose)="close()">
-  <div style="height: 10rem; width: 20rem">testghjj</div>
+<ngx-drawer
+  [ngxVisible]="visible"
+  [ngxPlacement]="ngxPlacement"
+  (ngxOnClose)="close()"
+>
+  <div class="container">
+    <p class="title">Basic Drawer</p>
+    <ngx-divider></ngx-divider>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+  </div>
 </ngx-drawer>
