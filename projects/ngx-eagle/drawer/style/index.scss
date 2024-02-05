@@ -8,22 +8,37 @@
     z-index: 999;
 }
 
-.ngx-drawer {  
-    position: absolute;  
-    height: 100%;
+.ngx-drawer {
+    position: absolute;
     background-color: #fff;
-    width: fit-content;    
     transition: transform ease-in-out 0.5s;
 }
 
-.ngx-drawer-placement-left {
+.ngx-drawer-placement-top {
+    height: fit-content;
+    width: 100%;
     top: 0;
-    left: 0;
-    transform: translateX(-100%); 
+    transform: translateY(-100%);
 }
 
+.ngx-drawer-placement-left {
+    height: 100%;
+    width: fit-content;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.ngx-drawer-placement-bottom {
+    height: fit-content;
+    width: 100%;
+    bottom: 0;
+    transform: translateY(100%);
+}
 
 .ngx-drawer-placement-right {
+    height: 100%;
+    width: fit-content;
     top: 0;
     right: 0;
     transform: translateX(100%);

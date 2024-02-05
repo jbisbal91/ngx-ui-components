@@ -31,7 +31,7 @@ import { NgxDrawerPlacement } from './typings';
 })
 export class DrawerComponent implements OnInit, OnChanges {
   @Input() ngxVisible: boolean = false;
-  @Input() ngxPlacement: NgxDrawerPlacement = 'left';
+  @Input() ngxPlacement: NgxDrawerPlacement = 'bottom';
 
   @Output() readonly ngxOnClose = new EventEmitter<void>();
 
@@ -48,7 +48,13 @@ export class DrawerComponent implements OnInit, OnChanges {
   openDrawer() {
     setTimeout(() => {
       if (this.drawerRef) {
-        this.drawerRef.nativeElement.style.transform = 'translateX(0px)';
+        if (this.ngxPlacement === 'top' || this.ngxPlacement === 'bottom') {
+          this.drawerRef.nativeElement.style.transform = 'translateY(0px)';
+        }
+
+        if (this.ngxPlacement === 'right' || this.ngxPlacement === 'left') {
+          this.drawerRef.nativeElement.style.transform = 'translateX(0px)';
+        }
       }
     });
   }
