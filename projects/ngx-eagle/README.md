@@ -1,24 +1,30 @@
-# NgxUiComponents
+<p align="center">
+  <a href="https://xdevsolutions.com/">
+    <img width="230" src="assets/images/favicon.png">
+  </a>
+</p>
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+<h1 align="center">
+NGX-EAGLE
+</h1>
 
-## Code scaffolding
+<div align="center">
 
-Run `ng generate component component-name --project ngx-eagle` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-eagle`.
-> Note: Don't forget to add `--project ngx-eagle` or else it will be added to the default project in your `angular.json` file. 
+An enterprise-class Angular UI component library
 
-## Build
+## ✨ Features
 
-Run `ng build ngx-eagle` to build the project. The build artifacts will be stored in the `dist/` directory.
+- An enterprise-class UI design system for Angular applications.
+- Written in TypeScript with predictable static types.
+- The whole package of development and design resources and tools.
+- Support OnPush mode, high performance.
 
-## Publishing
 
-After building your library with `ng build ngx-eagle`, go to the dist folder `cd dist/ngx-eagle` and run `npm publish`.
+## ☀️ License
 
-## Running unit tests
+[MIT](https://github.com/jbisbal91/ngx-ui/blob/main/LICENSE)
 
-Run `ng test ngx-eagle` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🎉 Users
 
-## Further help
+- [TickOps](https://tickops.com/)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
