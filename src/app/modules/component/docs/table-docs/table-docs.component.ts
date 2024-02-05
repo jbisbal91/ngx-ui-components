@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-table-docs',
   templateUrl: './table-docs.component.html',
-  styleUrls: ['./table-docs.component.scss']
 })
 export class TableDocsComponent implements OnInit {
   variation1DemoTable!: Tabs[];

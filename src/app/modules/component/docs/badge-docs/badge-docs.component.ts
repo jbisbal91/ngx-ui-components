@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-badge-docs',
   templateUrl: './badge-docs.component.html',
-  styleUrls: ['./badge-docs.component.scss'],
 })
 export class BadgeDocsComponent implements OnInit {
   variation1DemoBadge!: Tabs[];

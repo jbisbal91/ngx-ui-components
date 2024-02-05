@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-tag-docs',
   templateUrl: './tag-docs.component.html',
-  styleUrls: ['./tag-docs.component.scss'],
 })
 export class TagDocsComponent implements OnInit {
   variation1DemoTags!: Tabs[];

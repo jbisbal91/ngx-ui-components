@@ -5,7 +5,6 @@ import { Tabs } from '../../interfaces/tabs.interface';
 @Component({
   selector: 'app-card-docs',
   templateUrl: './card-docs.component.html',
-  styleUrls: ['./card-docs.component.scss']
 })
 export class CardDocsComponent implements OnInit {
   variation1DemoCard!: Tabs[];

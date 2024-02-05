@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-timeline-docs',
   templateUrl: './timeline-docs.component.html',
-  styleUrls: ['./timeline-docs.component.scss'],
 })
 export class TimelineDocsComponent implements OnInit {
   variation1DemoTimelines!: Tabs[];

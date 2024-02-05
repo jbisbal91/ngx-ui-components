@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-avatar-docs',
   templateUrl: './avatar-docs.component.html',
-  styleUrls: ['./avatar-docs.component.scss'],
 })
 export class AvatarDocsComponent implements OnInit {
   variation1DemoAvatar!: Tabs[];

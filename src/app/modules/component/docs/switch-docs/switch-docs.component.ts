@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-switch-docs',
   templateUrl: './switch-docs.component.html',
-  styleUrls: ['./switch-docs.component.scss'],
 })
 export class SwitchDocsComponent implements OnInit {
   variation1DemoSwitch!: Tabs[];

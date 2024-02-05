@@ -5,7 +5,6 @@ import { Tabs } from '../../interfaces/tabs.interface';
 @Component({
   selector: 'app-line-chart-docs',
   templateUrl: './line-chart-docs.component.html',
-  styleUrls: ['./line-chart-docs.component.scss']
 })
 export class LineChartDocsComponent implements OnInit {
   variation1DemoLineChart!: Tabs[];

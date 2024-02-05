@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-pie-chart-docs',
   templateUrl: './pie-chart-docs.component.html',
-  styleUrls: ['./pie-chart-docs.component.scss'],
 })
 export class PieChartDocsComponent implements OnInit {
   variation1DemoPieChart!: Tabs[];

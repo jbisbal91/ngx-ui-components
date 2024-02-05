@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-carousel-docs',
   templateUrl: './carousel-docs.component.html',
-  styleUrls: ['./carousel-docs.component.scss']
 })
 export class CarouselDocsComponent implements OnInit {
   variation1DemoCarousel!: Tabs[];

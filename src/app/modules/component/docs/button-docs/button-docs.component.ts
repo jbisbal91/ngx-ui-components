@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-button-docs',
   templateUrl: './button-docs.component.html',
-  styleUrls: ['./button-docs.component.scss'],
 })
 export class ButtonDocsComponent implements OnInit {
   variation1DemoTabs!: Tabs[];

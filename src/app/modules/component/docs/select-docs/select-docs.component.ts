@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-select-docs',
   templateUrl: './select-docs.component.html',
-  styleUrls: ['./select-docs.component.scss']
 })
 export class SelectDocsComponent implements OnInit {
   variation1DemoSelect!: Tabs[];

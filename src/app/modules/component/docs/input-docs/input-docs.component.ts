@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-input-docs',
   templateUrl: './input-docs.component.html',
-  styleUrls: ['./input-docs.component.scss'],
 })
 export class InputDocsComponent implements OnInit {
   variation1DemoInput!: Tabs[];
