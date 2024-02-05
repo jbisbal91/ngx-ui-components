@@ -1,6 +1,6 @@
 {
   "name": "ngx-eagle",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
@@ -11,6 +11,10 @@
     "tslib": "^2.3.0"
   },
   "homepage": "https://xdevsolutions.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jbisbal91/ngx-eagle"
+  },
   "sideEffects": false,
   "author": {
     "name": "Jose Alberto Bisbal Marin",
@@ -19,7 +23,7 @@
   "keywords": [
     "angular",
     "frontend",
-    "ngx",
+    "ngx-eagle",
     "lib",
     "avatar",
     "badge",

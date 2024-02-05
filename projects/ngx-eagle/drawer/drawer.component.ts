@@ -47,7 +47,11 @@ export class DrawerComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ngxVisible']) {
-      this.openDrawer();
+      if (changes['ngxVisible'].currentValue) {
+        this.openDrawer();
+      } else {
+        this.closingAction();
+      }
     }
   }
 
@@ -76,19 +80,21 @@ export class DrawerComponent implements OnInit, OnChanges {
       this.drawerRef.nativeElement.contains(clickedElement);
 
     if (isClickOnParent && !isClickOnChild) {
-      const transformMap = {
-        bottom: 'translateY(100%)',
-        top: 'translateY(-100%)',
-        right: 'translateX(100%)',
-        left: 'translateX(-100%)',
-      };
-
-      this.drawerRef.nativeElement.style.transform =
-        transformMap[this.ngxPlacement];
-
-      setTimeout(() => {
-        this.ngxOnClose.emit();
-      }, 500);
+      this.closingAction();
     }
+  }
+
+  closingAction() {
+    const transformMap = {
+      bottom: 'translateY(100%)',
+      top: 'translateY(-100%)',
+      right: 'translateX(100%)',
+      left: 'translateX(-100%)',
+    };
+    this.drawerRef.nativeElement.style.transform =
+      transformMap[this.ngxPlacement];
+    setTimeout(() => {
+      this.ngxOnClose.emit();
+    }, 500);
   }
 }
