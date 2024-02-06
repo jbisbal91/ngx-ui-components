@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgxFillMode, NgxRounded, NgxSize, } from 'ngx-eagle/button';
+import { NgxFillMode, NgxRounded, NgxSize } from 'projects/ngx-eagle/button';
 
 @Component({
   selector: 'app-button-demo1',
@@ -7,7 +7,8 @@ import { NgxFillMode, NgxRounded, NgxSize, } from 'ngx-eagle/button';
   styleUrls: ['./button-demo1.component.scss'],
 })
 export class ButtonDemo1Component {
-  size: NgxSize= 'medium';
+  size: NgxSize = 'medium';
   rounded: NgxRounded = 'medium';
   fillMode: NgxFillMode = 'filled';
+  disabled = false;
 }

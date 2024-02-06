@@ -1,0 +1,39 @@
+<div class="flex items-center mb-4">
+  <label for="size">SIZE:</label>
+  <select name="size" id="size" [(ngModel)]="size">
+    <option value="small">small</option>
+    <option value="medium">medium</option>
+    <option value="large">large</option>
+  </select>
+
+  <label for="rounded">ROUNDED:</label>
+  <select name="rounded" id="rounded" [(ngModel)]="rounded">
+    <option value="small">small</option>
+    <option value="medium">medium</option>
+    <option value="large">large</option>
+    <option value="full">full</option>
+  </select>
+
+  <label for="fillMode">Fill Mode:</label>
+  <select name="fillMode" id="fillMode" [(ngModel)]="fillMode">
+    <option value="filled">filled</option>
+    <option value="outlined">outlined</option>
+    <option value="text">text</option>
+    <option value="elevated">elevated</option>
+  </select>
+
+  <div>
+    <label>Disabled</label>
+    <ngx-switch [(ngModel)]="disabled"></ngx-switch>
+  </div>
+</div>
+
+<button
+  ngx-button
+  [ngxSize]="size"
+  [ngxRounded]="rounded"
+  [ngxFillMode]="fillMode"
+  [disabled]="disabled"
+>
+  Label
+</button>

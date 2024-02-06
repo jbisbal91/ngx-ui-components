@@ -10,6 +10,8 @@ export class SelectDemo1Component {
   ngxSize: NgxSize = 'medium';
   ngxRounded: NgxRounded = 'medium';
   ngxFillMode: NgxFillMode = 'filled';
-  input = '';  
+  input1 = '';
+  input2 = '';  
   disabled = false;
+  autocomplete = false;
 }

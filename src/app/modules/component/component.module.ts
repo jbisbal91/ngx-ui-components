@@ -90,6 +90,9 @@ import { DrawerDocsComponent } from './docs/drawer-docs/drawer-docs.component';
 import { ProgressDocsComponent } from './docs/progress-docs/progress-docs.component';
 import { ProgressDemo1Component } from './demos/progress/progress-demo1/progress-demo1.component';
 import { ProgressModule } from 'projects/ngx-eagle/progress';
+import { RateModule } from 'projects/ngx-eagle/rate';
+import { RateDocsComponent } from './docs/rate-docs/rate-docs.component';
+import { RateDemo1Component } from './demos/rate/rate-demo1/rate-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -139,6 +142,8 @@ const components = [
   PieChartDocsComponent,
   ProgressDocsComponent,
   ProgressDemo1Component,
+  RateDocsComponent,
+  RateDemo1Component,
   SelectDemo1Component,
   SelectDemo2Component,
   SelectDocsComponent,
@@ -179,6 +184,7 @@ const components = [
     LineChartModule,
     PieChartModule,
     ProgressModule,
+    RateModule,
     ReactiveFormsModule,
     SelectModule,
     SwitchModule,
