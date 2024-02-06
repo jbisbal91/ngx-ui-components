@@ -51,7 +51,7 @@ export class ComponentNavComponent {
       { path: '/components/paginator', title: 'Paginator' },
       { path: '/components/line-chart', title: 'Line Chart' },
       { path: '/components/pie-chart', title: 'Pie Chart' },
-      { path: '/components/progress-bar', title: 'Progress bar' },
+      { path: '/components/progress', title: 'Progress' },
       { path: '/components/progress-spinner', title: 'Progress spinner' },
       { path: '/components/radio', title: 'Radio button' },
       { path: '/components/ripple', title: 'Ripples' },

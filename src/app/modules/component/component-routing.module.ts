@@ -22,6 +22,7 @@ import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
 import { TableDocsComponent } from './docs/table-docs/table-docs.component';
 import { AvatarDocsComponent } from './docs/avatar/avatar-docs.component';
 import { DrawerDocsComponent } from './docs/drawer-docs/drawer-docs.component';
+import { ProgressDocsComponent } from './docs/progress-docs/progress-docs.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,7 @@ const routes: Routes = [
       { path: 'input', component: InputDocsComponent },
       { path: 'line-chart', component: LineChartDocsComponent },
       { path: 'pie-chart', component: PieChartDocsComponent },
+      { path: 'progress', component: ProgressDocsComponent },
       { path: 'select', component: SelectDocsComponent },
       { path: 'switch', component: SwitchDocsComponent },
       { path: 'table', component: TableDocsComponent },

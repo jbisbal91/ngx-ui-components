@@ -9,6 +9,7 @@
   <thead>
     <tr ngx-column-group>
       <th colspan="4">Employee</th>
+      <th colspan="3">Payroll</th>
       <th colspan="3">Contacts</th>
       <th colspan="3">Social Networks</th>
     </tr>
@@ -40,6 +41,11 @@
           val.status
         }}</ngx-tag>
       </td>
+      <td>{{ val.satisfaction }}</td>
+      <td>
+        <ngx-progress [ngxPercent]="val.productivity" [ngxSize]="'small'"></ngx-progress>
+      </td>
+      <td>{{ val.salary | currency }}</td>
       <td>{{ val.phone }}</td>
       <td>{{ val.email }}</td>
       <td>{{ val.address }}</td>
