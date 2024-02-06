@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-accordion-docs',
   templateUrl: './accordion-docs.component.html',
-  styleUrls: ['./accordion-docs.component.scss'],
 })
 export class AccordionDocsComponent implements OnInit {
   variation1DemoAccordion!: Tabs[];
