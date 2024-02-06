@@ -38,7 +38,6 @@ export class ProgressComponent implements AfterViewInit {
   @Input() ngxPercent: number = 0;
   @Input() ngxColor: string = '#1890FF';
 
-
   @ViewChild('line_progress_inner') lineProgressRef!: ElementRef;
 
   constructor(private cdr: ChangeDetectorRef) {}

@@ -13,6 +13,9 @@ export class TableDemo1Component {
     'Job Title',
     'Country',
     'Status',
+    'Satisfaction',
+    'Productivity',
+    'Salary',
     'Phone',
     'Email',
     'Address',
@@ -21,6 +24,18 @@ export class TableDemo1Component {
     'Instagram',
   ];
   ngxBordered: boolean = true;
+
+  getColor(value: number): string {
+    if (value <= 50) {
+      return '#FF4D4F';
+    } else if (value <= 80) {
+      return '#1890FF';
+    } else if (value <= 100) {
+      return '#52C41A';
+    } else {
+      throw new Error('Valor fuera de rango');
+    }
+  }
 
   values: Observable<any[]> = this.tableDemo1Service.getValues();
 

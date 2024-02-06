@@ -43,7 +43,11 @@
       </td>
       <td>{{ val.satisfaction }}</td>
       <td>
-        <ngx-progress [ngxPercent]="val.productivity" [ngxSize]="'small'"></ngx-progress>
+        <ngx-progress
+          [ngxPercent]="val.productivity"
+          [ngxSize]="'small'"
+          [ngxColor]="getColor(val.productivity)"
+        ></ngx-progress>
       </td>
       <td>{{ val.salary | currency }}</td>
       <td>{{ val.phone }}</td>
