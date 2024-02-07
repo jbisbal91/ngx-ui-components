@@ -31,9 +31,11 @@ export class RateComponent implements OnInit {
   ngOnInit(): void {
     this.context = this.canvas.nativeElement.getContext('2d');
     this.drawStars();
+    this.canvas.nativeElement.addEventListener('mousemove', (event) => {
+      this.onMouseMove(event);
+    });
   }
 
-  @HostListener('mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
     const rect = this.canvas.nativeElement.getBoundingClientRect();
     const x = event.clientX - rect.left;
@@ -107,24 +109,23 @@ export class RateComponent implements OnInit {
         y = cy + Math.sin(rot) * outerRadius;
         this.context.lineTo(x, y);
         rot += step;
-
         x = cx + Math.cos(rot) * innerRadius;
         y = cy + Math.sin(rot) * innerRadius;
         this.context.lineTo(x, y);
         rot += step;
       }
       this.context.lineTo(cx, cy - outerRadius);
-      this.context.closePath();
-
-      // Relleno de la estrella
+      this.context.closePath();      
       if (filled) {
-        this.context.fillStyle = '#FADB14'; // Color de la estrella seleccionada
-        this.context.fill();
-      }
-
-      this.context.lineWidth = 1;
-      this.context.strokeStyle = '#FADB14'; // Color del borde de la estrella
+        this.context.fillStyle = '#FFA600'; // Color de la estrella seleccionada
+        this.context.strokeStyle = '#FFA600';
+      } else {
+        this.context.fillStyle = 'transparent'; // Color de la estrella seleccionada
+        this.context.strokeStyle = '#FFA600';
+        
+      } 
       this.context.stroke();
+      this.context.fill();
     }
   }
 
@@ -133,7 +134,6 @@ export class RateComponent implements OnInit {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
     this.context?.clearRect(0, 0, canvasEl.width, canvasEl.height);
     this.stars = this.stars.map((star, i) => i <= index);
-    //console.log(this.stars);
     this.drawStars();
   }
 }
