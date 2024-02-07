@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input,
   OnInit,
   ViewChild,
   forwardRef,
@@ -33,6 +34,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   standalone: true,
 })
 export class RateComponent implements OnInit, ControlValueAccessor {
+  @Input() ngxColor: string = '#FFA600';
   @ViewChild('rateCanvas', { static: true })
   canvas!: ElementRef<HTMLCanvasElement>;
   context: CanvasRenderingContext2D | null = null;
@@ -43,11 +45,7 @@ export class RateComponent implements OnInit, ControlValueAccessor {
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private elementRef: ElementRef
-  ) {
-    
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {
     this.disabled = elementRef.nativeElement.hasAttribute('disabled');
   }
 
@@ -169,11 +167,11 @@ export class RateComponent implements OnInit, ControlValueAccessor {
       this.context.lineTo(cx, cy - outerRadius);
       this.context.closePath();
       if (filled) {
-        this.context.fillStyle = '#FFA600'; // Color de la estrella seleccionada
-        this.context.strokeStyle = '#FFA600';
+        this.context.fillStyle = this.ngxColor; // Color de la estrella seleccionada
+        this.context.strokeStyle = this.ngxColor;
       } else {
         this.context.fillStyle = 'transparent'; // Color de la estrella seleccionada
-        this.context.strokeStyle = '#FFA600';
+        this.context.strokeStyle = this.ngxColor;
       }
       this.context.stroke();
       this.context.fill();
