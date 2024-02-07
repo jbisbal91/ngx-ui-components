@@ -1,17 +1,24 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'ngx-rate',
   template: `
-    <div class="rate-container">
-      <canvas
-        #rateCanvas
-        width="200"
-        height="40"
-        (click)="onCanvasClick($event)"
-      ></canvas>
-    </div>
+    <canvas
+      #rateCanvas
+      width="200"
+      height="40"
+      (click)="onCanvasClick($event)"
+    ></canvas>
   `,
+  host: {
+    class: 'ngx-rate',
+  },
   standalone: true,
 })
 export class RateComponent implements OnInit {
@@ -24,19 +31,20 @@ export class RateComponent implements OnInit {
   ngOnInit(): void {
     this.context = this.canvas.nativeElement.getContext('2d');
     this.drawStars();
-    this.canvas.nativeElement.addEventListener('mousemove', (event) => {
-      this.onMouseMove(event);
-    });
   }
 
+  @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
     const rect = this.canvas.nativeElement.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    let index = this.selectedStar; // Inicializar index como -1 por defecto
+    this.fillStar(this.findStarIndex(x, y));
+  }
 
-    // Verificar si la posición y está dentro del rango de las estrellas
-    if (y >= 3 && y <= 33 && x < rect.width && y < rect.height) {
+  findStarIndex(x: number, y: number) {
+    const rect = this.canvas.nativeElement.getBoundingClientRect();
+    let index = this.selectedStar;
+    if (y >= 3 && y <= 33 && x <= rect.width && y <= rect.height) {
       // Verificar la posición x en cada estrella
       if (x >= 3 && x <= 35) {
         index = 0;
@@ -50,19 +58,16 @@ export class RateComponent implements OnInit {
         index = 4;
       }
     }
-    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
-    this.context?.clearRect(0, 0, canvasEl.width, canvasEl.height);
-    this.stars = this.stars.map((star, i) => i <= index);
-    this.drawStars(); // Volver a dibujar las estrellas con el nuevo estado
+    return index;
   }
 
   onCanvasClick(event: MouseEvent) {
     const rect = this.canvas.nativeElement.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    const index = Math.floor(x / 40);    
-    this.selectedStar = index;
-    this.onStarClick(index);
+    const index = this.findStarIndex(x, y);
+    this.selectedStar = index !==this.selectedStar ? index: -1;
+    this.fillStar(this.selectedStar);
   }
 
   drawStars() {
@@ -125,11 +130,11 @@ export class RateComponent implements OnInit {
   }
 
   // Método para cambiar el estado de la calificación al hacer clic en una estrella
-  onStarClick(index: number) {
-    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
-    this.context?.clearRect(0, 0, canvasEl.width, canvasEl.height);
-    this.stars = this.stars.map((star, i) => i <= index);
-    this.drawStars(); // Volver a dibujar las estrellas con el nuevo estado
-    console.log(index);
+  fillStar(index: number) {
+      const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
+      this.context?.clearRect(0, 0, canvasEl.width, canvasEl.height);
+      this.stars = this.stars.map((star, i) => i <= index);
+      console.log(this.stars);
+      this.drawStars();
   }
 }
