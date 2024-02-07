@@ -3,3 +3,7 @@
   display: flex;
   align-items: center;
 }
+
+.ngx-rate:disabled {
+  cursor: default;
+}

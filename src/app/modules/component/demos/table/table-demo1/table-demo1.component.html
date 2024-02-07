@@ -41,7 +41,9 @@
           val.status
         }}</ngx-tag>
       </td>
-      <td><ngx-rate></ngx-rate></td>
+      <td>
+        <ngx-rate [ngModel]="val.satisfaction" disabled></ngx-rate>
+      </td>
       <td>
         <ngx-progress
           [ngxPercent]="val.productivity"

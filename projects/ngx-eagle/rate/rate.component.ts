@@ -1,10 +1,20 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   HostListener,
   OnInit,
+  Optional,
+  Self,
   ViewChild,
+  forwardRef,
 } from '@angular/core';
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  NgControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'ngx-rate',
@@ -19,21 +29,63 @@ import {
   host: {
     class: 'ngx-rate',
   },
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => RateComponent),
+      multi: true,
+    },
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class RateComponent implements OnInit {
+export class RateComponent implements OnInit, ControlValueAccessor {
   @ViewChild('rateCanvas', { static: true })
   canvas!: ElementRef<HTMLCanvasElement>;
   context: CanvasRenderingContext2D | null = null;
+  disabled: boolean = false;
   selectedStar: number = -1;
   stars: boolean[] = [false, false, false, false, false]; // Estado de las estrellas (true = seleccionada, false = no seleccionada)
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private hostElement: ElementRef
+  ) {}
 
   ngOnInit(): void {
-    this.context = this.canvas.nativeElement.getContext('2d');
-    this.drawStars();
+    this.context = this.canvas.nativeElement.getContext('2d');    
+    this.fillStar(this.selectedStar);
     this.canvas.nativeElement.addEventListener('mousemove', (event) => {
-      this.onMouseMove(event);
+      if (!this.disabled) {
+        this.onMouseMove(event);
+      }
     });
+    this.disabled = this.hostElement.nativeElement.hasAttribute('disabled');
+  }
+
+  writeValue(value: number): void {
+    if (value) {
+      this.selectedStar = value-1;
+      this.fillStar(this.selectedStar);
+    }
+    this.cdr.markForCheck();
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+    this.cdr.markForCheck();
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+    this.cdr.markForCheck();
+  }
+
+  setDisabledState(disabled: boolean): void {
+    this.disabled = disabled;
+    this.cdr.markForCheck();
   }
 
   onMouseMove(event: MouseEvent) {
@@ -63,12 +115,14 @@ export class RateComponent implements OnInit {
   }
 
   onCanvasClick(event: MouseEvent) {
-    const rect = this.canvas.nativeElement.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-    const index = this.findStarIndex(x, y);
-    this.selectedStar = index !== this.selectedStar ? index : -1;
-    this.fillStar(this.selectedStar);
+    if (!this.disabled) {
+      const rect = this.canvas.nativeElement.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const index = this.findStarIndex(x, y);
+      this.selectedStar = index !== this.selectedStar ? index : -1;
+      this.fillStar(this.selectedStar);
+    }
   }
 
   drawStars() {
@@ -115,15 +169,14 @@ export class RateComponent implements OnInit {
         rot += step;
       }
       this.context.lineTo(cx, cy - outerRadius);
-      this.context.closePath();      
+      this.context.closePath();
       if (filled) {
         this.context.fillStyle = '#FFA600'; // Color de la estrella seleccionada
         this.context.strokeStyle = '#FFA600';
       } else {
         this.context.fillStyle = 'transparent'; // Color de la estrella seleccionada
         this.context.strokeStyle = '#FFA600';
-        
-      } 
+      }
       this.context.stroke();
       this.context.fill();
     }
