@@ -46,6 +46,7 @@ export class RateComponent implements OnInit, ControlValueAccessor {
   disabled: boolean = false;
   selectedStar: number = -1;
   stars: boolean[] = [false, false, false, false, false]; // Estado de las estrellas (true = seleccionada, false = no seleccionada)
+  
   onChange: any = () => {};
   onTouched: any = () => {};
 
@@ -68,6 +69,7 @@ export class RateComponent implements OnInit, ControlValueAccessor {
   writeValue(value: number): void {
     if (value) {
       this.selectedStar = value-1;
+      this.onChange(value);
       this.fillStar(this.selectedStar);
     }
     this.cdr.markForCheck();
@@ -75,12 +77,10 @@ export class RateComponent implements OnInit, ControlValueAccessor {
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
-    this.cdr.markForCheck();
   }
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
-    this.cdr.markForCheck();
   }
 
   setDisabledState(disabled: boolean): void {
@@ -121,6 +121,7 @@ export class RateComponent implements OnInit, ControlValueAccessor {
       const y = event.clientY - rect.top;
       const index = this.findStarIndex(x, y);
       this.selectedStar = index !== this.selectedStar ? index : -1;
+      this.writeValue(this.selectedStar+1);
       this.fillStar(this.selectedStar);
     }
   }

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./rate-demo1.component.scss']
 })
 export class RateDemo1Component {
-
+  value:number = 0;
 }
