@@ -3,18 +3,11 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  HostListener,
   OnInit,
-  Optional,
-  Self,
   ViewChild,
   forwardRef,
 } from '@angular/core';
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-  NgControl,
-} from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'ngx-rate',
@@ -52,8 +45,11 @@ export class RateComponent implements OnInit, ControlValueAccessor {
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private hostElement: ElementRef
-  ) {}
+    private elementRef: ElementRef
+  ) {
+    
+    this.disabled = elementRef.nativeElement.hasAttribute('disabled');
+  }
 
   ngOnInit(): void {
     this.context = this.canvas.nativeElement.getContext('2d');
@@ -63,7 +59,6 @@ export class RateComponent implements OnInit, ControlValueAccessor {
         this.onMouseMove(event);
       }
     });
-    this.disabled = this.hostElement.nativeElement.hasAttribute('disabled');
   }
 
   writeValue(value: number): void {

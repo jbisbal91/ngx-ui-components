@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   forwardRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -39,7 +40,9 @@ export class SwitchComponent implements ControlValueAccessor, AfterContentInit {
   onTouched: any = () => {};
   disabled: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {
+    this.disabled = this.elementRef.nativeElement.hasAttribute('disabled');
+  }
 
   ngAfterContentInit(): void {
     this.cdr.markForCheck();
@@ -64,6 +67,8 @@ export class SwitchComponent implements ControlValueAccessor, AfterContentInit {
   }
 
   toggle(): void {
-    this.writeValue(!this.isChecked);
+    if (!this.disabled) {
+      this.writeValue(!this.isChecked);
+    }
   }
 }

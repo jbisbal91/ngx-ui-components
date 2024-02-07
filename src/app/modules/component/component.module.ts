@@ -18,7 +18,7 @@ import { CarouselModule } from 'ngx-eagle/carousel';
 import { DialogModule } from 'ngx-eagle/dialog';
 import { DividerModule } from 'ngx-eagle/divider';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
-import { SwitchModule } from 'ngx-eagle/switch';
+//import { SwitchModule } from 'ngx-eagle/switch';
 import { TabModule } from 'ngx-eagle/tab';
 //import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
@@ -93,6 +93,7 @@ import { ProgressModule } from 'projects/ngx-eagle/progress';
 import { RateModule } from 'projects/ngx-eagle/rate';
 import { RateDocsComponent } from './docs/rate-docs/rate-docs.component';
 import { RateDemo1Component } from './demos/rate/rate-demo1/rate-demo1.component';
+import { SwitchModule } from 'projects/ngx-eagle/switch';
 
 export function getHighlightLanguages() {
   return {
