@@ -170,7 +170,7 @@ export class RateComponent implements OnInit, ControlValueAccessor {
         this.context.fillStyle = this.ngxColor; // Color de la estrella seleccionada
         this.context.strokeStyle = this.ngxColor;
       } else {
-        this.context.fillStyle = 'transparent'; // Color de la estrella seleccionada
+        this.context.fillStyle = 'transparent';
         this.context.strokeStyle = this.ngxColor;
       }
       this.context.stroke();
