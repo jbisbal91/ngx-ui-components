@@ -11,7 +11,7 @@ import {
   template: `
     <canvas
       #rateCanvas
-      width="200"
+      width="140"
       height="40"
       (click)="onCanvasClick($event)"
     ></canvas>
@@ -33,7 +33,7 @@ export class RateComponent implements OnInit {
     this.drawStars();
   }
 
-  @HostListener('document:mousemove', ['$event'])
+  @HostListener('mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
     const rect = this.canvas.nativeElement.getBoundingClientRect();
     const x = event.clientX - rect.left;
@@ -44,17 +44,16 @@ export class RateComponent implements OnInit {
   findStarIndex(x: number, y: number) {
     const rect = this.canvas.nativeElement.getBoundingClientRect();
     let index = this.selectedStar;
-    if (y >= 3 && y <= 33 && x <= rect.width && y <= rect.height) {
-      // Verificar la posición x en cada estrella
-      if (x >= 3 && x <= 35) {
+    if (y >= 10 && y <= 27 && x <= rect.width && y <= rect.height) {
+      if (x >= 10 && x <= 28) {
         index = 0;
-      } else if (x >= 44 && x <= 75) {
+      } else if (x >= 35 && x <= 54) {
         index = 1;
-      } else if (x >= 84 && x <= 115) {
+      } else if (x >= 60 && x <= 77) {
         index = 2;
-      } else if (x >= 124 && x <= 155) {
+      } else if (x >= 85 && x <= 103) {
         index = 3;
-      } else if (x >= 164 && x <= 195) {
+      } else if (x >= 110 && x <= 127) {
         index = 4;
       }
     }
@@ -66,13 +65,13 @@ export class RateComponent implements OnInit {
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     const index = this.findStarIndex(x, y);
-    this.selectedStar = index !==this.selectedStar ? index: -1;
+    this.selectedStar = index !== this.selectedStar ? index : -1;
     this.fillStar(this.selectedStar);
   }
 
   drawStars() {
-    const starRadius = 16; // Radio de las estrellas
-    const spacing = 40; // Espaciado entre estrellas
+    const starRadius = 10; // Radio de las estrellas
+    const spacing = 25; // Espaciado entre estrellas
     const startY = 20; // Posición Y de las estrellas
 
     for (let i = 0; i < 5; i++) {
@@ -131,10 +130,10 @@ export class RateComponent implements OnInit {
 
   // Método para cambiar el estado de la calificación al hacer clic en una estrella
   fillStar(index: number) {
-      const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
-      this.context?.clearRect(0, 0, canvasEl.width, canvasEl.height);
-      this.stars = this.stars.map((star, i) => i <= index);
-      console.log(this.stars);
-      this.drawStars();
+    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
+    this.context?.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    this.stars = this.stars.map((star, i) => i <= index);
+    //console.log(this.stars);
+    this.drawStars();
   }
 }
