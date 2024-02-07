@@ -46,7 +46,7 @@ export class RateComponent implements OnInit, ControlValueAccessor {
   disabled: boolean = false;
   selectedStar: number = -1;
   stars: boolean[] = [false, false, false, false, false]; // Estado de las estrellas (true = seleccionada, false = no seleccionada)
-  
+
   onChange: any = () => {};
   onTouched: any = () => {};
 
@@ -56,7 +56,7 @@ export class RateComponent implements OnInit, ControlValueAccessor {
   ) {}
 
   ngOnInit(): void {
-    this.context = this.canvas.nativeElement.getContext('2d');    
+    this.context = this.canvas.nativeElement.getContext('2d');
     this.fillStar(this.selectedStar);
     this.canvas.nativeElement.addEventListener('mousemove', (event) => {
       if (!this.disabled) {
@@ -68,7 +68,7 @@ export class RateComponent implements OnInit, ControlValueAccessor {
 
   writeValue(value: number): void {
     if (value) {
-      this.selectedStar = value-1;
+      this.selectedStar = value - 1;
       this.onChange(value);
       this.fillStar(this.selectedStar);
     }
@@ -121,7 +121,9 @@ export class RateComponent implements OnInit, ControlValueAccessor {
       const y = event.clientY - rect.top;
       const index = this.findStarIndex(x, y);
       this.selectedStar = index !== this.selectedStar ? index : -1;
-      this.writeValue(this.selectedStar+1);
+      this.writeValue(
+        this.selectedStar !== -1 ? this.selectedStar + 1 : this.selectedStar
+      );
       this.fillStar(this.selectedStar);
     }
   }
