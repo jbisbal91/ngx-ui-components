@@ -26,8 +26,8 @@ import { PieChartModule } from 'ngx-eagle/pie-chart';
 import { InputModule } from 'ngx-eagle/input';
 import { SelectModule } from 'ngx-eagle/select';
 import { ProgressModule } from 'ngx-eagle/progress';
-import { RateModule } from 'ngx-eagle/rate';
-
+//import { RateModule } from 'ngx-eagle/rate';
+import { RateModule } from 'projects/ngx-eagle/rate';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';

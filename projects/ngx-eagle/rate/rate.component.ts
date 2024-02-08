@@ -6,6 +6,7 @@ import {
   Input,
   OnInit,
   ViewChild,
+  booleanAttribute,
   forwardRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -35,6 +36,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class RateComponent implements OnInit, ControlValueAccessor {
   @Input() ngxColor: string = '#FFA600';
+  @Input({ transform: booleanAttribute }) ngxAllowClear: boolean = true;
   @ViewChild('rateCanvas', { static: true })
   canvas!: ElementRef<HTMLCanvasElement>;
   context: CanvasRenderingContext2D | null = null;
@@ -113,7 +115,7 @@ export class RateComponent implements OnInit, ControlValueAccessor {
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
       const index = this.findStarIndex(x, y);
-      this.selectedStar = index !== this.selectedStar ? index : -1;
+      this.selectedStar = index !== this.selectedStar || !this.ngxAllowClear ? index : -1;
       this.writeValue(
         this.selectedStar !== -1 ? this.selectedStar + 1 : this.selectedStar
       );
