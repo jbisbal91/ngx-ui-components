@@ -41,11 +41,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class CheckboxComponent implements ControlValueAccessor {
   @Input({ transform: booleanAttribute }) indeterminate: boolean = false;
+  @Input() checked: boolean = false;
   @Input() ngxColor: string = '#1890FF';
 
   @ViewChild('input_checkbox') inputCheckboxRef!: ElementRef;
 
-  @Input() checked: boolean = false;
   disabled: boolean = false;
 
   onChange: any = () => {};
