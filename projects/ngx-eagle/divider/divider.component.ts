@@ -43,9 +43,16 @@ export class DividerComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.elementRef) {
-      this.renderer.setStyle(this.elementRef.nativeElement,'border-top-color',this.ngxColor);
-      this.renderer.setStyle(this.elementRef.nativeElement,'color',this.ngxColor);
-
+      this.renderer.setStyle(
+        this.elementRef.nativeElement,
+        'border-top-color',
+        this.ngxColor
+      );
+      this.renderer.setStyle(
+        this.elementRef.nativeElement,
+        'color',
+        this.ngxColor
+      );
     }
     this.cdr.markForCheck();
   }
