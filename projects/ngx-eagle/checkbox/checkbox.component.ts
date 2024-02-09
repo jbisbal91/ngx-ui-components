@@ -3,8 +3,12 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
+  OnChanges,
+  Output,
   Renderer2,
+  SimpleChanges,
   ViewChild,
   booleanAttribute,
   forwardRef,
@@ -40,16 +44,17 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class CheckboxComponent implements ControlValueAccessor {
-  @Input({ transform: booleanAttribute }) indeterminate: boolean = false;
+export class CheckboxComponent implements OnChanges, ControlValueAccessor {
+  @Input() indeterminate: boolean = false;
   @Input() checked: boolean = false;
-  @Input() ngxColor: string = '#1890FF';
+  @Input() ngxColor: string | undefined | null = '#1890FF';
 
   @ViewChild('input_checkbox') inputCheckboxRef!: ElementRef;
 
   disabled: boolean = false;
 
-  onChange: any = () => {};
+  @Output() onChecked = new EventEmitter<any>();
+  onChange: any = () => {this.onChecked.emit(this.checked)};
   onTouched: any = () => {};
 
   public id: string = '';
@@ -64,6 +69,19 @@ export class CheckboxComponent implements ControlValueAccessor {
     this.disabled = elementRef.nativeElement.hasAttribute('disabled');
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['checked']) {
+      this.checked = changes['checked'].currentValue;
+    }
+    if (changes['indeterminate']) {
+      this.indeterminate = changes['indeterminate'].currentValue;
+    }
+    if (changes['ngxColor']) {
+      this.ngxColor = changes['ngxColor'].currentValue;
+    }
+    this.setColor();
+  }
+
   eventChecked(event: Event) {
     if (!this.disabled) {
       this.checked = this.checked ? false : true;
@@ -73,6 +91,9 @@ export class CheckboxComponent implements ControlValueAccessor {
 
   setColor() {
     setTimeout(() => {
+      if (!this.ngxColor) {
+        this.ngxColor = '#1890FF';
+      }
       if (
         this.inputCheckboxRef &&
         (this.inputCheckboxRef.nativeElement.indeterminate ||

@@ -1,7 +1,35 @@
-<ngx-checkbox [(ngModel)]="value" [indeterminate]="true" ngxColor="red"
-  >label1</ngx-checkbox
+<!-- <ngx-checkbox
+  [(ngModel)]="allComplete"
+  [indeterminate]="indeterminate"
+  (ngModelChange)="setAll($event)"
 >
+  Indeterminate
+</ngx-checkbox>
 
-<ngx-checkbox [(ngModel)]="value" ngxColor="red" disabled>label2</ngx-checkbox>
+<ngx-checkbox
+  [(ngModel)]="checkbox.completed"
+  [ngxColor]="checkbox.color"
+  (ngModelChange)="updateAllComplete()"
+  *ngFor="let checkbox of checkboxList"
+>
+  {{ checkbox.name }}
+</ngx-checkbox> -->
 
-<ngx-checkbox [(ngModel)]="value" >label3</ngx-checkbox>
+<!----------->
+
+<ngx-checkbox
+  [checked]="allComplete"
+  [indeterminate]="indeterminate"
+  (onChecked)="setAll2($event)"
+>
+  Indeterminate
+</ngx-checkbox>
+
+<ngx-checkbox
+  [checked]="checkbox.completed"
+  [ngxColor]="checkbox.color"
+  (onChecked)="updateAllComplete2(checkbox,$event)"
+  *ngFor="let checkbox of checkboxList"
+>
+  {{ checkbox.name }}
+</ngx-checkbox>

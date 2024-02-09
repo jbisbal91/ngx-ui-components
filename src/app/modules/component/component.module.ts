@@ -29,6 +29,7 @@ import { ProgressModule } from 'ngx-eagle/progress';
 //import { RateModule } from 'ngx-eagle/rate';
 import { RateModule } from 'projects/ngx-eagle/rate';
 import { DividerModule } from 'projects/ngx-eagle/divider';
+import { CheckboxModule } from 'projects/ngx-eagle/checkbox';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';
@@ -92,7 +93,6 @@ import { ProgressDocsComponent } from './docs/progress-docs/progress-docs.compon
 import { ProgressDemo1Component } from './demos/progress/progress-demo1/progress-demo1.component';
 import { RateDocsComponent } from './docs/rate-docs/rate-docs.component';
 import { RateDemo1Component } from './demos/rate/rate-demo1/rate-demo1.component';
-import { CheckboxModule } from 'projects/ngx-eagle/checkbox';
 import { CheckboxDocsComponent } from './docs/checkbox-docs/checkbox-docs.component';
 import { CheckboxDemo1Component } from './demos/checkbox/checkbox-demo1/checkbox-demo1.component';
 
