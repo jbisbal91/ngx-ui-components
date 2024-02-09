@@ -16,7 +16,7 @@ import { ButtonModule } from 'ngx-eagle/button';
 import { CardModule } from 'ngx-eagle/card';
 import { CarouselModule } from 'ngx-eagle/carousel';
 import { DialogModule } from 'ngx-eagle/dialog';
-import { DividerModule } from 'ngx-eagle/divider';
+//import { DividerModule } from 'ngx-eagle/divider';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
 import { SwitchModule } from 'ngx-eagle/switch';
 import { TabModule } from 'ngx-eagle/tab';
@@ -28,6 +28,7 @@ import { SelectModule } from 'ngx-eagle/select';
 import { ProgressModule } from 'ngx-eagle/progress';
 //import { RateModule } from 'ngx-eagle/rate';
 import { RateModule } from 'projects/ngx-eagle/rate';
+import { DividerModule } from 'projects/ngx-eagle/divider';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';
