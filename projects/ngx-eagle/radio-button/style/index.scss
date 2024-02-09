@@ -1,0 +1,27 @@
+.ngx-radio-button {
+    display: flex;
+    max-width: fit-content;
+    gap: 0.5rem;
+}
+
+.ngx-radio-button>input[type="radio"] {
+    margin: 0;
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.ngx-radio-button>input[type="radio"]:not(:checked) {
+    background-color: transparent;    
+}
+
+.ngx-radio-button>input[type=radio]:checked{
+    accent-color: #FF0000;
+}
+
+.ngx-radio-button>input[type="radio"]:disabled,
+.ngx-radio-button>input[type="radio"]:disabled+label {
+    opacity: 0.6;
+    cursor: no-drop;
+}

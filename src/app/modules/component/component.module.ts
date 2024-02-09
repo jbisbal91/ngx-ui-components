@@ -28,6 +28,8 @@ import { SelectModule } from 'ngx-eagle/select';
 import { ProgressModule } from 'ngx-eagle/progress';
 //import { RateModule } from 'ngx-eagle/rate';
 import { RateModule } from 'projects/ngx-eagle/rate';
+import { RadioButtonModule } from 'projects/ngx-eagle/radio-button';
+
 import { DividerModule } from 'projects/ngx-eagle/divider';
 import { CheckboxModule } from 'projects/ngx-eagle/checkbox';
 
@@ -95,6 +97,8 @@ import { RateDocsComponent } from './docs/rate-docs/rate-docs.component';
 import { RateDemo1Component } from './demos/rate/rate-demo1/rate-demo1.component';
 import { CheckboxDocsComponent } from './docs/checkbox-docs/checkbox-docs.component';
 import { CheckboxDemo1Component } from './demos/checkbox/checkbox-demo1/checkbox-demo1.component';
+import { RadioDocsComponent } from './docs/radio-docs/radio-docs.component';
+import { RadioDemo1Component } from './demos/radio/radio-demo1/radio-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -144,6 +148,8 @@ const components = [
   PieChartDocsComponent,
   ProgressDocsComponent,
   ProgressDemo1Component,
+  RadioDocsComponent,
+  RadioDemo1Component,
   RateDocsComponent,
   RateDemo1Component,
   SelectDemo1Component,
@@ -188,6 +194,7 @@ const components = [
     LineChartModule,
     PieChartModule,
     ProgressModule,
+    RadioButtonModule,
     RateModule,
     ReactiveFormsModule,
     SelectModule,

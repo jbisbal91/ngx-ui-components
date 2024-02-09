@@ -10,7 +10,6 @@ import {
   Renderer2,
   SimpleChanges,
   ViewChild,
-  booleanAttribute,
   forwardRef,
 } from '@angular/core';
 import { GuidService } from './guid.service';
@@ -23,7 +22,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       #input_checkbox
       [id]="id"
       type="checkbox"
-      class="ngx-nat-input"
       [indeterminate]="indeterminate"
       [checked]="checked"
       [disabled]="disabled"

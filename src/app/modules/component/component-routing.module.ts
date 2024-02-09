@@ -25,6 +25,7 @@ import { DrawerDocsComponent } from './docs/drawer-docs/drawer-docs.component';
 import { ProgressDocsComponent } from './docs/progress-docs/progress-docs.component';
 import { RateDocsComponent } from './docs/rate-docs/rate-docs.component';
 import { CheckboxDocsComponent } from './docs/checkbox-docs/checkbox-docs.component';
+import { RadioDocsComponent } from './docs/radio-docs/radio-docs.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,7 @@ const routes: Routes = [
       { path: 'line-chart', component: LineChartDocsComponent },
       { path: 'pie-chart', component: PieChartDocsComponent },
       { path: 'progress', component: ProgressDocsComponent },
+      { path: 'radio-button', component: RadioDocsComponent },
       { path: 'rate', component: RateDocsComponent },
       { path: 'select', component: SelectDocsComponent },
       { path: 'switch', component: SwitchDocsComponent },

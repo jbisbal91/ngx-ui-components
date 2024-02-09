@@ -53,7 +53,7 @@ export class ComponentNavComponent {
       { path: '/components/pie-chart', title: 'Pie Chart' },
       { path: '/components/progress', title: 'Progress' },
       { path: '/components/rate', title: 'Rate' },
-      { path: '/components/radio', title: 'Radio button' },
+      { path: '/components/radio-button', title: 'Radio button' },
       { path: '/components/ripple', title: 'Ripples' },
       { path: '/components/select', title: 'Select' },
       { path: '/components/sidenav', title: 'Sidenav' },
