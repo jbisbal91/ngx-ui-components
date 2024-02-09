@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   Input,
+  Renderer2,
   ViewChild,
   booleanAttribute,
   forwardRef,
@@ -56,7 +57,8 @@ export class CheckboxComponent implements ControlValueAccessor {
   constructor(
     private guidService: GuidService,
     private cdr: ChangeDetectorRef,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private renderer: Renderer2
   ) {
     this.id = 'ngx-checkbox-' + this.guidService.guid() + '-input';
     this.disabled = elementRef.nativeElement.hasAttribute('disabled');
@@ -76,13 +78,17 @@ export class CheckboxComponent implements ControlValueAccessor {
         (this.inputCheckboxRef.nativeElement.indeterminate ||
           this.inputCheckboxRef.nativeElement.checked)
       ) {
-        this.inputCheckboxRef.nativeElement.style.backgroundColor = this
-          .disabled
-          ? '#9E9E9E'
-          : this.ngxColor;
+        this.renderer.setStyle(
+          this.inputCheckboxRef.nativeElement,
+          'background-color',
+          this.disabled ? '#9E9E9E' : this.ngxColor
+        );
       } else {
-        this.inputCheckboxRef.nativeElement.style.backgroundColor =
-          'transparent';
+        this.renderer.setStyle(
+          this.inputCheckboxRef.nativeElement,
+          'background-color',
+          'transparent'
+        );
       }
     });
   }
