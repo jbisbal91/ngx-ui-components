@@ -5,9 +5,6 @@ import {
   Component,
   ElementRef,
   Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { NgxSize, NgxType } from './typings';

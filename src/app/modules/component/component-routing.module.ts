@@ -24,6 +24,7 @@ import { AvatarDocsComponent } from './docs/avatar/avatar-docs.component';
 import { DrawerDocsComponent } from './docs/drawer-docs/drawer-docs.component';
 import { ProgressDocsComponent } from './docs/progress-docs/progress-docs.component';
 import { RateDocsComponent } from './docs/rate-docs/rate-docs.component';
+import { CheckboxDocsComponent } from './docs/checkbox-docs/checkbox-docs.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
       { path: 'buttons', component: ButtonDocsComponent },
       { path: 'card', component: CardDocsComponent },
       { path: 'carousel', component: CarouselDocsComponent },
+      { path: 'checkbox', component: CheckboxDocsComponent },
       { path: 'dialog', component: DialogDocsComponent },
       { path: 'divider', component: DividerDocsComponent },
       { path: 'drawer', component: DrawerDocsComponent },

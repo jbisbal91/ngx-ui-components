@@ -91,7 +91,9 @@ import { ProgressDocsComponent } from './docs/progress-docs/progress-docs.compon
 import { ProgressDemo1Component } from './demos/progress/progress-demo1/progress-demo1.component';
 import { RateDocsComponent } from './docs/rate-docs/rate-docs.component';
 import { RateDemo1Component } from './demos/rate/rate-demo1/rate-demo1.component';
-
+import { CheckboxModule } from 'projects/ngx-eagle/checkbox';
+import { CheckboxDocsComponent } from './docs/checkbox-docs/checkbox-docs.component';
+import { CheckboxDemo1Component } from './demos/checkbox/checkbox-demo1/checkbox-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -158,6 +160,8 @@ const components = [
   TagDocsComponent,
   TimelineDemo1Component,
   TimelineDocsComponent,
+  CheckboxDocsComponent,
+  CheckboxDemo1Component,
 ];
 
 @NgModule({
@@ -190,6 +194,7 @@ const components = [
     TabModule,
     TableModule,
     TagModule,
+    CheckboxModule,
     TimelineModule,
   ],
   providers: [
