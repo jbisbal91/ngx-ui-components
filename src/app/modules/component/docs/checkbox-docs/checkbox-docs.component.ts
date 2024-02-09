@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CheckboxDocsComponent implements OnInit {
   variation1DemoCheckbox!: Tabs[];
+  variation2DemoCheckbox!: Tabs[];
 
   constructor(private http: HttpClient) {}
 
@@ -37,6 +38,35 @@ export class CheckboxDocsComponent implements OnInit {
         tabContent: {
           code: this.http.get(
             'assets/demos/checkbox/checkbox-demo1/checkbox-demo1.component.scss',
+            { responseType: 'text' }
+          ),
+        },
+      },
+    ];
+    this.variation2DemoCheckbox = [
+      {
+        tabTitle: 'HTML',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/checkbox/checkbox-demo2/checkbox-demo2.component.html',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'TS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/checkbox/checkbox-demo2/checkbox-demo2.component.ts',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'SCSS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/checkbox/checkbox-demo2/checkbox-demo2.component.scss',
             { responseType: 'text' }
           ),
         },

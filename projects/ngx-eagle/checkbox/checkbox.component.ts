@@ -1,14 +1,14 @@
 import {
+  AfterViewChecked,
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
   Input,
-  OnChanges,
   Output,
   Renderer2,
-  SimpleChanges,
   ViewChild,
   forwardRef,
 } from '@angular/core';
@@ -42,7 +42,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class CheckboxComponent implements OnChanges, ControlValueAccessor {
+export class CheckboxComponent
+  implements AfterViewChecked, AfterViewInit, ControlValueAccessor
+{
   @Input() indeterminate: boolean = false;
   @Input() checked: boolean = false;
   @Input() ngxColor: string | undefined | null = '#1890FF';
@@ -52,14 +54,15 @@ export class CheckboxComponent implements OnChanges, ControlValueAccessor {
   disabled: boolean = false;
 
   @Output() onChecked = new EventEmitter<any>();
-  onChange: any = () => {this.onChecked.emit(this.checked)};
+  onChange: any = () => {
+    this.onChecked.emit(this.checked);
+  };
   onTouched: any = () => {};
 
   public id: string = '';
 
   constructor(
     private guidService: GuidService,
-    private cdr: ChangeDetectorRef,
     private elementRef: ElementRef,
     private renderer: Renderer2
   ) {
@@ -67,16 +70,11 @@ export class CheckboxComponent implements OnChanges, ControlValueAccessor {
     this.disabled = elementRef.nativeElement.hasAttribute('disabled');
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['checked']) {
-      this.checked = changes['checked'].currentValue;
-    }
-    if (changes['indeterminate']) {
-      this.indeterminate = changes['indeterminate'].currentValue;
-    }
-    if (changes['ngxColor']) {
-      this.ngxColor = changes['ngxColor'].currentValue;
-    }
+  ngAfterViewChecked(): void {
+    this.setColor();
+  }
+
+  ngAfterViewInit(): void {
     this.setColor();
   }
 
@@ -88,35 +86,31 @@ export class CheckboxComponent implements OnChanges, ControlValueAccessor {
   }
 
   setColor() {
-    setTimeout(() => {
-      if (!this.ngxColor) {
-        this.ngxColor = '#1890FF';
-      }
-      if (
-        this.inputCheckboxRef &&
-        (this.inputCheckboxRef.nativeElement.indeterminate ||
-          this.inputCheckboxRef.nativeElement.checked)
-      ) {
-        this.renderer.setStyle(
-          this.inputCheckboxRef.nativeElement,
-          'background-color',
-          this.disabled ? '#9E9E9E' : this.ngxColor
-        );
-      } else {
-        this.renderer.setStyle(
-          this.inputCheckboxRef.nativeElement,
-          'background-color',
-          'transparent'
-        );
-      }
-    });
+    if (!this.ngxColor) {
+      this.ngxColor = '#1890FF';
+    }
+    if (
+      this.inputCheckboxRef &&
+      (this.inputCheckboxRef.nativeElement.indeterminate ||
+        this.inputCheckboxRef.nativeElement.checked)
+    ) {
+      this.renderer.setStyle(
+        this.inputCheckboxRef.nativeElement,
+        'background-color',
+        this.disabled ? '#9E9E9E' : this.ngxColor
+      );
+    } else {
+      this.renderer.setStyle(
+        this.inputCheckboxRef.nativeElement,
+        'background-color',
+        'transparent'
+      );
+    }
   }
 
   writeValue(checked: boolean): void {
     this.checked = checked;
     this.onChange(this.checked);
-    this.setColor();
-    this.cdr.markForCheck();
   }
 
   registerOnChange(fn: any): void {
@@ -129,6 +123,5 @@ export class CheckboxComponent implements OnChanges, ControlValueAccessor {
 
   setDisabledState?(disabled: boolean): void {
     this.disabled = disabled;
-    this.cdr.markForCheck();
   }
 }

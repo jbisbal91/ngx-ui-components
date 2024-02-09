@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-checkbox-demo1',
-  templateUrl: './checkbox-demo1.component.html',
-  styleUrls: ['./checkbox-demo1.component.scss'],
+  selector: 'app-checkbox-demo2',
+  templateUrl: './checkbox-demo2.component.html',
+  styleUrls: ['./checkbox-demo2.component.scss'],
 })
-export class CheckboxDemo1Component {
+export class CheckboxDemo2Component {
   allComplete: boolean = false;
   indeterminate: boolean = false;
   checkboxList = [
@@ -15,14 +15,16 @@ export class CheckboxDemo1Component {
   ];
 
   setAll(completed: boolean) {
-    if (this.indeterminate && !completed) {
-      return;
-    }
     this.allComplete = completed;
+    this.indeterminate = !completed && this.indeterminate ? true : false;
     this.checkboxList.forEach((chBx) => (chBx.completed = completed));
   }
 
-  updateAllComplete() {
+  updateAllComplete(checkbox: any, checked: boolean) {
+    const index = this.checkboxList.findIndex((chBx) => chBx === checkbox);
+    if (index !== -1) {
+      this.checkboxList[index].completed = checked;
+    }
     const checkCompleted = this.checkboxList.filter(
       (chBx) => chBx.completed
     ).length;

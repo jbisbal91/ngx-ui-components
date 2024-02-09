@@ -99,6 +99,7 @@ import { CheckboxDocsComponent } from './docs/checkbox-docs/checkbox-docs.compon
 import { CheckboxDemo1Component } from './demos/checkbox/checkbox-demo1/checkbox-demo1.component';
 import { RadioDocsComponent } from './docs/radio-docs/radio-docs.component';
 import { RadioDemo1Component } from './demos/radio/radio-demo1/radio-demo1.component';
+import { CheckboxDemo2Component } from './demos/checkbox/checkbox-demo2/checkbox-demo2.component';
 
 export function getHighlightLanguages() {
   return {
@@ -169,6 +170,7 @@ const components = [
   TimelineDocsComponent,
   CheckboxDocsComponent,
   CheckboxDemo1Component,
+  CheckboxDemo2Component,
 ];
 
 @NgModule({
