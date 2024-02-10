@@ -8,7 +8,7 @@ import { NgxDrawerPlacement } from 'projects/ngx-eagle/drawer/typings';
 })
 export class DrawerDemo1Component {
   visible = false;
-  ngxPlacement:NgxDrawerPlacement = 'right';
+  ngxPlacement:NgxDrawerPlacement = 'left';
   openDrawer() {
     this.visible = true;
   }
