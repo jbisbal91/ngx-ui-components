@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./radio-demo1.component.scss'],
 })
 export class RadioDemo1Component {
-  radioGroupValue:any;
+  radioGroupValue = 'A'
   radioValueA = true;
   radioValueB = false;
   radioValueC = false;

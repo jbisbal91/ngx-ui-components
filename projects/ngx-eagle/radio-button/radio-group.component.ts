@@ -41,14 +41,12 @@ export class RadioGroupComponent
 
   readonly currentRadioChecked$ = new ReplaySubject<RadioButton>();
   @Output() currentRadioChecked: EventEmitter<RadioButton> =
-  new EventEmitter<RadioButton>();
-
+    new EventEmitter<RadioButton>();
 
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  constructor(private elementRef: ElementRef) {
-  }
+  constructor(private elementRef: ElementRef) {}
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -71,6 +69,7 @@ export class RadioGroupComponent
   writeValue(value: any): void {
     if (value) {
       this.setValue(value);
+      this.onChange(value);
     }
   }
 
