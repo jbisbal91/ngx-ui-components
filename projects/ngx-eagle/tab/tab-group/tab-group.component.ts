@@ -78,7 +78,7 @@ export type NgxMode = 'default' | 'closeable';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgForOf,NgIf],
+  imports: [NgForOf, NgIf],
 })
 export class TabGroupComponent implements OnInit {
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;

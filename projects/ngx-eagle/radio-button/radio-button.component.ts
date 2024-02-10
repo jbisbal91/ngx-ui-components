@@ -1,7 +1,6 @@
 import {
   AfterViewChecked,
   AfterViewInit,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -13,6 +12,7 @@ import {
 } from '@angular/core';
 import { GuidService } from './guid.service';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { RadioButton } from './radio-button.interface';
 
 @Component({
   selector: 'ngx-radio-button',
@@ -40,28 +40,28 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   standalone: true,
 })
 export class RadioButtonComponent
-  implements AfterViewChecked, AfterViewInit, ControlValueAccessor
+  implements RadioButton, AfterViewChecked, AfterViewInit, ControlValueAccessor
 {
-  @Input() checked: boolean = false;
-  @Input() ngxColor: string | undefined | null = '#1890FF';
-  @Input() ngxValue: string = '';
+  public id: string = '';
+  @Input() public checked: boolean = false;
   disabled: boolean = false;
+  @Input() ngxColor: string = '#1890FF';
+  @Input() public ngxValue: string = '';
+
+  @Output() onclick: EventEmitter<RadioButton> =
+    new EventEmitter<RadioButton>();
 
   @ViewChild('input_radio_button') inputRadioRef!: ElementRef;
 
-  @Output() onChecked = new EventEmitter<string>();
-  onChange: any = () => {
-    this.onChecked.emit(this.ngxValue);
-  };
+  onChange: any = () => {};
   onTouched: any = () => {};
 
-  public id: string = '';
   constructor(
     private guidService: GuidService,
     private elementRef: ElementRef,
     private renderer: Renderer2
   ) {
-    this.id = 'ngx-radio-button' + this.guidService.guid() + '-input';
+    this.id = 'ngx-radio-button-' + this.guidService.guid() + '-input';
     this.disabled = elementRef.nativeElement.hasAttribute('disabled');
   }
 
@@ -70,6 +70,14 @@ export class RadioButtonComponent
     if (!this.disabled) {
       this.checked = target.checked;
       this.writeValue(this.checked);
+      let rb = {
+        id: this.id,
+        checked: this.checked,
+        disabled: this.disabled,
+        ngxColor: this.ngxColor,
+        ngxValue: this.ngxValue,
+      };
+      this.onclick.emit(rb);
     }
   }
 
@@ -85,6 +93,7 @@ export class RadioButtonComponent
     this.checked = value;
     this.onChange(this.checked);
   }
+
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }

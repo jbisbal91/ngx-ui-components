@@ -1,13 +1,18 @@
-<ngx-radio-button
-  ngxColor="red"
-  [(ngModel)]="value"
-  [ngxValue]="ngxValue"
-  (onChecked)="change($event)"
->
-  Radio button 1</ngx-radio-button
->
-<ngx-radio-button> Radio button 2</ngx-radio-button>
-<ngx-radio-button disabled> Radio button 3</ngx-radio-button>
+<ngx-radio-group [(ngModel)]="radioGroupValue">
+  <ngx-radio-button [(ngModel)]="radioValueA" ngxValue="A">
+    A
+  </ngx-radio-button>
+  <ngx-radio-button [(ngModel)]="radioValueB" ngxValue="B">
+    B
+  </ngx-radio-button>
+  <ngx-radio-button [(ngModel)]="radioValueC" ngxValue="C">
+    C
+  </ngx-radio-button>
+</ngx-radio-group>
 
-{{ value }}
-{{ ngxValue }}
+<div class="grid gap-2 mt-2">
+  <p>Selected Value{{ radioGroupValue }}</p>
+  <p>A:{{ radioValueA }}</p>
+  <p>B:{{ radioValueB }}</p>
+  <p>C:{{ radioValueC }}</p>
+</div>

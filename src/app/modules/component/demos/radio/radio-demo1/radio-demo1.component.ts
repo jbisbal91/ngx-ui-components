@@ -6,10 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./radio-demo1.component.scss'],
 })
 export class RadioDemo1Component {
-  value: boolean = false;
-  ngxValue = 'radio_button1';
-  
-  change(event: any) {
-    console.log(event);
-  }
+  radioGroupValue = 'A'
+  radioValueA = false;
+  radioValueB = false;
+  radioValueC = false;
 }
