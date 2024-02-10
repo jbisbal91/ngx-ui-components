@@ -3,8 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-radio-demo1',
   templateUrl: './radio-demo1.component.html',
-  styleUrls: ['./radio-demo1.component.scss']
+  styleUrls: ['./radio-demo1.component.scss'],
 })
 export class RadioDemo1Component {
-
+  value: boolean = false;
+  ngxValue = 'radio_button1';
+  
+  change(event: any) {
+    console.log(event);
+  }
 }

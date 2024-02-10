@@ -1,3 +1,13 @@
-<ngx-radio-button ngxColor="red"> Radio button 1</ngx-radio-button>
+<ngx-radio-button
+  ngxColor="red"
+  [(ngModel)]="value"
+  [ngxValue]="ngxValue"
+  (onChecked)="change($event)"
+>
+  Radio button 1</ngx-radio-button
+>
 <ngx-radio-button> Radio button 2</ngx-radio-button>
 <ngx-radio-button disabled> Radio button 3</ngx-radio-button>
+
+{{ value }}
+{{ ngxValue }}

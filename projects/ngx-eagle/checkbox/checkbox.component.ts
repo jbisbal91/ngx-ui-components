@@ -53,7 +53,7 @@ export class CheckboxComponent
 
   disabled: boolean = false;
 
-  @Output() onChecked = new EventEmitter<any>();
+  @Output() onChecked = new EventEmitter<boolean>();
   onChange: any = () => {
     this.onChecked.emit(this.checked);
   };
@@ -79,8 +79,9 @@ export class CheckboxComponent
   }
 
   eventChecked(event: Event) {
+    const target = event.target as HTMLInputElement;
     if (!this.disabled) {
-      this.checked = this.checked ? false : true;
+      this.checked = target.checked;
       this.writeValue(this.checked);
     }
   }
