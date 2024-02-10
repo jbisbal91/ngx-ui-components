@@ -70,15 +70,19 @@ export class RadioButtonComponent
     if (!this.disabled) {
       this.checked = target.checked;
       this.writeValue(this.checked);
-      let rb = {
-        id: this.id,
-        checked: this.checked,
-        disabled: this.disabled,
-        ngxColor: this.ngxColor,
-        ngxValue: this.ngxValue,
-      };
-      this.onclick.emit(rb);
+      this.onClick();
     }
+  }
+
+  onClick() {
+    let rb = {
+      id: this.id,
+      checked: this.checked,
+      disabled: this.disabled,
+      ngxColor: this.ngxColor,
+      ngxValue: this.ngxValue,
+    };
+    this.onclick.emit(rb);
   }
 
   ngAfterViewChecked(): void {
