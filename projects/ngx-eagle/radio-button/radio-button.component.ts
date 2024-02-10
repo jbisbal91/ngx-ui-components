@@ -4,7 +4,10 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Host,
   Input,
+  OnDestroy,
+  Optional,
   Output,
   Renderer2,
   ViewChild,
@@ -13,6 +16,8 @@ import {
 import { GuidService } from './guid.service';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { RadioButton } from './radio-button.interface';
+import { RadioGroupComponent } from './radio-group.component';
+import { Subscription, take } from 'rxjs';
 
 @Component({
   selector: 'ngx-radio-button',
@@ -40,7 +45,12 @@ import { RadioButton } from './radio-button.interface';
   standalone: true,
 })
 export class RadioButtonComponent
-  implements RadioButton, AfterViewChecked, AfterViewInit, ControlValueAccessor
+  implements
+    RadioButton,
+    AfterViewChecked,
+    AfterViewInit,
+    OnDestroy,
+    ControlValueAccessor
 {
   public id: string = '';
   @Input() public checked: boolean = false;
@@ -53,16 +63,23 @@ export class RadioButtonComponent
 
   @ViewChild('input_radio_button') inputRadioRef!: ElementRef;
 
+  private subscription: Subscription = new Subscription();
+
   onChange: any = () => {};
   onTouched: any = () => {};
 
   constructor(
     private guidService: GuidService,
     private elementRef: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    @Optional() @Host() public radioGroupComp: RadioGroupComponent
   ) {
     this.id = 'ngx-radio-button-' + this.guidService.guid() + '-input';
     this.disabled = elementRef.nativeElement.hasAttribute('disabled');
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   eventChecked(event: Event) {
@@ -91,6 +108,13 @@ export class RadioButtonComponent
 
   ngAfterViewInit(): void {
     this.setAccentColor();
+    this.subscription.add(
+      this.radioGroupComp?.currentRadioChecked$.subscribe(
+        (currentRadioChecked) => {
+          this.onChange(currentRadioChecked.id === this.id ? true : false);
+        }
+      )
+    );
   }
 
   writeValue(value: boolean): void {

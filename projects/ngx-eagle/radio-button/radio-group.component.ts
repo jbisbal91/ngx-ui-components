@@ -4,13 +4,16 @@ import {
   Component,
   ContentChildren,
   ElementRef,
+  EventEmitter,
   OnDestroy,
+  Output,
   QueryList,
   forwardRef,
 } from '@angular/core';
 import { RadioButtonComponent } from './radio-button.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { ReplaySubject, Subscription } from 'rxjs';
+import { RadioButton } from './radio-button.interface';
 
 @Component({
   selector: 'ngx-radio-group',
@@ -36,6 +39,11 @@ export class RadioGroupComponent
 
   private subscription: Subscription = new Subscription();
 
+  readonly currentRadioChecked$ = new ReplaySubject<RadioButton>();
+  @Output() currentRadioChecked: EventEmitter<RadioButton> =
+  new EventEmitter<RadioButton>();
+
+
   onChange: any = () => {};
   onTouched: any = () => {};
 
@@ -54,6 +62,7 @@ export class RadioGroupComponent
         rb.onclick.subscribe(() => {
           this.setValue(rb.ngxValue);
           this.onChange(rb.ngxValue);
+          this.currentRadioChecked$.next(rb);
         })
       );
     });
