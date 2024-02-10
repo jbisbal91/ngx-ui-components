@@ -39,7 +39,7 @@ export class NgxDialog {
 
     const componentElement = (componentRef.hostView as any)
       .rootNodes[0] as HTMLElement;
-
+      
     overlayPane.appendChild(componentElement);
     backdrop.appendChild(overlayPane);
     document.body.appendChild(backdrop);
