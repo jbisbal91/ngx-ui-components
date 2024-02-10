@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -50,7 +51,7 @@ import { NgIf } from '@angular/common';
   standalone: true,
   imports: [NgIf],
 })
-export class AvatarComponent implements OnInit {
+export class AvatarComponent implements AfterViewInit {
   @Input() ngxIcon: string | null = null;
   @Input() ngxShape: NgxShape = 'circle';
   @Input() ngxSize: NgxSize | number = 'default';
@@ -65,8 +66,8 @@ export class AvatarComponent implements OnInit {
     private cdr: ChangeDetectorRef
   ) {}
 
-  ngOnInit(): void {
-    if (typeof this.ngxSize) {
+  ngAfterViewInit(): void {
+    if (typeof this.ngxSize === 'number') {
       this.setSizeInNumber();
     }
     this.cdr.markForCheck();
@@ -81,12 +82,10 @@ export class AvatarComponent implements OnInit {
   }
 
   setFontSizeImgUser() {
-    setTimeout(() => {
-      if (this.avatarUserRef) {
-        this.avatarUserRef.nativeElement.style.fontSize =
-          (Number(this.ngxSize) * 0.5) / 16 + 'rem';
-      }
-    });
+    if (this.avatarUserRef) {
+      const fontSize = `${(Number(this.ngxSize) * 0.5) / 16}rem`;
+      this.renderer2.setStyle(this.avatarUserRef.nativeElement, 'font-size',fontSize);
+    }
   }
 
   getInitials(text: string): string {
@@ -94,13 +93,11 @@ export class AvatarComponent implements OnInit {
     const initials: string[] = words.map((word) =>
       word.charAt(0).toUpperCase()
     );
-
     this.renderer2.setStyle(
       this.elementRef.nativeElement,
       'background-color',
       this.getBackgroundColor(initials.join(''))
     );
-
     return initials.join('');
   }
 

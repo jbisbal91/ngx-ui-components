@@ -1,15 +1,16 @@
 .ngx-radio-button {
     display: flex;
+    align-items: center;
     max-width: fit-content;
     gap: 0.5rem;
 }
 
 .ngx-radio-button>input[type="radio"] {
     margin: 0;
-    height: 18px;
-    width: 18px;
     cursor: pointer;
     outline: none;
+    height: 1.125rem;
+    width: 1.125rem;
 }
 
 .ngx-radio-button>input[type="radio"]:disabled,
@@ -18,6 +19,21 @@
     cursor: no-drop;
 }
 
-.ngx-radio-group .ngx-radio-button {
-    
+.ngx-radio-button>input[type="radio"]+label {
+    cursor: pointer;
+}
+
+.ngx-radio-button.ngx-radio-button-sm>input[type="radio"] {
+    height: 0.875rem;
+    width: 0.875rem;
+}
+
+.ngx-radio-button.ngx-radio-button-df>input[type="radio"] {
+    height: 1.125rem;
+    width: 1.125rem;
+}
+
+.ngx-radio-button.ngx-radio-button-lg>input[type="radio"] {
+    height: 1.375rem;
+    width: 1.375rem;
 }

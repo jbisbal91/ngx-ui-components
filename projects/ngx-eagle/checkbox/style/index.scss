@@ -1,5 +1,6 @@
 .ngx-checkbox {
     display: flex;
+    align-items: center;
     max-width: fit-content;
     gap: 0.5rem;
 }
@@ -38,4 +39,19 @@
 
 .ngx-checkbox>label {
     cursor: pointer;
+}
+
+.ngx-checkbox.ngx-checkbox-sm>input[type="checkbox"] {
+    height: 0.875rem;
+    width: 0.875rem;
+}
+
+.ngx-checkbox.ngx-checkbox-df>input[type="checkbox"] {
+    height: 1.125rem;
+    width: 1.125rem;
+}
+
+.ngx-checkbox.ngx-checkbox-lg>input[type="checkbox"] {
+    height: 1.375rem;
+    width: 1.375rem;
 }

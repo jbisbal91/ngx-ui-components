@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import { GuidService } from './guid.service';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgxSize } from './typings';
 
 @Component({
   selector: 'ngx-checkbox',
@@ -31,6 +32,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   `,
   host: {
     class: 'ngx-checkbox',
+    '[class.ngx-checkbox-sm]': `ngxSize === 'small'`,
+    '[class.ngx-checkbox-df]': `ngxSize === 'default'`,
+    '[class.ngx-checkbox-lg]': `ngxSize === 'large'`,
   },
   providers: [
     {
@@ -48,7 +52,7 @@ export class CheckboxComponent
   @Input() indeterminate: boolean = false;
   @Input() checked: boolean = false;
   @Input() ngxColor: string | undefined | null = '#1890FF';
-
+  @Input() ngxSize: NgxSize | number = 'default';
   @ViewChild('input_checkbox') inputCheckboxRef!: ElementRef;
 
   disabled: boolean = false;

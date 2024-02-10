@@ -18,6 +18,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { RadioButton } from './radio-button.interface';
 import { RadioGroupComponent } from './radio-group.component';
 import { Subscription, take } from 'rxjs';
+import { NgxSize } from './typings';
 
 @Component({
   selector: 'ngx-radio-button',
@@ -34,6 +35,9 @@ import { Subscription, take } from 'rxjs';
   `,
   host: {
     class: 'ngx-radio-button',
+    '[class.ngx-radio-button-sm]': `ngxSize === 'small'`,
+    '[class.ngx-radio-button-df]': `ngxSize === 'default'`,
+    '[class.ngx-radio-button-lg]': `ngxSize === 'large'`,
   },
   providers: [
     {
@@ -57,7 +61,7 @@ export class RadioButtonComponent
   disabled: boolean = false;
   @Input() ngxColor: string = '#1890FF';
   @Input() public ngxValue: string = '';
-
+  @Input() ngxSize: NgxSize | number = 'default';
   @Output() onclick: EventEmitter<RadioButton> =
     new EventEmitter<RadioButton>();
 
