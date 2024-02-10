@@ -19,23 +19,22 @@ export type NgStyle = {
 export class NgxDialog {
   ngxDialogId = -1;
 
-  @ViewChild('target', { read: ViewContainerRef })
-  viewContainerRef!: ViewContainerRef;
   envInjector = inject(EnvironmentInjector);
 
   constructor() {}
 
   open(component: Type<any>, data?: any, style?: NgStyle) {
+    const backdrop = document.createElement('div');
+    const overlayPane = document.createElement('div');
     const componentRef = createComponent(component, {
       environmentInjector: this.envInjector,
+      projectableNodes: [[backdrop, overlayPane]],
     });
 
-    const backdrop = document.createElement('div');
     backdrop.setAttribute('id', `ngx-overlay-${++this.ngxDialogId}`);
     backdrop.classList.add('ngx-global-backdrop');
     backdrop.classList.add('ngx-global-overlay-wrapper');
 
-    const overlayPane = document.createElement('div');
     overlayPane.classList.add('ngx-overlay-pane');
 
     const componentElement = (componentRef.hostView as any)

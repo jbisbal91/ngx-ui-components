@@ -19,10 +19,8 @@ import { NgxFillMode, NgxRounded, NgxSize } from './typings';
   },
   standalone: true,
 })
-export class ButtonDirective implements OnInit{
-  ngOnInit(): void {
-    console.log(this.ngxSize,this.ngxRounded,this.ngxFillMode)
-  }
+export class ButtonDirective {
+
   @Input() ngxSize: NgxSize = 'medium';
   @Input() ngxRounded: NgxRounded = 'medium';
   @Input() ngxFillMode: NgxFillMode = 'elevated';
