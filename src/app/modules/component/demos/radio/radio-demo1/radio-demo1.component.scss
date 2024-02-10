@@ -3,3 +3,7 @@ ngx-radio-group {
     width: fit-content;
     gap: 1rem;
 }
+
+p:nth-child(n + 2) {
+    margin-left: 1rem;
+}
