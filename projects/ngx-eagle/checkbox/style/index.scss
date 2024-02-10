@@ -33,7 +33,7 @@
 .ngx-checkbox>input[type="checkbox"]:disabled,
 .ngx-checkbox>input[type="checkbox"]:disabled+label {
     opacity: 0.6;
-    cursor: default;
+    cursor: no-drop;
 }
 
 .ngx-checkbox>label {
