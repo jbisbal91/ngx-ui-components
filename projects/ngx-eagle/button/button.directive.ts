@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, Input, OnInit } from '@angular/core';
 import { NgxFillMode, NgxRounded, NgxSize } from './typings';
 
 @Directive({
@@ -19,8 +19,13 @@ import { NgxFillMode, NgxRounded, NgxSize } from './typings';
   },
   standalone: true,
 })
-export class ButtonDirective {
+export class ButtonDirective implements OnInit{
+  ngOnInit(): void {
+    console.log(this.ngxSize,this.ngxRounded,this.ngxFillMode)
+  }
   @Input() ngxSize: NgxSize = 'medium';
   @Input() ngxRounded: NgxRounded = 'medium';
   @Input() ngxFillMode: NgxFillMode = 'elevated';
+
+
 }

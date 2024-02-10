@@ -19,7 +19,7 @@
   transition: color 0.2s ease-in-out;
 }
 
-button:disabled {
+.ngx-button>button:disabled {
   opacity: 0.7;
   cursor: default;
 }

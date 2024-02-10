@@ -12,10 +12,9 @@ import {
 import { ComponentRoutingModule } from './component-routing.module';
 
 import { BadgeModule } from 'ngx-eagle/badge';
-import { ButtonModule } from 'ngx-eagle/button';
+import { ButtonModule } from 'projects/ngx-eagle/button';
 import { CardModule } from 'ngx-eagle/card';
 import { CarouselModule } from 'ngx-eagle/carousel';
-import { DialogModule } from 'ngx-eagle/dialog';
 //import { DividerModule } from 'ngx-eagle/divider';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
 import { SwitchModule } from 'ngx-eagle/switch';
@@ -101,6 +100,7 @@ import { RadioDocsComponent } from './docs/radio-docs/radio-docs.component';
 import { RadioDemo1Component } from './demos/radio/radio-demo1/radio-demo1.component';
 import { CheckboxDemo2Component } from './demos/checkbox/checkbox-demo2/checkbox-demo2.component';
 
+
 export function getHighlightLanguages() {
   return {
     typescript: () => import('highlight.js/lib/languages/typescript'),
@@ -184,7 +184,6 @@ const components = [
     CarouselModule,
     CommonModule,
     ComponentRoutingModule,
-    DialogModule,
     DividerModule,
     DrawerModule,
     ExpansionPanelModule,

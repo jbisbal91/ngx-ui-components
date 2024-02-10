@@ -1,8 +1,11 @@
 import {
-  ComponentFactoryResolver,
+  EnvironmentInjector,
   Injectable,
-  Injector,
   Type,
+  ViewChild,
+  ViewContainerRef,
+  createComponent,
+  inject,
 } from '@angular/core';
 
 export type NgStyle = {
@@ -16,14 +19,16 @@ export type NgStyle = {
 export class NgxDialog {
   ngxDialogId = -1;
 
-  constructor(
-    private resolver: ComponentFactoryResolver,
-    private injector: Injector
-  ) {}
+  @ViewChild('target', { read: ViewContainerRef })
+  viewContainerRef!: ViewContainerRef;
+  envInjector = inject(EnvironmentInjector);
+
+  constructor() {}
 
   open(component: Type<any>, data?: any, style?: NgStyle) {
-    const componentFactory = this.resolver.resolveComponentFactory(component);
-    const componentRef = componentFactory.create(this.injector);
+    const componentRef = createComponent(component, {
+      environmentInjector: this.envInjector,
+    });
 
     const backdrop = document.createElement('div');
     backdrop.setAttribute('id', `ngx-overlay-${++this.ngxDialogId}`);
@@ -42,6 +47,7 @@ export class NgxDialog {
     if (style) {
       this.setStyle(overlayPane, style);
     }
+
     return componentRef;
   }
 
