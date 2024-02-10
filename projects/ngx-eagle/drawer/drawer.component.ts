@@ -5,8 +5,8 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
   Output,
+  Renderer2,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
@@ -34,7 +34,7 @@ import { NgxDrawerPlacement } from './typings';
   standalone: true,
   imports: [NgIf],
 })
-export class DrawerComponent implements OnInit, OnChanges {
+export class DrawerComponent implements OnChanges {
   @Input() ngxVisible: boolean = false;
   @Input() ngxPlacement: NgxDrawerPlacement = 'left';
 
@@ -43,7 +43,7 @@ export class DrawerComponent implements OnInit, OnChanges {
   @ViewChild('backdrop') backdropRef!: ElementRef;
   @ViewChild('drawer') drawerRef!: ElementRef;
 
-  ngOnInit(): void {}
+  constructor(private renderer: Renderer2) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ngxVisible']) {
@@ -70,7 +70,11 @@ export class DrawerComponent implements OnInit, OnChanges {
           this.ngxPlacement === 'top' || this.ngxPlacement === 'bottom'
             ? 'Y'
             : 'X';
-        this.drawerRef.nativeElement.style.transform = `translate${axis}(0px)`;
+        this.renderer.setStyle(
+          this.drawerRef.nativeElement,
+          'transform',
+          `translate${axis}(0px)`
+        );
       }
     });
   }
@@ -94,8 +98,11 @@ export class DrawerComponent implements OnInit, OnChanges {
         right: 'translateX(100%)',
         left: 'translateX(-100%)',
       };
-      this.drawerRef.nativeElement.style.transform =
-        transformMap[this.ngxPlacement];
+      this.renderer.setStyle(
+        this.drawerRef.nativeElement,
+        'transform',
+        transformMap[this.ngxPlacement]
+      );
       setTimeout(() => {
         this.ngxOnClose.emit();
       }, 500);
