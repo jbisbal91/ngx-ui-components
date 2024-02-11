@@ -11,32 +11,33 @@ import {
 
 import { ComponentRoutingModule } from './component-routing.module';
 
+import { AvatarModule } from 'ngx-eagle/avatar';
 import { BadgeModule } from 'ngx-eagle/badge';
-import { ButtonModule } from 'projects/ngx-eagle/button';
-import { CardModule } from 'ngx-eagle/card';
+import { ButtonModule } from 'ngx-eagle/button';
 import { CarouselModule } from 'ngx-eagle/carousel';
-//import { DividerModule } from 'ngx-eagle/divider';
+import { CardModule } from 'ngx-eagle/card';
+import { CheckboxModule } from 'ngx-eagle/checkbox';
+import { DialogModule } from 'ngx-eagle/dialog';
+import { DividerModule } from 'ngx-eagle/divider';
+import { DrawerModule } from 'ngx-eagle/drawer';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
+import { GridModule } from 'ngx-eagle/grid';
+import { InputModule } from 'ngx-eagle/input';
+import { PieChartModule } from 'ngx-eagle/pie-chart';
+import { ProgressModule } from 'ngx-eagle/progress';
+import { RadioButtonModule } from 'ngx-eagle/radio-button';
+import { RateModule } from 'ngx-eagle/rate';
+import { SelectModule } from 'ngx-eagle/select';
 import { SwitchModule } from 'ngx-eagle/switch';
+import { TableModule } from 'ngx-eagle/table';
 import { TabModule } from 'ngx-eagle/tab';
 import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
-import { PieChartModule } from 'ngx-eagle/pie-chart';
-import { InputModule } from 'ngx-eagle/input';
-import { SelectModule } from 'ngx-eagle/select';
-import { ProgressModule } from 'ngx-eagle/progress';
-//import { RateModule } from 'ngx-eagle/rate';
-import { RateModule } from 'projects/ngx-eagle/rate';
-import { RadioButtonModule } from 'projects/ngx-eagle/radio-button';
-
-import { DividerModule } from 'projects/ngx-eagle/divider';
-import { CheckboxModule } from 'projects/ngx-eagle/checkbox';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';
 import { ComponentSidenavComponent } from './pages/component-sidenav/component-sidenav.component';
 import { ComponentViewerComponent } from './components/component-viewer/component-viewer.component';
-
 import { BadgeDocsComponent } from './docs/badge-docs/badge-docs.component';
 import { BadgeDemo1Component } from './demos/badge/badge-demo1/badge-demo1.component';
 import { ButtonDocsComponent } from './docs/button-docs/button-docs.component';
@@ -63,7 +64,6 @@ import { GridDocsComponent } from './docs/grid-docs/grid-docs.component';
 import { GridDemo1Component } from './demos/grid/grid-demo1/grid-demo1.component';
 import { GridDemo2Component } from './demos/grid/grid-demo2/grid-demo2.component';
 import { GridDemo3Component } from './demos/grid/grid-demo3/grid-demo3.component';
-import { GridModule } from 'projects/ngx-eagle/grid/grid.module';
 import { GridDemo4Component } from './demos/grid/grid-demo4/grid-demo4.component';
 import { DialogRef1Component } from './demos/dialog/dialog-ref1/dialog-ref1.component';
 import { TimelineDemo1Component } from './demos/timeline/timeline-demo1/timeline-demo1.component';
@@ -81,13 +81,10 @@ import { SelectDemo2Component } from './demos/select/select-demo2/select-demo2.c
 import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
 import { TableDocsComponent } from './docs/table-docs/table-docs.component';
 import { TableDemo1Component } from './demos/table/table-demo1/table-demo1.component';
-import { TableModule } from 'projects/ngx-eagle/table';
-import { AvatarModule } from 'projects/ngx-eagle/avatar';
 import { AvatarDemo1Component } from './demos/avatar/avatar-demo1/avatar-demo1.component';
 import { AvatarDocsComponent } from './docs/avatar/avatar-docs.component';
 import { AvatarDemo2Component } from './demos/avatar/avatar-demo2/avatar-demo2.component';
 import { AvatarDemo3Component } from './demos/avatar/avatar-demo3/avatar-demo3.component';
-import { DrawerModule } from 'projects/ngx-eagle/drawer';
 import { DrawerDemo1Component } from './demos/drawer/drawer-demo1/drawer-demo1.component';
 import { DrawerDocsComponent } from './docs/drawer-docs/drawer-docs.component';
 import { ProgressDocsComponent } from './docs/progress-docs/progress-docs.component';
@@ -99,7 +96,6 @@ import { CheckboxDemo1Component } from './demos/checkbox/checkbox-demo1/checkbox
 import { RadioDocsComponent } from './docs/radio-docs/radio-docs.component';
 import { RadioDemo1Component } from './demos/radio/radio-demo1/radio-demo1.component';
 import { CheckboxDemo2Component } from './demos/checkbox/checkbox-demo2/checkbox-demo2.component';
-
 
 export function getHighlightLanguages() {
   return {

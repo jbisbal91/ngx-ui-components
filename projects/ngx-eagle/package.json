@@ -1,6 +1,6 @@
 {
   "name": "ngx-eagle",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
@@ -39,6 +39,7 @@
     "input",
     "pie chart",
     "progress",
+    "radio button",
     "rate",
     "select",
     "switch",
