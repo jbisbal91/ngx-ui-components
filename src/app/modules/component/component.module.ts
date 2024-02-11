@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxEagleModule } from 'src/app/shared/ngx-eagle/ngx-eagle.module';
 
 import {
   HighlightModule,
@@ -10,29 +11,6 @@ import {
 } from 'ngx-highlightjs';
 
 import { ComponentRoutingModule } from './component-routing.module';
-
-import { AvatarModule } from 'ngx-eagle/avatar';
-import { BadgeModule } from 'ngx-eagle/badge';
-import { ButtonModule } from 'ngx-eagle/button';
-import { CarouselModule } from 'ngx-eagle/carousel';
-import { CardModule } from 'ngx-eagle/card';
-import { CheckboxModule } from 'ngx-eagle/checkbox';
-import { DialogModule } from 'ngx-eagle/dialog';
-import { DividerModule } from 'ngx-eagle/divider';
-import { DrawerModule } from 'ngx-eagle/drawer';
-import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
-import { GridModule } from 'ngx-eagle/grid';
-import { InputModule } from 'ngx-eagle/input';
-import { PieChartModule } from 'ngx-eagle/pie-chart';
-import { ProgressModule } from 'ngx-eagle/progress';
-import { RadioButtonModule } from 'ngx-eagle/radio-button';
-import { RateModule } from 'ngx-eagle/rate';
-import { SelectModule } from 'ngx-eagle/select';
-import { SwitchModule } from 'ngx-eagle/switch';
-import { TableModule } from 'ngx-eagle/table';
-import { TabModule } from 'ngx-eagle/tab';
-import { TagModule } from 'ngx-eagle/tag';
-import { TimelineModule } from 'ngx-eagle/timeline';
 
 import { GuidesComponent } from '../guides/pages/guides/guides.component';
 import { ComponentNavComponent } from './components/component-nav/component-nav.component';
@@ -172,35 +150,14 @@ const components = [
 @NgModule({
   declarations: [components],
   exports: [components],
-  imports: [
-    AvatarModule,
-    BadgeModule,
-    ButtonModule,
-    CardModule,
-    CarouselModule,
+  imports: [  
     CommonModule,
-    ComponentRoutingModule,
-    DividerModule,
-    DrawerModule,
-    ExpansionPanelModule,
-    FormsModule,
-    GridModule,
+    ComponentRoutingModule,   
+    FormsModule,    
     HighlightModule,
-    HttpClientModule,
-    InputModule,
-    LineChartModule,
-    PieChartModule,
-    ProgressModule,
-    RadioButtonModule,
-    RateModule,
+    HttpClientModule,    
     ReactiveFormsModule,
-    SelectModule,
-    SwitchModule,
-    TabModule,
-    TableModule,
-    TagModule,
-    CheckboxModule,
-    TimelineModule,
+    NgxEagleModule
   ],
   providers: [
     {

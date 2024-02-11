@@ -5,10 +5,7 @@ import {
   Component,
   ElementRef,
   Input,
-  OnChanges,
-  OnInit,
   Renderer2,
-  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { NgxShape, NgxSize } from './typings';
@@ -52,7 +49,6 @@ import { NgIf } from '@angular/common';
   imports: [NgIf],
 })
 export class AvatarComponent implements AfterViewInit {
-  @Input() ngxIcon: string | null = null;
   @Input() ngxShape: NgxShape = 'circle';
   @Input() ngxSize: NgxSize | number = 'default';
   @Input() ngxSrc: string | null = null;

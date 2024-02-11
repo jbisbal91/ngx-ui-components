@@ -35,7 +35,7 @@ export class TableDirective implements AfterViewInit {
       const newDiv = this.renderer2.createElement('div');
       this.renderer2.addClass(newDiv, 'table-container');
       if (x || y) {
-        this.renderer2.setStyle(newDiv, 'overflow', 'scroll');
+        this.renderer2.setStyle(newDiv, 'overflow', 'auto');
         if (x) {
           this.renderer2.setStyle(newDiv, 'max-width', x);
         }
