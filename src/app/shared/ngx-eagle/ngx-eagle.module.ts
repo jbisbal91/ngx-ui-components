@@ -7,7 +7,7 @@ import { CarouselModule } from 'ngx-eagle/carousel';
 import { CardModule } from 'ngx-eagle/card';
 import { CheckboxModule } from 'ngx-eagle/checkbox';
 import { DialogModule } from 'ngx-eagle/dialog';
-import { DividerModule } from 'projects/ngx-eagle/divider';
+import { DividerModule } from 'ngx-eagle/divider';
 import { DrawerModule } from 'ngx-eagle/drawer';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
 import { GridModule } from 'ngx-eagle/grid';
