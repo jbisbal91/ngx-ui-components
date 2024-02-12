@@ -35,8 +35,9 @@ import { NgxDrawerPlacement } from './typings';
   imports: [NgIf],
 })
 export class DrawerComponent implements OnChanges {
-  @Input() ngxVisible: boolean = false;
+  @Input() ngxBackdropClosable: boolean = true;
   @Input() ngxPlacement: NgxDrawerPlacement = 'left';
+  @Input() ngxVisible: boolean = false;
 
   @Output() readonly ngxOnClose = new EventEmitter<void>();
 
@@ -85,7 +86,7 @@ export class DrawerComponent implements OnChanges {
     const isClickOnChild =
       this.drawerRef.nativeElement.contains(clickedElement);
 
-    if (isClickOnParent && !isClickOnChild) {
+    if (isClickOnParent && !isClickOnChild && this.ngxBackdropClosable) {
       this.closingAction();
     }
   }
