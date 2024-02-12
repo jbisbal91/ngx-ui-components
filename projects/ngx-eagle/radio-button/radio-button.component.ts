@@ -112,6 +112,9 @@ export class RadioButtonComponent
 
   ngAfterViewInit(): void {
     this.setAccentColor();
+    if (typeof this.ngxSize === 'number') {
+      this.setSizeInNumber();
+    }
     this.subscription.add(
       this.radioGroupComp?.currentRadioChecked$.subscribe(
         (currentRadioChecked) => {
@@ -119,6 +122,12 @@ export class RadioButtonComponent
         }
       )
     );
+  }
+
+  setSizeInNumber() {
+    const size = Number(this.ngxSize) / 16 + 'rem';
+    this.renderer.setStyle(this.inputRadioRef.nativeElement, 'width', size);
+    this.renderer.setStyle(this.inputRadioRef.nativeElement, 'height', size);
   }
 
   writeValue(value: boolean): void {

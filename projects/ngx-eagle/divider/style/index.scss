@@ -15,6 +15,12 @@
   content: "";
 }
 
+.ngx-divider.ngx-divider-dashed:after,
+.ngx-divider.ngx-divider-dashed:before {
+  border: 1px dashed;
+  border-bottom: 0;
+}
+
 .ngx-divider.ngx-divider-orientation-left:before {
   width: 2rem;
 }

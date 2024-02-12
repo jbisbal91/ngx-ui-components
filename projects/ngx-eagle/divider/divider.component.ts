@@ -6,9 +6,10 @@ import {
   ElementRef,
   Input,
   Renderer2,
+  booleanAttribute,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { NgxOrientation } from './typings';
+import { NgxOrientation, NgxType } from './typings';
 
 @Component({
   selector: 'ngx-divider',
@@ -24,14 +25,16 @@ import { NgxOrientation } from './typings';
     '[class.ngx-divider-orientation-left]': `ngxOrientation === 'left'`,
     '[class.ngx-divider-orientation-center]': `ngxOrientation === 'center'`,
     '[class.ngx-divider-orientation-right]': `ngxOrientation === 'right'`,
+    '[class.ngx-divider-dashed]': 'ngxDashed',
   },
   imports: [NgIf],
 })
 export class DividerComponent implements AfterViewInit {
-  @Input() ngxText: string = '';
+  @Input({ transform: booleanAttribute }) ngxDashed: boolean = false;
   @Input() ngxColor: string = '#6b727c';
-  @Input() ngxDashed: boolean = false;
   @Input() ngxOrientation: NgxOrientation = 'center';
+  @Input() ngxText: string = '';
+  @Input() ngxType: NgxType = 'horizontal';
 
   constructor(
     private cdr: ChangeDetectorRef,

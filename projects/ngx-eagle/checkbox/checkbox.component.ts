@@ -49,10 +49,11 @@ import { NgxSize } from './typings';
 export class CheckboxComponent
   implements AfterViewChecked, AfterViewInit, ControlValueAccessor
 {
-  @Input() indeterminate: boolean = false;
   @Input() checked: boolean = false;
+  @Input() indeterminate: boolean = false;
   @Input() ngxColor: string | undefined | null = '#1890FF';
   @Input() ngxSize: NgxSize | number = 'default';
+
   @ViewChild('input_checkbox') inputCheckboxRef!: ElementRef;
 
   disabled: boolean = false;
@@ -80,6 +81,15 @@ export class CheckboxComponent
 
   ngAfterViewInit(): void {
     this.setColor();
+    if (typeof this.ngxSize === 'number') {
+      this.setSizeInNumber();
+    }
+  }
+
+  setSizeInNumber() {
+    const size = Number(this.ngxSize) / 16 + 'rem';
+    this.renderer.setStyle(this.inputCheckboxRef.nativeElement, 'width', size);
+    this.renderer.setStyle(this.inputCheckboxRef.nativeElement, 'height', size);
   }
 
   eventChecked(event: Event) {
