@@ -1,14 +1,15 @@
 import { NgIf } from '@angular/common';
 import {
+  AfterViewChecked,
+  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
   Input,
-  OnChanges,
   Output,
   Renderer2,
-  SimpleChanges,
   ViewChild,
+  booleanAttribute,
 } from '@angular/core';
 import { NgxDrawerPlacement } from './typings';
 
@@ -17,7 +18,7 @@ import { NgxDrawerPlacement } from './typings';
   template: ` <div
     #backdrop
     (click)="closeDrawer($event)"
-    *ngIf="ngxVisible"
+    *ngIf="internalVisible"
     class="ngx-drawer-backdrop"
   >
     <div
@@ -34,27 +35,53 @@ import { NgxDrawerPlacement } from './typings';
   standalone: true,
   imports: [NgIf],
 })
-export class DrawerComponent implements OnChanges {
-  @Input() ngxBackdropClosable: boolean = true;
+export class DrawerComponent implements AfterViewChecked {
+  @Input({ transform: booleanAttribute }) ngxBackdropClosable: boolean = true;
+  @Input({ transform: booleanAttribute }) ngxBackdrop: boolean = true;
   @Input() ngxPlacement: NgxDrawerPlacement = 'left';
-  @Input() ngxVisible: boolean = false;
 
-  @Output() readonly ngxOnClose = new EventEmitter<void>();
+  internalVisible: boolean = false;
+
+  @Input()
+  get ngxVisible(): boolean {
+    return this.internalVisible;
+  }
+
+  set ngxVisible(val: boolean) {
+    if (this.internalVisible !== val) {
+      this.internalVisible = val;
+      if (val) {
+        this.openDrawer();
+      }
+      this.ngxVisibleChange.emit(val);
+    }
+  }
+
+  @Output() ngxVisibleChange: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
 
   @ViewChild('backdrop') backdropRef!: ElementRef;
   @ViewChild('drawer') drawerRef!: ElementRef;
 
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
   constructor(private renderer: Renderer2) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['ngxVisible']) {
-      if (changes['ngxVisible'].currentValue) {
-        this.openDrawer();
-      } else {
-        setTimeout(() => {
-          this.closingAction();
-        });
-      }
+  ngAfterViewChecked(): void {
+    this.setBgBackdrop();
+  }
+
+  setBgBackdrop() {
+    if (this.backdropRef) {
+      const bgBackdrop = this.ngxBackdrop
+        ? 'rgba(0, 0, 0, 0.65)'
+        : 'transparent';
+      this.renderer.setStyle(
+        this.backdropRef.nativeElement,
+        'background-color',
+        bgBackdrop
+      );
     }
   }
 
@@ -105,7 +132,7 @@ export class DrawerComponent implements OnChanges {
         transformMap[this.ngxPlacement]
       );
       setTimeout(() => {
-        this.ngxOnClose.emit();
+        this.ngxVisibleChange.emit(false);
       }, 500);
     }
   }

@@ -17,10 +17,12 @@
 <ngx-drawer
   [ngxVisible]="visible"
   [ngxPlacement]="ngxPlacement"
-  (ngxOnClose)="close()"
+  ngxBackdrop="true"
+  ngxBackdropClosable="true"
+  (ngxVisibleChange)="ngxVisibleChange($event)"
 >
   <div class="container">
-    <p class="title">Basic Drawer</p>
+    <p class="title" (click)="close()">Basic Drawer</p>
     <ngx-divider></ngx-divider>
     <p>Some contents...</p>
     <p>Some contents...</p>
