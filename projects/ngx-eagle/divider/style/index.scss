@@ -50,3 +50,14 @@
   padding-left: 0.625rem;
   padding-right: 0.625rem;
 }
+
+.ngx-divider.ngx-divider-vertical {
+  position: relative;
+  height: 1rem;
+  margin: 0 8px;
+  display: inline-block;
+  vertical-align: middle;
+  border-top: 0;
+  border-left: 1px solid;
+  border-radius: unset;
+}

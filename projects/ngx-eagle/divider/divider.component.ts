@@ -15,7 +15,7 @@ import { NgxOrientation, NgxType } from './typings';
   selector: 'ngx-divider',
   template: `
     <ng-container>
-      <span *ngIf="ngxText">{{ ngxText }}</span>
+      <span *ngIf="ngxText && ngxType === 'horizontal'">{{ ngxText }}</span>
     </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +26,7 @@ import { NgxOrientation, NgxType } from './typings';
     '[class.ngx-divider-orientation-center]': `ngxOrientation === 'center'`,
     '[class.ngx-divider-orientation-right]': `ngxOrientation === 'right'`,
     '[class.ngx-divider-dashed]': 'ngxDashed',
+    '[class.ngx-divider-vertical]': `ngxType === 'vertical'`,
   },
   imports: [NgIf],
 })
