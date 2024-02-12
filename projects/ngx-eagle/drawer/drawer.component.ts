@@ -36,8 +36,8 @@ import { NgxDrawerPlacement } from './typings';
   imports: [NgIf],
 })
 export class DrawerComponent implements AfterViewChecked {
-  @Input({ transform: booleanAttribute }) ngxBackdropClosable: boolean = true;
   @Input({ transform: booleanAttribute }) ngxBackdrop: boolean = true;
+  @Input({ transform: booleanAttribute }) ngxBackdropClosable: boolean = true; 
   @Input() ngxPlacement: NgxDrawerPlacement = 'left';
 
   internalVisible: boolean = false;
