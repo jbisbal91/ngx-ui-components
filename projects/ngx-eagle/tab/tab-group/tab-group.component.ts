@@ -15,7 +15,6 @@ import { Tab } from '../tab/tab.interface';
 import { NgForOf, NgIf } from '@angular/common';
 import { NgxAlignTabs, NgxMode, NgxTabPosition } from '../typings';
 
-
 @Component({
   selector: 'ngx-tab-group',
   template: `
@@ -43,7 +42,6 @@ import { NgxAlignTabs, NgxMode, NgxTabPosition } from '../typings';
           [class.ml-2]="ngxTabPosition === 'right'"
           >{{ tab.label }}</span
         >
-
         <svg
           class="ngx-tab-close"
           [class.ngx-tab-position-left]="ngxTabPosition === 'left'"
@@ -63,7 +61,7 @@ import { NgxAlignTabs, NgxMode, NgxTabPosition } from '../typings';
     </ul>
 
     <div
-      class="ngx-tab-content-holder mt-2"
+      class="ngx-tab-content-holder"
       [class.ml-4]="ngxTabPosition === 'left'"
       [class.mr-4]="ngxTabPosition === 'right'"
     >
