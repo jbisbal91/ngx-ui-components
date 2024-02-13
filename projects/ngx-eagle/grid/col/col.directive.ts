@@ -50,18 +50,26 @@ export class ColDirective implements OnInit, OnDestroy {
   }
 
   setMaxWidthCols(totalCols: number) {
-    const maxWidth = (Number(this.ngxSpan) / totalCols) * 100;
-    this.renderer2.setStyle(this.elementRef.nativeElement, 'display', 'block');
-    this.renderer2.setStyle(
-      this.elementRef.nativeElement,
-      'max-width',
-      `${maxWidth}%`
-    );
-    this.renderer2.setStyle(
-      this.elementRef.nativeElement,
-      'flex',
-      `0 0 ${maxWidth}%`
-    );
+    if (this.ngxSpan === 0) {
+      this.renderer2.setStyle(this.elementRef.nativeElement, 'display', 'none');
+    } else {
+      const maxWidth = (Number(this.ngxSpan) / totalCols) * 100;
+      this.renderer2.setStyle(
+        this.elementRef.nativeElement,
+        'display',
+        'block'
+      );
+      this.renderer2.setStyle(
+        this.elementRef.nativeElement,
+        'max-width',
+        `${maxWidth}%`
+      );
+      this.renderer2.setStyle(
+        this.elementRef.nativeElement,
+        'flex',
+        `0 0 ${maxWidth}%`
+      );
+    }
   }
 
   setGutter(gutter: string) {
