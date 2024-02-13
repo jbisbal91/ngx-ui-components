@@ -19,7 +19,7 @@ import { RateModule } from 'ngx-eagle/rate';
 import { SelectModule } from 'ngx-eagle/select';
 import { SwitchModule } from 'ngx-eagle/switch';
 import { TableModule } from 'ngx-eagle/table';
-import { TabModule } from 'ngx-eagle/tab';
+import { TabModule } from 'projects/ngx-eagle/tab';
 import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
 

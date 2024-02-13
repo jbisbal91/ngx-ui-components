@@ -1,10 +1,15 @@
 import {
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChildren,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
   QueryList,
   Renderer2,
 } from '@angular/core';
@@ -32,10 +37,10 @@ export type NgxMode = 'default' | 'closeable';
         [class.ngx-tab-position-top]="ngxTabPosition === 'top'"
         [class.ngx-tab-position-left]="ngxTabPosition === 'left'"
         [class.ngx-tab-position-right]="ngxTabPosition === 'right'"
-        *ngFor="let tab of tabs"
+        *ngFor="let tab of tabs; let ind = index"
         [class.active]="tab.isActive"
         [class.disabled]="tab.disabled"
-        (click)="selectTab(tab)"
+        (click)="selectTab(ind)"
       >
         <span
           [class.ml-4]="ngxTabPosition === 'left'"
@@ -80,23 +85,42 @@ export type NgxMode = 'default' | 'closeable';
   standalone: true,
   imports: [NgForOf, NgIf],
 })
-export class TabGroupComponent implements OnInit {
+export class TabGroupComponent implements AfterContentInit {
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;
-
   @Input() ngxTabPosition: NgxTabPosition = 'top';
   @Input() ngxMode: NgxMode = 'default';
   @Input() ngxAlignTabs: NgxAlignTabs = 'start';
 
-  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+  internalSelectedIndex: number = 0;
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.selectTab(this.tabs?.first);
-      this.cdr.detectChanges();
-    });
+  @Input()
+  get ngxSelectedIndex(): number {
+    return this.internalSelectedIndex;
   }
 
-  selectTab(tab: Tab) {
+  set ngxSelectedIndex(index: number) {
+    if (this.internalSelectedIndex !== index) {
+      this.internalSelectedIndex = index;
+      this.ngxSelectedIndexChange.emit(index);
+    }
+  }
+
+  @Output() ngxSelectedIndexChange: EventEmitter<number> =
+    new EventEmitter<number>();
+
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+
+  ngAfterContentInit(): void {
+    this.selectTab(this.internalSelectedIndex);
+  }
+
+  findTabByIndex(index: number) {
+    const tabs = this.tabs.toArray();
+    return tabs[index];
+  }
+
+  selectTab(index: number) {
+    let tab: Tab = this.findTabByIndex(index);
     if (tab?.disabled) {
       return;
     }
@@ -104,6 +128,7 @@ export class TabGroupComponent implements OnInit {
     if (tab) {
       tab.isActive = true;
     }
+    this.ngxSelectedIndexChange.emit(index);
     this.cdr.markForCheck();
   }
 
@@ -116,7 +141,7 @@ export class TabGroupComponent implements OnInit {
     const tabContent = document.getElementById(tab.id);
     this.renderer.removeChild(tabContent?.parentNode, tabContent);
     if (tab.isActive) {
-      this.selectTab(this.tabs.first);
+      this.selectTab(0);
     }
   }
 }

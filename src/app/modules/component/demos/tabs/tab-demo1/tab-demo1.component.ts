@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./tab-demo1.component.scss']
 })
 export class TabDemo1Component {
+  selectedIndex:number = 0;
 
+  selectedIndexChange(event:number) {
+    console.log(event);
+  }
 }

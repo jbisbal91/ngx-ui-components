@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Tab } from './tab.interface';
 import { NgIf } from '@angular/common';
 
@@ -13,6 +13,7 @@ import { NgIf } from '@angular/common';
   imports: [NgIf],
 })
 export class TabComponent implements Tab, OnInit {
+
   public id: string = '';
   public isActive: boolean = false;
   @Input() label: string = '';
