@@ -1,14 +1,11 @@
 import {
   AfterContentInit,
-  AfterViewChecked,
-  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChildren,
   EventEmitter,
   Input,
-  OnInit,
   Output,
   QueryList,
   Renderer2,
@@ -16,10 +13,8 @@ import {
 import { TabComponent } from '../tab/tab.component';
 import { Tab } from '../tab/tab.interface';
 import { NgForOf, NgIf } from '@angular/common';
+import { NgxAlignTabs, NgxMode, NgxTabPosition } from '../typings';
 
-export type NgxTabPosition = 'top' | 'left' | 'right';
-export type NgxAlignTabs = 'start' | 'end' | 'center';
-export type NgxMode = 'default' | 'closeable';
 
 @Component({
   selector: 'ngx-tab-group',
