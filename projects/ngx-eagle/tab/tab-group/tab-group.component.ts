@@ -132,7 +132,10 @@ export class TabGroupComponent implements AfterContentInit {
     this.cdr.markForCheck();
   }
 
-  closeTab(tab: any): void {
+  closeTab(tab: Tab): void {
+    if (tab?.disabled) {
+      return;
+    }
     const tabs = this.tabs.toArray();
     let index = tabs.findIndex((tb) => tb.id === tab.id);
     tabs.splice(index, 1);

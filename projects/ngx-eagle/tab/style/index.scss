@@ -63,6 +63,10 @@
   cursor: no-drop;
 }
 
+.ngx-tab-group > ul > li.disabled:hover {
+  color: inherit;
+}
+
 .ngx-tab-group > ul > li:hover {
   color: var(--ngx-theme-color-tab-hover);
 }
