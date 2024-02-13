@@ -23,6 +23,7 @@ export class TableDemo1Component {
     'Twitter',
     'Instagram',
   ];
+  
   ngxBordered: boolean = true;
 
   getColor(value: number): string {

@@ -17,7 +17,7 @@ import { ProgressModule } from 'ngx-eagle/progress';
 import { RadioButtonModule } from 'ngx-eagle/radio-button';
 import { RateModule } from 'ngx-eagle/rate';
 import { SelectModule } from 'ngx-eagle/select';
-import { SwitchModule } from 'ngx-eagle/switch';
+import { SwitchModule } from 'projects/ngx-eagle/switch';
 import { TableModule } from 'ngx-eagle/table';
 import { TabModule } from 'projects/ngx-eagle/tab';
 import { TagModule } from 'ngx-eagle/tag';
