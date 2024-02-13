@@ -80,10 +80,11 @@ import { NgxAlignTabs, NgxMode, NgxTabPosition } from '../typings';
 })
 export class TabGroupComponent implements AfterContentInit {
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;
-  @Input() ngxTabPosition: NgxTabPosition = 'top';
-  @Input() ngxMode: NgxMode = 'default';
+ 
   @Input() ngxAlignTabs: NgxAlignTabs = 'start';
-
+  @Input() ngxMode: NgxMode = 'default';
+  @Input() ngxTabPosition: NgxTabPosition = 'top';
+ 
   internalSelectedIndex: number = 0;
 
   @Input()
