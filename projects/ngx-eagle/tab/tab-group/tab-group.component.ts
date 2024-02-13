@@ -63,7 +63,7 @@ import { NgxAlignTabs, NgxMode, NgxTabPosition } from '../typings';
     </ul>
 
     <div
-      class="mt-2"
+      class="ngx-tab-content-holder mt-2"
       [class.ml-4]="ngxTabPosition === 'left'"
       [class.mr-4]="ngxTabPosition === 'right'"
     >
