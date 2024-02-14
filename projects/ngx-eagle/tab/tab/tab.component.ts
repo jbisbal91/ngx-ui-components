@@ -15,8 +15,8 @@ import { NgIf } from '@angular/common';
 export class TabComponent implements Tab, OnInit {
   public id: string = '';
   public isActive: boolean = false;
-  @Input() label: string = '';
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
+  @Input() label: string = '';
 
   ngOnInit(): void {
     this.id = this.guid();

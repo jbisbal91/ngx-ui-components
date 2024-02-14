@@ -4,16 +4,21 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input,
   forwardRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgxSize } from './typings';
 
 @Component({
   selector: 'ngx-switch',
   template: `
     <button
-      [disabled]="disabled"
       class="ngx-switch"
+      [class.ngx-switch-sm]="ngxSize === 'small'"
+      [class.ngx-switch-df]="ngxSize === 'default'"
+      [class.ngx-switch-lg]="ngxSize === 'large'"
+      [disabled]="disabled"
       [class.ngx-switch-checked]="isChecked"
       (click)="toggle()"
     >
@@ -31,6 +36,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'ngx-switch',
+    '[class.ngx-switch-sm]': `ngxSize === 'small'`,
+    '[class.ngx-switch-df]': `ngxSize === 'default'`,
+    '[class.ngx-switch-lg]': `ngxSize === 'large'`,
   },
   standalone: true,
 })
@@ -39,6 +47,8 @@ export class SwitchComponent implements ControlValueAccessor, AfterContentInit {
   onChange: any = () => {};
   onTouched: any = () => {};
   disabled: boolean = false;
+
+  @Input() ngxSize: NgxSize = 'large';
 
   constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {
     this.disabled = this.elementRef.nativeElement.hasAttribute('disabled');
