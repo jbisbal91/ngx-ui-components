@@ -1,5 +1,4 @@
 import {
-  AfterViewChecked,
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -63,14 +62,13 @@ import { CommonModule, NgIf } from '@angular/common';
   imports: [CommonModule],
 })
 export class ProgressComponent implements AfterViewInit, OnChanges {
-  @Input() ngxType: NgxType = 'line';
-  @Input() ngxSize: NgxSize = 'default';
-  @Input() ngxPercent: number = 0;
   @Input() ngxColor: string = '#1890FF';
+  @Input() ngxPercent: number = 0;
+  @Input() ngxSize: NgxSize = 'default';
   @Input() ngxTimer: number = 0.5;
+  @Input() ngxType: NgxType = 'line';
   @Input() template!: TemplateRef<void>;
 
-  size = 50;
   @ViewChild('line_progress_inner') lineProgressRef!: ElementRef;
   @ViewChild('circle_progress_inner') circleProgressRef!: ElementRef;
 
