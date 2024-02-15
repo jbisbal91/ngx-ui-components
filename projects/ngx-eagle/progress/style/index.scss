@@ -5,6 +5,7 @@
 }
 
 .ngx-progress>.ngx-progress-outer {
+    display: flex;
     width: 100%;
     background-color: var(--ngx-comp-progress-background-color);
     border-radius: 100px;
@@ -51,17 +52,6 @@
 
 .ngx-progress>.progress-circle .bg-circle {
     stroke: var(--ngx-comp-progress-background-color);
-}
-
-.ngx-progress>.progress-circle>.progress-bar {
-    stroke: #007bff;
-    /* Color de la barra de progreso */
-    stroke-dasharray: 283;
-    /* Circunferencia del círculo (2 * PI * radio) */
-    stroke-dashoffset: 141.5;
-    /* La mitad de la circunferencia, para que comience en la parte superior */
-    transition: stroke-dashoffset 0.3s;
-    /* Animación de la barra de progreso */
 }
 
 .ngx-progress>.progress-circle>.progress-text {

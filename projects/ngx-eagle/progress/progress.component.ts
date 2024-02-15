@@ -48,6 +48,7 @@ import { NgIf } from '@angular/common';
   host: {
     class: 'ngx-progress',
   },
+  styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [NgIf],
@@ -62,15 +63,22 @@ export class ProgressComponent implements AfterViewInit {
   @ViewChild('line_progress_inner') lineProgressRef!: ElementRef;
   @ViewChild('circle_progress_inner') circleProgressRef!: ElementRef;
 
-  constructor(private cdr: ChangeDetectorRef, private renderer: Renderer2) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private renderer: Renderer2,
+    private elementRef: ElementRef
+  ) {}
 
   ngAfterViewInit(): void {
-    this.updateProgress();
-    this.updateCircleProgress();
+    if (this.ngxType === 'line') {
+      this.updateLineProgress();
+    } else {
+      this.updateCircleProgress();
+    }
     this.cdr.markForCheck();
   }
 
-  private updateProgress(): void {
+  private updateLineProgress(): void {
     setTimeout(() => {
       if (this.lineProgressRef) {
         this.renderer.setStyle(
@@ -95,6 +103,11 @@ export class ProgressComponent implements AfterViewInit {
   }
 
   private updateCircleProgress(): void {
+    this.renderer.setStyle(
+      this.elementRef.nativeElement,
+      'width',
+      '100px'
+    );
     const progress = Math.min(100, Math.max(0, this.ngxPercent));
     const offset = 283 - (283 * progress) / 100;
     if (this.circleProgressRef) {
