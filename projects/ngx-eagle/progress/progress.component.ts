@@ -60,6 +60,7 @@ export class ProgressComponent implements AfterViewInit, OnChanges {
   @Input() ngxColor: string = '#1890FF';
   @Input() ngxTimer: number = 0.5;
 
+  size = 50;
   @ViewChild('line_progress_inner') lineProgressRef!: ElementRef;
   @ViewChild('circle_progress_inner') circleProgressRef!: ElementRef;
 
@@ -79,7 +80,7 @@ export class ProgressComponent implements AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes['ngxPercent']) {
+    if (changes['ngxPercent']) {
       if (this.ngxType === 'line') {
         this.updateLineProgress();
       } else {
@@ -112,11 +113,7 @@ export class ProgressComponent implements AfterViewInit, OnChanges {
   }
 
   private updateCircleProgress(): void {
-    this.renderer.setStyle(
-      this.elementRef.nativeElement,
-      'width',
-      '100px'
-    );
+    this.renderer.setStyle(this.elementRef.nativeElement, 'width', '100px');
     const progress = Math.min(100, Math.max(0, this.ngxPercent));
     const offset = 283 - (283 * progress) / 100;
     if (this.circleProgressRef) {
