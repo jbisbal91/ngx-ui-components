@@ -26,8 +26,8 @@ import { CommonModule, NgIf } from '@angular/common';
       >
         <div #line_progress_inner class="ngx-progress-inner"></div>
       </div>
-      <span *ngIf="!template">{{ ngxPercent }}%</span>
-      <span *ngIf="template">
+      <span *ngIf="ngxPercent !== 100 || !template">{{ ngxPercent }}%</span>
+      <span *ngIf="ngxPercent === 100">
         <ng-template [ngTemplateOutlet]="template"></ng-template>
       </span>
     </ng-container>
@@ -44,10 +44,10 @@ import { CommonModule, NgIf } from '@angular/common';
             r="45"
           ></circle>
         </svg>
-        <span *ngIf="!template && ngxPercent" class="progress-text"
+        <span *ngIf="ngxPercent !== 100 || !template" class="progress-text"
           >{{ ngxPercent }}%</span
         >
-        <div class="template-c" *ngIf="template && ngxPercent!==0">
+        <div class="template-c" *ngIf="ngxPercent === 100">
           <ng-template [ngTemplateOutlet]="template"></ng-template>
         </div>
       </div>
