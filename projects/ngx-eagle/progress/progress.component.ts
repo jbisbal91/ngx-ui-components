@@ -9,10 +9,11 @@ import {
   OnChanges,
   Renderer2,
   SimpleChanges,
+  TemplateRef,
   ViewChild,
 } from '@angular/core';
 import { NgxSize, NgxType } from './typings';
-import { NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 
 @Component({
   selector: 'ngx-progress',
@@ -26,7 +27,10 @@ import { NgIf } from '@angular/common';
       >
         <div #line_progress_inner class="ngx-progress-inner"></div>
       </div>
-      <span>{{ ngxPercent }}%</span>
+      <span *ngIf="ngxPercent !== 100 || !template">{{ ngxPercent }}%</span>
+      <span *ngIf="ngxPercent === 100">
+        <ng-template [ngTemplateOutlet]="template"></ng-template>
+      </span>
     </ng-container>
 
     <ng-container *ngIf="ngxType === 'circle'">
@@ -41,7 +45,12 @@ import { NgIf } from '@angular/common';
             r="45"
           ></circle>
         </svg>
-        <span class="progress-text">{{ ngxPercent }}%</span>
+        <span *ngIf="ngxPercent !== 100 || !template" class="progress-text"
+          >{{ ngxPercent }}%</span
+        >
+        <div class="template-c" *ngIf="ngxPercent === 100">
+          <ng-template [ngTemplateOutlet]="template"></ng-template>
+        </div>
       </div>
     </ng-container>
   `,
@@ -51,7 +60,7 @@ import { NgIf } from '@angular/common';
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf],
+  imports: [CommonModule],
 })
 export class ProgressComponent implements AfterViewInit, OnChanges {
   @Input() ngxType: NgxType = 'line';
@@ -59,6 +68,7 @@ export class ProgressComponent implements AfterViewInit, OnChanges {
   @Input() ngxPercent: number = 0;
   @Input() ngxColor: string = '#1890FF';
   @Input() ngxTimer: number = 0.5;
+  @Input() template!: TemplateRef<void>;
 
   size = 50;
   @ViewChild('line_progress_inner') lineProgressRef!: ElementRef;

@@ -41,8 +41,8 @@
 }
 
 .ngx-progress>.progress-circle svg {
-    width: 100%;
-    height: 100%;
+    //width: 100%;
+    //height: 100%;
 }
 
 .ngx-progress>.progress-circle circle {
@@ -62,4 +62,11 @@
     font-family: Arial, sans-serif;
     font-size: 20px;
     font-weight: bold;
+}
+
+.ngx-progress>.progress-circle>.template-c {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
