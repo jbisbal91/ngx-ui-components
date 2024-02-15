@@ -48,7 +48,7 @@ export class SwitchComponent implements ControlValueAccessor, AfterContentInit {
   onTouched: any = () => {};
   disabled: boolean = false;
 
-  @Input() ngxSize: NgxSize = 'large';
+  @Input() ngxSize: NgxSize = 'default';
 
   constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {
     this.disabled = this.elementRef.nativeElement.hasAttribute('disabled');
