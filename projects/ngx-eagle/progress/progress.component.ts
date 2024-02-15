@@ -12,40 +12,61 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgxSize, NgxType } from './typings';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'ngx-progress',
   template: `
-    <div
-      class="ngx-progress-outer"
-      [class.ngx-progress-sm]="ngxSize === 'small'"
-      [class.ngx-progress-df]="ngxSize === 'default'"
-      [class.ngx-progress-lg]="ngxSize === 'large'"
-    >
-      <div #line_progress_inner class="ngx-progress-inner"></div>
-    </div>
+    <ng-container *ngIf="ngxType === 'line'">
+      <div
+        class="ngx-progress-outer"
+        [class.ngx-progress-sm]="ngxSize === 'small'"
+        [class.ngx-progress-df]="ngxSize === 'default'"
+        [class.ngx-progress-lg]="ngxSize === 'large'"
+      >
+        <div #line_progress_inner class="ngx-progress-inner"></div>
+      </div>
+      <span>{{ ngxPercent }}%</span>
+    </ng-container>
 
-    <span>{{ ngxPercent }}%</span>
+    <ng-container *ngIf="ngxType === 'circle'">
+      <div class="progress-circle">
+        <svg viewBox="0 0 100 100">
+          <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
+          <circle
+            #circle_progress_inner
+            class="progress-bar"
+            cx="50"
+            cy="50"
+            r="45"
+          ></circle>
+        </svg>
+        <span class="progress-text">{{ ngxPercent }}%</span>
+      </div>
+    </ng-container>
   `,
   host: {
     class: 'ngx-progress',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
+  imports: [NgIf],
 })
 export class ProgressComponent implements AfterViewInit {
   @Input() ngxType: NgxType = 'line';
   @Input() ngxSize: NgxSize = 'default';
   @Input() ngxPercent: number = 0;
   @Input() ngxColor: string = '#1890FF';
-  @Input() ngxTimer: number = 0.5;
+  @Input() ngxTimer: number = 10;
 
   @ViewChild('line_progress_inner') lineProgressRef!: ElementRef;
+  @ViewChild('circle_progress_inner') circleProgressRef!: ElementRef;
 
   constructor(private cdr: ChangeDetectorRef, private renderer: Renderer2) {}
 
   ngAfterViewInit(): void {
     this.updateProgress();
+    this.updateCircleProgress();
     this.cdr.markForCheck();
   }
 
@@ -71,7 +92,40 @@ export class ProgressComponent implements AfterViewInit {
         );
       }
     });
+  }
 
-    this.cdr.markForCheck();
+  private updateCircleProgress(): void {
+    const progress = Math.min(100, Math.max(0, this.ngxPercent));
+    const offset = 283 - (283 * progress) / 100;
+    if (this.circleProgressRef) {
+      this.renderer.setStyle(
+        this.circleProgressRef.nativeElement,
+        'stroke-dasharray',
+        '283'
+      );
+      this.renderer.setStyle(
+        this.circleProgressRef.nativeElement,
+        'stroke-dashoffset',
+        '283'
+      );
+      this.renderer.setStyle(
+        this.circleProgressRef.nativeElement,
+        'stroke',
+        this.ngxColor
+      );
+      setTimeout(() => {
+        this.renderer.setStyle(
+          this.circleProgressRef.nativeElement,
+          'stroke-dashoffset',
+          offset.toString()
+        );
+
+        this.renderer.setStyle(
+          this.circleProgressRef.nativeElement,
+          'transition',
+          `stroke-dashoffset ${this.ngxTimer}s ease-in-out`
+        );
+      });
+    }
   }
 }
