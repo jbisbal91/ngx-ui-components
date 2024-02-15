@@ -1,4 +1,4 @@
-<ngx-progress [ngxPercent]="30"></ngx-progress>
+<ngx-progress [ngxPercent]="percent"></ngx-progress>
 
 <ngx-progress [ngxPercent]="50" ngxType="circle"></ngx-progress>
 
@@ -20,8 +20,11 @@
   ></ngx-progress>
 
   <ngx-progress
-    [ngxPercent]="50"
+    [ngxPercent]="percent"
     ngxColor="#52C41A"
     ngxType="circle"
   ></ngx-progress>
+
+  <button ngx-button ngxFillMode="outlined" (click)="decline()">-</button>
+  <button ngx-button ngxFillMode="outlined" (click)="increase()">+</button>
 </div>

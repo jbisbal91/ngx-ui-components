@@ -1,11 +1,14 @@
 import {
+  AfterViewChecked,
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
   Input,
+  OnChanges,
   Renderer2,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { NgxSize, NgxType } from './typings';
@@ -50,12 +53,12 @@ import { NgIf } from '@angular/common';
   standalone: true,
   imports: [NgIf],
 })
-export class ProgressComponent implements AfterViewInit {
+export class ProgressComponent implements AfterViewInit, OnChanges {
   @Input() ngxType: NgxType = 'line';
   @Input() ngxSize: NgxSize = 'default';
   @Input() ngxPercent: number = 0;
   @Input() ngxColor: string = '#1890FF';
-  @Input() ngxTimer: number = 10;
+  @Input() ngxTimer: number = 0.5;
 
   @ViewChild('line_progress_inner') lineProgressRef!: ElementRef;
   @ViewChild('circle_progress_inner') circleProgressRef!: ElementRef;
@@ -75,6 +78,16 @@ export class ProgressComponent implements AfterViewInit {
     this.cdr.markForCheck();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['ngxPercent']) {
+      if (this.ngxType === 'line') {
+        this.updateLineProgress();
+      } else {
+        this.updateCircleProgress();
+      }
+    }
+  }
+
   private updateLineProgress(): void {
     setTimeout(() => {
       if (this.lineProgressRef) {
@@ -89,7 +102,6 @@ export class ProgressComponent implements AfterViewInit {
           'background-color',
           this.ngxColor
         );
-
         this.renderer.setStyle(
           this.lineProgressRef.nativeElement,
           'transition',
