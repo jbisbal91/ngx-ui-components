@@ -33,36 +33,38 @@
     //transition: width 0.5s ease-in-out;
 }
 
-
-
-.progress-circle {
+.ngx-progress>.progress-circle {
     position: relative;
     width: 100px;
     height: 100px;
-  }
-  
-  svg {
+}
+
+.ngx-progress>.progress-circle svg {
     width: 100%;
     height: 100%;
-  }
-  
-  circle {
+}
+
+.ngx-progress>.progress-circle circle {
     fill: none;
     stroke-width: 5;
-  }
-  
-  .bg-circle {
-    stroke: #ddd; /* Color del círculo de fondo */
-  }
-  
-  .progress-bar {
-    stroke: #007bff; /* Color de la barra de progreso */
-    stroke-dasharray: 283; /* Circunferencia del círculo (2 * PI * radio) */
-    stroke-dashoffset: 141.5; /* La mitad de la circunferencia, para que comience en la parte superior */
-    transition: stroke-dashoffset 0.3s; /* Animación de la barra de progreso */
-  }
-  
-  .progress-text {
+}
+
+.ngx-progress>.progress-circle .bg-circle {
+    stroke: var(--ngx-comp-progress-background-color);
+}
+
+.ngx-progress>.progress-circle>.progress-bar {
+    stroke: #007bff;
+    /* Color de la barra de progreso */
+    stroke-dasharray: 283;
+    /* Circunferencia del círculo (2 * PI * radio) */
+    stroke-dashoffset: 141.5;
+    /* La mitad de la circunferencia, para que comience en la parte superior */
+    transition: stroke-dashoffset 0.3s;
+    /* Animación de la barra de progreso */
+}
+
+.ngx-progress>.progress-circle>.progress-text {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -70,4 +72,4 @@
     font-family: Arial, sans-serif;
     font-size: 20px;
     font-weight: bold;
-  }
+}
