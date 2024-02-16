@@ -1,5 +1,13 @@
-import { Component, Input, TemplateRef } from '@angular/core';
-import { NgxTimelineItemColor, NgxTimelinePosition } from '../typings';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  Renderer2,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
+import { NgxTimelinePosition } from '../typings';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -7,17 +15,8 @@ import { NgIf } from '@angular/common';
   template: `
     <div class="ngx-timeline-item">
       <div class="timeline">
-        <div
-          class="ngx-timeline-item-head"
-          [class.ngx-timeline-item-head-blue]="ngxColor === 'blue'"
-          [class.ngx-timeline-item-head-red]="ngxColor === 'red'"
-          [class.ngx-timeline-item-head-green]="ngxColor === 'green'"
-          [class.ngx-timeline-item-head-gray]="ngxColor === 'gray'"
-          [class.ngx-timeline-item-head-grey]="ngxColor === 'grey'"
-        ></div>
-        <div class="ngx-timeline-item-tail"></div>
-        <div class="ngx-timeline-arrow" *ngIf="!last"></div>
-        <div class="ngx-timeline-end" *ngIf="last"></div>
+        <div #timeline_item class="ngx-timeline-item-head"></div>
+        <div #timeline_tail class="ngx-timeline-item-tail" *ngIf="!last"></div>
       </div>
       <div class="ngx-timeline-item-content">
         <ng-content></ng-content>
@@ -30,11 +29,47 @@ import { NgIf } from '@angular/common';
   imports: [NgIf],
   standalone: true,
 })
-export class TimelineItemComponent {
+export class TimelineItemComponent implements AfterViewInit {
   @Input() ngxPosition?: NgxTimelinePosition;
-  @Input() ngxColor: NgxTimelineItemColor = 'blue';
+  @Input() ngxColor: string = '#1890ff';
   @Input() ngxDot?: string | TemplateRef<void>;
   @Input() ngxLabel?: string | TemplateRef<void>;
   first: boolean = false;
   last: boolean = false;
+
+  @ViewChild('timeline_item') timelineItemRef!: ElementRef;
+  @ViewChild('timeline_tail') timelineTailRef!: ElementRef;
+
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
+
+  ngAfterViewInit(): void {
+    this.setColor();
+    this.setTail()
+  }
+
+  setTail() {
+    if(this.timelineItemRef && this.timelineTailRef) {      
+    const heightItem = this.timelineItemRef.nativeElement.offsetHeight;
+      this.renderer.setStyle(
+        this.timelineTailRef.nativeElement,
+        'height',
+        `calc(100% - ${heightItem}px)`
+      ); 
+    }
+  }
+
+  setColor() {
+    if (this.timelineItemRef) {
+      this.renderer.setStyle(
+        this.timelineItemRef.nativeElement,
+        'color',
+        this.ngxColor
+      );
+      this.renderer.setStyle(
+        this.timelineItemRef.nativeElement,
+        'border-color',
+        this.ngxColor
+      );
+    }
+  }
 }

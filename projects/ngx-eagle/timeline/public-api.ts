@@ -4,5 +4,4 @@ export * from './timeline-item/timeline-item.component';
 export {
   NgxTimelineMode,
   NgxTimelinePosition,
-  NgxTimelineItemColor,
 } from './typings';

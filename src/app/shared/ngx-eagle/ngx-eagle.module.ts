@@ -21,7 +21,7 @@ import { SwitchModule } from 'projects/ngx-eagle/switch';
 import { TableModule } from 'ngx-eagle/table';
 import { TabModule } from 'projects/ngx-eagle/tab';
 import { TagModule } from 'ngx-eagle/tag';
-import { TimelineModule } from 'ngx-eagle/timeline';
+import { TimelineModule } from 'projects/ngx-eagle/timeline';
 
 @NgModule({
   exports: [

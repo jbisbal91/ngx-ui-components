@@ -13,7 +13,7 @@ import {
 import { PieChart } from '../models';
 import { NgForOf, NgStyle } from '@angular/common';
 
-export type NgxPosition = 'bottom' | 'left' | 'right';
+export type NgxPosition = 'left' | 'right';
 
 @Component({
   selector: 'ngx-pie-chart',
@@ -47,11 +47,11 @@ export class PieChartComponent implements OnInit {
   @ViewChild('pieChartCanvas', { static: true })
   canvas!: ElementRef<HTMLCanvasElement>;
   context: CanvasRenderingContext2D | null = null;
-  @Input() width = 300;
   @Input() height = 300;
-  @Input() value: PieChart[] = [];
-  @Input() ngxPosition: string = 'right';
+  @Input() width = 300;
   @Input({ transform: numberAttribute }) ngxGutter: number = 0;
+  @Input() ngxPosition: NgxPosition = 'right';
+  @Input() value: PieChart[] = [];
 
   @Output() partChartIndex = new EventEmitter<number>();
 
