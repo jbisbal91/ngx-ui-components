@@ -34,6 +34,7 @@ export class TimelineItemComponent implements AfterViewInit {
   @Input() ngxColor: string = '#1890ff';
   @Input() ngxDot?: string | TemplateRef<void>;
   @Input() ngxLabel?: string | TemplateRef<void>;
+  @Input() ngxSize: number = 10;
   first: boolean = false;
   last: boolean = false;
 
@@ -43,18 +44,33 @@ export class TimelineItemComponent implements AfterViewInit {
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
 
   ngAfterViewInit(): void {
+    this.setSize();
     this.setColor();
-    this.setTail()
+    this.setTail();
+  }
+
+  setSize() {
+    if (this.timelineItemRef) {
+      this.renderer.setStyle(
+        this.timelineItemRef.nativeElement,
+        'height',
+        `${this.ngxSize}px`
+      );
+      this.renderer.setStyle(
+        this.timelineItemRef.nativeElement,
+        'width',
+        `${this.ngxSize}px`
+      );
+    }
   }
 
   setTail() {
-    if(this.timelineItemRef && this.timelineTailRef) {      
-    const heightItem = this.timelineItemRef.nativeElement.offsetHeight;
+    if (this.timelineTailRef) {
       this.renderer.setStyle(
         this.timelineTailRef.nativeElement,
         'height',
-        `calc(100% - ${heightItem}px)`
-      ); 
+        `calc(100% - ${this.ngxSize}px)`
+      );
     }
   }
 
