@@ -14,7 +14,7 @@ import { NgIf } from '@angular/common';
   selector: 'ngx-timeline-item',
   template: `
     <div class="ngx-timeline-item">
-      <span>{{ngxLabel}}</span>
+      <span>{{ ngxLabel }}</span>
       <div class="c-timeline" [style.min-width.px]="ngxSize">
         <div class="timeline">
           <div #timeline_item class="ngx-timeline-item-head"></div>
@@ -57,7 +57,7 @@ export class TimelineItemComponent implements AfterViewInit {
   }
 
   setSize() {
-    if (this.timelineItemRef) {     
+    if (this.timelineItemRef) {
       this.renderer.setStyle(
         this.timelineItemRef.nativeElement,
         'height',

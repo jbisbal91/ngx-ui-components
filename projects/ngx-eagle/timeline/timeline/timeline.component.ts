@@ -29,10 +29,7 @@ export class TimelineComponent implements AfterViewInit {
       this.timelineItems.forEach((tl) => {
         sizes.push(tl.ngxSize);
       });
-
       let max = Math.max(...sizes);
-
-      console.log('El mayor número es:', max);
       this.timelineItems.forEach((tl) => {
         tl.ngxSize = max;
         if (this.timelineItems.first === tl) {
