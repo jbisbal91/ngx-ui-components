@@ -1,10 +1,12 @@
 import {
-  AfterViewInit,
+  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
   Input,
+  OnChanges,
   QueryList,
+  SimpleChanges,
 } from '@angular/core';
 import { TimelineItemComponent } from '../timeline-item/timeline-item.component';
 import { NgForOf } from '@angular/common';
@@ -17,13 +19,21 @@ import { NgxTimelineMode } from '../typings';
   imports: [NgForOf],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimelineComponent implements AfterViewInit {
+export class TimelineComponent implements OnChanges, AfterContentInit {
   @ContentChildren(TimelineItemComponent)
   public timelineItems!: QueryList<TimelineItemComponent>;
 
-  @Input() ngxMode: NgxTimelineMode = 'left';
+  @Input() ngxMode!: NgxTimelineMode;
 
-  ngAfterViewInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['ngxMode']) {
+      setTimeout(() => {
+        this.setMode(this.ngxMode);
+      });
+    }
+  }
+
+  ngAfterContentInit(): void {
     setTimeout(() => {
       const ngxSizeDot: number[] = [];
       const wLeft: number[] = [];
@@ -47,6 +57,29 @@ export class TimelineComponent implements AfterViewInit {
           tl.last = true;
         }
       });
+    });
+  }
+
+  setMode(mode: NgxTimelineMode) {
+    let oLeft = 0;
+    let oRight = 0;
+    switch (mode) {
+      case 'left':
+        oLeft = 3;
+        oRight = 1;
+        break;
+      case 'right':
+        oLeft = 1;
+        oRight = 3;
+        break;
+      case 'alternate':
+        break;
+      case 'custom':
+        break;
+    }
+    this.timelineItems.forEach((tl) => {
+      tl.oLeft = oLeft;
+      tl.oRight = oRight;
     });
   }
 }

@@ -15,10 +15,11 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
   template: `
     <div class="ngx-timeline-item">
       <div
-        *ngIf="pRight"
-        class="timeline-c-left"
+        [class.timeline-c-left]="oLeft === 1"
+        [class.timeline-c-right]="oLeft === 3"
         #timeline_c_left
         [style.min-width.px]="wLeft"
+        [style.order]="oLeft"
       >
         <span *ngIf="typeOf(ngxLabel) === 'string'">{{ ngxLabel }}</span>
         <ng-template
@@ -28,15 +29,10 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
       </div>
 
       <div
-        *ngIf="pLeft"
-        #timeline_c_right
-        class="ngx-timeline-item-content"
-        [style.min-width.px]="wRight"
+        class="c-timeline"
+        [style.min-width.px]="ngxSizeDot"
+        [style.order]="2"
       >
-        <ng-content></ng-content>
-      </div>
-
-      <div class="c-timeline" [style.min-width.px]="ngxSizeDot">
         <div class="timeline">
           <div #timeline_item class="ngx-timeline-item-head"></div>
           <div
@@ -48,23 +44,12 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
       </div>
 
       <div
-        *ngIf="pLeft"
-        class="timeline-c-right"
-        #timeline_c_left
-        [style.min-width.px]="wLeft"
-      >
-        <span *ngIf="typeOf(ngxLabel) === 'string'">{{ ngxLabel }}</span>
-        <ng-template
-          *ngIf="typeOf(ngxLabel) === 'object'"
-          [ngTemplateOutlet]="ngxLabel"
-        ></ng-template>
-      </div>
-
-      <div
-        *ngIf="pRight"
         #timeline_c_right
         class="ngx-timeline-item-content"
+        [class.timeline-c-left]="oLeft === 3"
+        [class.timeline-c-right]="oLeft === 1"
         [style.min-width.px]="wRight"
+        [style.order]="oRight"
       >
         <ng-content></ng-content>
       </div>
@@ -83,19 +68,19 @@ export class TimelineItemComponent implements AfterViewInit {
   @Input() ngxLabel?: any | TemplateRef<void>;
   @Input() ngxSizeDot: number = 10;
 
+  oLeft: number = 1;
+  oRight: number = 3;
   wLeft: number = 0;
   wRight: number = 0;
   first: boolean = false;
   last: boolean = false;
-  pLeft: boolean = false;
-  pRight: boolean = true;
 
   @ViewChild('timeline_c_left') timelineCLeftRef!: ElementRef;
   @ViewChild('timeline_c_right') timelineCRightRef!: ElementRef;
   @ViewChild('timeline_item') timelineItemRef!: ElementRef;
   @ViewChild('timeline_tail') timelineTailRef!: ElementRef;
 
-  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
+  constructor(private renderer: Renderer2) {}
 
   ngAfterViewInit(): void {
     this.setSizeDot();
@@ -108,7 +93,6 @@ export class TimelineItemComponent implements AfterViewInit {
   setWLeft() {
     if (this.timelineCLeftRef) {
       this.wLeft = this.timelineCLeftRef.nativeElement.clientWidth;
-      console.log(this.wLeft);
     }
   }
 
