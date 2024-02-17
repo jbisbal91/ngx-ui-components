@@ -14,12 +14,26 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
   selector: 'ngx-timeline-item',
   template: `
     <div class="ngx-timeline-item">
-      <div class="timeline-c-left" #timeline_c_left [style.min-width.px]="wLeft">
+      <div
+        *ngIf="pRight"
+        class="timeline-c-left"
+        #timeline_c_left
+        [style.min-width.px]="wLeft"
+      >
         <span *ngIf="typeOf(ngxLabel) === 'string'">{{ ngxLabel }}</span>
         <ng-template
           *ngIf="typeOf(ngxLabel) === 'object'"
           [ngTemplateOutlet]="ngxLabel"
         ></ng-template>
+      </div>
+
+      <div
+        *ngIf="pLeft"
+        #timeline_c_right
+        class="ngx-timeline-item-content"
+        [style.min-width.px]="wRight"
+      >
+        <ng-content></ng-content>
       </div>
 
       <div class="c-timeline" [style.min-width.px]="ngxSizeDot">
@@ -32,8 +46,26 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
           ></div>
         </div>
       </div>
-      
-      <div class="ngx-timeline-item-content">
+
+      <div
+        *ngIf="pLeft"
+        class="timeline-c-right"
+        #timeline_c_left
+        [style.min-width.px]="wLeft"
+      >
+        <span *ngIf="typeOf(ngxLabel) === 'string'">{{ ngxLabel }}</span>
+        <ng-template
+          *ngIf="typeOf(ngxLabel) === 'object'"
+          [ngTemplateOutlet]="ngxLabel"
+        ></ng-template>
+      </div>
+
+      <div
+        *ngIf="pRight"
+        #timeline_c_right
+        class="ngx-timeline-item-content"
+        [style.min-width.px]="wRight"
+      >
         <ng-content></ng-content>
       </div>
     </div>
@@ -52,10 +84,14 @@ export class TimelineItemComponent implements AfterViewInit {
   @Input() ngxSizeDot: number = 10;
 
   wLeft: number = 0;
+  wRight: number = 0;
   first: boolean = false;
   last: boolean = false;
+  pLeft: boolean = false;
+  pRight: boolean = true;
 
   @ViewChild('timeline_c_left') timelineCLeftRef!: ElementRef;
+  @ViewChild('timeline_c_right') timelineCRightRef!: ElementRef;
   @ViewChild('timeline_item') timelineItemRef!: ElementRef;
   @ViewChild('timeline_tail') timelineTailRef!: ElementRef;
 
@@ -66,12 +102,20 @@ export class TimelineItemComponent implements AfterViewInit {
     this.setTailColor();
     this.setTailHeight();
     this.setWLeft();
+    this.setWRight();
   }
 
   setWLeft() {
     if (this.timelineCLeftRef) {
       this.wLeft = this.timelineCLeftRef.nativeElement.clientWidth;
       console.log(this.wLeft);
+    }
+  }
+
+  setWRight() {
+    if (this.timelineCRightRef) {
+      this.wRight = this.timelineCRightRef.nativeElement.clientWidth;
+      console.log(this.wRight);
     }
   }
 

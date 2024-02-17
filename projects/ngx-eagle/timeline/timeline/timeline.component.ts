@@ -27,15 +27,19 @@ export class TimelineComponent implements AfterViewInit {
     setTimeout(() => {
       const ngxSizeDot: number[] = [];
       const wLeft: number[] = [];
+      const wRight: number[] = [];
       this.timelineItems.forEach((tl) => {
         ngxSizeDot.push(tl.ngxSizeDot);
         wLeft.push(tl.wLeft);
+        wRight.push(tl.wRight);
       });
-      let maxNgxSize = Math.max(...ngxSizeDot);
+      let maxNgxSizeDot = Math.max(...ngxSizeDot);
       let maxWLeft = Math.max(...wLeft);
+      let maxWRight = Math.max(...wRight);
       this.timelineItems.forEach((tl) => {
-        tl.ngxSizeDot = maxNgxSize;
+        tl.ngxSizeDot = maxNgxSizeDot;
         tl.wLeft = maxWLeft;
+        tl.wRight = maxWRight;
         if (this.timelineItems.first === tl) {
           tl.first = true;
         }

@@ -11,6 +11,10 @@
   text-align: right;
 }
 
+.ngx-timeline-item>.timeline-c-right {
+  text-align: left;
+}
+
 .ngx-timeline-item>.c-timeline {
   display: flex;
   justify-content: center;
