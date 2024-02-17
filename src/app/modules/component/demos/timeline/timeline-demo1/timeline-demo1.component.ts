@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgxTimelineMode } from 'projects/ngx-eagle/timeline';
 
 @Component({
   selector: 'app-timeline-demo1',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./timeline-demo1.component.scss']
 })
 export class TimelineDemo1Component {
-
+  mode: NgxTimelineMode = 'right';
 }

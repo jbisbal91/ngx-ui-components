@@ -73,7 +73,7 @@ export class TimelineComponent implements OnChanges, AfterContentInit {
         oRight = 3;
         break;
       case 'alternate':
-        break;
+        return this.setModeAlternate();
       case 'custom':
         break;
     }
@@ -82,4 +82,49 @@ export class TimelineComponent implements OnChanges, AfterContentInit {
       tl.oRight = oRight;
     });
   }
+
+  setModeAlternate() {
+    const timelineItems = this.timelineItems.toArray();
+    const ngxSizeDot: number[] = [];
+    const wLeft: number[] = [];
+    const wRight: number[] = [];
+
+    for (let i = 0; i < this.timelineItems.length; ++i) {
+      if (i % 2 === 0) {
+        timelineItems[i].oLeft = 1;
+        timelineItems[i].oRight = 3;
+        ngxSizeDot.push(timelineItems[i].ngxSizeDot);
+        wLeft.push(timelineItems[i].wLeft);
+        wRight.push(timelineItems[i].wRight);
+      }
+      if (i % 2 === 1) {
+        timelineItems[i].oLeft = 3;
+        timelineItems[i].oRight = 1;
+        ngxSizeDot.push(timelineItems[i].ngxSizeDot);
+        wLeft.push(timelineItems[i].wRight);
+        wRight.push(timelineItems[i].wLeft);
+      }
+    }
+
+    let maxNgxSizeDot = Math.max(...ngxSizeDot);
+    let maxWLeft = Math.max(...wLeft);
+    let maxWRight = Math.max(...wRight);
+    this.timelineItems.forEach((tl) => {
+      tl.ngxSizeDot = maxNgxSizeDot;
+      tl.wLeft = maxWLeft;
+      tl.wRight = maxWRight;
+    });
+  }
+
+  // setModeAlternate() {
+  //   let positions: { oLeft: number; oRight: number }[] = [];
+  //   for (let i = 0; i < this.timelineItems.length; ++i) {
+  //     if (i % 2 === 0) {
+  //       positions.push({ oLeft: 1, oRight: 3 });
+  //     }
+  //     if (i % 2 === 1) {
+  //       positions.push({ oLeft: 3, oRight: 1 });
+  //     }
+  //   }
+  // }
 }

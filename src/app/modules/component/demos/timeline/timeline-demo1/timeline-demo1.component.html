@@ -1,15 +1,22 @@
-<ngx-timeline ngxMode="left">
+<ngx-radio-group [(ngModel)]="mode">
+  <ngx-radio-button ngxValue="left"> Left </ngx-radio-button>
+  <ngx-radio-button ngxValue="right"> Right </ngx-radio-button>
+  <ngx-radio-button ngxValue="alternate"> Alternative </ngx-radio-button>
+</ngx-radio-group>
+
+
+<ngx-timeline [ngxMode]="mode">
   <ngx-timeline-item ngxLabel="2023-11-23">
-    <p>Create a services site 2023-11-23</p>
+    <p>Create a services site</p>
   </ngx-timeline-item>
   <ngx-timeline-item ngxLabel="2023-11-23">
-    <p>Solve initial network problems 2023-11-23</p>
+    <p>Solve initial network problems</p>
   </ngx-timeline-item>
   <ngx-timeline-item ngxLabel="2023">
-    <p>Technical testing 2023-11-23</p>
+    <p>Technical testing</p>
   </ngx-timeline-item>
   <ngx-timeline-item [ngxLabel]="template" [ngxSizeDot]="32">
-    <p>Network problems being solved 2023-11-23</p>
+    <p>Network problems being solved</p>
   </ngx-timeline-item>
 </ngx-timeline>
 
