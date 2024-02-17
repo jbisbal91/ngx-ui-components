@@ -14,9 +14,16 @@ import { NgIf } from '@angular/common';
   selector: 'ngx-timeline-item',
   template: `
     <div class="ngx-timeline-item">
-      <div class="timeline">
-        <div #timeline_item class="ngx-timeline-item-head"></div>
-        <div #timeline_tail class="ngx-timeline-item-tail" *ngIf="!last"></div>
+      <span>{{ngxLabel}}</span>
+      <div class="c-timeline" [style.min-width.px]="ngxSize">
+        <div class="timeline">
+          <div #timeline_item class="ngx-timeline-item-head"></div>
+          <div
+            #timeline_tail
+            class="ngx-timeline-item-tail"
+            *ngIf="!last"
+          ></div>
+        </div>
       </div>
       <div class="ngx-timeline-item-content">
         <ng-content></ng-content>
@@ -50,7 +57,7 @@ export class TimelineItemComponent implements AfterViewInit {
   }
 
   setSize() {
-    if (this.timelineItemRef) {
+    if (this.timelineItemRef) {     
       this.renderer.setStyle(
         this.timelineItemRef.nativeElement,
         'height',

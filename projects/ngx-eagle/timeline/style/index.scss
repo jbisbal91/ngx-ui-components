@@ -1,24 +1,18 @@
 .ngx-timeline-item {
   display: flex;
+  gap: 1rem;
 }
 
-.ngx-timeline-item .timeline {
+.ngx-timeline-item>.c-timeline>.timeline {
   max-width: fit-content;
 }
 
-.ngx-timeline-item .ngx-timeline-item-content {
-  padding-left: 1rem;
-  padding-bottom: 1rem;
+.ngx-timeline-item>.c-timeline {
+  display: flex;
+  justify-content: center;
 }
 
-.ngx-timeline-item .ngx-timeline-item-tail {
-  width: 0px;
-  border-right: 1px solid #d5d5d5;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.ngx-timeline-item .ngx-timeline-item-head {
+.ngx-timeline-item>.c-timeline .ngx-timeline-item-head {
   min-width: 10px;
   min-height: 10px;
   background-color: transparent;
@@ -26,3 +20,14 @@
   border-radius: 100px;
 }
 
+.ngx-timeline-item>.c-timeline .ngx-timeline-item-tail {
+  width: 0px;
+  border-right: 1px solid #d5d5d5;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.ngx-timeline-item>.ngx-timeline-item-content {
+  padding-bottom: 1rem;
+}
