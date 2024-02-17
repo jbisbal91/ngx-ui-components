@@ -7,6 +7,10 @@
   max-width: fit-content;
 }
 
+.ngx-timeline-item>.timeline-c-left {
+  text-align: right;
+}
+
 .ngx-timeline-item>.c-timeline {
   display: flex;
   justify-content: center;

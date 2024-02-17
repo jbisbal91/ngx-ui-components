@@ -12,7 +12,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgxSize, NgxType } from './typings';
-import { CommonModule, NgIf } from '@angular/common';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'ngx-progress',
@@ -59,7 +59,7 @@ import { CommonModule, NgIf } from '@angular/common';
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgIf, NgTemplateOutlet],
 })
 export class ProgressComponent implements AfterViewInit, OnChanges {
   @Input() ngxColor: string = '#1890FF';
