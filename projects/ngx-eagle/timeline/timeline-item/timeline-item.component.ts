@@ -80,7 +80,6 @@ export class TimelineItemComponent implements AfterViewInit, OnChanges {
   wRight: number = 0;
   firstItem: boolean = false;
   lastItem: boolean = false;
-
   dotHeight: number = 0;
   dotWidth: number = 0;
 
