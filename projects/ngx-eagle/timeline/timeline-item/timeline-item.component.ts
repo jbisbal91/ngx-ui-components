@@ -35,7 +35,15 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
         [style.order]="2"
       >
         <div class="timeline">
-          <div #timeline_item class="ngx-timeline-item-head"></div>
+          <div
+            *ngIf="typeOf(ngxDot) !== 'object'"
+            #timeline_item
+            class="ngx-timeline-item-head"
+          ></div>
+          <ng-template
+            *ngIf="typeOf(ngxDot) === 'object'"
+            [ngTemplateOutlet]="ngxDot"
+          ></ng-template>
           <div
             #timeline_tail
             class="ngx-timeline-item-tail"
@@ -64,7 +72,7 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
 })
 export class TimelineItemComponent implements AfterViewInit {
   @Input() ngxColor: string = '#1890ff';
-  @Input() ngxDot?: string | TemplateRef<void>;
+  @Input() ngxDot?: any | TemplateRef<void>;
   @Input() ngxLabel?: any | TemplateRef<void>;
   @Input() ngxSizeDot: number = 10;
 
