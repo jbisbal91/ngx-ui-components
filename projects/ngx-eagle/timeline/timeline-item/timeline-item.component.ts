@@ -31,18 +31,17 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
         ></ng-template>
       </div>
       <!----------timeline point---------->
-      <div
-        class="c-timeline"
-        [style.min-width.px]="dotHeight"
-        [style.order]="2"
-      >
+      <div class="c-timeline" [style.min-width.px]="dotWidth" [style.order]="2">
         <div class="timeline">
           <div
-            *ngIf="typeOf(ngxDot) !== 'object'"
-            #timeline_item
+            *ngIf="!ngxDot"
+            #timeline_dot_item
             class="ngx-timeline-item-head"
           ></div>
-          <div #timeline_item *ngIf="typeOf(ngxDot) === 'object'">
+          <span #timeline_dot_item *ngIf="typeOf(ngxDot) === 'string'">{{
+            ngxDot
+          }}</span>
+          <div #timeline_dot_item *ngIf="typeOf(ngxDot) === 'object'">
             <ng-template [ngTemplateOutlet]="ngxDot"></ng-template>
           </div>
           <div
@@ -73,9 +72,8 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
 })
 export class TimelineItemComponent implements AfterViewInit, OnChanges {
   @Input() ngxColor: string = '#1890ff';
-  @Input() ngxDot?: any | TemplateRef<void>;
-  @Input() ngxLabel?: any | TemplateRef<void>;
-  //@Input() ngxSizeDot: number = 10;
+  @Input() ngxDot!: any | TemplateRef<void>;
+  @Input() ngxLabel!: any | TemplateRef<void>;
 
   oLeft: number = 1;
   oRight: number = 3;
@@ -84,13 +82,12 @@ export class TimelineItemComponent implements AfterViewInit, OnChanges {
   firstItem: boolean = false;
   lastItem: boolean = false;
 
-
   dotHeight: number = 0;
-  dotwidth: number = 0;
+  dotWidth: number = 0;
 
   @ViewChild('timeline_c_left') timelineCLeftRef!: ElementRef;
   @ViewChild('timeline_c_right') timelineCRightRef!: ElementRef;
-  @ViewChild('timeline_item') timelineItemRef!: ElementRef;
+  @ViewChild('timeline_dot_item') timelineDotItemRef!: ElementRef;
   @ViewChild('timeline_tail') timelineTailRef!: ElementRef;
 
   constructor(private renderer: Renderer2) {}
@@ -130,23 +127,23 @@ export class TimelineItemComponent implements AfterViewInit, OnChanges {
   }
 
   initialDotDimensions() {
-    if (this.timelineItemRef) {
-      this.dotHeight = this.timelineItemRef.nativeElement.offsetHeight;
-      this.dotwidth = this.timelineItemRef.nativeElement.offsetWidth;
+    if (this.timelineDotItemRef) {
+      this.dotHeight = this.timelineDotItemRef.nativeElement.offsetHeight;
+      this.dotWidth = this.timelineDotItemRef.nativeElement.offsetWidth;
     }
   }
 
   setSizeDot() {
-    if (this.timelineItemRef) {
+    if (this.timelineDotItemRef) {
       this.renderer.setStyle(
-        this.timelineItemRef.nativeElement,
+        this.timelineDotItemRef.nativeElement,
         'height',
         `${this.dotHeight}px`
       );
       this.renderer.setStyle(
-        this.timelineItemRef.nativeElement,
+        this.timelineDotItemRef.nativeElement,
         'width',
-        `${this.dotwidth}px`
+        `${this.dotWidth}px`
       );
     }
   }
@@ -162,14 +159,14 @@ export class TimelineItemComponent implements AfterViewInit, OnChanges {
   }
 
   setTailColor() {
-    if (this.timelineItemRef) {
+    if (this.timelineDotItemRef) {
       this.renderer.setStyle(
-        this.timelineItemRef.nativeElement,
+        this.timelineDotItemRef.nativeElement,
         'color',
-        this.ngxColor
+        !this.ngxDot ? this.ngxColor : 'currentColor'
       );
       this.renderer.setStyle(
-        this.timelineItemRef.nativeElement,
+        this.timelineDotItemRef.nativeElement,
         'border-color',
         this.ngxColor
       );

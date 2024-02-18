@@ -37,7 +37,7 @@ export class TimelineComponent implements OnChanges, AfterViewInit {
   initDimensionList: { wLeft: number; wRight: number }[] = [];
   alternateDimension: { wLeft: number; wRight: number }[] = [];
 
-   ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     this.timelineItems.last.lastItem = true;
     this.initialDimensions();
     this.buildAlternateDimension();
@@ -64,17 +64,24 @@ export class TimelineComponent implements OnChanges, AfterViewInit {
   }
 
   buildMaxDimension() {
-    let maxNgxSizeDot = Number.MIN_VALUE;
+    let maxDotHeight = Number.MIN_VALUE;
+    let maxDotWidth = Number.MIN_VALUE;
     let maxWLeft = Number.MIN_VALUE;
     let maxWRight = Number.MIN_VALUE;
 
     this.timelineItems.forEach((tl) => {
-      maxNgxSizeDot = Math.max(maxNgxSizeDot, tl.dotHeight);
+      maxDotHeight = Math.max(maxDotHeight, tl.dotHeight);
+      maxDotWidth = Math.max(maxDotWidth, tl.dotWidth);
       maxWLeft = Math.max(maxWLeft, tl.wLeft);
       maxWRight = Math.max(maxWRight, tl.wRight);
     });
 
-    return { ngxSizeDot: maxNgxSizeDot, wLeft: maxWLeft, wRight: maxWRight };
+    return {
+      dotHeight: maxDotHeight,
+      dotWidth: maxDotWidth,
+      wLeft: maxWLeft,
+      wRight: maxWRight,
+    };
   }
 
   setMode(mode: NgxTimelineMode) {
@@ -106,7 +113,8 @@ export class TimelineComponent implements OnChanges, AfterViewInit {
       });
       const maxProp = this.buildMaxDimension();
       timelineItems.forEach((item) => {
-        item.dotHeight = maxProp.ngxSizeDot;
+        item.dotHeight = maxProp.dotHeight;
+        item.dotWidth = maxProp.dotWidth;
         item.wLeft = maxProp.wLeft;
         item.wRight = maxProp.wRight;
         item.oLeft = this.oLeft;
@@ -131,7 +139,8 @@ export class TimelineComponent implements OnChanges, AfterViewInit {
       const maxProp = this.buildMaxDimension();
 
       timelineItems.forEach((item, index) => {
-        item.dotHeight = maxProp.ngxSizeDot;
+        item.dotHeight = maxProp.dotHeight;
+        item.dotWidth = maxProp.dotWidth;
         item.wLeft = index % 2 !== 0 ? maxProp.wRight : maxProp.wLeft;
         item.wRight = index % 2 !== 0 ? maxProp.wLeft : maxProp.wRight;
       });
