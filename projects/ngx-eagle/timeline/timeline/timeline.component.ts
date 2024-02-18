@@ -1,5 +1,4 @@
 import {
-  AfterContentInit,
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
@@ -13,7 +12,6 @@ import {
 import { TimelineItemComponent } from '../timeline-item/timeline-item.component';
 import { NgForOf } from '@angular/common';
 import { NgxTimelineMode } from '../typings';
-import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'ngx-timeline',
@@ -34,35 +32,53 @@ export class TimelineComponent implements OnChanges, OnInit, AfterViewInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ngxMode']) {
       this.setMode(this.ngxMode);
-      this.buildTimeline();
-      console.log('change');
     }
   }
 
   initDimensionList: { wLeft: number; wRight: number }[] = [];
+  alternateDimension: { wLeft: number; wRight: number }[] = [];
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
+    this.initialDimensions();
+    this.buildAlternateDimension();
     this.buildTimeline();
+    console.log(this.initDimensionList);
+    console.log(this.alternateDimension);
   }
 
   buildTimeline() {
-    this.timelineItems.last.lastItem = true;
-    const maxProp = this.buildMaxDimension();
-    this.timelineItems.forEach((tl) => {
-      this.initialDimensions(tl.wLeft, tl.wRight);
-      console.log(this.initDimensionList);
-      tl.ngxSizeDot = maxProp.ngxSizeDot;
-      tl.wLeft = maxProp.wLeft;
-      tl.wRight = maxProp.wRight;
-      tl.oLeft = this.oLeft;
-      tl.oRight = this.oRight;
-    });
+    if (this.timelineItems) {
+      this.timelineItems.last.lastItem = true;
+      const maxProp = this.buildMaxDimension();
+      this.timelineItems.forEach((tl) => {
+        tl.ngxSizeDot = maxProp.ngxSizeDot;
+        tl.wLeft = maxProp.wLeft;
+        tl.wRight = maxProp.wRight;
+        tl.oLeft = this.oLeft;
+        tl.oRight = this.oRight;
+      });
+    }
   }
 
-  initialDimensions(wLeft: number, wRight: number) {
-    this.initDimensionList.push({ wLeft: wLeft, wRight: wRight });
+  initialDimensions() {
+    this.timelineItems.forEach((tl) => {
+      this.initDimensionList.push({ wLeft: tl.wLeft, wRight: tl.wRight });
+    });
+    this.alternateDimension = this.initDimensionList.map((item) => ({
+      ...item,
+    }));
+  }
+
+  buildAlternateDimension() {
+    for (let i = 0; i < this.alternateDimension.length; ++i) {
+      if (i % 2 !== 0) {
+        const { wLeft, wRight } = this.alternateDimension[i];
+        this.alternateDimension[i].wRight = wLeft;
+        this.alternateDimension[i].wLeft = wRight;
+      }
+    }
   }
 
   buildMaxDimension() {
@@ -88,11 +104,65 @@ export class TimelineComponent implements OnChanges, OnInit, AfterViewInit {
       case 'left':
         this.oLeft = 3;
         this.oRight = 1;
+        this.setModeLeftAndRight();
         break;
       case 'right':
         this.oLeft = 1;
         this.oRight = 3;
+        this.setModeLeftAndRight();
         break;
+      case 'alternate':
+        this.setModeAlternate();
+        break;
+    }
+  }
+
+  setModeLeftAndRight() {
+    if (this.timelineItems) {
+      const timelineItems = this.timelineItems.toArray();
+      for (let i = 0; i < timelineItems.length; ++i) {
+        timelineItems[i].wLeft = this.initDimensionList[i].wLeft;
+        timelineItems[i].wRight = this.initDimensionList[i].wRight;
+        timelineItems[i].oLeft = this.oLeft;
+        timelineItems[i].oRight = this.oRight;
+      }
+      this.timelineItems.reset(timelineItems);
+      const maxProp = this.buildMaxDimension();
+      this.timelineItems.forEach((tl) => {
+        tl.ngxSizeDot = maxProp.ngxSizeDot;
+        tl.wLeft = maxProp.wLeft;
+        tl.wRight = maxProp.wRight;
+        tl.oLeft = this.oLeft;
+        tl.oRight = this.oRight;
+      });
+    }
+  }
+
+  setModeAlternate() {
+    if (this.timelineItems) {
+      const timelineItems = this.timelineItems.toArray();
+      for (let i = 0; i < timelineItems.length; ++i) {
+        timelineItems[i].wLeft = this.alternateDimension[i].wLeft;
+        timelineItems[i].wRight = this.alternateDimension[i].wRight;
+        if (i % 2 === 0) {
+          timelineItems[i].oLeft = 1;
+          timelineItems[i].oRight = 3;
+        } else {
+          timelineItems[i].oLeft = 3;
+          timelineItems[i].oRight = 1;
+        }
+      }
+      const maxProp = this.buildMaxDimension();
+      for (let i = 0; i < timelineItems.length; ++i) {
+        if (i % 2 !== 0) {
+          timelineItems[i].wLeft = maxProp.wRight;
+          timelineItems[i].wRight = maxProp.wLeft;
+        } else {
+          timelineItems[i].wLeft = maxProp.wLeft;
+          timelineItems[i].wRight = maxProp.wRight;
+        }
+      }
+      this.timelineItems.reset(timelineItems);
     }
   }
 }
