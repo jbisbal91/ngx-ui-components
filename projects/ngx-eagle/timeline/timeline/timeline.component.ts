@@ -1,5 +1,6 @@
 import {
   AfterContentInit,
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
@@ -21,7 +22,8 @@ import { ReplaySubject } from 'rxjs';
   imports: [NgForOf],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimelineComponent implements OnChanges, OnInit, AfterContentInit {
+export class TimelineComponent implements OnChanges, OnInit, AfterViewInit {
+  
   @ContentChildren(TimelineItemComponent)
   public timelineItems!: QueryList<TimelineItemComponent>;
 
@@ -39,18 +41,19 @@ export class TimelineComponent implements OnChanges, OnInit, AfterContentInit {
 
   ngOnInit(): void {}
 
-  ngAfterContentInit(): void {
-    setTimeout(() => {
-      //this.timelineItems.first.firstItem = true;
-      this.timelineItems.last.lastItem = true;
-      const maxProp = this.buildMaxDimension();
-      this.timelineItems.forEach((tl) => {
-        this.initialDimensions(tl.wLeft, tl.wRight);
-        console.log(this.initDimensionList);
-        tl.ngxSizeDot = maxProp.ngxSizeDot;
-        tl.wLeft = maxProp.wLeft;
-        tl.wRight = maxProp.wRight;
-      });
+  ngAfterViewInit(): void {
+    this.buildTimeline();
+  }
+
+  buildTimeline() {
+    this.timelineItems.last.lastItem = true;
+    const maxProp = this.buildMaxDimension();
+    this.timelineItems.forEach((tl) => {
+      this.initialDimensions(tl.wLeft, tl.wRight);
+      console.log(this.initDimensionList);
+      tl.ngxSizeDot = maxProp.ngxSizeDot;
+      tl.wLeft = maxProp.wLeft;
+      tl.wRight = maxProp.wRight;
     });
   }
 
