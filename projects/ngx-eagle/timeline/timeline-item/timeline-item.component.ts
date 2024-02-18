@@ -2,13 +2,19 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Host,
   Input,
+  OnDestroy,
+  OnInit,
+  Optional,
   Renderer2,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { NgxTimelinePosition } from '../typings';
+import { NgxTimelineMode, NgxTimelinePosition } from '../typings';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { TimelineComponent } from '../timeline/timeline.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'ngx-timeline-item',
@@ -46,8 +52,8 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
       <div
         #timeline_c_right
         class="ngx-timeline-item-content"
-        [class.timeline-c-left]="oLeft === 3"
-        [class.timeline-c-right]="oLeft === 1"
+        [class.timeline-c-left]="oRight === 1"
+        [class.timeline-c-right]="oRight === 3"
         [style.min-width.px]="wRight"
         [style.order]="oRight"
       >
@@ -61,26 +67,71 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
   imports: [NgIf, NgTemplateOutlet],
   standalone: true,
 })
-export class TimelineItemComponent implements AfterViewInit {
+export class TimelineItemComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input() ngxPosition?: NgxTimelinePosition;
   @Input() ngxColor: string = '#1890ff';
   @Input() ngxDot?: string | TemplateRef<void>;
   @Input() ngxLabel?: any | TemplateRef<void>;
   @Input() ngxSizeDot: number = 10;
 
+  id: number = 0;
   oLeft: number = 1;
   oRight: number = 3;
   wLeft: number = 0;
   wRight: number = 0;
   first: boolean = false;
   last: boolean = false;
+  ngxMode!: NgxTimelineMode;
 
   @ViewChild('timeline_c_left') timelineCLeftRef!: ElementRef;
   @ViewChild('timeline_c_right') timelineCRightRef!: ElementRef;
   @ViewChild('timeline_item') timelineItemRef!: ElementRef;
   @ViewChild('timeline_tail') timelineTailRef!: ElementRef;
 
-  constructor(private renderer: Renderer2) {}
+  private subscription: Subscription = new Subscription();
+
+  constructor(
+    private renderer: Renderer2,
+    @Optional() @Host() public timelineComp: TimelineComponent
+  ) {}
+
+  ngOnInit(): void {
+    this.subscription.add(
+      this.timelineComp?.ngxMode$.subscribe((mode) => {
+        this.ngxMode = mode;
+        this.setMode(mode);
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  setMode(mode: NgxTimelineMode) {
+    switch (mode) {
+      case 'left':
+        this.oLeft = 3;
+        this.oRight = 1;
+        break;
+      case 'right':
+        this.oLeft = 1;
+        this.oRight = 3;
+        break;
+      case 'alternate':
+        console.log(this.id % 2);
+        if (this.id % 2 === 0) {
+          this.oLeft = 1;
+          this.oRight = 3;
+        } else {
+          this.oLeft = 3;
+          this.oRight = 1;
+        }
+        break;
+      case 'custom':
+        break;
+    }
+  }
 
   ngAfterViewInit(): void {
     this.setSizeDot();
@@ -99,7 +150,6 @@ export class TimelineItemComponent implements AfterViewInit {
   setWRight() {
     if (this.timelineCRightRef) {
       this.wRight = this.timelineCRightRef.nativeElement.clientWidth;
-      console.log(this.wRight);
     }
   }
 

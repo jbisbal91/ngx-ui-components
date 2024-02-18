@@ -7,5 +7,5 @@ import { NgxTimelineMode } from 'projects/ngx-eagle/timeline';
   styleUrls: ['./timeline-demo1.component.scss']
 })
 export class TimelineDemo1Component {
-  mode: NgxTimelineMode = 'right';
+  mode: NgxTimelineMode = 'alternate';
 }
