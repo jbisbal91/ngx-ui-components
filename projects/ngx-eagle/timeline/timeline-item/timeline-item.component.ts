@@ -17,7 +17,6 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
     <div class="ngx-timeline-item">
       <!----------left timeline content---------->
       <div
-        *ngIf="ngxLabel"
         [class.timeline-c-left]="oLeft === 1"
         [class.timeline-c-right]="oLeft === 3"
         #timeline_c_left
@@ -163,7 +162,7 @@ export class TimelineItemComponent implements AfterViewInit, OnChanges {
       this.renderer.setStyle(
         this.timelineDotItemRef.nativeElement,
         'color',
-        !this.ngxDot ? this.ngxColor : 'currentColor'
+        this.ngxColor
       );
       this.renderer.setStyle(
         this.timelineDotItemRef.nativeElement,
