@@ -2,22 +2,20 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  Host,
   Input,
-  Optional,
   Renderer2,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import {  NgxTimelinePosition } from '../typings';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { TimelineComponent } from '../timeline/timeline.component';
 
 @Component({
   selector: 'ngx-timeline-item',
   template: `
     <div class="ngx-timeline-item">
+      <!----------left timeline content---------->
       <div
+        *ngIf="ngxLabel"
         [class.timeline-c-left]="oLeft === 1"
         [class.timeline-c-right]="oLeft === 3"
         #timeline_c_left
@@ -30,7 +28,7 @@ import { TimelineComponent } from '../timeline/timeline.component';
           [ngTemplateOutlet]="ngxLabel"
         ></ng-template>
       </div>
-
+      <!----------timeline point---------->
       <div
         class="c-timeline"
         [style.min-width.px]="ngxSizeDot"
@@ -45,7 +43,7 @@ import { TimelineComponent } from '../timeline/timeline.component';
           ></div>
         </div>
       </div>
-
+      <!----------right timeline content---------->
       <div
         #timeline_c_right
         class="ngx-timeline-item-content"
@@ -65,7 +63,6 @@ import { TimelineComponent } from '../timeline/timeline.component';
   standalone: true,
 })
 export class TimelineItemComponent implements AfterViewInit {
-  @Input() ngxPosition?: NgxTimelinePosition;
   @Input() ngxColor: string = '#1890ff';
   @Input() ngxDot?: string | TemplateRef<void>;
   @Input() ngxLabel?: any | TemplateRef<void>;
@@ -77,18 +74,13 @@ export class TimelineItemComponent implements AfterViewInit {
   wRight: number = 0;
   firstItem: boolean = false;
   lastItem: boolean = false;
- 
+
   @ViewChild('timeline_c_left') timelineCLeftRef!: ElementRef;
   @ViewChild('timeline_c_right') timelineCRightRef!: ElementRef;
   @ViewChild('timeline_item') timelineItemRef!: ElementRef;
   @ViewChild('timeline_tail') timelineTailRef!: ElementRef;
 
- 
-  constructor(
-    private renderer: Renderer2,
-    @Optional() @Host() public timelineComp: TimelineComponent
-  ) {}
-
+  constructor(private renderer: Renderer2) {}
 
   ngAfterViewInit(): void {
     this.setSizeDot();

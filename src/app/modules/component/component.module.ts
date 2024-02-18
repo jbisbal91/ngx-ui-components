@@ -74,6 +74,9 @@ import { CheckboxDemo1Component } from './demos/checkbox/checkbox-demo1/checkbox
 import { RadioDocsComponent } from './docs/radio-docs/radio-docs.component';
 import { RadioDemo1Component } from './demos/radio/radio-demo1/radio-demo1.component';
 import { CheckboxDemo2Component } from './demos/checkbox/checkbox-demo2/checkbox-demo2.component';
+import { TimelineDemo2Component } from './demos/timeline/timeline-demo2/timeline-demo2.component';
+import { TimelineDemo3Component } from './demos/timeline/timeline-demo3/timeline-demo3.component';
+import { TimelineDemo4Component } from './demos/timeline/timeline-demo4/timeline-demo4.component';
 
 export function getHighlightLanguages() {
   return {
@@ -141,6 +144,9 @@ const components = [
   TagDemo1Component,
   TagDocsComponent,
   TimelineDemo1Component,
+  TimelineDemo2Component,
+  TimelineDemo3Component,
+  TimelineDemo4Component,
   TimelineDocsComponent,
   CheckboxDocsComponent,
   CheckboxDemo1Component,
@@ -150,14 +156,14 @@ const components = [
 @NgModule({
   declarations: [components],
   exports: [components],
-  imports: [  
+  imports: [
     CommonModule,
-    ComponentRoutingModule,   
-    FormsModule,    
+    ComponentRoutingModule,
+    FormsModule,
     HighlightModule,
-    HttpClientModule,    
+    HttpClientModule,
     ReactiveFormsModule,
-    NgxEagleModule
+    NgxEagleModule,
   ],
   providers: [
     {

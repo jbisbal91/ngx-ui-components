@@ -8,6 +8,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TimelineDocsComponent implements OnInit {
   variation1DemoTimelines!: Tabs[];
+  variation2DemoTimelines!: Tabs[];
+  variation3DemoTimelines!: Tabs[];
+  variation4DemoTimelines!: Tabs[];
 
   constructor(private http: HttpClient) {}
 

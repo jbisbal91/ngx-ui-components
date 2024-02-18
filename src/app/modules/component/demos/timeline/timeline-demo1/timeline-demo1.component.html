@@ -1,38 +1,14 @@
-<ngx-radio-group [(ngModel)]="mode">
-  <ngx-radio-button ngxValue="left"> Left </ngx-radio-button>
-  <ngx-radio-button ngxValue="right"> Right </ngx-radio-button>
-  <ngx-radio-button ngxValue="alternate"> Alternative </ngx-radio-button>
-</ngx-radio-group>
-
-
-<ngx-timeline [ngxMode]="mode">
-  <ngx-timeline-item ngxLabel="2023-11-23">
-    <p>Create a services site</p>
+<ngx-timeline>
+  <ngx-timeline-item>
+    <p>Create a services site 2023-11-23</p>
   </ngx-timeline-item>
-  <ngx-timeline-item ngxLabel="2023-11-23">
-    <p>Solve initial network problems</p>
+  <ngx-timeline-item>
+    <p>Solve initial network problems 2023-11-23</p>
   </ngx-timeline-item>
-  <ngx-timeline-item ngxLabel="2023">
-    <p>Technical testing</p>
+  <ngx-timeline-item>
+    <p>Technical testing 2023-11-23</p>
   </ngx-timeline-item>
-  <ngx-timeline-item [ngxLabel]="template">
-    <p>Network problems being solved</p>
+  <ngx-timeline-item>
+    <p>Network problems being solved 2023-11-23</p>
   </ngx-timeline-item>
 </ngx-timeline>
-
-
-<ng-template #template>
-  <svg
-    viewBox="64 64 896 896"
-    focusable="false"
-    fill="#52c41a"
-    width="2em"
-    height="2em"
-    data-icon="check-o"
-    aria-hidden="true"
-  >
-    <path
-      d="M912 190h-69.9c-9.8 0-19.1 4.5-25.1 12.2L404.7 724.5 207 474a32 32 0 00-25.1-12.2H112c-6.7 0-10.4 7.7-6.3 12.9l273.9 347c12.8 16.2 37.4 16.2 50.3 0l488.4-618.9c4.1-5.1.4-12.8-6.3-12.8z"
-    ></path>
-  </svg>
-</ng-template>

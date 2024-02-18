@@ -5,7 +5,6 @@ import {
   ContentChildren,
   Input,
   OnChanges,
-  OnInit,
   QueryList,
   SimpleChanges,
 } from '@angular/core';
@@ -20,7 +19,7 @@ import { NgxTimelineMode } from '../typings';
   imports: [NgForOf],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimelineComponent implements OnChanges, OnInit, AfterViewInit {
+export class TimelineComponent implements OnChanges, AfterViewInit {
   @ContentChildren(TimelineItemComponent)
   public timelineItems!: QueryList<TimelineItemComponent>;
 
@@ -38,9 +37,7 @@ export class TimelineComponent implements OnChanges, OnInit, AfterViewInit {
   initDimensionList: { wLeft: number; wRight: number }[] = [];
   alternateDimension: { wLeft: number; wRight: number }[] = [];
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
+   ngAfterViewInit(): void {
     this.timelineItems.last.lastItem = true;
     this.initialDimensions();
     this.buildAlternateDimension();
