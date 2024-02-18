@@ -41,24 +41,10 @@ export class TimelineComponent implements OnChanges, OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
+    this.timelineItems.last.lastItem = true;
     this.initialDimensions();
     this.buildAlternateDimension();
-    this.buildTimeline();    
     this.setMode(this.ngxMode);
-  }
-
-  buildTimeline() {
-    if (this.timelineItems && this.timelineItems.length > 0) {
-      this.timelineItems.last.lastItem = true;
-      const maxProp = this.buildMaxDimension();
-      this.timelineItems.forEach((tl) => {
-        tl.ngxSizeDot = maxProp.ngxSizeDot;
-        tl.wLeft = maxProp.wLeft;
-        tl.wRight = maxProp.wRight;
-        tl.oLeft = this.oLeft;
-        tl.oRight = this.oRight;
-      });
-    }
   }
 
   initialDimensions() {
@@ -79,22 +65,20 @@ export class TimelineComponent implements OnChanges, OnInit, AfterViewInit {
       }
     });
   }
-  
 
   buildMaxDimension() {
     let maxNgxSizeDot = Number.MIN_VALUE;
     let maxWLeft = Number.MIN_VALUE;
     let maxWRight = Number.MIN_VALUE;
-  
+
     this.timelineItems.forEach((tl) => {
       maxNgxSizeDot = Math.max(maxNgxSizeDot, tl.ngxSizeDot);
       maxWLeft = Math.max(maxWLeft, tl.wLeft);
       maxWRight = Math.max(maxWRight, tl.wRight);
     });
-  
+
     return { ngxSizeDot: maxNgxSizeDot, wLeft: maxWLeft, wRight: maxWRight };
   }
-  
 
   setMode(mode: NgxTimelineMode) {
     switch (mode) {
@@ -119,16 +103,11 @@ export class TimelineComponent implements OnChanges, OnInit, AfterViewInit {
   setModeLeftAndRight() {
     if (this.timelineItems) {
       const timelineItems = this.timelineItems.toArray();
-  
       timelineItems.forEach((item, index) => {
         item.wLeft = this.initDimensionList[index].wLeft;
         item.wRight = this.initDimensionList[index].wRight;
-        item.oLeft = this.oLeft;
-        item.oRight = this.oRight;
       });
-  
       const maxProp = this.buildMaxDimension();
-  
       timelineItems.forEach((item) => {
         item.ngxSizeDot = maxProp.ngxSizeDot;
         item.wLeft = maxProp.wLeft;
@@ -136,33 +115,31 @@ export class TimelineComponent implements OnChanges, OnInit, AfterViewInit {
         item.oLeft = this.oLeft;
         item.oRight = this.oRight;
       });
-  
+
       this.timelineItems.reset(timelineItems);
     }
   }
-  
-
 
   setModeAlternate() {
     if (this.timelineItems) {
       const timelineItems = this.timelineItems.toArray();
-  
+
       timelineItems.forEach((item, index) => {
         item.wLeft = this.alternateDimension[index].wLeft;
         item.wRight = this.alternateDimension[index].wRight;
         item.oLeft = index % 2 === 0 ? 1 : 3;
         item.oRight = index % 2 === 0 ? 3 : 1;
       });
-  
+
       const maxProp = this.buildMaxDimension();
-  
+
       timelineItems.forEach((item, index) => {
+        item.ngxSizeDot = maxProp.ngxSizeDot;
         item.wLeft = index % 2 !== 0 ? maxProp.wRight : maxProp.wLeft;
         item.wRight = index % 2 !== 0 ? maxProp.wLeft : maxProp.wRight;
       });
-  
+
       this.timelineItems.reset(timelineItems);
     }
   }
-  
 }
