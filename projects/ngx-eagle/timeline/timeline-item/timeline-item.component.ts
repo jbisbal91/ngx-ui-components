@@ -4,17 +4,14 @@ import {
   ElementRef,
   Host,
   Input,
-  OnDestroy,
-  OnInit,
   Optional,
   Renderer2,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { NgxTimelineMode, NgxTimelinePosition } from '../typings';
+import {  NgxTimelinePosition } from '../typings';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { TimelineComponent } from '../timeline/timeline.component';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'ngx-timeline-item',
@@ -67,7 +64,7 @@ import { Subscription } from 'rxjs';
   imports: [NgIf, NgTemplateOutlet],
   standalone: true,
 })
-export class TimelineItemComponent implements AfterViewInit, OnInit, OnDestroy {
+export class TimelineItemComponent implements AfterViewInit {
   @Input() ngxPosition?: NgxTimelinePosition;
   @Input() ngxColor: string = '#1890ff';
   @Input() ngxDot?: string | TemplateRef<void>;
@@ -80,45 +77,18 @@ export class TimelineItemComponent implements AfterViewInit, OnInit, OnDestroy {
   wRight: number = 0;
   firstItem: boolean = false;
   lastItem: boolean = false;
-  ngxMode!: NgxTimelineMode;
-
+ 
   @ViewChild('timeline_c_left') timelineCLeftRef!: ElementRef;
   @ViewChild('timeline_c_right') timelineCRightRef!: ElementRef;
   @ViewChild('timeline_item') timelineItemRef!: ElementRef;
   @ViewChild('timeline_tail') timelineTailRef!: ElementRef;
 
-  private subscription: Subscription = new Subscription();
-
+ 
   constructor(
     private renderer: Renderer2,
     @Optional() @Host() public timelineComp: TimelineComponent
   ) {}
 
-  ngOnInit(): void {
-    this.subscription.add(
-      this.timelineComp?.ngxMode$.subscribe((mode) => {
-        this.ngxMode = mode;
-        this.setMode(mode);
-      })
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  setMode(mode: NgxTimelineMode) {
-    switch (mode) {
-      case 'left':
-        this.oLeft = 3;
-        this.oRight = 1;
-        break;
-      case 'right':
-        this.oLeft = 1;
-        this.oRight = 3;
-        break;
-    }
-  }
 
   ngAfterViewInit(): void {
     this.setSizeDot();

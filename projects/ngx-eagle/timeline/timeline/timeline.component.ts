@@ -23,16 +23,18 @@ import { ReplaySubject } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimelineComponent implements OnChanges, OnInit, AfterViewInit {
-  
   @ContentChildren(TimelineItemComponent)
   public timelineItems!: QueryList<TimelineItemComponent>;
 
-  @Input() ngxMode!: NgxTimelineMode;
-  readonly ngxMode$ = new ReplaySubject<NgxTimelineMode>(0);
+  @Input() ngxMode: NgxTimelineMode = 'right';
+
+  oLeft: number = 1;
+  oRight: number = 3;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ngxMode']) {
-      this.ngxMode$.next(this.ngxMode);
+      this.setMode(this.ngxMode);
+      this.buildTimeline();
       console.log('change');
     }
   }
@@ -54,6 +56,8 @@ export class TimelineComponent implements OnChanges, OnInit, AfterViewInit {
       tl.ngxSizeDot = maxProp.ngxSizeDot;
       tl.wLeft = maxProp.wLeft;
       tl.wRight = maxProp.wRight;
+      tl.oLeft = this.oLeft;
+      tl.oRight = this.oRight;
     });
   }
 
@@ -77,5 +81,18 @@ export class TimelineComponent implements OnChanges, OnInit, AfterViewInit {
     let maxWRight = Math.max(...wRight);
 
     return { ngxSizeDot: maxNgxSizeDot, wLeft: maxWLeft, wRight: maxWRight };
+  }
+
+  setMode(mode: NgxTimelineMode) {
+    switch (mode) {
+      case 'left':
+        this.oLeft = 3;
+        this.oRight = 1;
+        break;
+      case 'right':
+        this.oLeft = 1;
+        this.oRight = 3;
+        break;
+    }
   }
 }
