@@ -69,7 +69,7 @@ export class TimelineComponent implements OnChanges, AfterViewInit {
     let maxWRight = Number.MIN_VALUE;
 
     this.timelineItems.forEach((tl) => {
-      maxNgxSizeDot = Math.max(maxNgxSizeDot, tl.ngxSizeDot);
+      maxNgxSizeDot = Math.max(maxNgxSizeDot, tl.dotHeight);
       maxWLeft = Math.max(maxWLeft, tl.wLeft);
       maxWRight = Math.max(maxWRight, tl.wRight);
     });
@@ -106,7 +106,7 @@ export class TimelineComponent implements OnChanges, AfterViewInit {
       });
       const maxProp = this.buildMaxDimension();
       timelineItems.forEach((item) => {
-        item.ngxSizeDot = maxProp.ngxSizeDot;
+        item.dotHeight = maxProp.ngxSizeDot;
         item.wLeft = maxProp.wLeft;
         item.wRight = maxProp.wRight;
         item.oLeft = this.oLeft;
@@ -131,7 +131,7 @@ export class TimelineComponent implements OnChanges, AfterViewInit {
       const maxProp = this.buildMaxDimension();
 
       timelineItems.forEach((item, index) => {
-        item.ngxSizeDot = maxProp.ngxSizeDot;
+        item.dotHeight = maxProp.ngxSizeDot;
         item.wLeft = index % 2 !== 0 ? maxProp.wRight : maxProp.wLeft;
         item.wRight = index % 2 !== 0 ? maxProp.wLeft : maxProp.wRight;
       });

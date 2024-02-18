@@ -77,6 +77,7 @@ import { CheckboxDemo2Component } from './demos/checkbox/checkbox-demo2/checkbox
 import { TimelineDemo2Component } from './demos/timeline/timeline-demo2/timeline-demo2.component';
 import { TimelineDemo3Component } from './demos/timeline/timeline-demo3/timeline-demo3.component';
 import { TimelineDemo4Component } from './demos/timeline/timeline-demo4/timeline-demo4.component';
+import { TimelineDemo5Component } from './demos/timeline/timeline-demo5/timeline-demo5.component';
 
 export function getHighlightLanguages() {
   return {
@@ -154,7 +155,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, TimelineDemo5Component],
   exports: [components],
   imports: [
     CommonModule,

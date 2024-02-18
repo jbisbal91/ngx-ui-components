@@ -11,7 +11,8 @@ export class TimelineDocsComponent implements OnInit {
   variation2DemoTimelines!: Tabs[];
   variation3DemoTimelines!: Tabs[];
   variation4DemoTimelines!: Tabs[];
-
+  variation5DemoTimelines!: Tabs[];
+  
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
