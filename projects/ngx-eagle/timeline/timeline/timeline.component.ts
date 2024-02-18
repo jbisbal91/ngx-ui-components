@@ -5,6 +5,7 @@ import {
   ContentChildren,
   Input,
   OnChanges,
+  OnInit,
   QueryList,
   SimpleChanges,
 } from '@angular/core';
@@ -20,7 +21,7 @@ import { ReplaySubject } from 'rxjs';
   imports: [NgForOf],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimelineComponent implements OnChanges, AfterContentInit {
+export class TimelineComponent implements OnChanges, OnInit, AfterContentInit {
   @ContentChildren(TimelineItemComponent)
   public timelineItems!: QueryList<TimelineItemComponent>;
 
@@ -30,35 +31,48 @@ export class TimelineComponent implements OnChanges, AfterContentInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ngxMode']) {
       this.ngxMode$.next(this.ngxMode);
+      console.log('change');
     }
   }
 
+  initDimensionList: { wLeft: number; wRight: number }[] = [];
+
+  ngOnInit(): void {}
+
   ngAfterContentInit(): void {
     setTimeout(() => {
-      const ngxSizeDot: number[] = [];
-      const wLeft: number[] = [];
-      const wRight: number[] = [];
+      //this.timelineItems.first.firstItem = true;
+      this.timelineItems.last.lastItem = true;
+      const maxProp = this.buildMaxDimension();
       this.timelineItems.forEach((tl) => {
-        ngxSizeDot.push(tl.ngxSizeDot);
-        wLeft.push(tl.wLeft);
-        wRight.push(tl.wRight);
-      });
-      let maxNgxSizeDot = Math.max(...ngxSizeDot);
-      let maxWLeft = Math.max(...wLeft);
-      let maxWRight = Math.max(...wRight);
-      let index = -1;
-      this.timelineItems.forEach((tl) => {
-        tl.id = ++index;
-        tl.ngxSizeDot = maxNgxSizeDot;
-        tl.wLeft = maxWLeft;
-        tl.wRight = maxWRight;
-        if (this.timelineItems.first === tl) {
-          tl.first = true;
-        }
-        if (this.timelineItems.last === tl) {
-          tl.last = true;
-        }
+        this.initialDimensions(tl.wLeft, tl.wRight);
+        console.log(this.initDimensionList);
+        tl.ngxSizeDot = maxProp.ngxSizeDot;
+        tl.wLeft = maxProp.wLeft;
+        tl.wRight = maxProp.wRight;
       });
     });
+  }
+
+  initialDimensions(wLeft: number, wRight: number) {
+    this.initDimensionList.push({ wLeft: wLeft, wRight: wRight });
+  }
+
+  buildMaxDimension() {
+    const ngxSizeDot: number[] = [];
+    const wLeft: number[] = [];
+    const wRight: number[] = [];
+
+    this.timelineItems.forEach((tl) => {
+      ngxSizeDot.push(tl.ngxSizeDot);
+      wLeft.push(tl.wLeft);
+      wRight.push(tl.wRight);
+    });
+
+    let maxNgxSizeDot = Math.max(...ngxSizeDot);
+    let maxWLeft = Math.max(...wLeft);
+    let maxWRight = Math.max(...wRight);
+
+    return { ngxSizeDot: maxNgxSizeDot, wLeft: maxWLeft, wRight: maxWRight };
   }
 }

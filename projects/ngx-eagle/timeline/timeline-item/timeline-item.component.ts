@@ -44,7 +44,7 @@ import { Subscription } from 'rxjs';
           <div
             #timeline_tail
             class="ngx-timeline-item-tail"
-            *ngIf="!last"
+            *ngIf="!lastItem"
           ></div>
         </div>
       </div>
@@ -74,13 +74,12 @@ export class TimelineItemComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input() ngxLabel?: any | TemplateRef<void>;
   @Input() ngxSizeDot: number = 10;
 
-  id: number = 0;
   oLeft: number = 1;
   oRight: number = 3;
   wLeft: number = 0;
   wRight: number = 0;
-  first: boolean = false;
-  last: boolean = false;
+  firstItem: boolean = false;
+  lastItem: boolean = false;
   ngxMode!: NgxTimelineMode;
 
   @ViewChild('timeline_c_left') timelineCLeftRef!: ElementRef;
@@ -117,18 +116,6 @@ export class TimelineItemComponent implements AfterViewInit, OnInit, OnDestroy {
       case 'right':
         this.oLeft = 1;
         this.oRight = 3;
-        break;
-      case 'alternate':
-        console.log(this.id % 2);
-        if (this.id % 2 === 0) {
-          this.oLeft = 1;
-          this.oRight = 3;
-        } else {
-          this.oLeft = 3;
-          this.oRight = 1;
-        }
-        break;
-      case 'custom':
         break;
     }
   }
