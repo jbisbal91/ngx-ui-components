@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
+  HostListener,
   Input,
   OnChanges,
   QueryList,
@@ -38,6 +39,11 @@ export class TimelineComponent implements OnChanges, AfterViewInit {
   alternateDimension: { wLeft: number; wRight: number }[] = [];
 
   ngAfterViewInit(): void {
+    this.resize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  resize() {
     this.timelineItems.last.lastItem = true;
     this.initialDimensions();
     this.buildAlternateDimension();
