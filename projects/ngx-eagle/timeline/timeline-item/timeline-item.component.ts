@@ -17,10 +17,12 @@ import { NgxTimelineMode } from '../typings';
   template: `
     <div class="ngx-timeline-item">
       <!----------left timeline content---------->
-      <div *ngIf="mode !== 'default'"
+      <div
+        *ngIf="mode !== 'default'"
         [class.timeline-c-left]="oLeft === 1"
         [class.timeline-c-right]="oLeft === 3"
         [style.order]="oLeft"
+        [style.width]="'50%'"
       >
         <span *ngIf="typeOf(ngxLabel) === 'string'">{{ ngxLabel }}</span>
         <ng-template
