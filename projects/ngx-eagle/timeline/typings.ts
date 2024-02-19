@@ -1,5 +1,5 @@
 
-const TimelineModes = ['left', 'alternate', 'right'] as const;
+const TimelineModes = ['left', 'alternate', 'right','default'] as const;
 export type NgxTimelineMode = (typeof TimelineModes)[number];
 
 

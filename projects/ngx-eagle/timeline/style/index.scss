@@ -9,10 +9,12 @@
 
 .ngx-timeline-item>.timeline-c-left {
   text-align: right;
+  width:50%;
 }
 
 .ngx-timeline-item>.timeline-c-right {
   text-align: left;
+  width:50%;
 }
 
 .ngx-timeline-item>.c-timeline {
@@ -35,7 +37,8 @@
   margin-right: auto;
 }
 
-
 .ngx-timeline-item>.ngx-timeline-item-content {
+  position: relative;
   padding-bottom: 1rem;
+  word-break: break-word;
 }

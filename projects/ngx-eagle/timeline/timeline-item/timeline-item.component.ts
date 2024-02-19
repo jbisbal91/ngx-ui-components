@@ -10,17 +10,16 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgxTimelineMode } from '../typings';
 
 @Component({
   selector: 'ngx-timeline-item',
   template: `
     <div class="ngx-timeline-item">
       <!----------left timeline content---------->
-      <div
+      <div *ngIf="mode !== 'default'"
         [class.timeline-c-left]="oLeft === 1"
         [class.timeline-c-right]="oLeft === 3"
-        #timeline_c_left
-        [style.min-width.px]="wLeft"
         [style.order]="oLeft"
       >
         <span *ngIf="typeOf(ngxLabel) === 'string'">{{ ngxLabel }}</span>
@@ -52,12 +51,11 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
       </div>
       <!----------right timeline content---------->
       <div
-        #timeline_c_right
         class="ngx-timeline-item-content"
         [class.timeline-c-left]="oRight === 1"
         [class.timeline-c-right]="oRight === 3"
-        [style.min-width.px]="wRight"
         [style.order]="oRight"
+        [style.width.%]="mode !== 'default' ? 50 : 'auto'"
       >
         <ng-content></ng-content>
       </div>
@@ -76,15 +74,12 @@ export class TimelineItemComponent implements AfterViewInit, OnChanges {
 
   oLeft: number = 1;
   oRight: number = 3;
-  wLeft: number = 0;
-  wRight: number = 0;
-  firstItem: boolean = false;
   lastItem: boolean = false;
   dotHeight: number = 0;
   dotWidth: number = 0;
 
-  @ViewChild('timeline_c_left') timelineCLeftRef!: ElementRef;
-  @ViewChild('timeline_c_right') timelineCRightRef!: ElementRef;
+  mode: NgxTimelineMode = 'default';
+
   @ViewChild('timeline_dot_item') timelineDotItemRef!: ElementRef;
   @ViewChild('timeline_tail') timelineTailRef!: ElementRef;
 
@@ -93,33 +88,16 @@ export class TimelineItemComponent implements AfterViewInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.initialDotDimensions();
     this.setSizeDot();
-    this.setTailColor();
+    this.setDotColor();
     this.setTailHeight();
-    this.setWLeft();
-    this.setWRight();
   }
 
   ngAfterViewInit(): void {
     this.initialDotDimensions();
     this.setSizeDot();
-    this.setTailColor();
+    this.setDotColor();
     this.setTailHeight();
-    this.setWLeft();
-    this.setWRight();
   }
-
-  setWLeft() {
-    if (this.timelineCLeftRef) {
-      this.wLeft = this.timelineCLeftRef.nativeElement.clientWidth;
-    }
-  }
-
-  setWRight() {
-    if (this.timelineCRightRef) {
-      this.wRight = this.timelineCRightRef.nativeElement.clientWidth;
-    }
-  }
-
   typeOf(value: any) {
     return typeof value;
   }
@@ -156,7 +134,7 @@ export class TimelineItemComponent implements AfterViewInit, OnChanges {
     }
   }
 
-  setTailColor() {
+  setDotColor() {
     if (this.timelineDotItemRef) {
       this.renderer.setStyle(
         this.timelineDotItemRef.nativeElement,
