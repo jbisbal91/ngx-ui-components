@@ -87,7 +87,6 @@ export class TagComponent implements OnInit, OnChanges {
     let bgColor = '';
     let color = '';
     let borderColor = '';
-    console.log(this.color);
     switch (this.ngxMode) {
       case 'default':
         bgColor = this.backgroundColor;
