@@ -2,7 +2,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
+    "rootDir": ".",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -14,7 +15,7 @@
     "paths": {
       "ngx-eagle": [
         "dist/ngx-eagle"
-      ]
+      ],
     },
     "declaration": false,
     "downlevelIteration": true,

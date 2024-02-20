@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgxFillMode, NgxRounded, NgxSize } from 'projects/ngx-eagle/button';
+import { NgxFillMode, NgxRounded, NgxSize } from 'ngx-eagle/button';
 
 @Component({
   selector: 'app-button-demo1',

@@ -1,6 +1,7 @@
 {
-  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/ngx-eagle",
+  "$schema": "../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../dist/ngx-eagle",
+  "deleteDestPath": true,
   "lib": {
     "entryFile": "./public_api.ts"
   },
@@ -9,7 +10,6 @@
     "./**/theme/**",
     "./theme/**",
     "./ngx-eagle.min.scss",
-    "./tokens.css",
-    "./services/**"
+    "./tokens.css"
   ]
 }

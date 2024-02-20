@@ -11,9 +11,10 @@ import {
   ViewChild,
   forwardRef,
 } from '@angular/core';
-import { Guid } from '../services/guid/guid.service';
+import { Guid } from 'ngx-eagle/core/services';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgxSize } from './typings';
+
 
 @Component({
   selector: 'ngx-checkbox',

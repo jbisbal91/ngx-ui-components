@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgxFillMode, NgxRounded, NgxSize } from 'projects/ngx-eagle/select/typings';
+import { NgxFillMode, NgxRounded, NgxSize } from 'ngx-eagle/select/typings';
 
 @Component({
   selector: 'app-select-demo1',

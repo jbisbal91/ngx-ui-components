@@ -26,7 +26,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.scss",
-              "projects/ngx-eagle/ngx-eagle.min.scss"
+              "ngx-eagle/ngx-eagle.min.scss"
             ],
             "scripts": []
           },
@@ -91,20 +91,20 @@
     "ngx-eagle": {
       "projectType": "library",
       "root": "projects/ngx-eagle",
-      "sourceRoot": "projects/ngx-eagle/src",
+      "sourceRoot": "ngx-eagle/src",
       "prefix": "ngx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ngx-eagle/ng-package.json"
+            "project": "ngx-eagle/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-eagle/tsconfig.lib.prod.json"
+              "tsConfig": "ngx-eagle/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ngx-eagle/tsconfig.lib.json"
+              "tsConfig": "ngx-eagle/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -112,7 +112,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/ngx-eagle/tsconfig.spec.json",
+            "tsConfig": "ngx-eagle/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"]
           }
         }

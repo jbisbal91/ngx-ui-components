@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgxDrawerPlacement } from 'projects/ngx-eagle/drawer/typings';
+import { NgxDrawerPlacement } from 'ngx-eagle/drawer/typings';
 
 @Component({
   selector: 'app-drawer-demo1',

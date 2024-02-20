@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgxTimelineMode } from 'projects/ngx-eagle/timeline';
+import { NgxTimelineMode } from 'ngx-eagle/timeline';
 
 @Component({
   selector: 'app-timeline-demo1',

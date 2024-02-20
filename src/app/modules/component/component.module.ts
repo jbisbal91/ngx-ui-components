@@ -48,7 +48,6 @@ import { TimelineDemo1Component } from './demos/timeline/timeline-demo1/timeline
 import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.component';
 import { PieChartDocsComponent } from './docs/pie-chart-docs/pie-chart-docs.component';
 import { PieChartDemo1Component } from './demos/pie-chart/pie-chart-demo1/pie-chart-demo1.component';
-import { LineChartModule } from 'projects/ngx-eagle/line-chart';
 import { LineChartDemo1Component } from './demos/line-chart/line-chart-demo1/line-chart-demo1.component';
 import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
 import { InputDemo1Component } from './demos/input/input-demo1/input-demo1.component';
@@ -148,6 +147,7 @@ const components = [
   TimelineDemo2Component,
   TimelineDemo3Component,
   TimelineDemo4Component,
+  TimelineDemo5Component,
   TimelineDocsComponent,
   CheckboxDocsComponent,
   CheckboxDemo1Component,
@@ -155,7 +155,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, TimelineDemo5Component],
+  declarations: [components],
   exports: [components],
   imports: [
     CommonModule,
