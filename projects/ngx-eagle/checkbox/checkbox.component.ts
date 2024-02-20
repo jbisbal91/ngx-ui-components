@@ -11,7 +11,7 @@ import {
   ViewChild,
   forwardRef,
 } from '@angular/core';
-import { GuidService } from './guid.service';
+import { Guid } from '../services/guid/guid.service';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgxSize } from './typings';
 
@@ -63,14 +63,10 @@ export class CheckboxComponent
   };
   onTouched: any = () => {};
 
-  public id: string = '';
+  public id: string = Guid.EMPTY;
 
-  constructor(
-    private guidService: GuidService,
-    private elementRef: ElementRef,
-    private renderer: Renderer2
-  ) {
-    this.id = 'ngx-checkbox-' + this.guidService.guid() + '-input';
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+    this.id = Guid.create();
     this.disabled = elementRef.nativeElement.hasAttribute('disabled');
   }
 

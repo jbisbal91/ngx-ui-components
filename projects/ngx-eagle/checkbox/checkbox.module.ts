@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CheckboxComponent } from './checkbox.component';
-import { GuidService } from './guid.service';
+import { Guid } from '../services/guid/guid.service';
 
 @NgModule({
   exports: [CheckboxComponent],
   imports: [CheckboxComponent],
   
-  providers: [GuidService],
+  providers: [Guid],
 })
 export class CheckboxModule {}

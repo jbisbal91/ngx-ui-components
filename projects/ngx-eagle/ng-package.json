@@ -9,6 +9,7 @@
     "./**/theme/**",
     "./theme/**",
     "./ngx-eagle.min.scss",
-    "./tokens.css"
+    "./tokens.css",
+    "./services/**"
   ]
 }
