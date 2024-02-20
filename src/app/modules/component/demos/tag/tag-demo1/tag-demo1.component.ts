@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './tag-demo1.component.html',
   styleUrls: ['./tag-demo1.component.scss'],
 })
-export class TagDemo1Component {}
+export class TagDemo1Component {
+  ngxChecked = true;
+
+  ngxCheckedChange(val:boolean){
+    //this.ngxChecked = val;
+  }
+}

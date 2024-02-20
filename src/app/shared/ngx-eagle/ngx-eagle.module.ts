@@ -20,7 +20,7 @@ import { SelectModule } from 'ngx-eagle/select';
 import { SwitchModule } from 'projects/ngx-eagle/switch';
 import { TableModule } from 'ngx-eagle/table';
 import { TabModule } from 'projects/ngx-eagle/tab';
-import { TagModule } from 'ngx-eagle/tag';
+import { TagModule } from 'projects/ngx-eagle/tag';
 import { TimelineModule } from 'projects/ngx-eagle/timeline';
 
 @NgModule({
