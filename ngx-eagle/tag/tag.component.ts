@@ -64,15 +64,18 @@ export class TagComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['ngxColor'] && changes['ngxColor'].currentValue) {    
-      const { backgroundColor, overlayColor } =
-        this.colorConverter.contrastingColors(this.ngxColor);
-      this.backgroundColor = backgroundColor;
-      this.color = overlayColor;
-      this.setTagColor();
+    if (changes.hasOwnProperty('ngxColor')) {
+      const newColor = changes['ngxColor'].currentValue;
+      if (newColor) {    
+        const { backgroundColor, overlayColor } =
+          this.colorConverter.contrastingColors(newColor);
+        this.backgroundColor = backgroundColor;
+        this.color = overlayColor;
+        this.setTagColor();
+      }
     }
   }
-
+  
   updateCheckedStatus(): void {
     if (this.ngxMode === 'checkable') {
       this.ngxChecked = !this.ngxChecked;
@@ -105,7 +108,6 @@ export class TagComponent implements OnInit, OnChanges {
       'background-color',
       bgColor
     );
-    this.renderer.setStyle(this.elementRef.nativeElement, 'color', color);
     this.renderer.setStyle(this.elementRef.nativeElement, 'color', color);
     this.renderer.setStyle(
       this.elementRef.nativeElement,

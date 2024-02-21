@@ -28,12 +28,48 @@
   </div>
 </div>
 
-<button
-  ngx-button
-  [ngxSize]="size"
-  [ngxRounded]="rounded"
-  [ngxFillMode]="fillMode"
-  [disabled]="disabled"
->
-  Label
-</button>
+<div class="flex gap-4">
+  <button
+    ngx-button
+    ngxColor="var(--ngx-comp-button-filled-bg-color)"
+    [ngxSize]="size"
+    [ngxRounded]="rounded"
+    [ngxFillMode]="fillMode"
+    [disabled]="disabled"
+  >
+    Label
+  </button>
+
+  <button
+    ngx-button
+    ngxColor="#7965AF"
+    [ngxSize]="size"
+    [ngxRounded]="rounded"
+    [ngxFillMode]="fillMode"
+    [disabled]="disabled"
+  >
+    Label1
+  </button>
+
+  <button
+    ngx-button
+    ngxColor="#F20815"
+    [ngxSize]="size"
+    [ngxRounded]="rounded"
+    [ngxFillMode]="fillMode"
+    [disabled]="disabled"
+  >
+    Label2
+  </button>
+
+  <button
+    ngx-button
+    ngxColor="#FFFF00"
+    [ngxSize]="size"
+    [ngxRounded]="rounded"
+    [ngxFillMode]="fillMode"
+    [disabled]="disabled"
+  >
+    Label3
+  </button>
+</div>

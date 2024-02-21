@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ElementRef, Injectable } from '@angular/core';
 import { ColorContrast, HSL, RGB } from 'ngx-eagle/core/types';
 
 @Injectable({
@@ -16,8 +16,7 @@ export class ColorConverter {
 
   contrastingColors(color: string): ColorContrast {
     const getContrastColor = (color: string) => {
-      const { r, g, b } = this.hexToRgb(color);
-      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      const luminance = this.luminance(this.hexToRgb(color));
       return luminance > 0.5
         ? this.changeRgbLuminance(this.hexToRgb(color), 0.35)
         : '#ffffff';
@@ -25,6 +24,10 @@ export class ColorConverter {
     const backgroundColor = color;
     const overlayColor = getContrastColor(color);
     return { backgroundColor: backgroundColor, overlayColor: overlayColor };
+  }
+
+  luminance(color: RGB) {
+    return (0.299 * color.r + 0.587 * color.g + 0.114 * color.b) / 255;
   }
 
   hexToRgb(hex: string): RGB {
@@ -75,5 +78,23 @@ export class ColorConverter {
     const newG = Math.max(0, Math.floor(rgb.g * luminance));
     const newB = Math.max(0, Math.floor(rgb.b * luminance));
     return `rgb(${newR},${newG},${newB})`;
+  }
+
+  rgbToHex(rgbString: string): string {
+    const rgbMatch = rgbString.match(
+      /^rgb\(\s*(0*(?:[0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*,\s*(0*(?:[0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*,\s*(0*(?:[0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*\)$/
+    );
+    if (!rgbMatch) {
+      throw new Error('Incorrect RGB color format.');
+    }
+    const [, r, g, b] = rgbMatch.map(Number);
+    return `#${r.toString(16).padStart(2, '0')}${g
+      .toString(16)
+      .padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+  }
+
+  getPropertyValue(elementRef: ElementRef, property: string) {
+    const computedStyle = window.getComputedStyle(elementRef.nativeElement);
+    return computedStyle.getPropertyValue(property);
   }
 }
