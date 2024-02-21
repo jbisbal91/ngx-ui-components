@@ -43,9 +43,9 @@ export class ColorConverter {
   }
 
   changeRgbLuminance(rgb: RGB, luminance: number): string {
-    const newR = Math.min(255, Math.max(0, rgb.r * luminance));
-    const newG = Math.min(255, Math.max(0, rgb.g * luminance));
-    const newB = Math.min(255, Math.max(0, rgb.b * luminance));
+    const newR = Math.max(0, Math.floor(rgb.r * luminance));
+    const newG = Math.max(0, Math.floor(rgb.g * luminance));
+    const newB = Math.max(0, Math.floor(rgb.b * luminance));
     return `rgb(${newR},${newG},${newB})`;
   }
 }
