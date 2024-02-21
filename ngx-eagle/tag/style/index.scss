@@ -18,6 +18,9 @@
   white-space: nowrap;
   border-color: transparent;
   border: 1px solid transparent;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .ngx-tag .ngx-tag-close {
@@ -29,4 +32,3 @@
 .ngx-tag.ngx-tag-checkable {
   cursor: pointer;
 }
-
