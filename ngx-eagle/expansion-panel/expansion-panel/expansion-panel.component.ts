@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ExpansionPanel } from '../expansion-panel.interface';
-import { NgClass, NgIf, NgStyle } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
+import { Guid } from 'ngx-eagle/core/services';
 
 @Component({
   selector: 'ngx-expansion-panel',
@@ -31,23 +32,17 @@ import { NgClass, NgIf, NgStyle } from '@angular/common';
   host: {
     class: 'ngx-expansion-panel',
   },
-  imports: [NgClass,NgIf],
+  imports: [NgClass, NgIf],
 })
-export class ExpansionPanelComponent implements ExpansionPanel, OnInit {
+export class ExpansionPanelComponent implements ExpansionPanel {
   @Output() onClick: EventEmitter<ExpansionPanelComponent> =
     new EventEmitter<ExpansionPanelComponent>();
 
-  public id: string = '';
+  public id: string = Guid.create();
   @Input() disabled: boolean = false;
   public expanded: boolean = false;
   @Input() label: string = '';
   @Input() ngxType: 'card' | 'normal' = 'normal';
-
-  constructor() {}
-
-  ngOnInit(): void {
-    this.id = this.guid();
-  }
 
   expand() {
     const expansionPanel = new ExpansionPanelComponent();
@@ -56,16 +51,5 @@ export class ExpansionPanelComponent implements ExpansionPanel, OnInit {
     expansionPanel.disabled = this.disabled;
     expansionPanel.id = this.id;
     this.onClick.emit(expansionPanel);
-  }
-
-  guid() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
-      /[xy]/g,
-      function (c) {
-        const r = (Math.random() * 16) | 0,
-          v = c == 'x' ? r : (r & 0x3) | 0x8;
-        return v.toString(16);
-      }
-    );
   }
 }

@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, booleanAttribute } from '@angular/core';
+import { Component, Input, booleanAttribute } from '@angular/core';
 import { Tab } from './tab.interface';
 import { NgIf } from '@angular/common';
+import { Guid } from 'ngx-eagle/core/services';
 
 @Component({
   selector: 'ngx-tab',
@@ -12,24 +13,9 @@ import { NgIf } from '@angular/common';
   standalone: true,
   imports: [NgIf],
 })
-export class TabComponent implements Tab, OnInit {
-  public id: string = '';
+export class TabComponent implements Tab {
+  public id: string = Guid.create();
   public isActive: boolean = false;
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input() label: string = '';
-
-  ngOnInit(): void {
-    this.id = this.guid();
-  }
-
-  guid() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
-      /[xy]/g,
-      function (c) {
-        const r = (Math.random() * 16) | 0,
-          v = c == 'x' ? r : (r & 0x3) | 0x8;
-        return v.toString(16);
-      }
-    );
-  }
 }

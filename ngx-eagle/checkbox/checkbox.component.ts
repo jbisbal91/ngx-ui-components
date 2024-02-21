@@ -15,7 +15,6 @@ import { Guid } from 'ngx-eagle/core/services';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgxSize } from './typings';
 
-
 @Component({
   selector: 'ngx-checkbox',
   template: `
@@ -64,10 +63,9 @@ export class CheckboxComponent
   };
   onTouched: any = () => {};
 
-  public id: string = Guid.EMPTY;
+  public id: string = Guid.create();
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
-    this.id = Guid.create();
     this.disabled = elementRef.nativeElement.hasAttribute('disabled');
   }
 

@@ -13,12 +13,12 @@ import {
   ViewChild,
   forwardRef,
 } from '@angular/core';
-import { GuidService } from './guid.service';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { RadioButton } from './radio-button.interface';
 import { RadioGroupComponent } from './radio-group.component';
-import { Subscription, take } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { NgxSize } from './typings';
+import { Guid } from 'ngx-eagle/core/services';
 
 @Component({
   selector: 'ngx-radio-button',
@@ -56,7 +56,7 @@ export class RadioButtonComponent
     OnDestroy,
     ControlValueAccessor
 {
-  public id: string = '';
+  public id: string = Guid.create();
   @Input() public checked: boolean = false;
   disabled: boolean = false;
   @Input() ngxColor: string = '#1890FF';
@@ -73,12 +73,10 @@ export class RadioButtonComponent
   onTouched: any = () => {};
 
   constructor(
-    private guidService: GuidService,
     private elementRef: ElementRef,
     private renderer: Renderer2,
     @Optional() @Host() public radioGroupComp: RadioGroupComponent
   ) {
-    this.id = 'ngx-radio-button-' + this.guidService.guid() + '-input';
     this.disabled = elementRef.nativeElement.hasAttribute('disabled');
   }
 
