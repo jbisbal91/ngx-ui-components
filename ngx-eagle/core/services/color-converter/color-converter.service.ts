@@ -5,10 +5,16 @@ import { ColorContrast, RGB } from 'ngx-eagle/core/types';
   providedIn: 'root',
 })
 export class ColorConverter {
-  
   constructor() {}
 
-  contrastingColors(color: string): ColorContrast  {
+  public isRGB(rgb: any): boolean {
+    if (!rgb) throw new TypeError(`Invalid argument; has no value.`);
+    const regex =
+      /^rgb\(\s*(0*(?:[0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*,\s*(0*(?:[0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*,\s*(0*(?:[0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*\)$/;
+    return regex.test(rgb);
+  }
+
+  contrastingColors(color: string): ColorContrast {
     const getContrastColor = (color: string) => {
       const { r, g, b } = this.hexToRgb(color);
       const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
