@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ColorContrast, RGB } from 'ngx-eagle/core/types';
+import { ColorContrast, HSL, RGB } from 'ngx-eagle/core/types';
 
 @Injectable({
   providedIn: 'root',
@@ -40,6 +40,34 @@ export class ColorConverter {
     const g = (bigint >> 8) & 255;
     const b = bigint & 255;
     return { r, g, b };
+  }
+
+  hexToHsl(hex: string): HSL {
+    const r = parseInt(hex.substring(1, 3), 16) / 255;
+    const g = parseInt(hex.substring(3, 5), 16) / 255;
+    const b = parseInt(hex.substring(5, 7), 16) / 255;
+    const min = Math.min(r, g, b);
+    const max = Math.max(r, g, b);
+    const l = (min + max) / 2;
+    let s = 0;
+    if (min !== max) {
+      s = l > 0.5 ? (max - min) / (2 - max - min) : (max - min) / (max + min);
+    }
+    let h = 0;
+    if (min !== max) {
+      if (max === r) {
+        h = (g - b) / (max - min);
+      } else if (max === g) {
+        h = 2 + (b - r) / (max - min);
+      } else {
+        h = 4 + (r - g) / (max - min);
+      }
+    }
+    h *= 60;
+    if (h < 0) {
+      h += 360;
+    }
+    return { h, s: s * 100, l: l * 100 };
   }
 
   changeRgbLuminance(rgb: RGB, luminance: number): string {

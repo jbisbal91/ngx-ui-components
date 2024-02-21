@@ -64,7 +64,7 @@ export class TagComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['ngxColor'] && changes['ngxColor'].currentValue) {
+    if (changes['ngxColor'] && changes['ngxColor'].currentValue) {    
       const { backgroundColor, overlayColor } =
         this.colorConverter.contrastingColors(this.ngxColor);
       this.backgroundColor = backgroundColor;
