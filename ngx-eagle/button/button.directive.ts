@@ -43,7 +43,11 @@ export class ButtonDirective implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.hasOwnProperty('ngxFillMode')) {
-      this.setColorByMode(this.ngxColor);
+      if (changes.hasOwnProperty('ngxColor')) {
+        this.setColorByMode(this.ngxColor);
+      } else {
+        this.setColorByMode('#1890FF');
+      }
     }
 
     if (changes.hasOwnProperty('ngxColor')) {
