@@ -8,6 +8,13 @@ export class ColorConverter {
   constructor() {}
 
   //--------------START VALIDATIONS ------------------
+
+  public isPresetColors(presetColors: string) {
+    if (!presetColors) throw new TypeError(`Invalid argument; has no value.`);
+    PresetColors[presetColors.toLowerCase()];
+    return PresetColors[presetColors.toLowerCase()] ? true : false;
+  }
+
   public isHex(hex: string): boolean {
     if (!hex) throw new TypeError(`Invalid argument; has no value.`);
     const regex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
@@ -45,6 +52,11 @@ export class ColorConverter {
 
   contrastingColors(color: string): ColorContrast {
     let rgb: RGB;
+
+    if (this.isPresetColors(color)) {
+      rgb = this.hexToRgb(this.nameSVGToHex(color));
+    }
+
     if (this.isHex(color)) {
       rgb = this.hexToRgb(color);
     }
@@ -105,7 +117,7 @@ export class ColorConverter {
       /^rgba\(\s*((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|0)\s*,\s*((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|0)\s*,\s*((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|0)\s*,\s*((1(\.0)?)|0(\.\d+)?)\s*\)$/
     );
     if (!match) throw new TypeError(`Invalid RGBA color format: ${rgba}`);
-    
+
     const r = parseInt(match[1]);
     const g = parseInt(match[3]);
     const b = parseInt(match[5]);
@@ -117,7 +129,6 @@ export class ColorConverter {
       g: Math.round((1 - a) * 255 + a * g),
       b: Math.round((1 - a) * 255 + a * b),
     };
-console.log(rgb)
     return rgb;
   }
 

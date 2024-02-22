@@ -62,12 +62,6 @@ export class ButtonDirective implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-     //console.log('isRGB', this.colorConverter.isRGB('rgb(255, 256, 0)'));
-    // console.log('isRGBA', this.colorConverter.isRGBA('rgba(0,255, 255, 0)'));
-    //console.log('isHex', this.colorConverter.isHex('#1E1E1E'));
-    //console.log('isHSL',this.colorConverter.isHSL('hsl(280, 100%, 30%)'), this.colorConverter.hslToRgb('hsl(280, 100%, 30%)'));
-    //console.log('isHSLA', this.colorConverter.isHSLA('hsla(360, 100%, 100%, 1)'));
-    //  console.log('isHSLA', this.colorConverter.isHSLA('hsla(36, 100%, 50%, 1)'));
     if (!this.ngxColor) {
       this.setColorByMode(this.backgroundColor);
     }
