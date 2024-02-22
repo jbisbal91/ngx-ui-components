@@ -45,23 +45,18 @@ export class ColorConverter {
 
   contrastingColors(color: string): ColorContrast {
     let rgb: RGB;
-
-    if(this.isHex(color)){
+    if (this.isHex(color)) {
       rgb = this.hexToRgb(color);
     }
-
-    if(this.isHSL(color)){
+    if (this.isHSL(color)) {
       rgb = this.hslToRgb(color);
     }
-    
-    const getContrastColor = (color: string) => {
+    const buildOverlayColor = (color: string) => {
       const luminance = this.luminance(rgb);
-      return luminance > 0.5
-        ? this.changeRgbLuminance(rgb, 0.35)
-        : '#ffffff';
+      return luminance > 0.5 ? this.changeRgbLuminance(rgb, 0.35) : '#ffffff';
     };
     const backgroundColor = color;
-    const overlayColor = getContrastColor(color);
+    const overlayColor = buildOverlayColor(color);
     return { backgroundColor: backgroundColor, overlayColor: overlayColor };
   }
 
