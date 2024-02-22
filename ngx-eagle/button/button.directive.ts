@@ -48,20 +48,26 @@ export class ButtonDirective implements OnInit, OnChanges {
       this.setColorByMode(this.backgroundColor);
     }
     if (changes.hasOwnProperty('ngxColor')) {
-      if(typeof this.ngxColor === 'object'){
+      if (typeof this.ngxColor === 'object') {
         this.setColorByMode(this.backgroundColor);
       }
 
-      if(typeof this.ngxColor === 'string'){
+      if (typeof this.ngxColor === 'string') {
         this.backgroundColor = changes['ngxColor'].currentValue;
         if (this.backgroundColor) {
           this.setColorByMode(this.backgroundColor);
         }
-      }     
+      }
     }
   }
 
   ngOnInit(): void {
+     //console.log('isRGB', this.colorConverter.isRGB('rgb(255, 256, 0)'));
+    // console.log('isRGBA', this.colorConverter.isRGBA('rgba(0,255, 255, 0)'));
+    //console.log('isHex', this.colorConverter.isHex('#1E1E1E'));
+    console.log('isHSL', this.colorConverter.isHSL('hsl(360, 0%, 0%)'));
+    //  console.log('isHSLA', this.colorConverter.isHSLA('hsla(0, 100%, 50%, 0.5)'));
+    //  console.log('isHSLA', this.colorConverter.isHSLA('hsla(36, 100%, 50%, 1)'));
     if (!this.ngxColor) {
       this.setColorByMode(this.backgroundColor);
     }

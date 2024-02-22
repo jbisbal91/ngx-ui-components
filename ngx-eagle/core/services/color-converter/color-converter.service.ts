@@ -7,12 +7,41 @@ import { ColorContrast, HSL, RGB, PresetColors } from 'ngx-eagle/core/types';
 export class ColorConverter {
   constructor() {}
 
-  public isRGB(rgb: any): boolean {
+  //--------------START VALIDATIONS ------------------
+  public isHex(hex: string): boolean {
+    if (!hex) throw new TypeError(`Invalid argument; has no value.`);
+    const regex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+    return regex.test(hex);
+  }
+
+  public isRGB(rgb: string): boolean {
     if (!rgb) throw new TypeError(`Invalid argument; has no value.`);
     const regex =
       /^rgb\(\s*(0*(?:[0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*,\s*(0*(?:[0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*,\s*(0*(?:[0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*\)$/;
     return regex.test(rgb);
   }
+
+  public isRGBA(rgba: string): boolean {
+    if (!rgba) throw new TypeError(`Invalid argument; has no value.`);
+    const regex =
+      /^rgba\(\s*((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|0)\s*,\s*((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|0)\s*,\s*((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|0)\s*,\s*((1(\.0)?)|0(\.\d+)?)\s*\)$/;
+    return regex.test(rgba);
+  }
+
+  public isHSL(hsl: string): boolean {
+    if (!hsl) throw new TypeError(`Invalid argument; has no value.`);
+    const regex =
+      /^hsl\(\s*((\d{1,2}|[1-2]\d{2}|3[0-5]\d)|360)\s*,\s*(\d{1,2}|100)%\s*,\s*(\d{1,2}|100)%\s*\)$/;
+    return regex.test(hsl);
+  }
+
+  public isHSLA(hsla: string): boolean {
+    if (!hsla) throw new TypeError(`Invalid argument; has no value.`);
+    const regex =
+      /^hsla\(\s*((\d{1,2}|[1-2]\d{2}|3[0-5]\d)|360)\s*,\s*(\d{1,2}|100)%\s*,\s*(\d{1,2}|100)%\s*,\s*(0?\.\d+|1(\.0)?)\s*\)$/;
+    return regex.test(hsla);
+  }
+  //--------------END VALIDATIONS ------------------
 
   contrastingColors(color: string): ColorContrast {
     const getContrastColor = (color: string) => {
