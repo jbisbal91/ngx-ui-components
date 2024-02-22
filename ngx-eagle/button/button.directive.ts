@@ -35,8 +35,6 @@ export class ButtonDirective implements OnInit, OnChanges {
   @Input() ngxRounded: NgxRounded = 'medium';
   @Input() ngxFillMode: NgxFillMode = 'elevated';
 
-  //backgroundColor: string = '#1890FF';
-
   constructor(
     private renderer: Renderer2,
     private elementRef: ElementRef,
@@ -61,7 +59,6 @@ export class ButtonDirective implements OnInit, OnChanges {
 
   setColorByMode(color: ColorContrast | string) {
     var colorContrast!: ColorContrast;
-
     if (typeof color === 'string') {
       colorContrast =
         color !== '#1890FF'
