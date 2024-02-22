@@ -35,7 +35,7 @@ export class ButtonDirective implements OnInit, OnChanges {
   @Input() ngxRounded: NgxRounded = 'medium';
   @Input() ngxFillMode: NgxFillMode = 'elevated';
 
-  backgroundColor: string = '#1890FF';
+  //backgroundColor: string = '#1890FF';
 
   constructor(
     private renderer: Renderer2,
@@ -45,45 +45,62 @@ export class ButtonDirective implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.hasOwnProperty('ngxFillMode')) {
-      this.setColorByMode(this.backgroundColor);
+      this.setColorByMode(this.ngxColor);
     }
-    if (changes.hasOwnProperty('ngxColor')) {
-      if (typeof this.ngxColor === 'object') {
-        this.setColorByMode(this.backgroundColor);
-      }
 
-      if (typeof this.ngxColor === 'string') {
-        this.backgroundColor = changes['ngxColor'].currentValue;
-        if (this.backgroundColor) {
-          this.setColorByMode(this.backgroundColor);
-        }
-      }
+    if (changes.hasOwnProperty('ngxColor')) {
+      this.setColorByMode(this.ngxColor);
     }
   }
 
   ngOnInit(): void {
     if (!this.ngxColor) {
-      this.setColorByMode(this.backgroundColor);
+      this.setColorByMode('#1890FF');
     }
   }
 
-  setColorByMode(color: string) {
-    const { backgroundColor, overlayColor } =
-      color !== '#1890FF'
-        ? this.colorConverter.contrastingColors(color)
-        : { backgroundColor: '#1890FF', overlayColor: '#ffffff' };
+  setColorByMode(color: ColorContrast | string) {
+    var colorContrast!: ColorContrast;
+
+    if (typeof color === 'string') {
+      colorContrast =
+        color !== '#1890FF'
+          ? this.colorConverter.contrastingColors(color)
+          : { backgroundColor: '#1890FF', overlayColor: '#ffffff' };
+    }
+
+    if (typeof color === 'object') {
+      colorContrast = color;
+    }
+
     switch (this.ngxFillMode) {
       case 'filled':
-        this.setColor(backgroundColor, overlayColor, 'transparent');
+        this.setColor(
+          colorContrast.backgroundColor,
+          colorContrast.overlayColor,
+          'transparent'
+        );
         break;
       case 'outlined':
-        this.setColor('transparent', backgroundColor, backgroundColor);
+        this.setColor(
+          'transparent',
+          colorContrast.backgroundColor,
+          colorContrast.backgroundColor
+        );
         break;
       case 'elevated':
-        this.setColor(backgroundColor, overlayColor, 'transparent');
+        this.setColor(
+          colorContrast.backgroundColor,
+          colorContrast.overlayColor,
+          'transparent'
+        );
         break;
       case 'text':
-        this.setColor('transparent', backgroundColor, 'transparent');
+        this.setColor(
+          'transparent',
+          colorContrast.backgroundColor,
+          'transparent'
+        );
         break;
     }
   }
