@@ -1,5 +1,5 @@
 import { ElementRef, Injectable } from '@angular/core';
-import { ColorContrast, HSL, RGB } from 'ngx-eagle/core/types';
+import { ColorContrast, HSL, RGB, PresetColors } from 'ngx-eagle/core/types';
 
 @Injectable({
   providedIn: 'root',
@@ -26,10 +26,18 @@ export class ColorConverter {
     return { backgroundColor: backgroundColor, overlayColor: overlayColor };
   }
 
+  changeRgbLuminance(rgb: RGB, luminance: number): string {
+    const newR = Math.max(0, Math.floor(rgb.r * luminance));
+    const newG = Math.max(0, Math.floor(rgb.g * luminance));
+    const newB = Math.max(0, Math.floor(rgb.b * luminance));
+    return `rgb(${newR},${newG},${newB})`;
+  }
+
   luminance(color: RGB) {
     return (0.299 * color.r + 0.587 * color.g + 0.114 * color.b) / 255;
   }
 
+  //------------- TO RGB -------------
   hexToRgb(hex: string): RGB {
     let hexCode = hex.startsWith('#') ? hex.slice(1) : hex;
     if (hexCode.length === 3) {
@@ -44,7 +52,8 @@ export class ColorConverter {
     const b = bigint & 255;
     return { r, g, b };
   }
-
+  //------------- END -------------
+  //------------- TO HSL -------------
   hexToHsl(hex: string): HSL {
     const r = parseInt(hex.substring(1, 3), 16) / 255;
     const g = parseInt(hex.substring(3, 5), 16) / 255;
@@ -72,14 +81,8 @@ export class ColorConverter {
     }
     return { h, s: s * 100, l: l * 100 };
   }
-
-  changeRgbLuminance(rgb: RGB, luminance: number): string {
-    const newR = Math.max(0, Math.floor(rgb.r * luminance));
-    const newG = Math.max(0, Math.floor(rgb.g * luminance));
-    const newB = Math.max(0, Math.floor(rgb.b * luminance));
-    return `rgb(${newR},${newG},${newB})`;
-  }
-
+  //------------- END -------------
+  //------------- TO HEX -------------
   rgbToHex(rgbString: string): string {
     const rgbMatch = rgbString.match(
       /^rgb\(\s*(0*(?:[0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*,\s*(0*(?:[0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*,\s*(0*(?:[0-9]{1,2}|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*\)$/
@@ -92,6 +95,15 @@ export class ColorConverter {
       .toString(16)
       .padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
   }
+
+  nameSVGToHex(name: any) {
+    const response = PresetColors[name.toLowerCase()];
+    if (response) {
+      return PresetColors[name.toLowerCase()];
+    }
+    throw new Error('Wrong color name');
+  }
+  //------------- END -------------
 
   getPropertyValue(elementRef: ElementRef, property: string) {
     const computedStyle = window.getComputedStyle(elementRef.nativeElement);

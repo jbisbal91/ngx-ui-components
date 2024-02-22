@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { NgxFillMode, NgxRounded, NgxSize } from './typings';
 import { ColorConverter } from 'ngx-eagle/core/services';
+import { ColorContrast } from 'ngx-eagle/core/types';
 
 @Directive({
   selector: 'button[ngx-button]',
@@ -29,7 +30,7 @@ import { ColorConverter } from 'ngx-eagle/core/services';
   standalone: true,
 })
 export class ButtonDirective implements OnInit, OnChanges {
-  @Input() ngxColor!: string;
+  @Input() ngxColor!: ColorContrast | string;
   @Input() ngxSize: NgxSize = 'medium';
   @Input() ngxRounded: NgxRounded = 'medium';
   @Input() ngxFillMode: NgxFillMode = 'elevated';
@@ -47,15 +48,23 @@ export class ButtonDirective implements OnInit, OnChanges {
       this.setColorByMode(this.backgroundColor);
     }
     if (changes.hasOwnProperty('ngxColor')) {
-      this.backgroundColor = changes['ngxColor'].currentValue;
-      if (this.backgroundColor) {
+      if(typeof this.ngxColor === 'object'){
         this.setColorByMode(this.backgroundColor);
       }
+
+      if(typeof this.ngxColor === 'string'){
+        this.backgroundColor = changes['ngxColor'].currentValue;
+        if (this.backgroundColor) {
+          this.setColorByMode(this.backgroundColor);
+        }
+      }     
     }
   }
 
   ngOnInit(): void {
-    this.setColorByMode(this.backgroundColor);
+    if (!this.ngxColor) {
+      this.setColorByMode(this.backgroundColor);
+    }
   }
 
   setColorByMode(color: string) {
