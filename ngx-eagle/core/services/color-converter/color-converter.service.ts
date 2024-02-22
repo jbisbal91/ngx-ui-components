@@ -53,6 +53,10 @@ export class ColorConverter {
       rgb = this.rgbToObject(color);
     }
 
+    if (this.isRGBA(color)) {
+      rgb = this.rgbaToObject(color);
+    }
+
     if (this.isHSL(color)) {
       rgb = this.hslToRgb(color);
     }
@@ -93,6 +97,28 @@ export class ColorConverter {
       g: parseInt(match[2]),
       b: parseInt(match[3]),
     };
+  }
+
+  rgbaToObject(rgba: string): RGB {
+    if (!rgba) throw new TypeError(`Invalid argument; has no value.`);
+    const match = rgba.match(
+      /^rgba\(\s*((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|0)\s*,\s*((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|0)\s*,\s*((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|0)\s*,\s*((1(\.0)?)|0(\.\d+)?)\s*\)$/
+    );
+    if (!match) throw new TypeError(`Invalid RGBA color format: ${rgba}`);
+    
+    const r = parseInt(match[1]);
+    const g = parseInt(match[3]);
+    const b = parseInt(match[5]);
+    const a = parseFloat(match[7]);
+
+    // Convertir el color con opacidad a RGB
+    const rgb = {
+      r: Math.round((1 - a) * 255 + a * r),
+      g: Math.round((1 - a) * 255 + a * g),
+      b: Math.round((1 - a) * 255 + a * b),
+    };
+console.log(rgb)
+    return rgb;
   }
 
   hexToRgb(hex: string): RGB {
