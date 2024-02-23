@@ -13,12 +13,9 @@ import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'ngx-avatar',
-  template: ` <img
-      class="ngx-avatar-img"
-      *ngIf="ngxSrc"
-      [src]="ngxSrc"
-      alt="ngx-avatar"
-    />
+  template: ` <div class="ngx-avatar-img">
+      <img *ngIf="ngxSrc" [src]="ngxSrc" alt="ngx-avatar" />
+    </div>
     <span *ngIf="ngxText && !ngxSrc">{{ getInitials(ngxText) }}</span>
 
     <span #ngx_avatar_user *ngIf="!ngxSrc && !ngxText" class="ngx-avatar-user"
@@ -80,7 +77,11 @@ export class AvatarComponent implements AfterViewInit {
   setFontSizeImgUser() {
     if (this.avatarUserRef) {
       const fontSize = `${(Number(this.ngxSize) * 0.5) / 16}rem`;
-      this.renderer2.setStyle(this.avatarUserRef.nativeElement, 'font-size',fontSize);
+      this.renderer2.setStyle(
+        this.avatarUserRef.nativeElement,
+        'font-size',
+        fontSize
+      );
     }
   }
 

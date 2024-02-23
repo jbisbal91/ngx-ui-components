@@ -57,11 +57,6 @@ export class BadgeDirective implements AfterViewInit, OnChanges {
     if (!this.ngxBadgeColor) {
       this.setColor('#FF4D4F');
     }
-    this.renderer2.setStyle(
-      this.elementRef.nativeElement,
-      'width',
-      'fit-content'
-    );
     this.setTextContent();
     this.renderer2.addClass(this.newSpan, 'ngx-badge-content');
     if (this.elementRef.nativeElement.tagName.toLowerCase() === 'button') {
