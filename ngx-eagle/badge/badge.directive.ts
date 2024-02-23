@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Directive,
   ElementRef,
   Input,
@@ -6,6 +7,8 @@ import {
   OnInit,
   Renderer2,
   SimpleChanges,
+  booleanAttribute,
+  numberAttribute,
 } from '@angular/core';
 import { ColorContrast } from 'ngx-eagle/core/types';
 import { NgxPosition, NgxSize } from './typings';
@@ -18,12 +21,12 @@ import { ColorConverter } from 'ngx-eagle/core/services';
   },
   standalone: true,
 })
-export class BadgeDirective implements OnInit, OnChanges {
-  @Input() ngxBadge: any;
-  @Input() ngxOverflowCount: number = 99;
+export class BadgeDirective implements AfterViewInit, OnChanges {
+  @Input({ transform: numberAttribute }) ngxBadge!: number;
+  @Input({ transform: numberAttribute }) ngxOverflowCount: number = 99;
   @Input() ngxBadgePosition: NgxPosition = 'after';
   @Input() ngxBadgeSize: NgxSize = 'small';
-  @Input() ngxBadgeHidden: boolean = false;
+  @Input({ transform: booleanAttribute }) ngxBadgeHidden: boolean = false;
   @Input() ngxBadgeColor!: ColorContrast | string;
 
   newSpan = document.createElement('span');
@@ -44,9 +47,13 @@ export class BadgeDirective implements OnInit, OnChanges {
     if (changes.hasOwnProperty('ngxBadgeColor')) {
       this.setColor(this.ngxBadgeColor);
     }
+
+    if (changes.hasOwnProperty('ngxOverflowCount')) {
+      this.setColor(this.ngxBadgeColor);
+    }
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     if (!this.ngxBadgeColor) {
       this.setColor('#FF4D4F');
     }
@@ -55,7 +62,7 @@ export class BadgeDirective implements OnInit, OnChanges {
       'width',
       'fit-content'
     );
-    this.newSpan.textContent = this.ngxBadge;
+    this.setTextContent();
     this.renderer2.addClass(this.newSpan, 'ngx-badge-content');
     if (this.elementRef.nativeElement.tagName.toLowerCase() === 'button') {
       this.renderer2.addClass(this.newSpan, 'ngx-badge-btn');
@@ -87,10 +94,13 @@ export class BadgeDirective implements OnInit, OnChanges {
       'background-color',
       colorContrast.backgroundColor
     );
-    this.renderer2.setStyle(
-      this.newSpan,
-      'color',
-      colorContrast.overlayColor
-    );
+    this.renderer2.setStyle(this.newSpan, 'color', colorContrast.overlayColor);
+  }
+
+  setTextContent() {
+    this.newSpan.textContent =
+      this.ngxBadge > this.ngxOverflowCount
+        ? `${this.ngxOverflowCount}+`
+        : `${this.ngxBadge}`;
   }
 }
