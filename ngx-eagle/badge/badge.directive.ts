@@ -7,6 +7,8 @@ import {
   Renderer2,
   SimpleChanges,
 } from '@angular/core';
+import { ColorContrast } from 'ngx-eagle/core/types';
+import { NgxPosition, NgxSize } from './typings';
 
 @Directive({
   selector: '[ngxBadge]',
@@ -17,9 +19,11 @@ import {
 })
 export class BadgeDirective implements OnInit, OnChanges {
   @Input() ngxBadge: any;
-  @Input() ngxBadgePosition: 'before' | 'after' = 'after';
-  @Input() ngxBadgeSize: 'small' | 'medium' | 'large' = 'small';
+  @Input() ngxOverflowCount: number = 99;
+  @Input() ngxBadgePosition: NgxPosition = 'after';
+  @Input() ngxBadgeSize: NgxSize = 'small';
   @Input() ngxBadgeHidden: boolean = false;
+  @Input() ngxColor!: ColorContrast | string;
 
   newSpan = document.createElement('span');
 
@@ -34,9 +38,9 @@ export class BadgeDirective implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    this.renderer2.setStyle(this.elementRef.nativeElement, 'width', 'fit-content');
     this.newSpan.textContent = this.ngxBadge;
     this.renderer2.addClass(this.newSpan, 'ngx-badge-content');
-
     if (this.elementRef.nativeElement.tagName.toLowerCase() === 'button') {
       this.renderer2.addClass(this.newSpan, 'ngx-badge-btn');
     }
