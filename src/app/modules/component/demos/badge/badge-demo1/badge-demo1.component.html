@@ -93,7 +93,14 @@
   <ngx-avatar
     ngxSize="large"
     [ngxShape]="'square'"
-    ngxBadge="5"
+    [ngxBadge]="count"
     [ngxBadgePosition]="badgePosition"
   ></ngx-avatar>
+
+  <button ngx-button ngxFillMode="filled" (click)="minCount()">DECREASE</button>
+<button ngx-button ngxFillMode="filled" (click)="addCount()">INCREASE</button>
 </div>
+
+
+
+

@@ -12,4 +12,18 @@ export class BadgeDemo1Component {
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
   }
+
+  count = 5;
+  dot = true;
+
+  addCount(): void {
+    this.count++;
+  }
+
+  minCount(): void {
+    this.count--;
+    if (this.count < 0) {
+      this.count = 0;
+    }
+  }
 }
