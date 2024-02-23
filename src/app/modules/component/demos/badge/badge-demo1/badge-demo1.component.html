@@ -70,3 +70,30 @@
   [ngxShape]="'square'"
   ngxBadge="5"
 ></ngx-avatar>
+
+<ngx-radio-group [(ngModel)]="badgePosition">
+  <ngx-radio-button ngxValue="after"> After </ngx-radio-button>
+  <ngx-radio-button ngxValue="before"> Before </ngx-radio-button>
+</ngx-radio-group>
+
+<div class="inline-grid gap-4 mt-4">
+  <p ngxBadge="5" [ngxBadgePosition]="badgePosition" ngxBadgeSize="medium">
+    Text with a medium badge on the left
+  </p>
+
+  <button
+    ngx-button
+    ngxFillMode="filled"
+    [ngxBadgePosition]="badgePosition"
+    ngxBadge="6"
+  >
+    Button
+  </button>
+
+  <ngx-avatar
+    ngxSize="large"
+    [ngxShape]="'square'"
+    ngxBadge="5"
+    [ngxBadgePosition]="badgePosition"
+  ></ngx-avatar>
+</div>

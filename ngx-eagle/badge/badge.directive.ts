@@ -51,6 +51,10 @@ export class BadgeDirective implements AfterViewInit, OnChanges {
     if (changes.hasOwnProperty('ngxOverflowCount')) {
       this.setColor(this.ngxBadgeColor);
     }
+
+    if (changes.hasOwnProperty('ngxBadgePosition')) {
+      this.setPosition();
+    }
   }
 
   ngAfterViewInit(): void {
@@ -59,17 +63,21 @@ export class BadgeDirective implements AfterViewInit, OnChanges {
     }
     this.setMaxWidth();
     this.setTextContent();
+    this.setPosition();
     this.renderer2.addClass(this.newSpan, 'ngx-badge-content');
     if (this.elementRef.nativeElement.tagName.toLowerCase() === 'button') {
       this.renderer2.addClass(this.newSpan, 'ngx-badge-btn');
     }
-
-    if (this.ngxBadgePosition == 'before') {
-      this.renderer2.addClass(this.newSpan, 'ngx-badge-before');
-    }
-
     this.renderer2.addClass(this.newSpan, `ngx-badge-${this.ngxBadgeSize}`);
     this.renderer2.appendChild(this.elementRef.nativeElement, this.newSpan);
+  }
+
+  setPosition() {
+    if (this.ngxBadgePosition === 'before') {
+      this.renderer2.addClass(this.newSpan, 'ngx-badge-before');
+    } else {
+      this.renderer2.removeClass(this.newSpan, 'ngx-badge-before');
+    }
   }
 
   setMaxWidth() {

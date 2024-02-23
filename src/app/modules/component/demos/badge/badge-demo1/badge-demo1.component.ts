@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgxPosition } from 'ngx-eagle/badge/typings';
 
 @Component({
   selector: 'app-badge-demo1',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class BadgeDemo1Component {
   hidden = false;
-
+  badgePosition: NgxPosition = 'before';
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
   }
