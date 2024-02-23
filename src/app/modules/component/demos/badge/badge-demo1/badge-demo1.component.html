@@ -1,6 +1,6 @@
-<p class="demo-section" ngxBadge="996">Text with a badge</p>
+<p class="demo-section" ngxBadge="996" ngxBadgeColor="rgba(153, 255, 255, 1)">Text with a badge</p>
 
-<p class="demo-section" ngxBadge="99" ngxBadgeSize="medium">
+<p class="demo-section" ngxBadge="99"  ngxBadgeColor="#CC0000" ngxBadgeSize="medium">
   Text with medium badge
 </p>
 
@@ -37,7 +37,16 @@
 
 <div class="demo-section">
   Button with a badge on the left
-  <button ngx-button ngxType="primary" ngxBadgePosition="before" ngxBadge="7">
+  <button
+    ngx-button
+    ngxType="primary"
+    ngxBadgePosition="before"
+    ngxBadge="7"
+    [ngxBadgeColor]="{
+      backgroundColor: 'var(--ngx-comp-button-bg-color)',
+      overlayColor: 'var(--ngx-comp-button-color)'
+    }"
+  >
     Action
   </button>
 </div>
