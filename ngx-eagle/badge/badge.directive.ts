@@ -11,7 +11,7 @@ import {
   numberAttribute,
 } from '@angular/core';
 import { ColorContrast } from 'ngx-eagle/core/types';
-import { NgxPosition, NgxSize } from './typings';
+import { NgxPosition, NgxSize, nodeNameForText } from './typings';
 import { ColorConverter } from 'ngx-eagle/core/services';
 
 @Directive({
@@ -57,6 +57,7 @@ export class BadgeDirective implements AfterViewInit, OnChanges {
     if (!this.ngxBadgeColor) {
       this.setColor('#FF4D4F');
     }
+    this.setMaxWidth();
     this.setTextContent();
     this.renderer2.addClass(this.newSpan, 'ngx-badge-content');
     if (this.elementRef.nativeElement.tagName.toLowerCase() === 'button') {
@@ -69,6 +70,17 @@ export class BadgeDirective implements AfterViewInit, OnChanges {
 
     this.renderer2.addClass(this.newSpan, `ngx-badge-${this.ngxBadgeSize}`);
     this.renderer2.appendChild(this.elementRef.nativeElement, this.newSpan);
+  }
+
+  setMaxWidth() {
+    const nodeName = this.elementRef.nativeElement.nodeName;
+    if (nodeNameForText[nodeName]) {
+      this.renderer2.setStyle(
+        this.elementRef.nativeElement,
+        'width',
+        'fit-content'
+      );
+    }
   }
 
   setColor(color: ColorContrast | string) {
