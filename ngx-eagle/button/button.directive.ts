@@ -33,7 +33,7 @@ export class ButtonDirective implements OnInit, OnChanges {
   @Input() ngxColor!: ColorContrast | string;
   @Input() ngxSize: NgxSize = 'medium';
   @Input() ngxRounded: NgxRounded = 'medium';
-  @Input() ngxFillMode: NgxFillMode = 'elevated';
+  @Input() ngxFillMode: NgxFillMode = 'filled';
 
   constructor(
     private renderer: Renderer2,

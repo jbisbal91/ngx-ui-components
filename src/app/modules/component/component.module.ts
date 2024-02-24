@@ -77,6 +77,10 @@ import { TimelineDemo2Component } from './demos/timeline/timeline-demo2/timeline
 import { TimelineDemo3Component } from './demos/timeline/timeline-demo3/timeline-demo3.component';
 import { TimelineDemo4Component } from './demos/timeline/timeline-demo4/timeline-demo4.component';
 import { TimelineDemo5Component } from './demos/timeline/timeline-demo5/timeline-demo5.component';
+import { ButtonDemo2Component } from './demos/button/button-demo2/button-demo2.component';
+import { ButtonDemo3Component } from './demos/button/button-demo3/button-demo3.component';
+import { ButtonDemo4Component } from './demos/button/button-demo4/button-demo4.component';
+import { ButtonDemo5Component } from './demos/button/button-demo5/button-demo5.component';
 
 export function getHighlightLanguages() {
   return {
@@ -96,6 +100,10 @@ const components = [
   BadgeDemo1Component,
   BadgeDocsComponent,
   ButtonDemo1Component,
+  ButtonDemo2Component,
+  ButtonDemo3Component,
+  ButtonDemo4Component,
+  ButtonDemo5Component,
   ButtonDocsComponent,
   CardDemo1Component,
   CardDocsComponent,

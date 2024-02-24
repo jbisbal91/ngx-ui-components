@@ -22,11 +22,11 @@ import { ColorConverter } from 'ngx-eagle/core/services';
 })
 export class BadgeDirective implements AfterViewInit, OnChanges {
   @Input({ transform: numberAttribute }) ngxBadge!: number;
-  @Input({ transform: numberAttribute }) ngxOverflowCount: number = 99;
+  @Input() ngxBadgeColor!: ColorContrast | string;
+  @Input({ transform: booleanAttribute }) ngxBadgeHidden: boolean = false;
   @Input() ngxBadgePosition: NgxPosition = 'after';
   @Input() ngxBadgeSize: NgxSize = 'small';
-  @Input({ transform: booleanAttribute }) ngxBadgeHidden: boolean = false;
-  @Input() ngxBadgeColor!: ColorContrast | string;
+  @Input({ transform: numberAttribute }) ngxOverflowCount: number = 99;
 
   newSpan = document.createElement('span');
 

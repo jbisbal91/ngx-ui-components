@@ -1,0 +1,18 @@
+<div class="block">
+  <button ngx-button>Label1</button>
+  <button ngx-button ngxColor="#FF3300">Label2</button>
+  <button ngx-button ngxColor="rgb(204, 51, 204)">Label3</button>
+  <button ngx-button ngxColor="rgba(204, 51, 204,0.5)">Label4</button>
+  <button ngx-button ngxColor="hsl(300, 100%, 90%)">Label5</button>
+  <button ngx-button ngxColor="hsla(300, 100%, 90%, 0.5)">Label6</button>
+  <button ngx-button ngxColor="indigo">Labe7</button>
+  <button
+    ngx-button
+    [ngxColor]="{
+      backgroundColor: 'var(--ngx-test-badge-bg-color)',
+      overlayColor: 'var(--ngx-test-badge-color)'
+    }"
+  >
+    Label8
+  </button>
+</div>
