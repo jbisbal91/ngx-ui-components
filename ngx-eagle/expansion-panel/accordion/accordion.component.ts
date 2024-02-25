@@ -1,6 +1,8 @@
 import {
+  AfterViewInit,
   Component,
   ContentChildren,
+  Input,
   OnDestroy,
   QueryList,
 } from '@angular/core';
@@ -12,7 +14,8 @@ import { Subscription } from 'rxjs';
   template: `<ng-content></ng-content>`,
   standalone:true
 })
-export class AccordionComponent implements OnDestroy {
+export class AccordionComponent implements AfterViewInit, OnDestroy {
+
   @ContentChildren(ExpansionPanelComponent)
   public expansionPanels!: QueryList<ExpansionPanelComponent>;
 
@@ -20,6 +23,10 @@ export class AccordionComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  ngAfterViewInit(): void {
+    this.expansionPanels.last.lastExP = true;
   }
 
   ngAfterContentInit(): void {

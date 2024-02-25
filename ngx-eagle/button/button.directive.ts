@@ -31,9 +31,10 @@ import { ColorContrast } from 'ngx-eagle/core/types';
 })
 export class ButtonDirective implements OnInit, OnChanges {
   @Input() ngxColor!: ColorContrast | string;
-  @Input() ngxSize: NgxSize = 'medium';
+  @Input() ngxFillMode: NgxFillMode = 'filled';  
   @Input() ngxRounded: NgxRounded = 'medium';
-  @Input() ngxFillMode: NgxFillMode = 'filled';
+  @Input() ngxSize: NgxSize = 'medium';
+  
 
   constructor(
     private renderer: Renderer2,

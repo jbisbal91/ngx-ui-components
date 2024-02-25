@@ -81,6 +81,7 @@ import { ButtonDemo2Component } from './demos/button/button-demo2/button-demo2.c
 import { ButtonDemo3Component } from './demos/button/button-demo3/button-demo3.component';
 import { ButtonDemo4Component } from './demos/button/button-demo4/button-demo4.component';
 import { ButtonDemo5Component } from './demos/button/button-demo5/button-demo5.component';
+import { AccordionDemo2Component } from './demos/accordion/accordion-demo2/accordion-demo2.component';
 
 export function getHighlightLanguages() {
   return {
@@ -163,7 +164,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, AccordionDemo2Component],
   exports: [components],
   imports: [
     CommonModule,

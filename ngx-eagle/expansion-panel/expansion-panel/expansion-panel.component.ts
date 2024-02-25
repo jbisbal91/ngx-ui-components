@@ -7,11 +7,16 @@ import { Guid } from 'ngx-eagle/core/services';
   selector: 'ngx-expansion-panel',
   template: `
     <div
-      class="card-epanel mb-4 p-4"
-      [class.card-bg]="ngxType === 'card'"
-      [ngClass]="{ 'rounded-lg box-shadow': ngxType === 'card' }"
+      class="exp-panel"
+      [class.card-type]="ngxType === 'card'"
+      [class.bordered-type]="ngxType === 'bordered'"
+      [class.border-bottom-exp-item]="ngxType === 'bordered' && lastExP"
     >
-      <div (click)="expand()" class="card-header">
+      <div
+        (click)="expand()"
+        class="header"
+        [class.border-bottom-header]="expanded"
+      >
         <span>{{ label }}</span>
         <span class="arrow flex" [ngClass]="expanded ? 'rotate' : 'no-rotate'">
           <svg
@@ -24,8 +29,9 @@ import { Guid } from 'ngx-eagle/core/services';
           </svg>
         </span>
       </div>
-      <ng-content *ngIf="expanded"></ng-content>
-      <div class="divider mt-4" *ngIf="ngxType === 'normal'"></div>
+      <div class="content" *ngIf="expanded">
+        <ng-content></ng-content>
+      </div>
     </div>
   `,
   standalone: true,
@@ -42,7 +48,9 @@ export class ExpansionPanelComponent implements ExpansionPanel {
   @Input() disabled: boolean = false;
   public expanded: boolean = false;
   @Input() label: string = '';
-  @Input() ngxType: 'card' | 'normal' = 'normal';
+  @Input() ngxType: 'card' | 'bordered' | 'normal' = 'normal';
+
+  lastExP: boolean = false;
 
   expand() {
     const expansionPanel = new ExpansionPanelComponent();

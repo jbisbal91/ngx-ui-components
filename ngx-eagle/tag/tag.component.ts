@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { NgxMode } from './typings';
 import { ColorConverter } from 'ngx-eagle/core/services';
+import { ColorContrast } from 'ngx-eagle/core/types';
 
 @Component({
   selector: 'ngx-tag',
@@ -42,10 +43,10 @@ import { ColorConverter } from 'ngx-eagle/core/services';
   imports: [NgStyle, NgIf],
 })
 export class TagComponent implements OnInit, OnChanges {
-  @Input() ngxMode: NgxMode = 'default';
-  @Input() ngxColor!: string;
-  @Input({ transform: booleanAttribute }) ngxChecked: boolean = false;
   @Input({ transform: booleanAttribute }) ngxBordered: boolean = true;
+  @Input() ngxColor!: ColorContrast | string;
+  @Input({ transform: booleanAttribute }) ngxChecked: boolean = false;
+  @Input() ngxMode: NgxMode = 'default';
 
   @Output() readonly ngxOnClose = new EventEmitter<MouseEvent>();
   @Output() readonly ngxCheckedChange = new EventEmitter<boolean>();
@@ -66,16 +67,21 @@ export class TagComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.hasOwnProperty('ngxColor')) {
       const newColor = changes['ngxColor'].currentValue;
-      if (newColor) {    
+      if (typeof newColor === 'string') {
         const { backgroundColor, overlayColor } =
           this.colorConverter.contrastingColors(newColor);
         this.backgroundColor = backgroundColor;
         this.color = overlayColor;
         this.setTagColor();
       }
+      if (typeof newColor === 'object') {
+        this.backgroundColor = newColor.backgroundColor;
+        this.color = newColor.overlayColor;
+        this.setTagColor();
+      }
     }
   }
-  
+
   updateCheckedStatus(): void {
     if (this.ngxMode === 'checkable') {
       this.ngxChecked = !this.ngxChecked;
