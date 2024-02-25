@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./accordion-demo2.component.scss']
 })
 export class AccordionDemo2Component {
-
+  ngxType:any = 'card'
 }

@@ -1,21 +1,30 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  booleanAttribute,
+} from '@angular/core';
 import { ExpansionPanel } from '../expansion-panel.interface';
 import { NgClass, NgIf } from '@angular/common';
 import { Guid } from 'ngx-eagle/core/services';
+import { NgxExpandIconPosition, NgxType } from '../typings';
 
 @Component({
   selector: 'ngx-expansion-panel',
   template: `
     <div
       class="exp-panel"
-      [class.card-type]="ngxType === 'card'"
-      [class.bordered-type]="ngxType === 'bordered'"
+      [class.card-type]="ngxType && ngxType === 'card'"
+      [class.bordered-type]="ngxType && ngxType === 'bordered'"
       [class.border-bottom-exp-item]="ngxType === 'bordered' && lastExP"
     >
       <div
         (click)="expand()"
         class="header"
         [class.border-bottom-header]="expanded"
+        [class.expand-icon-position]="ngxExpandIconPosition === 'left'"
+        [class.disabled]="disabled"
       >
         <span>{{ label }}</span>
         <span class="arrow flex" [ngClass]="expanded ? 'rotate' : 'no-rotate'">
@@ -45,14 +54,18 @@ export class ExpansionPanelComponent implements ExpansionPanel {
     new EventEmitter<ExpansionPanelComponent>();
 
   public id: string = Guid.create();
-  @Input() disabled: boolean = false;
-  public expanded: boolean = false;
+  @Input({ transform: booleanAttribute }) disabled: boolean = false;
+  @Input({ transform: booleanAttribute }) expanded: boolean = false;
   @Input() label: string = '';
-  @Input() ngxType: 'card' | 'bordered' | 'normal' = 'normal';
+  ngxType!: NgxType;
+  ngxExpandIconPosition!: NgxExpandIconPosition;
 
   lastExP: boolean = false;
 
   expand() {
+    if (this.disabled) {
+      return;
+    }
     const expansionPanel = new ExpansionPanelComponent();
     expansionPanel.expanded = this.expanded;
     expansionPanel.label = this.label;

@@ -64,3 +64,14 @@
   border-right: 1px solid currentColor;
   border-top: 0.5px solid currentColor;
 }
+
+.exp-panel>.header.expand-icon-position {
+  direction: rtl;
+  justify-content: end !important;
+  gap: 0.5rem;
+}
+
+.exp-panel>.header.disabled {
+  opacity: 0.65;
+  cursor: no-drop;
+}

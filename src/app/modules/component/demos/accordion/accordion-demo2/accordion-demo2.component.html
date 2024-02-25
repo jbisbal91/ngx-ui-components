@@ -1,12 +1,16 @@
-<ngx-accordion>
-    <ngx-expansion-panel label="This is panel header 1" ngxType="card">
-      <p>This is panel header 1 content</p>
-    </ngx-expansion-panel>
-    <ngx-expansion-panel label="This is panel header 2" ngxType="card">
-      <p>This is panel header 2 content</p>
-    </ngx-expansion-panel>
-    <ngx-expansion-panel label="This is panel header 3" ngxType="card">
-      <p>This is panel header 3 content</p>
-    </ngx-expansion-panel>
-  </ngx-accordion>
+<ngx-radio-group [(ngModel)]="ngxType">
+  <ngx-radio-button ngxValue="card"> Card </ngx-radio-button>
+  <ngx-radio-button ngxValue="bordered"> Bordered </ngx-radio-button>
+</ngx-radio-group>
 
+<ngx-accordion [ngxType]="ngxType" ngxExpandIconPosition="left">
+  <ngx-expansion-panel label="This is panel header 1" [expanded]="true" [disabled]="true">
+    <p>This is panel header 1 content</p>
+  </ngx-expansion-panel>
+  <ngx-expansion-panel label="This is panel header 2">
+    <p>This is panel header 2 content</p>
+  </ngx-expansion-panel>
+  <ngx-expansion-panel label="This is panel header 3">
+    <p>This is panel header 3 content</p>
+  </ngx-expansion-panel>
+</ngx-accordion>
