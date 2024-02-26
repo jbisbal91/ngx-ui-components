@@ -9,7 +9,6 @@ import {
   OnChanges,
   OnDestroy,
   QueryList,
-  SimpleChanges,
   booleanAttribute,
 } from '@angular/core';
 import { ExpansionPanelComponent } from '../expansion-panel/expansion-panel.component';
@@ -26,8 +25,8 @@ export class AccordionComponent
   implements AfterViewInit, AfterContentInit, OnChanges, OnDestroy
 {
   @Input() ngxColor: string = '';
-  @Input() ngxType: NgxType = 'line';
-  @Input() ngxExpandIconPosition: NgxExpandIconPosition = 'right';
+  @Input() ngxType: NgxType = 'default';
+  @Input() ngxExpandIconPosition: NgxExpandIconPosition = 'left';
   @Input({ transform: booleanAttribute }) multi: boolean = false;
 
   @ContentChildren(ExpansionPanelComponent)

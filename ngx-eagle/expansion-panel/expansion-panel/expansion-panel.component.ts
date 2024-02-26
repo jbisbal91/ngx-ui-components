@@ -23,7 +23,7 @@ import { NgxExpandIconPosition, NgxType } from '../typings';
       <div
         (click)="expand()"
         class="header"
-        [class.border-bottom-header]="expanded"
+        [class.border-bottom-header]="expanded && ngxType !== 'default'"
         [class.expand-icon-position]="ngxExpandIconPosition === 'left'"
         [class.disabled]="disabled"
       >

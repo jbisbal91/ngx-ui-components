@@ -1,4 +1,4 @@
-const AccordionType = ['card', 'bordered', 'line'] as const;
+const AccordionType = ['card', 'bordered', 'default'] as const;
 export type NgxType = (typeof AccordionType)[number];
 
 const AccordionExpandIconPosition = ['left', 'right'] as const;

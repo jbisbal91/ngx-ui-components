@@ -29,15 +29,18 @@
 .exp-panel .header {
   display: flex;
   justify-content: space-between;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  font-weight: 600;
   cursor: pointer;
   min-height: 2.875rem;
   width: 100%;
   align-items: center;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.exp-panel>.header span {
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: 400;
 }
 
 .exp-panel .content {
