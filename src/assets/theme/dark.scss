@@ -1,6 +1,6 @@
 :root[theme="dark"] {
-  --ngx-theme-background: #1F1F1F;
-  --ngx-theme-color: var(--md-sys-color-on-background-dark);
+  --ngx-theme-background: rgb(31, 31, 31);
+  --ngx-theme-color: rgb(232, 234, 237);
   --ngx-theme-bg-navbar: #1F1F1F;
   --ngx-theme-bg-navbar-selected: rgb(51, 54, 56);
   --ngx-theme-bg-component-nav: rgb(43, 43, 43);
@@ -11,8 +11,7 @@
   --ngx-theme-cv-doc-tab-border-bottom-3: 3px solid #fafafa;
   --ngx-theme-color-cv-doc-tab: rgb(232, 234, 237);
   --ngx-theme-bg-dvt: rgb(43, 43, 43);
-  --ngx-theme-filter-cviewer: invert(95%) sepia(8%) saturate(67%)
-    hue-rotate(177deg) brightness(97%) contrast(96%);
+  --ngx-theme-filter-cviewer: invert(95%) sepia(8%) saturate(67%) hue-rotate(177deg) brightness(97%) contrast(96%);
   --ngx-theme-c-nav-box-shadow: 0 0 0 transparent;
 
   --ngx-comp-button-bg-color: #6750A4;
