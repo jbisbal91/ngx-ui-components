@@ -79,11 +79,12 @@ export class ExpansionPanelComponent implements ExpansionPanel {
     new EventEmitter<ExpansionPanelComponent>();
 
   public id: string = Guid.create();
+
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input({ transform: booleanAttribute }) expanded: boolean = false;
   @Input({ transform: booleanAttribute }) hideToggle: boolean = false;
-
   @Input() ngxLabel: any | TemplateRef<void>;
+
   ngxColor: string = '';
   ngxType!: NgxType;
   ngxExpandIconPosition!: NgxExpandIconPosition;
