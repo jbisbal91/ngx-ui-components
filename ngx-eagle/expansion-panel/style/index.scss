@@ -9,12 +9,22 @@
   margin-bottom: 8px;
 }
 
-.exp-panel .rotate {
+.exp-panel .rotate-left {
+  rotate: 0deg;
+  transition: rotate 0.2s ease-out;
+}
+
+.exp-panel .no-rotate-left {
+  rotate: -90deg;
+  transition: rotate 0.2s ease-out;
+}
+
+.exp-panel .rotate-right {
   rotate: 180deg;
   transition: rotate 0.2s ease-out;
 }
 
-.exp-panel .no-rotate {
+.exp-panel .no-rotate-right {
   rotate: 0deg;
   transition: rotate 0.2s ease-out;
 }
@@ -45,6 +55,10 @@
 
 .exp-panel .content {
   padding: 1rem;
+}
+
+.exp-panel .content-default {
+  padding-left: 1rem;
 }
 
 .border-bottom-header {

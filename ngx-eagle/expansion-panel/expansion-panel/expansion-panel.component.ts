@@ -17,7 +17,7 @@ import { NgxExpandIconPosition, NgxType } from '../typings';
       class="exp-panel"
       [class.card-type]="ngxType && ngxType === 'card'"
       [class.bordered-type]="ngxType && ngxType === 'bordered'"
-      [class.border-bottom-exp-item]="ngxType === 'bordered' && lastExP"      
+      [class.border-bottom-exp-item]="ngxType === 'bordered' && lastExP"
       [style.backgroundColor]="ngxColor"
     >
       <div
@@ -28,7 +28,18 @@ import { NgxExpandIconPosition, NgxType } from '../typings';
         [class.disabled]="disabled"
       >
         <span>{{ label }}</span>
-        <span class="arrow flex" [ngClass]="expanded ? 'rotate' : 'no-rotate'">
+        <span
+          class="arrow flex"
+          [ngClass]="
+            expanded
+              ? ngxExpandIconPosition == 'left'
+                ? 'rotate-left'
+                : 'rotate-right'
+              : ngxExpandIconPosition == 'left'
+              ? 'no-rotate-left'
+              : 'no-rotate-right'
+          "
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -40,7 +51,11 @@ import { NgxExpandIconPosition, NgxType } from '../typings';
           </svg>
         </span>
       </div>
-      <div class="content" *ngIf="expanded">
+      <div
+        [class.content]="ngxType !== 'default'"
+        [class.content-default]="ngxType === 'default'"
+        *ngIf="expanded"
+      >
         <ng-content></ng-content>
       </div>
     </div>
