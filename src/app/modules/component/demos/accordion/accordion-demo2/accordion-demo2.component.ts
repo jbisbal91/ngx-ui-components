@@ -3,8 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-accordion-demo2',
   templateUrl: './accordion-demo2.component.html',
-  styleUrls: ['./accordion-demo2.component.scss']
+  styleUrls: ['./accordion-demo2.component.scss'],
 })
 export class AccordionDemo2Component {
-  ngxType:any = 'card'
+  ngxType: any = 'card';
+
+  ngxActiveChange(event: any) {
+    console.log(event);
+  }
 }

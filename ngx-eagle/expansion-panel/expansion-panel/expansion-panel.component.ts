@@ -75,7 +75,7 @@ import { NgxExpandIconPosition, NgxType } from '../typings';
   imports: [NgClass, NgIf, NgTemplateOutlet],
 })
 export class ExpansionPanelComponent implements ExpansionPanel {
-  @Output() onClick: EventEmitter<ExpansionPanelComponent> =
+  @Output() ngxActiveChange: EventEmitter<ExpansionPanelComponent> =
     new EventEmitter<ExpansionPanelComponent>();
 
   public id: string = Guid.create();
@@ -100,11 +100,11 @@ export class ExpansionPanelComponent implements ExpansionPanel {
       return;
     }
     const expansionPanel = new ExpansionPanelComponent();
-    expansionPanel.expanded = this.expanded;
+    expansionPanel.expanded = !this.expanded;
     expansionPanel.ngxLabel = this.ngxLabel;
     expansionPanel.disabled = this.disabled;
     expansionPanel.id = this.id;
-    this.onClick.emit(expansionPanel);
+    this.ngxActiveChange.emit(expansionPanel);
   }
 
   typeOf(value: any) {

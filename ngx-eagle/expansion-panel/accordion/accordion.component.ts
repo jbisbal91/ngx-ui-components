@@ -67,7 +67,7 @@ export class AccordionComponent
   ngAfterContentInit(): void {
     this.expansionPanels.forEach((ep) => {
       this.subscription.add(
-        ep.onClick.subscribe((value) => {
+        ep.ngxActiveChange.subscribe((value) => {
           this.expand(value);
         })
       );
@@ -77,7 +77,7 @@ export class AccordionComponent
   expand(component: any) {
     this.expansionPanels.forEach((ep) => {
       if (ep.id === component.id) {
-        ep.expanded = ep.expanded ? false : true;
+        ep.expanded = !ep.expanded;
       } else {
         if (!this.multi) {
           ep.expanded = false;
