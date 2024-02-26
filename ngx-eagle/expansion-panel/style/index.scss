@@ -45,6 +45,7 @@
   align-items: center;
   padding-left: 1rem;
   padding-right: 1rem;
+  word-break: break-word;
 }
 
 .exp-panel>.header span {
@@ -55,10 +56,12 @@
 
 .exp-panel .content {
   padding: 1rem;
+  word-break: break-word;
 }
 
 .exp-panel .content-default {
   padding-left: 1rem;
+  word-break: break-word;
 }
 
 .border-bottom-header {
@@ -79,6 +82,7 @@
   direction: rtl;
   justify-content: end !important;
   gap: 0.5rem;
+  text-align: left;
 }
 
 .exp-panel>.header.disabled {

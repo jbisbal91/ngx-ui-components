@@ -5,21 +5,21 @@
 
 <ngx-accordion
   [ngxType]="ngxType"
-
   [multi]="false"
   ngxColor="var(--ngx-theme-bg-epanel)"
 >
   <ngx-expansion-panel
-    label="This is panel header 1"
+    ngxLabel="This is panel header 1"
     [expanded]="true"
-    [disabled]="true"
+    disabled
   >
     <p>This is panel header 1 content</p>
   </ngx-expansion-panel>
-  <ngx-expansion-panel label="This is panel header 2">
+  <ngx-expansion-panel ngxLabel="This is panel header 2" 
+  hideToggle>
     <p>This is panel header 2 content</p>
   </ngx-expansion-panel>
-  <ngx-expansion-panel label="This is panel header 3">
+  <ngx-expansion-panel ngxLabel="This is panel header 3">
     <p>This is panel header 3 content</p>
   </ngx-expansion-panel>
 </ngx-accordion>

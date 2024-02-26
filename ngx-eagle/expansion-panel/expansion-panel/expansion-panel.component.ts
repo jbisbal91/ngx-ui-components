@@ -1,12 +1,15 @@
 import {
   Component,
+  ElementRef,
   EventEmitter,
   Input,
+  Optional,
   Output,
+  TemplateRef,
   booleanAttribute,
 } from '@angular/core';
 import { ExpansionPanel } from '../expansion-panel.interface';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass, NgIf, NgTemplateOutlet } from '@angular/common';
 import { Guid } from 'ngx-eagle/core/services';
 import { NgxExpandIconPosition, NgxType } from '../typings';
 
@@ -27,8 +30,13 @@ import { NgxExpandIconPosition, NgxType } from '../typings';
         [class.expand-icon-position]="ngxExpandIconPosition === 'left'"
         [class.disabled]="disabled"
       >
-        <span>{{ label }}</span>
+        <span *ngIf="typeOf(ngxLabel) === 'string'">{{ ngxLabel }}</span>
+        <ng-template
+          *ngIf="typeOf(ngxLabel) === 'object'"
+          [ngTemplateOutlet]="ngxLabel"
+        ></ng-template>
         <span
+          *ngIf="!hideToggle"
           class="arrow flex"
           [ngClass]="
             expanded
@@ -64,7 +72,7 @@ import { NgxExpandIconPosition, NgxType } from '../typings';
   host: {
     class: 'ngx-expansion-panel',
   },
-  imports: [NgClass, NgIf],
+  imports: [NgClass, NgIf, NgTemplateOutlet],
 })
 export class ExpansionPanelComponent implements ExpansionPanel {
   @Output() onClick: EventEmitter<ExpansionPanelComponent> =
@@ -73,12 +81,19 @@ export class ExpansionPanelComponent implements ExpansionPanel {
   public id: string = Guid.create();
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input({ transform: booleanAttribute }) expanded: boolean = false;
-  @Input() label: string = '';
+  @Input({ transform: booleanAttribute }) hideToggle: boolean = false;
+
+  @Input() ngxLabel: any | TemplateRef<void>;
   ngxColor: string = '';
   ngxType!: NgxType;
   ngxExpandIconPosition!: NgxExpandIconPosition;
 
   lastExP: boolean = false;
+
+  constructor(private elementRef?: ElementRef) {
+    this.disabled = this.elementRef?.nativeElement.hasAttribute('disabled');
+    this.hideToggle = this.elementRef?.nativeElement.hasAttribute('hideToggle');
+  }
 
   expand() {
     if (this.disabled) {
@@ -86,9 +101,13 @@ export class ExpansionPanelComponent implements ExpansionPanel {
     }
     const expansionPanel = new ExpansionPanelComponent();
     expansionPanel.expanded = this.expanded;
-    expansionPanel.label = this.label;
+    expansionPanel.ngxLabel = this.ngxLabel;
     expansionPanel.disabled = this.disabled;
     expansionPanel.id = this.id;
     this.onClick.emit(expansionPanel);
+  }
+
+  typeOf(value: any) {
+    return typeof value;
   }
 }
