@@ -17,7 +17,8 @@ import { NgxExpandIconPosition, NgxType } from '../typings';
       class="exp-panel"
       [class.card-type]="ngxType && ngxType === 'card'"
       [class.bordered-type]="ngxType && ngxType === 'bordered'"
-      [class.border-bottom-exp-item]="ngxType === 'bordered' && lastExP"
+      [class.border-bottom-exp-item]="ngxType === 'bordered' && lastExP"      
+      [style.backgroundColor]="ngxColor"
     >
       <div
         (click)="expand()"
@@ -33,6 +34,7 @@ import { NgxExpandIconPosition, NgxType } from '../typings';
             height="24"
             viewBox="0 -960 960 960"
             width="24"
+            fill="currentColor"
           >
             <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
           </svg>
@@ -57,6 +59,7 @@ export class ExpansionPanelComponent implements ExpansionPanel {
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input({ transform: booleanAttribute }) expanded: boolean = false;
   @Input() label: string = '';
+  ngxColor: string = '';
   ngxType!: NgxType;
   ngxExpandIconPosition!: NgxExpandIconPosition;
 

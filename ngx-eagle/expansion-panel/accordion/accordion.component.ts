@@ -10,6 +10,7 @@ import {
   OnDestroy,
   QueryList,
   SimpleChanges,
+  booleanAttribute,
 } from '@angular/core';
 import { ExpansionPanelComponent } from '../expansion-panel/expansion-panel.component';
 import { Subscription } from 'rxjs';
@@ -24,8 +25,10 @@ import { NgxExpandIconPosition, NgxType } from '../typings';
 export class AccordionComponent
   implements AfterViewInit, AfterContentInit, OnChanges, OnDestroy
 {
+  @Input() ngxColor: string = '';
   @Input() ngxType: NgxType = 'line';
-  @Input() ngxExpandIconPosition:NgxExpandIconPosition = 'right'
+  @Input() ngxExpandIconPosition: NgxExpandIconPosition = 'right';
+  @Input({ transform: booleanAttribute }) multi: boolean = false;
 
   @ContentChildren(ExpansionPanelComponent)
   public expansionPanels!: QueryList<ExpansionPanelComponent>;
@@ -36,7 +39,7 @@ export class AccordionComponent
 
   ngOnChanges(): void {
     setTimeout(() => {
-      this.setType();
+      this.setProp();
     });
     this.cdr.markForCheck();
   }
@@ -48,13 +51,14 @@ export class AccordionComponent
   ngAfterViewInit(): void {
     this.expansionPanels.last.lastExP = true;
     setTimeout(() => {
-      this.setType();
+      this.setProp();
     });
   }
 
-  setType() {
+  setProp() {
     if (this.expansionPanels) {
       this.expansionPanels.forEach((exPanel) => {
+        exPanel.ngxColor = this.ngxColor;
         exPanel.ngxType = this.ngxType;
         exPanel.ngxExpandIconPosition = this.ngxExpandIconPosition;
       });
@@ -76,7 +80,9 @@ export class AccordionComponent
       if (ep.id === component.id) {
         ep.expanded = ep.expanded ? false : true;
       } else {
-        ep.expanded = false;
+        if (!this.multi) {
+          ep.expanded = false;
+        }
       }
     });
   }

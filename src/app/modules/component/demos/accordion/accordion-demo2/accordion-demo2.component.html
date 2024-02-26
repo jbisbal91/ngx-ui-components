@@ -3,8 +3,17 @@
   <ngx-radio-button ngxValue="bordered"> Bordered </ngx-radio-button>
 </ngx-radio-group>
 
-<ngx-accordion [ngxType]="ngxType" ngxExpandIconPosition="left">
-  <ngx-expansion-panel label="This is panel header 1" [expanded]="true" [disabled]="true">
+<ngx-accordion
+  [ngxType]="ngxType"
+  ngxExpandIconPosition="left"
+  [multi]="true"
+  ngxColor="var(--ngx-theme-bg-epanel)"
+>
+  <ngx-expansion-panel
+    label="This is panel header 1"
+    [expanded]="true"
+    [disabled]="true"
+  >
     <p>This is panel header 1 content</p>
   </ngx-expansion-panel>
   <ngx-expansion-panel label="This is panel header 2">
