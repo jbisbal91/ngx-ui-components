@@ -108,29 +108,32 @@ export class InputComponent
   }
 
   initialize() {
-    this.ngControl.control?.setValue(this.value);
-    const borderRadius =
-      this.ngxFillMode === 'outlined'
-        ? ngxRoundedOutlinedMap[this.ngxRounded]
-        : ngxRoundedfilledMap[this.ngxRounded];
-    this.renderer.setStyle(
-      this.containerRef.nativeElement,
-      'height',
-      ngxSizeMap[this.ngxSize]
-    );
-    this.renderer.setStyle(
-      this.containerRef.nativeElement,
-      'color',
-      this.ngxColor
-    );
-    this.renderer.setStyle(
-      this.containerRef.nativeElement,
-      'border-radius',
-      borderRadius
-    );
-    this.renderer.setStyle(this.labelRef.nativeElement, 'position', 'absolute');
-    this.placeholder = this.inputRef.nativeElement.placeholder;
-    this.moveLabel();
+    setTimeout(()=> {
+      this.renderer.setStyle(this.inputRef.nativeElement, 'color', "green");
+      this.ngControl.control?.setValue(this.value);
+      const borderRadius =
+        this.ngxFillMode === 'outlined'
+          ? ngxRoundedOutlinedMap[this.ngxRounded]
+          : ngxRoundedfilledMap[this.ngxRounded];
+      this.renderer.setStyle(
+        this.containerRef?.nativeElement,
+        'height',
+        ngxSizeMap[this.ngxSize]
+      );
+      this.renderer.setStyle(
+        this.containerRef?.nativeElement,
+        'color',
+        this.ngxColor
+      );
+      this.renderer.setStyle(
+        this.containerRef?.nativeElement,
+        'border-radius',
+        borderRadius
+      );    
+      this.renderer.setStyle(this.labelRef?.nativeElement, 'position', 'absolute');
+      this.placeholder = this.inputRef?.nativeElement.placeholder;
+      this.moveLabel();
+    })
   }
 
   writeValue(value: any): void {
@@ -193,7 +196,6 @@ export class InputComponent
       const containerWidth = this.containerRef.nativeElement.offsetWidth;
       const labelWidth = this.labelRef.nativeElement.offsetWidth;
       const percent = ((labelWidth + 10) / containerWidth) * 100;
-
       const color = this.valStatus ? this.ngxColor : '#F44336';
       const background = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
       this.renderer.setStyle(
@@ -222,5 +224,6 @@ export class InputComponent
       this.ngControl.status?.toLowerCase() === 'valid' ? true : false;
     const color = this.valStatus ? this.ngxColor : '#F44336';
     this.renderer.setStyle(this.containerRef.nativeElement, 'color', color);
+    this.renderer.setStyle(this.inputRef.nativeElement, 'caret-color', color);
   }
 }
