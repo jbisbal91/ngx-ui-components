@@ -109,14 +109,26 @@ export class InputComponent
 
   initialize() {
     this.ngControl.control?.setValue(this.value);
-    this.containerRef.nativeElement.style.height = ngxSizeMap[this.ngxSize];
-    this.containerRef.nativeElement.style.color = this.ngxColor;
-
-    this.containerRef.nativeElement.style.borderRadius =
+    const borderRadius =
       this.ngxFillMode === 'outlined'
         ? ngxRoundedOutlinedMap[this.ngxRounded]
         : ngxRoundedfilledMap[this.ngxRounded];
-    this.labelRef.nativeElement.style.position = 'absolute';
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'height',
+      ngxSizeMap[this.ngxSize]
+    );
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'color',
+      this.ngxColor
+    );
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'border-radius',
+      borderRadius
+    );
+    this.renderer.setStyle(this.labelRef.nativeElement, 'position', 'absolute');
     this.placeholder = this.inputRef.nativeElement.placeholder;
     this.moveLabel();
   }
