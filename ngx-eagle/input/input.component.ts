@@ -88,6 +88,7 @@ export class InputComponent
     this.inputRef.nativeElement.addEventListener('focus', () => {
       this.inputFocus = true;
       this.moveLabel();
+      console.log('focus')
     });
     //Se lanza el evento cuando se desenfoca del input
     this.inputRef.nativeElement.addEventListener('blur', () => {
@@ -165,8 +166,8 @@ export class InputComponent
       const containerWidth = this.containerRef.nativeElement.offsetWidth;
       const labelWidth = this.labelRef.nativeElement.offsetWidth;
       const percent = ((labelWidth + 10) / containerWidth) * 100;
-      let color = this.valStatus // validacion
-        ? this.inputFocus // si esta el input con el focus activo coloca el color que le corresponde
+      let color = !this.valStatus // validacion
+        ? !this.inputFocus // si esta el input con el focus activo coloca el color que le corresponde
           ? 'var(--ngx-comp-form-field-filled-border-color)'
           : 'currentColor'
         : '#F44336';
