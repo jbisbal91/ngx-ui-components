@@ -6,6 +6,7 @@ import {
   Input,
   OnChanges,
   Optional,
+  Renderer2,
   Self,
   ViewChild,
 } from '@angular/core';
@@ -75,6 +76,7 @@ export class InputComponent
   constructor(
     public elementRef: ElementRef,
     private cdr: ChangeDetectorRef,
+    private renderer: Renderer2,
     @Optional() @Self() public ngControl: NgControl
   ) {
     if (this.ngControl) {
@@ -168,13 +170,13 @@ export class InputComponent
       const percent = ((labelWidth + 10) / containerWidth) * 100;
       let color = !this.valStatus // validacion
         ? !this.inputFocus // si esta el input con el focus activo coloca el color que le corresponde
-          ? 'var(--ngx-comp-form-field-filled-border-color)'
+          ? '#F44336'
           : 'currentColor'
-        : '#F44336';
-      const background = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
+        : 'currentColor';
+      const borderTopColor = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
       const borderColor = `transparent ${color} ${color}`;
       this.containerRef.nativeElement.style.borderColor = borderColor;
-      this.containerRef.nativeElement.style.background = background;
+      this.containerRef.nativeElement.style.background = borderTopColor;
     }
   }
 
@@ -196,7 +198,7 @@ export class InputComponent
       : '#F44336';
 
     this.inputRef.nativeElement.style.color = this.valStatus
-      ? 'var(--ngx-comp-form-field-filled-border-color)'
+      ? 'currentColor'
       : '#F44336';
   }
 }
