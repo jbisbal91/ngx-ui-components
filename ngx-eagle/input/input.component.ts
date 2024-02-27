@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { NgxFillMode, NgxRounded, NgxSize } from './typings';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { ColorContrast } from 'ngx-eagle/core/types';
 
 const ngxSizeMap = {
   small: '2.5rem',
@@ -60,6 +61,7 @@ export class InputComponent
   @Input() ngxRounded: NgxRounded = 'medium';
   @Input() ngxFillMode: NgxFillMode = 'filled';
   @Input() label: string = '';
+  @Input() ngxColor: ColorContrast | string = '#1890FF';
   @Input() placeholder: string = '';
 
   @ViewChild('input_container') containerRef!: ElementRef;
@@ -89,14 +91,14 @@ export class InputComponent
     //Se lanza el evento cuando se esta haciendo focus en el input
     this.inputRef.nativeElement.addEventListener('focus', () => {
       this.inputFocus = true;
+      this.validate();
       this.moveLabel();
-      console.log('focus')
     });
     //Se lanza el evento cuando se desenfoca del input
     this.inputRef.nativeElement.addEventListener('blur', () => {
       this.inputFocus = false;
-      this.moveLabel();
       this.validate();
+      this.moveLabel();
     });
   }
 
@@ -106,17 +108,17 @@ export class InputComponent
   }
 
   initialize() {
-    setTimeout(() => {
-      this.ngControl.control?.setValue(this.value);
-      this.containerRef.nativeElement.style.height = ngxSizeMap[this.ngxSize];
-      this.containerRef.nativeElement.style.borderRadius =
-        this.ngxFillMode === 'outlined'
-          ? ngxRoundedOutlinedMap[this.ngxRounded]
-          : ngxRoundedfilledMap[this.ngxRounded];
-      this.labelRef.nativeElement.style.position = 'absolute';
-      this.placeholder = this.inputRef.nativeElement.placeholder;
-      this.moveLabel();
-    });
+    this.ngControl.control?.setValue(this.value);
+    this.containerRef.nativeElement.style.height = ngxSizeMap[this.ngxSize];
+    this.containerRef.nativeElement.style.color = this.ngxColor;
+
+    this.containerRef.nativeElement.style.borderRadius =
+      this.ngxFillMode === 'outlined'
+        ? ngxRoundedOutlinedMap[this.ngxRounded]
+        : ngxRoundedfilledMap[this.ngxRounded];
+    this.labelRef.nativeElement.style.position = 'absolute';
+    this.placeholder = this.inputRef.nativeElement.placeholder;
+    this.moveLabel();
   }
 
   writeValue(value: any): void {
@@ -141,19 +143,30 @@ export class InputComponent
     if (this.labelRef) {
       const containerHeight = this.containerRef.nativeElement.offsetHeight;
       if (this.inputFocus || this.value) {
-        const top = this.ngxFillMode === 'outlined' ? '-0.375rem ' : '0px';
-        this.labelRef.nativeElement.style.top = top;
-        this.labelRef.nativeElement.style.fontSize = '0.75rem';
-        this.inputRef.nativeElement.placeholder = this.placeholder;
-        this.buildBorderOutlined();
+        this.applyFocusedStyle();
       } else {
-        const top = `${(containerHeight * 0.3333) / 16}rem`;
-        this.labelRef.nativeElement.style.top = top;
-        this.labelRef.nativeElement.style.fontSize = '0.875rem';
-        this.inputRef.nativeElement.placeholder = '';
-        this.drawLineTopBorder();
+        this.applyDefaultStyle(containerHeight);
       }
     }
+  }
+
+  private applyFocusedStyle() {
+    const top = this.ngxFillMode === 'outlined' ? '-0.375rem' : '0px';
+    this.setLabelStyle(top, '0.75rem');
+    this.inputRef.nativeElement.placeholder = this.placeholder;
+    this.buildBorderOutlined();
+  }
+
+  private applyDefaultStyle(containerHeight: number) {
+    const top = `${(containerHeight * 0.3333) / 16}rem`;
+    this.setLabelStyle(top, '0.875rem');
+    this.inputRef.nativeElement.placeholder = '';
+    this.drawLineTopBorder();
+  }
+
+  private setLabelStyle(top: string, fontSize: string) {
+    this.renderer.setStyle(this.labelRef.nativeElement, 'top', top);
+    this.renderer.setStyle(this.labelRef.nativeElement, 'font-size', fontSize);
   }
 
   onInputChange(event: Event): void {
@@ -168,37 +181,34 @@ export class InputComponent
       const containerWidth = this.containerRef.nativeElement.offsetWidth;
       const labelWidth = this.labelRef.nativeElement.offsetWidth;
       const percent = ((labelWidth + 10) / containerWidth) * 100;
-      let color = !this.valStatus // validacion
-        ? !this.inputFocus // si esta el input con el focus activo coloca el color que le corresponde
-          ? '#F44336'
-          : 'currentColor'
-        : 'currentColor';
-      const borderTopColor = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
-      const borderColor = `transparent ${color} ${color}`;
-      this.containerRef.nativeElement.style.borderColor = borderColor;
-      this.containerRef.nativeElement.style.background = borderTopColor;
+
+      const color = this.valStatus ? this.ngxColor : '#F44336';
+      const background = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
+      this.renderer.setStyle(
+        this.containerRef.nativeElement,
+        'background',
+        background
+      );
     }
   }
 
   drawLineTopBorder() {
+    const color = this.valStatus ? this.ngxColor : '#F44336';
     const background =
       this.ngxFillMode === 'outlined'
-        ? 'linear-gradient(to right, transparent 0%, currentColor 0%) no-repeat top/100% 1px'
+        ? `linear-gradient(to right, transparent 0%, ${color} 0%) no-repeat top/100% 1px`
         : 'none';
-    const borderColor = `transparent currentColor currentColor`;
-    this.containerRef.nativeElement.style.borderColor = borderColor;
-    this.containerRef.nativeElement.style.background = background;
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'background',
+      background
+    );
   }
 
   validate() {
     this.valStatus =
       this.ngControl.status?.toLowerCase() === 'valid' ? true : false;
-    this.containerRef.nativeElement.style.color = this.valStatus
-      ? 'currentColor'
-      : '#F44336';
-
-    this.inputRef.nativeElement.style.color = this.valStatus
-      ? 'currentColor'
-      : '#F44336';
+    const color = this.valStatus ? this.ngxColor : '#F44336';
+    this.renderer.setStyle(this.containerRef.nativeElement, 'color', color);
   }
 }

@@ -18,7 +18,7 @@
   box-sizing: border-box;
   border-width: 1px;
   border-style: solid;
-  color: var(--ngx-comp-input-color);
+  color: currentColor !important;
   background: none;
   font-family: inherit;
   text-decoration: none;
@@ -45,6 +45,6 @@
 
 .ngx-input.ngx-input-filled {
   border: none;
-  background-color: var(--ngx-comp-form-field-filled-background-color) !important;
+  background-color: rgb(245, 245, 245)!important;
   border-bottom: 1px solid;
 }
