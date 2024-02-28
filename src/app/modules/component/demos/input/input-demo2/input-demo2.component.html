@@ -1,33 +1,27 @@
 <div class="flex gap-x-6">
-  <ngx-input
+  <ngx-outlined-text-field
     ngxFillMode="outlined"
     label="Label1"
     placeholder="Placeholder1"
     [ngModel]="'Text1'"
   >
-  </ngx-input>
+  </ngx-outlined-text-field>
 
   <form>
-    <ngx-input
-      ngxFillMode="outlined"
+    <ngx-outlined-text-field
       label="Label2"
       placeholder="Placeholder2"
       [formControl]="inputFormControl"
     >
-    </ngx-input>
+    </ngx-outlined-text-field>
   </form>
 
   <form [formGroup]="inputForm">
-    <ngx-input
-      ngxFillMode="outlined"
-      [ngxColor]="{
-        backgroundColor: 'var(--ngx-comp-button-bg-color)',
-        overlayColor: 'var(--ngx-comp-button-color)'
-      }"
+    <ngx-outlined-text-field
       label="Label3333"
       placeholder="Placeholder3"
       formControlName="input3"
     >
-    </ngx-input>
+    </ngx-outlined-text-field>
   </form>
 </div>
