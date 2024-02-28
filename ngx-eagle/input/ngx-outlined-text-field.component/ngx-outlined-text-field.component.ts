@@ -39,6 +39,8 @@ export class NgxOutlinedTextFieldComponent
   @ViewChild('input_label') labelRef!: ElementRef;
   @ViewChild('input') inputRef!: ElementRef;
 
+  borderColor: string = 'currentColor';
+
   onChange: any = () => {};
   onTouched: any = () => {};
   value: any;
@@ -57,6 +59,8 @@ export class NgxOutlinedTextFieldComponent
   }
 
   ngAfterViewInit() {
+    this.customProperties();
+
     this.initialize();
     //Se lanza el evento cuando se esta haciendo focus en el input
     this.inputRef.nativeElement.addEventListener('focus', () => {
@@ -70,6 +74,34 @@ export class NgxOutlinedTextFieldComponent
       this.validate();
       this.moveLabel();
     });
+  }
+
+  customProperties() {
+    this.borderColor = window
+      .getComputedStyle(this.elementRef.nativeElement)
+      .getPropertyValue('border-color');
+
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'border-color',
+      this.borderColor
+    );
+
+    const borederRadius = window
+      .getComputedStyle(this.elementRef.nativeElement)
+      .getPropertyValue('border-radius');
+
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'border-radius',
+      borederRadius !== '0px' ? borederRadius : '4px'
+    );
+
+    const color = window
+      .getComputedStyle(this.elementRef.nativeElement)
+      .getPropertyValue('color');
+
+    this.renderer.setStyle(this.containerRef.nativeElement, 'color', color);
   }
 
   ngOnChanges(): void {
@@ -141,9 +173,9 @@ export class NgxOutlinedTextFieldComponent
   buildBorderOutlined() {
     const containerWidth = this.containerRef.nativeElement.offsetWidth;
     const labelWidth = this.labelRef.nativeElement.offsetWidth;
-    const percent = ((labelWidth + 10) / containerWidth) * 100;
-    const color = this.valStatus ? 'currentColor' : '#F44336';
-    const background = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
+    const percent = ((labelWidth + 16) / containerWidth) * 100;
+    const color = this.valStatus ? this.borderColor : '#F44336';
+    const background = `linear-gradient(to right, ${color} 8px, transparent 8px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
     this.renderer.setStyle(
       this.containerRef.nativeElement,
       'background',
@@ -152,7 +184,7 @@ export class NgxOutlinedTextFieldComponent
   }
 
   drawLineTopBorder() {
-    const color = this.valStatus ? 'currentColor' : '#F44336';
+    const color = this.valStatus ? this.borderColor : '#F44336';
     this.renderer.setStyle(
       this.containerRef.nativeElement,
       'background',
@@ -163,7 +195,11 @@ export class NgxOutlinedTextFieldComponent
   validate() {
     this.valStatus =
       this.ngControl.status?.toLowerCase() === 'valid' ? true : false;
-    const color = this.valStatus ? 'currentColor' : '#F44336';
-    this.renderer.setStyle(this.containerRef.nativeElement, 'color', color);
+    const color = this.valStatus ? this.borderColor : '#F44336';
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'border-color',
+      color
+    );
   }
 }
