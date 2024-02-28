@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   Input,
@@ -8,11 +7,13 @@ import {
   Optional,
   Renderer2,
   Self,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { NgxFillMode, NgxRounded, NgxSize } from './typings';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { ColorContrast } from 'ngx-eagle/core/types';
+import { ColorConverter } from 'ngx-eagle/core/services';
 
 const ngxSizeMap = {
   small: '2.5rem',
@@ -75,10 +76,13 @@ export class InputComponent
   disabled: boolean = false;
   inputFocus = false;
 
+  backgroundColor: string = 'currentColor';
+  color: string = 'currentColor';
+
   constructor(
     public elementRef: ElementRef,
-    private cdr: ChangeDetectorRef,
     private renderer: Renderer2,
+    private colorConverter: ColorConverter,
     @Optional() @Self() public ngControl: NgControl
   ) {
     if (this.ngControl) {
@@ -102,14 +106,32 @@ export class InputComponent
     });
   }
 
-  ngOnChanges(): void {
-    this.initialize();
-    this.cdr.markForCheck();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.hasOwnProperty('ngxColor')) {
+      const newColor = changes['ngxColor']?.currentValue;
+      if (typeof newColor === 'string') {
+        const { backgroundColor, overlayColor } =
+          this.colorConverter.contrastingColors(newColor);
+        this.backgroundColor = backgroundColor;
+        this.color = overlayColor;
+      }
+      if (typeof newColor === 'object') {
+        this.backgroundColor = newColor.backgroundColor;
+        this.color = newColor.overlayColor;
+      }
+      this.initialize();
+    }
   }
 
   initialize() {
-    setTimeout(()=> {
-      this.renderer.setStyle(this.inputRef.nativeElement, 'color', "green");
+    setTimeout(() => {
+      this.renderer.setStyle(
+        this.inputRef.nativeElement,
+        'background-color',
+        this.ngxFillMode === 'filled' ? this.backgroundColor : 'transparent'
+      );
+
+      this.renderer.setStyle(this.inputRef.nativeElement, 'color', this.color);
       this.ngControl.control?.setValue(this.value);
       const borderRadius =
         this.ngxFillMode === 'outlined'
@@ -123,17 +145,21 @@ export class InputComponent
       this.renderer.setStyle(
         this.containerRef?.nativeElement,
         'color',
-        this.ngxColor
+        this.backgroundColor
       );
       this.renderer.setStyle(
         this.containerRef?.nativeElement,
         'border-radius',
         borderRadius
-      );    
-      this.renderer.setStyle(this.labelRef?.nativeElement, 'position', 'absolute');
+      );
+      this.renderer.setStyle(
+        this.labelRef?.nativeElement,
+        'position',
+        'absolute'
+      );
       this.placeholder = this.inputRef?.nativeElement.placeholder;
       this.moveLabel();
-    })
+    });
   }
 
   writeValue(value: any): void {
@@ -196,7 +222,7 @@ export class InputComponent
       const containerWidth = this.containerRef.nativeElement.offsetWidth;
       const labelWidth = this.labelRef.nativeElement.offsetWidth;
       const percent = ((labelWidth + 10) / containerWidth) * 100;
-      const color = this.valStatus ? this.ngxColor : '#F44336';
+      const color = this.valStatus ? this.backgroundColor : '#F44336';
       const background = `linear-gradient(to right, ${color} 5px, transparent 5px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
       this.renderer.setStyle(
         this.containerRef.nativeElement,
@@ -207,7 +233,7 @@ export class InputComponent
   }
 
   drawLineTopBorder() {
-    const color = this.valStatus ? this.ngxColor : '#F44336';
+    const color = this.valStatus ? this.backgroundColor : '#F44336';
     const background =
       this.ngxFillMode === 'outlined'
         ? `linear-gradient(to right, transparent 0%, ${color} 0%) no-repeat top/100% 1px`
@@ -222,7 +248,7 @@ export class InputComponent
   validate() {
     this.valStatus =
       this.ngControl.status?.toLowerCase() === 'valid' ? true : false;
-    const color = this.valStatus ? this.ngxColor : '#F44336';
+    const color = this.valStatus ? this.backgroundColor : '#F44336';
     this.renderer.setStyle(this.containerRef.nativeElement, 'color', color);
     this.renderer.setStyle(this.inputRef.nativeElement, 'caret-color', color);
   }

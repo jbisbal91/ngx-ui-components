@@ -20,7 +20,11 @@
   <form [formGroup]="inputForm">
     <ngx-input
       ngxFillMode="outlined"
-      label="Label3"
+      [ngxColor]="{
+        backgroundColor: 'var(--ngx-comp-button-bg-color)',
+        overlayColor: 'var(--ngx-comp-button-color)'
+      }"
+      label="Label3333"
       placeholder="Placeholder3"
       formControlName="input3"
     >
