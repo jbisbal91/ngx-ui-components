@@ -33,17 +33,18 @@ export class NgxOutlinedTextFieldComponent
   implements AfterViewInit, ControlValueAccessor, OnChanges
 {
   @Input() label: string = '';
+  @Input() value: string = '';
   @Input() placeholder: string = '';
   _placeholder: string = '';
 
   @ViewChild('input_container') containerRef!: ElementRef;
   @ViewChild('input_label') labelRef!: ElementRef;
   @ViewChild('input') inputRef!: ElementRef;
-  
+
   borderColor: string = 'currentColor';
   onChange: any = () => {};
   onTouched: any = () => {};
-  value: any;
+
   valStatus: boolean = true;
   disabled: boolean = false;
   inputFocus = false;
@@ -117,7 +118,7 @@ export class NgxOutlinedTextFieldComponent
 
   initialize() {
     setTimeout(() => {
-      this.ngControl.control?.setValue(this.value);
+      this.ngControl?.control?.setValue(this.value);
       this._placeholder = this.placeholder;
       this.moveLabel();
     });
@@ -172,7 +173,7 @@ export class NgxOutlinedTextFieldComponent
 
   onInputChange(event: Event): void {
     this.value = (event.target as HTMLInputElement).value;
-    this.ngControl.control?.setValue(this.value);
+    this.ngControl?.control?.setValue(this.value);
     this.validate();
     this.buildBorderOutlined();
   }
@@ -200,13 +201,15 @@ export class NgxOutlinedTextFieldComponent
   }
 
   validate() {
-    this.valStatus =
-      this.ngControl.status?.toLowerCase() === 'valid' ? true : false;
-    const color = this.valStatus ? this.borderColor : '#F44336';
-    this.renderer.setStyle(
-      this.containerRef.nativeElement,
-      'border-color',
-      color
-    );
+    if (this.ngControl) {
+      this.valStatus =
+        this.ngControl.status?.toLowerCase() === 'valid' ? true : false;
+      const color = this.valStatus ? this.borderColor : '#F44336';
+      this.renderer.setStyle(
+        this.containerRef.nativeElement,
+        'border-color',
+        color
+      );
+    }
   }
 }
