@@ -34,11 +34,13 @@ export class NgxOutlinedTextFieldComponent
 {
   @Input() label: string = '';
   @Input() placeholder: string = '';
+  _placeholder: string = '';
 
   @ViewChild('input_container') containerRef!: ElementRef;
   @ViewChild('input_label') labelRef!: ElementRef;
   @ViewChild('input') inputRef!: ElementRef;
 
+  
   borderColor: string = 'currentColor';
 
   onChange: any = () => {};
@@ -60,7 +62,6 @@ export class NgxOutlinedTextFieldComponent
 
   ngAfterViewInit() {
     this.customProperties();
-
     this.initialize();
     //Se lanza el evento cuando se esta haciendo focus en el input
     this.inputRef.nativeElement.addEventListener('focus', () => {
@@ -77,41 +78,39 @@ export class NgxOutlinedTextFieldComponent
   }
 
   customProperties() {
-    this.borderColor = window
-      .getComputedStyle(this.elementRef.nativeElement)
-      .getPropertyValue('border-color');
+    const styles: any = {
+      'border-color': (value: any) => {
+        this.borderColor = value;
+        this.renderer.setStyle(
+          this.containerRef.nativeElement,
+          'border-color',
+          value
+        );
+      },
+      'border-radius': (value: any) =>
+        this.renderer.setStyle(
+          this.containerRef.nativeElement,
+          'border-radius',
+          value !== '0px' ? value : '4px'
+        ),
+      'font-size': (value: any) =>
+        this.renderer.setStyle(
+          this.inputRef.nativeElement,
+          'font-size',
+          value !== '0px' ? value : '14px'
+        ),
+    };
 
-    this.renderer.setStyle(
-      this.containerRef.nativeElement,
-      'border-color',
-      this.borderColor
+    const computedStyles = window.getComputedStyle(
+      this.elementRef.nativeElement
     );
 
-    const borederRadius = window
-      .getComputedStyle(this.elementRef.nativeElement)
-      .getPropertyValue('border-radius');
-
-    this.renderer.setStyle(
-      this.containerRef.nativeElement,
-      'border-radius',
-      borederRadius !== '0px' ? borederRadius : '4px'
-    );
-
-    const color = window
-      .getComputedStyle(this.elementRef.nativeElement)
-      .getPropertyValue('color');
-
-    this.renderer.setStyle(this.containerRef.nativeElement, 'color', color);
-
-    const fontSize = window
-      .getComputedStyle(this.elementRef.nativeElement)
-      .getPropertyValue('font-size');
-
-    this.renderer.setStyle(
-      this.inputRef.nativeElement,
-      'font-size',
-      fontSize !== '0px' ? fontSize : '14px'
-    );
+    for (const style in styles) {
+      if (styles.hasOwnProperty(style)) {
+        const value = computedStyles.getPropertyValue(style);
+        styles[style](value);
+      }
+    }
   }
 
   ngOnChanges(): void {
@@ -121,7 +120,7 @@ export class NgxOutlinedTextFieldComponent
   initialize() {
     setTimeout(() => {
       this.ngControl.control?.setValue(this.value);
-      this.placeholder = this.inputRef?.nativeElement.placeholder;
+      this._placeholder = this.placeholder;
       this.moveLabel();
     });
   }
@@ -157,7 +156,7 @@ export class NgxOutlinedTextFieldComponent
 
   private applyFocusedStyle() {
     this.setLabelStyle('-0.375rem', '0.75rem');
-    this.inputRef.nativeElement.placeholder = this.placeholder;
+    this.inputRef.nativeElement.placeholder = this._placeholder;
     this.buildBorderOutlined();
   }
 
