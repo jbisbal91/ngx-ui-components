@@ -9,10 +9,10 @@ select {
 }
 
 ngx-outlined-text-field {
-    height: 4rem;
-    width: 20rem;
+    height: 46px;
+    width: 200px;
     border-radius: 6px;
-    border-color: blue;
-    color: hotpink;
-    font-size: 26px;
+    border-color: var(--ngx-comp-button-bg-color);
+    color: var(--ngx-comp-button-color);
+    font-size: 16px;
 }

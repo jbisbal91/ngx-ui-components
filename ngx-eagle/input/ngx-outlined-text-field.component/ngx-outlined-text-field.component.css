@@ -13,6 +13,7 @@
   border: 1px solid;  
   border-radius: 6px;
   border-top: unset;
+  border-color: currentColor;
 }
 
 .ngx-outlined-text-field > .ngx-nat-input:disabled {
