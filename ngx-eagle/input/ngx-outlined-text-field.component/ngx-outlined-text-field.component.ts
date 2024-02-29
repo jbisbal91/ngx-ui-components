@@ -22,6 +22,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
         [placeholder]="placeholder"
         [value]="value"
         [disabled]="disabled"
+        [required]="_required"
         (input)="onInputChange($event)"
       />
     </div>
@@ -36,7 +37,7 @@ export class NgxOutlinedTextFieldComponent
   @Input() value: string = '';
   @Input() placeholder: string = '';
   _placeholder: string = '';
-
+  _required: boolean = true;
   @ViewChild('input_container') containerRef!: ElementRef;
   @ViewChild('input_label') labelRef!: ElementRef;
   @ViewChild('input') inputRef!: ElementRef;
@@ -45,7 +46,7 @@ export class NgxOutlinedTextFieldComponent
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  valStatus: boolean = true;
+  isValid: boolean = true;
   disabled: boolean = false;
   inputFocus = false;
 
@@ -57,6 +58,8 @@ export class NgxOutlinedTextFieldComponent
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
+    this.disabled = this.elementRef?.nativeElement.hasAttribute('disabled');
+    this._required = this.elementRef?.nativeElement.hasAttribute('required');
   }
 
   ngAfterViewInit() {
@@ -65,7 +68,7 @@ export class NgxOutlinedTextFieldComponent
     //Se lanza el evento cuando se esta haciendo focus en el input
     this.inputRef.nativeElement.addEventListener('focus', () => {
       this.inputFocus = true;
-      this.validate();
+      //this.validate();
       this.moveLabel();
     });
     //Se lanza el evento cuando se desenfoca del input
@@ -182,7 +185,7 @@ export class NgxOutlinedTextFieldComponent
     const containerWidth = this.containerRef.nativeElement.offsetWidth;
     const labelWidth = this.labelRef.nativeElement.offsetWidth;
     const percent = ((labelWidth + 16) / containerWidth) * 100;
-    const color = this.valStatus ? this.borderColor : '#F44336';
+    const color = this.isValid ? this.borderColor : '#F44336';
     const background = `linear-gradient(to right, ${color} 8px, transparent 8px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
     this.renderer.setStyle(
       this.containerRef.nativeElement,
@@ -192,7 +195,7 @@ export class NgxOutlinedTextFieldComponent
   }
 
   drawLineTopBorder() {
-    const color = this.valStatus ? this.borderColor : '#F44336';
+    const color = this.isValid ? this.borderColor : '#F44336';
     this.renderer.setStyle(
       this.containerRef.nativeElement,
       'background',
@@ -201,10 +204,13 @@ export class NgxOutlinedTextFieldComponent
   }
 
   validate() {
-    if (this.ngControl) {
-      this.valStatus =
-        this.ngControl.status?.toLowerCase() === 'valid' ? true : false;
-      const color = this.valStatus ? this.borderColor : '#F44336';
+    if (this.ngControl || this._required) {
+      this.isValid =
+        this.ngControl?.status?.toLowerCase() === 'valid' ||
+        (this._required && this.value)
+          ? true
+          : false;
+      const color = this.isValid ? this.borderColor : '#F44336';
       this.renderer.setStyle(
         this.containerRef.nativeElement,
         'border-color',
