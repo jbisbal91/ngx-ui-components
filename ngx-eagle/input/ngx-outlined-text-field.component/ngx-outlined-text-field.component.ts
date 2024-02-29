@@ -102,6 +102,16 @@ export class NgxOutlinedTextFieldComponent
       .getPropertyValue('color');
 
     this.renderer.setStyle(this.containerRef.nativeElement, 'color', color);
+
+    const fontSize = window
+      .getComputedStyle(this.elementRef.nativeElement)
+      .getPropertyValue('font-size');
+
+    this.renderer.setStyle(
+      this.inputRef.nativeElement,
+      'font-size',
+      fontSize !== '0px' ? fontSize : '14px'
+    );
   }
 
   ngOnChanges(): void {
