@@ -39,10 +39,8 @@ export class NgxOutlinedTextFieldComponent
   @ViewChild('input_container') containerRef!: ElementRef;
   @ViewChild('input_label') labelRef!: ElementRef;
   @ViewChild('input') inputRef!: ElementRef;
-
   
   borderColor: string = 'currentColor';
-
   onChange: any = () => {};
   onTouched: any = () => {};
   value: any;
