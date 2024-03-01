@@ -32,6 +32,7 @@ import { ErrorColor } from 'ngx-eagle/core/types';
           #input
           [type]="type"
           class=" ngx-nat-input"
+          [pattern]="pattern"
           [placeholder]="placeholder"
           [value]="value"
           [disabled]="disabled"
@@ -61,6 +62,7 @@ export class NgxOutlinedTextFieldComponent
   implements AfterViewInit, ControlValueAccessor, OnChanges
 {
   @Input() label: string = '';
+  @Input() pattern!: any;
   @Input() placeholder: string = '';
   @Input() prefix!: any | TemplateRef<void>;
   @Input() suffix!: any | TemplateRef<void>;
@@ -203,7 +205,11 @@ export class NgxOutlinedTextFieldComponent
     const pleft = this.prefix ? '0px' : '0.75rem';
     const pright = this.suffix ? '0px' : '0.75rem';
     this.renderer.setStyle(this.inputRef.nativeElement, 'padding-left', pleft);
-    this.renderer.setStyle(this.inputRef.nativeElement, 'padding-right', pright);
+    this.renderer.setStyle(
+      this.inputRef.nativeElement,
+      'padding-right',
+      pright
+    );
     this.buildBorderOutlined();
   }
 
@@ -252,20 +258,18 @@ export class NgxOutlinedTextFieldComponent
   }
 
   validate() {
-    if (this.ngControl || this._required) {
-      console.log(this.ngControl);
-      this.isValid =
-        this.ngControl?.status?.toLowerCase() === 'valid' ||
-        (this._required && this.isValidValue(this.value))
-          ? true
-          : false;
-      const color = this.isValid ? this.borderColor : ErrorColor;
-      this.renderer.setStyle(
-        this.containerRef.nativeElement,
-        'border-color',
-        color
-      );
-    }
+    this.isValid =
+      this.ngControl?.status?.toLowerCase() === 'valid' ||
+      (this._required && !this.pattern && this.isValidValue(this.value)) ||
+      (this.pattern && this.inputRef.nativeElement.validity.valid)
+        ? true
+        : false;
+    const color = this.isValid ? this.borderColor : ErrorColor;
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'border-color',
+      color
+    );
   }
 
   isValidValue(value: any): boolean {

@@ -19,10 +19,9 @@
   <form [formGroup]="inputForm">
     <ngx-outlined-text-field
       label="Label3"
-      type="email"
       placeholder="Placeholder3"
-      formControlName="input3"
-      error-text="Please fill out this field"
+      pattern="\w{4,16}"
+      required
     >
     </ngx-outlined-text-field>
   </form>
