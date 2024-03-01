@@ -5,8 +5,5 @@ import { NgxOutlinedTextFieldComponent } from './ngx-outlined-text-field.compone
 @NgModule({
   exports: [InputComponent,NgxOutlinedTextFieldComponent],
   imports: [InputComponent,NgxOutlinedTextFieldComponent],
-  declarations: [
-    
-  ],
 })
 export class InputModule {}

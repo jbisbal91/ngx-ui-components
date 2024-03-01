@@ -10,6 +10,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { StylesService } from 'ngx-eagle/core/services';
 import { ErrorColor } from 'ngx-eagle/core/types';
 
 @Component({
@@ -56,6 +57,7 @@ export class NgxOutlinedTextFieldComponent
   constructor(
     public elementRef: ElementRef,
     private renderer: Renderer2,
+    private stylesService: StylesService,
     @Optional() @Self() public ngControl: NgControl
   ) {
     if (this.ngControl) {
@@ -106,13 +108,12 @@ export class NgxOutlinedTextFieldComponent
         ),
     };
 
-    const computedStyles = window.getComputedStyle(
-      this.elementRef.nativeElement
-    );
-
     for (const style in styles) {
       if (styles.hasOwnProperty(style)) {
-        const value = computedStyles.getPropertyValue(style);
+        const value = this.stylesService.getStyleValue(
+          this.elementRef.nativeElement,
+          style
+        );
         styles[style](value);
       }
     }

@@ -1,4 +1,4 @@
-import { ElementRef, Injectable } from '@angular/core';
+import {Injectable } from '@angular/core';
 import { ColorContrast, HSL, RGB, PresetColors } from 'ngx-eagle/core/types';
 
 @Injectable({
@@ -267,10 +267,5 @@ export class ColorConverter {
     }
     throw new Error('Wrong color name');
   }
-  //------------- END -------------
 
-  getPropertyValue(elementRef: ElementRef, property: string) {
-    const computedStyle = window.getComputedStyle(elementRef.nativeElement);
-    return computedStyle.getPropertyValue(property);
-  }
 }
