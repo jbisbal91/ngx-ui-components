@@ -23,14 +23,30 @@
 
 .ngx-outlined-text-field > .ngx-input-label {
   max-width: max-content;
-  margin-left: 0.75rem;
   position: absolute;
   transition: top ease-in-out 0.125s;
 }
 
-.ngx-outlined-text-field > .ngx-nat-input {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+.container {
+  display: inline-flex;
+  align-items: baseline;
+  height: 100%;
+  width: auto;
+  align-items: center;
+  overflow: hidden;
+}
+
+.prefix,
+.suffix {
+  width: 32px;
+  justify-content: center;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.ngx-nat-input {
+  /* padding-left: 0.75rem
+  padding-right: 0.75rem; */
   box-sizing: border-box;
   border-width: 1px;
   border-style: solid;
@@ -47,5 +63,13 @@
   transition: color 0.2s ease-in-out;
   border: none;
   height: 100%;
+  width: 100%;
   color: currentColor;
+}
+
+.ngx-outlined-text-field > .error-text {
+  font-size: 13px;
+  color: #f44336;
+  position: absolute;
+  bottom: -20px;
 }

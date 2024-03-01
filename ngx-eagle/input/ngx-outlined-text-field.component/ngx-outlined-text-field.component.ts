@@ -1,3 +1,4 @@
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -7,6 +8,7 @@ import {
   Optional,
   Renderer2,
   Self,
+  TemplateRef,
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
@@ -18,30 +20,57 @@ import { ErrorColor } from 'ngx-eagle/core/types';
   template: `
     <div #input_container class="ngx-outlined-text-field">
       <label #input_label class="ngx-input-label">{{ label }}</label>
-      <input
-        #input
-        [type]="type"
-        class="ngx-outlined-text-field ngx-nat-input"
-        [placeholder]="placeholder"
-        [value]="value"
-        [disabled]="disabled"
-        [required]="_required"
-        (input)="onInputChange($event)"
-      />
+      <div class="container">
+        <div class="prefix" *ngIf="prefix">
+          <span *ngIf="typeOf(prefix) === 'string'">{{ prefix }}</span>
+          <ng-template
+            *ngIf="typeOf(prefix) === 'object'"
+            [ngTemplateOutlet]="prefix"
+          ></ng-template>
+        </div>
+        <input
+          #input
+          [type]="type"
+          class=" ngx-nat-input"
+          [placeholder]="placeholder"
+          [value]="value"
+          [disabled]="disabled"
+          [required]="_required"
+          (input)="onInputChange($event)"
+        />
+
+        <div class="suffix" *ngIf="suffix">
+          <span *ngIf="typeOf(suffix) === 'string'">{{ suffix }}</span>
+          <ng-template
+            *ngIf="typeOf(suffix) === 'object'"
+            [ngTemplateOutlet]="suffix"
+          ></ng-template>
+        </div>
+      </div>
+
+      <span class="error-text" *ngIf="!isValid && errorText">{{
+        errorText
+      }}</span>
     </div>
   `,
   styleUrls: ['./ngx-outlined-text-field.component.css'],
   standalone: true,
+  imports: [NgIf, NgTemplateOutlet],
 })
 export class NgxOutlinedTextFieldComponent
   implements AfterViewInit, ControlValueAccessor, OnChanges
 {
   @Input() label: string = '';
-  @Input() value: any = '';
   @Input() placeholder: string = '';
+  @Input() prefix!: any | TemplateRef<void>;
+  @Input() suffix!: any | TemplateRef<void>;
   @Input() type: string = 'text';
+  @Input() value: any = '';
+
   _placeholder: string = '';
   _required: boolean = true;
+  errorText: string = '';
+
   @ViewChild('input_container') containerRef!: ElementRef;
   @ViewChild('input_label') labelRef!: ElementRef;
   @ViewChild('input') inputRef!: ElementRef;
@@ -65,6 +94,10 @@ export class NgxOutlinedTextFieldComponent
     }
     this.disabled = this.elementRef?.nativeElement.hasAttribute('disabled');
     this._required = this.elementRef?.nativeElement.hasAttribute('required');
+    this.errorText =
+      this.elementRef?.nativeElement.attributes['error-text']?.value;
+
+    //this.prefix = this.elementRef?.nativeElement.attributes['prefix']?.value;
   }
 
   ngAfterViewInit() {
@@ -119,6 +152,10 @@ export class NgxOutlinedTextFieldComponent
     }
   }
 
+  typeOf(value: any) {
+    return typeof value;
+  }
+
   ngOnChanges(): void {
     this.initialize();
   }
@@ -163,6 +200,9 @@ export class NgxOutlinedTextFieldComponent
   private applyFocusedStyle() {
     this.setLabelStyle('-0.375rem', '0.75rem');
     this.inputRef.nativeElement.placeholder = this._placeholder;
+    const [pleft, pright] = this.prefix ? ['0px', '0px'] : ['0.75rem', '0.75rem'];
+    this.renderer.setStyle(this.inputRef.nativeElement, 'padding-left', pleft);
+    this.renderer.setStyle(this.inputRef.nativeElement, 'padding-right', pright);
     this.buildBorderOutlined();
   }
 
@@ -174,8 +214,11 @@ export class NgxOutlinedTextFieldComponent
   }
 
   private setLabelStyle(top: string, fontSize: string) {
+    const left =
+      this.prefix && !this.inputFocus && !this.value ? '1.5rem' : '0.75rem';
     this.renderer.setStyle(this.labelRef.nativeElement, 'top', top);
     this.renderer.setStyle(this.labelRef.nativeElement, 'font-size', fontSize);
+    this.renderer.setStyle(this.labelRef.nativeElement, 'left', left);
   }
 
   onInputChange(event: Event): void {
@@ -209,6 +252,7 @@ export class NgxOutlinedTextFieldComponent
 
   validate() {
     if (this.ngControl || this._required) {
+      console.log(this.ngControl);
       this.isValid =
         this.ngControl?.status?.toLowerCase() === 'valid' ||
         (this._required && this.isValidValue(this.value))

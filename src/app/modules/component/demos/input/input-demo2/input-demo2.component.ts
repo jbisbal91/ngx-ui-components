@@ -27,8 +27,9 @@ export class InputDemo2Component implements OnInit {
         null,
         [
           Validators.required,
+          Validators.email,
           Validators.minLength(3),
-          Validators.maxLength(16),
+          Validators.maxLength(50),
         ],
       ],
     });
