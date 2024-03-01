@@ -3,6 +3,8 @@ export type HSL = { h: number; s: number; l: number };
 export type ColorContrast = { backgroundColor: string; overlayColor: string };
 export type ColorSVG = { [key: string]: string };
 
+export const ErrorColor:string = "#F44336";
+
 export const PresetColors: ColorSVG =  {
     aliceblue: '#f0f8ff',
     antiquewhite: '#faebd7',

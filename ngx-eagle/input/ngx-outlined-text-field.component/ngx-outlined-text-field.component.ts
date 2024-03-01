@@ -10,6 +10,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { ErrorColor } from 'ngx-eagle/core/types';
 
 @Component({
   selector: 'ngx-outlined-text-field',
@@ -187,7 +188,7 @@ export class NgxOutlinedTextFieldComponent
     const containerWidth = this.containerRef.nativeElement.offsetWidth;
     const labelWidth = this.labelRef.nativeElement.offsetWidth;
     const percent = ((labelWidth + 16) / containerWidth) * 100;
-    const color = this.isValid ? this.borderColor : '#F44336';
+    const color = this.isValid ? this.borderColor : ErrorColor;
     const background = `linear-gradient(to right, ${color} 8px, transparent 8px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
     this.renderer.setStyle(
       this.containerRef.nativeElement,
@@ -197,7 +198,7 @@ export class NgxOutlinedTextFieldComponent
   }
 
   drawLineTopBorder() {
-    const color = this.isValid ? this.borderColor : '#F44336';
+    const color = this.isValid ? this.borderColor : ErrorColor;
     this.renderer.setStyle(
       this.containerRef.nativeElement,
       'background',
@@ -212,7 +213,7 @@ export class NgxOutlinedTextFieldComponent
         (this._required && this.isValidValue(this.value))
           ? true
           : false;
-      const color = this.isValid ? this.borderColor : '#F44336';
+      const color = this.isValid ? this.borderColor : ErrorColor;
       this.renderer.setStyle(
         this.containerRef.nativeElement,
         'border-color',
