@@ -11,4 +11,10 @@ export class InputDemo1Component {
   ngxFillMode: any = 'outlined';
   input = 'test';
   disabled = false;
+
+
+  valueNumber = 10;
+
+
+
 }

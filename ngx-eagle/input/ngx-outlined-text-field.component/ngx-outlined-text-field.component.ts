@@ -18,6 +18,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
       <label #input_label class="ngx-input-label">{{ label }}</label>
       <input
         #input
+        [type]="type"
         class="ngx-outlined-text-field ngx-nat-input"
         [placeholder]="placeholder"
         [value]="value"
@@ -34,15 +35,16 @@ export class NgxOutlinedTextFieldComponent
   implements AfterViewInit, ControlValueAccessor, OnChanges
 {
   @Input() label: string = '';
-  @Input() value: string = '';
+  @Input() value: any = '';
   @Input() placeholder: string = '';
+  @Input() type: string = 'text';
   _placeholder: string = '';
   _required: boolean = true;
   @ViewChild('input_container') containerRef!: ElementRef;
   @ViewChild('input_label') labelRef!: ElementRef;
   @ViewChild('input') inputRef!: ElementRef;
 
-  borderColor: string = 'currentColor';
+  borderColor: string = '#747775';
   onChange: any = () => {};
   onTouched: any = () => {};
 
@@ -148,7 +150,7 @@ export class NgxOutlinedTextFieldComponent
   moveLabel() {
     if (this.labelRef) {
       const containerHeight = this.containerRef.nativeElement.offsetHeight;
-      if (this.inputFocus || this.value) {
+      if (this.inputFocus || this.isValidValue(this.value)) {
         this.applyFocusedStyle();
       } else {
         this.applyDefaultStyle(containerHeight);
@@ -207,7 +209,7 @@ export class NgxOutlinedTextFieldComponent
     if (this.ngControl || this._required) {
       this.isValid =
         this.ngControl?.status?.toLowerCase() === 'valid' ||
-        (this._required && this.value)
+        (this._required && this.isValidValue(this.value))
           ? true
           : false;
       const color = this.isValid ? this.borderColor : '#F44336';
@@ -217,5 +219,9 @@ export class NgxOutlinedTextFieldComponent
         color
       );
     }
+  }
+
+  isValidValue(value: any): boolean {
+    return value !== undefined && value !== null && value !== '';
   }
 }
