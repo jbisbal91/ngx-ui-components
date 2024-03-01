@@ -1,4 +1,4 @@
-import { ElementRef, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -6,9 +6,8 @@ import { ElementRef, Injectable } from '@angular/core';
 export class StylesService {
   constructor() {}
 
-  getStyleValue(elementRef: Element, property: string): string {
-    const computedStyle = window.getComputedStyle(elementRef);
+  getStyleValue(element: Element, property: string): string {
+    const computedStyle = window.getComputedStyle(element);
     return computedStyle.getPropertyValue(property);
   }
-
 }
