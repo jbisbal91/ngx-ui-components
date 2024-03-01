@@ -200,7 +200,8 @@ export class NgxOutlinedTextFieldComponent
   private applyFocusedStyle() {
     this.setLabelStyle('-0.375rem', '0.75rem');
     this.inputRef.nativeElement.placeholder = this._placeholder;
-    const [pleft, pright] = this.prefix ? ['0px', '0px'] : ['0.75rem', '0.75rem'];
+    const pleft = this.prefix ? '0px' : '0.75rem';
+    const pright = this.suffix ? '0px' : '0.75rem';
     this.renderer.setStyle(this.inputRef.nativeElement, 'padding-left', pleft);
     this.renderer.setStyle(this.inputRef.nativeElement, 'padding-right', pright);
     this.buildBorderOutlined();
@@ -215,7 +216,7 @@ export class NgxOutlinedTextFieldComponent
 
   private setLabelStyle(top: string, fontSize: string) {
     const left =
-      this.prefix && !this.inputFocus && !this.value ? '1.5rem' : '0.75rem';
+      this.prefix && !this.inputFocus && !this.value ? '1.85rem' : '0.75rem';
     this.renderer.setStyle(this.labelRef.nativeElement, 'top', top);
     this.renderer.setStyle(this.labelRef.nativeElement, 'font-size', fontSize);
     this.renderer.setStyle(this.labelRef.nativeElement, 'left', left);
