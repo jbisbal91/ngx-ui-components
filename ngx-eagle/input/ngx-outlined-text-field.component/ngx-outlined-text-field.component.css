@@ -16,7 +16,7 @@
   border-color: currentColor;
 }
 
-.ngx-outlined-text-field > .ngx-nat-input:disabled {
+.ngx-outlined-text-field > .container > .ngx-nat-input:disabled {
   opacity: 0.75;
   cursor: no-drop;
 }
@@ -27,7 +27,7 @@
   transition: top ease-in-out 0.125s;
 }
 
-.container {
+.ngx-outlined-text-field > .container {
   display: inline-flex;
   align-items: baseline;
   height: 100%;
@@ -44,7 +44,7 @@
   overflow: hidden;
 }
 
-.ngx-nat-input {
+.ngx-outlined-text-field > .container > .ngx-nat-input {
   box-sizing: border-box;
   border-width: 1px;
   border-style: solid;

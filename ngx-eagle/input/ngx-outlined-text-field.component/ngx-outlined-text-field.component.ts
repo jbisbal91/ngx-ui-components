@@ -10,6 +10,7 @@ import {
   Self,
   TemplateRef,
   ViewChild,
+  booleanAttribute,
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { StylesService } from 'ngx-eagle/core/services';
@@ -36,7 +37,7 @@ import { ErrorColor } from 'ngx-eagle/core/types';
           [placeholder]="placeholder"
           [value]="value"
           [disabled]="disabled"
-          [required]="_required"
+          [required]="required"
           (input)="onInputChange($event)"
         />
 
@@ -61,16 +62,17 @@ import { ErrorColor } from 'ngx-eagle/core/types';
 export class NgxOutlinedTextFieldComponent
   implements AfterViewInit, ControlValueAccessor, OnChanges
 {
+  @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input() label: string = '';
   @Input() pattern!: any;
   @Input() placeholder: string = '';
   @Input() prefix!: any | TemplateRef<void>;
+  @Input({ transform: booleanAttribute }) required!: boolean;
   @Input() suffix!: any | TemplateRef<void>;
   @Input() type: string = 'text';
   @Input() value: any = '';
 
   _placeholder: string = '';
-  _required: boolean = true;
   errorText: string = '';
 
   @ViewChild('input_container') containerRef!: ElementRef;
@@ -82,7 +84,6 @@ export class NgxOutlinedTextFieldComponent
   onTouched: any = () => {};
 
   isValid: boolean = true;
-  disabled: boolean = false;
   inputFocus = false;
 
   constructor(
@@ -95,7 +96,7 @@ export class NgxOutlinedTextFieldComponent
       this.ngControl.valueAccessor = this;
     }
     this.disabled = this.elementRef?.nativeElement.hasAttribute('disabled');
-    this._required = this.elementRef?.nativeElement.hasAttribute('required');
+    this.required = this.elementRef?.nativeElement.hasAttribute('required');
     this.errorText =
       this.elementRef?.nativeElement.attributes['error-text']?.value;
 
@@ -259,8 +260,9 @@ export class NgxOutlinedTextFieldComponent
 
   validate() {
     this.isValid =
-      this.ngControl?.status?.toLowerCase() === 'valid' ||
-      (this._required && !this.pattern && this.isValidValue(this.value)) ||
+      (!this.pattern && !this.ngControl && !this.required) ||
+      (this.ngControl?.status?.toLowerCase() === 'valid') ||
+      (this.required && this.isValidValue(this.value) && !this.ngControl) ||
       (this.pattern && this.inputRef.nativeElement.validity.valid)
         ? true
         : false;

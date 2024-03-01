@@ -26,7 +26,7 @@ export class InputDemo2Component implements OnInit {
       input3: [
         null,
         [
-          Validators.required,
+          
           Validators.email,
           Validators.minLength(3),
           Validators.maxLength(50),
