@@ -22,7 +22,7 @@ import { ErrorColor } from 'ngx-eagle/core/types';
     <div #input_container class="ngx-outlined-text-field">
       <label #input_label class="ngx-input-label">{{ label }}</label>
       <div class="container">
-        <div class="prefix" *ngIf="prefix">
+        <div id="input-prefix" class="prefix" *ngIf="prefix">
           <span *ngIf="typeOf(prefix) === 'string'">{{ prefix }}</span>
           <ng-template
             *ngIf="typeOf(prefix) === 'object'"
@@ -99,8 +99,6 @@ export class NgxOutlinedTextFieldComponent
     this.required = this.elementRef?.nativeElement.hasAttribute('required');
     this.errorText =
       this.elementRef?.nativeElement.attributes['error-text']?.value;
-
-    //this.prefix = this.elementRef?.nativeElement.attributes['prefix']?.value;
   }
 
   ngAfterViewInit() {
@@ -203,14 +201,6 @@ export class NgxOutlinedTextFieldComponent
   private applyFocusedStyle() {
     this.setLabelStyle('-0.375rem', '0.75rem');
     this.inputRef.nativeElement.placeholder = this._placeholder;
-    const pleft = this.prefix ? '0px' : '0.75rem';
-    const pright = this.suffix ? '0px' : '0.75rem';
-    this.renderer.setStyle(this.inputRef.nativeElement, 'padding-left', pleft);
-    this.renderer.setStyle(
-      this.inputRef.nativeElement,
-      'padding-right',
-      pright
-    );
     this.buildBorderOutlined();
   }
 
@@ -223,10 +213,18 @@ export class NgxOutlinedTextFieldComponent
 
   private setLabelStyle(top: string, fontSize: string) {
     const left =
-      this.prefix && !this.inputFocus && !this.value ? '1.85rem' : '0.75rem';
+      this.prefix && !this.inputFocus && !this.value
+        ? `${this.prefixWidth()}px`
+        : '0.75rem';
     this.renderer.setStyle(this.labelRef.nativeElement, 'top', top);
     this.renderer.setStyle(this.labelRef.nativeElement, 'font-size', fontSize);
     this.renderer.setStyle(this.labelRef.nativeElement, 'left', left);
+  }
+
+  prefixWidth() {
+    const prefix = document.getElementById('input-prefix');
+    const result = prefix ? prefix?.offsetWidth + 12 : 12;
+    return result;
   }
 
   onInputChange(event: Event): void {
@@ -261,7 +259,7 @@ export class NgxOutlinedTextFieldComponent
   validate() {
     this.isValid =
       (!this.pattern && !this.ngControl && !this.required) ||
-      (this.ngControl?.status?.toLowerCase() === 'valid') ||
+      this.ngControl?.status?.toLowerCase() === 'valid' ||
       (this.required && this.isValidValue(this.value) && !this.ngControl) ||
       (this.pattern && this.inputRef.nativeElement.validity.valid)
         ? true

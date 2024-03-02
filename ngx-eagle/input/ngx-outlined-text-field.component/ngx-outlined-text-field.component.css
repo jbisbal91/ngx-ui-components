@@ -27,7 +27,7 @@
   transition: top ease-in-out 0.125s;
 }
 
-.ngx-outlined-text-field > .container {
+.container {
   display: inline-flex;
   align-items: baseline;
   height: 100%;
@@ -38,13 +38,14 @@
 
 .prefix,
 .suffix {
-  width: 32px;
   justify-content: center;
   display: inline-flex;
-  overflow: hidden;
+  align-items: center;
 }
 
 .ngx-outlined-text-field > .container > .ngx-nat-input {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   box-sizing: border-box;
   border-width: 1px;
   border-style: solid;

@@ -15,6 +15,8 @@ export class InputDemo2Component implements OnInit {
   inputFormControl = new FormControl(null, [Validators.required]);
   inputForm!: FormGroup;
 
+  searhValue="ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg";
+
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
@@ -26,12 +28,15 @@ export class InputDemo2Component implements OnInit {
       input3: [
         null,
         [
-          
           Validators.email,
           Validators.minLength(3),
           Validators.maxLength(50),
         ],
       ],
     });
+  }
+
+  onSearh(value:string){
+    console.log(value);
   }
 }
