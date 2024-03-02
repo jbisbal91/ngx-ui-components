@@ -63,7 +63,7 @@ export class NgxOutlinedTextFieldComponent
   implements AfterViewInit, ControlValueAccessor, OnChanges
 {
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
-  @Input() label: string = '';
+  @Input() label!: string;
   @Input() pattern!: any;
   @Input() placeholder: string = '';
   @Input() prefix!: any | TemplateRef<void>;
@@ -190,7 +190,7 @@ export class NgxOutlinedTextFieldComponent
   moveLabel() {
     if (this.labelRef) {
       const containerHeight = this.containerRef.nativeElement.offsetHeight;
-      if (this.inputFocus || this.isValidValue(this.value)) {
+      if ((this.inputFocus || this.isValidValue(this.value)) && this.label) {
         this.applyFocusedStyle();
       } else {
         this.applyDefaultStyle(containerHeight);
@@ -231,7 +231,11 @@ export class NgxOutlinedTextFieldComponent
     this.value = (event.target as HTMLInputElement).value;
     this.ngControl?.control?.setValue(this.value);
     this.validate();
-    this.buildBorderOutlined();
+    if (this.label) {
+      this.buildBorderOutlined();
+    } else {
+      this.drawLineTopBorder();
+    }
   }
 
   buildBorderOutlined() {

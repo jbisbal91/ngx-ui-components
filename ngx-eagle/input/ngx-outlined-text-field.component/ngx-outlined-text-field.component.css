@@ -36,8 +36,8 @@
   overflow: hidden;
 }
 
-.prefix,
-.suffix {
+.ngx-outlined-text-field > .container > .prefix,
+.ngx-outlined-text-field > .container > .suffix {
   justify-content: center;
   display: inline-flex;
   align-items: center;
