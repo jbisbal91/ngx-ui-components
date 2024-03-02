@@ -15,7 +15,7 @@ export class InputDemo2Component implements OnInit {
   inputFormControl = new FormControl(null, [Validators.required]);
   inputForm!: FormGroup;
 
-  searhValue="ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg";
+  searhValue: string = '';
 
   constructor(private formBuilder: FormBuilder) {}
 

@@ -13,7 +13,7 @@ import {
   booleanAttribute,
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { StylesService } from 'ngx-eagle/core/services';
+import { Guid, StylesService } from 'ngx-eagle/core/services';
 import { ErrorColor } from 'ngx-eagle/core/types';
 
 @Component({
@@ -22,7 +22,7 @@ import { ErrorColor } from 'ngx-eagle/core/types';
     <div #input_container class="ngx-outlined-text-field">
       <label #input_label class="ngx-input-label">{{ label }}</label>
       <div class="container">
-        <div id="input-prefix" class="prefix" *ngIf="prefix">
+        <div [id]="inputPrefixId" class="prefix" *ngIf="prefix">
           <span *ngIf="typeOf(prefix) === 'string'">{{ prefix }}</span>
           <ng-template
             *ngIf="typeOf(prefix) === 'object'"
@@ -74,6 +74,8 @@ export class NgxOutlinedTextFieldComponent
 
   _placeholder: string = '';
   errorText: string = '';
+
+  public inputPrefixId: string = Guid.create();
 
   @ViewChild('input_container') containerRef!: ElementRef;
   @ViewChild('input_label') labelRef!: ElementRef;
@@ -205,7 +207,7 @@ export class NgxOutlinedTextFieldComponent
   }
 
   private applyDefaultStyle(containerHeight: number) {
-    const top = `${(containerHeight * 0.3333) / 16}rem`;
+    const top = `${(containerHeight * 0.3) / 16}rem`;
     this.setLabelStyle(top, '0.875rem');
     this.inputRef.nativeElement.placeholder = '';
     this.drawLineTopBorder();
@@ -222,7 +224,7 @@ export class NgxOutlinedTextFieldComponent
   }
 
   prefixWidth() {
-    const prefix = document.getElementById('input-prefix');
+    const prefix = document.getElementById(this.inputPrefixId);
     const result = prefix ? prefix?.offsetWidth + 12 : 12;
     return result;
   }
