@@ -43,6 +43,14 @@
   align-items: center;
 }
 
+.ngx-outlined-text-field > .container > .prefix + .ngx-nat-input {
+  padding-left: unset;
+}
+
+.ngx-outlined-text-field > .container > .ngx-nat-input + .suffix {
+  padding-right: unset;
+}
+
 .ngx-outlined-text-field > .container > .ngx-nat-input {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -64,6 +72,8 @@
   height: 100%;
   width: 100%;
   color: currentColor;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
 }
 
 .ngx-outlined-text-field > .error-text {

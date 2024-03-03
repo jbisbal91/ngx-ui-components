@@ -4,7 +4,6 @@ import {
   Component,
   ElementRef,
   Input,
-  OnChanges,
   Optional,
   Renderer2,
   Self,
@@ -60,7 +59,7 @@ import { ErrorColor } from 'ngx-eagle/core/types';
   imports: [NgIf, NgTemplateOutlet],
 })
 export class NgxOutlinedTextFieldComponent
-  implements AfterViewInit, ControlValueAccessor, OnChanges
+  implements AfterViewInit, ControlValueAccessor
 {
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input() label!: string;
@@ -159,10 +158,6 @@ export class NgxOutlinedTextFieldComponent
     return typeof value;
   }
 
-  ngOnChanges(): void {
-    this.initialize();
-  }
-
   initialize() {
     setTimeout(() => {
       this.ngControl?.control?.setValue(this.value);
@@ -225,9 +220,10 @@ export class NgxOutlinedTextFieldComponent
 
   prefixWidth() {
     const prefix = document.getElementById(this.inputPrefixId);
-    const result = prefix ? prefix?.offsetWidth + 12 : 12;
+    const result = prefix ? prefix?.offsetWidth : 0;
     return result;
   }
+
 
   onInputChange(event: Event): void {
     this.value = (event.target as HTMLInputElement).value;

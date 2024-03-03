@@ -1,0 +1,33 @@
+form {
+    width: 300px;
+}
+
+ngx-outlined-text-field {
+    border-color: #D9D9D9;
+    height: 40px;
+    width: auto;
+}
+
+button[ngx-button] {
+    height: 40px;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+ngx-outlined-text-field:nth-child(n + 2) {
+    margin-top: 2rem;
+}
+
+.prefix {
+    margin-left: 10px !important;
+}
+
+.suffix {
+    margin-right: 10px !important;
+    cursor: pointer;
+}
+
+.material-symbols-outlined {
+    margin: 8px;
+    font-size: 22px;
+}

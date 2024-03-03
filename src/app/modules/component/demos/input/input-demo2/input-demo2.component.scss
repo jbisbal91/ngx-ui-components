@@ -13,6 +13,11 @@ button[ngx-button] .material-symbols-outlined {
     margin: 0;
 }
 
+
+.material-symbols-outlined {
+    margin: 0px;
+}
+
 ngx-outlined-text-field {
     height: 40px;
     width: 300px;
@@ -28,8 +33,4 @@ ngx-outlined-text-field:nth-child(n + 2) {
     color: #262626;
     font-size: 20px;
     margin: 8px;
-}
-
-.prefix-search {
-    margin-right: -5px;
 }
