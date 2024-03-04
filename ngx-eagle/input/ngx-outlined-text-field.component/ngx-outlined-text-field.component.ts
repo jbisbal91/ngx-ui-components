@@ -92,6 +92,8 @@ export class NgxOutlinedTextFieldComponent
 
   isValid: boolean = true;
   isFocused: boolean = false;
+  private autofilledSubscription: Subscription = new Subscription();
+  autofilled: boolean = false;
 
   constructor(
     public elementRef: ElementRef,
@@ -114,9 +116,6 @@ export class NgxOutlinedTextFieldComponent
     this.autofillMonitor();
   }
 
-  private autofilledSubscription: Subscription = new Subscription();
-  autofilled: boolean = false;
-
   autofillMonitor() {
     this.autofilledSubscription = timer(0, 100).subscribe(() => {
       this.autofilled = this.inputRef.nativeElement.matches(':autofill');
@@ -138,18 +137,6 @@ export class NgxOutlinedTextFieldComponent
           value
         );
       },
-      'border-radius': (value: any) =>
-        this.renderer.setStyle(
-          this.containerRef.nativeElement,
-          'border-radius',
-          value !== '0px' ? value : '4px'
-        ),
-      'font-size': (value: any) =>
-        this.renderer.setStyle(
-          this.inputRef.nativeElement,
-          'font-size',
-          value !== '0px' ? value : '14px'
-        ),
     };
 
     for (const style in styles) {

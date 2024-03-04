@@ -2,6 +2,8 @@
   display: flex;
   height: 46px;
   width: 212px;
+  border-radius: 6px;
+  border-color: currentColor;
 }
 
 .ngx-outlined-text-field {
@@ -11,9 +13,9 @@
   height: 100%;
   position: relative;
   border: 1px solid;
-  border-radius: 6px;
+  border-radius: inherit;
   border-top: unset;
-  border-color: currentColor;
+  border-color: inherit;
 }
 
 .ngx-outlined-text-field > .container > .ngx-nat-input:disabled {
@@ -62,6 +64,7 @@
   border-style: solid;
   background: none;
   font-family: inherit;
+  font-size: inherit;
   text-decoration: none;
   white-space: nowrap;
   vertical-align: middle;
