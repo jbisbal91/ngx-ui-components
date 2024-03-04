@@ -125,7 +125,6 @@ export class NgxOutlinedTextFieldComponent
       } else {
         this.moveLabel();
       }
-      this.autofilled = false;
     });
   }
 
