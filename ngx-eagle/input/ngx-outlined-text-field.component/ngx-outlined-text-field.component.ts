@@ -1,19 +1,22 @@
-import { NgIf, NgTemplateOutlet,isPlatformBrowser } from '@angular/common';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   Component,
   ElementRef,
   Input,
+  OnDestroy,
   Optional,
   Renderer2,
   Self,
   TemplateRef,
   ViewChild,
   booleanAttribute,
+  inject,
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Guid, StylesService } from 'ngx-eagle/core/services';
 import { ErrorColor } from 'ngx-eagle/core/types';
+import { Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'ngx-outlined-text-field',
@@ -61,7 +64,7 @@ import { ErrorColor } from 'ngx-eagle/core/types';
   imports: [NgIf, NgTemplateOutlet],
 })
 export class NgxOutlinedTextFieldComponent
-  implements AfterViewInit, ControlValueAccessor
+  implements AfterViewInit, ControlValueAccessor, OnDestroy
 {
   @Input() autocomplete: string = '';
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
@@ -101,10 +104,29 @@ export class NgxOutlinedTextFieldComponent
     }
   }
 
+  ngOnDestroy(): void {
+    this.autofilledSubscription.unsubscribe();
+  }
+
   ngAfterViewInit() {
     this.customProperties();
     this.initialize();
+    this.autofillMonitor();
+  }
 
+  private autofilledSubscription: Subscription = new Subscription();
+  autofilled: boolean = false;
+
+  autofillMonitor() {
+    this.autofilledSubscription = timer(0, 100).subscribe(() => {
+      this.autofilled = this.inputRef.nativeElement.matches(':autofill');
+      if (this.autofilled) {
+        this.applyFocusedStyle();
+      } else {
+        this.moveLabel();
+      }
+      this.autofilled = false;
+    });
   }
 
   customProperties() {
@@ -202,7 +224,7 @@ export class NgxOutlinedTextFieldComponent
 
   private setLabelStyle(top: string, fontSize: string) {
     const left =
-      this.prefix && !this.isFocused && !this.value
+      this.prefix && !this.isFocused && !this.value && !this.autofilled
         ? `${this.prefixWidth()}px`
         : '0.75rem';
     this.renderer.setStyle(this.labelRef.nativeElement, 'top', top);
