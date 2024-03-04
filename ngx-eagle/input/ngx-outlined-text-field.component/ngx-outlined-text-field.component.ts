@@ -1,4 +1,4 @@
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgIf, NgTemplateOutlet,isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -104,6 +104,7 @@ export class NgxOutlinedTextFieldComponent
   ngAfterViewInit() {
     this.customProperties();
     this.initialize();
+
   }
 
   customProperties() {
