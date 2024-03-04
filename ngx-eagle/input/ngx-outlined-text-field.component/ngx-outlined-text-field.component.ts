@@ -12,7 +12,7 @@ import {
   booleanAttribute,
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { Guid, StylesService } from 'ngx-eagle/core/services';
+import { Autofill, Guid, StylesService } from 'ngx-eagle/core/services';
 import { ErrorColor } from 'ngx-eagle/core/types';
 
 @Component({
@@ -92,20 +92,20 @@ export class NgxOutlinedTextFieldComponent
     public elementRef: ElementRef,
     private renderer: Renderer2,
     private stylesService: StylesService,
+    private autofill: Autofill,
     @Optional() @Self() public ngControl: NgControl
   ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
-    setTimeout(() => {
-      console.log(this.inputRef.nativeElement.innerText);
-      this.moveLabel();
-    }, 3000);
   }
 
   ngAfterViewInit() {
     this.customProperties();
     this.initialize();
+    this.autofill.monitor(this.inputRef.nativeElement).subscribe((event:any) => {
+      console.log(event.isAutofilled)
+    });
   }
 
   customProperties() {

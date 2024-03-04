@@ -23,20 +23,18 @@
 </form>
 
 <ng-template #person>
-  <span class="material-symbols-outlined prefix"> person </span>
+  <span class="material-symbols-outlined"> person </span>
 </ng-template>
 
 <ng-template #lock>
-  <span class="material-symbols-outlined prefix"> lock </span>
+  <span class="material-symbols-outlined"> lock </span>
 </ng-template>
 
 <ng-template #visibility>
-  <div class="suffix" (click)="toggleVisibility()">
-    <span class="material-symbols-outlined" *ngIf="type === 'password'">
-      visibility
-    </span>
-    <span class="material-symbols-outlined" *ngIf="type === 'text'">
-      visibility_off
-    </span>
-  </div>
+  <span
+    class="material-symbols-outlined suffix"
+    (click)="type = type === 'password' ? 'text' : 'password'"
+  >
+    {{ type === "password" ? "visibility" : "visibility_off" }}
+  </span>
 </ng-template>

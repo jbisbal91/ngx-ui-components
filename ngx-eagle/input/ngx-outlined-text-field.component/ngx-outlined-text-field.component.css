@@ -50,7 +50,7 @@
   padding-left: 0;
 }
 
-.ngx-outlined-text-field > .container > .ngx-nat-input ~ .suffix {
+.ngx-outlined-text-field > .container > .ngx-nat-input + .suffix {
   padding-right: 0;
 }
 

@@ -38,10 +38,6 @@ export class InputDemo3Component implements OnInit  {
     });
   }
 
-  toggleVisibility() {
-    this.type = this.type === 'password' ? 'text' : 'password';
-  }
-
   onSubmit() {
     console.log(this.loginForm.controls)
   }
