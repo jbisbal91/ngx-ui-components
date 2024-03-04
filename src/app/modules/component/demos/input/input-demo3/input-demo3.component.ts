@@ -19,7 +19,7 @@ export class InputDemo3Component implements OnInit  {
   initFormGroup() {
     this.loginForm = this.formBuilder.group({
       email: [
-        null,
+        '',
         [
           Validators.required,
           Validators.email,
@@ -28,7 +28,7 @@ export class InputDemo3Component implements OnInit  {
         ],
       ],
       password: [
-        null,
+        '',
         [
           Validators.required,
           Validators.minLength(8),

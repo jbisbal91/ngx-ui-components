@@ -97,10 +97,10 @@ export class NgxOutlinedTextFieldComponent
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
-    this.disabled = this.elementRef?.nativeElement.hasAttribute('disabled');
-    this.required = this.elementRef?.nativeElement.hasAttribute('required');
-    this.errorText =
-      this.elementRef?.nativeElement.attributes['error-text']?.value;
+    setTimeout(() => {
+      console.log(this.inputRef.nativeElement.innerText);
+      this.moveLabel();
+    }, 3000);
   }
 
   ngAfterViewInit() {
@@ -149,6 +149,10 @@ export class NgxOutlinedTextFieldComponent
 
   initialize() {
     setTimeout(() => {
+      this.disabled = this.elementRef?.nativeElement.hasAttribute('disabled');
+      this.required = this.elementRef?.nativeElement.hasAttribute('required');
+      this.errorText =
+        this.elementRef?.nativeElement.attributes['error-text']?.value;
       this.ngControl?.control?.setValue(this.value);
       this._placeholder = this.placeholder;
       this.moveLabel();
