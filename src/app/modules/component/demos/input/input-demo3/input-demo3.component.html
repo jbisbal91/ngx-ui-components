@@ -1,5 +1,6 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <ngx-outlined-text-field
+    autocomplete="off"
     label="Email"
     placeholder="Email"
     formControlName="email"

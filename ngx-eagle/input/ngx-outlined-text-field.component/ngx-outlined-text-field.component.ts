@@ -40,6 +40,7 @@ import { ErrorColor } from 'ngx-eagle/core/types';
           (input)="onInput($event)"
           (focus)="onFocus($event)"
           (blur)="onBlur($event)"
+          [autocomplete]="autocomplete"
         />
         <div class="suffix" *ngIf="suffix">
           <span *ngIf="typeOf(suffix) === 'string'">{{ suffix }}</span>
@@ -62,6 +63,7 @@ import { ErrorColor } from 'ngx-eagle/core/types';
 export class NgxOutlinedTextFieldComponent
   implements AfterViewInit, ControlValueAccessor
 {
+  @Input() autocomplete: string = '';
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input() label!: string;
   @Input() pattern!: any;
