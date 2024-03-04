@@ -41,14 +41,17 @@
   justify-content: center;
   display: inline-flex;
   align-items: center;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .ngx-outlined-text-field > .container > .prefix + .ngx-nat-input {
-  padding-left: unset;
+  padding-left: 0;
 }
 
-.ngx-outlined-text-field > .container > .ngx-nat-input + .suffix {
-  padding-right: unset;
+.ngx-outlined-text-field > .container > .ngx-nat-input ~ .suffix {
+  padding-right: 0;
 }
 
 .ngx-outlined-text-field > .container > .ngx-nat-input {

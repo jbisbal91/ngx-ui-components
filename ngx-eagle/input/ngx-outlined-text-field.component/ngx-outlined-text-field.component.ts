@@ -37,9 +37,10 @@ import { ErrorColor } from 'ngx-eagle/core/types';
           [value]="value"
           [disabled]="disabled"
           [required]="required"
-          (input)="onInputChange($event)"
+          (input)="onInput($event)"
+          (focus)="onFocus($event)"
+          (blur)="onBlur($event)"
         />
-
         <div class="suffix" *ngIf="suffix">
           <span *ngIf="typeOf(suffix) === 'string'">{{ suffix }}</span>
           <ng-template
@@ -85,7 +86,7 @@ export class NgxOutlinedTextFieldComponent
   onTouched: any = () => {};
 
   isValid: boolean = true;
-  inputFocus = false;
+  isFocused: boolean = false;
 
   constructor(
     public elementRef: ElementRef,
@@ -105,18 +106,6 @@ export class NgxOutlinedTextFieldComponent
   ngAfterViewInit() {
     this.customProperties();
     this.initialize();
-    //Se lanza el evento cuando se esta haciendo focus en el input
-    this.inputRef.nativeElement.addEventListener('focus', () => {
-      this.inputFocus = true;
-      //this.validate();
-      this.moveLabel();
-    });
-    //Se lanza el evento cuando se desenfoca del input
-    this.inputRef.nativeElement.addEventListener('blur', () => {
-      this.inputFocus = false;
-      this.validate();
-      this.moveLabel();
-    });
   }
 
   customProperties() {
@@ -187,7 +176,7 @@ export class NgxOutlinedTextFieldComponent
   moveLabel() {
     if (this.labelRef) {
       const containerHeight = this.containerRef.nativeElement.offsetHeight;
-      if ((this.inputFocus || this.isValidValue(this.value)) && this.label) {
+      if ((this.isFocused || this.isValidValue(this.value)) && this.label) {
         this.applyFocusedStyle();
       } else {
         this.applyDefaultStyle(containerHeight);
@@ -210,7 +199,7 @@ export class NgxOutlinedTextFieldComponent
 
   private setLabelStyle(top: string, fontSize: string) {
     const left =
-      this.prefix && !this.inputFocus && !this.value
+      this.prefix && !this.isFocused && !this.value
         ? `${this.prefixWidth()}px`
         : '0.75rem';
     this.renderer.setStyle(this.labelRef.nativeElement, 'top', top);
@@ -224,8 +213,7 @@ export class NgxOutlinedTextFieldComponent
     return result;
   }
 
-
-  onInputChange(event: Event): void {
+  onInput(event: Event): void {
     this.value = (event.target as HTMLInputElement).value;
     this.ngControl?.control?.setValue(this.value);
     this.validate();
@@ -234,6 +222,19 @@ export class NgxOutlinedTextFieldComponent
     } else {
       this.drawLineTopBorder();
     }
+  }
+
+  onFocus(event: FocusEvent) {
+    console.log('Focus', event);
+    this.isFocused = true;
+    this.moveLabel();
+  }
+
+  onBlur(event: FocusEvent) {
+    console.log('Blur', event);
+    this.isFocused = false;
+    this.validate();
+    this.moveLabel();
   }
 
   buildBorderOutlined() {
