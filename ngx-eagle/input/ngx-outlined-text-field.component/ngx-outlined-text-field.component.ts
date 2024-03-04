@@ -12,7 +12,7 @@ import {
   booleanAttribute,
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { Autofill, Guid, StylesService } from 'ngx-eagle/core/services';
+import { Guid, StylesService } from 'ngx-eagle/core/services';
 import { ErrorColor } from 'ngx-eagle/core/types';
 
 @Component({
@@ -29,9 +29,9 @@ import { ErrorColor } from 'ngx-eagle/core/types';
           ></ng-template>
         </div>
         <input
+          class="ngx-nat-input"
           #input
           [type]="type"
-          class=" ngx-nat-input"
           [pattern]="pattern"
           [placeholder]="placeholder"
           [value]="value"
@@ -92,7 +92,6 @@ export class NgxOutlinedTextFieldComponent
     public elementRef: ElementRef,
     private renderer: Renderer2,
     private stylesService: StylesService,
-    private autofill: Autofill,
     @Optional() @Self() public ngControl: NgControl
   ) {
     if (this.ngControl) {
@@ -103,9 +102,6 @@ export class NgxOutlinedTextFieldComponent
   ngAfterViewInit() {
     this.customProperties();
     this.initialize();
-    this.autofill.monitor(this.inputRef.nativeElement).subscribe((event:any) => {
-      console.log(event.isAutofilled)
-    });
   }
 
   customProperties() {
@@ -229,13 +225,11 @@ export class NgxOutlinedTextFieldComponent
   }
 
   onFocus(event: FocusEvent) {
-    console.log('Focus', event);
     this.isFocused = true;
     this.moveLabel();
   }
 
   onBlur(event: FocusEvent) {
-    console.log('Blur', event);
     this.isFocused = false;
     this.validate();
     this.moveLabel();
