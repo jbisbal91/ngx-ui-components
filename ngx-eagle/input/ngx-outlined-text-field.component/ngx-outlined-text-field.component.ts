@@ -235,11 +235,12 @@ export class NgxOutlinedTextFieldComponent
   }
 
   private applyDefaultStyle(containerHeight: number) {
+    const height = (containerHeight - 14)/2; 
     const top =
       this.type !== 'textarea'
-        ? `${(containerHeight * 0.3) / 16}rem`
-        : '0.75rem';
-    this.setLabelStyle(top, '0.875rem');
+        ? `${height / 16}rem`
+        : '0.75rem';    
+    this.setLabelStyle(top, "0.875rem");
     this.inputRef.nativeElement.placeholder = '';
     this.drawLineTopBorder();
   }

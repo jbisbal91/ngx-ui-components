@@ -5,7 +5,7 @@
 html,
 body {
   height: 100vh;
-  scroll-behavior: inherit;
+  scroll-behavior: smooth;
 }
 
 @font-face {
@@ -28,12 +28,6 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
-
-::-webkit-scrollbar {
-  //width: 0px;
-  //height: 0px;
-}
-
 
 article {
   padding: 30px 30px 30px 50px;
