@@ -11,7 +11,7 @@ import {
   TemplateRef,
   ViewChild,
   booleanAttribute,
-  inject,
+  numberAttribute,
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Guid, StylesService } from 'ngx-eagle/core/services';
@@ -24,7 +24,11 @@ import { Subscription, timer } from 'rxjs';
     <div #input_container class="ngx-outlined-text-field">
       <label #input_label class="ngx-input-label">{{ label }}</label>
       <div class="container">
-        <div [id]="inputPrefixId" class="prefix" *ngIf="prefix">
+        <div
+          [id]="inputPrefixId"
+          class="prefix"
+          *ngIf="prefix && type !== 'textarea'"
+        >
           <span *ngIf="typeOf(prefix) === 'string'">{{ prefix }}</span>
           <ng-template
             *ngIf="typeOf(prefix) === 'object'"
@@ -32,6 +36,7 @@ import { Subscription, timer } from 'rxjs';
           ></ng-template>
         </div>
         <input
+          *ngIf="type !== 'textarea'"
           class="ngx-nat-input"
           #input
           [type]="type"
@@ -45,7 +50,23 @@ import { Subscription, timer } from 'rxjs';
           (blur)="onBlur($event)"
           [autocomplete]="autocomplete"
         />
-        <div class="suffix" *ngIf="suffix">
+        <textarea
+          class="ngx-nat-textarea"
+          *ngIf="type === 'textarea'"
+          #input
+          [rows]="rows"
+          [placeholder]="placeholder"
+          [value]="value"
+          [disabled]="disabled"
+          [required]="required"
+          (input)="onInput($event)"
+          (focus)="onFocus($event)"
+          (blur)="onBlur($event)"
+          [autocomplete]="autocomplete"
+          (mousemove)="onTextareaResize($event)"
+        >
+        </textarea>
+        <div class="suffix" *ngIf="suffix && type !== 'textarea'">
           <span *ngIf="typeOf(suffix) === 'string'">{{ suffix }}</span>
           <ng-template
             *ngIf="typeOf(suffix) === 'object'"
@@ -73,6 +94,7 @@ export class NgxOutlinedTextFieldComponent
   @Input() placeholder: string = '';
   @Input() prefix!: any | TemplateRef<void>;
   @Input({ transform: booleanAttribute }) required!: boolean;
+  @Input({ transform: numberAttribute }) rows: number = 4;  
   @Input() suffix!: any | TemplateRef<void>;
   @Input() type: string = 'text';
   @Input() value: any = '';
@@ -125,6 +147,15 @@ export class NgxOutlinedTextFieldComponent
         this.moveLabel();
       }
     });
+  }
+
+  onTextareaResize(event: MouseEvent) {
+    if (event.button === 0) {
+      const height = this.inputRef.nativeElement.offsetHeight;
+      const width = this.inputRef.nativeElement.offsetWidth;
+      this.renderer.setStyle(this.elementRef.nativeElement, 'height', height);
+      this.renderer.setStyle(this.elementRef.nativeElement, 'width', width);
+    }
   }
 
   customProperties() {
@@ -202,7 +233,10 @@ export class NgxOutlinedTextFieldComponent
   }
 
   private applyDefaultStyle(containerHeight: number) {
-    const top = `${(containerHeight * 0.3) / 16}rem`;
+    const top =
+      this.type !== 'textarea'
+        ? `${(containerHeight * 0.3) / 16}rem`
+        : '0.75rem';
     this.setLabelStyle(top, '0.875rem');
     this.inputRef.nativeElement.placeholder = '';
     this.drawLineTopBorder();
