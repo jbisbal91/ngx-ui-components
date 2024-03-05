@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./input-demo3.component.scss']
 })
 export class InputDemo3Component implements OnInit  {
-  type: string = 'password';
+  type:any = 'password';
   loginForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}

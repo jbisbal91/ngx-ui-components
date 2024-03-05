@@ -17,6 +17,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Guid, StylesService } from 'ngx-eagle/core/services';
 import { ErrorColor } from 'ngx-eagle/core/types';
 import { Subscription, timer } from 'rxjs';
+import { NgxType } from '../typings';
 
 @Component({
   selector: 'ngx-outlined-text-field',
@@ -63,7 +64,6 @@ import { Subscription, timer } from 'rxjs';
           (focus)="onFocus($event)"
           (blur)="onBlur($event)"
           [autocomplete]="autocomplete"
-          (mousemove)="onTextareaResize($event)"
         >
         </textarea>
         <div class="suffix" *ngIf="suffix && type !== 'textarea'">
@@ -94,9 +94,9 @@ export class NgxOutlinedTextFieldComponent
   @Input() placeholder: string = '';
   @Input() prefix!: any | TemplateRef<void>;
   @Input({ transform: booleanAttribute }) required!: boolean;
-  @Input({ transform: numberAttribute }) rows: number = 4;  
+  @Input({ transform: numberAttribute }) rows: number = 4;
   @Input() suffix!: any | TemplateRef<void>;
-  @Input() type: string = 'text';
+  @Input() type: NgxType = 'text';
   @Input() value: any = '';
 
   _placeholder: string = '';
@@ -149,15 +149,6 @@ export class NgxOutlinedTextFieldComponent
     });
   }
 
-  onTextareaResize(event: MouseEvent) {
-    if (event.button === 0) {
-      const height = this.inputRef.nativeElement.offsetHeight;
-      const width = this.inputRef.nativeElement.offsetWidth;
-      this.renderer.setStyle(this.elementRef.nativeElement, 'height', height);
-      this.renderer.setStyle(this.elementRef.nativeElement, 'width', width);
-    }
-  }
-
   customProperties() {
     const styles: any = {
       'border-color': (value: any) => {
@@ -194,6 +185,17 @@ export class NgxOutlinedTextFieldComponent
       this.ngControl?.control?.setValue(this.value);
       this._placeholder = this.placeholder;
       this.moveLabel();
+      if (this.type === 'textarea') {
+        const width = this.stylesService.getStyleValue(
+          this.elementRef.nativeElement,
+          'width'
+        );
+        this.renderer.setStyle(
+          this.elementRef.nativeElement,
+          'min-width',
+          width
+        );
+      }
     });
   }
 
