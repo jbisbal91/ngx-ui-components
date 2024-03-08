@@ -30,7 +30,7 @@
 .ngx-outlined-text-field > .ngx-input-label {
   max-width: max-content;
   position: absolute;
-  transition: top ease-in-out 0.125s;
+  transition: top 0.3s, font-size 0.3s;
   line-height: 14px;
 }
 
