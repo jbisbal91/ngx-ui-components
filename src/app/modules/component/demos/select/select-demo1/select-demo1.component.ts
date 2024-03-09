@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgxFillMode, NgxRounded, NgxSize } from 'ngx-eagle/select/typings';
 
 @Component({
   selector: 'app-select-demo1',
@@ -7,11 +6,5 @@ import { NgxFillMode, NgxRounded, NgxSize } from 'ngx-eagle/select/typings';
   styleUrls: ['./select-demo1.component.scss']
 })
 export class SelectDemo1Component {
-  ngxSize: NgxSize = 'medium';
-  ngxRounded: NgxRounded = 'medium';
-  ngxFillMode: NgxFillMode = 'filled';
-  input1 = '';
-  input2 = '';  
-  disabled = false;
-  autocomplete = false;
+
 }

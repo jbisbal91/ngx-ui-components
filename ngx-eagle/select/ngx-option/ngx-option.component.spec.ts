@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputComponent } from './input.component';
+import { NgxOptionComponent } from './ngx-option.component';
 
-describe('InputComponent', () => {
-  let component: InputComponent;
-  let fixture: ComponentFixture<InputComponent>;
+describe('NgxOptionComponent', () => {
+  let component: NgxOptionComponent;
+  let fixture: ComponentFixture<NgxOptionComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [InputComponent]
+      declarations: [NgxOptionComponent]
     });
-    fixture = TestBed.createComponent(InputComponent);
+    fixture = TestBed.createComponent(NgxOptionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

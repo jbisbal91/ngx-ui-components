@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { SelectComponent } from './select.component';
-import { OptionComponent } from './option.component';
+import { NgxOutlinedSelectFieldComponent } from './ngx-outlined-select-field/ngx-outlined-select-field.component';
+import { NgxOptionComponent } from './ngx-option/ngx-option.component';
+import { InputModule } from 'ngx-eagle/input';
 
 @NgModule({
-  imports: [SelectComponent, OptionComponent],
-  exports: [SelectComponent, OptionComponent],
+  imports: [InputModule,NgxOutlinedSelectFieldComponent, NgxOptionComponent],
+  exports: [NgxOutlinedSelectFieldComponent, NgxOptionComponent],
 })
 export class SelectModule {}

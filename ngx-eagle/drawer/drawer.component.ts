@@ -1,7 +1,6 @@
 import { NgIf } from '@angular/common';
 import {
   AfterViewChecked,
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -19,7 +18,7 @@ import { NgxDrawerPlacement } from './typings';
     #backdrop
     (click)="closeDrawer($event)"
     *ngIf="internalVisible"
-    class="ngx-drawer-backdrop"
+    class="ngx-backdrop"
   >
     <div
       #drawer
@@ -37,7 +36,7 @@ import { NgxDrawerPlacement } from './typings';
 })
 export class DrawerComponent implements AfterViewChecked {
   @Input({ transform: booleanAttribute }) ngxBackdrop: boolean = true;
-  @Input({ transform: booleanAttribute }) ngxBackdropClosable: boolean = true; 
+  @Input({ transform: booleanAttribute }) ngxBackdropClosable: boolean = true;
   @Input() ngxPlacement: NgxDrawerPlacement = 'left';
 
   internalVisible: boolean = false;
@@ -112,7 +111,6 @@ export class DrawerComponent implements AfterViewChecked {
     const isClickOnParent = clickedElement === this.backdropRef.nativeElement;
     const isClickOnChild =
       this.drawerRef.nativeElement.contains(clickedElement);
-
     if (isClickOnParent && !isClickOnChild && this.ngxBackdropClosable) {
       this.closingAction();
     }

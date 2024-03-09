@@ -3,6 +3,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  HostListener,
   Input,
   OnDestroy,
   Optional,
@@ -17,74 +18,15 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Guid, StylesService } from 'ngx-eagle/core/services';
 import { ErrorColor } from 'ngx-eagle/core/types';
 import { Subscription, timer } from 'rxjs';
-import { NgxType } from '../typings';
 
 @Component({
-  selector: 'ngx-outlined-text-field',
-  template: `
-    <div #input_container class="ngx-outlined-text-field">
-      <label #input_label class="ngx-input-label">{{ label }}</label>
-      <div class="container">
-        <div
-          [id]="inputPrefixId"
-          class="prefix"
-          *ngIf="prefix && type !== 'textarea'"
-        >
-          <span *ngIf="typeOf(prefix) === 'string'">{{ prefix }}</span>
-          <ng-template
-            *ngIf="typeOf(prefix) === 'object'"
-            [ngTemplateOutlet]="prefix"
-          ></ng-template>
-        </div>
-        <input
-          *ngIf="type !== 'textarea'"
-          class="ngx-nat-input"
-          #input
-          [type]="type"
-          [pattern]="pattern"
-          [placeholder]="placeholder"
-          [value]="value"
-          [disabled]="disabled"
-          [required]="required"
-          (input)="onInput($event)"
-          (focus)="onFocus($event)"
-          (blur)="onBlur($event)"
-          [autocomplete]="autocomplete"
-        />
-        <textarea
-          class="ngx-nat-textarea"
-          *ngIf="type === 'textarea'"
-          #input
-          [rows]="rows"
-          [placeholder]="placeholder"
-          [value]="value"
-          [disabled]="disabled"
-          [required]="required"
-          (input)="onInput($event)"
-          (focus)="onFocus($event)"
-          (blur)="onBlur($event)"
-          [autocomplete]="autocomplete"
-        >
-        </textarea>
-        <div class="suffix" *ngIf="suffix && type !== 'textarea'">
-          <span *ngIf="typeOf(suffix) === 'string'">{{ suffix }}</span>
-          <ng-template
-            *ngIf="typeOf(suffix) === 'object'"
-            [ngTemplateOutlet]="suffix"
-          ></ng-template>
-        </div>
-      </div>
-
-      <span class="error-text" *ngIf="!isValid && errorText">{{
-        errorText
-      }}</span>
-    </div>
-  `,
-  styleUrls: ['./ngx-outlined-text-field.component.css'],
+  selector: 'ngx-outlined-select-field',
+  templateUrl: './ngx-outlined-select-field.component.html',
+  styleUrls: ['./ngx-outlined-select-field.component.scss'],
   standalone: true,
   imports: [NgIf, NgTemplateOutlet],
 })
-export class NgxOutlinedTextFieldComponent
+export class NgxOutlinedSelectFieldComponent
   implements AfterViewInit, ControlValueAccessor, OnDestroy
 {
   @Input() autocomplete: string = '';
@@ -96,7 +38,6 @@ export class NgxOutlinedTextFieldComponent
   @Input({ transform: booleanAttribute }) required!: boolean;
   @Input({ transform: numberAttribute }) rows: number = 4;
   @Input() suffix!: any | TemplateRef<void>;
-  @Input() type: NgxType = 'text';
   @Input() value: any = '';
 
   _placeholder: string = '';
@@ -107,6 +48,7 @@ export class NgxOutlinedTextFieldComponent
   @ViewChild('input_container') containerRef!: ElementRef;
   @ViewChild('input_label') labelRef!: ElementRef;
   @ViewChild('input') inputRef!: ElementRef;
+  @ViewChild('options_container') optionsRef!: ElementRef;
 
   borderColor: string = '#747775';
   onChange: any = () => {};
@@ -136,10 +78,11 @@ export class NgxOutlinedTextFieldComponent
     this.customProperties();
     this.initialize();
     this.autofillMonitor();
+    this.onScroll();
   }
 
   autofillMonitor() {
-    if(this.label){
+    if (this.label) {
       this.autofilledSubscription = timer(0, 100).subscribe(() => {
         this.autofilled = this.inputRef.nativeElement.matches(':autofill');
         if (this.autofilled) {
@@ -149,6 +92,13 @@ export class NgxOutlinedTextFieldComponent
         }
       });
     }
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll() {
+    console.log('scrollY', window.scrollY);
+    console.log('scrollX', window.scrollX);
+    console.log('optionsRef', this.optionsRef?.nativeElement);
   }
 
   customProperties() {
@@ -187,17 +137,6 @@ export class NgxOutlinedTextFieldComponent
       this.ngControl?.control?.setValue(this.value);
       this._placeholder = this.placeholder;
       this.moveLabel();
-      if (this.type === 'textarea') {
-        const width = this.stylesService.getStyleValue(
-          this.elementRef.nativeElement,
-          'width'
-        );
-        this.renderer.setStyle(
-          this.elementRef.nativeElement,
-          'min-width',
-          width
-        );
-      }
     });
   }
 
@@ -237,12 +176,8 @@ export class NgxOutlinedTextFieldComponent
   }
 
   private applyDefaultStyle(containerHeight: number) {
-    const height = (containerHeight - 14)/2; 
-    const top =
-      this.type !== 'textarea'
-        ? `${height / 16}rem`
-        : '0.75rem';    
-    this.setLabelStyle(top, "0.875rem");
+    const height = (containerHeight - 14) / 2;
+    this.setLabelStyle(`${height / 16}rem`, '0.875rem');
     this.inputRef.nativeElement.placeholder = '';
     this.drawLineTopBorder();
   }
@@ -277,6 +212,10 @@ export class NgxOutlinedTextFieldComponent
   onFocus(event: FocusEvent) {
     this.isFocused = true;
     this.moveLabel();
+    setTimeout(() => {
+      console.log('offsetTop', this.optionsRef?.nativeElement.offsetTop);
+      console.log('offsetBottom', this.optionsRef?.nativeElement.offsetBottom);
+    });
   }
 
   onBlur(event: FocusEvent) {

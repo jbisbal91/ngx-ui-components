@@ -1,0 +1,143 @@
+:host {
+    border-radius: 6px;
+    border-color: currentColor;
+    width: 212px;
+}
+
+.ngx-outlined-select-field {
+    display: flex;
+    flex-direction: column;
+    max-height: inherit;
+    min-height: inherit;
+    height: inherit;
+    max-width: inherit;
+    min-width: inherit;
+    width: inherit;
+    position: relative;
+    border: 1px solid;
+    border-radius: inherit;
+    border-top: unset;
+    border-color: inherit;
+}
+
+.ngx-outlined-select-field>.container>.ngx-nat-textarea:disabled,
+.ngx-outlined-select-field>.container>.ngx-nat-input:disabled {
+    opacity: 0.75;
+    cursor: no-drop;
+}
+
+.ngx-outlined-select-field>.ngx-input-label {
+    max-width: max-content;
+    position: absolute;
+    transition: top 0.3s, font-size 0.3s;
+    line-height: 14px;
+}
+
+.container {
+    display: inline-flex;
+    max-height: inherit;
+    min-height: inherit;
+    height: 100%;
+    max-width: inherit;
+    min-width: inherit;
+    width: inherit;
+    align-items: center;
+    overflow: hidden;
+}
+
+.ngx-outlined-select-field>.container>.prefix,
+.ngx-outlined-select-field>.container>.suffix {
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ngx-outlined-select-field>.container>.prefix+.ngx-nat-input {
+    padding-left: 0;
+}
+
+.ngx-outlined-select-field>.container>.ngx-nat-input+.suffix {
+    padding-right: 0;
+}
+
+.ngx-outlined-select-field>.container>.ngx-nat-textarea {
+    padding: 0.75rem;
+    white-space: break-spaces;
+    max-width: inherit;
+    min-width: inherit;
+    width: inherit;
+    max-height: inherit;
+    min-height: inherit;
+    height: inherit;
+}
+
+.ngx-outlined-select-field>.container>.ngx-nat-input {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    white-space: nowrap;
+    width: 100%;
+    height: 100%;
+    min-height: 2rem;
+    max-height: 3.5rem;
+    overflow: hidden;
+}
+
+.ngx-outlined-select-field>.container>.ngx-nat-input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.ngx-outlined-select-field>.container>.ngx-nat-textarea,
+.ngx-outlined-select-field>.container>.ngx-nat-input {
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    text-decoration: none;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+    position: relative;
+    transition: color 0.2s ease-in-out;
+    border: none;
+    color: currentColor;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+.ngx-outlined-select-field>.error-text {
+    font-size: 13px;
+    color: #f44336;
+    position: absolute;
+    bottom: -20px;
+}
+
+.ngx-options-container {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: grid;
+    width: inherit;
+    position: absolute;
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    max-height: 15rem;
+    overflow-y: scroll;
+    pointer-events: auto;
+    z-index: 1000;
+}
+
+.ngx-options-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ngx-options-container::-webkit-scrollbar-thumb {
+    background-color: #B9B9B9;
+    border-radius: 16px;
+}
