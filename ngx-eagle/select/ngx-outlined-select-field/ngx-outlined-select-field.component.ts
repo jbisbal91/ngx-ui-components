@@ -29,7 +29,7 @@ import { Subscription, timer } from 'rxjs';
 export class NgxOutlinedSelectFieldComponent
   implements AfterViewInit, ControlValueAccessor, OnDestroy
 {
-  @Input() autocomplete: string = '';
+  @Input({ transform: booleanAttribute }) autocomplete: boolean = false;
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input() label!: string;
   @Input() pattern!: any;
@@ -44,6 +44,8 @@ export class NgxOutlinedSelectFieldComponent
   errorText: string = '';
 
   public inputPrefixId: string = Guid.create();
+
+  optPos: 'bottom' | 'top' = 'bottom';
 
   @ViewChild('input_container') containerRef!: ElementRef;
   @ViewChild('input_label') labelRef!: ElementRef;
@@ -77,8 +79,6 @@ export class NgxOutlinedSelectFieldComponent
   ngAfterViewInit() {
     this.customProperties();
     this.initialize();
-    this.autofillMonitor();
-    this.onScroll();
   }
 
   autofillMonitor() {
@@ -94,11 +94,10 @@ export class NgxOutlinedSelectFieldComponent
     }
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onScroll() {
-    console.log('scrollY', window.scrollY);
-    console.log('scrollX', window.scrollX);
-    console.log('optionsRef', this.optionsRef?.nativeElement);
+  onKeyDown(event: KeyboardEvent) {
+    if (!this.autocomplete) {
+      event.preventDefault();
+    }
   }
 
   customProperties() {
@@ -212,16 +211,53 @@ export class NgxOutlinedSelectFieldComponent
   onFocus(event: FocusEvent) {
     this.isFocused = true;
     this.moveLabel();
+    this.showBackdrop();
+    this.adjustOptionsPosition();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.adjustOptionsPosition();
+  }
+
+  adjustOptionsPosition() {
+    const contProp = this.containerRef.nativeElement.getBoundingClientRect();
+    let top = contProp.top + contProp.height;
+    const offsetTop = contProp.top;
+    const offsetBottom = window.innerHeight - top;
+    this.optPos = 'bottom';
     setTimeout(() => {
-      console.log('offsetTop', this.optionsRef?.nativeElement.offsetTop);
-      console.log('offsetBottom', this.optionsRef?.nativeElement.offsetBottom);
+      if (this.optionsRef) {
+        const offsetHeight = this.optionsRef.nativeElement.offsetHeight;
+        if (offsetTop > offsetBottom && offsetHeight <= offsetTop) {
+          top = top - (offsetHeight + contProp.height + 4);
+          this.optPos = 'top';
+        }
+        this.renderer.setStyle(
+          this.optionsRef.nativeElement,
+          'top',
+          `${top}px`
+        );
+      }
     });
+  }
+
+  showBackdrop() {
+    const backdrop = document.createElement('div');
+    backdrop.classList.add('ngx-backdrop');
+    document.body.appendChild(backdrop);
+  }
+
+  hideBackdrop() {
+    const backdrop = document.querySelector('.ngx-backdrop');
+    backdrop?.remove();
   }
 
   onBlur(event: FocusEvent) {
     this.isFocused = false;
     this.validate();
     this.moveLabel();
+    this.hideBackdrop();
   }
 
   buildBorderOutlined() {

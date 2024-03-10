@@ -20,7 +20,8 @@
       (input)="onInput($event)"
       (focus)="onFocus($event)"
       (blur)="onBlur($event)"
-      [autocomplete]="autocomplete"
+      (keydown)="onKeyDown($event)"
+      [readonly]="!autocomplete"
     />
     <div class="suffix" *ngIf="suffix">
       <span *ngIf="typeOf(suffix) === 'string'">{{ suffix }}</span>
@@ -33,6 +34,12 @@
 
   <span class="error-text" *ngIf="!isValid && errorText">{{ errorText }}</span>
 </div>
-<div #options_container class="ngx-options-container" *ngIf="isFocused && !disabled">
+<div
+  #options_container
+  class="ngx-options-container"
+  [class.position-bottom]="optPos === 'bottom'"
+  [class.position-top]="optPos === 'top'"
+  *ngIf="isFocused && !disabled"
+>
   <ng-content></ng-content>
 </div>
