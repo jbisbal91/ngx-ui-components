@@ -2,11 +2,13 @@ import { NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   Component,
+  ContentChildren,
   ElementRef,
   HostListener,
   Input,
   OnDestroy,
   Optional,
+  QueryList,
   Renderer2,
   Self,
   TemplateRef,
@@ -17,7 +19,8 @@ import {
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Guid, StylesService } from 'ngx-eagle/core/services';
 import { ErrorColor } from 'ngx-eagle/core/types';
-import { Subscription, timer } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { NgxOptionComponent } from '../ngx-option/ngx-option.component';
 
 @Component({
   selector: 'ngx-outlined-select-field',
@@ -29,6 +32,11 @@ import { Subscription, timer } from 'rxjs';
 export class NgxOutlinedSelectFieldComponent
   implements AfterViewInit, ControlValueAccessor, OnDestroy
 {
+  @ContentChildren(NgxOptionComponent)
+  public optionList!: QueryList<NgxOptionComponent>;
+
+  allOptions: NgxOptionComponent[] = [];
+
   @Input({ transform: booleanAttribute }) autocomplete: boolean = false;
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input() label!: string;
@@ -56,9 +64,10 @@ export class NgxOutlinedSelectFieldComponent
   onChange: any = () => {};
   onTouched: any = () => {};
 
+  private subscription: Subscription = new Subscription();
+
   isValid: boolean = true;
   isFocused: boolean = false;
-  private autofilledSubscription: Subscription = new Subscription();
   autofilled: boolean = false;
 
   constructor(
@@ -73,25 +82,23 @@ export class NgxOutlinedSelectFieldComponent
   }
 
   ngOnDestroy(): void {
-    this.autofilledSubscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   ngAfterViewInit() {
     this.customProperties();
+    this.allOptions = this.optionList.toArray();
+    console.log(this.allOptions);
     this.initialize();
-  }
 
-  autofillMonitor() {
-    if (this.label) {
-      this.autofilledSubscription = timer(0, 100).subscribe(() => {
-        this.autofilled = this.inputRef.nativeElement.matches(':autofill');
-        if (this.autofilled) {
-          this.applyFocusedStyle();
-        } else {
-          this.moveLabel();
-        }
-      });
-    }
+    this.allOptions.forEach((opt) => {
+      this.subscription.add(
+        opt.onSelect.subscribe(() => {
+          this.value = opt.content;
+          console.log(opt);
+        })
+      );
+    });
   }
 
   onKeyDown(event: KeyboardEvent) {
@@ -254,10 +261,12 @@ export class NgxOutlinedSelectFieldComponent
   }
 
   onBlur(event: FocusEvent) {
-    this.isFocused = false;
-    this.validate();
-    this.moveLabel();
-    this.hideBackdrop();
+    setTimeout(() => {
+      this.isFocused = false;
+      this.validate();
+      this.moveLabel();
+      this.hideBackdrop();
+    }, 100);
   }
 
   buildBorderOutlined() {
