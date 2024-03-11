@@ -1,20 +1,15 @@
 <ngx-outlined-select-field
   label="Select"
-  autocomplete="true"
+  autocomplete="false"
   placeholder="Select option"
   [(ngModel)]="value"
 >
-  <ngx-option value="opt1">Option 1</ngx-option>
-  <ngx-option value="opt2">Option 2</ngx-option>
-  <ngx-option value="opt3">Option 3</ngx-option>
-  <ngx-option value="opt4" disabled>Option 4</ngx-option>
-  <ngx-option value="opt5">Option 5</ngx-option>
-  <ngx-option value="opt6">Option 6</ngx-option>
-  <ngx-option value="opt7">Option 7</ngx-option>
-  <ngx-option value="opt8">Option 8</ngx-option>
-  <ngx-option value="opt9">Option 9</ngx-option>
-  <ngx-option value="opt10">Option 10</ngx-option>
+<ngx-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</ngx-option>
 </ngx-outlined-select-field>
 
 
-[{{value}}]
+
+<select [(ngModel)]="value">
+  <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+
+</select>

@@ -129,6 +129,11 @@
     overflow-y: scroll;
     pointer-events: auto;
     z-index: 1000;
+    visibility: hidden;
+}
+
+.ngx-options-visible {
+    visibility: visible;
 }
 
 .position-top {

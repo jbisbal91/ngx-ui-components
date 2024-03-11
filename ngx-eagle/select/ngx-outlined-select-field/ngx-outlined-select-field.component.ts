@@ -123,7 +123,6 @@ export class NgxOutlinedSelectFieldComponent
   ngAfterViewInit() {
     this.customProperties();
     this.allOptions = this.optionList.toArray();
-    console.log(this.allOptions);
     this.initialize();
     this.allOptions.forEach((opt) => {
       this.subscription.add(
@@ -249,9 +248,12 @@ export class NgxOutlinedSelectFieldComponent
   }
 
   onInput(event: Event): void {
-    this.internalValue = (event.target as HTMLInputElement).value;
-    this.ngControl?.control?.setValue(this.internalValue);
-    this.validate();
+    if(this.autocomplete){
+      this.internalValue = (event.target as HTMLInputElement).value;
+      //this.ngControl?.control?.setValue(this.internalValue);
+      //this.validate();
+    }
+  
     if (this.label) {
       this.buildBorderOutlined();
     } else {
