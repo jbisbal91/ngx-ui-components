@@ -39,6 +39,7 @@ export class NgxOutlinedSelectFieldComponent
 
   @Input({ transform: booleanAttribute }) autocomplete: boolean = false;
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
+  @Input({ transform: booleanAttribute }) multiple: boolean = false;
   @Input() label!: string;
   @Input() pattern!: any;
   @Input() placeholder: string = '';
@@ -47,23 +48,39 @@ export class NgxOutlinedSelectFieldComponent
   @Input({ transform: numberAttribute }) rows: number = 4;
   @Input() suffix!: any | TemplateRef<void>;
 
-  internalValue: string | number = '';
+  internalValue: any = '';
+  _value: any = '';
 
   @Input()
   get value(): any {
     return this.internalValue;
   }
 
-  set value(value: string | number) {
-    console.log(value);
+  set value(value: any) {
     setTimeout(() => {
-      let index = this.allOptions?.findIndex((opt) => opt.value === value);
-      if (index !== -1) {
-        this.internalValue = this.allOptions[index]?.content;
-        this.moveLabel();
-        this.onChange(this.internalValue);
+      if (!this.multiple) {
+        this.selectOption(value);
       }
+      this.moveLabel();
     }, 100);
+  }
+
+  selectOption(value: any) {
+    let found = false;
+    this.allOptions.forEach((opt) => {
+      if (opt.value === value) {
+        this.internalValue = opt.content;
+        opt.selected = true;
+        this.onChange(opt.value);
+        found = true;
+      } else {
+        opt.selected = false;
+      }
+    });
+    if (!found) {
+      this.internalValue = null;
+      this.onChange(null);
+    }
   }
 
   _placeholder: string = '';
@@ -108,12 +125,12 @@ export class NgxOutlinedSelectFieldComponent
     this.allOptions = this.optionList.toArray();
     console.log(this.allOptions);
     this.initialize();
-
     this.allOptions.forEach((opt) => {
       this.subscription.add(
         opt.onSelect.subscribe(() => {
-          this.internalValue = opt.content;
-          console.log(opt);
+          if (!this.multiple) {
+            this.selectOption(opt.value);
+          }
         })
       );
     });
