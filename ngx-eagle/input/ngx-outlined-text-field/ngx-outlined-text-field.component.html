@@ -1,0 +1,57 @@
+<div #input_container class="ngx-outlined-text-field">
+    <label #input_label class="ngx-input-label">{{ label }}</label>
+    <div class="container">
+      <div
+        [id]="inputPrefixId"
+        class="prefix"
+        *ngIf="prefix && type !== 'textarea'"
+      >
+        <span *ngIf="typeOf(prefix) === 'string'">{{ prefix }}</span>
+        <ng-template
+          *ngIf="typeOf(prefix) === 'object'"
+          [ngTemplateOutlet]="prefix"
+        ></ng-template>
+      </div>
+      <input
+        *ngIf="type !== 'textarea'"
+        class="ngx-nat-input"
+        #input
+        [type]="type"
+        [pattern]="pattern"
+        [placeholder]="_placeholder"
+        [value]="value"
+        [disabled]="disabled"
+        [required]="required"
+        (input)="onInput($event)"
+        (focus)="onFocus($event)"
+        (blur)="onBlur($event)"
+        [autocomplete]="autocomplete"
+      />
+      <textarea
+        class="ngx-nat-textarea"
+        *ngIf="type === 'textarea'"
+        #input
+        [rows]="rows"
+        [placeholder]="_placeholder"
+        [value]="value"
+        [disabled]="disabled"
+        [required]="required"
+        (input)="onInput($event)"
+        (focus)="onFocus($event)"
+        (blur)="onBlur($event)"
+        [autocomplete]="autocomplete"
+      >
+      </textarea>
+      <div class="suffix" *ngIf="suffix && type !== 'textarea'">
+        <span *ngIf="typeOf(suffix) === 'string'">{{ suffix }}</span>
+        <ng-template
+          *ngIf="typeOf(suffix) === 'object'"
+          [ngTemplateOutlet]="suffix"
+        ></ng-template>
+      </div>
+    </div>
+
+    <span class="error-text" *ngIf="!isValid && errorText">{{
+      errorText
+    }}</span>
+  </div>

@@ -21,66 +21,8 @@ import { NgxType } from '../typings';
 
 @Component({
   selector: 'ngx-outlined-text-field',
-  template: `
-    <div #input_container class="ngx-outlined-text-field">
-      <label #input_label class="ngx-input-label">{{ label }}</label>
-      <div class="container">
-        <div
-          [id]="inputPrefixId"
-          class="prefix"
-          *ngIf="prefix && type !== 'textarea'"
-        >
-          <span *ngIf="typeOf(prefix) === 'string'">{{ prefix }}</span>
-          <ng-template
-            *ngIf="typeOf(prefix) === 'object'"
-            [ngTemplateOutlet]="prefix"
-          ></ng-template>
-        </div>
-        <input
-          *ngIf="type !== 'textarea'"
-          class="ngx-nat-input"
-          #input
-          [type]="type"
-          [pattern]="pattern"
-          [placeholder]="placeholder"
-          [value]="value"
-          [disabled]="disabled"
-          [required]="required"
-          (input)="onInput($event)"
-          (focus)="onFocus($event)"
-          (blur)="onBlur($event)"
-          [autocomplete]="autocomplete"
-        />
-        <textarea
-          class="ngx-nat-textarea"
-          *ngIf="type === 'textarea'"
-          #input
-          [rows]="rows"
-          [placeholder]="placeholder"
-          [value]="value"
-          [disabled]="disabled"
-          [required]="required"
-          (input)="onInput($event)"
-          (focus)="onFocus($event)"
-          (blur)="onBlur($event)"
-          [autocomplete]="autocomplete"
-        >
-        </textarea>
-        <div class="suffix" *ngIf="suffix && type !== 'textarea'">
-          <span *ngIf="typeOf(suffix) === 'string'">{{ suffix }}</span>
-          <ng-template
-            *ngIf="typeOf(suffix) === 'object'"
-            [ngTemplateOutlet]="suffix"
-          ></ng-template>
-        </div>
-      </div>
-
-      <span class="error-text" *ngIf="!isValid && errorText">{{
-        errorText
-      }}</span>
-    </div>
-  `,
-  styleUrls: ['./ngx-outlined-text-field.component.css'],
+  templateUrl: './ngx-outlined-text-field.component.html',
+  styleUrls: ['./ngx-outlined-text-field.component.scss'],
   standalone: true,
   imports: [NgIf, NgTemplateOutlet],
 })
@@ -139,7 +81,7 @@ export class NgxOutlinedTextFieldComponent
   }
 
   autofillMonitor() {
-    if(this.label){
+    if (this.label) {
       this.autofilledSubscription = timer(0, 100).subscribe(() => {
         this.autofilled = this.inputRef.nativeElement.matches(':autofill');
         if (this.autofilled) {
@@ -179,14 +121,13 @@ export class NgxOutlinedTextFieldComponent
   }
 
   initialize() {
+    this.moveLabel();
     setTimeout(() => {
       this.disabled = this.elementRef?.nativeElement.hasAttribute('disabled');
       this.required = this.elementRef?.nativeElement.hasAttribute('required');
       this.errorText =
         this.elementRef?.nativeElement.attributes['error-text']?.value;
       this.ngControl?.control?.setValue(this.value);
-      this._placeholder = this.placeholder;
-      this.moveLabel();
       if (this.type === 'textarea') {
         const width = this.stylesService.getStyleValue(
           this.elementRef.nativeElement,
@@ -232,18 +173,15 @@ export class NgxOutlinedTextFieldComponent
 
   private applyFocusedStyle() {
     this.setLabelStyle('-0.375rem', '0.75rem');
-    this.inputRef.nativeElement.placeholder = this._placeholder;
+    this._placeholder = this.placeholder;
     this.buildBorderOutlined();
   }
 
   private applyDefaultStyle(containerHeight: number) {
-    const height = (containerHeight - 14)/2; 
-    const top =
-      this.type !== 'textarea'
-        ? `${height / 16}rem`
-        : '0.75rem';    
-    this.setLabelStyle(top, "0.875rem");
-    this.inputRef.nativeElement.placeholder = '';
+    const height = (containerHeight - 14) / 2;
+    const top = this.type !== 'textarea' ? `${height / 16}rem` : '0.75rem';
+    this.setLabelStyle(top, '0.875rem');
+    this._placeholder = '';
     this.drawLineTopBorder();
   }
 
@@ -252,9 +190,9 @@ export class NgxOutlinedTextFieldComponent
       this.prefix && !this.isFocused && !this.value && !this.autofilled
         ? `${this.prefixWidth()}px`
         : '0.75rem';
-    this.renderer.setStyle(this.labelRef.nativeElement, 'top', top);
-    this.renderer.setStyle(this.labelRef.nativeElement, 'font-size', fontSize);
-    this.renderer.setStyle(this.labelRef.nativeElement, 'left', left);
+    this.renderer.setStyle(this.labelRef?.nativeElement, 'top', top);
+    this.renderer.setStyle(this.labelRef?.nativeElement, 'font-size', fontSize);
+    this.renderer.setStyle(this.labelRef?.nativeElement, 'left', left);
   }
 
   prefixWidth() {
@@ -288,36 +226,40 @@ export class NgxOutlinedTextFieldComponent
   buildBorderOutlined() {
     const percent = this.calculateBorderPercent();
     const background = this.calculateBackgroundStyle(percent);
-    
-    this.renderer.setStyle(
-      this.containerRef.nativeElement,
-      'border-top',
-      'unset'
-    );
+    this.setBorderTop('unset');
     this.renderer.setStyle(
       this.containerRef.nativeElement,
       'background',
       background
     );
   }
-  
+
   private calculateBorderPercent(): number {
     const containerWidth = this.containerRef.nativeElement.offsetWidth;
     const labelWidth = this.labelRef.nativeElement.offsetWidth;
     return ((labelWidth + 16) / containerWidth) * 100;
   }
-  
+
   private calculateBackgroundStyle(percent: number): string {
     const color = this.isValid ? this.borderColor : ErrorColor;
     return `linear-gradient(to right, ${color} 8px, transparent 8px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
   }
-  
+
   drawLineTopBorder() {
     const color = this.isValid ? this.borderColor : ErrorColor;
+    this.setBorderTop('unset');
     this.renderer.setStyle(
       this.containerRef.nativeElement,
       'background',
       `linear-gradient(to right, transparent 0%, ${color} 0%) no-repeat top/100% 1px`
+    );
+  }
+
+  setBorderTop(border: string) {
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'border-top',
+      border
     );
   }
 

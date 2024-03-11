@@ -26,8 +26,11 @@
 }
 
 .ngx-outlined-select-field>.ngx-input-label {
+    align-items: center;
     max-width: max-content;
     position: absolute;
+    font-size: 0.875rem;
+    left: 0.75rem;
     transition: top 0.3s, font-size 0.3s;
     line-height: 14px;
 }

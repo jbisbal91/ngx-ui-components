@@ -59,28 +59,8 @@ export class NgxOutlinedSelectFieldComponent
     setTimeout(() => {
       if (!this.multiple) {
         this.selectOption(value);
-        this.moveLabel();
       }
-    },100);
-   
-  }
-
-  selectOption(value: string) {
-    let found = false;
-    this.allOptions.forEach((opt) => {
-      if (opt.value === value) {
-        this.internalValue = opt.label ;
-        opt.selected = true;
-        this.onChange(this.internalValue);
-        found = true;
-      } else {
-        opt.selected = false;
-      }
-    });
-    if (!found) {
-      this.internalValue = null;
-      this.onChange(this.internalValue);
-    }
+    }, 100);
   }
 
   _placeholder: string = '';
@@ -169,27 +149,22 @@ export class NgxOutlinedSelectFieldComponent
   }
 
   initialize() {
+    this.moveLabel();
     setTimeout(() => {
       this.disabled = this.elementRef?.nativeElement.hasAttribute('disabled');
       this.required = this.elementRef?.nativeElement.hasAttribute('required');
       this.errorText =
         this.elementRef?.nativeElement.attributes['error-text']?.value;
       this.ngControl?.control?.setValue(this.internalValue);
-      this._placeholder = this.placeholder;
-      this.moveLabel();
     });
   }
 
   writeValue(value: any): void {
     setTimeout(() => {
-      if (!this.multiple) {
+      if (!this.multiple && value) {
         this.selectOption(value);
-        this.moveLabel();
       }
     }, 100);
-    this.internalValue = value;
-    this.onChange(this.internalValue);
-    this.moveLabel();
   }
 
   registerOnChange(fn: any): void {
@@ -204,30 +179,48 @@ export class NgxOutlinedSelectFieldComponent
     this.disabled = isDisabled;
   }
 
-  moveLabel() {
-    if (this.labelRef) {
-      const containerHeight = this.containerRef.nativeElement.offsetHeight;
-      if (
-        (this.isFocused || this.isValidValue(this.internalValue)) &&
-        this.label
-      ) {
-        this.applyFocusedStyle();
+  selectOption(value: string) {
+    let found = false;
+    this.allOptions.forEach((opt) => {
+      if (opt.value === value) {
+        this.internalValue = opt.label;
+        opt.selected = true;
+        this.onChange(this.internalValue);
+        found = true;
+        this.moveLabel();
       } else {
-        this.applyDefaultStyle(containerHeight);
+        opt.selected = false;
       }
+    });
+    if (!found) {
+      this.internalValue = null;
+      this.onChange(this.internalValue);
+    }
+  }
+
+  moveLabel() {
+    const containerHeight = this.containerRef?.nativeElement.offsetHeight;
+    if (
+      (this.isFocused || this.isValidValue(this.internalValue)) &&
+      this.label
+    ) {
+      this.applyFocusedStyle();
+    } else {
+      this.applyDefaultStyle(containerHeight);
     }
   }
 
   private applyFocusedStyle() {
     this.setLabelStyle('-0.375rem', '0.75rem');
-    this.inputRef.nativeElement.placeholder = this._placeholder;
+    this._placeholder = this.placeholder;
     this.buildBorderOutlined();
   }
 
   private applyDefaultStyle(containerHeight: number) {
     const height = (containerHeight - 14) / 2;
     this.setLabelStyle(`${height / 16}rem`, '0.875rem');
-    this.inputRef.nativeElement.placeholder = '';
+    this._placeholder = '';
+    this.drawLineTopBorder();
   }
 
   private setLabelStyle(top: string, fontSize: string) {
@@ -235,9 +228,9 @@ export class NgxOutlinedSelectFieldComponent
       this.prefix && !this.isFocused && !this.internalValue && !this.autofilled
         ? `${this.prefixWidth()}px`
         : '0.75rem';
-    this.renderer.setStyle(this.labelRef.nativeElement, 'top', top);
-    this.renderer.setStyle(this.labelRef.nativeElement, 'font-size', fontSize);
-    this.renderer.setStyle(this.labelRef.nativeElement, 'left', left);
+    this.renderer.setStyle(this.labelRef?.nativeElement, 'top', top);
+    this.renderer.setStyle(this.labelRef?.nativeElement, 'font-size', fontSize);
+    this.renderer.setStyle(this.labelRef?.nativeElement, 'left', left);
   }
 
   prefixWidth() {
@@ -254,6 +247,8 @@ export class NgxOutlinedSelectFieldComponent
     }
     if (this.label) {
       this.buildBorderOutlined();
+    } else {
+      this.drawLineTopBorder();
     }
   }
 
@@ -314,30 +309,43 @@ export class NgxOutlinedSelectFieldComponent
   buildBorderOutlined() {
     const percent = this.calculateBorderPercent();
     const background = this.calculateBackgroundStyle(percent);
-        
-    this.renderer.setStyle(
-      this.containerRef.nativeElement,
-      'border-top',
-      'unset'
-    );
+    this.setBorderTop('unset');
     this.renderer.setStyle(
       this.containerRef.nativeElement,
       'background',
       background
     );
   }
-  
+
   private calculateBorderPercent(): number {
     const containerWidth = this.containerRef.nativeElement.offsetWidth;
     const labelWidth = this.labelRef.nativeElement.offsetWidth;
     return ((labelWidth + 16) / containerWidth) * 100;
   }
-  
+
   private calculateBackgroundStyle(percent: number): string {
     const color = this.isValid ? this.borderColor : ErrorColor;
     return `linear-gradient(to right, ${color} 8px, transparent 8px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
   }
-  
+
+  drawLineTopBorder() {
+    const color = this.isValid ? this.borderColor : ErrorColor;
+    this.setBorderTop('unset');
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'background',
+      `linear-gradient(to right, transparent 0%, ${color} 0%) no-repeat top/100% 1px`
+    );
+  }
+
+  setBorderTop(border: string) {
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'border-top',
+      border
+    );
+  }
+
   validate() {
     this.isValid =
       (!this.pattern && !this.ngControl && !this.required) ||
