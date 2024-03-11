@@ -351,7 +351,7 @@ export class NgxOutlinedSelectFieldComponent
       (!this.pattern && !this.ngControl && !this.required) ||
       this.ngControl?.status?.toLowerCase() === 'valid' ||
       (this.required &&
-        this.isValidValue(this.internalValue.label) &&
+        this.isValidValue(this.internalValue) &&
         !this.ngControl) ||
       (this.pattern && this.inputRef.nativeElement.validity.valid)
         ? true
