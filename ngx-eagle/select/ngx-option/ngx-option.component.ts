@@ -28,19 +28,23 @@ export class NgxOptionComponent implements Option, AfterViewInit {
   @ViewChild('content') contentRef!: ElementRef;
 
   selectedOption() {
-    this.onSelect.emit({
-      disabled: this.disabled,
-      selected: this.selected,
-      value: this.value,
-      content: this.content,
-    });
+    if (!this.disabled) {
+      this.onSelect.emit({
+        disabled: this.disabled,
+        selected: this.selected,
+        value: this.value,
+        content: this.content,
+      });
+    }
   }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.content = this.contentRef?.nativeElement.textContent.trim();
-      console.log('Valor del contenido:', this.content);
     });
-    this.contentRef.nativeElement.addEventListener('click', this.selectedOption.bind(this));
+    this.contentRef.nativeElement.addEventListener(
+      'click',
+      this.selectedOption.bind(this)
+    );
   }
 }

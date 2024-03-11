@@ -1,4 +1,9 @@
-<div #content class="ngx-option" [class.selected]="selected">
+<div
+  #content
+  class="ngx-option"
+  [class.ngx-option-selected]="selected"
+  [class.ngx-option-disabled]="disabled"
+>
   <div class="content">
     <ng-content></ng-content>
   </div>

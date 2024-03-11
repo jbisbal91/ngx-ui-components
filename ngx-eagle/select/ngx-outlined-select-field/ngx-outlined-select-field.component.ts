@@ -182,6 +182,12 @@ export class NgxOutlinedSelectFieldComponent
   }
 
   writeValue(value: any): void {
+    setTimeout(() => {
+      if (!this.multiple) {
+        this.selectOption(value);
+        this.moveLabel();
+      }
+    }, 100);
     this.internalValue = value;
     this.moveLabel();
     this.onChange(this.internalValue);
