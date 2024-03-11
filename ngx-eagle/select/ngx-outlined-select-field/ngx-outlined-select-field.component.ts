@@ -22,6 +22,11 @@ import { ErrorColor } from 'ngx-eagle/core/types';
 import { Subscription } from 'rxjs';
 import { NgxOptionComponent } from '../ngx-option/ngx-option.component';
 
+export interface SelectOption {
+  value: string;
+  label: string;
+}
+
 @Component({
   selector: 'ngx-outlined-select-field',
   templateUrl: './ngx-outlined-select-field.component.html',
@@ -48,15 +53,14 @@ export class NgxOutlinedSelectFieldComponent
   @Input({ transform: numberAttribute }) rows: number = 4;
   @Input() suffix!: any | TemplateRef<void>;
 
-  internalValue: any = '';
-  _value: any = '';
+  internalValue: SelectOption = { value: '', label: '' };
 
   @Input()
   get value(): any {
-    return this.internalValue;
+    return this.internalValue.value;
   }
 
-  set value(value: any) {
+  set value(value: SelectOption) {
     setTimeout(() => {
       if (!this.multiple) {
         this.selectOption(value);
@@ -65,21 +69,21 @@ export class NgxOutlinedSelectFieldComponent
     }, 100);
   }
 
-  selectOption(value: any) {
+  selectOption(selectOption: SelectOption) {
     let found = false;
     this.allOptions.forEach((opt) => {
-      if (opt.value === value) {
-        this.internalValue = opt.content;
+      if (opt.value === selectOption.value) {
+        this.internalValue = { value: opt.value, label: opt.label };
         opt.selected = true;
-        this.onChange(opt.value);
+        this.onChange(this.internalValue);
         found = true;
       } else {
         opt.selected = false;
       }
     });
     if (!found) {
-      this.internalValue = null;
-      this.onChange(null);
+      this.internalValue = { value: '', label: '' };
+      this.onChange(this.internalValue);
     }
   }
 
@@ -128,7 +132,7 @@ export class NgxOutlinedSelectFieldComponent
       this.subscription.add(
         opt.onSelect.subscribe(() => {
           if (!this.multiple) {
-            this.selectOption(opt.value);
+            this.selectOption({ value: opt.value, label: opt.label });
           }
         })
       );
@@ -180,7 +184,7 @@ export class NgxOutlinedSelectFieldComponent
     });
   }
 
-  writeValue(value: any): void {
+  writeValue(value: SelectOption): void {
     setTimeout(() => {
       if (!this.multiple) {
         this.selectOption(value);
@@ -188,8 +192,8 @@ export class NgxOutlinedSelectFieldComponent
       }
     }, 100);
     this.internalValue = value;
-    this.moveLabel();
     this.onChange(this.internalValue);
+    this.moveLabel();
   }
 
   registerOnChange(fn: any): void {
@@ -208,7 +212,7 @@ export class NgxOutlinedSelectFieldComponent
     if (this.labelRef) {
       const containerHeight = this.containerRef.nativeElement.offsetHeight;
       if (
-        (this.isFocused || this.isValidValue(this.internalValue)) &&
+        (this.isFocused || this.isValidValue(this.internalValue.label)) &&
         this.label
       ) {
         this.applyFocusedStyle();
@@ -248,12 +252,12 @@ export class NgxOutlinedSelectFieldComponent
   }
 
   onInput(event: Event): void {
-    if(this.autocomplete){
-      this.internalValue = (event.target as HTMLInputElement).value;
+    if (this.autocomplete) {
+      //this.internalValue = (event.target as HTMLInputElement).value;
       //this.ngControl?.control?.setValue(this.internalValue);
       //this.validate();
     }
-  
+
     if (this.label) {
       this.buildBorderOutlined();
     } else {
@@ -342,7 +346,7 @@ export class NgxOutlinedSelectFieldComponent
       (!this.pattern && !this.ngControl && !this.required) ||
       this.ngControl?.status?.toLowerCase() === 'valid' ||
       (this.required &&
-        this.isValidValue(this.internalValue) &&
+        this.isValidValue(this.internalValue.label) &&
         !this.ngControl) ||
       (this.pattern && this.inputRef.nativeElement.validity.valid)
         ? true

@@ -21,9 +21,9 @@ import { Option } from './ngx-option.interface';
 export class NgxOptionComponent implements Option, AfterViewInit {
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input({ transform: booleanAttribute }) selected: boolean = false;
-  @Input() value: string | number = '';
+  @Input() value: any= '';
   @Output() onSelect: EventEmitter<Option> = new EventEmitter<Option>();
-  public content: string | number = '';
+  public label: any = '';
 
   @ViewChild('content') contentRef!: ElementRef;
 
@@ -33,14 +33,14 @@ export class NgxOptionComponent implements Option, AfterViewInit {
         disabled: this.disabled,
         selected: this.selected,
         value: this.value,
-        content: this.content,
+        label: this.label,
       });
     }
   }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.content = this.contentRef?.nativeElement.textContent.trim();
+      this.label = this.contentRef?.nativeElement.textContent.trim();
     });
     this.contentRef.nativeElement.addEventListener(
       'click',

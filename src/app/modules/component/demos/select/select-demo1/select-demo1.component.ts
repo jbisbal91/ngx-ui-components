@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./select-demo1.component.scss'],
 })
 export class SelectDemo1Component {
-  value:any = 'opt1';
-  options: { value: string, label: string }[] = [];
+  value: any = { value: 'opt1', label: 'Option1' };
+  options: { value: string; label: string }[] = [];
   constructor() {
-    for (let i = 1; i <= 1000; i++) {
+    for (let i = 1; i <= 4000; i++) {
       this.options.push({ value: `opt${i}`, label: `Option ${i}` });
     }
   }
