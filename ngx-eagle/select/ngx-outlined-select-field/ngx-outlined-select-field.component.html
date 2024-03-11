@@ -14,7 +14,7 @@
       type="text"
       [pattern]="pattern"
       [placeholder]="placeholder"
-      [value]="value"
+      [value]="internalValue"
       [disabled]="disabled"
       [required]="required"
       (input)="onInput($event)"
@@ -31,7 +31,6 @@
       ></ng-template>
     </div>
   </div>
-
   <span class="error-text" *ngIf="!isValid && errorText">{{ errorText }}</span>
 </div>
 <div

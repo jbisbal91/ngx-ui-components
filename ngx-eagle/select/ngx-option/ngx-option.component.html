@@ -1,3 +1,5 @@
-<div #content class="content" (click)="selectedOption()">
-  <ng-content></ng-content>
+<div #content class="ngx-option" [class.selected]="selected">
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
 </div>

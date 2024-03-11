@@ -1,4 +1,4 @@
-:host {
+.ngx-option {
     display: flex;
     align-items: center;
     height: 2rem;
@@ -7,11 +7,16 @@
     transition: background-color 0.3s ease;
 }
 
+.selected {
+    background-color: #F5F5F5;
+    color: #1890FF;
+}
+
 .content {
     padding: 0 0.75rem;
 }
 
-:host:hover {
+.ngx-option:hover {
     cursor: pointer;
     background-color: #F5F5F5;
 }

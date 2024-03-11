@@ -14,6 +14,9 @@ import { Option } from './ngx-option.interface';
   templateUrl: './ngx-option.component.html',
   styleUrls: ['./ngx-option.component.scss'],
   standalone: true,
+  host: {
+    class: 'ngx-option',
+  },
 })
 export class NgxOptionComponent implements Option, AfterViewInit {
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
@@ -38,5 +41,6 @@ export class NgxOptionComponent implements Option, AfterViewInit {
       this.content = this.contentRef?.nativeElement.textContent.trim();
       console.log('Valor del contenido:', this.content);
     });
+    this.contentRef.nativeElement.addEventListener('click', this.selectedOption.bind(this));
   }
 }

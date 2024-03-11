@@ -46,7 +46,25 @@ export class NgxOutlinedSelectFieldComponent
   @Input({ transform: booleanAttribute }) required!: boolean;
   @Input({ transform: numberAttribute }) rows: number = 4;
   @Input() suffix!: any | TemplateRef<void>;
-  @Input() value: any = '';
+
+  internalValue: string | number = '';
+
+  @Input()
+  get value(): any {
+    return this.internalValue;
+  }
+
+  set value(value: string | number) {
+    console.log(value);
+    setTimeout(() => {
+      let index = this.allOptions?.findIndex((opt) => opt.value === value);
+      if (index !== -1) {
+        this.internalValue = this.allOptions[index]?.content;
+        this.moveLabel();
+        this.onChange(this.internalValue);
+      }
+    }, 100);
+  }
 
   _placeholder: string = '';
   errorText: string = '';
@@ -94,7 +112,7 @@ export class NgxOutlinedSelectFieldComponent
     this.allOptions.forEach((opt) => {
       this.subscription.add(
         opt.onSelect.subscribe(() => {
-          this.value = opt.content;
+          this.internalValue = opt.content;
           console.log(opt);
         })
       );
@@ -140,16 +158,16 @@ export class NgxOutlinedSelectFieldComponent
       this.required = this.elementRef?.nativeElement.hasAttribute('required');
       this.errorText =
         this.elementRef?.nativeElement.attributes['error-text']?.value;
-      this.ngControl?.control?.setValue(this.value);
+      this.ngControl?.control?.setValue(this.internalValue);
       this._placeholder = this.placeholder;
       this.moveLabel();
     });
   }
 
   writeValue(value: any): void {
-    this.value = value;
+    this.internalValue = value;
     this.moveLabel();
-    this.onChange(this.value);
+    this.onChange(this.internalValue);
   }
 
   registerOnChange(fn: any): void {
@@ -167,7 +185,10 @@ export class NgxOutlinedSelectFieldComponent
   moveLabel() {
     if (this.labelRef) {
       const containerHeight = this.containerRef.nativeElement.offsetHeight;
-      if ((this.isFocused || this.isValidValue(this.value)) && this.label) {
+      if (
+        (this.isFocused || this.isValidValue(this.internalValue)) &&
+        this.label
+      ) {
         this.applyFocusedStyle();
       } else {
         this.applyDefaultStyle(containerHeight);
@@ -190,7 +211,7 @@ export class NgxOutlinedSelectFieldComponent
 
   private setLabelStyle(top: string, fontSize: string) {
     const left =
-      this.prefix && !this.isFocused && !this.value && !this.autofilled
+      this.prefix && !this.isFocused && !this.internalValue && !this.autofilled
         ? `${this.prefixWidth()}px`
         : '0.75rem';
     this.renderer.setStyle(this.labelRef.nativeElement, 'top', top);
@@ -205,8 +226,8 @@ export class NgxOutlinedSelectFieldComponent
   }
 
   onInput(event: Event): void {
-    this.value = (event.target as HTMLInputElement).value;
-    this.ngControl?.control?.setValue(this.value);
+    this.internalValue = (event.target as HTMLInputElement).value;
+    this.ngControl?.control?.setValue(this.internalValue);
     this.validate();
     if (this.label) {
       this.buildBorderOutlined();
@@ -295,7 +316,9 @@ export class NgxOutlinedSelectFieldComponent
     this.isValid =
       (!this.pattern && !this.ngControl && !this.required) ||
       this.ngControl?.status?.toLowerCase() === 'valid' ||
-      (this.required && this.isValidValue(this.value) && !this.ngControl) ||
+      (this.required &&
+        this.isValidValue(this.internalValue) &&
+        !this.ngControl) ||
       (this.pattern && this.inputRef.nativeElement.validity.valid)
         ? true
         : false;
