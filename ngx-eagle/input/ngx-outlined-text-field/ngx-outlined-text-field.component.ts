@@ -286,18 +286,32 @@ export class NgxOutlinedTextFieldComponent
   }
 
   buildBorderOutlined() {
-    const containerWidth = this.containerRef.nativeElement.offsetWidth;
-    const labelWidth = this.labelRef.nativeElement.offsetWidth;
-    const percent = ((labelWidth + 16) / containerWidth) * 100;
-    const color = this.isValid ? this.borderColor : ErrorColor;
-    const background = `linear-gradient(to right, ${color} 8px, transparent 8px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
+    const percent = this.calculateBorderPercent();
+    const background = this.calculateBackgroundStyle(percent);
+    
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'border-top',
+      'unset'
+    );
     this.renderer.setStyle(
       this.containerRef.nativeElement,
       'background',
       background
     );
   }
-
+  
+  private calculateBorderPercent(): number {
+    const containerWidth = this.containerRef.nativeElement.offsetWidth;
+    const labelWidth = this.labelRef.nativeElement.offsetWidth;
+    return ((labelWidth + 16) / containerWidth) * 100;
+  }
+  
+  private calculateBackgroundStyle(percent: number): string {
+    const color = this.isValid ? this.borderColor : ErrorColor;
+    return `linear-gradient(to right, ${color} 8px, transparent 8px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
+  }
+  
   drawLineTopBorder() {
     const color = this.isValid ? this.borderColor : ErrorColor;
     this.renderer.setStyle(

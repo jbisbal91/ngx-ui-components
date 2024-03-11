@@ -2,9 +2,9 @@
   label="Select"
   autocomplete="false"
   placeholder="Select option"
-  [(ngModel)]="value"
+  [value]="value"
 >
-<ngx-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</ngx-option>
+  <ngx-option *ngFor="let option of options" [value]="option.value">{{
+    option.label
+  }}</ngx-option>
 </ngx-outlined-select-field>
-
-{{value.value}}

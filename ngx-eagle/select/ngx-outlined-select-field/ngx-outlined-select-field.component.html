@@ -14,7 +14,7 @@
       type="text"
       [pattern]="pattern"
       [placeholder]="placeholder"
-      [value]="internalValue.label"
+      [value]="internalValue"
       [disabled]="disabled"
       [required]="required"
       (input)="onInput($event)"
@@ -38,7 +38,8 @@
   class="ngx-options-container"
   [class.position-bottom]="optPos === 'bottom'"
   [class.position-top]="optPos === 'top'"
-  [class.ngx-options-visible]="isFocused && !disabled"
+  [class.ngx-options-visible]="isFocused"
+  *ngIf="!disabled"
 >
   <ng-content></ng-content>
 </div>

@@ -22,11 +22,6 @@ import { ErrorColor } from 'ngx-eagle/core/types';
 import { Subscription } from 'rxjs';
 import { NgxOptionComponent } from '../ngx-option/ngx-option.component';
 
-export interface SelectOption {
-  value: string;
-  label: string;
-}
-
 @Component({
   selector: 'ngx-outlined-select-field',
   templateUrl: './ngx-outlined-select-field.component.html',
@@ -53,27 +48,28 @@ export class NgxOutlinedSelectFieldComponent
   @Input({ transform: numberAttribute }) rows: number = 4;
   @Input() suffix!: any | TemplateRef<void>;
 
-  internalValue: SelectOption = { value: '', label: '' };
+  internalValue: any = null;
 
   @Input()
   get value(): any {
-    return this.internalValue.value;
+    return this.internalValue;
   }
 
-  set value(value: SelectOption) {
+  set value(value: string) {
     setTimeout(() => {
       if (!this.multiple) {
         this.selectOption(value);
+        this.moveLabel();
       }
-      this.moveLabel();
-    }, 100);
+    },100);
+   
   }
 
-  selectOption(selectOption: SelectOption) {
+  selectOption(value: string) {
     let found = false;
     this.allOptions.forEach((opt) => {
-      if (opt.value === selectOption.value) {
-        this.internalValue = { value: opt.value, label: opt.label };
+      if (opt.value === value) {
+        this.internalValue = opt.label ;
         opt.selected = true;
         this.onChange(this.internalValue);
         found = true;
@@ -82,7 +78,7 @@ export class NgxOutlinedSelectFieldComponent
       }
     });
     if (!found) {
-      this.internalValue = { value: '', label: '' };
+      this.internalValue = null;
       this.onChange(this.internalValue);
     }
   }
@@ -132,7 +128,7 @@ export class NgxOutlinedSelectFieldComponent
       this.subscription.add(
         opt.onSelect.subscribe(() => {
           if (!this.multiple) {
-            this.selectOption({ value: opt.value, label: opt.label });
+            this.selectOption(opt.value);
           }
         })
       );
@@ -184,7 +180,7 @@ export class NgxOutlinedSelectFieldComponent
     });
   }
 
-  writeValue(value: SelectOption): void {
+  writeValue(value: any): void {
     setTimeout(() => {
       if (!this.multiple) {
         this.selectOption(value);
@@ -212,7 +208,7 @@ export class NgxOutlinedSelectFieldComponent
     if (this.labelRef) {
       const containerHeight = this.containerRef.nativeElement.offsetHeight;
       if (
-        (this.isFocused || this.isValidValue(this.internalValue.label)) &&
+        (this.isFocused || this.isValidValue(this.internalValue)) &&
         this.label
       ) {
         this.applyFocusedStyle();
@@ -232,7 +228,6 @@ export class NgxOutlinedSelectFieldComponent
     const height = (containerHeight - 14) / 2;
     this.setLabelStyle(`${height / 16}rem`, '0.875rem');
     this.inputRef.nativeElement.placeholder = '';
-    this.drawLineTopBorder();
   }
 
   private setLabelStyle(top: string, fontSize: string) {
@@ -257,11 +252,8 @@ export class NgxOutlinedSelectFieldComponent
       //this.ngControl?.control?.setValue(this.internalValue);
       //this.validate();
     }
-
     if (this.label) {
       this.buildBorderOutlined();
-    } else {
-      this.drawLineTopBorder();
     }
   }
 
@@ -320,27 +312,32 @@ export class NgxOutlinedSelectFieldComponent
   }
 
   buildBorderOutlined() {
-    const containerWidth = this.containerRef.nativeElement.offsetWidth;
-    const labelWidth = this.labelRef.nativeElement.offsetWidth;
-    const percent = ((labelWidth + 16) / containerWidth) * 100;
-    const color = this.isValid ? this.borderColor : ErrorColor;
-    const background = `linear-gradient(to right, ${color} 8px, transparent 8px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
+    const percent = this.calculateBorderPercent();
+    const background = this.calculateBackgroundStyle(percent);
+        
+    this.renderer.setStyle(
+      this.containerRef.nativeElement,
+      'border-top',
+      'unset'
+    );
     this.renderer.setStyle(
       this.containerRef.nativeElement,
       'background',
       background
     );
   }
-
-  drawLineTopBorder() {
-    const color = this.isValid ? this.borderColor : ErrorColor;
-    this.renderer.setStyle(
-      this.containerRef.nativeElement,
-      'background',
-      `linear-gradient(to right, transparent 0%, ${color} 0%) no-repeat top/100% 1px`
-    );
+  
+  private calculateBorderPercent(): number {
+    const containerWidth = this.containerRef.nativeElement.offsetWidth;
+    const labelWidth = this.labelRef.nativeElement.offsetWidth;
+    return ((labelWidth + 16) / containerWidth) * 100;
   }
-
+  
+  private calculateBackgroundStyle(percent: number): string {
+    const color = this.isValid ? this.borderColor : ErrorColor;
+    return `linear-gradient(to right, ${color} 8px, transparent 8px, transparent ${percent}%, ${color} ${percent}%) no-repeat top/100% 1px`;
+  }
+  
   validate() {
     this.isValid =
       (!this.pattern && !this.ngControl && !this.required) ||
