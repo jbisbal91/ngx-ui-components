@@ -152,8 +152,6 @@ export class NgxOutlinedSelectFieldComponent
   initialize() {
     this.moveLabel();
     setTimeout(() => {
-      this.disabled = this.elementRef?.nativeElement.hasAttribute('disabled');
-      this.required = this.elementRef?.nativeElement.hasAttribute('required');
       this.errorText =
         this.elementRef?.nativeElement.attributes['error-text']?.value;
       this.ngControl?.control?.setValue(this.internalValue);
@@ -257,7 +255,7 @@ export class NgxOutlinedSelectFieldComponent
 
   onSearch(event: Event) {
     const search = (event.target as HTMLInputElement).value.toLowerCase();
-    if(search === ''){
+    if (search === '') {
       this.internalValue = '';
     }
     this.optionList.forEach((option: NgxOptionComponent) => {
