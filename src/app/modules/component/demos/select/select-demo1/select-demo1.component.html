@@ -3,9 +3,9 @@
   autocomplete="true"
   placeholder="Select option"
   [value]="value"
-  [suffix]="prefixSearch"
   (onChangeValue)="onChangeValue($event)"
   required
+  multiple="true"
 >
   <ngx-option *ngFor="let option of options" [value]="option.value">{{
     option.label

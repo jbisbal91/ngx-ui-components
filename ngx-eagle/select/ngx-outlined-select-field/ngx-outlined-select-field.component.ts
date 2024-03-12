@@ -23,6 +23,7 @@ import { Guid, StylesService } from 'ngx-eagle/core/services';
 import { ErrorColor } from 'ngx-eagle/core/types';
 import { Subscription } from 'rxjs';
 import { NgxOptionComponent } from '../ngx-option/ngx-option.component';
+import { SelectedOption } from './selected-option.interface';
 
 @Component({
   selector: 'ngx-outlined-select-field',
@@ -49,6 +50,7 @@ export class NgxOutlinedSelectFieldComponent
   @Input() suffix!: any | TemplateRef<void>;
 
   internalValue: any = null;
+  selectedOptions: SelectedOption[] = [];
 
   @Input()
   get value(): any {
@@ -57,8 +59,12 @@ export class NgxOutlinedSelectFieldComponent
 
   set value(value: any) {
     setTimeout(() => {
-      if (!this.multiple) {
-        this.selectOption(value);
+      if (value) {
+        if (this.multiple) {
+          //this.multiSelection(value);
+        } else {
+          this.selectOption(value);
+        }
       }
     }, 100);
   }
@@ -105,11 +111,14 @@ export class NgxOutlinedSelectFieldComponent
   ngAfterViewInit() {
     this.customProperties();
     this.initialize();
-    this.optionList.forEach((opt) => {
+    this.optionList.forEach((option) => {
+      option.checked = this.multiple;
       this.subscription.add(
-        opt.onSelect.subscribe(() => {
-          if (!this.multiple) {
-            this.selectOption(opt.value);
+        option.selectedOptionOnClick.subscribe(() => {
+          if (this.multiple) {
+            this.multiSelectionOnClick(option.value);
+          } else {
+            this.selectOption(option.value);
           }
         })
       );
@@ -150,6 +159,9 @@ export class NgxOutlinedSelectFieldComponent
   }
 
   initialize() {
+    if (this.multiple) {
+      this.autocomplete = false;
+    }
     this.moveLabel();
     setTimeout(() => {
       this.errorText =
@@ -160,8 +172,12 @@ export class NgxOutlinedSelectFieldComponent
 
   writeValue(value: any): void {
     setTimeout(() => {
-      if (!this.multiple && value) {
-        this.selectOption(value);
+      if (value) {
+        if (this.multiple) {
+          //this.multiSelection(value);
+        } else {
+          this.selectOption(value);
+        }
       }
     }, 100);
   }
@@ -178,7 +194,7 @@ export class NgxOutlinedSelectFieldComponent
     this.disabled = isDisabled;
   }
 
-  selectOption(value: string) {
+  selectOption(value: any) {
     let found = false;
     this.optionList.forEach((opt) => {
       if (opt.value === value) {
@@ -197,6 +213,37 @@ export class NgxOutlinedSelectFieldComponent
       this.onChange(null);
       this.onChangeValue.emit(null);
     }
+  }
+
+  selectMultipleOptions(selectedOptions: SelectedOption[]) {
+    const optionsLength = selectedOptions.length;
+    const overflow = optionsLength > 1 ? `  (+${optionsLength - 1})` : '';
+    this.internalValue = selectedOptions[optionsLength - 1].label + overflow;
+  }
+
+  multiSelectionOnClick(value: any) {
+    this.optionList.forEach((opt) => {
+      const isSelected = this.selectedOptions.some(
+        (option) => option.value === value
+      );
+      if (opt.value === value) {
+        if (!isSelected) {
+          opt.selected = true;
+          this.selectedOptions.push({ label: opt.label, value: opt.value });
+        }
+        if (isSelected) {
+          const index = this.selectedOptions.findIndex(
+            (option) => option.value === value
+          );
+          if (index !== -1) {
+            opt.selected = false;
+            this.selectedOptions.splice(index, 1);
+          }
+        }
+        this.selectMultipleOptions(this.selectedOptions);
+        this.moveLabel();
+      }
+    });
   }
 
   moveLabel() {

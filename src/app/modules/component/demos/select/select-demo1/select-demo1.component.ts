@@ -16,5 +16,6 @@ export class SelectDemo1Component {
 
   onChangeValue(value: any) {
     this.value = value;
+    console.log(value)
   }
 }

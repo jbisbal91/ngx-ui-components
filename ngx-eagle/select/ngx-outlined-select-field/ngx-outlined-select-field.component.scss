@@ -65,26 +65,16 @@
     padding-right: 0;
 }
 
-.ngx-outlined-select-field>.container>.ngx-nat-textarea {
-    padding: 0.75rem;
-    white-space: break-spaces;
-    max-width: inherit;
-    min-width: inherit;
-    width: inherit;
-    max-height: inherit;
-    min-height: inherit;
-    height: inherit;
-}
-
 .ngx-outlined-select-field>.container>.ngx-nat-input {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: 100%;
     height: 100%;
     min-height: 2rem;
     max-height: 3.5rem;
-    overflow: hidden;
 }
 
 .ngx-outlined-select-field>.container>.ngx-nat-input[type="search"]::-webkit-search-cancel-button {
@@ -129,9 +119,13 @@
     box-sizing: border-box;
     max-height: 15rem;
     overflow-y: scroll;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     pointer-events: auto;
     z-index: 1000;
     visibility: hidden;
+
 }
 
 .ngx-options-visible {
