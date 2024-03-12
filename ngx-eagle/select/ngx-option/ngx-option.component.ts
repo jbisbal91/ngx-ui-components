@@ -9,6 +9,7 @@ import {
   booleanAttribute,
 } from '@angular/core';
 import { Option } from './ngx-option.interface';
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'ngx-option',
   templateUrl: './ngx-option.component.html',
@@ -17,13 +18,16 @@ import { Option } from './ngx-option.interface';
   host: {
     class: 'ngx-option',
   },
+  imports: [NgIf],
 })
 export class NgxOptionComponent implements Option, AfterViewInit {
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input({ transform: booleanAttribute }) selected: boolean = false;
-  @Input() value: any= '';
+  @Input() value: any = '';
   @Output() onSelect: EventEmitter<Option> = new EventEmitter<Option>();
   public label: any = '';
+
+  isVisible: boolean = true;
 
   @ViewChild('content') contentRef!: ElementRef;
 

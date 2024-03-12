@@ -37,8 +37,6 @@ export class NgxOutlinedSelectFieldComponent
   @ContentChildren(NgxOptionComponent)
   public optionList!: QueryList<NgxOptionComponent>;
 
-  allOptions: NgxOptionComponent[] = [];
-
   @Input({ transform: booleanAttribute }) autocomplete: boolean = false;
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input({ transform: booleanAttribute }) multiple: boolean = false;
@@ -106,9 +104,8 @@ export class NgxOutlinedSelectFieldComponent
 
   ngAfterViewInit() {
     this.customProperties();
-    this.allOptions = this.optionList.toArray();
     this.initialize();
-    this.allOptions.forEach((opt) => {
+    this.optionList.forEach((opt) => {
       this.subscription.add(
         opt.onSelect.subscribe(() => {
           if (!this.multiple) {
@@ -185,7 +182,7 @@ export class NgxOutlinedSelectFieldComponent
 
   selectOption(value: string) {
     let found = false;
-    this.allOptions.forEach((opt) => {
+    this.optionList.forEach((opt) => {
       if (opt.value === value) {
         this.internalValue = opt.label;
         opt.selected = true;
@@ -199,7 +196,7 @@ export class NgxOutlinedSelectFieldComponent
     });
     if (!found) {
       this.internalValue = null;
-      this.onChange(null);      
+      this.onChange(null);
       this.onChangeValue.emit(null);
     }
   }
@@ -247,9 +244,7 @@ export class NgxOutlinedSelectFieldComponent
 
   onInput(event: Event): void {
     if (this.autocomplete) {
-      //this.internalValue = (event.target as HTMLInputElement).value;
-      //this.ngControl?.control?.setValue(this.internalValue);
-      //this.validate();
+      this.onSearch(event);
     }
     if (this.label) {
       this.buildBorderOutlined();
@@ -257,7 +252,20 @@ export class NgxOutlinedSelectFieldComponent
       this.drawLineTopBorder();
     }
   }
-
+ 
+  onSearch(event: Event) {
+    const search = (event.target as HTMLInputElement).value.toLowerCase();
+    this.optionList.forEach((option: NgxOptionComponent) => {
+      const label = option.label.toLowerCase();
+      option.isVisible = label.includes(search);
+      if(option.isVisible && option.selected) {
+        option.selected = false;
+        this.onChange(null);
+        this.onChangeValue.emit(null);
+      }
+    });
+  }
+  
   onFocus(event: FocusEvent) {
     this.isFocused = true;
     this.moveLabel();

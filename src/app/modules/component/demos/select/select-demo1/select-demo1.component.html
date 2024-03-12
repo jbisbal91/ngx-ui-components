@@ -3,22 +3,17 @@
   autocomplete="false"
   placeholder="Select option"
   [value]="value"
+  [suffix]="prefixSearch"
   (onChangeValue)="onChangeValue($event)"
   required
+  autocomplete="true"
 >
   <ngx-option *ngFor="let option of options" [value]="option.value">{{
     option.label
   }}</ngx-option>
 </ngx-outlined-select-field>
 
-<ngx-outlined-select-field
-  label="Select"
-  autocomplete="false"
-  placeholder="Select option2"
->
-  <ngx-option *ngFor="let option of options" [value]="option.value">{{
-    option.label
-  }}</ngx-option>
-</ngx-outlined-select-field>
 
-[{{ value }}]
+<ng-template #prefixSearch>
+  <span class="material-symbols-outlined"> search </span>
+</ng-template>
