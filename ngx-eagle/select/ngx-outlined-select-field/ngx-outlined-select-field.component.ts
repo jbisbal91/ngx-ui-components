@@ -61,12 +61,26 @@ export class NgxOutlinedSelectFieldComponent
     setTimeout(() => {
       if (value) {
         if (this.multiple) {
-          //this.multiSelection(value);
+          this.multipleInputValues(value);
         } else {
-          this.selectOption(value);
+          this.singleInputValue(value);
         }
       }
     }, 100);
+  }
+
+  isSelectedOption(
+    elemento: any
+  ): elemento is SelectedOption | SelectedOption[] {
+    if (Array.isArray(elemento)) {
+      return elemento.every((item) => this.isSelectedOption(item));
+    } else {
+      return (
+        typeof elemento === 'object' &&
+        'label' in elemento &&
+        'value' in elemento
+      );
+    }
   }
 
   @Output() onChangeValue: EventEmitter<any> = new EventEmitter<any>();
@@ -117,8 +131,12 @@ export class NgxOutlinedSelectFieldComponent
         option.selectedOptionOnClick.subscribe(() => {
           if (this.multiple) {
             this.multiSelectionOnClick(option.value);
+            this.onChange(this.selectedOptions);
+            this.onChangeValue.emit(this.selectedOptions);
           } else {
-            this.selectOption(option.value);
+            this.singleInputValue(option.value);
+            this.onChange(option.value);
+            this.onChangeValue.emit(option.value);
           }
         })
       );
@@ -174,9 +192,9 @@ export class NgxOutlinedSelectFieldComponent
     setTimeout(() => {
       if (value) {
         if (this.multiple) {
-          //this.multiSelection(value);
+          this.multipleInputValues(value);
         } else {
-          this.selectOption(value);
+          this.singleInputValue(value);
         }
       }
     }, 100);
@@ -194,14 +212,15 @@ export class NgxOutlinedSelectFieldComponent
     this.disabled = isDisabled;
   }
 
-  selectOption(value: any) {
+  singleInputValue(value: any) {
+    if (typeof value !== 'string') {
+      throw new TypeError('Invalid argument, only string values are allowed.');
+    }
     let found = false;
     this.optionList.forEach((opt) => {
       if (opt.value === value) {
         this.internalValue = opt.label;
         opt.selected = true;
-        this.onChange(opt.value);
-        this.onChangeValue.emit(opt.value);
         found = true;
         this.moveLabel();
       } else {
@@ -212,6 +231,26 @@ export class NgxOutlinedSelectFieldComponent
       this.internalValue = null;
       this.onChange(null);
       this.onChangeValue.emit(null);
+    }
+  }
+
+  multipleInputValues(selectedOptions: any) {
+    if (!this.isSelectedOption(selectedOptions)) {
+      throw new TypeError(
+        'Invalid argument, only values {label: string, value: string} or array of the same type are allowed.'
+      );
+    }
+    if (Array.isArray(selectedOptions)) {
+      this.selectedOptions = selectedOptions;
+      selectedOptions.forEach((option: SelectedOption) => {
+        this.optionList.forEach((opt) => {
+          if (opt.value === option.value) {
+            opt.selected = true;
+          }
+        });
+      });
+      this.selectMultipleOptions(this.selectedOptions);
+      this.moveLabel();
     }
   }
 
@@ -240,10 +279,12 @@ export class NgxOutlinedSelectFieldComponent
             this.selectedOptions.splice(index, 1);
           }
         }
-        this.selectMultipleOptions(this.selectedOptions);
-        this.moveLabel();
+        //this.selectMultipleOptions(this.selectedOptions);
+        //this.moveLabel();
       }
     });
+    this.selectMultipleOptions(this.selectedOptions);
+    this.moveLabel();
   }
 
   moveLabel() {
