@@ -204,7 +204,9 @@ export class NgxOutlinedSelectFieldComponent
   moveLabel() {
     const containerHeight = this.containerRef?.nativeElement.offsetHeight;
     if (
-      (this.isFocused || this.isValidValue(this.internalValue)) &&
+      (this.isFocused ||
+        this.isValidValue(this.internalValue) ||
+        this.isValidValue(this.inputRef.nativeElement.value)) &&
       this.label
     ) {
       this.applyFocusedStyle();
@@ -252,20 +254,21 @@ export class NgxOutlinedSelectFieldComponent
       this.drawLineTopBorder();
     }
   }
- 
+
   onSearch(event: Event) {
     const search = (event.target as HTMLInputElement).value.toLowerCase();
+    if(search === ''){
+      this.internalValue = '';
+    }
     this.optionList.forEach((option: NgxOptionComponent) => {
       const label = option.label.toLowerCase();
       option.isVisible = label.includes(search);
-      if(option.isVisible && option.selected) {
+      if (option.isVisible && option.selected) {
         option.selected = false;
-        this.onChange(null);
-        this.onChangeValue.emit(null);
       }
     });
   }
-  
+
   onFocus(event: FocusEvent) {
     this.isFocused = true;
     this.moveLabel();

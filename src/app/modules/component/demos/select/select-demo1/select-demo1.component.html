@@ -1,12 +1,11 @@
 <ngx-outlined-select-field
   label="Select"
-  autocomplete="false"
+  autocomplete="true"
   placeholder="Select option"
   [value]="value"
   [suffix]="prefixSearch"
   (onChangeValue)="onChangeValue($event)"
   required
-  autocomplete="true"
 >
   <ngx-option *ngFor="let option of options" [value]="option.value">{{
     option.label

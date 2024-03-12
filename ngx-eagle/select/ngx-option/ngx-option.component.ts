@@ -33,6 +33,7 @@ export class NgxOptionComponent implements Option, AfterViewInit {
 
   selectedOption() {
     if (!this.disabled) {
+      this.isVisible = true;
       this.onSelect.emit({
         disabled: this.disabled,
         selected: this.selected,
@@ -46,9 +47,5 @@ export class NgxOptionComponent implements Option, AfterViewInit {
     setTimeout(() => {
       this.label = this.contentRef?.nativeElement.textContent.trim();
     });
-    this.contentRef.nativeElement.addEventListener(
-      'click',
-      this.selectedOption.bind(this)
-    );
   }
 }

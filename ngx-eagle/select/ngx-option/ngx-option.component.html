@@ -1,4 +1,4 @@
-<div *ngIf="isVisible"
+<div *ngIf="isVisible" (click)="selectedOption()"
   #content
   class="ngx-option"
   [class.ngx-option-selected]="selected"
