@@ -1,6 +1,10 @@
-<select [ngModel]="'Small'">
-    <option value="small">Small</option>
-    <option value="medium">Medium</option>
-    <option value="large">Large</option>
-    <option value="full">Full</option>
-  </select>
+<ngx-outlined-select-field
+  label="Select"
+  placeholder="Select option"
+  [value]="value"
+  (onChangeValue)="onChangeValue($event)"
+>
+  <ngx-option *ngFor="let option of options" [value]="option.value">{{
+    option.label
+  }}</ngx-option>
+</ngx-outlined-select-field>
