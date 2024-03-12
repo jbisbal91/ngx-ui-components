@@ -281,6 +281,8 @@ export class NgxOutlinedSelectFieldComponent
 
   adjustOptionsPosition() {
     const contProp = this.containerRef.nativeElement.getBoundingClientRect();
+    const optionsProp = this.optionsRef.nativeElement.getBoundingClientRect();
+
     let top = contProp.top + contProp.height;
     const offsetTop = contProp.top;
     const offsetBottom = window.innerHeight - top;
@@ -288,7 +290,11 @@ export class NgxOutlinedSelectFieldComponent
     setTimeout(() => {
       if (this.optionsRef) {
         const offsetHeight = this.optionsRef.nativeElement.offsetHeight;
-        if (offsetTop > offsetBottom && offsetHeight <= offsetTop) {
+        if (
+          offsetBottom < optionsProp.height &&
+          offsetTop > offsetBottom &&
+          offsetHeight <= offsetTop
+        ) {
           top = top - (offsetHeight + contProp.height + 4);
           this.optPos = 'top';
         }
