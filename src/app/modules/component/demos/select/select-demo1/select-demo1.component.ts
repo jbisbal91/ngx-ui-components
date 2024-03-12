@@ -13,4 +13,8 @@ export class SelectDemo1Component {
       this.options.push({ value: `opt${i}`, label: `Option ${i}` });
     }
   }
+
+  onChangeValue(value: any) {
+    this.value = value;
+  }
 }

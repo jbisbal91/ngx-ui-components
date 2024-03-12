@@ -2,9 +2,23 @@
   label="Select"
   autocomplete="false"
   placeholder="Select option"
+  [value]="value"
+  (onChangeValue)="onChangeValue($event)"
   required
 >
   <ngx-option *ngFor="let option of options" [value]="option.value">{{
     option.label
   }}</ngx-option>
 </ngx-outlined-select-field>
+
+<ngx-outlined-select-field
+  label="Select"
+  autocomplete="false"
+  placeholder="Select option2"
+>
+  <ngx-option *ngFor="let option of options" [value]="option.value">{{
+    option.label
+  }}</ngx-option>
+</ngx-outlined-select-field>
+
+[{{ value }}]

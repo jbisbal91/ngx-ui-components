@@ -4,10 +4,12 @@ import {
   Component,
   ContentChildren,
   ElementRef,
+  EventEmitter,
   HostListener,
   Input,
   OnDestroy,
   Optional,
+  Output,
   QueryList,
   Renderer2,
   Self,
@@ -55,13 +57,15 @@ export class NgxOutlinedSelectFieldComponent
     return this.internalValue;
   }
 
-  set value(value: string) {
+  set value(value: any) {
     setTimeout(() => {
       if (!this.multiple) {
         this.selectOption(value);
       }
     }, 100);
   }
+
+  @Output() onChangeValue: EventEmitter<any> = new EventEmitter<any>();
 
   _placeholder: string = '';
   errorText: string = '';
@@ -185,7 +189,8 @@ export class NgxOutlinedSelectFieldComponent
       if (opt.value === value) {
         this.internalValue = opt.label;
         opt.selected = true;
-        this.onChange(this.internalValue);
+        this.onChange(opt.value);
+        this.onChangeValue.emit(opt.value);
         found = true;
         this.moveLabel();
       } else {
@@ -194,7 +199,8 @@ export class NgxOutlinedSelectFieldComponent
     });
     if (!found) {
       this.internalValue = null;
-      this.onChange(this.internalValue);
+      this.onChange(null);      
+      this.onChangeValue.emit(null);
     }
   }
 
