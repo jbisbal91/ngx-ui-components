@@ -146,7 +146,9 @@ export class NgxOutlinedSelectFieldComponent
 
   @HostListener('document:mousedown', ['$event'])
   mousedown(event: any): void {
-    this.isOpenMultipleMode = this.multiple && this.optionsRef.nativeElement.contains(event.target);
+    this.isOpenMultipleMode =
+      this.multiple && this.optionsRef.nativeElement.contains(event.target);
+    this.moveLabel();
   }
 
   onKeyDown(event: KeyboardEvent) {
@@ -263,7 +265,10 @@ export class NgxOutlinedSelectFieldComponent
   selectMultipleOptions(selectedOptions: SelectedOption[]) {
     const optionsLength = selectedOptions.length;
     const overflow = optionsLength > 1 ? `  (+${optionsLength - 1})` : '';
-    this.internalValue = selectedOptions[optionsLength - 1].label + overflow;
+    this.internalValue =
+      optionsLength > 0
+        ? selectedOptions[optionsLength - 1].label + overflow
+        : null;
   }
 
   multiSelectionOnClick(value: any) {
@@ -285,8 +290,6 @@ export class NgxOutlinedSelectFieldComponent
             this.selectedOptions.splice(index, 1);
           }
         }
-        //this.selectMultipleOptions(this.selectedOptions);
-        //this.moveLabel();
       }
     });
     this.selectMultipleOptions(this.selectedOptions);

@@ -1,3 +1,11 @@
 ngx-outlined-select-field {
     height: 2rem;
 }
+
+ngx-option {
+    background-color: var(--ngx-doc-background);
+}
+
+ngx-option:hover {
+    background-color: var(--ngx-doc-background);
+}

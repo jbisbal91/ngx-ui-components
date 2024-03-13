@@ -1,9 +1,17 @@
+:host {
+    background-color: #FFFFFF;
+}
+
+:host:hover {
+    background-color: #F5F5F5;
+}
+
 .ngx-option {
     display: flex;
     align-items: center;
     height: 2rem;
     width: 100%;
-    background-color: #FFFFFF;
+    background-color: inherit;
     transition: background-color 0.3s ease;
     overflow-x: hidden;
     white-space: nowrap;
@@ -26,7 +34,7 @@
 
 .ngx-option:hover {
     cursor: pointer;
-    background-color: #F5F5F5;
+    background-color: inherit;
 }
 
 .ngx-option input[type="checkbox"]:checked {
