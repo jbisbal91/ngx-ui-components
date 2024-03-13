@@ -1,6 +1,6 @@
 {
   "name": "ngx-eagle",
-  "version": "0.6.9",
+  "version": "0.7.0",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
