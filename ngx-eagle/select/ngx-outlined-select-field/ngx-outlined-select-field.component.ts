@@ -16,7 +16,6 @@ import {
   TemplateRef,
   ViewChild,
   booleanAttribute,
-  numberAttribute,
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Guid, StylesService } from 'ngx-eagle/core/services';
@@ -40,13 +39,12 @@ export class NgxOutlinedSelectFieldComponent
 
   @Input({ transform: booleanAttribute }) autocomplete: boolean = false;
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
-  @Input({ transform: booleanAttribute }) multiple: boolean = false;
   @Input() label!: string;
+  @Input({ transform: booleanAttribute }) multiple: boolean = false;
   @Input() pattern!: any;
   @Input() placeholder: string = '';
   @Input() prefix!: any | TemplateRef<void>;
   @Input({ transform: booleanAttribute }) required!: boolean;
-  @Input({ transform: numberAttribute }) rows: number = 4;
   @Input() suffix!: any | TemplateRef<void>;
 
   internalValue: any = null;
@@ -379,7 +377,6 @@ export class NgxOutlinedSelectFieldComponent
   adjustOptionsPosition() {
     const contProp = this.containerRef.nativeElement.getBoundingClientRect();
     const optionsProp = this.optionsRef.nativeElement.getBoundingClientRect();
-
     let top = contProp.top + contProp.height;
     const offsetTop = contProp.top;
     const offsetBottom = window.innerHeight - top;
