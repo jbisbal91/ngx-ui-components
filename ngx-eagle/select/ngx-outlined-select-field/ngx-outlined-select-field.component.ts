@@ -106,6 +106,7 @@ export class NgxOutlinedSelectFieldComponent
   isValid: boolean = true;
   isFocused: boolean = false;
   autofilled: boolean = false;
+  isOpenMultipleMode: boolean = false;
 
   constructor(
     public elementRef: ElementRef,
@@ -141,6 +142,11 @@ export class NgxOutlinedSelectFieldComponent
         })
       );
     });
+  }
+
+  @HostListener('document:mousedown', ['$event'])
+  mousedown(event: any): void {
+    this.isOpenMultipleMode = this.multiple && this.optionsRef.nativeElement.contains(event.target);
   }
 
   onKeyDown(event: KeyboardEvent) {

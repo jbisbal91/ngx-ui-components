@@ -38,7 +38,7 @@
   class="ngx-options-container"
   [class.position-bottom]="optPos === 'bottom'"
   [class.position-top]="optPos === 'top'"
-  [class.ngx-options-visible]="isFocused"
+  [class.ngx-options-visible]="isFocused || isOpenMultipleMode"
   *ngIf="!disabled"
 >
   <ng-content></ng-content>
