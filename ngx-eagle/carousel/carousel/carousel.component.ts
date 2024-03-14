@@ -2,33 +2,20 @@ import {
   AfterContentInit,
   Component,
   ContentChildren,
+  ElementRef,
   Input,
   QueryList,
+  ViewChild,
   booleanAttribute,
 } from '@angular/core';
-import { CarouselItemComponent } from './carousel-item/carousel-item.component';
+
 import { NgForOf } from '@angular/common';
+import { CarouselItemComponent } from '../carousel-item/carousel-item.component';
 
 @Component({
   selector: 'ngx-carousel',
-  template: `
-    <div class="ngx-carousel">
-      <div class="slick-list">
-        <div class="slick-track">
-          <ng-content></ng-content>
-        </div>
-      </div>
-      <ul class="slick-dots">
-        <li
-          [class.slick-active]="carouselItem.isActive"
-          *ngFor="let carouselItem of carouselItems"
-          (click)="onClick(carouselItem)"
-        >
-          <button>{{ carouselItem.id }}</button>
-        </li>
-      </ul>
-    </div>
-  `,
+  templateUrl: './carousel.component.html',
+  styleUrls: ['./carousel.component.scss'],
   host: {
     class: 'ngx-carousel',
   },
@@ -42,7 +29,7 @@ export class CarouselComponent implements AfterContentInit {
   @Input({ transform: booleanAttribute }) ngxAutoPlay: boolean = false;
   @Input() ngxAutoPlaySpeed: number = 3000;
 
-  constructor() {}
+  @ViewChild('carousel_container') carouselRef!: ElementRef;
 
   ngAfterContentInit(): void {
     this.carouselItems.first.isActive = true;
@@ -62,11 +49,6 @@ export class CarouselComponent implements AfterContentInit {
   onClick(carouselItem: any) {
     this.carouselItems?.forEach((ci: any) => {
       ci.isActive = ci.id === carouselItem.id;
-    });
-    const element = document.getElementById(carouselItem.id) as HTMLDivElement;
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: "start"
     });
   }
 }

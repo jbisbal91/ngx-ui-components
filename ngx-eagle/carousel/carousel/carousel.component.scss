@@ -2,8 +2,6 @@
     display: block;
     position: relative;
     overflow: hidden;
-    width: 100%;
-    height: 100%;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -13,25 +11,25 @@
     line-height: 1.5715;
     list-style: none;
     font-feature-settings: "tnum";
-  }
-  
-  .ngx-carousel .slick-list {
+}
+
+.ngx-carousel .slick-list {
     position: relative;
     display: block;
     margin: 0;
     padding: 0;
     overflow: hidden;
-  }
-    
-  .ngx-carousel .slick-track {
+}
+
+.ngx-carousel .slick-track {
     position: relative;
     top: 0;
     left: 0;
-    display: flex;
-  }
-  
-  .ngx-carousel .slick-prev,
-  .ngx-carousel .slick-next {
+    display: block;
+}
+
+.ngx-carousel .slick-prev,
+.ngx-carousel .slick-next {
     top: 50%;
     display: block;
     width: 20px;
@@ -45,46 +43,46 @@
     border: 0;
     outline: none;
     cursor: pointer;
-  }
-  
-  .ngx-carousel .slick-prev:hover,
-  .ngx-carousel .slick-next:hover,
-  .ngx-carousel .slick-prev:focus,
-  .ngx-carousel .slick-next:focus {
+}
+
+.ngx-carousel .slick-prev:hover,
+.ngx-carousel .slick-next:hover,
+.ngx-carousel .slick-prev:focus,
+.ngx-carousel .slick-next:focus {
     color: transparent;
     background: transparent;
     outline: none;
-  }
-  
-  .ngx-carousel .slick-prev:hover:before,
-  .ngx-carousel .slick-next:hover:before,
-  .ngx-carousel .slick-prev:focus:before,
-  .ngx-carousel .slick-next:focus:before {
+}
+
+.ngx-carousel .slick-prev:hover:before,
+.ngx-carousel .slick-next:hover:before,
+.ngx-carousel .slick-prev:focus:before,
+.ngx-carousel .slick-next:focus:before {
     opacity: 1;
-  }
-  
-  .ngx-carousel .slick-prev.slick-disabled:before,
-  .ngx-carousel .slick-next.slick-disabled:before {
+}
+
+.ngx-carousel .slick-prev.slick-disabled:before,
+.ngx-carousel .slick-next.slick-disabled:before {
     opacity: 0.25;
-  }
-  
-  .ngx-carousel .slick-prev {
+}
+
+.ngx-carousel .slick-prev {
     left: -25px;
-  }
-  
-  .ngx-carousel .slick-prev:before {
+}
+
+.ngx-carousel .slick-prev:before {
     content: "\2190";
-  }
-  
-  .ngx-carousel .slick-next {
+}
+
+.ngx-carousel .slick-next {
     right: -25px;
-  }
-  
-  .ngx-carousel .slick-next:before {
+}
+
+.ngx-carousel .slick-next:before {
     content: "\2192";
-  }
-  
-  .ngx-carousel .slick-dots {
+}
+
+.ngx-carousel .slick-dots {
     position: absolute;
     right: 0;
     bottom: 12px;
@@ -96,9 +94,9 @@
     margin-left: 15%;
     padding-left: 0;
     list-style: none;
-  }
-      
-  .ngx-carousel .slick-dots li {
+}
+
+.ngx-carousel .slick-dots li {
     position: relative;
     display: inline-block;
     flex: 0 1 auto;
@@ -111,9 +109,9 @@
     text-indent: -999px;
     vertical-align: top;
     transition: all 0.5s;
-  }
-  
-  .ngx-carousel .slick-dots li button {
+}
+
+.ngx-carousel .slick-dots li button {
     display: block;
     width: 100%;
     height: 3px;
@@ -127,26 +125,18 @@
     cursor: pointer;
     opacity: 0.3;
     transition: all 0.5s;
-  }
-  
-  .ngx-carousel .slick-dots li button:hover,
-  .ngx-carousel .slick-dots li button:focus {
+}
+
+.ngx-carousel .slick-dots li button:hover,
+.ngx-carousel .slick-dots li button:focus {
     opacity: 0.75;
-  }
-  
-  .ngx-carousel .slick-dots li.slick-active {
+}
+
+.ngx-carousel .slick-dots li.slick-active {
     width: 24px;
-  }
-  
-  .ngx-carousel .slick-dots li.slick-active button {
+}
+
+.ngx-carousel .slick-dots li.slick-active button {
     background: #fff;
     opacity: 1;
-  }
-  
-  .ngx-carousel-item {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    max-width: fit-content;
-    transition: transform 0.5s ease-in-out;
-  }
+}
