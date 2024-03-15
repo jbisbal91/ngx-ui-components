@@ -1,13 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { Carousel } from '../carousel.interface';
+import { Carousel } from './carousel.interface';
 import { Guid } from 'ngx-eagle/core/services';
 @Component({
   selector: 'ngx-carousel-item',
-  template: `
-    <div class="ngx-carousel-item" [id]="id">
-      <ng-content></ng-content>
-    </div>
-  `,
+  templateUrl: './carousel-item.component.html',
   host: {
     class: 'ngx-carousel-item',
   },

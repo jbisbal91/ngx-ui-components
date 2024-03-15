@@ -9,30 +9,12 @@ import {
   ViewChild,
   booleanAttribute,
 } from '@angular/core';
-import { CarouselItemComponent } from './carousel-item/carousel-item.component';
+import { CarouselItemComponent } from '../carousel-item/carousel-item.component';
 import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'ngx-carousel',
-  template: `
-    <div class="ngx-carousel">
-      <div class="slick-slider">
-        <div class="slick-list">
-          <div #slick_track class="slick-track">
-            <ng-content></ng-content>
-          </div>
-        </div>
-        <ul class="slick-list slick-dots slick-dots-bottom">
-          <li
-            [class.slick-active]="carouselItem.isActive"
-            *ngFor="let carouselItem of carouselItems"
-          >
-            <button (click)="onClick(carouselItem)"></button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  `,
+  templateUrl: './carousel.component.html',
   host: {
     class: 'ngx-carousel',
   },
