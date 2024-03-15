@@ -3,6 +3,7 @@ import {
   Component,
   ContentChildren,
   ElementRef,
+  HostListener,
   Input,
   QueryList,
   Renderer2,
@@ -14,7 +15,23 @@ import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'ngx-carousel',
-  templateUrl: './carousel.component.html',
+  template: `
+    <div class="ngx-carousel">
+      <div class="slick-list">
+        <div #slick_track class="slick-track">
+          <ng-content></ng-content>
+        </div>
+      </div>
+      <ul class="slick-list slick-dots slick-dots-bottom">
+        <li
+          [class.slick-active]="carouselItem.isActive"
+          *ngFor="let carouselItem of carouselItems"
+        >
+          <button (click)="onClick(carouselItem)"></button>
+        </li>
+      </ul>
+    </div>
+  `,
   host: {
     class: 'ngx-carousel',
   },
@@ -28,6 +45,8 @@ export class CarouselComponent implements AfterContentInit {
   @Input({ transform: booleanAttribute }) ngxAutoPlay!: boolean;
   @Input() ngxAutoPlaySpeed: number = 3000;
 
+  currentCarouselItem!: CarouselItemComponent;
+  
   @ViewChild('slick_track') slickTrackRef!: ElementRef;
 
   constructor(private renderer: Renderer2) {}
@@ -47,17 +66,22 @@ export class CarouselComponent implements AfterContentInit {
     }, this.ngxAutoPlaySpeed);
   }
 
-  onClick(carouselItem: any) {
-    this.carouselItems?.forEach((ci: any) => {
-      ci.isActive = ci.id === carouselItem.id;
-    });
+  @HostListener('window:resize', ['$event'])
+  resize() {
+    this.onClick(this.currentCarouselItem);
+  }
 
-    const index = this.carouselItems
-      .toArray()
-      .findIndex((ci) => ci.id === carouselItem.id);
+  onClick(carouselItem: any) {
+    let index = 0;
+    this.carouselItems?.forEach((ci: CarouselItemComponent, i: number) => {
+      ci.isActive = ci.id === carouselItem.id;
+      if (ci.isActive) {
+        this.currentCarouselItem = ci;
+        index = i;
+      }
+    });
     const carouselRef = document.getElementById(carouselItem.id) as HTMLElement;
     const carouselProp = carouselRef.getBoundingClientRect();
-
     this.renderer.setStyle(
       this.slickTrackRef.nativeElement,
       'transform',

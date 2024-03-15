@@ -3,7 +3,11 @@ import { Carousel } from './carousel.interface';
 import { Guid } from 'ngx-eagle/core/services';
 @Component({
   selector: 'ngx-carousel-item',
-  templateUrl: './carousel-item.component.html',
+  template: `
+    <div class="ngx-carousel-item" [id]="id">
+      <ng-content></ng-content>
+    </div>
+  `,
   host: {
     class: 'ngx-carousel-item',
   },
