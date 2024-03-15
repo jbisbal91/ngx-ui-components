@@ -1,31 +1,40 @@
-<div class="flex gap-8">
-  <ngx-carousel ngxAutoPlay>
+<ngx-radio-group [(ngModel)]="ngxDotPosition">
+  <ngx-radio-button ngxValue="top"> top </ngx-radio-button>
+  <ngx-radio-button ngxValue="right"> right </ngx-radio-button>
+  <ngx-radio-button ngxValue="bottom"> bottom </ngx-radio-button>
+  <ngx-radio-button ngxValue="left"> left </ngx-radio-button>
+</ngx-radio-group>
+
+
+
+<div class="flex gap-8 mt-4">
+  <ngx-carousel ngxAutoPlay [ngxDotPosition]="ngxDotPosition">
     <ngx-carousel-item>
-      <img src="https://www.w3schools.com/bootstrap/la.jpg" alt="la"
+      <img src="assets/images/img/image-card.png" alt="la"
     /></ngx-carousel-item>
     <ngx-carousel-item>
       <img
-        src="https://www.w3schools.com/bootstrap/chicago.jpg"
+        src="assets/images/img/image-card.png"
         alt="chicago"
       />
     </ngx-carousel-item>
     <ngx-carousel-item>
-      <img src="https://www.w3schools.com/bootstrap/ny.jpg" alt="ny" />
+      <img src="assets/images/img/image-card.png" alt="ny" />
     </ngx-carousel-item>
   </ngx-carousel>
 
   <ngx-carousel>
     <ngx-carousel-item>
-      <img src="https://www.w3schools.com/bootstrap/la.jpg" alt="la"
+      <img src="assets/images/img/image-card.png" alt="la"
     /></ngx-carousel-item>
     <ngx-carousel-item>
       <img
-        src="https://www.w3schools.com/bootstrap/chicago.jpg"
+        src="assets/images/img/image-card.png"
         alt="chicago"
       />
     </ngx-carousel-item>
     <ngx-carousel-item>
-      <img src="https://www.w3schools.com/bootstrap/ny.jpg" alt="ny" />
+      <img src="assets/images/img/image-card.png" alt="ny" />
     </ngx-carousel-item>
   </ngx-carousel>
 </div>

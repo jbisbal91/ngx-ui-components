@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { CarouselItemComponent } from '../carousel-item/carousel-item.component';
 import { NgForOf } from '@angular/common';
+import { NgxDotPosition } from '../typings';
 
 @Component({
   selector: 'ngx-carousel',
@@ -22,7 +23,11 @@ import { NgForOf } from '@angular/common';
           <ng-content></ng-content>
         </div>
       </div>
-      <ul class="slick-list slick-dots slick-dots-bottom">
+      <ul
+        class="slick-list slick-dots"
+        [class.slick-dots-top]="ngxDotPosition === 'top'"
+        [class.slick-dots-bottom]="ngxDotPosition === 'bottom'"
+      >
         <li
           [class.slick-active]="carouselItem.isActive"
           *ngFor="let carouselItem of carouselItems"
@@ -44,15 +49,22 @@ export class CarouselComponent implements AfterContentInit {
     new QueryList<CarouselItemComponent>();
   @Input({ transform: booleanAttribute }) ngxAutoPlay!: boolean;
   @Input() ngxAutoPlaySpeed: number = 3000;
+  @Input() ngxDotPosition: NgxDotPosition = 'bottom';
 
   currentCarouselItem!: CarouselItemComponent;
-  
+
   @ViewChild('slick_track') slickTrackRef!: ElementRef;
 
   constructor(private renderer: Renderer2) {}
 
   ngAfterContentInit(): void {
     this.carouselItems.first.isActive = true;
+    this.currentCarouselItem = this.carouselItems.first;
+    if (this.currentCarouselItem) {
+      setTimeout(() => {
+        this.onClick(this.currentCarouselItem);
+      });
+    }
     if (this.ngxAutoPlay) {
       this.autoPlay();
     }
@@ -85,7 +97,7 @@ export class CarouselComponent implements AfterContentInit {
     this.renderer.setStyle(
       this.slickTrackRef.nativeElement,
       'transform',
-      `translate(${carouselProp.width * -index}px)`
+      `translateX(${carouselProp.width * -index}px)`
     );
   }
 }

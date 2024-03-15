@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './carousel-demo1.component.html',
   styleUrls: ['./carousel-demo1.component.scss'],
 })
-export class CarouselDemo1Component {}
+export class CarouselDemo1Component {
+  ngxDotPosition: any = 'top';
+}
