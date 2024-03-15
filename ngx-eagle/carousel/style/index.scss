@@ -1,140 +1,139 @@
 .ngx-carousel-item {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    max-width: fit-content;
-  }
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: fit-content;
+}
 
-  .ngx-carousel {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    color: #000000d9;
-    font-size: 14px;
-    font-variant: tabular-nums;
-    line-height: 1.5715;
-    list-style: none;
-    font-feature-settings: "tnum";
-    overflow: auto;
-  }
-  
-  .ngx-carousel .slick-list {
-    position: relative;
-    display: block;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  
-  .ngx-carousel .slick-list.dragging {
-    cursor: pointer;
-  }
-  
-  .ngx-carousel .slick-list .slick-slide {
-    pointer-events: none;
-  }
-        
-  .ngx-carousel .slick-track {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .ngx-carousel .slick-slide {
-    display: none;
-    float: left;
-    height: 100%;
-    min-height: 1px;
-  }
-  
-  .ngx-carousel .slick-dots {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 15;
-    display: flex !important;
-    justify-content: center;
-    margin-right: 15%;
-    margin-left: 15%;
-    padding-left: 0;
-    list-style: none;
-  }
-  
-  .ngx-carousel .slick-dots-bottom {
-    bottom: 12px;
-  }
-  
-  .ngx-carousel .slick-dots-top {
-    top: 12px;
-    bottom: auto;
-  }
-  
-  .ngx-carousel .slick-dots li {
-    position: relative;
-    display: inline-block;
-    flex: 0 1 auto;
-    box-sizing: content-box;
-    width: 16px;
-    height: 3px;
-    margin: 0 3px;
-    padding: 0;
-    text-align: center;
-    text-indent: -999px;
-    vertical-align: top;
-    transition: all 0.5s;
-  }
-  
-  .ngx-carousel .slick-dots li button {
-    display: block;
-    width: 100%;
-    height: 3px;
-    padding: 0;
-    color: transparent;
-    font-size: 0;
-    background: #fff;
-    border: 0;
-    border-radius: 1px;
-    outline: none;
-    cursor: pointer;
-    opacity: 0.3;
-    transition: all 0.5s;
-  }
-  
-  .ngx-carousel .slick-dots li button:hover,
-  .ngx-carousel .slick-dots li button:focus {
-    opacity: 0.75;
-  }
-  
-  .ngx-carousel .slick-dots li.slick-active {
-    width: 24px;
-  }
-  
-  .ngx-carousel .slick-dots li.slick-active button {
-    background: #fff;
-    opacity: 1;
-  }
-  
-  .ngx-carousel .slick-dots li.slick-active:hover,
-  .ngx-carousel .slick-dots li.slick-active:focus {
-    opacity: 1;
-  }
-  
-  .ngx-carousel {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .slick-dots {
-    display: block;
-  }
-    
-  .slick-list {
-    direction: ltr;
-  }
-  
+.ngx-carousel {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #000000d9;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: "tnum";
+  overflow: auto;
+}
+
+.ngx-carousel .slick-list {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.ngx-carousel .slick-list.dragging {
+  cursor: pointer;
+}
+
+.ngx-carousel .slick-list .slick-slide {
+  pointer-events: none;
+}
+
+.ngx-carousel .slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.ngx-carousel .slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+}
+
+.ngx-carousel .slick-dots {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+  display: flex !important;
+  justify-content: center;
+  margin-right: 15%;
+  margin-left: 15%;
+  padding-left: 0;
+  list-style: none;
+}
+
+.ngx-carousel .slick-dots-bottom {
+  bottom: 12px;
+}
+
+.ngx-carousel .slick-dots-top {
+  top: 12px;
+  bottom: auto;
+}
+
+.ngx-carousel .slick-dots li {
+  position: relative;
+  display: inline-block;
+  flex: 0 1 auto;
+  box-sizing: content-box;
+  width: 16px;
+  height: 3px;
+  margin: 0 3px;
+  padding: 0;
+  text-align: center;
+  text-indent: -999px;
+  vertical-align: top;
+  transition: all 0.5s;
+}
+
+.ngx-carousel .slick-dots li button {
+  display: block;
+  width: 100%;
+  height: 3px;
+  padding: 0;
+  color: transparent;
+  font-size: 0;
+  background: #fff;
+  border: 0;
+  border-radius: 1px;
+  outline: none;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: all 0.5s;
+}
+
+.ngx-carousel .slick-dots li button:hover,
+.ngx-carousel .slick-dots li button:focus {
+  opacity: 0.75;
+}
+
+.ngx-carousel .slick-dots li.slick-active {
+  width: 24px;
+}
+
+.ngx-carousel .slick-dots li.slick-active button {
+  background: #fff;
+  opacity: 1;
+}
+
+.ngx-carousel .slick-dots li.slick-active:hover,
+.ngx-carousel .slick-dots li.slick-active:focus {
+  opacity: 1;
+}
+
+.ngx-carousel {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.slick-dots {
+  display: block;
+}
+
+.slick-list {
+  direction: ltr;
+}
