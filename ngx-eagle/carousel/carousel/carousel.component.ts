@@ -2,10 +2,8 @@ import {
   AfterContentInit,
   Component,
   ContentChildren,
-  ElementRef,
   Input,
   QueryList,
-  ViewChild,
   booleanAttribute,
 } from '@angular/core';
 
@@ -28,8 +26,6 @@ export class CarouselComponent implements AfterContentInit {
     new QueryList<CarouselItemComponent>();
   @Input({ transform: booleanAttribute }) ngxAutoPlay: boolean = false;
   @Input() ngxAutoPlaySpeed: number = 3000;
-
-  @ViewChild('carousel_container') carouselRef!: ElementRef;
 
   ngAfterContentInit(): void {
     this.carouselItems.first.isActive = true;
