@@ -1,11 +1,12 @@
 import {
   AfterContentInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ContentChildren,
+  ElementRef,
   Input,
   QueryList,
+  Renderer2,
+  ViewChild,
   booleanAttribute,
 } from '@angular/core';
 import { CarouselItemComponent } from './carousel-item/carousel-item.component';
@@ -15,26 +16,23 @@ import { NgForOf } from '@angular/common';
   selector: 'ngx-carousel',
   template: `
     <div class="ngx-carousel">
-      <div class="slick-initialized slick-slider">
+      <div class="slick-slider">
         <div class="slick-list">
-          <div class="slick-track">
+          <div #slick_track class="slick-track">
             <ng-content></ng-content>
           </div>
         </div>
-
         <ul class="slick-list slick-dots slick-dots-bottom">
           <li
             [class.slick-active]="carouselItem.isActive"
             *ngFor="let carouselItem of carouselItems"
-            (click)="onClick(carouselItem)"
           >
-            <button>{{ carouselItem.id }}</button>
+            <button (click)="onClick(carouselItem)"></button>
           </li>
         </ul>
       </div>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'ngx-carousel',
   },
@@ -43,18 +41,17 @@ import { NgForOf } from '@angular/common';
 })
 export class CarouselComponent implements AfterContentInit {
   @ContentChildren(CarouselItemComponent)
-  public carouselItems!: QueryList<CarouselItemComponent>;
+  public carouselItems: QueryList<CarouselItemComponent> =
+    new QueryList<CarouselItemComponent>();
   @Input({ transform: booleanAttribute }) ngxAutoPlay!: boolean;
   @Input() ngxAutoPlaySpeed: number = 3000;
 
-  currentItem!: CarouselItemComponent;
+  @ViewChild('slick_track') slickTrackRef!: ElementRef;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private renderer: Renderer2) {}
 
   ngAfterContentInit(): void {
     this.carouselItems.first.isActive = true;
-    this.currentItem = this.carouselItems.first;
-    this.cdr.markForCheck();
     if (this.ngxAutoPlay) {
       this.autoPlay();
     }
@@ -70,9 +67,19 @@ export class CarouselComponent implements AfterContentInit {
 
   onClick(carouselItem: any) {
     this.carouselItems?.forEach((ci: any) => {
-      ci.isActive = ci.id === carouselItem.id ? true : false;
+      ci.isActive = ci.id === carouselItem.id;
     });
-    const element = document.getElementById(carouselItem.id);
-    element?.scrollIntoView({ behavior: 'smooth' });
+
+    const index = this.carouselItems
+      .toArray()
+      .findIndex((ci) => ci.id === carouselItem.id);
+    const carouselRef = document.getElementById(carouselItem.id) as HTMLElement;
+    const carouselProp = carouselRef.getBoundingClientRect();
+
+    this.renderer.setStyle(
+      this.slickTrackRef.nativeElement,
+      'transform',
+      `translate(${carouselProp.width * -index}px)`
+    );
   }
 }
