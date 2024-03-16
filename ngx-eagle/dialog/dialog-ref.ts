@@ -5,12 +5,16 @@ import { defaultIfEmpty, filter, first } from 'rxjs/operators';
 import { DialogConfig, GlobalDialogConfig, JustProps } from './types';
 import { DragOffset } from './draggable.directive';
 
-type GuardFN<R> = (result?: R) => Observable<boolean> | Promise<boolean> | boolean;
+type GuardFN<R> = (
+  result?: R
+) => Observable<boolean> | Promise<boolean> | boolean;
 
 export abstract class DialogRef<
   Data = any,
   Result = any,
-  Ref extends ComponentRef<any> | TemplateRef<any> = ComponentRef<any> | TemplateRef<any>,
+  Ref extends ComponentRef<any> | TemplateRef<any> =
+    | ComponentRef<any>
+    | TemplateRef<any>
 > {
   ref!: Ref | null;
   data!: Data;
@@ -25,7 +29,8 @@ export abstract class DialogRef<
 }
 
 type InternalDialogRefProps = Partial<
-  Omit<JustProps<InternalDialogRef>, 'id' | 'data'> & Pick<InternalDialogRef, 'onClose' | 'onReset'>
+  Omit<JustProps<InternalDialogRef>, 'id' | 'data'> &
+    Pick<InternalDialogRef, 'onClose' | 'onReset'>
 >;
 
 export class InternalDialogRef extends DialogRef {
@@ -58,7 +63,9 @@ export class InternalDialogRef extends DialogRef {
       .map((guard) => guard(result))
       .filter((value) => value !== undefined && value !== true)
       .map((value) => {
-        return typeof value === 'boolean' ? of(value) : from(value).pipe(filter((canClose) => !canClose));
+        return typeof value === 'boolean'
+          ? of(value)
+          : from(value).pipe(filter((canClose) => !canClose));
       });
 
     return merge(...guards$).pipe(defaultIfEmpty(true), first());

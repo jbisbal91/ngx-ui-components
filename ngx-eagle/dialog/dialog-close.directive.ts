@@ -1,5 +1,11 @@
-import { Directive, ElementRef, HostListener, inject, Input, OnInit } from '@angular/core';
-
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  inject,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { DialogRef } from './dialog-ref';
 import { DialogService } from './dialog.service';
 
@@ -26,11 +32,11 @@ export class DialogCloseDirective implements OnInit {
 
   private getRefFromParent() {
     let parent = this.host.nativeElement.parentElement;
-
     while (parent && parent.localName !== 'ngx-dialog') {
       parent = parent.parentElement;
     }
-
-    return parent ? this.dialogService.dialogs.find(({ id }) => id === parent?.id) : null;
+    return parent
+      ? this.dialogService.dialogs.find(({ id }) => id === parent?.id)
+      : null;
   }
 }

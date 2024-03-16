@@ -1,5 +1,9 @@
 import { DOCUMENT } from '@angular/common';
-import { inject, InjectionToken, makeEnvironmentProviders } from '@angular/core';
+import {
+  inject,
+  InjectionToken,
+  makeEnvironmentProviders,
+} from '@angular/core';
 
 import { DialogConfig, GlobalDialogConfig } from './types';
 
@@ -10,10 +14,12 @@ export const DIALOG_DOCUMENT_REF = new InjectionToken(
     factory() {
       return inject(DOCUMENT);
     },
-  },
+  }
 );
 
-export function defaultGlobalConfig(): Partial<GlobalDialogConfig & DialogConfig> {
+export function defaultGlobalConfig(): Partial<
+  GlobalDialogConfig & DialogConfig
+> {
   return {
     id: undefined,
     container: inject(DIALOG_DOCUMENT_REF).body,
@@ -59,14 +65,18 @@ export function defaultGlobalConfig(): Partial<GlobalDialogConfig & DialogConfig
   };
 }
 
-export const GLOBAL_DIALOG_CONFIG = new InjectionToken<Partial<GlobalDialogConfig>>('Global dialog config token', {
+export const GLOBAL_DIALOG_CONFIG = new InjectionToken<
+  Partial<GlobalDialogConfig>
+>('Global dialog config token', {
   providedIn: 'root',
   factory() {
     return defaultGlobalConfig();
   },
 });
 
-export const NODES_TO_INSERT = new InjectionToken<Element[]>('Nodes inserted into the dialog');
+export const NODES_TO_INSERT = new InjectionToken<Element[]>(
+  'Nodes inserted into the dialog'
+);
 
 export function provideDialogConfig(config: Partial<GlobalDialogConfig>) {
   return makeEnvironmentProviders([

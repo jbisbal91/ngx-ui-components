@@ -27,9 +27,7 @@ export class DialogService {
   private document = inject(DIALOG_DOCUMENT_REF);
   private globalConfig = inject(GLOBAL_DIALOG_CONFIG);
 
-  // Replace with Map in next major version
   dialogs: DialogRef[] = [];
-  // A Stream representing opening & closing dialogs
   private hasOpenDialogSub = new BehaviorSubject<boolean>(false);
   hasOpenDialogs$ = this.hasOpenDialogSub.asObservable();
 

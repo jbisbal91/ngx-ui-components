@@ -35,16 +35,7 @@ import { NODES_TO_INSERT } from './providers';
         [class.ngx-dialog-resizable]="config.resizable"
         [ngStyle]="styles"
         role="dialog"
-      >
-        <div
-          *ngIf="config.draggable"
-          class="ngx-drag-marker"
-          dialogDraggable
-          [dialogDragEnabled]="true"
-          [dialogDragTarget]="dialog"
-          [dragConstraint]="config.dragConstraint"
-        ></div>
-      </div>
+      ></div>
     </div>
   `,
   styleUrls: [`./dialog.component.scss`],
@@ -87,12 +78,7 @@ export class DialogComponent implements OnInit, OnDestroy {
   private dialogService = inject(DialogService);
 
   constructor() {
-    // Append nodes to dialog component, template or component could need
-    // something from the dialog component
-    // for example, if `[dialogClose]` is used into a directive,
-    // DialogRef will be getted from DialogService instead of DI
     this.nodes.forEach((node) => this.host.appendChild(node));
-
     if (this.config.windowClass) {
       const classNames = this.config.windowClass.split(/\s/).filter((x) => x);
       classNames.forEach((name) => this.host.classList.add(name));
@@ -108,7 +94,6 @@ export class DialogComponent implements OnInit, OnDestroy {
         );
       }
     }
-
     this.host.id = this.config.id;
   }
 
@@ -121,10 +106,6 @@ export class DialogComponent implements OnInit, OnDestroy {
     const backdropClick$ = fromEvent<MouseEvent>(backdrop, 'click', {
       capture: true,
     }).pipe(filter(({ target }) => !dialogElement.contains(target as Element)));
-
-    //backdropClick$.pipe(takeUntil(this.destroy$)).subscribe(this.dialogRef?.backdropClick$);
-
-    // backwards compatibility with non-split option
     const closeConfig =
       typeof this.config.enableClose === 'boolean' ||
       this.config.enableClose === 'onlyLastStrategy'
@@ -151,11 +132,7 @@ export class DialogComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe(() => this.closeDialog());
-
-    // `dialogElement` is resolved at this point
-    // And here is where dialog finally will be placed
     this.nodes.forEach((node) => dialogElement.appendChild(node));
-
     if (this.config.zIndexGetter) {
       const zIndex = this.config.zIndexGetter().toString();
       backdrop.style.setProperty('--dialog-backdrop-z-index', zIndex);
@@ -175,8 +152,5 @@ export class DialogComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
-
-    // this.dialogRef = null;
-    // this.nodes = null;
   }
 }
