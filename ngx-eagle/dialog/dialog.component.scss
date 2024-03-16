@@ -57,6 +57,32 @@
   }
 }
 
+.ngx-close-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  cursor: pointer;
+  top: var(--dialog-close-btn-top, 6px);
+  right: var(--dialog-close-btn-right, 10px);
+  width: var(--dialog-close-btn-size, 30px);
+  height: var(--dialog-close-btn-size, 30px);
+  color: var(--dialog-close-btn-color, #5f6368);
+  transition: all 0.2s ease-in-out;
+  border-radius: 50%;
+
+  svg {
+    width: var(--dialog-close-svg-size, 12px);
+    height: var(--dialog-close-svg-size, 12px);
+  }
+
+  &:hover {
+    color: var(--dialog-close-btn-color-hover, #5f6368);
+    background-color: var(--dialog-close-btn-bg-hover, #eee);
+  }
+}
+
+
 body.ngx-dialog-hidden {
   overflow: hidden;
 }

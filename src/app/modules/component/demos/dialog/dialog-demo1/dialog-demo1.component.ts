@@ -8,10 +8,13 @@ import { DialogService } from 'ngx-eagle/dialog';
   styleUrls: ['./dialog-demo1.component.scss'],
 })
 export class DialogDemo1Component {
-  
   constructor(private dialog: DialogService) {}
 
   openDialog() {
-    this.dialog.open(DialogRef1Component);
+    this.dialog.open(DialogRef1Component, {
+      backdrop: true,
+      enableClose: false,
+      closeButton: true,
+    });
   }
 }
