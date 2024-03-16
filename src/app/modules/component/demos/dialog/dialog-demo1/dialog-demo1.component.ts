@@ -11,7 +11,8 @@ export class DialogDemo1Component {
   constructor(private dialog: DialogService) {}
 
   openDialog() {
-    this.dialog.open(DialogRef1Component, {
+    this.dialog.open(DialogRef1Component,{
+      size:'fullScreen',
       backdrop: true,
       enableClose: false,
       closeButton: true,
