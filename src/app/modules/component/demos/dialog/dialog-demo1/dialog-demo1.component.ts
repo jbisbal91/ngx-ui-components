@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DialogRef1Component } from '../dialog-ref1/dialog-ref1.component';
-import { DialogService } from 'ngx-eagle/dialog';
+import { NgxDialog } from 'ngx-eagle/dialog';
 
 @Component({
   selector: 'app-dialog-demo1',
@@ -8,7 +8,7 @@ import { DialogService } from 'ngx-eagle/dialog';
   styleUrls: ['./dialog-demo1.component.scss'],
 })
 export class DialogDemo1Component {
-  constructor(private dialog: DialogService) {}
+  constructor(private dialog: NgxDialog) {}
 
   openDialog() {
     this.dialog.open(DialogRef1Component,{

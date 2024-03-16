@@ -21,7 +21,7 @@ import { AttachOptions, DialogConfig, ExtractData, ExtractResult, GlobalDialogCo
 const OVERFLOW_HIDDEN_CLASS = 'ngx-dialog-hidden';
 
 @Injectable({ providedIn: 'root' })
-export class DialogService {
+export class NgxDialog {
   private appRef = inject(ApplicationRef);
   private injector = inject(EnvironmentInjector);
   private document = inject(DIALOG_DOCUMENT_REF);

@@ -13,7 +13,7 @@ import { fromEvent, merge, Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 
 import { InternalDialogRef } from './dialog-ref';
-import { DialogService } from './dialog.service';
+import { NgxDialog } from './dialog.service';
 import { coerceCssPixelValue } from './dialog.utils';
 import { DialogDraggableDirective, DragOffset } from './draggable.directive';
 import { NODES_TO_INSERT } from './providers';
@@ -88,7 +88,7 @@ export class DialogComponent implements OnInit, OnDestroy {
   private document = inject(DOCUMENT);
   private host: HTMLElement = inject(ElementRef).nativeElement;
 
-  private dialogService = inject(DialogService);
+  private NgxDialog = inject(NgxDialog);
 
   constructor() {
     this.nodes.forEach((node) => this.host.appendChild(node));
@@ -139,7 +139,7 @@ export class DialogComponent implements OnInit, OnDestroy {
         filter((strategy) => {
           if (!strategy) return false;
           if (strategy === 'onlyLastStrategy') {
-            return this.dialogService.isLastOpened(this.config.id);
+            return this.NgxDialog.isLastOpened(this.config.id);
           }
           return true;
         })

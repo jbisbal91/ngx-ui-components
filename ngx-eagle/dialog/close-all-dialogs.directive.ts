@@ -1,16 +1,16 @@
 import { Directive, HostListener, inject } from '@angular/core';
 
-import { DialogService } from './dialog.service';
+import { NgxDialog } from './dialog.service';
 
 @Directive({
   selector: '[closeAllDialogs]',
   standalone: true,
 })
 export class CloseAllDialogsDirective {
-  private dialogService = inject(DialogService);
+  private NgxDialog = inject(NgxDialog);
 
   @HostListener('click')
   onClose() {
-    this.dialogService.closeAll();
+    this.NgxDialog.closeAll();
   }
 }

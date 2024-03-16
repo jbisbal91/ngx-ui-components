@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DialogService } from 'ngx-eagle/dialog';
+import { NgxDialog } from 'ngx-eagle/dialog';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class DialogRef1Component {
     this.value = value;
   }
 
-  constructor(private dialog: DialogService) {
+  constructor(private dialog: NgxDialog) {
     for (let i = 1; i <= 10; i++) {
       this.options.push({ value: `opt${i}`, label: `Option ${i}` });
       this.value.push({ value: `opt${i}`, label: `Option ${i}` });

@@ -7,7 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { DialogRef } from './dialog-ref';
-import { DialogService } from './dialog.service';
+import { NgxDialog } from './dialog.service';
 
 @Directive({
   selector: '[dialogClose]',
@@ -15,7 +15,7 @@ import { DialogService } from './dialog.service';
 })
 export class DialogCloseDirective implements OnInit {
   private host: ElementRef<HTMLElement> = inject(ElementRef);
-  private dialogService = inject(DialogService);
+  private NgxDialog = inject(NgxDialog);
   ref: DialogRef | undefined | null = inject(DialogRef, { optional: true });
 
   @Input()
@@ -36,7 +36,7 @@ export class DialogCloseDirective implements OnInit {
       parent = parent.parentElement;
     }
     return parent
-      ? this.dialogService.dialogs.find(({ id }) => id === parent?.id)
+      ? this.NgxDialog.dialogs.find(({ id }) => id === parent?.id)
       : null;
   }
 }
