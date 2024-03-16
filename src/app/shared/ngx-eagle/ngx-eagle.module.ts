@@ -6,7 +6,6 @@ import { ButtonModule } from 'ngx-eagle/button';
 import { CarouselModule } from 'ngx-eagle/carousel';
 import { CardModule } from 'ngx-eagle/card';
 import { CheckboxModule } from 'ngx-eagle/checkbox';
-import { DialogModule } from 'ngx-eagle/dialog';
 import { DividerModule } from 'ngx-eagle/divider';
 import { DrawerModule } from 'ngx-eagle/drawer';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
@@ -31,7 +30,6 @@ import { TimelineModule } from 'ngx-eagle/timeline';
     CarouselModule,
     CardModule,
     CheckboxModule,
-    DialogModule,
     DividerModule,
     DrawerModule,
     ExpansionPanelModule,

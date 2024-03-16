@@ -7,13 +7,18 @@
 </div>
 
 
-<div class="flex items-center gap-4">
-  <ngx-avatar [ngxSize]="64"></ngx-avatar>
-  <ngx-avatar ngxSize="large"></ngx-avatar>
-  <ngx-avatar ngxSize="default"></ngx-avatar>
-  <ngx-avatar ngxSize="small"></ngx-avatar>
-</div>
-
+<ngx-outlined-select-field
+  label="Select"
+  placeholder="Select option"
+  [value]="value"
+  (onChangeValue)="onChangeValue($event)"
+  required
+  multiple
+>
+  <ngx-option *ngFor="let option of options" [value]="option.value">{{
+    option.label
+  }}</ngx-option>
+</ngx-outlined-select-field>
 
 <button
   ngx-button

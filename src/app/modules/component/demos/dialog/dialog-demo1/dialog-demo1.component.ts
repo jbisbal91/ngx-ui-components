@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { NgxDialog } from 'ngx-eagle/dialog';
 import { DialogRef1Component } from '../dialog-ref1/dialog-ref1.component';
-//import { NgxDialog } from 'ngx-eagle/dialog';
+import { DialogService } from 'ngx-eagle/dialog';
 
 @Component({
   selector: 'app-dialog-demo1',
@@ -9,12 +8,10 @@ import { DialogRef1Component } from '../dialog-ref1/dialog-ref1.component';
   styleUrls: ['./dialog-demo1.component.scss'],
 })
 export class DialogDemo1Component {
-  constructor(public ngxDialog: NgxDialog) {}
+  
+  constructor(private dialog: DialogService) {}
+
   openDialog() {
-    this.ngxDialog.open(
-      DialogRef1Component,
-      {data:''},
-      {width:'30rem'}
-    );
+    this.dialog.open(DialogRef1Component);
   }
 }
