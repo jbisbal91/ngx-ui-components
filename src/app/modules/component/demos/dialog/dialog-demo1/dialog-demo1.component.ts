@@ -23,5 +23,7 @@ export class DialogDemo1Component {
     dialogRef.backdropClick$.subscribe(() => {
       console.log('Backdrop has been clicked');
     });
+
+    dialogRef.beforeClose((result):any => {console.log(result)})
   }
 }
