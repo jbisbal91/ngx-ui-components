@@ -57,6 +57,15 @@
   }
 }
 
+.ngx-drag-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: move;
+  width: 100%;
+  height: 10px;
+}
+
 .ngx-close-dialog {
   display: flex;
   align-items: center;

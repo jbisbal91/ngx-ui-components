@@ -11,11 +11,17 @@ export class DialogDemo1Component {
   constructor(private dialog: NgxDialog) {}
 
   openDialog() {
-    this.dialog.open(DialogRef1Component,{
-      size:'fullScreen',
-      backdrop: true,
-      enableClose: false,
+    const dialogRef = this.dialog.open(DialogRef1Component, {
+      draggable: true,
       closeButton: true,
+    });
+
+    dialogRef.afterClosed$.subscribe(() => {
+      console.log('The modal has been closed');
+    });
+
+    dialogRef.backdropClick$.subscribe(() => {
+      console.log('Backdrop has been clicked');
     });
   }
 }

@@ -37,6 +37,14 @@ import { NODES_TO_INSERT } from './providers';
         role="dialog"
       >
         <div
+          *ngIf="config.draggable"
+          class="ngx-drag-marker"
+          dialogDraggable
+          [dialogDragEnabled]="true"
+          [dialogDragTarget]="dialog"
+          [dragConstraint]="config.dragConstraint"
+        ></div>
+        <div
           *ngIf="config.closeButton"
           class="ngx-close-dialog"
           (click)="closeDialog()"
@@ -119,6 +127,9 @@ export class DialogComponent implements OnInit, OnDestroy {
     const backdropClick$ = fromEvent<MouseEvent>(backdrop, 'click', {
       capture: true,
     }).pipe(filter(({ target }) => !dialogElement.contains(target as Element)));
+
+    backdropClick$.pipe(takeUntil(this.destroy$)).subscribe(this.dialogRef.backdropClick$);
+
     const closeConfig =
       typeof this.config.enableClose === 'boolean' ||
       this.config.enableClose === 'onlyLastStrategy'

@@ -1,5 +1,5 @@
 import { ComponentRef, TemplateRef } from '@angular/core';
-import { from, merge, Observable, of } from 'rxjs';
+import { from, merge, Observable, of, Subject } from 'rxjs';
 import { defaultIfEmpty, filter, first } from 'rxjs/operators';
 
 import { DialogConfig, GlobalDialogConfig, JustProps } from './types';
@@ -35,6 +35,7 @@ type InternalDialogRefProps = Partial<
 
 export class InternalDialogRef extends DialogRef {
   config!: DialogConfig & GlobalDialogConfig;
+  override backdropClick$!: Subject<MouseEvent>;
   beforeCloseGuards: GuardFN<unknown>[] = [];
   onClose!: (result?: unknown) => void | null;
   onReset!: (offset?: DragOffset) => void;
