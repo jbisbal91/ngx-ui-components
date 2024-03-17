@@ -2,6 +2,10 @@
 @import "./assets/theme/light.scss";
 @import "./assets/styles/main.scss";
 
+:root {
+  --dialog-drag-marker-height: 56px;
+}
+
 html,
 body {
   height: 100vh;
