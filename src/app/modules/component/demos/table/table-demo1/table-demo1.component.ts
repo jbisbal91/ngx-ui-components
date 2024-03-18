@@ -9,21 +9,21 @@ import { TableDemo1Service } from './service/table-demo1.service';
 })
 export class TableDemo1Component {
   displayedColumns: any[] = [
-    'Full Name',
-    'Job Title',
-    'Country',
-    'Status',
-    'Satisfaction',
-    'Productivity',
-    'Salary',
-    'Phone',
-    'Email',
-    'Address',
-    'LinkedIn',
-    'Twitter',
-    'Instagram',
+    {prop:'Full Name',value:'full_name'},
+    {prop:'Job Title',value:'job_title'},
+    {prop:'Country',value:'country'},
+    {prop:'Status',value:'status'},
+    {prop:'Satisfaction',value:'satisfaction'},
+    {prop:'Productivity',value:'productivity'},
+    {prop:'Salary',value:'salary'},
+    {prop:'Phone',value:'phone'},
+    {prop:'Email',value:'email'},
+    {prop:'Address',value:'address'},
+    {prop:'LinkedIn',value:'linkedIn'},
+    {prop:'Twitter',value:'twitter'},
+    {prop:'Instagram',value:'instagram'},
   ];
-  
+
   ngxBordered: boolean = true;
 
   getColor(value: number): string {
@@ -41,4 +41,8 @@ export class TableDemo1Component {
   values: Observable<any[]> = this.tableDemo1Service.getValues();
 
   constructor(private tableDemo1Service: TableDemo1Service) {}
+
+  sorting(sort: any, col: string) {
+    console.log(sort, col);
+  }
 }

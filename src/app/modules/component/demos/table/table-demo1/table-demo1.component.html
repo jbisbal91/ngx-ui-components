@@ -14,7 +14,13 @@
       <th colspan="3">Social Networks</th>
     </tr>
     <tr>
-      <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      <th
+        ngxSort
+        (changeSorting)="sorting($event, col.value)"
+        *ngFor="let col of displayedColumns"
+      >
+        {{ col.prop }}
+      </th>
     </tr>
   </thead>
 

@@ -1,0 +1,24 @@
+.ngx-sort-arrow {
+    width: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.ngx-arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 7px solid #BFBFBF;
+}
+
+.ngx-arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid #BFBFBF;
+}
