@@ -4,6 +4,9 @@
 
 :root {
   --dialog-drag-marker-height: 56px;
+  --dialog-content-bg: var(--ngx-doc-background);
+  --table-thead-background-color: var(--ngx-table-thead-background-color);
+  --table-tr-hover-background-color: var(--ngx-table-thead-background-color);
 }
 
 html,
