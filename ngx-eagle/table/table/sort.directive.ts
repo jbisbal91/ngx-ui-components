@@ -2,6 +2,7 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
+  HostListener,
   OnInit,
   Output,
   Renderer2,
@@ -44,10 +45,10 @@ export class SortDirective implements OnInit {
     if (this.status === null) {
       this.status = 'ascend';
       this.renderer.addClass(this.arrowUp, 'active');
-      this.renderer.removeClass(this.arrowDown, 'active');      
+      this.renderer.removeClass(this.arrowDown, 'active');
     } else if (this.status === 'ascend') {
       this.status = 'descend';
-      this.renderer.removeClass(this.arrowUp, 'active');      
+      this.renderer.removeClass(this.arrowUp, 'active');
       this.renderer.addClass(this.arrowDown, 'active');
     } else {
       this.status = null;
@@ -55,5 +56,18 @@ export class SortDirective implements OnInit {
       this.renderer.removeClass(this.arrowDown, 'active');
     }
     this.changeSorting.emit(this.status);
+  }
+
+  @HostListener('document:click', ['$event'])
+  public onClick3(event: MouseEvent): void {
+    const clickedElement = event.target as HTMLElement;
+    if (
+      !this.elementRef.nativeElement.contains(clickedElement) &&
+      clickedElement.hasAttribute('ngxsort')
+    ) {
+      this.status = null;
+      this.renderer.removeClass(this.arrowUp, 'active');
+      this.renderer.removeClass(this.arrowDown, 'active');
+    }
   }
 }

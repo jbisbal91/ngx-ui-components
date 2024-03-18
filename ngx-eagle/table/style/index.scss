@@ -100,7 +100,6 @@
     position: absolute;
     top: 50%;
     right: 0.5rem;
-    margin-left: 5px;
     transform: translate(-50%, -50%);
 }
 
@@ -121,7 +120,7 @@
     width: 0;
     height: 0;
     border-left: 5px solid transparent;
-    border-right: 5px solid transparent;    
+    border-right: 5px solid transparent;
     transition: border-top 0.2s ease-in-out;
     border-top: 7px solid #BFBFBF;
 }
