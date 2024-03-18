@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject, of } from 'rxjs';
 import { TableDemo1Service } from './service/table-demo1.service';
 import { SortService } from 'src/app/shared/services/sort/sort.service';
 
