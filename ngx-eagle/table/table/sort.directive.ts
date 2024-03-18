@@ -3,6 +3,7 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  Input,
   OnInit,
   Output,
   Renderer2,
@@ -15,7 +16,6 @@ import { NgxSort } from '../typings';
 })
 export class SortDirective implements OnInit {
   status: NgxSort = null;
-
   sort = document.createElement('div');
   arrowUp = document.createElement('span');
   arrowDown = document.createElement('span');

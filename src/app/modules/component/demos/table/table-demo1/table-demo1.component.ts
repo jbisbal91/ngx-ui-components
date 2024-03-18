@@ -1,27 +1,28 @@
-import { Component } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable, Subject, of } from 'rxjs';
 import { TableDemo1Service } from './service/table-demo1.service';
+import { SortService } from 'src/app/shared/services/sort/sort.service';
 
 @Component({
   selector: 'app-table-demo1',
   templateUrl: './table-demo1.component.html',
   styleUrls: ['./table-demo1.component.scss'],
 })
-export class TableDemo1Component {
+export class TableDemo1Component implements OnInit {
   displayedColumns: any[] = [
-    {prop:'Full Name',value:'full_name'},
-    {prop:'Job Title',value:'job_title'},
-    {prop:'Country',value:'country'},
-    {prop:'Status',value:'status'},
-    {prop:'Satisfaction',value:'satisfaction'},
-    {prop:'Productivity',value:'productivity'},
-    {prop:'Salary',value:'salary'},
-    {prop:'Phone',value:'phone'},
-    {prop:'Email',value:'email'},
-    {prop:'Address',value:'address'},
-    {prop:'LinkedIn',value:'linkedIn'},
-    {prop:'Twitter',value:'twitter'},
-    {prop:'Instagram',value:'instagram'},
+    { prop: 'Full Name', value: 'full_name' },
+    { prop: 'Job Title', value: 'job_title' },
+    { prop: 'Country', value: 'country' },
+    { prop: 'Status', value: 'status' },
+    { prop: 'Satisfaction', value: 'satisfaction' },
+    { prop: 'Productivity', value: 'productivity' },
+    { prop: 'Salary', value: 'salary' },
+    { prop: 'Phone', value: 'phone' },
+    { prop: 'Email', value: 'email' },
+    { prop: 'Address', value: 'address' },
+    { prop: 'LinkedIn', value: 'linkedIn' },
+    { prop: 'Twitter', value: 'twitter' },
+    { prop: 'Instagram', value: 'instagram' },
   ];
 
   ngxBordered: boolean = true;
@@ -37,12 +38,30 @@ export class TableDemo1Component {
       throw new Error('Valor fuera de rango');
     }
   }
+  values!: any[];
+  allValues!: any[];
 
-  values: Observable<any[]> = this.tableDemo1Service.getValues();
+  constructor(
+    private tableDemo1Service: TableDemo1Service,
+    private sortService: SortService
+  ) {}
 
-  constructor(private tableDemo1Service: TableDemo1Service) {}
+  ngOnInit() {
+    this.tableDemo1Service.getValues().subscribe((data: any[]) => {
+      this.values = data;
+      this.allValues = this.values.slice();
+    });
+  }
 
   sorting(sort: any, col: string) {
-    console.log(sort, col);
+    if (sort === 'ascend') {
+      this.values = this.sortService.sort(this.values, col);
+    }
+    if (sort === 'descend') {
+      this.values = this.sortService.sort(this.values, col, true);
+    }
+    if (sort === null) {
+      this.values = this.allValues.slice();
+    }
   }
 }
