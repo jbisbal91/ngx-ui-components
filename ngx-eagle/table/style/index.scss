@@ -142,3 +142,12 @@
 .ngx-sort-arrow .ngx-arrow-down.active {
     border-top: 7px solid #1890FF;
 }
+
+.ngx-th-resize {
+    height: 100%;
+    width: 5px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: col-resize;
+}
