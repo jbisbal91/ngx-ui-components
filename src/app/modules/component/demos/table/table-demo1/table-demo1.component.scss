@@ -24,3 +24,11 @@ ngx-progress {
     width: 8rem;
 }
 
+.ngx-table td:nth-child(1),
+.ngx-table td:nth-child(2) {
+    min-width: 196px;
+}
+
+.ngx-table td:nth-child(8) {
+    min-width: 136px;
+}

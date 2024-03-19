@@ -1,7 +1,12 @@
 .ngx-table {
+    margin: 0;
     width: 100%;
-    border-spacing: 0px;
-    margin-bottom: 0;
+    max-width: none;
+    border-width: 0;
+    border-color: inherit;
+    border-collapse: separate;
+    border-spacing: 0;
+    empty-cells: show;
 }
 
 .ngx-table thead {
@@ -30,6 +35,7 @@
 .ngx-table-bordered th,
 .ngx-table-bordered td {
     border-right: 1px solid #dddddd;
+    min-width: 3.125rem;
 }
 
 /* Style for the first cell (th and td) of the ngx-table-bordered table with left border */
@@ -44,9 +50,17 @@
 }
 
 /*** End of border styles for ngx-table ***/
+.ngx-table th {
+    white-space: nowrap;
+    /* Evita saltos de línea */
+    overflow: hidden;
+    /* Oculta el texto que se desborda */
+    text-overflow: ellipsis;
+}
+
 .ngx-table td {
     border-bottom: 1px solid #dddddd;
-    white-space: nowrap;
+    white-space: break-spaces;
 }
 
 .ngx-table thead>tr,
