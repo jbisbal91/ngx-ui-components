@@ -22,8 +22,6 @@ export class ResizeDirective implements OnInit {
 
   ngOnInit(): void {
     this.buildResize();
-    const cellProp = this.elementRef.nativeElement.getBoundingClientRect();
-    this.width = cellProp.width;
     this.resize.addEventListener('mousedown', this.onMouseDown.bind(this));
   }
 
@@ -35,6 +33,8 @@ export class ResizeDirective implements OnInit {
   onMouseDown(event: MouseEvent) {
     if (event.button === 0) {
       this.isLeftClickPressed = true;
+      const cellProp = this.elementRef.nativeElement.getBoundingClientRect();
+      this.width = cellProp.width;
     }
     if (this.isLeftClickPressed) {
       this.startX = event.clientX;
@@ -54,6 +54,7 @@ export class ResizeDirective implements OnInit {
         'min-width',
         `${this.width + this.mouseMovement}px`
       );
+      console.log(`${this.width + this.mouseMovement}px`)
     }
   }
 

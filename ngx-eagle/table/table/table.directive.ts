@@ -4,6 +4,7 @@ import {
   ElementRef,
   Input,
   Renderer2,
+  booleanAttribute,
 } from '@angular/core';
 
 interface ScrollOptions {
@@ -21,7 +22,7 @@ interface ScrollOptions {
 })
 export class TableDirective implements AfterViewInit {
   @Input() ngxScroll: ScrollOptions | null = null;
-  @Input() ngxBordered = false;
+  @Input({ transform: booleanAttribute }) ngxBordered = false;
 
   constructor(public elementRef: ElementRef, private renderer2: Renderer2) {}
 

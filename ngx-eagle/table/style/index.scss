@@ -50,11 +50,10 @@
 }
 
 /*** End of border styles for ngx-table ***/
-.ngx-table th {
+.ngx-table th {    
+    position: relative;
     white-space: nowrap;
-    /* Evita saltos de línea */
     overflow: hidden;
-    /* Oculta el texto que se desborda */
     text-overflow: ellipsis;
 }
 
@@ -82,7 +81,6 @@
 }
 
 /* Barra de desplazamiento */
-
 .ngx-table-container::-webkit-scrollbar {
     width: 8px;
     /* Ancho para ambos scrolls */
@@ -99,12 +97,11 @@
     /* Radio de borde para ambos scrolls */
 }
 
-.ngx-th-sort-arrow {
-    position: relative;
+.ngx-table .ngx-th-sort-arrow {
     cursor: pointer;
 }
 
-.ngx-sort-arrow {
+.ngx-table .ngx-sort-arrow {
     width: 8px;
     display: flex;
     justify-content: center;
@@ -117,7 +114,7 @@
     transform: translate(-50%, -50%);
 }
 
-.ngx-sort-arrow .ngx-arrow-up {
+.ngx-table .ngx-sort-arrow .ngx-arrow-up {
     width: 0;
     height: 0;
     border-left: 5px solid transparent;
@@ -126,11 +123,11 @@
     border-bottom: 7px solid #BFBFBF;
 }
 
-.ngx-sort-arrow .ngx-arrow-up.active {
+.ngx-table .ngx-sort-arrow .ngx-arrow-up.active {
     border-bottom: 7px solid #1890FF;
 }
 
-.ngx-sort-arrow .ngx-arrow-down {
+.ngx-table .ngx-sort-arrow .ngx-arrow-down {
     width: 0;
     height: 0;
     border-left: 5px solid transparent;
@@ -139,11 +136,11 @@
     border-top: 7px solid #BFBFBF;
 }
 
-.ngx-sort-arrow .ngx-arrow-down.active {
+.ngx-table .ngx-sort-arrow .ngx-arrow-down.active {
     border-top: 7px solid #1890FF;
 }
 
-.ngx-th-resize {
+.ngx-table .ngx-th-resize {
     height: 100%;
     width: 5px;
     position: absolute;
