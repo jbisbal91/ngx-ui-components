@@ -15,6 +15,7 @@ export class ResizeDirective implements OnInit {
   resize: HTMLElement;
   startX = 0;
   width = 0;
+  mouseMovement = 0;
   constructor(private renderer: Renderer2, public elementRef: ElementRef) {
     this.resize = document.createElement('div');
   }
@@ -47,11 +48,11 @@ export class ResizeDirective implements OnInit {
 
   onMouseMove(event: MouseEvent) {
     if (event.button === 0 && this.isLeftClickPressed) {
-      const mouseMovement = event.clientX - this.startX;
+      this.mouseMovement = event.clientX - this.startX;
       this.renderer.setStyle(
         this.elementRef.nativeElement,
         'min-width',
-        `${this.width + mouseMovement}px`
+        `${this.width + this.mouseMovement}px`
       );
     }
   }
@@ -60,6 +61,7 @@ export class ResizeDirective implements OnInit {
   mouseup(event: MouseEvent) {
     if (event.button === 0 && this.isLeftClickPressed) {
       this.isLeftClickPressed = false;
+      this.width += this.mouseMovement;
     }
   }
 }
