@@ -29,6 +29,8 @@ export class SortDirective implements OnInit {
       this.onClick.bind(this)
     );
     this.buildSort();
+
+    
   }
 
   buildSort() {

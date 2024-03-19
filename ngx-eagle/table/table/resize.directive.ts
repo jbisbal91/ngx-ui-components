@@ -1,22 +1,30 @@
-import { Directive, ElementRef, HostListener, OnInit, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 
 @Directive({
   selector: 'th[ngxResize]',
   standalone: true,
 })
-export class ResizeDirective implements OnInit  {
-  
+export class ResizeDirective implements OnInit {
+  private isLeftClickPressed = false;
+  resize: HTMLElement;
   startX = 0;
-
-  private isMousePressed = false;
-  resize = document.createElement('div');
-
+  movimiento = 0;
+  width = 0;
   constructor(private renderer: Renderer2, public elementRef: ElementRef) {
-
+    this.resize = document.createElement('div');
   }
 
   ngOnInit(): void {
-    this.buildResize();
+    this.buildResize();    
+    const cellProp = this.elementRef.nativeElement.getBoundingClientRect();
+    this.width = cellProp.width;
+    this.resize.addEventListener('mousedown', this.onMouseDown.bind(this));
   }
 
   buildResize() {
@@ -24,13 +32,34 @@ export class ResizeDirective implements OnInit  {
     this.renderer.appendChild(this.elementRef.nativeElement, this.resize);
   }
 
-  @HostListener('mousedown', ['$event'])
   onMouseDown(event: MouseEvent) {
     if (event.button === 0) {
-   
-
-      console.log(event);
+      this.isLeftClickPressed = true;
+    }
+    if (this.isLeftClickPressed) {
+      this.startX = event.clientX;
+      this.movimiento = 0;
+      this.renderer.listen(
+        'document',
+        'mousemove',
+        this.onMouseMove.bind(this)
+      );
     }
   }
 
+  onMouseMove(event: MouseEvent) {
+    if (this.isLeftClickPressed) {
+      this.movimiento = event.clientX - this.startX;
+      this.renderer.setStyle(
+        this.elementRef.nativeElement,
+        'min-width',
+        `${this.width + this.movimiento}px`
+      );
+    }
+  }
+
+  @HostListener('document:mouseup', ['$event'])
+  mouseup(event: MouseEvent) {
+      this.isLeftClickPressed = false;
+  }
 }
