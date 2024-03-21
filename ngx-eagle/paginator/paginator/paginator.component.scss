@@ -22,6 +22,12 @@
     font-size: inherit;
 }
 
+.ngx-paginator .ngx-paginator-range-label {
+    font-size: inherit;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .ngx-paginator .skip-first,
 .ngx-paginator .skip-last,
 .ngx-paginator .skip-previous,

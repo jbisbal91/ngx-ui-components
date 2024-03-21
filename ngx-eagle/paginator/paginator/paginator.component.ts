@@ -31,12 +31,21 @@ export class PaginatorComponent implements OnInit {
   pageSizeLabel?: string;
 
   pageStatus!: PageEvent;
+  currentPageNavigation: string = 'next';
 
   constructor(public elementRef: ElementRef) {}
 
   onChangeValue(value: number) {
     this.pageSize = value;
     this.pageStatus.pageSize = this.pageSize;
+    if (this.pageStatus.currentPageIndex !== 0) {
+      this.pageStatus.currentPageIndex = Math.trunc(
+        (this.length - this.pageSize) /
+          (this.pageStatus.currentPageIndex * this.pageSize)
+      );
+      
+    this.setPreviousIndex();
+    }
     this.page.emit(this.pageStatus);
   }
 
@@ -55,10 +64,18 @@ export class PaginatorComponent implements OnInit {
     };
   }
 
-  onFirst() {}
+  onFirst() {
+    this.currentPageNavigation = 'first';
+    this.setPreviousIndex();
+    if (this.disabledPrevious()) {
+      this.pageStatus.currentPageIndex = 0;
+      this.page.emit(this.pageStatus);
+    }
+  }
 
   onPrevious() {
-    this.pageStatus.previousPageIndex = this.pageStatus.currentPageIndex;
+    this.currentPageNavigation = 'previous';
+    this.setPreviousIndex();
     if (this.disabledPrevious()) {
       --this.pageStatus.currentPageIndex;
       this.page.emit(this.pageStatus);
@@ -66,14 +83,23 @@ export class PaginatorComponent implements OnInit {
   }
 
   onNext() {
-    this.pageStatus.previousPageIndex = this.pageStatus.currentPageIndex;
+    this.currentPageNavigation = 'next';
+    this.setPreviousIndex();
     if (this.disabledNex()) {
       ++this.pageStatus.currentPageIndex;
       this.page.emit(this.pageStatus);
     }
   }
 
-  onLast() {}
+  onLast() {
+    this.currentPageNavigation = 'last';
+    this.setPreviousIndex();
+    if (this.disabledNex()) {
+      this.pageStatus.currentPageIndex =
+        (this.length - this.pageSize) / this.pageSize;
+      this.page.emit(this.pageStatus);
+    }
+  }
 
   disabledPrevious = () => {
     return this.pageStatus.currentPageIndex * this.pageStatus.pageSize > 0;
@@ -85,4 +111,17 @@ export class PaginatorComponent implements OnInit {
       this.length - this.pageSize
     );
   };
+
+  setPreviousIndex() {
+    this.pageStatus.previousPageIndex = this.pageStatus.currentPageIndex;
+  }
+
+  rangeValue() {
+    return ` ${
+      this.pageStatus.currentPageIndex * this.pageStatus.pageSize + 1
+    } - ${
+      this.pageStatus.currentPageIndex * this.pageStatus.pageSize +
+      this.pageStatus.pageSize
+    } of ${this.length}`;
+  }
 }
