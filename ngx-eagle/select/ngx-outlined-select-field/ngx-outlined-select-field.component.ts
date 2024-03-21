@@ -219,8 +219,10 @@ export class NgxOutlinedSelectFieldComponent
   }
 
   singleInputValue(value: any) {
-    if (typeof value !== 'string') {
-      throw new TypeError('Invalid argument, only string values are allowed.');
+    if (typeof value !== 'string' && typeof value !== 'number') {
+      throw new TypeError(
+        'Invalid argument, only string and number values are allowed.'
+      );
     }
     let found = false;
     this.optionList.forEach((opt) => {

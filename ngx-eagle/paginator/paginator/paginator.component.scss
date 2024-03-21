@@ -1,16 +1,28 @@
-.ngx-paginator-select {
-    height: var(--ngx-paginator-select-height, 40px);
-    width: var(--ngx-paginator-select-width, 60px);
-    border: 1px solid;
-    border-color: var(--ngx-paginator-select-border, #9E9E9E);
+:host {
+    display: block;
     width: fit-content;
-    align-items: center;
-    display: flex;
-    border-radius: var(--ngx-paginator-select-border-radius, 4px);
-    cursor: pointer;
+    font-size: 14px;
 }
 
-.ngx-paginator-select span {
-    padding-left: var(--ngx-paginator-select-padding-left, 10px);
-    padding-right: var(--ngx-paginator-select-padding-right, 10px);
+.ngx-paginator {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ngx-paginator label {
+    margin-right: 8px;
+    font-size: inherit;
+}
+
+.ngx-paginator .ngx-paginator-select {
+    height: var(--ngx-paginator-select-height, 40px);
+    width: var(--ngx-paginator-select-width, 80px);
+    border-color: var(--ngx-paginator-select-border, #9E9E9E);
+    font-size: inherit;
+}
+
+.ngx-paginator .skip {
+    cursor: pointer;
+    padding: 0;
 }

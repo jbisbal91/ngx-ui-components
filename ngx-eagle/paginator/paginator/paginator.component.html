@@ -1,5 +1,67 @@
+<div class="ngx-paginator">
+  <ng-container *ngIf="!hidePageSize">
+    <label *ngIf="pageSizeLabel"> {{ pageSizeLabel }} </label>
+    <ngx-outlined-select-field
+      [disabled]="disabled"
+      class="ngx-paginator-select"
+      [value]="pageSize"
+      (onChangeValue)="onChangeValue($event)"
+    >
+      <ngx-option [value]="pSize" *ngFor="let pSize of pageSizeOptions">{{
+        pSize
+      }}</ngx-option>
+    </ngx-outlined-select-field>
+  </ng-container>
 
+  <span class="skip" *ngIf="showFirstLastButtons">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 -960 960 960"
+      width="24"
+      fill="var(--ngx-paginator-skip-first, currentColor)"
+    >
+      <path
+        d="M220-240v-480h80v480h-80Zm520 0L380-480l360-240v480Zm-80-240Zm0 90v-180l-136 90 136 90Z"
+      />
+    </svg>
+  </span>
 
-<div class="ngx-paginator-select">
-  <span> 1 </span>
+  <span class="skip">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 -960 960 960"
+      width="24"
+      fill="var(--ngx-paginator-skip, currentColor)"
+    >
+      <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
+    </svg>
+  </span>
+
+  <span class="skip">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 -960 960 960"
+      width="24"
+      fill="var(--ngx-paginator-skip, currentColor)"
+    >
+      <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+    </svg>
+  </span>
+
+  <span class="skip" *ngIf="showFirstLastButtons">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 -960 960 960"
+      width="24"
+      fill="var(--ngx-paginator-skip-last, currentColor)"
+    >
+      <path
+        d="M660-240v-480h80v480h-80Zm-440 0v-480l360 240-360 240Zm80-240Zm0 90 136-90-136-90v180Z"
+      />
+    </svg>
+  </span>
 </div>
