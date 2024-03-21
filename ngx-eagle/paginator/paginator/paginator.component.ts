@@ -22,7 +22,7 @@ import { PageEvent } from '../typings';
 export class PaginatorComponent implements OnInit {
   @Input() pageSizeOptions: number[] = [];
   @Input({ transform: numberAttribute }) length!: number;
-  @Input({ transform: numberAttribute }) pageSize?: number;
+  @Input({ transform: numberAttribute }) pageSize!: number;
   @Input({ transform: booleanAttribute }) hidePageSize: boolean = false;
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input({ transform: booleanAttribute }) showExtremeButtons: boolean = false;
@@ -36,6 +36,8 @@ export class PaginatorComponent implements OnInit {
 
   onChangeValue(value: number) {
     this.pageSize = value;
+    this.pageStatus.pageSize = this.pageSize;
+    this.page.emit(this.pageStatus);
   }
 
   ngOnInit(): void {
@@ -45,22 +47,42 @@ export class PaginatorComponent implements OnInit {
   }
 
   initPageStatus() {
-    if (!this.pageSize) {
-      this.pageSize = this.pageSizeOptions[0];
-    }
     this.pageStatus = {
       previousPageIndex: 0,
       currentPageIndex: 0,
       pageSize: this.pageSize,
-      length: length,
+      length: this.length,
     };
   }
 
   onFirst() {}
 
+  onPrevious() {
+    this.pageStatus.previousPageIndex = this.pageStatus.currentPageIndex;
+    if (this.disabledPrevious()) {
+      --this.pageStatus.currentPageIndex;
+      this.page.emit(this.pageStatus);
+    }
+  }
+
+  onNext() {
+    this.pageStatus.previousPageIndex = this.pageStatus.currentPageIndex;
+    if (this.disabledNex()) {
+      ++this.pageStatus.currentPageIndex;
+      this.page.emit(this.pageStatus);
+    }
+  }
+
   onLast() {}
 
-  onPrevious() {}
+  disabledPrevious = () => {
+    return this.pageStatus.currentPageIndex * this.pageStatus.pageSize > 0;
+  };
 
-  onNext() {}
+  disabledNex = () => {
+    return (
+      this.pageStatus.currentPageIndex * this.pageSize <
+      this.length - this.pageSize
+    );
+  };
 }
