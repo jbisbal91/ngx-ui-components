@@ -26,6 +26,7 @@ import { ProgressDocsComponent } from './docs/progress-docs/progress-docs.compon
 import { RateDocsComponent } from './docs/rate-docs/rate-docs.component';
 import { CheckboxDocsComponent } from './docs/checkbox-docs/checkbox-docs.component';
 import { RadioDocsComponent } from './docs/radio-docs/radio-docs.component';
+import { PaginatorDocsComponent } from './docs/paginator-docs/paginator-docs.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,7 @@ const routes: Routes = [
       { path: 'expansion', component: AccordionDocsComponent },
       { path: 'grid', component: GridDocsComponent },
       { path: 'input', component: InputDocsComponent },
+      { path: 'paginator', component: PaginatorDocsComponent },
       { path: 'line-chart', component: LineChartDocsComponent },
       { path: 'pie-chart', component: PieChartDocsComponent },
       { path: 'progress', component: ProgressDocsComponent },

@@ -84,6 +84,8 @@ import { ButtonDemo5Component } from './demos/button/button-demo5/button-demo5.c
 import { AccordionDemo2Component } from './demos/accordion/accordion-demo2/accordion-demo2.component';
 import { InputDemo3Component } from './demos/input/input-demo3/input-demo3.component';
 import { TableDemo2Component } from './demos/table/table-demo2/table-demo2.component';
+import { PaginatorDemo1Component } from './demos/paginator/paginator-demo1/paginator-demo1.component';
+import { PaginatorDocsComponent } from './docs/paginator-docs/paginator-docs.component';
 
 export function getHighlightLanguages() {
   return {
@@ -94,9 +96,9 @@ export function getHighlightLanguages() {
 }
 
 const components = [
-  AccordionDemo1Component,  
+  AccordionDemo1Component,
   AccordionDemo2Component,
-  AccordionDocsComponent,  
+  AccordionDocsComponent,
   AvatarDemo1Component,
   AvatarDemo2Component,
   AvatarDemo3Component,
@@ -155,6 +157,7 @@ const components = [
   TableDemo1Component,
   TableDocsComponent,
   TagDemo1Component,
+  TableDemo2Component,
   TagDocsComponent,
   TimelineDemo1Component,
   TimelineDemo2Component,
@@ -165,10 +168,12 @@ const components = [
   CheckboxDocsComponent,
   CheckboxDemo1Component,
   CheckboxDemo2Component,
+  PaginatorDemo1Component,
+  PaginatorDocsComponent,
 ];
 
 @NgModule({
-  declarations: [components, TableDemo2Component],
+  declarations: [components],
   exports: [components],
   imports: [
     CommonModule,

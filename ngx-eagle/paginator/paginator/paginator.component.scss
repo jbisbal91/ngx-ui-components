@@ -1,0 +1,16 @@
+.ngx-paginator-select {
+    height: var(--ngx-paginator-select-height, 40px);
+    width: var(--ngx-paginator-select-width, 60px);
+    border: 1px solid;
+    border-color: var(--ngx-paginator-select-border, #9E9E9E);
+    width: fit-content;
+    align-items: center;
+    display: flex;
+    border-radius: var(--ngx-paginator-select-border-radius, 4px);
+    cursor: pointer;
+}
+
+.ngx-paginator-select span {
+    padding-left: var(--ngx-paginator-select-padding-left, 10px);
+    padding-right: var(--ngx-paginator-select-padding-right, 10px);
+}

@@ -5,6 +5,7 @@
   (onChangeValue)="onChangeValue($event)"
   required
   multiple
+  [suffix]="suffixSearch1"
 >
   <ngx-option *ngFor="let option of options" [value]="option.value">{{
     option.label
@@ -12,5 +13,9 @@
 </ngx-outlined-select-field>
 
 <ng-template #prefixSearch>
+  <span class="material-symbols-outlined"> search </span>
+</ng-template>
+
+<ng-template #suffixSearch1>
   <span class="material-symbols-outlined"> search </span>
 </ng-template>

@@ -21,6 +21,7 @@ import { TableModule } from 'ngx-eagle/table';
 import { TabModule } from 'ngx-eagle/tab';
 import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
+import { PaginatorModule } from 'ngx-eagle/paginator';
 
 @NgModule({
   exports: [
@@ -45,6 +46,7 @@ import { TimelineModule } from 'ngx-eagle/timeline';
     TabModule,
     TagModule,
     TimelineModule,
+    PaginatorModule
   ],
 })
 export class NgxEagleModule {}
