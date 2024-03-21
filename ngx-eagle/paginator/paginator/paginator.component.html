@@ -13,21 +13,24 @@
     </ngx-outlined-select-field>
   </ng-container>
 
-  <span class="skip" *ngIf="showFirstLastButtons">
+  <span
+    class="skip-first"
+    *ngIf="showExtremeButtons"
+    [class.disabled]="pageStatus.currentPageIndex === 0"
+  >
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       height="24"
-      viewBox="0 -960 960 960"
-      width="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
       fill="var(--ngx-paginator-skip-first, currentColor)"
     >
       <path
-        d="M220-240v-480h80v480h-80Zm520 0L380-480l360-240v480Zm-80-240Zm0 90v-180l-136 90 136 90Z"
-      />
+        d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+      ></path>
     </svg>
   </span>
 
-  <span class="skip">
+  <span class="skip-previous" [class.disabled]="pageStatus.currentPageIndex === 0">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24"
@@ -39,7 +42,7 @@
     </svg>
   </span>
 
-  <span class="skip">
+  <span class="skip-next">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24"
@@ -51,17 +54,18 @@
     </svg>
   </span>
 
-  <span class="skip" *ngIf="showFirstLastButtons">
+  <span class="skip-last" *ngIf="showExtremeButtons">
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
       height="24"
-      viewBox="0 -960 960 960"
+      focusable="false"
+      aria-hidden="true"
       width="24"
       fill="var(--ngx-paginator-skip-last, currentColor)"
     >
       <path
-        d="M660-240v-480h80v480h-80Zm-440 0v-480l360 240-360 240Zm80-240Zm0 90 136-90-136-90v180Z"
-      />
+        d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+      ></path>
     </svg>
   </span>
 </div>

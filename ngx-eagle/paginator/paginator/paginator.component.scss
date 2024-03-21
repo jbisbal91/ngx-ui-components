@@ -22,7 +22,37 @@
     font-size: inherit;
 }
 
-.ngx-paginator .skip {
+.ngx-paginator .skip-first,
+.ngx-paginator .skip-last,
+.ngx-paginator .skip-previous,
+.ngx-paginator .skip-next {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0;
+    width: var(--ngx-paginator-skip-size, 30px);
+    height: var(--ngx-paginator-skip-size, 30px);
+    color: var(--ngx-paginator-skip-color, #5f6368);
+    transition: all 0.2s ease-in-out;
+    border-radius: 50%;
+
+    svg {
+        width: var(--ngx-paginator-skip-svg-size, 24px);
+        height: var(--ngx-paginator-skip-svg-size, 24px);
+    }
+
+    &:hover {
+        color: var(--ngx-paginator-skip-color-hover, #5f6368);
+        background-color: var(--ngx-paginator-skip-bg-hover, #eee);
+    }
+
+    &.disabled {
+        cursor: no-drop;
+        opacity: 0.65;
+
+        &:hover {
+            background-color: transparent;
+        }
+    }
 }

@@ -10,6 +10,7 @@ import {
   numberAttribute,
 } from '@angular/core';
 import { SelectModule } from 'ngx-eagle/select';
+import { PageEvent } from '../typings';
 
 @Component({
   selector: 'ngx-paginator',
@@ -24,11 +25,12 @@ export class PaginatorComponent implements OnInit {
   @Input({ transform: numberAttribute }) pageSize?: number;
   @Input({ transform: booleanAttribute }) hidePageSize: boolean = false;
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
-  @Input({ transform: booleanAttribute }) showFirstLastButtons: boolean = false;
+  @Input({ transform: booleanAttribute }) showExtremeButtons: boolean = false;
 
-  @Output() page: EventEmitter<any> = new EventEmitter<any>();
-
+  @Output() page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
   pageSizeLabel?: string;
+
+  pageStatus!: PageEvent;
 
   constructor(public elementRef: ElementRef) {}
 
@@ -38,6 +40,13 @@ export class PaginatorComponent implements OnInit {
     }
     this.pageSizeLabel =
       this.elementRef?.nativeElement.attributes['page-size-label']?.value;
+    this.pageStatus = {
+      previousPageIndex: 0,
+      currentPageIndex: 0,
+      pageSize: this.pageSize,
+      length: length,
+    };
+    console.log(this.pageStatus);
   }
 
   onChangeValue(value: number) {
