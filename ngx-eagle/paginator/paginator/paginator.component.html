@@ -17,6 +17,7 @@
     class="skip-first"
     *ngIf="showExtremeButtons"
     [class.disabled]="pageStatus.currentPageIndex === 0"
+    (click)="onFirst()"
   >
     <svg
       height="24"
@@ -30,7 +31,11 @@
     </svg>
   </span>
 
-  <span class="skip-previous" [class.disabled]="pageStatus.currentPageIndex === 0">
+  <span
+    class="skip-previous"
+    [class.disabled]="pageStatus.currentPageIndex === 0"
+    (click)="onPrevious()"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24"
@@ -42,7 +47,7 @@
     </svg>
   </span>
 
-  <span class="skip-next">
+  <span class="skip-next" (click)="onNext()">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24"
@@ -54,7 +59,7 @@
     </svg>
   </span>
 
-  <span class="skip-last" *ngIf="showExtremeButtons">
+  <span class="skip-last" *ngIf="showExtremeButtons" (click)="onLast()">
     <svg
       viewBox="0 0 24 24"
       height="24"

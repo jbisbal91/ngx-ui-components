@@ -34,22 +34,33 @@ export class PaginatorComponent implements OnInit {
 
   constructor(public elementRef: ElementRef) {}
 
+  onChangeValue(value: number) {
+    this.pageSize = value;
+  }
+
   ngOnInit(): void {
+    this.pageSizeLabel =
+      this.elementRef?.nativeElement.attributes['page-size-label']?.value;
+    this.initPageStatus();
+  }
+
+  initPageStatus() {
     if (!this.pageSize) {
       this.pageSize = this.pageSizeOptions[0];
     }
-    this.pageSizeLabel =
-      this.elementRef?.nativeElement.attributes['page-size-label']?.value;
     this.pageStatus = {
       previousPageIndex: 0,
       currentPageIndex: 0,
       pageSize: this.pageSize,
       length: length,
     };
-    console.log(this.pageStatus);
   }
 
-  onChangeValue(value: number) {
-    this.pageSize = value;
-  }
+  onFirst() {}
+
+  onLast() {}
+
+  onPrevious() {}
+
+  onNext() {}
 }
