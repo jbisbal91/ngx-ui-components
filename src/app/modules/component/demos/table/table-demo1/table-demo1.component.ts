@@ -48,7 +48,7 @@ export class TableDemo1Component implements OnInit {
 
   ngOnInit() {
     this.tableDemo1Service.getValues().subscribe((data: any[]) => {
-      this.values = data.slice(0, 10);
+      this.values = data.slice(0, 5);
       this.allValues = data.slice();
     });
   }
