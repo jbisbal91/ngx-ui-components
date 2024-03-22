@@ -1,9 +1,9 @@
 :host {
-    background-color: #FFFFFF;
+    background-color: var(--ngx-option-bg-color, #FFFFFF);
 }
 
 :host:hover {
-    background-color: #F5F5F5;
+    background-color: var(--ngx-option-bg-color-hover, #F5F5F5);
 }
 
 .ngx-option {
@@ -19,13 +19,13 @@
 }
 
 .ngx-option-disabled {
-    color: #9E9E9E;
+    color: var(--ngx-option-color-disabled, #9E9E9E);
     pointer-events: none;
 }
 
 .ngx-option-selected {
-    background-color: #F5F5F5;
-    color: #1890FF;
+    background-color: var(--ngx-option-bg-color-selected, #F5F5F5);
+    color: var(--ngx-option-color-selected, #1890FF);
 }
 
 .content {

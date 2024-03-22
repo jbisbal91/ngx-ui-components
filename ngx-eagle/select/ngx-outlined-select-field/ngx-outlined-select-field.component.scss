@@ -156,7 +156,7 @@
 
 .ngx-options-container::-webkit-scrollbar {
     width: 4px;
-    background-color: #FFFFFF;
+    background-color: var(--ngx-option-bg-color, #FFFFFF);
     border-bottom-right-radius: 8px;
 }
 

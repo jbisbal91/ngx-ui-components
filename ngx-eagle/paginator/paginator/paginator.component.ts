@@ -55,19 +55,31 @@ export class PaginatorComponent implements OnInit, OnChanges {
       this.pageStatus.pageSize = this.pageSize | 0;
       this.onChangeValue(this.pageStatus.pageSize);
     }
+    if (changes.hasOwnProperty('pageStatus')) {
+      this.currentPagination(changes['pageStatus'].currentValue);
+    }
   }
 
   ngOnInit(): void {
     this.initPageStatus();
   }
 
+  currentPagination(pageStatus: PageEvent) {
+    this.pageStatus = pageStatus;
+    this.length = pageStatus.length;
+    this.pageSize = pageStatus.pageSize;
+    this.setPreviousIndex();
+  }
+
   initPageStatus() {
-    this.pageStatus = {
-      previousPageIndex: 0,
-      currentPageIndex: 0,
-      pageSize: this.pageSize,
-      length: this.length,
-    };
+    if (!this.pageStatus) {
+      this.pageStatus = {
+        previousPageIndex: 0,
+        currentPageIndex: 0,
+        pageSize: this.pageSize,
+        length: this.length,
+      };
+    }
   }
 
   onFirst() {
