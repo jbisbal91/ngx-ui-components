@@ -1,6 +1,6 @@
 {
   "name": "ngx-eagle",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
@@ -37,6 +37,7 @@
     "expansion panel",
     "grid",
     "input",
+    "paginator",
     "pie chart",
     "progress",
     "radio button",
