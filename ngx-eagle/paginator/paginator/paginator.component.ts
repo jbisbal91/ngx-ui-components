@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { SelectModule } from 'ngx-eagle/select';
 import { PageEvent } from '../typings';
+import { NgxPaginatorIntl } from '../paginator-intl.service';
 
 @Component({
   selector: 'ngx-paginator',
@@ -31,9 +32,8 @@ export class PaginatorComponent implements OnInit {
   pageSizeLabel?: string;
 
   pageStatus!: PageEvent;
-  currentPageNavigation: string = 'next';
 
-  constructor(public elementRef: ElementRef) {}
+  constructor(public elementRef: ElementRef, public paginatorIntl:NgxPaginatorIntl) {}
 
   onChangeValue(pageSize: number) {
     const startIndex = this.pageStatus.currentPageIndex * this.pageSize;
@@ -59,7 +59,6 @@ export class PaginatorComponent implements OnInit {
   }
 
   onFirst() {
-    this.currentPageNavigation = 'first';
     this.setPreviousIndex();
     if (this.disabledPrevious()) {
       this.pageStatus.currentPageIndex = 0;
@@ -68,7 +67,6 @@ export class PaginatorComponent implements OnInit {
   }
 
   onPrevious() {
-    this.currentPageNavigation = 'previous';
     this.setPreviousIndex();
     if (this.disabledPrevious()) {
       --this.pageStatus.currentPageIndex;
@@ -77,7 +75,6 @@ export class PaginatorComponent implements OnInit {
   }
 
   onNext() {
-    this.currentPageNavigation = 'next';
     this.setPreviousIndex();
     if (this.disabledNex()) {
       ++this.pageStatus.currentPageIndex;
@@ -86,7 +83,6 @@ export class PaginatorComponent implements OnInit {
   }
 
   onLast() {
-    this.currentPageNavigation = 'last';
     this.setPreviousIndex();
     if (this.disabledNex()) {
       this.pageStatus.currentPageIndex =
@@ -108,14 +104,5 @@ export class PaginatorComponent implements OnInit {
 
   setPreviousIndex() {
     this.pageStatus.previousPageIndex = this.pageStatus.currentPageIndex;
-  }
-
-  rangeValue() {
-    return ` ${
-      this.pageStatus.currentPageIndex * this.pageStatus.pageSize + 1
-    } - ${
-      this.pageStatus.currentPageIndex * this.pageStatus.pageSize +
-      this.pageStatus.pageSize
-    } of ${this.length}`;
   }
 }
