@@ -9,6 +9,9 @@ import { PageEvent } from 'ngx-eagle/paginator';
   styleUrls: ['./table-demo1.component.scss'],
 })
 export class TableDemo1Component implements OnInit {
+  startPageIndex = 0;
+  endPageIndex = 5;
+
   displayedColumns: any[] = [
     { prop: 'Full Name', value: 'full_name' },
     { prop: 'Job Title', value: 'job_title' },
@@ -48,7 +51,7 @@ export class TableDemo1Component implements OnInit {
 
   ngOnInit() {
     this.tableDemo1Service.getValues().subscribe((data: any[]) => {
-      this.values = data.slice(0, 5);
+      this.values = data.slice(this.startPageIndex, this.endPageIndex);
       this.allValues = data.slice();
     });
   }
@@ -62,13 +65,13 @@ export class TableDemo1Component implements OnInit {
     }
     if (sort === null) {
       this.values = this.allValues.slice();
+      this.values = this.values.slice(this.startPageIndex, this.endPageIndex);
     }
   }
 
   handlePageEvent(pe: PageEvent) {
-    const start = pe.currentPageIndex * pe.pageSize;
-    const end = pe.currentPageIndex * pe.pageSize + pe.pageSize;
-    this.values = this.allValues.slice(start, end);
-    console.log(pe);
+    this.startPageIndex = pe.currentPageIndex * pe.pageSize;
+    this.endPageIndex = pe.currentPageIndex * pe.pageSize + pe.pageSize;
+    this.values = this.allValues.slice(this.startPageIndex, this.endPageIndex);
   }
 }

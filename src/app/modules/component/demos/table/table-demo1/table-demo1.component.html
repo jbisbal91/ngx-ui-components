@@ -5,7 +5,7 @@
   </div>
 </div>
 
-<table ngx-table [ngxBordered]="ngxBordered">
+<table ngx-table [ngxScroll]="{ x: '100%' }" [ngxBordered]="ngxBordered">
   <thead>
     <tr ngx-column-group>
       <th colspan="4">Employee</th>
@@ -68,14 +68,14 @@
     </tr>
   </tbody>
 </table>
+
 <div class="flex mt-4 justify-end">
   <ngx-paginator
-  pageSize="5"
-  [pageSizeOptions]="[5, 10, 20]"
-  page-size-label="Items per page:"
-  showExtremeButtons
-  [length]="allValues.length"
-  (page)="handlePageEvent($event)"
-></ngx-paginator>
+    pageSize="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    page-size-label="Items per page:"
+    showExtremeButtons
+    [length]="allValues.length"
+    (page)="handlePageEvent($event)"
+  ></ngx-paginator>
 </div>
-
