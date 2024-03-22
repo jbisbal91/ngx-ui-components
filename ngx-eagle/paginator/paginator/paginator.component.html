@@ -1,6 +1,8 @@
 <div class="ngx-paginator">
   <ng-container *ngIf="!hidePageSize">
-    <label *ngIf="pageSizeLabel"> {{ pageSizeLabel }} </label>
+    <label *ngIf="paginatorIntl.itemsPerPageLabel">
+      {{ paginatorIntl.itemsPerPageLabel }}
+    </label>
     <ngx-outlined-select-field
       [disabled]="disabled"
       class="ngx-paginator-select"
@@ -13,7 +15,9 @@
     </ngx-outlined-select-field>
   </ng-container>
 
-  <span class="ngx-paginator-range-label">{{ paginatorIntl.getRangeLabel(pageStatus) }}</span>
+  <span class="ngx-paginator-range-label">{{
+    paginatorIntl.getRangeLabel(pageStatus)
+  }}</span>
 
   <span
     class="skip-first"

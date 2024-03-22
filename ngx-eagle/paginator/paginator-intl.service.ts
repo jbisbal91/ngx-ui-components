@@ -3,15 +3,22 @@ import { Subject } from 'rxjs';
 import { PageEvent } from './typings';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class NgxPaginatorIntl{
-
+export class NgxPaginatorIntl {
   readonly changes: Subject<void> = new Subject<void>();
 
   itemsPerPageLabel: string = 'Items per page:';
 
-  constructor() { }
+  nextPageLabel: string = 'Next page';
+
+  previousPageLabel: string = 'Previous page';
+
+  firstPageLabel: string = 'First page';
+
+  lastPageLabel: string = 'Last page';
+
+  constructor() {}
 
   getRangeLabel(pageStatus: PageEvent) {
     return ` ${pageStatus.currentPageIndex * pageStatus.pageSize + 1} - ${

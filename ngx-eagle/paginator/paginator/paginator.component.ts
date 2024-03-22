@@ -29,11 +29,13 @@ export class PaginatorComponent implements OnInit {
   @Input({ transform: booleanAttribute }) showExtremeButtons: boolean = false;
 
   @Output() page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
-  pageSizeLabel?: string;
 
   pageStatus!: PageEvent;
 
-  constructor(public elementRef: ElementRef, public paginatorIntl:NgxPaginatorIntl) {}
+  constructor(
+    public elementRef: ElementRef,
+    public paginatorIntl: NgxPaginatorIntl
+  ) {}
 
   onChangeValue(pageSize: number) {
     const startIndex = this.pageStatus.currentPageIndex * this.pageSize;
@@ -44,8 +46,6 @@ export class PaginatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pageSizeLabel =
-      this.elementRef?.nativeElement.attributes['page-size-label']?.value;
     this.initPageStatus();
   }
 
