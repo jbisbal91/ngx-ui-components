@@ -5,7 +5,7 @@
   </div>
 </div>
 
-<table ngx-table [ngxScroll]="{ y: '400px' }" [ngxBordered]="ngxBordered">
+<table ngx-table [ngxBordered]="ngxBordered">
   <thead>
     <tr ngx-column-group>
       <th colspan="4">Employee</th>
@@ -68,3 +68,14 @@
     </tr>
   </tbody>
 </table>
+<div class="flex mt-4 justify-end">
+  <ngx-paginator
+  pageSize="10"
+  [pageSizeOptions]="[5, 10, 20]"
+  page-size-label="Items per page:"
+  showExtremeButtons
+  [length]="allValues.length"
+  (page)="handlePageEvent($event)"
+></ngx-paginator>
+</div>
+

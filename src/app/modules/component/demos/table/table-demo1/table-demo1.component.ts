@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TableDemo1Service } from './service/table-demo1.service';
 import { SortService } from 'src/app/shared/services/sort/sort.service';
+import { PageEvent } from 'ngx-eagle/paginator';
 
 @Component({
   selector: 'app-table-demo1',
@@ -47,8 +48,8 @@ export class TableDemo1Component implements OnInit {
 
   ngOnInit() {
     this.tableDemo1Service.getValues().subscribe((data: any[]) => {
-      this.values = data;
-      this.allValues = this.values.slice();
+      this.values = data.slice(0, 10);
+      this.allValues = data.slice();
     });
   }
 
@@ -62,5 +63,12 @@ export class TableDemo1Component implements OnInit {
     if (sort === null) {
       this.values = this.allValues.slice();
     }
+  }
+
+  handlePageEvent(pe: PageEvent) {
+    const start = pe.currentPageIndex * pe.pageSize;
+    const end = pe.currentPageIndex * pe.pageSize + pe.pageSize;
+    this.values = this.allValues.slice(start, end);
+    console.log(pe);
   }
 }
