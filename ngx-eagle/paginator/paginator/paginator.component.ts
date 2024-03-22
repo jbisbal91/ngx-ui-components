@@ -35,17 +35,11 @@ export class PaginatorComponent implements OnInit {
 
   constructor(public elementRef: ElementRef) {}
 
-  onChangeValue(value: number) {
-    this.pageSize = value;
+  onChangeValue(pageSize: number) {
+    const startIndex = this.pageStatus.currentPageIndex * this.pageSize;
+    this.pageStatus.currentPageIndex = Math.floor(startIndex / pageSize) || 0;
+    this.pageSize = pageSize;
     this.pageStatus.pageSize = this.pageSize;
-    if (this.pageStatus.currentPageIndex !== 0) {
-      this.pageStatus.currentPageIndex = Math.trunc(
-        (this.length - this.pageSize) /
-          (this.pageStatus.currentPageIndex * this.pageSize)
-      );
-      
-    this.setPreviousIndex();
-    }
     this.page.emit(this.pageStatus);
   }
 
