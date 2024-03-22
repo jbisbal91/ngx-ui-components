@@ -4,8 +4,10 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   OnInit,
   Output,
+  SimpleChanges,
   booleanAttribute,
   numberAttribute,
 } from '@angular/core';
@@ -20,17 +22,16 @@ import { NgxPaginatorIntl } from '../paginator-intl.service';
   standalone: true,
   imports: [SelectModule, NgFor, NgIf],
 })
-export class PaginatorComponent implements OnInit {
+export class PaginatorComponent implements OnInit, OnChanges {
   @Input() pageSizeOptions: number[] = [];
-  @Input({ transform: numberAttribute }) length!: number;
-  @Input({ transform: numberAttribute }) pageSize!: number;
+  @Input({ transform: numberAttribute }) length: number = 0;
+  @Input({ transform: numberAttribute }) pageSize: number = 0;
   @Input({ transform: booleanAttribute }) hidePageSize: boolean = false;
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input({ transform: booleanAttribute }) showExtremeButtons: boolean = false;
+  @Input() pageStatus!: PageEvent;
 
   @Output() page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
-
-  pageStatus!: PageEvent;
 
   constructor(
     public elementRef: ElementRef,
@@ -43,6 +44,17 @@ export class PaginatorComponent implements OnInit {
     this.pageSize = pageSize;
     this.pageStatus.pageSize = this.pageSize;
     this.page.emit(this.pageStatus);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes.hasOwnProperty('length') ||
+      changes.hasOwnProperty('pageSize')
+    ) {
+      this.pageStatus.length = this.length | 0;
+      this.pageStatus.pageSize = this.pageSize | 0;
+      this.onChangeValue(this.pageStatus.pageSize);
+    }
   }
 
   ngOnInit(): void {

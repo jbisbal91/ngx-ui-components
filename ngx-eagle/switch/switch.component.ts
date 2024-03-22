@@ -5,10 +5,12 @@ import {
   Component,
   ElementRef,
   Input,
+  booleanAttribute,
   forwardRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { NgxSize } from './typings';
+import { LabelPosition, NgxSize } from './typings';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'ngx-switch',
@@ -25,7 +27,14 @@ import { NgxSize } from './typings';
       <span class="ngx-switch-knob"></span>
       <span class="ngx-switch-inner"></span>
     </button>
+    <label class="ngx-switch-label" (click)="toggle()"
+      ><ng-content></ng-content
+    ></label>
   `,
+  host: {
+    '[class.ngx-switch-label-position-after]': `labelPosition === 'after'`,
+    '[class.ngx-switch-label-position-before]': `labelPosition === 'before'`,
+  },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -33,26 +42,20 @@ import { NgxSize } from './typings';
       multi: true,
     },
   ],
+  styleUrls: ['./switch.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    class: 'ngx-switch',
-    '[class.ngx-switch-sm]': `ngxSize === 'small'`,
-    '[class.ngx-switch-df]': `ngxSize === 'default'`,
-    '[class.ngx-switch-lg]': `ngxSize === 'large'`,
-  },
   standalone: true,
+  imports: [NgIf],
 })
 export class SwitchComponent implements ControlValueAccessor, AfterContentInit {
   isChecked = false;
   onChange: any = () => {};
   onTouched: any = () => {};
-  disabled: boolean = false;
-
+  @Input({ transform: booleanAttribute }) disabled: boolean = false;
+  @Input() labelPosition: LabelPosition = 'after';
   @Input() ngxSize: NgxSize = 'default';
 
-  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {
-    this.disabled = this.elementRef.nativeElement.hasAttribute('disabled');
-  }
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {}
 
   ngAfterContentInit(): void {
     this.cdr.markForCheck();

@@ -8,7 +8,11 @@ import { PageEvent } from 'ngx-eagle/paginator/typings';
   styleUrls: ['./paginator-demo1.component.scss'],
 })
 export class PaginatorDemo1Component {
-
+  pageSizeOptions = [5, 10, 25];
+  length: number = 50;
+  pageSize: number = 10;
+  hidePageSize: boolean = false;
+  showExtremeButtons: boolean = true;
   constructor(public paginatorIntl: NgxPaginatorIntl) {
     //paginatorIntl.itemsPerPageLabel = '';
   }
