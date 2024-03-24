@@ -23,14 +23,15 @@ import { NgxPaginatorIntl } from '../paginator-intl.service';
   imports: [SelectModule, NgFor, NgIf],
 })
 export class PaginatorComponent implements OnInit, OnChanges {
-  @Input() pageSizeOptions: number[] = [];
+
+  @Input({ transform: booleanAttribute }) disabled: boolean = false;
+  @Input({ transform: booleanAttribute }) hidePageSize: boolean = false;
   @Input({ transform: numberAttribute }) length: number = 0;
   @Input({ transform: numberAttribute }) pageSize: number = 0;
-  @Input({ transform: booleanAttribute }) hidePageSize: boolean = false;
-  @Input({ transform: booleanAttribute }) disabled: boolean = false;
+  @Input() pageSizeOptions: number[] = [];
+  @Input() pageStatus!: PageEvent; 
   @Input({ transform: booleanAttribute }) showExtremeButtons: boolean = false;
-  @Input() pageStatus!: PageEvent;
-
+  
   @Output() page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
   constructor(
