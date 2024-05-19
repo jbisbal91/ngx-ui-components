@@ -1,16 +1,11 @@
-<ngx-outlined-select-field
-  label="Select"
-  placeholder="Select option"
-  [value]="value"
-  (onChangeValue)="onChangeValue($event)"
-  required
-  multiple
-  [suffix]="suffixSearch1"
->
-  <ngx-option *ngFor="let option of options" [value]="option.value">{{
-    option.label
-  }}</ngx-option>
-</ngx-outlined-select-field>
+<form [formGroup]="form">
+  <ngx-outlined-select-field placeholder="Select option" (onChangeValue)="onChangeValue($event)"
+    formControlName="select" autocomplete>
+    <ngx-option *ngFor="let option of options" [value]="option.value">{{
+      option.label
+      }}</ngx-option>
+  </ngx-outlined-select-field>
+</form>
 
 <ng-template #prefixSearch>
   <span class="material-symbols-outlined"> search </span>

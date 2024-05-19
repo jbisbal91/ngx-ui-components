@@ -1,5 +1,5 @@
 :host {
-    border-radius: 6px;
+    border-radius: 2px;
     border-color: currentColor;
     width: 212px;
     display: block;
@@ -16,15 +16,24 @@
     min-width: inherit;
     width: inherit;
     position: relative;
-    border: 1px solid;
-    border-radius: inherit;
-    border-color: inherit;
 }
 
-.ngx-outlined-select-field>.container>.ngx-nat-textarea:disabled,
-.ngx-outlined-select-field>.container>.ngx-nat-input:disabled {
+.ngx-outlined-select-field>.ngx-nat-input:hover {
+    border-color: blue;
+    cursor: pointer;
+}
+
+.ngx-outlined-select-field>.ngx-nat-input:focus {
+    border-color: blue;
+}
+
+.ngx-outlined-select-field>.ngx-nat-input:disabled {
     opacity: 0.75;
     cursor: no-drop;
+}
+
+.ngx-outlined-select-field>.ngx-nat-input.invalid {
+    border-color: red;
 }
 
 .ngx-outlined-select-field>.ngx-input-label {
@@ -49,30 +58,34 @@
     overflow: hidden;
 }
 
-.ngx-outlined-select-field>.container>.prefix,
-.ngx-outlined-select-field>.container>.suffix {
-    justify-content: center;
-    display: inline-flex;
-    align-items: center;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.ngx-outlined-select-field>.suffix.invalid {
+    color: red;
 }
 
-.ngx-outlined-select-field>.container>.arrow-drop-down {
+.ngx-outlined-select-field>.suffix {
+     display: flex;
+    align-items: center;
+}
+
+.ngx-outlined-select-field>.arrow-drop-down {
     position: absolute;
     right: 0;
+    height: 100%;
+    align-items: center;
+    display: flex;
 }
 
-.ngx-outlined-select-field>.container>.prefix+.ngx-nat-input {
-    padding-left: 0;
+.ngx-outlined-select-field>.arrow-drop-down.invalid {
+    color: red;
 }
 
-.ngx-outlined-select-field>.container>.ngx-nat-input+.suffix {
-    padding-right: 0;
+.ngx-outlined-select-field>.ngx-nat-input+.suffix {
+    position: absolute;
+    right: 0;
+    height: 100%;
 }
 
-.ngx-outlined-select-field>.container>.ngx-nat-input {
+.ngx-outlined-select-field>.ngx-nat-input {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     white-space: nowrap;
@@ -81,17 +94,17 @@
     width: 100%;
     height: 100%;
     min-height: 2rem;
-    max-height: 3.5rem;    
+    max-height: 3.5rem;
     z-index: 1;
+    border-radius: 2px;
 }
 
-.ngx-outlined-select-field>.container>.ngx-nat-input[type="search"]::-webkit-search-cancel-button {
+.ngx-outlined-select-field>.ngx-nat-input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
     appearance: none;
 }
 
-.ngx-outlined-select-field>.container>.ngx-nat-textarea,
-.ngx-outlined-select-field>.container>.ngx-nat-input {
+.ngx-outlined-select-field>.ngx-nat-input {
     box-sizing: border-box;
     border-width: 1px;
     border-style: solid;
@@ -106,17 +119,10 @@
     outline: none;
     position: relative;
     transition: color 0.2s ease-in-out;
-    border: none;
+    //border: none;
     color: currentColor;
     -webkit-background-clip: text !important;
     background-clip: text !important;
-}
-
-.ngx-outlined-select-field>.error-text {
-    font-size: 13px;
-    color: #f44336;
-    position: absolute;
-    bottom: -20px;
 }
 
 .ngx-options-container {
@@ -133,7 +139,6 @@
     pointer-events: auto;
     z-index: 1000;
     visibility: hidden;
-
 }
 
 .ngx-options-visible {
