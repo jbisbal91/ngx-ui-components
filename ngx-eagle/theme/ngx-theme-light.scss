@@ -5,3 +5,42 @@
 @import "../pie-chart/theme/ngx-theme-light";
 @import "../progress/theme/ngx-theme-light";
 @import "../tab/theme/ngx-theme-light";
+
+:root[theme="light"] {
+        //--Base Color Palettes--//
+        //primary
+        --primary-1: #faf5eb;
+        --primary-2: #ede6da;
+        --primary-3: #e0cbab;
+        --primary-4: #d4af7f;
+        --primary-5: #c79358;
+        --primary-6: #ba7735;
+        --primary-7: #945722;
+        --primary-8: #6e3b14;
+        --primary-9: #472209;
+        --primary-10: #210F04;
+      
+        //red
+        --red-1: #fff1f0;
+        --red-2: #ffccc7;
+        --red-3: #ffa39e;
+        --red-4: #ff7875;
+        --red-5: #ff4d4f;
+        --red-6: #f5222d;
+        --red-7: #cf1322;
+        --red-8: #a8071a;
+        --red-9: #820014;
+        --red-10: #5c0011;
+      
+        //green
+        --green-1: #f6ffed;
+        --green-2: #d9f7be;
+        --green-3: #b7eb8f;
+        --green-4: #95de64;
+        --green-5: #73d13d;
+        --green-6: #52c41a;
+        --green-7: #389e0d;
+        --green-8: #237804;
+        --green-9: #135200;
+        --green-10: #092b00;
+      }

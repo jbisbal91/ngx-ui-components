@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { AvatarComponent } from './avatar.component';
-import { AvatarGroupComponent } from './avatar-group.component';
 
 @NgModule({
-  exports: [AvatarGroupComponent, AvatarComponent],
-  imports: [AvatarGroupComponent, AvatarComponent],
+  exports: [AvatarComponent],
+  imports: [AvatarComponent],
 })
 export class AvatarModule {}
