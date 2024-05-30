@@ -1,6 +1,6 @@
 {
   "name": "ngx-eagle",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
@@ -31,6 +31,7 @@
     "card",
     "carousel",
     "checkbox",
+    "column chart",
     "dialog",
     "divider",
     "drawer",

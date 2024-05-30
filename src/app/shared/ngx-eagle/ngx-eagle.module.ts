@@ -6,6 +6,7 @@ import { ButtonModule } from 'ngx-eagle/button';
 import { CarouselModule } from 'ngx-eagle/carousel';
 import { CardModule } from 'ngx-eagle/card';
 import { CheckboxModule } from 'ngx-eagle/checkbox';
+import { ColumnChartModule } from 'ngx-eagle/column-chart';
 import { DividerModule } from 'ngx-eagle/divider';
 import { DrawerModule } from 'ngx-eagle/drawer';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
@@ -30,7 +31,8 @@ import { PaginatorModule } from 'ngx-eagle/paginator';
     ButtonModule,
     CarouselModule,
     CardModule,
-    CheckboxModule,
+    CheckboxModule, 
+    ColumnChartModule,
     DividerModule,
     DrawerModule,
     ExpansionPanelModule,
@@ -49,4 +51,4 @@ import { PaginatorModule } from 'ngx-eagle/paginator';
     PaginatorModule
   ],
 })
-export class NgxEagleModule {}
+export class NgxEagleModule { }

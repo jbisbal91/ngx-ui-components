@@ -86,6 +86,8 @@ import { InputDemo3Component } from './demos/input/input-demo3/input-demo3.compo
 import { TableDemo2Component } from './demos/table/table-demo2/table-demo2.component';
 import { PaginatorDemo1Component } from './demos/paginator/paginator-demo1/paginator-demo1.component';
 import { PaginatorDocsComponent } from './docs/paginator-docs/paginator-docs.component';
+import { ColumnChartDemo1Component } from './demos/column-chart/column-chart-demo1/column-chart-demo1.component';
+import { ColumnChartDocsComponent } from './docs/column-chart-docs/column-chart-docs.component';
 
 export function getHighlightLanguages() {
   return {
@@ -118,6 +120,8 @@ const components = [
   ComponentNavComponent,
   ComponentSidenavComponent,
   ComponentViewerComponent,
+  ColumnChartDemo1Component,
+   ColumnChartDocsComponent,
   DialogDemo1Component,
   DialogDocsComponent,
   DialogRef1Component,
@@ -173,7 +177,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components,],
   exports: [components],
   imports: [
     CommonModule,
@@ -195,4 +199,4 @@ const components = [
     },
   ],
 })
-export class ComponentModule {}
+export class ComponentModule { }

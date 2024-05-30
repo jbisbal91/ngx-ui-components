@@ -35,6 +35,7 @@ export class ComponentNavComponent {
       { path: '/components/carousel', title: 'Carousel' },
       { path: '/components/card', title: 'Card' },
       { path: '/components/checkbox', title: 'Checkbox' },
+      { path: '/components/column-chart', title: 'Column Chart' },
       { path: '/components/chips', title: 'Chips' },
       { path: '/components/core', title: 'Core' },
       { path: '/components/datepicker', title: 'Datepicker' },

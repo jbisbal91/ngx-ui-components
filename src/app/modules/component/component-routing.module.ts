@@ -27,6 +27,7 @@ import { RateDocsComponent } from './docs/rate-docs/rate-docs.component';
 import { CheckboxDocsComponent } from './docs/checkbox-docs/checkbox-docs.component';
 import { RadioDocsComponent } from './docs/radio-docs/radio-docs.component';
 import { PaginatorDocsComponent } from './docs/paginator-docs/paginator-docs.component';
+import { ColumnChartDocsComponent } from './docs/column-chart-docs/column-chart-docs.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,7 @@ const routes: Routes = [
       { path: 'card', component: CardDocsComponent },
       { path: 'carousel', component: CarouselDocsComponent },
       { path: 'checkbox', component: CheckboxDocsComponent },
+      { path: 'column-chart', component: ColumnChartDocsComponent },      
       { path: 'dialog', component: DialogDocsComponent },
       { path: 'divider', component: DividerDocsComponent },
       { path: 'drawer', component: DrawerDocsComponent },
