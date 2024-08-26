@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./button-demo5.component.scss']
 })
 export class ButtonDemo5Component {
-  ngxRounded:any = 'small';
+  buttonRounded:any = 'small';
 }

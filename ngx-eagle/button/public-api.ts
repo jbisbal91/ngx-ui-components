@@ -1,3 +1,3 @@
 export * from './button.module';
 export * from './button.directive';
-export { NgxSize, NgxRounded, NgxFillMode } from './typings';
+export { ButtonSize, ButtonRounded, ButtonFillMode } from './typings';
