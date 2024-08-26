@@ -7,40 +7,40 @@
 @import "../tab/theme/ngx-theme-dark";
 
 :root[theme="dark"] {
-        //--Base Color Palettes--//
-        //primary
-        --primary-1: #221a14;
-        --primary-2: #221a14;
-        --primary-3: #46321e;
-        --primary-4: #5f4123;
-        --primary-5: #805429;
-        --primary-6: #a16830;
-        --primary-7: #b58651;
-        --primary-8: #caa77a;
-        --primary-9: #dac6a6;
-        --primary-10: #e9e2d6;
-      
-        //red
-        --red-1: #2a1215;
-        --red-2: #431418;
-        --red-3: #58181c;
-        --red-4: #791a1f;
-        --red-5: #a61d24;
-        --red-6: #d32029;
-        --red-7: #e84749;
-        --red-8: #f37370;
-        --red-9: #f89f9a;
-        --red-10: #fac8c3;
-      
-        //green
-        --green-1: #162312;
-        --green-2: #1d3712;
-        --green-3: #274916;
-        --green-4: #306317;
-        --green-5: #3c8618;
-        --green-6: #49aa19;
-        --green-7: #6abe39;
-        --green-8: #8fd460;
-        --green-9: #b2e58b;
-        --green-10: #d5f2bb;
-      }
+  //--Base Color Palettes--//
+  //primary
+  --primary-1: #111d2c;
+  --primary-2: #112a45;
+  --primary-3: #15395b;
+  --primary-4: #164c7e;
+  --primary-5: #1765ad;
+  --primary-6: #177ddc;
+  --primary-7: #3c9ae8;
+  --primary-8: #65b7f3;
+  --primary-9: #8dcff8;
+  --primary-10: #b7e3fa;
+
+  //red
+  --red-1: #2a1215;
+  --red-2: #431418;
+  --red-3: #58181c;
+  --red-4: #791a1f;
+  --red-5: #a61d24;
+  --red-6: #d32029;
+  --red-7: #e84749;
+  --red-8: #f37370;
+  --red-9: #f89f9a;
+  --red-10: #fac8c3;
+
+  //green
+  --green-1: #162312;
+  --green-2: #1d3712;
+  --green-3: #274916;
+  --green-4: #306317;
+  --green-5: #3c8618;
+  --green-6: #49aa19;
+  --green-7: #6abe39;
+  --green-8: #8fd460;
+  --green-9: #b2e58b;
+  --green-10: #d5f2bb;
+}
