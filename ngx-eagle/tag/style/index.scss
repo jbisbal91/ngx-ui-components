@@ -21,6 +21,8 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  background-color: var(--primary-6, #1890ff);
+  color: currentColor;
 }
 
 .ngx-tag .ngx-tag-close {
