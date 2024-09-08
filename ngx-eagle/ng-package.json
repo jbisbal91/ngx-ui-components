@@ -5,6 +5,9 @@
   "lib": {
     "entryFile": "./public_api.ts"
   },
+  "allowedNonPeerDependencies": [
+    "ngx-eagle"
+  ],
   "assets": [
     "./**/style/**",
     "./**/theme/**",
