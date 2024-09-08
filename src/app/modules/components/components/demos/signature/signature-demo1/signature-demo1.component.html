@@ -1,3 +1,8 @@
-<ngx-signature #signature [width]="400" [height]="150"
+<ngx-signature [width]="400" [height]="150" [pointerColors]="pointerColors"
 [pointerColor]="pointerColor"
-(signatureComplete)="_signatureComplete($event)"></ngx-signature>
+(signatureComplete)="signatureComplete($event)"></ngx-signature>
+
+<div class="preview_signature">
+        <img [src]="signatureData" alt="signature" *ngIf="signatureData" />
+</div>
+

@@ -6,9 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./signature-demo1.component.scss']
 })
 export class SignatureDemo1Component {
+  pointerColors: string[] = ['#000000', '#2A7CFF', '#d32029'];
   pointerColor: string = '#000000';
+  signatureData!: string;
 
-  _signatureComplete(signature: string) {
-    console.log(signature);
+  signatureComplete(signature: any) {
+    this.signatureData = signature;
   }
 }

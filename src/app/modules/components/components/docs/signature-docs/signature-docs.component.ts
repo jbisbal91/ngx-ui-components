@@ -47,29 +47,45 @@ export class SignatureDocsComponent {
 
     this.propertiessignature = [      
       {
-        property: '[ngxAllowClear]',
-        description: 'Whether to allow clear when click again',
-        type: 'boolean',
-        default: 'false',
-      },
-      {
-        property: '[ngxColor]',
-        description: 'The color of the star',
-        type: 'string',
-        default: '#FFA600',
-      },
-      {
-        property: '[ngModel]',
-        description:
-          'Current value , double binding',
+        property: '[width]',
+        description: 'Width of the canvas',
         type: 'number',
-        default: '-',
+        default: '400',
       },
       {
-        property: '(ngModelChange)',
-        description:
-          'Callback when select value',
-        type: 'EventEmitter<boolean>',
+        property: '[height]',
+        description: 'Height of the canvas',
+        type: 'number',
+        default: '150',
+      },
+      {
+        property: '[pointerColors]',
+        description:'Array of colors for the pointer',
+        type: 'string[]',
+        default: '["#000000", "#2A7CFF"]',
+      },
+      {
+        property: '[pointerColor]',
+        description:'Color of the pointer',
+        type: 'string',
+        default: '#000000',
+      },
+      {
+        property: '[showClearButton]',
+        description:'Show clear button',
+        type: 'boolean',
+        default: 'true',
+      },
+      {
+        property: '[showPointerColors]',
+        description:'Show pointer colors',
+        type: 'boolean',
+        default: 'true',
+      },
+      {
+        property: '(signatureComplete)',
+        description:'Event emitted when the signature is completed',
+        type: 'EventEmitter<string>',
         default: '-',
       },
     ];
