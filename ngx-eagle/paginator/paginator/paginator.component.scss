@@ -10,6 +10,12 @@
     align-items: center;
 }
 
+.ngx-paginator select {
+    height: 32px;
+    border-radius: 2px;
+    padding: 4px 8px;
+}
+
 .ngx-paginator label {
     margin-right: 8px;
     font-size: inherit;

@@ -46,10 +46,6 @@ import { GridDemo4Component } from './demos/grid/grid-demo4/grid-demo4.component
 import { DialogRef1Component } from './demos/dialog/dialog-ref1/dialog-ref1.component';
 import { TimelineDemo1Component } from './demos/timeline/timeline-demo1/timeline-demo1.component';
 import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.component';
-import { PieChartDocsComponent } from './docs/pie-chart-docs/pie-chart-docs.component';
-import { PieChartDemo1Component } from './demos/pie-chart/pie-chart-demo1/pie-chart-demo1.component';
-import { LineChartDemo1Component } from './demos/line-chart/line-chart-demo1/line-chart-demo1.component';
-import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
 import { InputDemo1Component } from './demos/input/input-demo1/input-demo1.component';
 import { InputDocsComponent } from './docs/input-docs/input-docs.component';
 import { InputDemo2Component } from './demos/input/input-demo2/input-demo2.component';
@@ -86,8 +82,6 @@ import { InputDemo3Component } from './demos/input/input-demo3/input-demo3.compo
 import { TableDemo2Component } from './demos/table/table-demo2/table-demo2.component';
 import { PaginatorDemo1Component } from './demos/paginator/paginator-demo1/paginator-demo1.component';
 import { PaginatorDocsComponent } from './docs/paginator-docs/paginator-docs.component';
-import { ColumnChartDemo1Component } from './demos/column-chart/column-chart-demo1/column-chart-demo1.component';
-import { ColumnChartDocsComponent } from './docs/column-chart-docs/column-chart-docs.component';
 
 export function getHighlightLanguages() {
   return {
@@ -120,8 +114,6 @@ const components = [
   ComponentNavComponent,
   ComponentSidenavComponent,
   ComponentViewerComponent,
-  ColumnChartDemo1Component,
-   ColumnChartDocsComponent,
   DialogDemo1Component,
   DialogDocsComponent,
   DialogRef1Component,
@@ -139,10 +131,6 @@ const components = [
   InputDemo2Component,
   InputDemo3Component,
   InputDocsComponent,
-  LineChartDemo1Component,
-  LineChartDocsComponent,
-  PieChartDemo1Component,
-  PieChartDocsComponent,
   ProgressDocsComponent,
   ProgressDemo1Component,
   RadioDocsComponent,

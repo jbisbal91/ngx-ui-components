@@ -15,8 +15,6 @@ import { TabDocsComponent } from './docs/tab-docs/tab-docs.component';
 import { TagDocsComponent } from './docs/tag-docs/tag-docs.component';
 import { GridDocsComponent } from './docs/grid-docs/grid-docs.component';
 import { TimelineDocsComponent } from './docs/timeline-docs/timeline-docs.component';
-import { PieChartDocsComponent } from './docs/pie-chart-docs/pie-chart-docs.component';
-import { LineChartDocsComponent } from './docs/line-chart-docs/line-chart-docs.component';
 import { InputDocsComponent } from './docs/input-docs/input-docs.component';
 import { SelectDocsComponent } from './docs/select-docs/select-docs.component';
 import { TableDocsComponent } from './docs/table-docs/table-docs.component';
@@ -27,7 +25,6 @@ import { RateDocsComponent } from './docs/rate-docs/rate-docs.component';
 import { CheckboxDocsComponent } from './docs/checkbox-docs/checkbox-docs.component';
 import { RadioDocsComponent } from './docs/radio-docs/radio-docs.component';
 import { PaginatorDocsComponent } from './docs/paginator-docs/paginator-docs.component';
-import { ColumnChartDocsComponent } from './docs/column-chart-docs/column-chart-docs.component';
 
 const routes: Routes = [
   {
@@ -40,8 +37,7 @@ const routes: Routes = [
       { path: 'buttons', component: ButtonDocsComponent },
       { path: 'card', component: CardDocsComponent },
       { path: 'carousel', component: CarouselDocsComponent },
-      { path: 'checkbox', component: CheckboxDocsComponent },
-      { path: 'column-chart', component: ColumnChartDocsComponent },      
+      { path: 'checkbox', component: CheckboxDocsComponent },     
       { path: 'dialog', component: DialogDocsComponent },
       { path: 'divider', component: DividerDocsComponent },
       { path: 'drawer', component: DrawerDocsComponent },
@@ -49,8 +45,6 @@ const routes: Routes = [
       { path: 'grid', component: GridDocsComponent },
       { path: 'input', component: InputDocsComponent },
       { path: 'paginator', component: PaginatorDocsComponent },
-      { path: 'line-chart', component: LineChartDocsComponent },
-      { path: 'pie-chart', component: PieChartDocsComponent },
       { path: 'progress', component: ProgressDocsComponent },
       { path: 'radio-button', component: RadioDocsComponent },
       { path: 'rate', component: RateDocsComponent },

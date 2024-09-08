@@ -8,6 +8,7 @@
     "@angular/core": "^16.2.0"
   },
   "dependencies": {
+    "ngx-eagle": "file:",
     "tslib": "^2.3.0"
   },
   "homepage": "https://xdevsolutions.com",

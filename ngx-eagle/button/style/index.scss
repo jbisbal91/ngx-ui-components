@@ -25,15 +25,15 @@ button {
     border-color: var(--primary-6, #1890ff);
     color: var(--primary-6, #1890ff);
 
-    &:hover {
-      color: var(--primary-5, #40a9ff);
-      background-color: transparent !important;
-    }
+    // &:hover {
+    //   color: var(--primary-5, #40a9ff);
+    //   background-color: transparent !important;
+    // }
 
-    &:active {
-      color: var(--primary-7, #096dd9);
-      background-color: transparent !important;
-    }
+    // &:active {
+    //   color: var(--primary-7, #096dd9);
+    //   background-color: transparent !important;
+    // }
   }
 
   &.button-text {

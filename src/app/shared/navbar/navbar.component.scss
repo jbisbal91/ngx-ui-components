@@ -1,7 +1,7 @@
 nav {
   height: 4rem;
   width: 100%;
-  background-color: var(--ngx-theme-bg-navbar);
+  background-color: var(--primary-6);
   display: flex;
   align-items: center;
   position: relative;
@@ -45,7 +45,7 @@ li {
 .selected {
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  background-color: var(--ngx-theme-bg-navbar-selected);
+  background-color: var(--primary-7);
 }
 
 a {

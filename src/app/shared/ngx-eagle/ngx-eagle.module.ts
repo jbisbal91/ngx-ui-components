@@ -6,13 +6,11 @@ import { ButtonModule } from 'ngx-eagle/button';
 import { CarouselModule } from 'ngx-eagle/carousel';
 import { CardModule } from 'ngx-eagle/card';
 import { CheckboxModule } from 'ngx-eagle/checkbox';
-import { ColumnChartModule } from 'ngx-eagle/column-chart';
 import { DividerModule } from 'ngx-eagle/divider';
 import { DrawerModule } from 'ngx-eagle/drawer';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
 import { GridModule } from 'ngx-eagle/grid';
 import { InputModule } from 'ngx-eagle/input';
-import { PieChartModule } from 'ngx-eagle/pie-chart';
 import { ProgressModule } from 'ngx-eagle/progress';
 import { RadioButtonModule } from 'ngx-eagle/radio-button';
 import { RateModule } from 'ngx-eagle/rate';
@@ -31,14 +29,12 @@ import { PaginatorModule } from 'ngx-eagle/paginator';
     ButtonModule,
     CarouselModule,
     CardModule,
-    CheckboxModule, 
-    ColumnChartModule,
+    CheckboxModule,
     DividerModule,
     DrawerModule,
     ExpansionPanelModule,
     GridModule,
     InputModule,
-    PieChartModule,
     ProgressModule,
     RadioButtonModule,
     RateModule,
