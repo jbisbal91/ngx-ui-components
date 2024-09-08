@@ -82,6 +82,7 @@ import { InputDemo3Component } from './demos/input/input-demo3/input-demo3.compo
 import { TableDemo2Component } from './demos/table/table-demo2/table-demo2.component';
 import { PaginatorDemo1Component } from './demos/paginator/paginator-demo1/paginator-demo1.component';
 import { PaginatorDocsComponent } from './docs/paginator-docs/paginator-docs.component';
+import { TooltipDocsComponent } from './docs/tooltip-docs/tooltip-docs.component';
 
 export function getHighlightLanguages() {
   return {
@@ -165,7 +166,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components,],
+  declarations: [components, TooltipDocsComponent,],
   exports: [components],
   imports: [
     CommonModule,

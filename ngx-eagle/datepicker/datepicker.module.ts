@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RangePickerComponent } from './range-picker/range-picker.component';
 
 
 
 @NgModule({
-  declarations: [],
   imports: [
-    CommonModule
+    RangePickerComponent
+  ],
+  exports: [
+    RangePickerComponent
   ]
 })
 export class DatepickerModule { }
