@@ -1,24 +1,7 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <ngx-outlined-text-field
-    autocomplete="off"
-    label="Email"
-    placeholder="Email"
-    formControlName="email"
-    error-text="Please input your Email!"
-    [prefix]="person"
-  >
-  </ngx-outlined-text-field>
+  <input ngx-input>
 
-  <ngx-outlined-text-field
-    label="Password"
-    [type]="type"
-    placeholder="password"
-    formControlName="password"
-    error-text="Please input your Password!"
-    [prefix]="lock"
-    [suffix]="visibility"
-  >
-  </ngx-outlined-text-field>
+  <input ngx-input>
 
   <button type="submit" [disabled]="!loginForm.valid" ngx-button>Login</button>
 </form>
