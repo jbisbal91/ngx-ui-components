@@ -1,0 +1,9 @@
+<ngx-outlined-select-field
+  autocomplete
+  label="Select state"
+  placeholder="Select state"
+>
+  <ngx-option *ngFor="let state of states" [value]="state.value">
+    {{ state.label }}
+  </ngx-option>
+</ngx-outlined-select-field>

@@ -1,0 +1,130 @@
+.selected-tab-content {
+  padding: 20px;
+}
+
+.selected-tab-content pre {
+  margin-bottom: 0 !important;
+}
+
+.doc-tab {
+  color: var(--ngx-theme-color-cv-doc-tab);
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  padding: 8px 24px;
+  user-select: none;
+  font-weight: bold;
+}
+
+.visible {
+  display: block !important;
+}
+
+.doc-tab:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border-bottom: var(--ngx-theme-cv-doc-tab-border-bottom-3);
+}
+
+.doc-tab-active {
+  border-bottom: var(--ngx-theme-cv-doc-tab-border-bottom-3);
+}
+
+.demo-viewer-source {
+  display: none;
+}
+
+.demo-viewer-wrapper {
+  border: 1px solid #F0F0F0;
+  border-radius: 8px;
+  min-width: 300px;
+  max-width: 100%;
+  margin-bottom: 25px;
+  display: block;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  margin-bottom: 1rem;
+  margin-right: 0.5rem;
+}
+
+.demo-viewer-body {
+  padding: 1.875rem;
+  overflow: auto;
+}
+
+.demo-viewer-title {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.demo-viewer-title:before,
+.demo-viewer-title:after {
+  position: relative;
+  top: 50%;
+  border-top: 1px solid transparent;
+  border-top-color: #F0F0F0;
+  border-bottom: 0;
+  content: "";
+}
+
+.demo-viewer-title:before {
+  width: 2rem;
+}
+
+.demo-viewer-title:after {
+  width: 100%;
+}
+
+.demo-viewer-description {
+  padding: 4px 20px 15px;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.title-spacer {
+  flex: 1 1 auto;
+}
+
+.demo-viewer-toolbar {
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #F0F0F0;
+}
+
+.toolbar-action {
+  user-select: none;
+  width: 2.5rem;
+  height: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-action img {
+  width: 1.5rem;
+  filter: var(--ngx-theme-filter-cviewer)
+}
+
+.small-image {
+  width: 1rem !important;
+}
+
+.toolbar-action:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+$compact: 600px;
+@media (max-width: $compact) {
+  .demo-viewer-body {
+    padding: 1rem;
+  }
+}

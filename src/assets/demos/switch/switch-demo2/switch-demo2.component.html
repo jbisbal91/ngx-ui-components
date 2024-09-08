@@ -1,0 +1,12 @@
+<div class="flex flex-column width-mc">
+  <ngx-switch [(ngModel)]="switchValue" [disabled]="isDisabled"></ngx-switch>
+  <br />
+  <button
+    ngx-button
+    buttonRounded="full"
+    (click)="isDisabled = !isDisabled"
+    buttonFillMode="filled"
+  >
+    Toggle disabled
+  </button>
+</div>

@@ -1,0 +1,24 @@
+<ngx-timeline>
+  <ngx-timeline-item>
+    <p>Create a services site 2023-11-23</p>
+  </ngx-timeline-item>
+  <ngx-timeline-item [ngxDot]="ngxDot2">
+    <p>Solve initial network problems 1</p>
+    <p>Solve initial network problems 2</p>
+    <p>Solve initial network problems 3 2023-11-23</p>
+  </ngx-timeline-item>
+  <ngx-timeline-item ngxDot="Text dot">
+    <p>Technical testing 2023-11-23</p>
+  </ngx-timeline-item>
+  <ngx-timeline-item [ngxDot]="ngxDot4">
+    <p>Network problems being solved 2023-11-23</p>
+  </ngx-timeline-item>
+</ngx-timeline>
+
+<ng-template #ngxDot2>
+  <span class="material-symbols-outlined"> schedule </span>
+</ng-template>
+
+<ng-template #ngxDot4>
+  <span class="material-symbols-outlined"> check </span>
+</ng-template>

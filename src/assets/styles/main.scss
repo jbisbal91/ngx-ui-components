@@ -1,162 +1,64 @@
-@import "./layout/aspect-ratio.scss";
-@import "./layout/columns.scss";
-@import "./layout/break-after.scss";
-@import "./layout/break-before.scss";
-@import "./layout/break-inside.scss";
-@import "./layout/box-decoration-break.scss";
-@import "./layout/box-sizing.scss";
-@import "./layout/display.scss";
-@import "./layout/float.scss";
-@import "./layout/clear.scss";
-@import "./layout/isolation.scss";
-@import "./layout/object-fit.scss";
-@import "./layout/object-position.scss";
-@import "./layout/overflow.scss";
-@import "./layout/overscroll-behavior.scss";
-@import "./layout/position.scss";
-@import "./layout/position.scss";
-@import "./layout/top-right-bottom-left.scss";
-@import "./layout/visibility.scss";
-@import "./layout/z-index.scss";
+@import "./typography/font-size.scss";
+@import "./typography/line-height.scss";
+@import "./typography/font-style.scss";
+@import "./typography/font-weight.scss";
+@import "./typography/text-align.scss";
+@import "./typography/text-color.scss";
+@import "./typography/text-transform.scss";
+@import "./typography/text-overflow.scss";
+@import "./typography/list-style-type.scss";
 
-@import "./flexbox-grid/flex-basis.scss";
-@import "./flexbox-grid/flex-direction.scss";
-@import "./flexbox-grid/flex-wrap.scss";
-@import "./flexbox-grid/flex.scss";
-@import "./flexbox-grid/flex-grow.scss";
-@import "./flexbox-grid/flex-shrink.scss";
-@import "./flexbox-grid/order.scss";
 @import "./flexbox-grid/grid-template-columns.scss";
-@import "./flexbox-grid/grid-column-start-end.scss";
-@import "./flexbox-grid/grid-template-rows.scss";
-@import "./flexbox-grid/grid-row-start-end.scss";
-@import "./flexbox-grid/grid-auto-flow.scss";
-@import "./flexbox-grid/grid-auto-columns.scss";
-@import "./flexbox-grid/grid-auto-rows.scss";
-@import "./flexbox-grid/gap.scss";
+@import "./flexbox-grid/flex-direction.scss";
 @import "./flexbox-grid/justify-content.scss";
-@import "./flexbox-grid/justify-items.scss";
-@import "./flexbox-grid/justify-self.scss";
-@import "./flexbox-grid/align-content.scss";
 @import "./flexbox-grid/align-items.scss";
-@import "./flexbox-grid/align-self.scss";
-@import "./flexbox-grid/place-content.scss";
-@import "./flexbox-grid/place-items.scss";
-@import "./flexbox-grid/place-self.scss";
+@import "./flexbox-grid/flex.scss";
+@import "./flexbox-grid/gap.scss";
+@import "./flexbox-grid/justify-items.scss";
+
+@import "./layout/display.scss";
+@import "./layout/position.scss";
+@import "./layout/z-index.scss";
+@import "./layout/visibility.scss";
 
 @import "./spacing/padding.scss";
 @import "./spacing/margin.scss";
-@import "./spacing/space-between.scss";
 
 @import "./sizing/dimensions.scss";
 
-@import "./typography/font-family.scss";
-@import "./typography/font-size.scss";
-@import "./typography/font-smoothing.scss";
-@import "./typography/font-style.scss";
-@import "./typography/font-weight.scss";
-@import "./typography/font-variant-numeric.scss";
-@import "./typography/letter-spacing.scss";
-@import "./typography/line-clamp.scss";
-@import "./typography/line-height.scss";
-@import "./typography/list-style-image.scss";
-@import "./typography/list-style-position.scss";
-@import "./typography/list-style-type.scss";
-@import "./typography/text-align.scss";
-@import "./typography/text-color.scss";
-@import "./typography/text-decoration.scss";
-@import "./typography/text-decoration-color.scss";
-@import "./typography/text-decoration-style.scss";
-@import "./typography/text-decoration-thickness.scss";
-@import "./typography/text-underline-offset.scss";
-@import "./typography/text-transform.scss";
-@import "./typography/text-overflow.scss";
-@import "./typography/text-indent.scss";
-@import "./typography/vertical-align.scss";
-@import "./typography/white-space.scss";
-@import "./typography/word-break.scss";
-@import "./typography/hyphens.scss";
-@import "./typography/content.scss";
-
-@import "./backgrounds/background-attachment.scss";
-@import "./backgrounds/background-clip.scss";
 @import "./backgrounds/background-color.scss";
-@import "./backgrounds/background-origin.scss";
-@import "./backgrounds/background-position.scss";
-@import "./backgrounds/background-repeat.scss";
-@import "./backgrounds/background-size.scss";
 
 @import "./borders/border-radius.scss";
-@import "./borders/border-width.scss";
-@import "./borders/border-color.scss";
 @import "./borders/border-style.scss";
-@import "./borders/divide-width.scss";
-@import "./borders/divide-color.scss";
-@import "./borders/divide-style.scss";
 @import "./borders/outline-width.scss";
-@import "./borders/outline-color.scss";
-@import "./borders/outline-style.scss";
-@import "./borders/outline-offset.scss";
 
 @import "./effects/box-shadow.scss";
 @import "./effects/opacity.scss";
-@import "./effects/mix-blend-mode.scss";
-@import "./effects/background-blend-mode.scss";
 
-@import "./filters/blur.scss";
-@import "./filters/brightness.scss";
-@import "./filters/contrast.scss";
-@import "./filters/drop-shadow.scss";
-@import "./filters/grayscale.scss";
-@import "./filters/hue-rotate.scss";
-@import "./filters/invert.scss";
-@import "./filters/saturate.scss";
-@import "./filters/sepia.scss";
-@import "./filters/backdrop-blur.scss";
-@import "./filters/backdrop-brightness.scss";
-@import "./filters/backdrop-contrast.scss";
-@import "./filters/backdrop-grayscale.scss";
-@import "./filters/backdrop-hue-rotate.scss";
-@import "./filters/backdrop-invert.scss";
-@import "./filters/backdrop-opacity.scss";
-@import "./filters/backdrop-saturate.scss";
-@import "./filters/backdrop-sepia.scss";
-
-@import "./tables/border-collapse.scss";
-@import "./tables/border-spacing.scss";
-@import "./tables/table-layout.scss";
-@import "./tables/caption-side.scss";
-
-@import "./transitions-animation/transition-property.scss";
-@import "./transitions-animation/transition-duration.scss";
-@import "./transitions-animation/transition-timing-function.scss";
-@import "./transitions-animation/transition-delay.scss";
 @import "./transitions-animation/animation.scss";
 
-@import "./transforms/scale.scss";
 @import "./transforms/rotate.scss";
-@import "./transforms/translate.scss";
-@import "./transforms/skew.scss";
-@import "./transforms/transform-origin.scss";
 
-@import "./interactivity/accent-color.scss";
-@import "./interactivity/appearance.scss";
 @import "./interactivity/cursor.scss";
-@import "./interactivity/caret-color.scss";
 @import "./interactivity/pointer-events.scss";
 @import "./interactivity/resize.scss";
-@import "./interactivity/scroll-behavior.scss";
-@import "./interactivity/scroll-margin.scss";
-@import "./interactivity/scroll-padding.scss";
-@import "./interactivity/scroll-snap-align.scss";
-@import "./interactivity/scroll-snap-stop.scss";
-@import "./interactivity/touch-action.scss";
-@import "./interactivity/user-select.scss";
-@import "./interactivity/will-change.scss";
 
-@import "./svg/fill.scss";
-@import "./svg/stroke.scss";
-@import "./svg/stroke-width.scss";
+@import "./github.scss";
+@import "./shared.scss";
 
-@import "./github/github.scss";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

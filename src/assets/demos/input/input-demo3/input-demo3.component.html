@@ -1,0 +1,21 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <label for="email">Email</label>
+  <ngx-form-field>
+    <input id="email" class="email" ngx-input placeholder="Email" formControlName="email">
+    <span ngxPrefix class="material-symbols-outlined">
+      person
+    </span>
+  </ngx-form-field>
+
+  <ngx-form-field>
+    <input class="pwd" ngx-input [type]="type" placeholder="Password" formControlName="password">
+    <span ngxPrefix class="material-symbols-outlined">
+      lock
+    </span>
+    <span ngxSuffix class="material-symbols-outlined" (click)="type = type === 'password' ? 'text' : 'password'">
+      {{ type === "password" ? "visibility" : "visibility_off" }}
+    </span>
+  </ngx-form-field>
+
+  <button type="submit" [disabled]="!loginForm.valid" ngx-button>Login</button>
+</form>

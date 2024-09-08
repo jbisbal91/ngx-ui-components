@@ -1,30 +1,23 @@
 @import "./assets/theme/dark.scss";
 @import "./assets/theme/light.scss";
 @import "./assets/styles/main.scss";
-
-:root {
-  --dialog-drag-marker-height: 56px;
-  --dialog-content-bg: var(--ngx-doc-background);
-  --table-thead-background-color: var(--ngx-table-thead-background-color);
-  --table-tr-hover-background-color: var(--ngx-table-thead-background-color);
-}
-
 html,
 body {
   height: 100vh;
-  scroll-behavior: smooth;
+  scroll-behavior: inherit;
 }
 
 @font-face {
-  font-family: "Roboto ", sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
   font-style: normal;
   src: url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap");
   font-display: swap;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
   margin: 0;
+  font-size: 1rem;
   background: var(--ngx-theme-background);
   color: var(--ngx-theme-color);
 }
@@ -34,36 +27,4 @@ body {
 *::after {
   margin: 0;
   box-sizing: border-box;
-}
-
-article {
-  padding: 30px 30px 30px 50px;
-}
-
-.breadcrumb-item-template {
-  display: inline-block;
-  margin-bottom: 25px;
-}
-
-.main-article-template blockquote {
-  color: #697b8c;
-  border-left: 4px solid #ebedf0;
-  padding-left: 0.8em;
-}
-
-.visible {
-  display: block !important;
-}
-
-.main-article-template code {
-  margin: 0 1px;
-  padding: 0.2em 0.4em;
-  font-size: 0.9em;
-  background: #f2f4f5;
-  border: 1px solid #eee;
-  border-radius: 3px;
-}
-
-app-demo-viewer p {
-  margin-bottom: 2px;
 }

@@ -1,0 +1,17 @@
+form {
+    width: 300px;
+}
+
+button[ngx-button] {
+    height: 40px;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+ngx-form-field:nth-child(n + 2) {
+    margin-top: 2rem;
+}
+
+.suffix {
+    cursor: pointer;
+}

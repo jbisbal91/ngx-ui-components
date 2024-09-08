@@ -1,0 +1,23 @@
+<ngx-outlined-text-field class="error" label="Error" placeholder="Error">
+</ngx-outlined-text-field>
+<ngx-outlined-text-field class="warning" label="Warning" placeholder="Warning">
+</ngx-outlined-text-field>
+
+<ngx-outlined-text-field
+  class="error"
+  label="Error"
+  placeholder="Error with prefix"
+  [prefix]="error"
+>
+</ngx-outlined-text-field>
+<ngx-outlined-text-field
+  class="warning"
+  label="Warning"
+  placeholder="Warning  with prefix"
+  [prefix]="error"
+>
+</ngx-outlined-text-field>
+
+<ng-template #error>
+  <span class="material-symbols-outlined"> error </span>
+</ng-template>

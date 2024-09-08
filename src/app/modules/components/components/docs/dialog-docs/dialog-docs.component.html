@@ -1,0 +1,164 @@
+<article class="main-article-template">
+  <!---------BREADCRUMBS---------->
+  <div class="mb-4">
+    <a class="font-extrabold" routerLink="/components">Components</a>
+    <a routerLink="/components/dialog"> / Dialog</a>
+  </div>
+  <!---------OVERVIEW---------->
+  <h1 class="mb-4">Dialog</h1>
+  <p class="mb-4 text-sm">
+    The NgxDialog service can be used to open modal dialogs with styling and
+    animations.
+  </p>
+  <!---------WHEN TO USE---------->
+  <h4 class="mb-4">When To Use</h4>
+  <ul class="when-to-use text-sm mb-4">
+    <li>
+      When requiring users to interact with the application without jumping to a
+      new page to interrupt the user's workflow, you can use Modal to create a
+      new floating layer over the current page for user-getting feedback or
+      information purposes.
+    </li>
+  </ul>
+  <!---------MODULE IMPORT---------->
+  <pre><code [highlight]="moduleImport"></code></pre>
+  <!---------EXAMPLES---------->
+  <h1 class="mb-4">Examples</h1>
+  <!---------DEMO VIEWER---------->
+  <div ngx-row class="component-viewer">
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation1DemoDialog">
+        <div demo-viewer-example>
+          <app-dialog-demo1></app-dialog-demo1>
+        </div>
+        <div demo-viewer-title>Basic</div>
+        <div demo-viewer-description>Basic usage.</div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation2DemoDialog">
+        <div demo-viewer-example>
+          <app-dialog-demo2></app-dialog-demo2>
+        </div>
+        <div demo-viewer-title>Passing data</div>
+        <div demo-viewer-description>Passing Data to the Modal Component.</div>
+      </app-component-viewer>
+    </div>
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation3DemoDialog">
+        <div demo-viewer-example>
+          <app-dialog-demo3></app-dialog-demo3>
+        </div>
+        <div demo-viewer-title>Using a TemplateRef</div>
+        <div demo-viewer-description>
+          Sometimes creating a component is not necessary, we can use
+          <strong>ng-template</strong>
+        </div>
+      </app-component-viewer>
+      <app-component-viewer [tabs]="variation4DemoDialog">
+        <div demo-viewer-example>
+          <app-dialog-demo4></app-dialog-demo4>
+        </div>
+        <div demo-viewer-title>Draggable</div>
+        <div demo-viewer-description>
+          Whether the modal is draggable (default is false)
+        </div>
+      </app-component-viewer>
+    </div>
+  </div>
+
+  <h2 class="mt-4 mb-4">API</h2>
+  <h3 class="mt-4 mb-4">NgxDialog</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#52C41A">service</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesDialog">
+        <td>
+          <ngx-tag ngxColor="#006847">{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-8 mb-4">Methods</h3>
+
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesMethods">
+        <td>
+          <ngx-tag ngxColor="#006847">{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-8 mb-4">Dialog Options</h3>
+  <ul class="leading-8 text-sm mb-4">
+    <li>
+      <ngx-tag ngxColor="#A0A0A0">backdrop </ngx-tag> Allows displaying the
+      background element (default is true)
+    </li>
+    <li>
+      <ngx-tag ngxColor="#A0A0A0">closeButton</ngx-tag> Whether to display an
+      'X' for closing the modal (default is true).
+    </li>
+    <li>
+      <ngx-tag ngxColor="#A0A0A0"> draggable </ngx-tag> Allows dragging the
+      modal (default is false)
+    </li>
+    <li>
+      <ngx-tag ngxColor="#A0A0A0">enableClose</ngx-tag>
+      By clicking on the background or by pressing the escape button, the modal
+      closes (default is true)
+    </li>
+    <li>
+      <ngx-tag ngxColor="#A0A0A0">resizable</ngx-tag> Allows changing the size
+      of the modal (default is false)
+    </li>
+    <li>
+      <ngx-tag ngxColor="#A0A0A0"> width </ngx-tag> Allows you to customize the
+      width (default unit is px).
+    </li>
+    <li>
+      <ngx-tag ngxColor="#A0A0A0">minWidth </ngx-tag> Allows you to customize
+      the minimum width (the default unit is px).
+    </li>
+    <li>
+      <ngx-tag ngxColor="#A0A0A0"> maxWidth </ngx-tag> Allows you to customize
+      the maximum width (default unit is px).
+    </li>
+    <li>
+      <ngx-tag ngxColor="#A0A0A0">height </ngx-tag> Allows you to customize the
+      height (default unit is px).
+    </li>
+    <li>
+      <ngx-tag ngxColor="#A0A0A0"> minHeight</ngx-tag> Allows you to customize
+      the minimum height (the default unit is px).
+    </li>
+    <li>
+      <ngx-tag ngxColor="#A0A0A0">maxHeight </ngx-tag> Allows you to customize
+      the maximum height (default unit is px).
+    </li>
+  </ul>
+</article>

@@ -11,6 +11,7 @@ import { DrawerModule } from 'ngx-eagle/drawer';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
 import { GridModule } from 'ngx-eagle/grid';
 import { InputModule } from 'ngx-eagle/input';
+import { PaginatorModule } from 'ngx-eagle/paginator';
 import { ProgressModule } from 'ngx-eagle/progress';
 import { RadioButtonModule } from 'ngx-eagle/radio-button';
 import { RateModule } from 'ngx-eagle/rate';
@@ -20,7 +21,7 @@ import { TableModule } from 'ngx-eagle/table';
 import { TabModule } from 'ngx-eagle/tab';
 import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
-import { PaginatorModule } from 'ngx-eagle/paginator';
+import { FormFieldModule } from 'ngx-eagle/form-field';
 
 @NgModule({
   exports: [
@@ -35,6 +36,7 @@ import { PaginatorModule } from 'ngx-eagle/paginator';
     ExpansionPanelModule,
     GridModule,
     InputModule,
+    PaginatorModule,
     ProgressModule,
     RadioButtonModule,
     RateModule,
@@ -44,7 +46,7 @@ import { PaginatorModule } from 'ngx-eagle/paginator';
     TabModule,
     TagModule,
     TimelineModule,
-    PaginatorModule
+    FormFieldModule
   ],
 })
-export class NgxEagleModule { }
+export class NgxEagleModule {}

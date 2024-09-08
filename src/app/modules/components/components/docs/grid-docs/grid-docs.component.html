@@ -1,0 +1,178 @@
+<article class="main-article-template">
+  <!---------BREADCRUMBS---------->
+  <div class="mb-4">
+    <a class="font-extrabold" routerLink="/components">Components</a>
+    <a routerLink="/components/grid"> / Grid</a>
+  </div>
+
+  <!---------OVERVIEW---------->
+  <h1 class="mb-4">Design concept</h1>
+
+  <div ngx-row ngxGutter="[4,0]">
+    <div class="col" ngx-col>{{ (24 / 24) * 100 | number : "1.2-2" }}%</div>
+  </div>
+
+  <div ngx-row ngxGutter="[4,0]">
+    <div class="col" ngx-col ngxSpan="6">
+      {{ (6 / 24) * 100 | number : "1.2-2" }}%
+    </div>
+    <div class="col" ngx-col ngxSpan="6">
+      {{ (6 / 24) * 100 | number : "1.2-2" }}%
+    </div>
+    <div class="col" ngx-col ngxSpan="6">
+      {{ (6 / 24) * 100 | number : "1.2-2" }}%
+    </div>
+    <div class="col" ngx-col ngxSpan="6">
+      {{ (6 / 24) * 100 | number : "1.2-2" }}%
+    </div>
+  </div>
+
+  <div ngx-row ngxGutter="[4,0]">
+    <div class="col" ngx-col ngxSpan="8">
+      {{ (8 / 24) * 100 | number : "1.2-2" }}%
+    </div>
+    <div class="col" ngx-col ngxSpan="8">
+      {{ (8 / 24) * 100 | number : "1.2-2" }}%
+    </div>
+    <div class="col" ngx-col ngxSpan="8">
+      {{ (8 / 24) * 100 | number : "1.2-2" }}%
+    </div>
+  </div>
+
+  <div ngx-row ngxGutter="[4,0]">
+    <div class="col" ngx-col ngxSpan="12">
+      {{ (12 / 24) * 100 | number : "1.2-2" }}%
+    </div>
+    <div class="col" ngx-col ngxSpan="12">
+      {{ (12 / 24) * 100 | number : "1.2-2" }}%
+    </div>
+  </div>
+
+  <div ngx-row ngxGutter="[4,0]">
+    <div class="col" ngx-col ngxSpan="16">
+      {{ (16 / 24) * 100 | number : "1.2-2" }}%
+    </div>
+    <div class="col" ngx-col ngxSpan="8">
+      {{ (8 / 24) * 100 | number : "1.2-2" }}%
+    </div>
+  </div>
+  <!---------MODULE IMPORT---------->
+  <pre class="mt-4"><code [highlight]="moduleImport"></code></pre>
+  <!---------EXAMPLES---------->
+  <h1 class="mb-2">Examples</h1>
+
+  <!---------DEMO VIEWER---------->
+  <!---------Basic demo----------->
+
+  <div ngx-row class="component-viewer">
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation1DemoGrid">
+        <div demo-viewer-example>
+          <app-grid-demo1></app-grid-demo1>
+        </div>
+        <div demo-viewer-title>
+          From the stack to the horizontal arrangement.
+        </div>
+        <div demo-viewer-description>
+          <p>
+            The default grid system is 24. Allows you to define a system with a
+            different value.
+          </p>
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation3DemoGrid">
+        <div demo-viewer-example>
+          <app-grid-demo3></app-grid-demo3>
+        </div>
+        <div demo-viewer-title>Layout</div>
+        <div demo-viewer-description>
+          <p>
+            Child elements depending on the value of the start, center, end,
+            space-between, space-around, space-evenly, which are defined in its
+            parent node layout mode.
+          </p>
+        </div>
+      </app-component-viewer>
+    </div>
+
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation2DemoGrid">
+        <div demo-viewer-example>
+          <app-grid-demo2></app-grid-demo2>
+        </div>
+        <div demo-viewer-title>
+          From the stack to the horizontal arrangement.
+        </div>
+        <div demo-viewer-description>
+          <p>
+            You can create a basic grid system by using a single set of ngx-row
+            and ngx-col grid assembly, all of the columns (ngx-col) must be
+            placed in ngx-row.
+          </p>
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation4DemoGrid">
+        <div demo-viewer-example>
+          <app-grid-demo4></app-grid-demo4>
+        </div>
+        <div demo-viewer-title>Alignment</div>
+        <div demo-viewer-description>
+          <p>Child elements vertically aligned.</p>
+        </div>
+      </app-component-viewer>
+    </div>
+  </div>
+  <!---------API---------->
+  <h2 class="mt-4 mb-4">API</h2>
+  <h3 class="mt-4 mb-4">ngx-row</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#EB2F96">directive</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesRow">
+        <td>
+          <ngx-tag ngxColor="#006847">{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-8 mb-4">ngx-col</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#EB2F96">directive</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesCol">
+        <td>
+          <ngx-tag ngxColor="#006847">{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+</article>

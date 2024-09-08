@@ -1,0 +1,10 @@
+<div class="flex gap-4">
+  <a ngxBadge="1" [ngxBadgeHidden]="hidden"></a>
+  <a ngxBadge="10" [ngxBadgeHidden]="hidden"></a>
+  <a ngxBadge="100" [ngxBadgeHidden]="hidden"></a>
+
+  <div class="flex gap-2">
+    <ngx-switch [(ngModel)]="hidden"></ngx-switch>
+    <label>Hide badge</label>
+  </div>
+</div>

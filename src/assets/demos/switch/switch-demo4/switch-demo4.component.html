@@ -1,0 +1,8 @@
+<ngx-radio-group [(ngModel)]="labelPosition">
+  <ngx-radio-button ngxValue="after"> after </ngx-radio-button>
+  <ngx-radio-button ngxValue="before"> before </ngx-radio-button>
+</ngx-radio-group>
+
+<ngx-switch [labelPosition]="labelPosition"
+  >Label {{ labelPosition }}</ngx-switch
+>

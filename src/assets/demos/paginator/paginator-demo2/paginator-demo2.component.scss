@@ -1,0 +1,13 @@
+.demo-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.demo-data * {
+    margin: 16px 0;
+}
+
+ngx-paginator {
+    margin-top: 32px;
+}

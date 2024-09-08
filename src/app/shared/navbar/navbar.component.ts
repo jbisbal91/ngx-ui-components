@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { ThemeService } from '../services/theme/theme.service';
 
@@ -9,10 +9,11 @@ import { ThemeService } from '../services/theme/theme.service';
 })
 export class NavbarComponent implements OnInit {
   theme: string = 'light';
-
+  isMedium: boolean = false;
   activatedRoute!: string;
 
   constructor(private router: Router, private themeService: ThemeService) {
+    this.getInnerWidth();
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         this.activatedRoute = val.urlAfterRedirects;
@@ -22,6 +23,11 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.theme = this.themeService.getTheme();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  getInnerWidth() {
+    this.isMedium = window.innerWidth < 840 ? true : false;
   }
 
   setTheme() {

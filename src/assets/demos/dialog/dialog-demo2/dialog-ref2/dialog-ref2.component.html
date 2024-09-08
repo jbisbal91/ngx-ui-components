@@ -1,0 +1,15 @@
+<div class="header">
+  <h3>{{ ref.data.title }}</h3>
+</div>
+<ngx-divider></ngx-divider>
+<div class="content">
+  <ngx-outlined-select-field
+    multiple
+    label="Select state"
+    placeholder="Select state"
+  >
+    <ngx-option *ngFor="let state of ref.data.states" [value]="state.value">
+      {{ state.label }}
+    </ngx-option>
+  </ngx-outlined-select-field>
+</div>

@@ -1,0 +1,27 @@
+<div class="flex justify-center mb-4 pl-2 pr-2">
+  <input
+    class="input-search mr-8"
+    type="search"
+    placeholder="Search in components"
+    (input)="onSearch($event)"
+  />
+</div>
+
+<div class="container" [@slideInOut]>
+  <ngx-card 
+    routerLink="{{ component.path }}"
+    *ngFor="let component of components"
+  >
+    <ngx-card-header class="items-center">
+      <p class="text-xl font-normal">{{ component.title }}</p>
+    </ngx-card-header>
+    <ngx-card-content class="mt-4 mb-4">
+      <img
+        draggable="false"
+        ngx-card-image
+        [src]="component.src"
+        alt="component"
+      />
+    </ngx-card-content>
+  </ngx-card>
+</div>

@@ -1,0 +1,100 @@
+<article class="main-article-template">
+  <!---------BREADCRUMBS---------->
+
+  <div class="mb-4">
+    <a class="font-extrabold" routerLink="/components">Components</a>
+    <a routerLink="/components/progress"> / Progress</a>
+  </div>
+
+  <!---------OVERVIEW---------->
+  <h1 class="mb-4">Progress</h1>
+  <p class="text-sm mb-4">Display the current progress of an operation flow.</p>
+  <!---------WHEN TO USE---------->
+  <h4 class="mb-4">When To Use</h4>
+  <p class="text-sm mb-4">
+    If it will take a long time to complete an operation, you can use Progress
+    to show the current progress and status.
+  </p>
+  <ul class="when-to-use text-sm mb-4">
+    <li>
+      When an operation will interrupt the current interface, or it needs to run
+      in the background for more than 2 seconds.
+    </li>
+    <li>When you need to display the completion percentage of an operation.</li>
+  </ul>
+  <!---------MODULE IMPORT---------->
+  <pre><code [highlight]="moduleImport"></code></pre>
+  <!---------EXAMPLES---------->
+  <h1 class="mb-4">Examples</h1>
+  <!---------DEMO VIEWER---------->
+
+  <div ngx-row class="component-viewer">
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation1DemoProgress">
+        <div demo-viewer-example>
+          <app-progress-demo1></app-progress-demo1>
+        </div>
+        <div demo-viewer-title>Progress bar</div>
+        <div demo-viewer-description>
+          <p>A standard progress bar.</p>
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation2DemoProgress">
+        <div demo-viewer-example>
+          <app-progress-demo2></app-progress-demo2>
+        </div>
+        <div demo-viewer-title>Three sizes</div>
+        <div demo-viewer-description>
+          <p>[ngxSize] represents three types of size.</p>
+        </div>
+      </app-component-viewer>
+    </div>
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation3DemoProgress">
+        <div demo-viewer-example>
+          <app-progress-demo3></app-progress-demo3>
+        </div>
+        <div demo-viewer-title>Circular progress bar</div>
+        <div demo-viewer-description>
+          <p>A circular progress bar.</p>
+        </div>
+      </app-component-viewer>
+      <app-component-viewer [tabs]="variation4DemoProgress">
+        <div demo-viewer-example>
+          <app-progress-demo4></app-progress-demo4>
+        </div>
+        <div demo-viewer-title>Dynamic circular progress bar</div>
+        <div demo-viewer-description>
+          <p>A dynamic progress bar is better.</p>
+        </div>
+      </app-component-viewer>
+    </div>
+  </div>
+  <!---------API---------->
+  <h2 class="mt-4 mb-4">API</h2>
+  <h3 class="mt-4 mb-4">ngx-progress</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesProgress">
+        <td>
+          <ngx-tag ngxColor="#006847">{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+</article>

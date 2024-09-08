@@ -1,0 +1,31 @@
+<ngx-radio-group [(ngModel)]="ngxPlacement">
+  <ngx-radio-button ngxValue="top"> top </ngx-radio-button>
+  <ngx-radio-button ngxValue="right"> right </ngx-radio-button>
+  <ngx-radio-button ngxValue="bottom"> bottom </ngx-radio-button>
+  <ngx-radio-button ngxValue="left"> left </ngx-radio-button>
+</ngx-radio-group>
+
+<button
+  ngx-button
+  buttonRounded="full"
+  buttonFillMode="filled"
+  (click)="openDrawer()"
+>
+  Open Drawer
+</button>
+
+<ngx-drawer
+  [(ngxVisible)]="visible"
+  [ngxPlacement]="ngxPlacement"
+  ngxBackdrop="true"
+  ngxBackdropClosable="true"
+>
+  <div class="container">
+    <p class="title">Basic Drawer</p>
+    <ngx-divider></ngx-divider>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+  </div>
+</ngx-drawer>
+

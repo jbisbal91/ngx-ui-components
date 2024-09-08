@@ -1,0 +1,17 @@
+<ngx-radio-group [(ngModel)]="buttonRounded">
+    <ngx-radio-button ngxValue="small"> Small </ngx-radio-button>
+    <ngx-radio-button ngxValue="medium"> Medium </ngx-radio-button>
+    <ngx-radio-button ngxValue="large"> Large </ngx-radio-button>
+    <ngx-radio-button ngxValue="full"> Full </ngx-radio-button>
+  </ngx-radio-group>
+  
+  <div class="block mt-4">
+    <button ngx-button [buttonRounded]="buttonRounded">Label1</button>
+    <button ngx-button buttonFillMode="elevated" [buttonRounded]="buttonRounded">
+      Label2
+    </button>
+    <button ngx-button buttonFillMode="outlined" [buttonRounded]="buttonRounded">
+      Label3
+    </button>
+  </div>
+  

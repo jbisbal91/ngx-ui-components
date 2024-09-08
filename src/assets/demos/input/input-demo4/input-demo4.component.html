@@ -1,0 +1,48 @@
+<ngx-outlined-text-field
+  label="Search"
+  type="search"
+  [(ngModel)]="searhValue"
+  placeholder="Input search text"
+  [suffix]="suffixSearch1"
+  error-text="Please fill out this field"
+>
+</ngx-outlined-text-field>
+
+<ng-template #suffixSearch1>
+  <span class="material-symbols-outlined"> search </span>
+</ng-template>
+
+<ngx-outlined-text-field
+  label="Search"
+  type="search"
+  [(ngModel)]="searhValue"
+  placeholder="Input search text"
+  [suffix]="suffixSearch2"
+  error-text="Please fill out this field"
+>
+</ngx-outlined-text-field>
+
+<ng-template #suffixSearch2>
+  <button ngx-button (click)="onSearh(searhValue)">
+    <span class="material-symbols-outlined"> search </span>
+  </button>
+</ng-template>
+
+<ngx-outlined-text-field
+  label="Search"
+  type="search"
+  [(ngModel)]="searhValue"
+  placeholder="Input search text"
+  [prefix]="prefixSearch"
+  [suffix]="suffixSearch3"
+  error-text="Please fill out this field"
+>
+</ngx-outlined-text-field>
+
+<ng-template #suffixSearch3>
+  <button ngx-button (click)="onSearh(searhValue)">Search</button>
+</ng-template>
+
+<ng-template #prefixSearch>
+  <span class="material-symbols-outlined"> search </span>
+</ng-template>

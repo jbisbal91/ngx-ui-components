@@ -1,0 +1,21 @@
+.header,
+.content,
+.footer {
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+h3 {
+  padding-left: 0.25rem;
+  color: currentColor;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}

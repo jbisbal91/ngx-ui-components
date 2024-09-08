@@ -1,0 +1,22 @@
+<nav>
+  <ul>
+    <li class="gap-4">
+      <img
+        class="menu"
+        draggable="false"
+        src="/assets/icons/menu-fill.svg"
+        alt="menu-fill"
+        (click)="openSideBar()"
+      />
+      {{ activatedRouteName }}
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <ngx-drawer [(ngxVisible)]="visible">
+    <app-component-nav (onClose)="close()"></app-component-nav>
+  </ngx-drawer>
+  <section>
+    <router-outlet></router-outlet>
+  </section>
+</div>

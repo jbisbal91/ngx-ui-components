@@ -1,0 +1,100 @@
+<article class="main-article-template">
+  <!---------BREADCRUMBS---------->
+  <div class="mb-4">
+    <a class="font-extrabold" routerLink="/components">Components</a>
+    <a routerLink="/components/checkbox"> / Checkbox</a>
+  </div>
+  <!---------OVERVIEW---------->
+  <h1 class="mb-4">Checkbox</h1>
+  <!---------WHEN TO USE---------->
+  <h4 class="mb-4">When To Use</h4>
+  <ul class="when-to-use text-sm mb-4">
+    <li>Used for selecting multiple values from several options.</li>
+  </ul>
+  <!---------MODULE IMPORT---------->
+  <pre><code [highlight]="moduleImport"></code></pre>
+  <!---------EXAMPLES---------->
+  <h1 class="mb-2">Examples</h1>
+  <!---------DEMO VIEWER---------->
+  <div ngx-row class="component-viewer">
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation1DemoCheckbox">
+        <div demo-viewer-example>
+          <app-checkbox-demo1></app-checkbox-demo1>
+        </div>
+        <p demo-viewer-title>Basic</p>
+        <p demo-viewer-description>Basic usage of checkbox.</p>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation3DemoCheckbox">
+        <div demo-viewer-example>
+          <app-checkbox-demo3></app-checkbox-demo3>
+        </div>
+        <p demo-viewer-title>Allows color change</p>
+        <p demo-viewer-description>
+          You can change the color by using (ngxColor).
+        </p>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation2DemoCheckbox">
+        <div demo-viewer-example>
+          <app-checkbox-demo2></app-checkbox-demo2>
+        </div>
+        <p demo-viewer-title>Disabled</p>
+        <p demo-viewer-description>Disabled checkbox.</p>
+      </app-component-viewer>
+    </div>
+
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation4DemoCheckbox">
+        <div demo-viewer-example>
+          <app-checkbox-demo4></app-checkbox-demo4>
+        </div>
+        <p demo-viewer-title>Check all.</p>
+        <p demo-viewer-description>
+          The indeterminate property can help you achieve a "check all" effect.
+          The NgModel directive was used.
+        </p>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation5DemoCheckbox">
+        <div demo-viewer-example>
+          <app-checkbox-demo5></app-checkbox-demo5>
+        </div>
+        <p demo-viewer-title>Check all.</p>
+        <p demo-viewer-description>
+          The indeterminate property can help you achieve a "check all" effect.
+          Input() [checked] and Output() (onChecked) were used.
+        </p>
+      </app-component-viewer>
+    </div>
+  </div>
+  <!---------API---------->
+  <h2 class="mt-4 mb-4">API</h2>
+  <h3 class="mt-4 mb-4">ngx-checkbox</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+     <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesCheckbox">
+        <td>
+          <ngx-tag ngxColor="#006847">{{
+            prop.property
+          }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+                 <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+</article>

@@ -1,0 +1,11 @@
+<ngx-radio-group [(ngModel)]="tabPosition">
+  <ngx-radio-button ngxValue="top"> top </ngx-radio-button>
+  <ngx-radio-button ngxValue="left"> left </ngx-radio-button>
+  <ngx-radio-button ngxValue="right"> right </ngx-radio-button>
+</ngx-radio-group>
+
+<ngx-tab-group [tabPosition]="tabPosition">
+  <ngx-tab label="Tab 1"> Content of tab 1 </ngx-tab>
+  <ngx-tab label="Tab 2"> Content of tab 2 </ngx-tab>
+  <ngx-tab label="Tab 3"> Content of tab 3 </ngx-tab>
+</ngx-tab-group>

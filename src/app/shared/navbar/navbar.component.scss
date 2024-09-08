@@ -1,16 +1,24 @@
 nav {
-  height: 4rem;
+  height: 45px;
   width: 100%;
   background-color: var(--primary-6);
   display: flex;
   align-items: center;
   position: relative;
   box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
+  padding-inline-start: 2.25rem;
+  padding-inline-end: 2.25rem;
+}
+
+.navbar-show-small {
+  height: fit-content;
+  padding: 8px 0;
+  height: 45px;
 }
 
 .logo {
-  height: 2.625rem;
-  width: 2.625rem;
+  height: 2rem;
+  width: 2rem;
   cursor: pointer;
 }
 
@@ -20,13 +28,15 @@ strong {
   font-size: 22px;
   -webkit-background-clip: text;
   color: transparent !important;
-  background-image: linear-gradient(to right, #8514f5, #f637e3, #fa2c05) !important;
+  background-image: linear-gradient(to right, #fa2c05, #f637e3, #9d58e2) !important;
   margin-left: 0.5rem;
+  font-size: 1.125rem;
 }
 
 ul {
-  padding-inline-start: 2.25rem;
-  padding-inline-end: 2.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 li {
@@ -37,14 +47,15 @@ li {
   align-items: center;
 
   &.li-item {
-    padding: 0.5rem 1rem;
+    padding: 0 1rem;
     border-radius: 0.25rem;
   }
 }
 
 .selected {
-  padding: 0.5rem 1rem;
+  padding: 0 1rem;
   border-radius: 0.25rem;
+  height: 32px;
   background-color: var(--primary-7);
 }
 
@@ -55,4 +66,63 @@ a {
 
 .theme-img {
   filter: invert(100%) sepia(76%) saturate(348%) hue-rotate(209deg) brightness(116%) contrast(101%);
+}
+
+$compact: 600px;
+$medium: 840px;
+$expanded: 1200px;
+$large: 1600px;
+$extra-large: 1600px;
+
+@media (max-width: $compact) {
+  nav {
+    padding-inline-start: 1rem;
+    padding-inline-end: 1rem;
+  }
+}
+
+.filled {
+  border: none;
+}
+
+.icon-button {
+  position: relative;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.switch {
+  background-color: transparent;
+  overflow: hidden;
+  color: var(--ds-theme-color-on-surface-variant);
+}
+
+.switch:hover {
+  border: 1px solid currentColor;
+}
+
+.light_mode,
+.dark_mode {
+  position: absolute;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  user-select: none;
+}
+
+.light_mode.active,
+.dark_mode.active {
+  transform: translateY(0);
+
+}
+
+.light_mode {
+  transform: translateY(-48px);
+}
+
+.dark_mode {
+  transform: translateY(48px);
 }

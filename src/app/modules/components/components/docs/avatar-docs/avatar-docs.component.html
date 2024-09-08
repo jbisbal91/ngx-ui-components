@@ -1,0 +1,84 @@
+<article class="main-article-template">
+  <!---------BREADCRUMBS---------->
+
+  <div class="mb-4">
+    <a class="font-extrabold" routerLink="/components">Components</a>
+    <a routerLink="/components/avatar"> / Avatar</a>
+  </div>
+
+  <!---------OVERVIEW---------->
+  <h1 class="mb-4">Avatar</h1>
+
+  <p class="mb-4 text-sm">
+    Avatars can be used to represent people or objects. It supports images and
+    letters are supported. Only the first two initials are allowed and the color
+    will depend on the first initial.
+  </p>
+  <!---------MODULE IMPORT---------->
+  <pre><code [highlight]="moduleImport"></code></pre>
+  <!---------EXAMPLES---------->
+  <h1 class="mb-2">Examples</h1>
+  <!---------DEMO VIEWER---------->
+  <div ngx-row class="component-viewer">
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation1DemoAvatar">
+        <div demo-viewer-example>
+          <app-avatar-demo1></app-avatar-demo1>
+        </div>
+        <p demo-viewer-title>Shapes are available</p>
+        <p demo-viewer-description>Three sizes and two shapes are available.</p>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation2DemoAvatar">
+        <div demo-viewer-example>
+          <app-avatar-demo2></app-avatar-demo2>
+        </div>
+        <p demo-viewer-title>Supported values</p>
+        <p demo-viewer-description>
+          Images and letters are supported. Only the first two initials are
+          allowed and the color will depend on the first initial.
+        </p>
+      </app-component-viewer>
+    </div>
+
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation3DemoAvatar">
+        <div demo-viewer-example>
+          <app-avatar-demo3></app-avatar-demo3>
+        </div>
+        <p demo-viewer-title>Avatar Group</p>
+        <p demo-viewer-description>Avatar group display.</p>
+      </app-component-viewer>
+    </div>
+  </div>
+  <!---------API---------->
+  <h2 class="mt-4 mb-4">API</h2>
+  <h3 class="mt-4 mb-4">ngx-avatar</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let prop of propertiesAvatar">
+        <td>
+          <ngx-tag ngxColor="#006847">{{
+            prop.property
+          }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+</article>

@@ -1,0 +1,72 @@
+<article class="main-article-template">
+  <!---------BREADCRUMBS---------->
+  <div class="mb-4">
+    <a class="font-extrabold" routerLink="/components">Components</a>
+    <a routerLink="/components/paginator"> / Paginator</a>
+  </div>
+  <!---------OVERVIEW---------->
+  <h1 class="mb-4">Paginator</h1>
+  <p class="mb-4 text-sm">
+    A long list can be divided into several pages using Pagination, and only one
+    page will be loaded at a time.
+  </p>
+  <!---------WHEN TO USE---------->
+  <h4 class="mb-4">When To Use</h4>
+  <ul class="when-to-use text-sm mb-4">
+    <li>When it will take a long time to load/render all items.</li>
+    <li>If you want to browse the data by navigating through pages.</li>
+  </ul>
+  <!---------MODULE IMPORT---------->
+  <pre><code [highlight]="moduleImport"></code></pre>
+  <!---------EXAMPLES---------->
+  <h1 class="mb-2">Examples</h1>
+  <!---------DEMO VIEWER---------->
+
+  <div ngx-row class="component-viewer">
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation1DemoPaginator">
+        <div demo-viewer-example>
+          <app-paginator-demo1></app-paginator-demo1>
+        </div>
+        <p demo-viewer-title>Basic</p>
+        <p demo-viewer-description>Basic pagination.</p>
+      </app-component-viewer>
+    </div>
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation2DemoPaginator">
+        <div demo-viewer-example>
+          <app-paginator-demo2></app-paginator-demo2>
+        </div>
+        <p demo-viewer-title>Configurable paginator</p>
+        <p demo-viewer-description>Configurable paginator.</p>
+      </app-component-viewer>
+    </div>
+  </div>
+
+  <!---------API---------->
+  <h2 class="mt-4 mb-4">API</h2>
+  <h3 class="mt-4 mb-4">ngx-paginator</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesPaginator">
+        <td>
+          <ngx-tag ngxColor="#006847">{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
