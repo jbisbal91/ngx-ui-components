@@ -101,6 +101,11 @@ export class ComponentsService {
         src: 'assets/images/components/Select.svg',
       },
       {
+        path: '/components/signature',
+        title: 'Signature',
+        src: 'assets/images/components/Signature.svg',
+      },
+      {
         path: '/components/switch',
         title: 'Switch',
         src: 'assets/images/components/Switch.svg',

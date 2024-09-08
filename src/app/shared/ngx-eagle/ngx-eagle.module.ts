@@ -22,6 +22,7 @@ import { TabModule } from 'ngx-eagle/tab';
 import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
 import { FormFieldModule } from 'ngx-eagle/form-field';
+import { SignatureModule } from 'ngx-eagle/signature';
 
 @NgModule({
   exports: [
@@ -41,6 +42,7 @@ import { FormFieldModule } from 'ngx-eagle/form-field';
     RadioButtonModule,
     RateModule,
     SelectModule,
+    SignatureModule,
     SwitchModule,
     TableModule,
     TabModule,

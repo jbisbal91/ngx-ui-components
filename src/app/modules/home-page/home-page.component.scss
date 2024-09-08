@@ -1,6 +1,6 @@
 .container {
   overflow: scroll;
-  height: calc(100vh - 4rem);
+  height: calc(100vh - 45px);
 }
 
 .container::-webkit-scrollbar {
@@ -63,7 +63,7 @@ $extra-large: 1600px;
 
 @media (max-width: $medium) {
   .container {
-    height: calc(100vh - 8rem);
+    height: calc(100vh - 90px);
   }
 
   article {

@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { DropdownModule } from 'csl-components/dropdown';
+
 import { FirstDayOfWeek, RangeDate } from '../typings';
+import { DropdownModule } from 'ngx-eagle/dropdown';
 
 @Component({
-  selector: 'csl-range-picker',
+  selector: 'ngx-range-picker',
   standalone: true,
   imports: [FormsModule, DropdownModule, CommonModule],
   templateUrl: './range-picker.component.html',

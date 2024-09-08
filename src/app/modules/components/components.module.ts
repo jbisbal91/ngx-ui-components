@@ -127,6 +127,8 @@ import { PaginatorDemo2Component } from './components/demos/paginator/paginator-
 import { SwitchDemo4Component } from './components/demos/switch/switch-demo4/switch-demo4.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { SignatureDocsComponent } from './components/docs/signature-docs/signature-docs.component';
+import { SignatureDemo1Component } from './components/demos/signature/signature-demo1/signature-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -225,10 +227,12 @@ const components = [
   SelectDemo1Component,
   SelectDemo2Component,
   SelectDemo3Component,
-  SelectDocsComponent,
+  SelectDocsComponent,  
+  SignatureDocsComponent,
   SwitchDemo1Component,
   SwitchDemo2Component,
-  SwitchDemo3Component,
+  SwitchDemo3Component,  
+  SwitchDemo4Component,
   SwitchDocsComponent,
   TabDemo1Component,
   TabDemo2Component,
@@ -253,10 +257,13 @@ const components = [
   TimelineDemo3Component,
   TimelineDemo4Component,
   TimelineDocsComponent,
+  PaginatorDocsComponent,
+  PaginatorDemo1Component,
+  PaginatorDemo2Component,
 ];
 
 @NgModule({
-  declarations: [components, PaginatorDocsComponent, PaginatorDemo1Component, PaginatorDemo2Component, SwitchDemo4Component],
+  declarations: [components, SignatureDemo1Component],
   exports: [components, standalone],
   imports: [
     CommonModule,
@@ -282,4 +289,4 @@ const components = [
     },
   ],
 })
-export class ComponentsModule {}
+export class ComponentsModule { }

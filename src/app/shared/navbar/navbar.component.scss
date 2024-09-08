@@ -11,9 +11,8 @@ nav {
 }
 
 .navbar-show-small {
-  height: fit-content;
-  padding: 8px 0;
   height: 45px;
+  padding: 0 0.5rem;
 }
 
 .logo {
@@ -53,9 +52,9 @@ li {
 }
 
 .selected {
+  height: 32px;
   padding: 0 1rem;
   border-radius: 0.25rem;
-  height: 32px;
   background-color: var(--primary-7);
 }
 
@@ -107,10 +106,9 @@ $extra-large: 1600px;
 
 .light_mode,
 .dark_mode {
+  height: 24px;
   position: absolute;
   transition: all 0.3s ease;
-  font-size: 20px;
-  user-select: none;
 }
 
 .light_mode.active,

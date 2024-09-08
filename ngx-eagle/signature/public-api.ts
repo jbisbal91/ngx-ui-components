@@ -1,3 +1,2 @@
-export * from './progress.module';
-export * from './progress.component';
-export { NgxType } from './typings';
+export * from './signature.module';
+export * from './signature.component';

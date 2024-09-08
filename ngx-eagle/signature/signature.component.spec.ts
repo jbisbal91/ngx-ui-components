@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CslSignatureComponent } from './signature.component';
+import { SignatureComponent } from './signature.component';
 
-describe('CslSignatureComponent', () => {
-  let component: CslSignatureComponent;
-  let fixture: ComponentFixture<CslSignatureComponent>;
+describe('SignatureComponent', () => {
+  let component: SignatureComponent;
+  let fixture: ComponentFixture<SignatureComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CslSignatureComponent]
+      declarations: [SignatureComponent]
     });
-    fixture = TestBed.createComponent(CslSignatureComponent);
+    fixture = TestBed.createComponent(SignatureComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

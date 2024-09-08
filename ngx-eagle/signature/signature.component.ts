@@ -1,20 +1,23 @@
+import { NgFor } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { pairwise, switchMap, takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'csl-signature',
-  templateUrl: './csl-signature.component.html',
-  styleUrls: ['./csl-signature.component.scss'],
-  standalone: true
+  selector: 'ngx-signature',
+  templateUrl: './signature.component.html',
+  styleUrls: ['./signature.component.scss'],
+  standalone: true,
+  imports: [NgFor]
 })
-export class CslSignatureComponent implements AfterViewInit, OnChanges, OnDestroy {
+export class SignatureComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   @ViewChild('canvas') public canvas!: ElementRef<HTMLCanvasElement>;
   @Output() signatureComplete = new EventEmitter<string>();
   public dirty = false;
   @Input() public width = 0;
   @Input() public height = 0;
+  @Input() pointercolors: string[] = ['#000000', '#2A7CFF'];
   @Input() pointerColor: string = '#000';
 
   private ctx!: CanvasRenderingContext2D;
@@ -23,6 +26,11 @@ export class CslSignatureComponent implements AfterViewInit, OnChanges, OnDestro
   public ngAfterViewInit() {
     this.initCanvas();
     this.captureEvents(this.canvas.nativeElement);
+  }
+
+  changeColor(color: string) {
+    this.pointerColor = color;
+    this.ctx.strokeStyle = color;
   }
 
   ngOnChanges(changes: SimpleChanges): void {

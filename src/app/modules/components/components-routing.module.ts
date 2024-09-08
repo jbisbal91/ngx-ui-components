@@ -25,6 +25,7 @@ import { RateDocsComponent } from './components/docs/rate-docs/rate-docs.compone
 import { ProgressDocsComponent } from './components/docs/progress-docs/progress-docs.component';
 import { RadioButtonDocsComponent } from './components/docs/radio-button-docs/radio-button-docs.component';
 import { PaginatorDocsComponent } from './components/docs/paginator-docs/paginator-docs.component';
+import { SignatureDocsComponent } from './components/docs/signature-docs/signature-docs.component';
 
 const routes: Routes = [
   {
@@ -52,10 +53,11 @@ const routes: Routes = [
           { path: 'tags', component: TagDocsComponent },
           { path: 'timelines', component: TimelineDocsComponent },
           { path: 'select', component: SelectDocsComponent },
+          { path: 'signature', component: SignatureDocsComponent },
           { path: 'switch', component: SwitchDocsComponent },
           { path: 'paginator', component: PaginatorDocsComponent },
           { path: 'rate', component: RateDocsComponent },
-          { path: 'radio-button', component: RadioButtonDocsComponent },          
+          { path: 'radio-button', component: RadioButtonDocsComponent },
           { path: 'progress', component: ProgressDocsComponent },
           { path: '**', redirectTo: 'categories', pathMatch: 'full' },
         ],
@@ -73,4 +75,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ComponentsRoutingModule {}
+export class ComponentsRoutingModule { }
