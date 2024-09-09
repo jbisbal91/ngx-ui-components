@@ -50,13 +50,16 @@ export class ResizableDirective implements AfterViewInit, OnChanges {
 
   private createResizeMarker() {
     const marker = this.renderer.createElement('div');
+    
+    // Common styles for the marker
     this.renderer.setStyle(marker, 'position', 'absolute');
     this.renderer.setStyle(marker, 'background-color', RESIZE_HANDLE_COLOR);
     this.renderer.setStyle(marker, 'z-index', RESIZE_HANDLE_ZINDEX);
     this.renderer.setStyle(marker, 'cursor', this.getCursorForDirection());
     this.renderer.setStyle(marker, 'user-select', 'none');
     this.renderer.setStyle(marker, 'box-sizing', 'border-box');
-
+  
+    // Direction-specific styles
     if (this.resizeDirection === 'horizontal') {
       this.renderer.setStyle(marker, 'height', '100%');
       this.renderer.setStyle(marker, 'width', RESIZE_HANDLE_WIDTH);
@@ -67,73 +70,58 @@ export class ResizableDirective implements AfterViewInit, OnChanges {
       this.renderer.setStyle(marker, 'width', RESIZE_HANDLE_WIDTH);
       this.renderer.setStyle(marker, 'height', RESIZE_HANDLE_WIDTH);
     }
-
+  
+    // Add mouse event listener
     this.renderer.listen(marker, 'mousedown', (event: MouseEvent) => this.onDragStart(event));
+    
+    // Append marker to the element
     this.renderer.appendChild(this.elementRef.nativeElement, marker);
   }
-
+  
   private getCursorForDirection(): string {
-    switch (this.resizeDirection) {
-      case 'horizontal':
-        return 'ew-resize';
-      case 'vertical':
-        return 'ns-resize';
-      case 'diagonal':
-        return 'nwse-resize';
-      default:
-        return 'default';
-    }
+    const cursors = {
+      horizontal: 'ew-resize',
+      vertical: 'ns-resize',
+      diagonal: 'nwse-resize'
+    };
+    return cursors[this.resizeDirection] || 'default';
   }
-
+  
   private updateResizeMarkerPosition() {
     const marker = this.elementRef.nativeElement.querySelector('div');
     if (marker) {
-      // Reset positioning styles first
+      // Reset all positioning styles
       this.renderer.setStyle(marker, 'top', '');
       this.renderer.setStyle(marker, 'left', '');
       this.renderer.setStyle(marker, 'bottom', '');
       this.renderer.setStyle(marker, 'right', '');
-
-      switch (this.markerPosition) {
-        case 'top':
-          this.renderer.setStyle(marker, 'top', '0');
-          this.renderer.setStyle(marker, 'left', '50%');
-          this.renderer.setStyle(marker, 'transform', 'translateX(-50%)');
-          break;
-        case 'bottom':
-          this.renderer.setStyle(marker, 'bottom', '0');
-          this.renderer.setStyle(marker, 'left', '50%');
-          this.renderer.setStyle(marker, 'transform', 'translateX(-50%)');
-          break;
-        case 'left':
-          this.renderer.setStyle(marker, 'left', '0');
-          this.renderer.setStyle(marker, 'top', '50%');
-          this.renderer.setStyle(marker, 'transform', 'translateY(-50%)');
-          break;
-        case 'right':
-          this.renderer.setStyle(marker, 'right', '0');
-          this.renderer.setStyle(marker, 'top', '50%');
-          this.renderer.setStyle(marker, 'transform', 'translateY(-50%)');
-          break;
-        case 'top-left':
-          this.renderer.setStyle(marker, 'top', '0');
-          this.renderer.setStyle(marker, 'left', '0');
-          break;
-        case 'top-right':
-          this.renderer.setStyle(marker, 'top', '0');
-          this.renderer.setStyle(marker, 'right', '0');
-          break;
-        case 'bottom-left':
-          this.renderer.setStyle(marker, 'bottom', '0');
-          this.renderer.setStyle(marker, 'left', '0');
-          break;
-        case 'bottom-right':
-          this.renderer.setStyle(marker, 'bottom', '0');
-          this.renderer.setStyle(marker, 'right', '0');
-          break;
-      }
+      this.renderer.setStyle(marker, 'width', '5px');
+      this.renderer.setStyle(marker, 'height', '5px');
+      this.renderer.setStyle(marker, 'cursor', this.getCursorForDirection());
+  
+      // Positioning based on markerPosition
+      this.setMarkerPosition(marker);
     }
   }
+  
+  private setMarkerPosition(marker: HTMLElement) {
+    const positions = {
+      top: { top: '0', left: '50%', width: '100%', transform: 'translateX(-50%)' },
+      bottom: { bottom: '0', left: '50%', width: '100%', transform: 'translateX(-50%)' },
+      left: { left: '0', top: '50%', height: '100%', transform: 'translateY(-50%)' },
+      right: { right: '0', top: '50%', height: '100%', transform: 'translateY(-50%)' },
+      'top-left': { top: '0', left: '0' },
+      'top-right': { top: '0', right: '0' },
+      'bottom-left': { bottom: '0', left: '0' },
+      'bottom-right': { bottom: '0', right: '0' }
+    };
+    
+    const style = positions[this.markerPosition] || {};
+    for (const [key, value] of Object.entries(style)) {
+      this.renderer.setStyle(marker, key, value);
+    }
+  }
+  
 
   private onDragStart(event: MouseEvent) {
     if (event.button === 0) { // Left mouse button

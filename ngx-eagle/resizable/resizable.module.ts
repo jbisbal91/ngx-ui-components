@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { ResizableDirective } from './resizable.directive';
 
 
-
 @NgModule({
   exports: [
     ResizableDirective

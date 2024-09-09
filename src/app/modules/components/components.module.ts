@@ -138,6 +138,7 @@ import { TooltipDocsComponent } from './components/docs/tooltip-docs/tooltip-doc
 import { TooltipDemo1Component } from './components/demos/tooltip/tooltip-demo1/tooltip-demo1.component';
 import { ResizeDocsComponent } from './components/docs/resize-docs/resize-docs.component';
 import { ResizeDemo1Component } from './components/demos/resize/resize-demo1/resize-demo1.component';
+import { ResizeDemo2Component } from './components/demos/resize/resize-demo2/resize-demo2.component';
 
 export function getHighlightLanguages() {
   return {
@@ -278,7 +279,8 @@ const components = [
   TooltipDocsComponent,
   TooltipDemo1Component,
   ResizeDocsComponent,
-  ResizeDemo1Component
+  ResizeDemo1Component,
+  ResizeDemo2Component
 ];
 
 @NgModule({

@@ -12,6 +12,7 @@ export class ResizeDocsComponent  implements OnInit {
   displayedColumns: string[] = ['Property', 'Description', 'Type', 'Default'];
   propertiesResizable: Property[] = [];
   variation1DemoResizable!: Tabs[];
+  variation2DemoResizable!: Tabs[];
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
@@ -45,6 +46,35 @@ export class ResizeDocsComponent  implements OnInit {
       },
     ];
 
+    this.variation2DemoResizable = [
+      {
+        tabTitle: 'HTML',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/resizable/resizable-demo2/resizable-demo2.component.html',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'TS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/resizable/resizable-demo2/resizable-demo2.component.ts',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'SCSS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/resizable/resizable-demo2/resizable-demo2.component.scss',
+            { responseType: 'text' }
+          ),
+        },
+      },
+    ];
     this.propertiesResizable = [      
       {
         property: '[]',
