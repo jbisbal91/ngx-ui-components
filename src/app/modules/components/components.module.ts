@@ -34,6 +34,8 @@ import { CheckboxDemo3Component } from './components/demos/checkbox/checkbox-dem
 import { CheckboxDemo4Component } from './components/demos/checkbox/checkbox-demo4/checkbox-demo4.component';
 import { CheckboxDemo5Component } from './components/demos/checkbox/checkbox-demo5/checkbox-demo5.component';
 import { CheckboxDocsComponent } from './components/docs/checkbox-docs/checkbox-docs.component';
+import { DatepickerDocsComponent } from './components/docs/datepicker-docs/datepicker-docs.component';
+import { DatepickerDemo1Component } from './components/demos/datepicker/datepicker-demo1/datepicker-demo1.component';
 import { DialogDemo1Component } from './components/demos/dialog/dialog-demo1/dialog-demo1.component';
 import { DialogDocsComponent } from './components/docs/dialog-docs/dialog-docs.component';
 import { DialogRef1Component } from './components/demos/dialog/dialog-demo1/dialog-ref1.component';
@@ -184,6 +186,8 @@ const components = [
   CheckboxDemo4Component,
   CheckboxDemo5Component,
   CheckboxDocsComponent,
+  DatepickerDocsComponent,
+  DatepickerDemo1Component,
   DialogDemo1Component,
   DialogDemo2Component,
   DialogRef2Component,
@@ -229,6 +233,7 @@ const components = [
   SelectDemo3Component,
   SelectDocsComponent,  
   SignatureDocsComponent,
+  SignatureDemo1Component,
   SwitchDemo1Component,
   SwitchDemo2Component,
   SwitchDemo3Component,  
@@ -263,7 +268,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, SignatureDemo1Component],
+  declarations: [components],
   exports: [components, standalone],
   imports: [
     CommonModule,

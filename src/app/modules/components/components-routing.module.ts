@@ -26,6 +26,7 @@ import { ProgressDocsComponent } from './components/docs/progress-docs/progress-
 import { RadioButtonDocsComponent } from './components/docs/radio-button-docs/radio-button-docs.component';
 import { PaginatorDocsComponent } from './components/docs/paginator-docs/paginator-docs.component';
 import { SignatureDocsComponent } from './components/docs/signature-docs/signature-docs.component';
+import { DatepickerDocsComponent } from './components/docs/datepicker-docs/datepicker-docs.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,7 @@ const routes: Routes = [
           { path: 'carousel', component: CarouselDocsComponent },
           { path: 'card', component: CardDocsComponent },
           { path: 'checkbox', component: CheckboxDocsComponent },
+          { path: 'datepicker', component: DatepickerDocsComponent },
           { path: 'dialog', component: DialogDocsComponent },
           { path: 'button', component: ButtonDocsComponent },
           { path: 'divider', component: DividerDocsComponent },

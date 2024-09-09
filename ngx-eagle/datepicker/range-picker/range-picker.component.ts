@@ -17,12 +17,12 @@ export class RangePickerComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() range: RangeDate = { startDate: null, endDate: null };
   @Input() format: string = 'dd/MM/yyyy';
   @Input() firstDayOfWeek: FirstDayOfWeek = FirstDayOfWeek.Sunday;
-  @Input() days: string[] = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-  @Input() months: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+  @Input() days: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  @Input() months: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   @Input() startYear: number = 1900;
   @Input() endYear: number = 2100;
   @Input() todayButton: boolean = true;
-  @Input() todayLabel: string = 'Hoy';
+  @Input() todayLabel: string = 'Today';
   @Output() rangeChange = new EventEmitter<RangeDate>();
 
   @ViewChild('startDate') startDate!: ElementRef<HTMLInputElement>;

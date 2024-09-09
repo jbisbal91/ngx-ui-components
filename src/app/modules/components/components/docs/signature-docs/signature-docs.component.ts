@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Property } from '../../interfaces/property.interface';
 import { Tabs } from '../../interfaces/tabs.interface';
 import { HttpClient } from '@angular/common/http';
@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-signature-docs',
   templateUrl: './signature-docs.component.html'
 })
-export class SignatureDocsComponent {
+export class SignatureDocsComponent implements OnInit {
   moduleImport = "import { SignatureModule } from 'ngx-eagle/signature';";
   displayedColumns: string[] = ['Property', 'Description', 'Type', 'Default'];
   propertiessignature: Property[] = [];

@@ -1,0 +1,64 @@
+<article class="main-article-template">
+        <!---------BREADCRUMBS---------->
+        <div class="mb-4">
+                <a class="font-extrabold" routerLink="/components">Components</a>
+                <a routerLink="/components/datepicker"> / Datepicker</a>
+        </div>
+        <!---------OVERVIEW---------->
+        <h1 class="mb-4">datepicker</h1>
+        <!---------WHEN TO USE---------->
+        <h4 class="mb-4">When To Use</h4>
+        <ul class="when-to-use text-sm mb-4">
+                <li>Captures digital datepickers in forms or documents.</li>
+                <li>Useful for validating contracts, authorizations, and acceptance of terms.</li>
+                <li>Applicable in deliveries, medical records, and business processes.</li>
+                <li>Use when the datepicker has legal or validation value.</li>
+                <li>Avoid if it does not add value or hinders the user experience.</li>
+        </ul>
+        <!---------MODULE IMPORT---------->
+        <pre><code [highlight]="moduleImport"></code></pre>
+        <!---------EXAMPLES---------->
+        <h1 class="mb-2">Examples</h1>
+        <!---------DEMO VIEWER---------->
+        <div ngx-row class="component-viewer">
+                <div class="component-viewer-item" ngx-col ngxSpan="12">
+                        <app-component-viewer [tabs]="variation1DemoDatepicker">
+                                <div demo-viewer-example>
+                                        <app-datepicker-demo1></app-datepicker-demo1>
+                                </div>
+                                <div demo-viewer-title>Basic.</div>
+                                <div demo-viewer-description>
+                                        <p>The simplest usage.</p>
+                                </div>
+                        </app-component-viewer>
+                </div>
+        </div>
+        <!---------API---------->
+        <h2 class="mt-4 mb-4">API</h2>
+        <h3 class="mt-4 mb-4">ngx-datepicker</h3>
+        <div class="angular-entities flex gap-2 mb-4">
+                <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+                <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+        </div>
+        <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+                <thead>
+                        <tr>
+                                <th *ngFor="let col of displayedColumns">{{ col }}</th>
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr *ngFor="let prop of propertiesDatepicker">
+                                <td>
+                                        <ngx-tag ngxColor="#006847">{{
+                                                prop.property
+                                                }}</ngx-tag>
+                                </td>
+                                <td>{{ prop.description }}</td>
+                                <td>
+                                        <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+                                </td>
+                                <td>{{ prop.default }}</td>
+                        </tr>
+                </tbody>
+        </table>
+</article>

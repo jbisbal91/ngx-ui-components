@@ -46,6 +46,11 @@ export class ComponentsService {
         src: 'assets/images/components/CheckBox.svg',
       },
       {
+        path: '/components/datepicker',
+        title: 'datepicker',
+        src: 'assets/images/components/DatePicker.svg',
+      },
+      {
         path: '/components/dialog',
         title: 'Dialog',
         src: 'assets/images/components/Dialog.svg',

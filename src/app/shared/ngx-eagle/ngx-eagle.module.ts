@@ -23,6 +23,7 @@ import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
 import { FormFieldModule } from 'ngx-eagle/form-field';
 import { SignatureModule } from 'ngx-eagle/signature';
+import { DatepickerModule } from 'ngx-eagle/datepicker';
 
 @NgModule({
   exports: [
@@ -32,6 +33,7 @@ import { SignatureModule } from 'ngx-eagle/signature';
     CarouselModule,
     CardModule,
     CheckboxModule,
+    DatepickerModule,
     DividerModule,
     DrawerModule,
     ExpansionPanelModule,
