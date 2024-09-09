@@ -10,6 +10,7 @@ export type PlacementType = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'top
 export class DropdownDirective implements OnDestroy {
   @Input() DropdownMenu!: TemplateRef<any>;
   @Input() placement: PlacementType = 'bottomLeft';
+  @Input() hoverEnabled: boolean = true; // Nuevo input para habilitar/deshabilitar hover
   @Output() openChange = new EventEmitter<boolean>();
 
   private isOpen = false;
@@ -25,6 +26,37 @@ export class DropdownDirective implements OnDestroy {
     this.renderer.addClass(this.dropdownContent, 'dropdown-content');
     this.renderer.setStyle(this.dropdownContent, 'display', 'none');
     document.body.appendChild(this.dropdownContent);
+
+    // Agregar eventos de mouseenter y mouseleave para el dropdownContent
+    this.renderer.listen(this.dropdownContent, 'mouseenter', () => {
+      if (this.hoverEnabled && !this.isOpen) {
+        this.toggleDropdown();
+      }
+    });
+
+    this.renderer.listen(this.dropdownContent, 'mouseleave', (event: MouseEvent) => {
+      if (this.hoverEnabled && !this.el.nativeElement.contains(event.relatedTarget as Node)) {
+        this.close();
+      }
+    });
+  }
+
+  @HostListener('mouseenter')
+  onMouseEnter() {
+    if (this.hoverEnabled && !this.isOpen) {
+      this.toggleDropdown();
+    }
+  }
+
+  @HostListener('mouseleave', ['$event'])
+  onMouseLeave(event: MouseEvent) {
+    if (
+      this.hoverEnabled &&
+      !this.dropdownContent.contains(event.relatedTarget as Node) &&
+      !this.el.nativeElement.contains(event.relatedTarget as Node)
+    ) {
+      this.close();
+    }
   }
 
   @HostListener('window:resize', ['$event'])
