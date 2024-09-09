@@ -1,12 +1,10 @@
-import { AfterViewInit, Directive, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, Output, Renderer2, OnChanges, SimpleChanges } from '@angular/core';
+import { MarkerPosition, ResizeDirection } from './typings';
 
 const RESIZE_HANDLE_WIDTH = '5px';
 const RESIZE_HANDLE_COLOR = 'transparent';
 const RESIZE_HANDLE_ZINDEX = '1';
 
-export type ResizeDirection = 'horizontal' | 'vertical' | 'diagonal';
-
-export type MarkerPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'left' | 'right' | 'top' | 'bottom';
 
 @Directive({
   selector: '[ngx-resizable]',
