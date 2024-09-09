@@ -18,6 +18,7 @@ import { PaginatorModule } from 'ngx-eagle/paginator';
 import { ProgressModule } from 'ngx-eagle/progress';
 import { RadioButtonModule } from 'ngx-eagle/radio-button';
 import { RateModule } from 'ngx-eagle/rate';
+import { ResizableModule } from 'ngx-eagle/resizable';
 import { SelectModule } from 'ngx-eagle/select';
 import { SignatureModule } from 'ngx-eagle/signature';
 import { SwitchModule } from 'ngx-eagle/switch';
@@ -47,6 +48,7 @@ import { TooltipModule } from 'ngx-eagle/tooltip';
     ProgressModule,
     RadioButtonModule,
     RateModule,
+    ResizableModule,
     SelectModule,
     SignatureModule,
     SwitchModule,

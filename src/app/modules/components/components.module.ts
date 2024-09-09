@@ -137,6 +137,7 @@ import { DropdownDemo2Component } from './components/demos/dropdown/dropdown-dem
 import { TooltipDocsComponent } from './components/docs/tooltip-docs/tooltip-docs.component';
 import { TooltipDemo1Component } from './components/demos/tooltip/tooltip-demo1/tooltip-demo1.component';
 import { ResizeDocsComponent } from './components/docs/resize-docs/resize-docs.component';
+import { ResizeDemo1Component } from './components/demos/resize/resize-demo1/resize-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -274,10 +275,14 @@ const components = [
   PaginatorDocsComponent,
   PaginatorDemo1Component,
   PaginatorDemo2Component,
+  TooltipDocsComponent,
+  TooltipDemo1Component,
+  ResizeDocsComponent,
+  ResizeDemo1Component
 ];
 
 @NgModule({
-  declarations: [components, TooltipDocsComponent, TooltipDemo1Component, ResizeDocsComponent],
+  declarations: [components],
   exports: [components, standalone],
   imports: [
     CommonModule,
