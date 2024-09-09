@@ -12,8 +12,9 @@ export class DropdownDocsComponent implements OnInit {
   displayedColumns: string[] = ['Property', 'Description', 'Type', 'Default'];
   propertiesDropdown: Property[] = [];
   variation1Demodropdown!: Tabs[];
-  
-  constructor(private http: HttpClient) {}
+  variation2Demodropdown!: Tabs[];
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.variation1Demodropdown = [
@@ -45,50 +46,61 @@ export class DropdownDocsComponent implements OnInit {
         },
       },
     ];
+    this.variation2Demodropdown = [
+      {
+        tabTitle: 'HTML',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/dropdown/dropdown-demo2/dropdown-demo2.component.html',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'TS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/dropdown/dropdown-demo2/dropdown-demo2.component.ts',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'SCSS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/dropdown/dropdown-demo2/dropdown-demo2.component.scss',
+            { responseType: 'text' }
+          ),
+        },
+      },
+    ];
 
-    this.propertiesDropdown = [      
+    this.propertiesDropdown = [
       {
-        property: '[width]',
-        description: 'Width of the canvas',
-        type: 'number',
-        default: '400',
-      },
-      {
-        property: '[height]',
-        description: 'Height of the canvas',
-        type: 'number',
-        default: '150',
-      },
-      {
-        property: '[pointerColors]',
-        description:'Array of colors for the pointer',
-        type: 'string[]',
-        default: '["#000000", "#2A7CFF"]',
-      },
-      {
-        property: '[pointerColor]',
-        description:'Color of the pointer',
-        type: 'string',
-        default: '#000000',
-      },
-      {
-        property: '[showClearButton]',
-        description:'Show clear button',
-        type: 'boolean',
-        default: 'true',
-      },
-      {
-        property: '[showPointerColors]',
-        description:'Show pointer colors',
-        type: 'boolean',
-        default: 'true',
-      },
-      {
-        property: '(dropdownComplete)',
-        description:'Event emitted when the dropdown is completed',
-        type: 'EventEmitter<string>',
+        property: '[DropdownMenu]',
+        description: 'A TemplateRef that represents the content of the dropdown menu. It defines what will be displayed inside the dropdown when it is open.',
+        type: 'TemplateRef<any>',
         default: '-',
       },
+      {
+        property: '[placement]',
+        description: 'Determines the position of the dropdown relative to the element it is attached to. It can be one of the following values: bottomLeft, bottomCenter, bottomRight, topLeft, topCenter, topRight. This controls whether the dropdown appears below, above, or to the sides of the element.',
+        type: 'PlacementType',
+        default: 'bottomLeft',
+      },
+      {
+        property: '[hoverEnabled]',
+        description: 'A boolean that enables or disables the opening and closing of the dropdown on hover. It is enabled by default (true), allowing the dropdown to be controlled by hover in addition to click.',
+        type: 'boolean',
+        default: 'false',
+      },
+      {
+        property: '(openChange)',
+        description: "An EventEmitter that emits a boolean value whenever the dropdown changes its open or closed state. This allows other components to respond to the dropdown's state changes.",
+        type: 'EventEmitter<boolean>',
+        default: '-',
+      }
     ];
   }
 }

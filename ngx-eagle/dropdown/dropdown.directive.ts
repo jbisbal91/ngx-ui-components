@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input, TemplateRef, ViewContainerRef, ElementRef, OnDestroy, Renderer2, Output, EventEmitter } from '@angular/core';
+import { Directive, HostListener, Input, TemplateRef, ViewContainerRef, ElementRef, OnDestroy, Renderer2, Output, EventEmitter, booleanAttribute } from '@angular/core';
 
 export type PlacementType = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'topLeft' | 'topCenter' | 'topRight';
 
@@ -10,7 +10,7 @@ export type PlacementType = 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'top
 export class DropdownDirective implements OnDestroy {
   @Input() DropdownMenu!: TemplateRef<any>;
   @Input() placement: PlacementType = 'bottomLeft';
-  @Input() hoverEnabled: boolean = true; // Nuevo input para habilitar/deshabilitar hover
+  @Input({ transform: booleanAttribute }) hoverEnabled: boolean = false; // Nuevo input para habilitar/deshabilitar hover
   @Output() openChange = new EventEmitter<boolean>();
 
   private isOpen = false;

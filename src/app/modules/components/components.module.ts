@@ -133,6 +133,7 @@ import { SignatureDocsComponent } from './components/docs/signature-docs/signatu
 import { SignatureDemo1Component } from './components/demos/signature/signature-demo1/signature-demo1.component';
 import { DropdownDocsComponent } from './components/docs/dropdown-docs/dropdown-docs.component';
 import { DropdownDemo1Component } from './components/demos/dropdown/dropdown-demo1/dropdown-demo1.component';
+import { DropdownDemo2Component } from './components/demos/dropdown/dropdown-demo2/dropdown-demo2.component';
 
 export function getHighlightLanguages() {
   return {
@@ -207,6 +208,7 @@ const components = [
   DrawerDocsComponent,
   DropdownDocsComponent,
   DropdownDemo1Component,
+  DropdownDemo2Component,
   GridDemo1Component,
   GridDemo2Component,
   GridDemo3Component,
