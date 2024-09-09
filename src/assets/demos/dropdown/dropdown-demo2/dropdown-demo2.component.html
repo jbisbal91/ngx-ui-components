@@ -1,0 +1,40 @@
+<div class="flex gap-2">
+        <button ngx-button ngx-dropdown hoverEnabled="true" [DropdownMenu]="menu">
+                bottomLeft
+        </button>
+
+        <button ngx-button ngx-dropdown hoverEnabled="true" [DropdownMenu]="menu" placement="bottomCenter">
+                bottomCenter
+        </button>
+
+        <button ngx-button ngx-dropdown hoverEnabled="true" [DropdownMenu]="menu" placement="bottomRight">
+                bottomRight
+        </button>
+</div>
+
+<div class="flex gap-2 mt-8">
+        <button ngx-button ngx-dropdown hoverEnabled="true" [DropdownMenu]="menu" placement="topRight">
+                topRight
+        </button>
+
+        <button ngx-button ngx-dropdown hoverEnabled="true" [DropdownMenu]="menu" placement="topCenter">
+                topCenter
+        </button>
+
+        <button ngx-button ngx-dropdown hoverEnabled="true" [DropdownMenu]="menu" placement="topRight">
+                topRight
+        </button>
+</div>
+
+
+
+<ng-template #menu>
+        <div ngx-menu>
+                <ul>
+                        <li ngx-menu-item>1st menu item length</li>
+                        <li ngx-menu-item>3nd menu item length</li>
+                        <li ngx-menu-item>3rd menu item length</li>
+                </ul>
+        </div>
+
+</ng-template>

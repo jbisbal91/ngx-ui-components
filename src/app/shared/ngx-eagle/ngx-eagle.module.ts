@@ -3,12 +3,15 @@ import { NgModule } from '@angular/core';
 import { AvatarModule } from 'ngx-eagle/avatar';
 import { BadgeModule } from 'ngx-eagle/badge';
 import { ButtonModule } from 'ngx-eagle/button';
-import { CarouselModule } from 'ngx-eagle/carousel';
 import { CardModule } from 'ngx-eagle/card';
+import { CarouselModule } from 'ngx-eagle/carousel';
 import { CheckboxModule } from 'ngx-eagle/checkbox';
+import { DatepickerModule } from 'ngx-eagle/datepicker';
 import { DividerModule } from 'ngx-eagle/divider';
 import { DrawerModule } from 'ngx-eagle/drawer';
+import { DropdownModule } from 'ngx-eagle/dropdown';
 import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
+import { FormFieldModule } from 'ngx-eagle/form-field';
 import { GridModule } from 'ngx-eagle/grid';
 import { InputModule } from 'ngx-eagle/input';
 import { PaginatorModule } from 'ngx-eagle/paginator';
@@ -16,29 +19,28 @@ import { ProgressModule } from 'ngx-eagle/progress';
 import { RadioButtonModule } from 'ngx-eagle/radio-button';
 import { RateModule } from 'ngx-eagle/rate';
 import { SelectModule } from 'ngx-eagle/select';
+import { SignatureModule } from 'ngx-eagle/signature';
 import { SwitchModule } from 'ngx-eagle/switch';
-import { TableModule } from 'ngx-eagle/table';
 import { TabModule } from 'ngx-eagle/tab';
+import { TableModule } from 'ngx-eagle/table';
 import { TagModule } from 'ngx-eagle/tag';
 import { TimelineModule } from 'ngx-eagle/timeline';
-import { FormFieldModule } from 'ngx-eagle/form-field';
-import { SignatureModule } from 'ngx-eagle/signature';
-import { DatepickerModule } from 'ngx-eagle/datepicker';
-import { DropdownModule } from 'ngx-eagle/dropdown';
+import { TooltipModule } from 'ngx-eagle/tooltip';
 
 @NgModule({
   exports: [
     AvatarModule,
     BadgeModule,
     ButtonModule,
-    CarouselModule,
     CardModule,
+    CarouselModule,
     CheckboxModule,
     DatepickerModule,
     DividerModule,
     DrawerModule,
     DropdownModule,
     ExpansionPanelModule,
+    FormFieldModule,
     GridModule,
     InputModule,
     PaginatorModule,
@@ -48,11 +50,11 @@ import { DropdownModule } from 'ngx-eagle/dropdown';
     SelectModule,
     SignatureModule,
     SwitchModule,
-    TableModule,
     TabModule,
+    TableModule,
     TagModule,
     TimelineModule,
-    FormFieldModule
+    TooltipModule,
   ],
 })
 export class NgxEagleModule {}

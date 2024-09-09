@@ -101,6 +101,11 @@ export class ComponentsService {
         src: 'assets/images/components/Rate.svg',
       },
       {
+        path: '/components/resize',
+        title: 'Resize',
+        src: 'assets/images/components/Resize.svg',
+      },
+      {
         path: '/components/radio-button',
         title: 'Radio button',
         src: 'assets/images/components/Radio.svg',
@@ -139,6 +144,11 @@ export class ComponentsService {
         path: '/components/timelines',
         title: 'Timelines',
         src: 'assets/images/components/Timeline.svg',
+      },
+      {
+        path: '/components/tooltip',
+        title: 'Tooltip',
+        src: 'assets/images/components/Tooltip.svg',
       },
     ];
     return of(navComponents);

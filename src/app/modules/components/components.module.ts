@@ -134,6 +134,9 @@ import { SignatureDemo1Component } from './components/demos/signature/signature-
 import { DropdownDocsComponent } from './components/docs/dropdown-docs/dropdown-docs.component';
 import { DropdownDemo1Component } from './components/demos/dropdown/dropdown-demo1/dropdown-demo1.component';
 import { DropdownDemo2Component } from './components/demos/dropdown/dropdown-demo2/dropdown-demo2.component';
+import { TooltipDocsComponent } from './components/docs/tooltip-docs/tooltip-docs.component';
+import { TooltipDemo1Component } from './components/demos/tooltip/tooltip-demo1/tooltip-demo1.component';
+import { ResizeDocsComponent } from './components/docs/resize-docs/resize-docs.component';
 
 export function getHighlightLanguages() {
   return {
@@ -274,7 +277,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, TooltipDocsComponent, TooltipDemo1Component, ResizeDocsComponent],
   exports: [components, standalone],
   imports: [
     CommonModule,
