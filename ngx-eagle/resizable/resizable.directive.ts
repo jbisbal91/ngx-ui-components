@@ -5,7 +5,6 @@ const RESIZE_HANDLE_WIDTH = '5px';
 const RESIZE_HANDLE_COLOR = 'transparent';
 const RESIZE_HANDLE_ZINDEX = '1';
 
-
 @Directive({
   selector: '[ngx-resizable]',
   standalone: true

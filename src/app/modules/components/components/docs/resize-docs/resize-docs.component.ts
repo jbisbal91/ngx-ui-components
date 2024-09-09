@@ -77,18 +77,41 @@ export class ResizeDocsComponent  implements OnInit {
     ];
     this.propertiesResizable = [      
       {
-        property: '[]',
-        description: '',
-        type: '',
-        default: '',
+        property: '[resizableWidth]',
+        description: 'Width of the resizable element',
+        type: 'number',
+        default: '0',
       },
       {
-        property: '[]',
-        description: '',
-        type: '',
-        default: '',
+        property: '[minWidth]',
+        description: 'Minimum width of the resizable element',
+        type: 'number',
+        default: '100',
       },
-      
+      {
+        property: '[minHeight]',
+        description: 'Minimum height of the resizable element',
+        type: 'number',
+        default: '100',
+      },
+      {
+        property: '[markerPosition]',
+        description: 'Position of the resize marker',
+        type: 'MarkerPosition',
+        default: 'bottom-right',
+      },
+      {
+        property: '[resizeDirection]',
+        description: 'Direction of the resize',
+        type: 'ResizeDirection',
+        default: 'diagonal',
+      },
+      {
+        property: '(onResize)',
+        description: 'Emits the new dimensions of the resizable element',
+        type: '{ width: number, height: number }',
+        default: '-',
+      }
     ];
   }
 }
