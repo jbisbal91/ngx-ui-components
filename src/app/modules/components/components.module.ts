@@ -131,6 +131,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { SignatureDocsComponent } from './components/docs/signature-docs/signature-docs.component';
 import { SignatureDemo1Component } from './components/demos/signature/signature-demo1/signature-demo1.component';
+import { DropdownDocsComponent } from './components/docs/dropdown-docs/dropdown-docs.component';
+import { DropdownDemo1Component } from './components/demos/dropdown/dropdown-demo1/dropdown-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -203,6 +205,8 @@ const components = [
   DrawerDemo2Component,
   DrawerDemo3Component,
   DrawerDocsComponent,
+  DropdownDocsComponent,
+  DropdownDemo1Component,
   GridDemo1Component,
   GridDemo2Component,
   GridDemo3Component,
@@ -231,12 +235,12 @@ const components = [
   SelectDemo1Component,
   SelectDemo2Component,
   SelectDemo3Component,
-  SelectDocsComponent,  
+  SelectDocsComponent,
   SignatureDocsComponent,
   SignatureDemo1Component,
   SwitchDemo1Component,
   SwitchDemo2Component,
-  SwitchDemo3Component,  
+  SwitchDemo3Component,
   SwitchDemo4Component,
   SwitchDocsComponent,
   TabDemo1Component,

@@ -47,7 +47,7 @@ export class ComponentsService {
       },
       {
         path: '/components/datepicker',
-        title: 'datepicker',
+        title: 'Datepicker',
         src: 'assets/images/components/DatePicker.svg',
       },
       {
@@ -64,6 +64,11 @@ export class ComponentsService {
         path: '/components/drawer',
         title: 'Drawer',
         src: 'assets/images/components/Drawer.svg',
+      },
+      {
+        path: '/components/dropdown',
+        title: 'Dropdown',
+        src: 'assets/images/components/Dropdown.svg',
       },
       {
         path: '/components/expansion',

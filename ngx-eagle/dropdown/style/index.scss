@@ -1,5 +1,5 @@
 .ngx-menu {
-        background-color: var(--ngx-secondary-background-color);
+        background-color: var(--ngx-menu-bc, #ffffff);
         box-sizing: border-box;
         max-height: 15rem;
         overflow-y: scroll;

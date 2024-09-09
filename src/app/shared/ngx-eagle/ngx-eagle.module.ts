@@ -24,6 +24,7 @@ import { TimelineModule } from 'ngx-eagle/timeline';
 import { FormFieldModule } from 'ngx-eagle/form-field';
 import { SignatureModule } from 'ngx-eagle/signature';
 import { DatepickerModule } from 'ngx-eagle/datepicker';
+import { DropdownModule } from 'ngx-eagle/dropdown';
 
 @NgModule({
   exports: [
@@ -36,6 +37,7 @@ import { DatepickerModule } from 'ngx-eagle/datepicker';
     DatepickerModule,
     DividerModule,
     DrawerModule,
+    DropdownModule,
     ExpansionPanelModule,
     GridModule,
     InputModule,

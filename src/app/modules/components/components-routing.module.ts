@@ -27,6 +27,7 @@ import { RadioButtonDocsComponent } from './components/docs/radio-button-docs/ra
 import { PaginatorDocsComponent } from './components/docs/paginator-docs/paginator-docs.component';
 import { SignatureDocsComponent } from './components/docs/signature-docs/signature-docs.component';
 import { DatepickerDocsComponent } from './components/docs/datepicker-docs/datepicker-docs.component';
+import { DropdownDocsComponent } from './components/docs/dropdown-docs/dropdown-docs.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,7 @@ const routes: Routes = [
           { path: 'button', component: ButtonDocsComponent },
           { path: 'divider', component: DividerDocsComponent },
           { path: 'drawer', component: DrawerDocsComponent },
+          { path: 'dropdown', component: DropdownDocsComponent },
           { path: 'expansion', component: AccordionDocsComponent },
           { path: 'grid', component: GridDocsComponent },
           { path: 'input', component: InputDocsComponent },
