@@ -1,4 +1,9 @@
-<div class="resizable-box" ngx-resizable 
-(resizableWidthChange)="resizableWidthChange($event)">
-        Resize me
+<div
+        ngx-resizable
+        [minWidth]="minWidth"
+        [minHeight]="minHeight"
+        (onResize)="onResize($event)"
+        class="resizable-box">
+        <p>Resize me</p>
 </div>
+
