@@ -143,6 +143,7 @@ import { ImageCropperDocsComponent } from './components/docs/image-cropper-docs/
 import { ImageCropperDemo1Component } from './components/demos/image-cropper/image-cropper-demo1/image-cropper-demo1.component';
 import { LoadingDocsComponent } from './components/docs/loading-docs/loading-docs.component';
 import { LoadingDemo1Component } from './components/demos/loading/loading-demo1/loading-demo1.component';
+import { LoadingDemo2Component } from './components/demos/loading/loading-demo2/loading-demo2.component';
 
 export function getHighlightLanguages() {
   return {
@@ -288,7 +289,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, ImageCropperDocsComponent, LoadingDocsComponent, LoadingDemo1Component],
+  declarations: [components, ImageCropperDocsComponent, LoadingDocsComponent, LoadingDemo1Component, LoadingDemo2Component],
   exports: [components, standalone],
   imports: [
     CommonModule,

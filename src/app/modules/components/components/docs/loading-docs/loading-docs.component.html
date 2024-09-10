@@ -5,14 +5,12 @@
                 <a routerLink="/components/loading"> / Loading</a>
         </div>
         <!---------OVERVIEW---------->
-        <h1 class="mb-4">loading</h1>
+        <h1 class="mb-4">Loading</h1>
         <!---------WHEN TO USE---------->
         <h4 class="mb-4">When To Use</h4>
         <ul class="when-to-use text-sm mb-4">
-                <li>The loading doesn't support complex text or operations. The tip is shown on mouse enter and is
-                        hidden on mouse leave.</li>
-                <li> It's often used instead of the HTML title attribute to explain button/text/operation.</li>
-
+                <li>When part of the page is waiting for asynchronous data or during a rendering process, an appropriate
+                        loading animation can effectively alleviate users' inquietude.</li>
         </ul>
         <!---------MODULE IMPORT---------->
         <pre><code [highlight]="moduleImport"></code></pre>
@@ -25,9 +23,21 @@
                                 <div demo-viewer-example>
                                         <app-loading-demo1></app-loading-demo1>
                                 </div>
-                                <div demo-viewer-title>Placement.</div>
+                                <div demo-viewer-title>Basic Usage</div>
                                 <div demo-viewer-description>
-                                        <p>The loading has 4 placements choice.</p>
+                                        <p>A simple loading status.</p>
+                                </div>
+                        </app-component-viewer>
+
+                </div>
+                <div class="component-viewer-item" ngx-col ngxSpan="12">
+                        <app-component-viewer [tabs]="variation2DemoLoading">
+                                <div demo-viewer-example>
+                                        <app-loading-demo2></app-loading-demo2>
+                                </div>
+                                <div demo-viewer-title>Three sizes.</div>
+                                <div demo-viewer-description>
+                                        <p>[size] represents three types of size.</p>
                                 </div>
                         </app-component-viewer>
                 </div>

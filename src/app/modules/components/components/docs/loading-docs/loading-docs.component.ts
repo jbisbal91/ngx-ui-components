@@ -12,7 +12,7 @@ export class LoadingDocsComponent implements OnInit {
   displayedColumns: string[] = ['Property', 'Description', 'Type', 'Default'];
   propertiesLoading: Property[] = [];
   variation1DemoLoading!: Tabs[];
-
+  variation2DemoLoading!: Tabs[];
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
@@ -46,18 +46,48 @@ export class LoadingDocsComponent implements OnInit {
       },
     ];
 
-    this.propertiesLoading = [      
+    this.variation2DemoLoading = [
       {
-        property: '[loadingText]',
-        description: 'Text to be displayed in the loading',
-        type: 'string',
-        default: '',
+        tabTitle: 'HTML',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/loading/loading-demo2/loading-demo2.component.html',
+            { responseType: 'text' }
+          ),
+        },
       },
       {
-        property: '[loadingPosition]',
-        description: 'Position of the loading',
-        type: 'Position',
-        default: 'top',
+        tabTitle: 'TS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/loading/loading-demo2/loading-demo2.component.ts',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'SCSS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/loading/loading-demo2/loading-demo2.component.scss',
+            { responseType: 'text' }
+          ),
+        },
+      },
+    ];
+    
+    this.propertiesLoading = [      
+      {
+        property: '[size]',
+        description: 'Size of the loading spinner',
+        type: "'sm' | 'md' | 'lg'",
+        default: 'md',
+      },
+      {
+        property: '[hidden]',
+        description: 'Hide the loading spinner',
+        type: 'boolean',
+        default: 'false',
       }
     ];
   }

@@ -11,12 +11,90 @@
         /* Asegúrate de ajustar el tamaño del spinner en función del tamaño */
 }
 
-.spinner-bar {
+.spinner.spinner-sm {
+        width: 36px;
+        height: 36px;
+}
+
+.spinner.spinner-md {
+        width: 44px;
+        height: 44px;
+}
+
+.spinner.spinner-lg {
+        width: 64px;
+        height: 64px;
+}
+
+/* Bar spinner */
+
+.spinner-bars {
         position: absolute;
-        background: var(--ngx-spinner-bar-bg, #000000);
+        background: var(--ngx-spinner-bars-bg, #000000);
         border-radius: 20%;
         animation: spinner-animation 1.2s linear infinite;
 }
+
+/* Tamaños de spinner */
+.spinner-sm .spinner-bars {
+        width: 3px;
+        height: 10px;
+        transform-origin: 2px 18px;
+        margin: 0 4px;
+        /* Aumentar la separación para tamaño pequeño */
+}
+
+.spinner-md .spinner-bars {
+        width: 4px;
+        height: 14px;
+        transform-origin: 2px 22px;
+        margin: 0 6px;
+        /* Aumentar la separación para tamaño mediano */
+}
+
+.spinner-lg .spinner-bars {
+        width: 5px;
+        height: 20px;
+        transform-origin: 3px 33px;
+        margin: 0 8px;
+        /* Aumentar la separación para tamaño grande */
+}
+
+
+/* Dot spinner */
+
+.spinner-dots {
+        position: absolute;
+        background: var(--ngx-spinner-bars-bg, #000000);
+        border-radius: 50%;
+        animation: spinner-animation 1.2s linear infinite;
+}
+
+.spinner-sm .spinner-dots {
+        width: 4px;
+        height: 4px;
+        transform-origin: 2px 18px;
+        margin: 0 4px;
+        /* Aumentar la separación para tamaño pequeño */
+}
+
+
+.spinner-md .spinner-dots {
+        width: 6px;
+        height: 6px;
+        transform-origin: 2px 22px;
+        margin: 0 6px;
+        /* Aumentar la separación para tamaño mediano */
+}
+
+.spinner-lg .spinner-dots {
+        width: 10px;
+        height: 10px;
+        transform-origin: 3px 33px;
+        margin: 0 8px;
+        /* Aumentar la separación para tamaño grande */
+}
+
 
 @keyframes spinner-animation {
         0% {
@@ -26,44 +104,4 @@
         100% {
                 opacity: 0;
         }
-}
-
-.spinner.ngx-loading-sm {
-        width: 36px;
-        height: 36px;
-}
-
-.spinner.ngx-loading-md {
-        width: 44px;
-        height: 44px;
-}
-
-.spinner.ngx-loading-lg {
-        width: 64px;
-        height: 64px;
-}
-
-/* Tamaños de spinner */
-.ngx-loading-sm .spinner-bar {
-        width: 3px;
-        height: 10px;
-        transform-origin: 2px 18px;
-        margin: 0 4px;
-        /* Aumentar la separación para tamaño pequeño */
-}
-
-.ngx-loading-md .spinner-bar {
-        width: 4px;
-        height: 14px;
-        transform-origin: 2px 22px;
-        margin: 0 6px;
-        /* Aumentar la separación para tamaño mediano */
-}
-
-.ngx-loading-lg .spinner-bar {
-        width: 5px;
-        height: 20px;
-        transform-origin: 3px 33px;
-        margin: 0 8px;
-        /* Aumentar la separación para tamaño grande */
 }
