@@ -81,6 +81,11 @@ export class ComponentsService {
         src: 'assets/images/components/Grid.svg',
       },
       {
+        path: '/components/image-cropper',
+        title: 'Image Cropper',
+        src: 'assets/images/components/ImageCropper.svg',
+      },
+      {
         path: '/components/input',
         title: 'Input',
         src: 'assets/images/components/Input.svg',

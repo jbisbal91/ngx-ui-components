@@ -7,13 +7,13 @@ import { Tabs } from '../../interfaces/tabs.interface';
   selector: 'app-resize-docs',
   templateUrl: './resize-docs.component.html'
 })
-export class ResizeDocsComponent  implements OnInit {
+export class ResizeDocsComponent implements OnInit {
   moduleImport = "import { ResizableModule } from 'ngx-eagle/resizable';";
   displayedColumns: string[] = ['Property', 'Description', 'Type', 'Default'];
   propertiesResizable: Property[] = [];
   variation1DemoResizable!: Tabs[];
   variation2DemoResizable!: Tabs[];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.variation1DemoResizable = [
@@ -21,7 +21,7 @@ export class ResizeDocsComponent  implements OnInit {
         tabTitle: 'HTML',
         tabContent: {
           code: this.http.get(
-            'assets/demos/resizable/resizable-demo1/resizable-demo1.component.html',
+            'assets/demos/resize/resize-demo1/resize-demo1.component.html',
             { responseType: 'text' }
           ),
         },
@@ -30,7 +30,7 @@ export class ResizeDocsComponent  implements OnInit {
         tabTitle: 'TS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/resizable/resizable-demo1/resizable-demo1.component.ts',
+            'assets/demos/resize/resize-demo1/resize-demo1.component.ts',
             { responseType: 'text' }
           ),
         },
@@ -39,7 +39,7 @@ export class ResizeDocsComponent  implements OnInit {
         tabTitle: 'SCSS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/resizable/resizable-demo1/resizable-demo1.component.scss',
+            'assets/demos/resize/resize-demo1/resize-demo1.component.scss',
             { responseType: 'text' }
           ),
         },
@@ -51,7 +51,7 @@ export class ResizeDocsComponent  implements OnInit {
         tabTitle: 'HTML',
         tabContent: {
           code: this.http.get(
-            'assets/demos/resizable/resizable-demo2/resizable-demo2.component.html',
+            'assets/demos/resize/resize-demo2/resize-demo2.component.html',
             { responseType: 'text' }
           ),
         },
@@ -60,7 +60,7 @@ export class ResizeDocsComponent  implements OnInit {
         tabTitle: 'TS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/resizable/resizable-demo2/resizable-demo2.component.ts',
+            'assets/demos/resize/resize-demo2/resize-demo2.component.ts',
             { responseType: 'text' }
           ),
         },
@@ -69,13 +69,13 @@ export class ResizeDocsComponent  implements OnInit {
         tabTitle: 'SCSS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/resizable/resizable-demo2/resizable-demo2.component.scss',
+            'assets/demos/resize/resize-demo2/resize-demo2.component.scss',
             { responseType: 'text' }
           ),
         },
       },
     ];
-    this.propertiesResizable = [      
+    this.propertiesResizable = [
       {
         property: '[resizableWidth]',
         description: 'Width of the resizable element',

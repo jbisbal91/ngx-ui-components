@@ -30,6 +30,7 @@ import { TagDocsComponent } from './components/docs/tag-docs/tag-docs.component'
 import { TimelineDocsComponent } from './components/docs/timeline-docs/timeline-docs.component';
 import { TooltipDocsComponent } from './components/docs/tooltip-docs/tooltip-docs.component';
 import { ResizeDocsComponent } from './components/docs/resize-docs/resize-docs.component';
+import { ImageCropperDocsComponent } from './components/docs/image-cropper-docs/image-cropper-docs.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,7 @@ const routes: Routes = [
           { path: 'dropdown', component: DropdownDocsComponent },
           { path: 'expansion', component: AccordionDocsComponent },
           { path: 'grid', component: GridDocsComponent },
+          { path: 'image-cropper', component: ImageCropperDocsComponent },
           { path: 'input', component: InputDocsComponent },
           { path: 'paginator', component: PaginatorDocsComponent },
           { path: 'progress', component: ProgressDocsComponent },

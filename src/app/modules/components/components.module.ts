@@ -139,6 +139,8 @@ import { TooltipDemo1Component } from './components/demos/tooltip/tooltip-demo1/
 import { ResizeDocsComponent } from './components/docs/resize-docs/resize-docs.component';
 import { ResizeDemo1Component } from './components/demos/resize/resize-demo1/resize-demo1.component';
 import { ResizeDemo2Component } from './components/demos/resize/resize-demo2/resize-demo2.component';
+import { ImageCropperDocsComponent } from './components/docs/image-cropper-docs/image-cropper-docs.component';
+import { ImageCropperDemo1Component } from './components/demos/image-cropper/image-cropper-demo1/image-cropper-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -148,7 +150,7 @@ export function getHighlightLanguages() {
   };
 }
 
-const standalone = [DialogRef1Component];
+const standalone = [DialogRef1Component,ImageCropperDemo1Component];
 
 const components = [
   ComponentsComponent,
@@ -284,7 +286,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, ImageCropperDocsComponent],
   exports: [components, standalone],
   imports: [
     CommonModule,
