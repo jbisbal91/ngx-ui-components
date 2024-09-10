@@ -1,6 +1,6 @@
 {
   "name": "ngx-eagle",
-  "version": "0.8.5",
+  "version": "0.8.6",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
@@ -40,6 +40,7 @@
     "grid",
     "image-cropper",
     "input",
+    "loading",
     "paginator",
     "progress",
     "radio button",
