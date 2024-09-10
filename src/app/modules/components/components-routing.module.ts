@@ -31,6 +31,7 @@ import { TimelineDocsComponent } from './components/docs/timeline-docs/timeline-
 import { TooltipDocsComponent } from './components/docs/tooltip-docs/tooltip-docs.component';
 import { ResizeDocsComponent } from './components/docs/resize-docs/resize-docs.component';
 import { ImageCropperDocsComponent } from './components/docs/image-cropper-docs/image-cropper-docs.component';
+import { LoadingDocsComponent } from './components/docs/loading-docs/loading-docs.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,7 @@ const routes: Routes = [
           { path: 'grid', component: GridDocsComponent },
           { path: 'image-cropper', component: ImageCropperDocsComponent },
           { path: 'input', component: InputDocsComponent },
+          { path: 'loading', component: LoadingDocsComponent },
           { path: 'paginator', component: PaginatorDocsComponent },
           { path: 'progress', component: ProgressDocsComponent },
           { path: 'radio-button', component: RadioButtonDocsComponent },

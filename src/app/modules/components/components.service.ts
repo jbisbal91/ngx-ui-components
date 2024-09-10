@@ -91,6 +91,11 @@ export class ComponentsService {
         src: 'assets/images/components/Input.svg',
       },
       {
+        path: '/components/loading',
+        title: 'loading',
+        src: 'assets/images/components/Loading.svg',
+      },
+      {
         path: '/components/paginator',
         title: 'Paginator',
         src: 'assets/images/components/Pagination.svg',

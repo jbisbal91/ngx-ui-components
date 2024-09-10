@@ -1,0 +1,69 @@
+:host {
+        display: inline-block;
+
+}
+
+/* Estilos por defecto para el spinner */
+.spinner {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        /* Asegúrate de ajustar el tamaño del spinner en función del tamaño */
+}
+
+.spinner-bar {
+        position: absolute;
+        background: var(--ngx-spinner-bar-bg, #000000);
+        border-radius: 20%;
+        animation: spinner-animation 1.2s linear infinite;
+}
+
+@keyframes spinner-animation {
+        0% {
+                opacity: 1;
+        }
+
+        100% {
+                opacity: 0;
+        }
+}
+
+.spinner.ngx-loading-sm {
+        width: 36px;
+        height: 36px;
+}
+
+.spinner.ngx-loading-md {
+        width: 44px;
+        height: 44px;
+}
+
+.spinner.ngx-loading-lg {
+        width: 64px;
+        height: 64px;
+}
+
+/* Tamaños de spinner */
+.ngx-loading-sm .spinner-bar {
+        width: 3px;
+        height: 10px;
+        transform-origin: 2px 18px;
+        margin: 0 4px;
+        /* Aumentar la separación para tamaño pequeño */
+}
+
+.ngx-loading-md .spinner-bar {
+        width: 4px;
+        height: 14px;
+        transform-origin: 2px 22px;
+        margin: 0 6px;
+        /* Aumentar la separación para tamaño mediano */
+}
+
+.ngx-loading-lg .spinner-bar {
+        width: 5px;
+        height: 20px;
+        transform-origin: 3px 33px;
+        margin: 0 8px;
+        /* Aumentar la separación para tamaño grande */
+}

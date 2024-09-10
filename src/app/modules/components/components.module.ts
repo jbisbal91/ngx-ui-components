@@ -141,6 +141,8 @@ import { ResizeDemo1Component } from './components/demos/resize/resize-demo1/res
 import { ResizeDemo2Component } from './components/demos/resize/resize-demo2/resize-demo2.component';
 import { ImageCropperDocsComponent } from './components/docs/image-cropper-docs/image-cropper-docs.component';
 import { ImageCropperDemo1Component } from './components/demos/image-cropper/image-cropper-demo1/image-cropper-demo1.component';
+import { LoadingDocsComponent } from './components/docs/loading-docs/loading-docs.component';
+import { LoadingDemo1Component } from './components/demos/loading/loading-demo1/loading-demo1.component';
 
 export function getHighlightLanguages() {
   return {
@@ -286,7 +288,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, ImageCropperDocsComponent],
+  declarations: [components, ImageCropperDocsComponent, LoadingDocsComponent, LoadingDemo1Component],
   exports: [components, standalone],
   imports: [
     CommonModule,

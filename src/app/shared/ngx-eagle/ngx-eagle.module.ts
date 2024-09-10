@@ -14,6 +14,7 @@ import { ExpansionPanelModule } from 'ngx-eagle/expansion-panel';
 import { FormFieldModule } from 'ngx-eagle/form-field';
 import { GridModule } from 'ngx-eagle/grid';
 import { InputModule } from 'ngx-eagle/input';
+import { LoadingModule } from 'ngx-eagle/loading';
 import { PaginatorModule } from 'ngx-eagle/paginator';
 import { ProgressModule } from 'ngx-eagle/progress';
 import { RadioButtonModule } from 'ngx-eagle/radio-button';
@@ -44,6 +45,7 @@ import { TooltipModule } from 'ngx-eagle/tooltip';
     FormFieldModule,
     GridModule,
     InputModule,
+    LoadingModule,
     PaginatorModule,
     ProgressModule,
     RadioButtonModule,
