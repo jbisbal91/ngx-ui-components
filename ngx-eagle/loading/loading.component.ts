@@ -1,6 +1,6 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { SpinnerType } from './typings';
+import { SpinnerSize, SpinnerType } from './typings';
 
 @Component({
   selector: 'ngx-spinner',
@@ -22,7 +22,7 @@ import { SpinnerType } from './typings';
   styleUrls: ['./loading.component.scss']
 })
 export class LoadingComponent {
-  @Input() size: 'sm' | 'md' | 'lg' = 'md';
+  @Input() size: SpinnerSize = 'md';
   @Input() hidden: boolean = false;
-  @Input() spinnerType: SpinnerType = 'dots';
+  @Input() spinnerType: SpinnerType = 'bars';
 }

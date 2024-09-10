@@ -42,6 +42,23 @@
                         </app-component-viewer>
                 </div>
         </div>
+
+        <div ngx-row class="component-viewer">
+                <div class="component-viewer-item" ngx-col ngxSpan="12">
+                        <app-component-viewer [tabs]="variation3DemoLoading">
+                                <div demo-viewer-example>
+                                        <app-loading-demo3></app-loading-demo3>
+                                </div>
+                                <div demo-viewer-title>[spinnerType] defines the style of the spinner.</div>
+                                <div demo-viewer-description>
+                                        <p> Bar Spinner: Animated with bars.</p>
+                                        <p>Dot Spinner: Animated with dots.</p>
+                                </div>
+                        </app-component-viewer>
+
+                </div>
+        </div>
+
         <!---------API---------->
         <h2 class="mt-4 mb-4">API</h2>
         <h3 class="mt-4 mb-4">ngx-loading</h3>

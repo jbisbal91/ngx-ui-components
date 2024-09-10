@@ -40,10 +40,6 @@ section {
   width: 100%;
 }
 
-section::-webkit-scrollbar {
-  display: none;
-}
-
 $compact: 600px;
 $medium: 840px;
 $expanded: 1200px;

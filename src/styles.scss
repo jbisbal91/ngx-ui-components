@@ -7,6 +7,26 @@ body {
   scroll-behavior: inherit;
 }
 
+/* Estilos generales de la barra de desplazamiento */
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  transition: background 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  background: var(--neutral-7, #8c8c8c);
+}
+
 @font-face {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
   font-style: normal;

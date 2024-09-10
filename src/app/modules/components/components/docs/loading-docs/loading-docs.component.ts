@@ -13,7 +13,9 @@ export class LoadingDocsComponent implements OnInit {
   propertiesLoading: Property[] = [];
   variation1DemoLoading!: Tabs[];
   variation2DemoLoading!: Tabs[];
-  constructor(private http: HttpClient) {}
+  variation3DemoLoading!: Tabs[];
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.variation1DemoLoading = [
@@ -75,8 +77,39 @@ export class LoadingDocsComponent implements OnInit {
         },
       },
     ];
-    
-    this.propertiesLoading = [      
+
+    this.variation3DemoLoading = [
+      {
+        tabTitle: 'HTML',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/loading/loading-demo3/loading-demo3.component.html',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'TS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/loading/loading-demo3/loading-demo3.component.ts',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'SCSS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/loading/loading-demo3/loading-demo3.component.scss',
+            { responseType: 'text' }
+          ),
+        },
+      },
+    ]
+
+
+    this.propertiesLoading = [
       {
         property: '[size]',
         description: 'Size of the loading spinner',
@@ -88,6 +121,12 @@ export class LoadingDocsComponent implements OnInit {
         description: 'Hide the loading spinner',
         type: 'boolean',
         default: 'false',
+      },
+      {
+        property: '[spinnerType]',
+        description: 'Type of the loading spinner',
+        type: "'bars' | 'dots'",
+        default: 'bars',
       }
     ];
   }

@@ -144,6 +144,7 @@ import { ImageCropperDemo1Component } from './components/demos/image-cropper/ima
 import { LoadingDocsComponent } from './components/docs/loading-docs/loading-docs.component';
 import { LoadingDemo1Component } from './components/demos/loading/loading-demo1/loading-demo1.component';
 import { LoadingDemo2Component } from './components/demos/loading/loading-demo2/loading-demo2.component';
+import { LoadingDemo3Component } from './components/demos/loading/loading-demo3/loading-demo3.component';
 
 export function getHighlightLanguages() {
   return {
@@ -153,7 +154,7 @@ export function getHighlightLanguages() {
   };
 }
 
-const standalone = [DialogRef1Component,ImageCropperDemo1Component];
+const standalone = [DialogRef1Component, ImageCropperDemo1Component];
 
 const components = [
   ComponentsComponent,
@@ -224,10 +225,15 @@ const components = [
   GridDemo3Component,
   GridDemo4Component,
   GridDocsComponent,
+  ImageCropperDocsComponent,
   InputDemo1Component,
   InputDemo3Component,
   InputDemo5Component,
   InputDocsComponent,
+  LoadingDocsComponent,
+  LoadingDemo1Component,
+  LoadingDemo2Component,
+  LoadingDemo3Component,
   ProgressDemo1Component,
   ProgressDemo2Component,
   ProgressDemo3Component,
@@ -289,7 +295,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, ImageCropperDocsComponent, LoadingDocsComponent, LoadingDemo1Component, LoadingDemo2Component],
+  declarations: [components],
   exports: [components, standalone],
   imports: [
     CommonModule,
