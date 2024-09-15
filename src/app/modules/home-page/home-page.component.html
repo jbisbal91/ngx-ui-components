@@ -74,12 +74,9 @@
             <p class="text-xl font-normal">{{ component.title }}</p>
           </ngx-card-header>
           <ngx-card-content class="mt-4 mb-4">
-            <img
-              draggable="false"
-              ngx-card-image
-              [src]="component.src"
-              alt="component"
-            />
+           <span class="material-symbols-outlined">
+            {{ component.icon }}
+           </span>
           </ngx-card-content>
         </ngx-card>
       </div>

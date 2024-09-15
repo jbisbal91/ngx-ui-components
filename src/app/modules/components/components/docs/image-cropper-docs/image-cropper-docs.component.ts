@@ -19,7 +19,7 @@ export class ImageCropperDocsComponent implements OnInit {
         tabTitle: 'HTML',
         tabContent: {
           code: this.http.get(
-            'assets/demos/resize/resize-demo1/resize-demo1.component.html',
+            'assets/demos/image-cropper/image-cropper-demo1/image-cropper-demo1.component.html',
             { responseType: 'text' }
           ),
         },
@@ -28,7 +28,7 @@ export class ImageCropperDocsComponent implements OnInit {
         tabTitle: 'TS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/resize/resize-demo1/resize-demo1.component.ts',
+            'assets/demos/image-cropper/image-cropper-demo1/image-cropper-demo1.component.ts',
             { responseType: 'text' }
           ),
         },
@@ -37,7 +37,7 @@ export class ImageCropperDocsComponent implements OnInit {
         tabTitle: 'SCSS',
         tabContent: {
           code: this.http.get(
-            'assets/demos/resize/resize-demo1/resize-demo1.component.scss',
+            'assets/demos/image-cropper/image-cropper-demo1/image-cropper-demo1.component.scss',
             { responseType: 'text' }
           ),
         },
@@ -136,14 +136,14 @@ export class ImageCropperDocsComponent implements OnInit {
         default: 'false',
       },
       {
-        property: '[resizeToWidth]',
-        description: 'Resizes the cropped image to a specific width',
+        property: '[image-cropperToWidth]',
+        description: 'image-croppers the cropped image to a specific width',
         type: 'number',
         default: '-',
       },
       {
-        property: '[resizeToHeight]',
-        description: 'Resizes the cropped image to a specific height',
+        property: '[image-cropperToHeight]',
+        description: 'image-croppers the cropped image to a specific height',
         type: 'number',
         default: '-',
       },
@@ -226,8 +226,8 @@ export class ImageCropperDocsComponent implements OnInit {
         default: 'false',
       },
       {
-        property: '[hideResizeSquares]',
-        description: 'Hides the resize squares around the cropper',
+        property: '[hideimage-cropperSquares]',
+        description: 'Hides the image-cropper squares around the cropper',
         type: 'boolean',
         default: 'false',
       },

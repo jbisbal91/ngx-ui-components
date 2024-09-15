@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 export interface NavComponents {
   path: string;
   title: string;
-  src: string;
+  icon: string;
 }
 
 @Injectable({
@@ -18,147 +18,147 @@ export class ComponentsService {
       {
         path: '/components/avatar',
         title: 'Avatar',
-        src: 'assets/images/components/Avatar.svg',
+        icon: 'account_circle',
       },
       {
         path: '/components/badge',
         title: 'Badge',
-        src: 'assets/images/components/Badge.svg',
+        icon: 'ripples',
       },
       {
         path: '/components/button',
         title: 'Button',
-        src: 'assets/images/components/Button.svg',
+        icon: 'buttons_alt',
       },
       {
         path: '/components/carousel',
         title: 'Carousel',
-        src: 'assets/images/components/Carousel.svg',
+        icon: 'view_carousel',
       },
       {
         path: '/components/card',
         title: 'Card',
-        src: 'assets/images/components/Card.svg',
+        icon: 'cards',
       },
       {
         path: '/components/checkbox',
         title: 'Checkbox',
-        src: 'assets/images/components/CheckBox.svg',
+        icon: 'check_box',
       },
       {
         path: '/components/datepicker',
         title: 'Datepicker',
-        src: 'assets/images/components/DatePicker.svg',
+        icon: 'calendar_month',
       },
       {
         path: '/components/dialog',
         title: 'Dialog',
-        src: 'assets/images/components/Dialog.svg',
+        icon: 'dialogs',
       },
       {
         path: '/components/divider',
         title: 'Divider',
-        src: 'assets/images/components/Divider.svg',
+        icon: 'view_day',
       },
       {
         path: '/components/drawer',
         title: 'Drawer',
-        src: 'assets/images/components/Drawer.svg',
+        icon: 'bottom_drawer',
       },
       {
         path: '/components/dropdown',
         title: 'Dropdown',
-        src: 'assets/images/components/Dropdown.svg',
+        icon: 'dropdown',
       },
       {
         path: '/components/expansion',
         title: 'Expansion Panel',
-        src: 'assets/images/components/ExpansionPanel.svg',
+        icon: 'density_medium',
       },
       {
         path: '/components/grid',
         title: 'Grid',
-        src: 'assets/images/components/Grid.svg',
+        icon: 'grid_on',
       },
       {
         path: '/components/image-cropper',
         title: 'Image Cropper',
-        src: 'assets/images/components/ImageCropper.svg',
+        icon: 'crop',
       },
       {
         path: '/components/input',
         title: 'Input',
-        src: 'assets/images/components/Input.svg',
+        icon: 'rectangle',
       },
       {
         path: '/components/loading',
         title: 'loading',
-        src: 'assets/images/components/Loading.svg',
+        icon: 'emergency',
       },
       {
         path: '/components/paginator',
         title: 'Paginator',
-        src: 'assets/images/components/Pagination.svg',
+        icon: 'page_control',
       },
       {
         path: '/components/progress',
         title: 'Progress',
-        src: 'assets/images/components/Progress.svg',
+        icon: 'progress_activity',
       },
       {
         path: '/components/rate',
         title: 'Rate',
-        src: 'assets/images/components/Rate.svg',
+        icon: 'star_rate',
       },
       {
         path: '/components/resize',
         title: 'Resize',
-        src: 'assets/images/components/Resize.svg',
+        icon: 'resize',
       },
       {
         path: '/components/radio-button',
         title: 'Radio button',
-        src: 'assets/images/components/Radio.svg',
+        icon: 'radio_button_checked',
       },
       {
         path: '/components/select',
         title: 'Select',
-        src: 'assets/images/components/Select.svg',
+        icon: 'list_alt',
       },
       {
         path: '/components/signature',
         title: 'Signature',
-        src: 'assets/images/components/Signature.svg',
+        icon: 'signature',
       },
       {
         path: '/components/switch',
         title: 'Switch',
-        src: 'assets/images/components/Switch.svg',
+        icon: 'toggle_on',
       },
       {
         path: '/components/table',
         title: 'Table',
-        src: 'assets/images/components/Table.svg',
+        icon: 'table',
       },
       {
         path: '/components/tabs',
         title: 'Tabs',
-        src: 'assets/images/components/Tabs.svg',
+        icon: 'tab',
       },
       {
         path: '/components/tags',
         title: 'Tags',
-        src: 'assets/images/components/Tags.svg',
+        icon: 'chips',
       },
       {
         path: '/components/timelines',
         title: 'Timelines',
-        src: 'assets/images/components/Timeline.svg',
+        icon: 'timeline',
       },
       {
         path: '/components/tooltip',
         title: 'Tooltip',
-        src: 'assets/images/components/Tooltip.svg',
+        icon: 'tooltip_2',
       },
     ];
     return of(navComponents);

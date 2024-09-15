@@ -22,10 +22,20 @@ ngx-card-content {
   justify-content: center;
   align-items: center;
 
-  img {
-    max-width: 10rem;
-    max-height: 7rem;
+  .material-symbols-outlined {
+   font-size: 96px;
   }
+}
+
+ngx-card:hover {  
+  color: var(--primary-7);
+  .material-symbols-outlined {
+    font-variation-settings:
+                        'FILL' 1,
+                        'wght' 400,
+                        'GRAD' 0,
+                        'opsz' 24
+   }
 }
 
 .input-search {
