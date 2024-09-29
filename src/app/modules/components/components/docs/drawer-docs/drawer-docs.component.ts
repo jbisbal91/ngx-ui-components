@@ -14,6 +14,7 @@ export class DrawerDocsComponent implements OnInit {
   variation1DemoDrawer!: Tabs[];
   variation2DemoDrawer!: Tabs[];
   variation3DemoDrawer!: Tabs[];
+  variation4DemoDrawer!: Tabs[];
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
@@ -106,6 +107,37 @@ export class DrawerDocsComponent implements OnInit {
         },
       },
     ];
+
+    this.variation4DemoDrawer = [
+      {
+        tabTitle: 'HTML',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/drawer/drawer-demo4/drawer-demo4.component.html',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'TS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/drawer/drawer-demo4/drawer-demo4.component.ts',
+            { responseType: 'text' }
+          ),
+        },
+      },
+      {
+        tabTitle: 'SCSS',
+        tabContent: {
+          code: this.http.get(
+            'assets/demos/drawer/drawer-demo4/drawer-demo4.component.scss',
+            { responseType: 'text' }
+          ),
+        },
+      },
+    ];
+
 
     this.propertiesDrawer = [
       {

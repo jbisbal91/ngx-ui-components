@@ -1,8 +1,16 @@
-<div class="color-palette" *ngIf="showPointerColors">
-        <button [class.active]="pointerColor === color" *ngFor="let color of pointerColors" [style.background]="color"
-                (click)="changeColor(color)"></button>
+<div class="signature-action">
+        <svg class="clean-signature" [class.disabled]="!dirty" *ngIf="showClearButton"
+                xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="currentColor" (click)="clean()">
+                <path
+                        d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+        </svg>
+        <div class="color-palette" *ngIf="showPointerColors">
+                <button [class.active]="pointerColor === color" *ngFor="let color of pointerColors"
+                        [style.background]="color" (click)="changeColor(color)"></button>
+        </div>
 </div>
-<div class="signature-wrapper-content" [style.height.px]="height + 32" [style.width.px]="width + 64">
+<div class="signature-wrapper-content">
         <div class="signature-pad">
                 <svg class="sig-icon" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960"
                         width="40px" fill="currentColor">
@@ -11,9 +19,4 @@
                 </svg>
                 <canvas #canvas></canvas>
         </div>
-        <svg *ngIf="showClearButton" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                width="24px" fill="currentColor" class="clean-signature" (click)="clean()">
-                <path
-                        d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
-        </svg>
 </div>

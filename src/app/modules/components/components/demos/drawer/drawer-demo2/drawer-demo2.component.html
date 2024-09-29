@@ -1,4 +1,4 @@
-<ngx-radio-group [(ngModel)]="ngxPlacement">
+<ngx-radio-group [(ngModel)]="placement">
   <ngx-radio-button ngxValue="top"> top </ngx-radio-button>
   <ngx-radio-button ngxValue="right"> right </ngx-radio-button>
   <ngx-radio-button ngxValue="bottom"> bottom </ngx-radio-button>
@@ -15,10 +15,12 @@
 </button>
 
 <ngx-drawer
-  [(ngxVisible)]="visible"
-  [ngxPlacement]="ngxPlacement"
+  [(visible)]="visible"
+  [placement]="placement"
   ngxBackdrop="true"
   ngxBackdropClosable="true"
+  [closeMobile]="placement === 'top' || placement === 'bottom'"
+  [closeDesktop]="placement === 'right' || placement === 'left'"
 >
   <div class="container">
     <p class="title">Basic Drawer</p>

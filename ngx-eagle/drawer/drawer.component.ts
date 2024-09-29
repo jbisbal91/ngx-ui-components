@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { NgComponentOutlet, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewChecked,
   Component,
@@ -7,111 +7,93 @@ import {
   Input,
   Output,
   Renderer2,
+  TemplateRef,
+  Type,
   ViewChild,
   booleanAttribute,
 } from '@angular/core';
-import { NgxDrawerPlacement } from './typings';
+import { DrawerPlacement } from './typings';
+import { TouchModule } from 'ngx-eagle/touch';
+import { Drawer } from './drawer.service';
 
 @Component({
   selector: 'ngx-drawer',
-  template: ` <div
-    #backdrop
-    (click)="closeDrawer($event)"
-    *ngIf="internalVisible"
-    class="ngx-backdrop"
-  >
-    <div
-      #drawer
-      class="ngx-drawer"
-      [class.ngx-drawer-placement-top]="ngxPlacement === 'top'"
-      [class.ngx-drawer-placement-right]="ngxPlacement === 'right'"
-      [class.ngx-drawer-placement-bottom]="ngxPlacement === 'bottom'"
-      [class.ngx-drawer-placement-left]="ngxPlacement === 'left'"
-    >
-      <ng-content></ng-content>
-    </div>
-  </div>`,
+  templateUrl: './drawer.component.html',
+  styleUrls: ['./drawer.component.scss'],
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, TouchModule, NgTemplateOutlet, NgComponentOutlet],
 })
 export class DrawerComponent implements AfterViewChecked {
-  @Input({ transform: booleanAttribute }) ngxBackdrop: boolean = true;
-  @Input({ transform: booleanAttribute }) ngxBackdropClosable: boolean = true;
-  @Input() ngxPlacement: NgxDrawerPlacement = 'left';
+  @Input({ transform: booleanAttribute }) backdrop: boolean = true;
+  @Input({ transform: booleanAttribute }) backdropClosable: boolean = true;
+  @Input() placement: DrawerPlacement = 'left';
+  @Input({ transform: booleanAttribute }) closeMobile: boolean = false;
+  @Input({ transform: booleanAttribute }) closeDesktop: boolean = false;
 
-  internalVisible: boolean = false;
+  templateContent!: TemplateRef<any> | null;
+  componentContent!: Type<any> | null;
+
+  @Output() visibleChange = new EventEmitter<boolean>();
+  @Output() onOpen = new EventEmitter<void>();
+  @Output() onClose = new EventEmitter<void>();
+
+  internalVisible = false;
 
   @Input()
-  get ngxVisible(): boolean {
+  get visible(): boolean {
     return this.internalVisible;
   }
 
-  set ngxVisible(val: boolean) {
+  set visible(val: boolean) {
     if (this.internalVisible !== val) {
       this.internalVisible = val;
       if (val) {
         this.openDrawer();
       }
-      this.ngxVisibleChange.emit(val);
+      this.visibleChange.emit(val);
     }
   }
-
-  @Output() ngxVisibleChange: EventEmitter<boolean> =
-    new EventEmitter<boolean>();
 
   @ViewChild('backdrop') backdropRef!: ElementRef;
   @ViewChild('drawer') drawerRef!: ElementRef;
 
-  onChange: any = () => {};
-  onTouched: any = () => {};
-
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2,
+    private drawer: Drawer
+  ) { }
 
   ngAfterViewChecked(): void {
-    this.setBgBackdrop();
+    this.updateBackdropStyle();
   }
 
-  setBgBackdrop() {
+  closingByTouch(touch: string) {
+    if (touch === 'down' && this.placement === 'bottom') {
+      this.closingAction();
+    } else if (touch === 'up' && this.placement === 'top') {
+      this.closingAction();
+    }
+  }
+
+  updateBackdropStyle() {
     if (this.backdropRef) {
-      const bgBackdrop = this.ngxBackdrop
-        ? 'rgba(0, 0, 0, 0.65)'
-        : 'transparent';
-      this.renderer.setStyle(
-        this.backdropRef.nativeElement,
-        'background-color',
-        bgBackdrop
-      );
+      const bgColor = this.backdrop ? 'rgba(0, 0, 0, 0.65)' : 'transparent';
+      this.renderer.setStyle(this.backdropRef.nativeElement, 'background-color', bgColor);
     }
   }
 
   openDrawer() {
+    document.body.style.overflow = 'hidden';
     setTimeout(() => {
-      if (
-        this.drawerRef &&
-        (this.ngxPlacement === 'top' ||
-          this.ngxPlacement === 'bottom' ||
-          this.ngxPlacement === 'right' ||
-          this.ngxPlacement === 'left')
-      ) {
-        const axis =
-          this.ngxPlacement === 'top' || this.ngxPlacement === 'bottom'
-            ? 'Y'
-            : 'X';
-        this.renderer.setStyle(
-          this.drawerRef.nativeElement,
-          'transform',
-          `translate${axis}(0px)`
-        );
+      if (this.drawerRef) {
+        const axis = ['top', 'bottom'].includes(this.placement) ? 'Y' : 'X';
+        this.renderer.setStyle(this.drawerRef.nativeElement, 'transform', `translate${axis}(0)`);
+        this.onOpen.emit();
       }
     });
   }
 
   closeDrawer(event: Event) {
-    const clickedElement = event.target as HTMLElement;
-    const isClickOnParent = clickedElement === this.backdropRef.nativeElement;
-    const isClickOnChild =
-      this.drawerRef.nativeElement.contains(clickedElement);
-    if (isClickOnParent && !isClickOnChild && this.ngxBackdropClosable) {
+    if (this.backdropRef.nativeElement === event.target && this.backdropClosable) {
       this.closingAction();
     }
   }
@@ -119,18 +101,17 @@ export class DrawerComponent implements AfterViewChecked {
   closingAction() {
     if (this.drawerRef) {
       const transformMap = {
-        bottom: 'translateY(100%)',
         top: 'translateY(-100%)',
-        right: 'translateX(100%)',
+        bottom: 'translateY(100%)',
         left: 'translateX(-100%)',
+        right: 'translateX(100%)',
       };
-      this.renderer.setStyle(
-        this.drawerRef.nativeElement,
-        'transform',
-        transformMap[this.ngxPlacement]
-      );
+      this.renderer.setStyle(this.drawerRef.nativeElement, 'transform', transformMap[this.placement]);
       setTimeout(() => {
-        this.ngxVisibleChange.emit(false);
+        document.body.removeAttribute('style');
+        this.drawer.closeAll();
+        this.visibleChange.emit(false);
+        this.onClose.emit();
       }, 500);
     }
   }

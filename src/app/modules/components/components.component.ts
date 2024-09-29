@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { NavigationEnd, Router } from '@angular/router';
+import { Drawer } from 'ngx-eagle/drawer';
 import { filter } from 'rxjs';
+import { ComponentNavComponent } from './components/component-nav/component-nav.component';
 
 @Component({
   selector: 'app-components-root',
@@ -10,9 +12,8 @@ import { filter } from 'rxjs';
 })
 export class ComponentsComponent implements OnInit {
   activatedRouteName: string = '';
-  visible: boolean = false;
 
-  constructor(private router: Router, private titleService: Title) {}
+  constructor(private router: Router, private titleService: Title, private drawer:Drawer) {}
 
   ngOnInit(): void {
     this.activatedRouteName = this.titleService
@@ -38,10 +39,9 @@ export class ComponentsComponent implements OnInit {
   }
 
   openSideBar() {
-    this.visible = true;
-  }
-
-  close() {
-    this.visible = false;
+    this.drawer.open(ComponentNavComponent,{
+      placement: 'left',
+      closeDesktop: true,
+    });
   }
 }

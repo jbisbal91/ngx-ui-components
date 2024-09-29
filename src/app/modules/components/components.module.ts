@@ -145,6 +145,7 @@ import { LoadingDocsComponent } from './components/docs/loading-docs/loading-doc
 import { LoadingDemo1Component } from './components/demos/loading/loading-demo1/loading-demo1.component';
 import { LoadingDemo2Component } from './components/demos/loading/loading-demo2/loading-demo2.component';
 import { LoadingDemo3Component } from './components/demos/loading/loading-demo3/loading-demo3.component';
+import { DrawerDemo4Component } from './components/demos/drawer/drawer-demo4/drawer-demo4.component';
 
 export function getHighlightLanguages() {
   return {
@@ -295,7 +296,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, DrawerDemo4Component],
   exports: [components, standalone],
   imports: [
     CommonModule,

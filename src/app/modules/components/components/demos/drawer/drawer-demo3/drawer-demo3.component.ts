@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgxDrawerPlacement } from 'ngx-eagle/drawer/typings';
+import { DrawerPlacement } from 'ngx-eagle/drawer/typings';
 
 @Component({
   selector: 'app-drawer-demo3',
@@ -8,12 +8,8 @@ import { NgxDrawerPlacement } from 'ngx-eagle/drawer/typings';
 })
 export class DrawerDemo3Component {
   visible = false;
-  ngxPlacement: NgxDrawerPlacement = 'right';
+  placement: DrawerPlacement = 'right';
   openDrawer() {
     this.visible = true;
-  }
-
-  close(): void {
-    this.visible = false;
   }
 }

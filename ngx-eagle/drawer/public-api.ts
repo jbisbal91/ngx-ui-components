@@ -1,3 +1,4 @@
-export * from './drawer.module';
-export * from './drawer.component';
+export { DrawerModule } from './drawer.module';
+export { DrawerComponent } from './drawer.component';
+export { Drawer } from './drawer.service';
 export * from './typings';
