@@ -78,4 +78,11 @@ pre {
         text-align: justify;
     }
 
+    ngx-avatar {
+        margin-top: 1rem;
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+    }
+
 }

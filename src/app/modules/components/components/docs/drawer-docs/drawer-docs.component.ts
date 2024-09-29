@@ -11,6 +11,7 @@ export class DrawerDocsComponent implements OnInit {
   moduleImport = "import { DrawerModule } from 'ngx-eagle/drawer';";
   displayedColumns: string[] = ['Property', 'Description', 'Type', 'Default'];
   propertiesDrawer: Property[] = [];
+  propertiesDrawerService: Property[] = [];
   variation1DemoDrawer!: Tabs[];
   variation2DemoDrawer!: Tabs[];
   variation3DemoDrawer!: Tabs[];
@@ -141,36 +142,75 @@ export class DrawerDocsComponent implements OnInit {
 
     this.propertiesDrawer = [
       {
-        property: '[ngxBackdrop]',
+        property: '[backdrop]',
         description: 'Whether to show backdrop or not.',
         type: 'boolean',
         default: 'true',
       },
       {
-        property: '[ngxBackdropClosable]',
+        property: '[backdropClosable]',
         description:
           'Clicking on the backdrop (area outside the Drawer) to close the Drawer or not.',
         type: 'boolean',
         default: 'true',
       },
       {
-        property: '[ngxPlacement]',
+        property: '[placement]',
         description: 'The placement of the Drawer.',
         type: "'top' | 'right' | 'bottom' | 'left'",
         default: 'left',
       },
       {
-        property: '[ngxVisible]',
+        property: '[(visible)]',
         description:
           'Whether the Drawer dialog is visible or not, you can use [(ngxVisible)] two-way binding',
         type: 'boolean',
         default: 'false',
       },
       {
-        property: '(ngxVisibleChange)',
+        property: '(visibleChange)',
         description:
           'The callback function that is triggered when the state changes.',
         type: 'EventEmitter<boolean>',
+        default: '-',
+      },
+      {
+        property: 'closeMobile',
+        description:'Whether to close the Drawer dialog on mobile devices or not.',
+        type: 'boolean',
+        default: 'false',
+      },
+      {
+        property: 'closeDesktop',
+        description:'Whether to close the Drawer dialog on desktop devices or not.',
+        type: 'boolean',
+        default: 'false',
+      },
+      {
+        property: '(onOpen)',
+        description:'The callback function that is triggered when the Drawer dialog is opened.',
+        type: 'EventEmitter<void>',
+        default: '-',
+      },
+      {
+        property: '(onClose)',
+        description:'The callback function that is triggered when the Drawer dialog is closed.',
+        type: 'EventEmitter<void>',
+        default: '-',
+      },
+    ];
+
+    this.propertiesDrawerService = [
+      {
+        property: 'open()',
+        description: 'Open the Drawer dialog.',
+        type: 'void',
+        default: '-',
+      },
+      {
+        property: 'closeAll()',
+        description: 'Close all Drawer dialogs.',
+        type: 'void',
         default: '-',
       },
     ];

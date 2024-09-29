@@ -32,6 +32,7 @@ import { TooltipDocsComponent } from './components/docs/tooltip-docs/tooltip-doc
 import { ResizeDocsComponent } from './components/docs/resize-docs/resize-docs.component';
 import { ImageCropperDocsComponent } from './components/docs/image-cropper-docs/image-cropper-docs.component';
 import { LoadingDocsComponent } from './components/docs/loading-docs/loading-docs.component';
+import { SkeletonDocsComponent } from './components/docs/skeleton-docs/skeleton-docs.component';
 
 const routes: Routes = [
   {
@@ -62,9 +63,10 @@ const routes: Routes = [
           { path: 'progress', component: ProgressDocsComponent },
           { path: 'radio-button', component: RadioButtonDocsComponent },
           { path: 'rate', component: RateDocsComponent },
-          { path: 'resize', component: ResizeDocsComponent },          
+          { path: 'resize', component: ResizeDocsComponent },
           { path: 'select', component: SelectDocsComponent },
           { path: 'signature', component: SignatureDocsComponent },
+          { path: 'skeleton', component: SkeletonDocsComponent },
           { path: 'switch', component: SwitchDocsComponent },
           { path: 'tabs', component: TabDocsComponent },
           { path: 'table', component: TableDocsComponent },
@@ -87,4 +89,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ComponentsRoutingModule {}
+export class ComponentsRoutingModule { }

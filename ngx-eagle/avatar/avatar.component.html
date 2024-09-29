@@ -1,4 +1,4 @@
-<div class="ngx-avatar">
+<div class="ngx-avatar" [ngStyle]="{'background-color': !ngxSrc ? 'transparent' : ''}">
                 <img *ngIf="ngxSrc" [src]="ngxSrc" alt="ngx-avatar" />   
         <span *ngIf="ngxText && !ngxSrc">{{ getInitials(ngxText) }}</span>
         <span *ngIf="!ngxSrc && !ngxText" class="ngx-avatar-user"><svg viewBox="64 64 896 896"

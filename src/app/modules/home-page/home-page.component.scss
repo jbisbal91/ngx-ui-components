@@ -89,7 +89,8 @@ ngx-card {
   min-width: 12rem;
   height: 12.5rem;
   cursor: pointer;
-  display: inline-flex; 
+  display: inline-flex;
+  border: 1px solid var(--ngx-border-color);
 }
 
 ngx-card-content {

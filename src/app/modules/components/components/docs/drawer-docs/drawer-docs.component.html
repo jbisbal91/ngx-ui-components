@@ -72,7 +72,34 @@
   <h2 class="mt-4 mb-4">API</h2>
   <h3 class="mt-4 mb-4">ngx-drawer</h3>
   <div class="angular-entities flex gap-2 mb-4">
-     <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto', y:'540px' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesDrawer">
+        <td>
+          <ngx-tag>{{
+            prop.property
+            }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-8 mb-4">Drawer</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#1890FF">service</ngx-tag>
     <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
   </div>
   <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
@@ -82,14 +109,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let prop of propertiesDrawer">
+      <tr *ngFor="let prop of propertiesDrawerService">
         <td>
-          <ngx-tag ngxColor="#006847">{{
+          <ngx-tag>{{
             prop.property
-          }}</ngx-tag>
+            }}</ngx-tag>
         </td>
         <td>{{ prop.description }}</td>
-                 <td>
+        <td>
           <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
         </td>
         <td>{{ prop.default }}</td>

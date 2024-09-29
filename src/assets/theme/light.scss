@@ -1,6 +1,9 @@
 :root[theme="light"] {
-  --ngx-theme-background: rgb(255, 255, 255);
-  --ngx-theme-color: #444444;
+  --ngx-theme-background: #F6F8FA;
+  --ngx-secondary-background-color: var(--neutral-1);
+  --ngx-navbar-color: #455A64;
+  --ngx-active-bg: #ECEEF0;
+  --ngx-theme-color: var(--neutral-8);
   --ngx-theme-bg-component-nav: rgb(250, 250, 250);
   --ngx-theme-color-component-nav: rgb(43, 43, 43);
   --ngx-theme-border-top-1: 1px solid transparent;
@@ -32,6 +35,6 @@
 
   --ngx-table-thead: #E5E5E5;
 
-  --ngx-calendar-bc:#ffffff;
-  --ngx-menu-bc:#ffffff;
+  --ngx-calendar-bc: #ffffff;
+  --ngx-menu-bc: #ffffff;
 }

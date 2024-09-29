@@ -4,8 +4,7 @@ import { DrawerRef4Component } from './drawer-ref4.component';
 
 @Component({
   selector: 'app-drawer-demo4',
-  templateUrl: './drawer-demo4.component.html',
-  styleUrls: ['./drawer-demo4.component.scss']
+  templateUrl: './drawer-demo4.component.html'
 })
 export class DrawerDemo4Component {
 

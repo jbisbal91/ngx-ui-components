@@ -22,6 +22,7 @@ import { RateModule } from 'ngx-eagle/rate';
 import { ResizableModule } from 'ngx-eagle/resizable';
 import { SelectModule } from 'ngx-eagle/select';
 import { SignatureModule } from 'ngx-eagle/signature';
+import { SkeletonModule } from 'ngx-eagle/skeleton';
 import { SwitchModule } from 'ngx-eagle/switch';
 import { TabModule } from 'ngx-eagle/tab';
 import { TableModule } from 'ngx-eagle/table';
@@ -53,6 +54,7 @@ import { TooltipModule } from 'ngx-eagle/tooltip';
     ResizableModule,
     SelectModule,
     SignatureModule,
+    SkeletonModule,
     SwitchModule,
     TabModule,
     TableModule,

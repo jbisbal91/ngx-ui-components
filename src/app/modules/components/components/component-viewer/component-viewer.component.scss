@@ -35,7 +35,7 @@
 }
 
 .demo-viewer-wrapper {
-  border: 1px solid #F0F0F0;
+  border: 1px solid var(--ngx-border-color);
   border-radius: 8px;
   min-width: 300px;
   max-width: 100%;
@@ -66,7 +66,7 @@
   position: relative;
   top: 50%;
   border-top: 1px solid transparent;
-  border-top-color: #F0F0F0;
+  border-top-color: var(--ngx-border-color);
   border-bottom: 0;
   content: "";
 }
@@ -93,7 +93,7 @@
   padding: 8px 20px;
   display: flex;
   align-items: center;
-  border-top: 1px solid #F0F0F0;
+  border-top: 1px solid var(--ngx-border-color);
 }
 
 .toolbar-action {

@@ -1,8 +1,9 @@
 nav {
   height: 45px;
   width: 100%;
-  background-color: var(--primary-6);
-  color: rgb(232, 234, 237);
+  background-color: var(--ngx-secondary-background-color);
+  border-bottom: 1px solid var(--ngx-border-color);
+  color: var(--ngx-navbar-color);
   display: flex;
   align-items: center;
   box-shadow: 0 1px 2px #0000001a, 0 2px 4px #0000000d, 0 0 8px #00000008;
@@ -17,8 +18,7 @@ nav {
 }
 
 .menu {
-  cursor: pointer;
-  filter: invert(100%) sepia(76%) saturate(348%) hue-rotate(209deg) brightness(116%) contrast(101%);
+  cursor: pointer; 
 }
 
 ul {

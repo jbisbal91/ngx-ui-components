@@ -1,13 +1,15 @@
 nav {
+  background-color: var(--ngx-secondary-background-color);
+  border-bottom: 1px solid var(--ngx-border-color);
+  color: var(--ngx-navbar-color);
   height: 45px;
   width: 100%;
-  background-color: var(--primary-6);
   display: flex;
   align-items: center;
   position: relative;
-  box-shadow: 0 1px 2px #0000001a, 0 2px 4px #0000000d, 0 0 8px #00000008;
   padding-inline-start: 2.25rem;
   padding-inline-end: 2.25rem;
+
 }
 
 .navbar-show-small {
@@ -40,7 +42,7 @@ ul {
 
 li {
   font-weight: 500;
-  color: rgb(232, 234, 237);
+  color: var(--ngx-navbar-color);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -55,7 +57,8 @@ li {
   height: 32px;
   padding: 0 1rem;
   border-radius: 0.25rem;
-  background-color: var(--primary-7);
+  background-color: var(--ngx-active-bg);
+  border: 1px solid var(--ngx-border-color);
 }
 
 a {
@@ -97,11 +100,12 @@ $extra-large: 1600px;
 .switch {
   background-color: transparent;
   overflow: hidden;
-  color: var(--ds-theme-color-on-surface-variant);
+  color: var(--ngx-navbar-color);;
 }
 
 .switch:hover {
   border: 1px solid currentColor;
+  user-select: none;
 }
 
 .light_mode,

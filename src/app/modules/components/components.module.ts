@@ -146,6 +146,10 @@ import { LoadingDemo1Component } from './components/demos/loading/loading-demo1/
 import { LoadingDemo2Component } from './components/demos/loading/loading-demo2/loading-demo2.component';
 import { LoadingDemo3Component } from './components/demos/loading/loading-demo3/loading-demo3.component';
 import { DrawerDemo4Component } from './components/demos/drawer/drawer-demo4/drawer-demo4.component';
+import { SkeletonDocsComponent } from './components/docs/skeleton-docs/skeleton-docs.component';
+import { SkeletonDemo1Component } from './components/demos/skeleton/skeleton-demo1/skeleton-demo1.component';
+import { SkeletonDemo2Component } from './components/demos/skeleton/skeleton-demo2/skeleton-demo2.component';
+import { SkeletonDemo3Component } from './components/demos/skeleton/skeleton-demo3/skeleton-demo3.component';
 
 export function getHighlightLanguages() {
   return {
@@ -296,7 +300,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, DrawerDemo4Component],
+  declarations: [components, DrawerDemo4Component, SkeletonDocsComponent, SkeletonDemo1Component, SkeletonDemo2Component, SkeletonDemo3Component],
   exports: [components, standalone],
   imports: [
     CommonModule,

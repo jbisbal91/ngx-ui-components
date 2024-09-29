@@ -1,14 +1,9 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  ElementRef,
   Input,
-  Renderer2,
-  ViewChild,
 } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { NgIf, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'ngx-avatar',
@@ -16,7 +11,7 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./avatar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf,NgStyle],
 })
 export class AvatarComponent {
   @Input() ngxSrc: string | null = null;

@@ -88,7 +88,7 @@
     <tbody>
       <tr *ngFor="let prop of propertiesAccordion">
         <td>
-          <ngx-tag ngxColor="#006847">{{ prop.property }}</ngx-tag>
+          <ngx-tag>{{ prop.property }}</ngx-tag>
         </td>
         <td>{{ prop.description }}</td>
         <td>
@@ -113,7 +113,7 @@
     <tbody>
       <tr *ngFor="let prop of propertiesExpansionPanel">
         <td>
-          <ngx-tag ngxColor="#006847">{{ prop.property }}</ngx-tag>
+          <ngx-tag>{{ prop.property }}</ngx-tag>
         </td>
         <td>{{ prop.description }}</td>
         <td>
@@ -123,4 +123,6 @@
       </tr>
     </tbody>
   </table>
+  <ngx-avatar
+    ngxSrc="https://avatars.githubusercontent.com/u/98631610?s=400&u=608bca36c57649f74d3977c5f2c0d6b6d34268c5&v=4"></ngx-avatar>
 </article>

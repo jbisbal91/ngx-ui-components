@@ -131,6 +131,11 @@ export class ComponentsService {
         icon: 'signature',
       },
       {
+        path: '/components/skeleton',
+        title: 'Skeleton',
+        icon: 'article',
+      },
+      {
         path: '/components/switch',
         title: 'Switch',
         icon: 'toggle_on',
