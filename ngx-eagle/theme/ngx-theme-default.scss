@@ -56,5 +56,15 @@
         --green-10: #092b00;
 
         --cropper-overlay-color: #f5f5f5;
+        --ngx-spinner-bars-bg: #000000;
         --ngx-border-color: #d1d9e0b3;
+
+        /* Variables for ngx-drawer styling */
+        --ngx-drawer-bg: #FFFFFF; /* Background color of the drawer */
+        --ngx-drawer-handle-bg:#AFB5BB; /* Background color of the handle */
+        --ngx-drawer-close-border: #595959; /* Border color of the close button */
+        --ngx-drawer-close-color: #595959; /* Icon color of the close button */
+
+        /* Variables for ngx-accordion styling */
+        --ngx-accordion-bg: #FFFFFF; /* Background color of the accordion */
       }

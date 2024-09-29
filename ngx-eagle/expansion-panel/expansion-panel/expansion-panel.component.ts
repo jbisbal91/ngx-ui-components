@@ -21,7 +21,6 @@ import { NgxExpandIconPosition, NgxType } from '../typings';
       [class.card-type]="ngxType && ngxType === 'card'"
       [class.bordered-type]="ngxType && ngxType === 'bordered'"
       [class.border-bottom-exp-item]="ngxType === 'bordered' && lastExP"
-      [style.backgroundColor]="ngxColor"
     >
       <div
         (click)="expand()"
@@ -85,7 +84,6 @@ export class ExpansionPanelComponent implements ExpansionPanel {
   @Input({ transform: booleanAttribute }) hideToggle: boolean = false;
   @Input() ngxLabel: any | TemplateRef<void>;
 
-  ngxColor: string = '';
   ngxType!: NgxType;
   ngxExpandIconPosition!: NgxExpandIconPosition;
 
