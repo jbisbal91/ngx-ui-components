@@ -27,7 +27,7 @@
 }
 
 .ngx-table thead {
-    background-color: var(--ngx-table-thead, #E5E5E5);
+    background-color: var(--ngx-table-thead-bg, #ECEEF0);
     position: sticky;
     top: 0;
     font-weight: 600;
@@ -47,7 +47,7 @@
 .ngx-table td {
     text-align: left;
     padding: 12px;
-    border-bottom: 1px solid var(--ngx-table-border, #bfbfbf);
+    border-bottom: 1px solid var(--ngx-table-border-color, #d1d9e0b3);
     font-size: 14px;
     position: relative;
     /* Necesario para el control de redimensionamiento */
@@ -60,22 +60,22 @@
 /* Estilos de tabla con bordes */
 .ngx-table-bordered th,
 .ngx-table-bordered td {
-    border-right: 1px solid var(--ngx-table-border, #bfbfbf);
+    border-right: 1px solid var(--ngx-table-border-color, #d1d9e0b3);
 }
 
 .ngx-table-bordered th:first-child,
 .ngx-table-bordered td:first-child {
-    border-left: 1px solid var(--ngx-table-border, #bfbfbf);
+    border-left: 1px solid var(--ngx-table-border-color, #d1d9e0b3);
 }
 
 .ngx-table-bordered th {
-    border-top: 1px solid var(--ngx-table-border, #bfbfbf);
+    border-top: 1px solid var(--ngx-table-border-color, #d1d9e0b3);
 }
 
 /* Estilos adicionales */
 .ngx-table tbody>tr:hover {
     cursor: default;
-    background-color: var(--row-bg-color, #f5f5f5);
+    background-color: var(--ngx-table-row-bg, #ECEEF0);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s;
 }
@@ -129,7 +129,7 @@
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     transition: border-bottom 0.2s ease-in-out;
-    border-bottom: 7px solid var(--ngx-table-border, #bfbfbf);
+    border-bottom: 7px solid var(--ngx-table-border-color, #d1d9e0b3);
 }
 
 .ngx-table .ngx-table-column-sorters .ngx-arrow-up.active {
@@ -142,7 +142,7 @@
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     transition: border-top 0.2s ease-in-out;
-    border-top: 7px solid var(--ngx-table-border, #bfbfbf);
+    border-top: 7px solid var(--ngx-table-border-color, #d1d9e0b3);
 }
 
 .ngx-table .ngx-table-column-sorters .ngx-arrow-down.active {
@@ -161,7 +161,7 @@
 }
 
 .ngx-table th:hover .resize-handle {
-    border-left: 1px solid var(--ngx-table-border, #bfbfbf);
+    border-left: 1px solid var(--ngx-table-border-color, #d1d9e0b3);
 }
 
 *::-webkit-scrollbar {
