@@ -109,47 +109,11 @@ export class SkeletonDocsComponent  implements OnInit {
 
     this.propertiesSkeleton = [      
       {
-        property: '[width]',
-        description: 'Width of the canvas',
-        type: 'number',
-        default: '400',
-      },
-      {
-        property: '[height]',
-        description: 'Height of the canvas',
-        type: 'number',
-        default: '150',
-      },
-      {
-        property: '[pointerColors]',
-        description:'Array of colors for the pointer',
-        type: 'string[]',
-        default: '["#000000", "#2A7CFF"]',
-      },
-      {
-        property: '[pointerColor]',
-        description:'Color of the pointer',
-        type: 'string',
-        default: '#000000',
-      },
-      {
-        property: '[showClearButton]',
-        description:'Show clear button',
-        type: 'boolean',
-        default: 'true',
-      },
-      {
-        property: '[showPointerColors]',
-        description:'Show pointer colors',
-        type: 'boolean',
-        default: 'true',
-      },
-      {
-        property: '(skeletonComplete)',
-        description:'Event emitted when the skeleton is completed',
-        type: 'EventEmitter<string>',
-        default: '-',
-      },
+        property: '[skeleton]',
+        description: 'Type of the skeleton',
+        type: '"" | "text" | "avatar" | "button" | "row"',
+        default: '""',
+      }
     ];
   }
 }

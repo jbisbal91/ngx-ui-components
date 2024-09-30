@@ -8,14 +8,14 @@
 </button>
 
 <ngx-drawer
-  [(ngxVisible)]="visible"
-  [ngxPlacement]="ngxPlacement"
-  [ngxBackdropClosable]="false"
+  [(visible)]="visible"
+  [placement]="placement"
+  [backdropClosable]="false"
+  [closeDesktop]="true"
 >
   <div class="container">
     <div class="header">
       <p class="title">Basic Drawer</p>
-      <span class="material-symbols-outlined cursor-pointer" (click)="close()"> close </span>
     </div>
     <ngx-divider></ngx-divider>
     <p>Some contents...</p>
