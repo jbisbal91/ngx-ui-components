@@ -128,3 +128,7 @@ $extra-large: 1600px;
 .dark_mode {
   transform: translateY(48px);
 }
+
+.mark-github {
+  fill: var(--ngx-navbar-color);
+}
