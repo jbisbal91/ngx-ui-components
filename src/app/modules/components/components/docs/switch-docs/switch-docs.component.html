@@ -1,0 +1,101 @@
+<article class="main-article-template">
+  <!---------BREADCRUMBS---------->
+  <div class="mb-4">
+    <a class="font-extrabold" routerLink="/components">Components</a>
+    <a routerLink="/components/switch"> / Switch</a>
+  </div>
+
+  <!---------OVERVIEW---------->
+  <h1 class="mb-4">Switch</h1>
+  <p class="text-sm mb-4">Switching Selector.</p>
+  <!---------MODULE IMPORT---------->
+  <!---------WHEN TO USE---------->
+  <h4 class="mb-4">When To Use</h4>
+  <ul class="when-to-use text-sm mb-4">
+    <li>
+      If you need to represent the switching between two states or on-off state.
+    </li>
+    <li>
+      The difference between Switch and Checkbox is that Switch will trigger a
+      state change directly when you toggle it, while Checkbox is generally used
+      for state marking, which should work in conjunction with submit operation.
+    </li>
+  </ul>
+  <pre><code [highlight]="moduleImport"></code></pre>
+  <!---------EXAMPLES---------->
+  <h1 class="mb-2">Examples</h1>
+  <!---------DEMO VIEWER---------->
+
+  <div ngx-row class="component-viewer">
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation1DemoSwitch">
+        <div demo-viewer-example>
+          <app-switch-demo1></app-switch-demo1>
+        </div>
+        <div demo-viewer-title>Basic</div>
+        <div demo-viewer-description>
+          <p>The most basic usage.</p>
+        </div>
+      </app-component-viewer>
+      <app-component-viewer [tabs]="variation2DemoSwitch">
+        <div demo-viewer-example>
+          <app-switch-demo2></app-switch-demo2>
+        </div>
+        <div demo-viewer-title>Disabled</div>
+        <div demo-viewer-description>
+          <p>Disabled state of Switch.</p>
+        </div>
+      </app-component-viewer>
+    </div>
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation3DemoSwitch">
+        <div demo-viewer-example>
+          <app-switch-demo3></app-switch-demo3>
+        </div>
+        <div demo-viewer-title>Three sizes</div>
+        <div demo-viewer-description>
+          <p>[ngxSize] represents three types of size.</p>
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation4DemoSwitch">
+        <div demo-viewer-example>
+          <app-switch-demo4></app-switch-demo4>
+        </div>
+        <div demo-viewer-title>Allowed label</div>
+        <div demo-viewer-description>
+          <p>
+            Whether the label should appear after or before the slide switch.
+            Defaults to 'after'.
+          </p>
+        </div>
+      </app-component-viewer>
+    </div>
+  </div>
+  <!---------API---------->
+  <h2 class="mt-4 mb-4">API</h2>
+  <h3 class="mt-4 mb-4">ngx-switch</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesSwitch">
+        <td>
+          <ngx-tag>{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+</article>

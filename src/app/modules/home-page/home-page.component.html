@@ -1,0 +1,100 @@
+<div class="container">
+  <article>
+    <h1>NGX-EAGLE lib of Angular</h1>
+    <p class="text-sm text-justify leading-6">
+      NGX Eagle is a library of Angular components designed to simplify the
+      creation of attractive and customizable interfaces. Our components are
+      easy to use and modify, enabling developers to create impressive
+      applications quickly and easily.
+    </p>
+
+    <div class="pic-plus">
+      <img
+        class="logo-ngx"
+        src="assets/images/ngx-eagle-logo-fill.svg"
+        alt="logo"
+      />
+      <span class="">+</span>
+      <img
+        class="logo-angular"
+        src="assets/images/logo-angular.webp"
+        alt="logo-angular"
+      />
+    </div>
+
+    <h2 class="ngx-e-subtitle mb-4">Features</h2>
+    <ul class="text-sm text-justify mb-4 leading-7">
+      <li>
+        Variety of components available, from buttons and forms to progress bars
+        and cards.
+      </li>
+      <li>
+        Ease of style customization to fit your application's design needs.
+      </li>
+      <li>
+        Compatibility with the latest versions of Angular, ensuring optimal
+        performance and seamless integration.
+      </li>
+    </ul>
+
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="ngx-e-subtitle">Featured components</h3>
+      <a
+        class="flex items-center cursor-pointer text-base"
+        routerLink="/components/categories"
+      >
+        View all components
+        <span class="material-symbols-outlined"> chevron_right </span>
+      </a>
+    </div>
+
+    <div class="cont-f-comp">
+      <span
+        class="skip-previous material-symbols-outlined"
+        (click)="onPrevious()"
+        *ngIf="showPrevious"
+      >
+        chevron_left
+      </span>
+
+      <span
+        class="skip-next material-symbols-outlined"
+        (click)="onNext()"
+        *ngIf="showNext"
+      >
+        chevron_right
+      </span>
+
+      <div [@slideInOut] class="cont-card" #cont_featured_comp>
+        <ngx-card
+          routerLink="{{ component.path }}"
+          *ngFor="let component of components"
+        >
+          <ngx-card-header class="items-center">
+            <p class="text-xl font-normal">{{ component.title }}</p>
+          </ngx-card-header>
+          <ngx-card-content class="mt-4 mb-4">
+           <span class="material-symbols-outlined">
+            {{ component.icon }}
+           </span>
+          </ngx-card-content>
+        </ngx-card>
+      </div>
+    </div>
+
+    <h3 class="ngx-e-subtitle mt-8 mb-2">Installation</h3>
+    <p class="text-sm text-justify leading-6">
+      Installing NGX-EAGLE through the CLI is recommended because it simplifies
+      the process, guarantees consistency, facilitates updates, integrates the
+      library with your Angular project and improves the performance of your
+      application.
+    </p>
+    <pre><code [highlight]="installation"></code></pre>
+
+    <h1>2. Import module</h1>
+    <pre><code [highlight]="moduleImport"></code></pre>
+    <h1>3. Add styles and assets</h1>
+    <p>And import style and assets in angular.json</p>
+    <pre><code [highlight]="stylesImport"></code></pre>
+  </article>
+</div>

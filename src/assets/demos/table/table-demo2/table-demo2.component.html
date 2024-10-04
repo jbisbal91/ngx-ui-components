@@ -1,0 +1,21 @@
+<table ngx-table [scroll]="{ y: '400px' }">
+  <thead>
+    <tr>
+      <th
+        ngxSort
+        (changeSorting)="sorting($event, col.value)"
+        *ngFor="let col of displayedColumns"
+      >
+        {{ col.prop }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let val of listOfData">
+      <td>{{ val.name }}</td>
+      <td>{{ val.age }}</td>
+      <td>{{ val.address }}</td>
+      <td>{{ val.email }}</td>
+    </tr>
+  </tbody>
+</table>

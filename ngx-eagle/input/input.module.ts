@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { NgxOutlinedTextFieldComponent } from './ngx-outlined-text-field/ngx-outlined-text-field.component';
+import { InputDirective } from './input.directive';
 
 @NgModule({
-  exports: [NgxOutlinedTextFieldComponent],
-  imports: [NgxOutlinedTextFieldComponent],
+  exports: [InputDirective],
+  imports: [InputDirective],
 })
 export class InputModule {}

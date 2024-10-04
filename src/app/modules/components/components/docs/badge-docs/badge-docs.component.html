@@ -1,0 +1,119 @@
+<article class="main-article-template">
+  <!---------BREADCRUMBS---------->
+  <div class="mb-4">
+    <a class="font-extrabold" routerLink="/components">Components</a>
+    <a routerLink="/components/badge"> / Badge</a>
+  </div>
+  <!---------OVERVIEW---------->
+  <h1 class="mb-4">Badge</h1>
+  <p class="mb-4 text-sm">
+    Small numerical value or status descriptor for UI elements.
+  </p>
+  <!---------WHEN TO USE---------->
+  <h4 class="mb-4">When To Use</h4>
+  <ul class="when-to-use text-sm mb-4">
+    <li>
+      Badge normally appears in proximity to notifications or user avatars with
+      eye-catching appeal, typically displaying unread messages count.
+    </li>
+  </ul>
+  <!---------MODULE IMPORT---------->
+  <pre><code [highlight]="moduleImport"></code></pre>
+  <!---------EXAMPLES---------->
+  <h1 class="mb-4">Examples</h1>
+  <!---------DEMO VIEWER---------->
+  <div ngx-row class="component-viewer">
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation1DemoBadge">
+        <div demo-viewer-example>
+          <app-badge-demo1></app-badge-demo1>
+        </div>
+        <div demo-viewer-title>Basic</div>
+        <div demo-viewer-description>Basic usage of badge.</div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation2DemoBadge">
+        <div demo-viewer-example>
+          <app-badge-demo2></app-badge-demo2>
+        </div>
+        <div demo-viewer-title>Hide badges</div>
+        <div demo-viewer-description>
+          Hide badges via [ngxBadgeHidden] property
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation3DemoBadge">
+        <div demo-viewer-example>
+          <app-badge-demo3></app-badge-demo3>
+        </div>
+        <div demo-viewer-title>Allows color change</div>
+        <div demo-viewer-description>
+          You can change the color by using [ngxColor].
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation4DemoBadge">
+        <div demo-viewer-example>
+          <app-badge-demo4></app-badge-demo4>
+        </div>
+        <div demo-viewer-title>Three sizes</div>
+        <div demo-viewer-description>
+          [ngxBadgeSize] represents three types of size.
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation5DemoBadge">
+        <div demo-viewer-example>
+          <app-badge-demo5></app-badge-demo5>
+        </div>
+        <div demo-viewer-title>Position</div>
+        <div demo-viewer-description>Badge position: left or right.</div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation6DemoBadge">
+        <div demo-viewer-example>
+          <app-badge-demo6></app-badge-demo6>
+        </div>
+        <div demo-viewer-title>Overflow Count</div>
+        <div demo-viewer-description>
+          ngxOverflowCount+ is displayed when count is larger than ngxBadge. The
+          default value of ngxOverflowCount is 99.
+        </div>
+      </app-component-viewer>
+    </div>
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation7DemoBadge">
+        <div demo-viewer-example>
+          <app-badge-demo7></app-badge-demo7>
+        </div>
+        <div demo-viewer-title>Other uses</div>
+        <div demo-viewer-description>More uses of the badge are shown.</div>
+      </app-component-viewer>
+    </div>
+  </div>
+  <h2 class="mt-4 mb-4">API</h2>
+  <h3 class="mt-4 mb-4">ngxBadge</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#EB2F96">directive</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesBadge">
+        <td>
+          <ngx-tag>{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+</article>

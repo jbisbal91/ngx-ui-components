@@ -1,0 +1,40 @@
+:host {
+  position: relative;
+}
+
+.c-nav {  
+  height: 100%;
+  color: var(--ngx-theme-color-component-nav);
+  border-top: var(--ngx-theme-border-top-1);
+  overflow: scroll;
+  box-shadow: var(--ngx-theme-c-nav-box-shadow);  
+  transition: transform ease-in-out 0.5s;
+}
+
+ul {
+  width: 15.625rem;
+}
+
+li {
+  height: 3rem;
+  padding-left: 1rem;
+}
+
+
+.items {
+  height: 3rem;
+  padding-left: 2rem;
+}
+
+li:hover {
+  background-color: var(--ngx-theme-bg-li-component-nav);
+  cursor: pointer;
+}
+
+.selected {
+  background-color: var(--ngx-theme-selected-li-component-nav);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

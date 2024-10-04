@@ -1,0 +1,15 @@
+<div class="flex gap-2 mt-4 items-center">
+  <ngx-progress
+    [template]="template"
+    [ngxPercent]="percent"
+    [ngxColor]="percent < 100 ? '#1890FF' : '#52C41A'"
+    ngxType="circle"
+  ></ngx-progress>
+
+  <button ngx-button buttonFillMode="filled" (click)="decrease()">DECREASE</button>
+  <button ngx-button buttonFillMode="filled" (click)="increase()">INCREASE</button>
+</div>
+
+<ng-template #template>
+  <span class="material-symbols-outlined"> check </span>
+</ng-template>

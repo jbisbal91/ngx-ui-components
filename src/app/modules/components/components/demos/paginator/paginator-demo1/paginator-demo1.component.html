@@ -1,0 +1,8 @@
+<ngx-paginator
+  pageSize="10"
+  [pageSizeOptions]="[5, 10, 25]"
+  page-size-label="Items per page:"
+  showExtremeButtons
+  length="50"
+  (page)="handlePageEvent($event)"
+></ngx-paginator>

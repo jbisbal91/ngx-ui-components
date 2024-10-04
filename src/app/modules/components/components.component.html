@@ -1,0 +1,15 @@
+<nav>
+  <ul>
+    <li class="gap-4" (click)="openSideBar()">
+      <span class="material-symbols-outlined">
+        menu
+      </span>
+      {{ activatedRouteName }}
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <section>
+    <router-outlet></router-outlet>
+  </section>
+</div>

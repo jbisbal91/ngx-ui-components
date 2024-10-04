@@ -1,0 +1,19 @@
+<ngx-radio-group [(ngModel)]="ngxExpandIconPosition">
+  <ngx-radio-button ngxValue="left"> Left </ngx-radio-button>
+  <ngx-radio-button ngxValue="right"> Right </ngx-radio-button>
+</ngx-radio-group>
+
+<ngx-accordion
+  ngxType="card"
+  [ngxExpandIconPosition]="ngxExpandIconPosition"
+>
+  <ngx-expansion-panel ngxLabel="This is panel header 1">
+    <p>This is panel header 1 content</p>
+  </ngx-expansion-panel>
+  <ngx-expansion-panel ngxLabel="This is panel header 2">
+    <p>This is panel header 2 content</p>
+  </ngx-expansion-panel>
+  <ngx-expansion-panel ngxLabel="This is panel header 3">
+    <p>This is panel header 3 content</p>
+  </ngx-expansion-panel>
+</ngx-accordion>

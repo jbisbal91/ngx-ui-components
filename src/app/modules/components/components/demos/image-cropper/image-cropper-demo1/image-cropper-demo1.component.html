@@ -1,0 +1,15 @@
+<div ngx-row ngxJustify="space-evenly">
+        <div class="text-center" ngx-col ngxSpan="6">
+                <image-cropper output="base64" [imageChangedEvent]="imageChangedEvent" [aspectRatio]="1/1"
+                        [maintainAspectRatio]="true" [roundCropper]="true" (imageCropped)="imageCropped($event)">
+                </image-cropper>
+                <input type="file" #fileInput (change)="fileChangeEvent($event)" style="display: none;" />
+                <button class="mt-4" ngx-button buttonFillMode="outlined" buttonRounded="full"  (click)="fileInput.click()">
+                        <span class="material-symbols-outlined">add_a_photo</span>
+                        <span>Upload</span>
+                </button>
+        </div>
+        <div ngx-col ngxSpan="6">
+                <img *ngIf="croppedImagebase64" [src]="croppedImagebase64" />
+        </div>
+</div>

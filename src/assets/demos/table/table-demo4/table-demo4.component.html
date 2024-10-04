@@ -1,0 +1,68 @@
+<table ngx-table [scroll]="{ x: '1800px'}" ngxBordered>
+  <thead>
+    <tr>
+      <th
+        ngxResize
+        ngxSort
+        (changeSorting)="sorting($event, col.value)"
+        *ngFor="let col of displayedColumns"
+      >
+        {{ col.prop }}
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let val of values">
+      <td>
+        <ngx-avatar
+          [ngxText]="val.full_name"
+          [ngxSrc]="val.picture"
+        ></ngx-avatar>
+        {{ val.full_name }}
+      </td>
+      <td>{{ val.job_title }}</td>
+      <td class="td-flag">
+        <img
+          draggable="false"
+          class="flag"
+          [src]="'/assets/flags/' + val.country + '.svg'"
+          [alt]="'flag-' + val.country"
+        />
+      </td>
+      <td>
+        <ngx-tag>{{
+          val.status
+        }}</ngx-tag>
+      </td>
+      <td>
+        <ngx-rate [ngModel]="val.satisfaction" disabled></ngx-rate>
+      </td>
+      <td>
+        <ngx-progress
+          [ngxPercent]="val.productivity"
+          [ngxSize]="'small'"
+          [ngxColor]="getColor(val.productivity)"
+        ></ngx-progress>
+      </td>
+      <td>{{ val.salary | currency }}</td>
+      <td>{{ val.phone }}</td>
+      <td>{{ val.email }}</td>
+      <td>{{ val.address }}</td>
+      <td>{{ val.linkedIn }}</td>
+      <td>{{ val.twitter }}</td>
+      <td>{{ val.instagram }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="flex mt-4 justify-end">
+  <ngx-paginator
+    pageSize="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    page-size-label="Items per page:"
+    showExtremeButtons
+    [length]="allValues.length"
+    (page)="handlePageEvent($event)"
+  ></ngx-paginator>
+</div>

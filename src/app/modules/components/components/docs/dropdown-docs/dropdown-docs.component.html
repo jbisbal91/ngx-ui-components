@@ -1,0 +1,75 @@
+<article class="main-article-template">
+        <!---------BREADCRUMBS---------->
+        <div class="mb-4">
+                <a class="font-extrabold" routerLink="/components">Components</a>
+                <a routerLink="/components/dropdown"> / Dropdown</a>
+        </div>
+        <!---------OVERVIEW---------->
+        <h1 class="mb-4">dropdown</h1>
+        <!---------WHEN TO USE---------->
+        <h4 class="mb-4">When To Use</h4>
+        <ul class="when-to-use text-sm mb-4">
+                <li>If there are too many operations to display, you can wrap them in a Dropdown.</li>
+                <li> By clicking/hovering on the trigger, a dropdown menu should appear, which allows you to choose one
+                        option and execute relevant actions.</li>
+        </ul>
+        <!---------MODULE IMPORT---------->
+        <pre><code [highlight]="moduleImport"></code></pre>
+        <!---------EXAMPLES---------->
+        <h1 class="mb-2">Examples</h1>
+        <!---------DEMO VIEWER---------->
+        <div ngx-row class="component-viewer">
+                <div class="component-viewer-item" ngx-col ngxSpan="12">
+                        <app-component-viewer [tabs]="variation1Demodropdown">
+                                <div demo-viewer-example>
+                                        <app-dropdown-demo1></app-dropdown-demo1>
+                                </div>
+                                <div demo-viewer-title>Basic.</div>
+                                <div demo-viewer-description>
+                                        <p>The simplest usage.</p>
+                                </div>
+                        </app-component-viewer>
+                </div>
+                <div class="component-viewer-item" ngx-col ngxSpan="12">
+                        <app-component-viewer [tabs]="variation2Demodropdown">
+                                <div demo-viewer-example>
+                                        <app-dropdown-demo2></app-dropdown-demo2>
+                                </div>
+                                <div demo-viewer-title>Hover enabled.</div>
+                                <div demo-viewer-description>
+                                        <p>Keeps the dropdown open if the cursor is inside the content (dropdown
+                                                content). It closes automatically when the cursor completely exits the
+                                                dropdown area. </p>
+                                </div>
+                        </app-component-viewer>
+                </div>
+        </div>
+        <!---------API---------->
+        <h2 class="mt-4 mb-4">API</h2>
+        <h3 class="mt-4 mb-4">ngx-dropdown</h3>
+        <div class="angular-entities flex gap-2 mb-4">
+                <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+                <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+        </div>
+        <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+                <thead>
+                        <tr>
+                                <th *ngFor="let col of displayedColumns">{{ col }}</th>
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr *ngFor="let prop of propertiesDropdown">
+                                <td>
+                                        <ngx-tag>{{
+                                                prop.property
+                                                }}</ngx-tag>
+                                </td>
+                                <td>{{ prop.description }}</td>
+                                <td>
+                                        <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+                                </td>
+                                <td>{{ prop.default }}</td>
+                        </tr>
+                </tbody>
+        </table>
+</article>

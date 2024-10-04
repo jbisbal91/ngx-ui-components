@@ -11,16 +11,16 @@ import {
   booleanAttribute,
   numberAttribute,
 } from '@angular/core';
-import { SelectModule } from 'ngx-eagle/select';
 import { PageEvent } from '../typings';
 import { NgxPaginatorIntl } from '../paginator-intl.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'ngx-paginator',
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.scss'],
   standalone: true,
-  imports: [SelectModule, NgFor, NgIf],
+  imports: [NgFor, NgIf, FormsModule],
 })
 export class PaginatorComponent implements OnInit, OnChanges {
 
@@ -29,35 +29,37 @@ export class PaginatorComponent implements OnInit, OnChanges {
   @Input({ transform: numberAttribute }) length: number = 0;
   @Input({ transform: numberAttribute }) pageSize: number = 0;
   @Input() pageSizeOptions: number[] = [];
-  @Input() pageStatus!: PageEvent; 
+  @Input() pageStatus!: PageEvent;
   @Input({ transform: booleanAttribute }) showExtremeButtons: boolean = false;
-  
+
   @Output() page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
   constructor(
     public elementRef: ElementRef,
     public paginatorIntl: NgxPaginatorIntl
-  ) {}
+  ) { }
+
+  changePageSize(event: Event) {
+    const pageSize = +(event.target as HTMLSelectElement).value;
+    this.onChangeValue(pageSize);
+  }
 
   onChangeValue(pageSize: number) {
     const startIndex = this.pageStatus.currentPageIndex * this.pageSize;
-    this.pageStatus.currentPageIndex = Math.floor(startIndex / pageSize) || 0;
+    this.pageStatus.currentPageIndex = (startIndex / pageSize) | 0;
     this.pageSize = pageSize;
     this.pageStatus.pageSize = this.pageSize;
     this.page.emit(this.pageStatus);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (
-      changes.hasOwnProperty('length') ||
-      changes.hasOwnProperty('pageSize')
-    ) {
+    if ('pageStatus' in changes) {
+      this.currentPagination(changes['pageStatus'].currentValue);
+    }
+    if (this.pageStatus && ('length' in changes || 'pageSize' in changes)) {
       this.pageStatus.length = this.length | 0;
       this.pageStatus.pageSize = this.pageSize | 0;
       this.onChangeValue(this.pageStatus.pageSize);
-    }
-    if (changes.hasOwnProperty('pageStatus')) {
-      this.currentPagination(changes['pageStatus'].currentValue);
     }
   }
 
@@ -110,8 +112,7 @@ export class PaginatorComponent implements OnInit, OnChanges {
   onLast() {
     this.setPreviousIndex();
     if (this.disabledNex()) {
-      this.pageStatus.currentPageIndex =
-        (this.length - this.pageSize) / this.pageSize;
+      this.pageStatus.currentPageIndex = Math.ceil((this.length - this.pageSize) / this.pageSize);
       this.page.emit(this.pageStatus);
     }
   }

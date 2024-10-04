@@ -1,0 +1,27 @@
+<div ngx-row ngxJustify="start" ngxGutter="[0,16,16]">
+        <div ngx-col ngxSpan="6">
+                <select ngx-input [(ngModel)]="resizeDirection">
+                        <option [value]="rd" *ngFor="let rd of resizeDirectionOptions">
+                                {{rd}}
+                        </option>
+                </select>
+        </div>
+        <div ngx-col ngxSpan="6">
+                <select ngx-input [(ngModel)]="markerPosition">
+                        <option [value]="mp" *ngFor="let mp of markerPositionOptions">
+                                {{mp}}
+                        </option>
+                </select>
+        </div>
+</div>
+
+<div class="resizable-box"
+        ngx-resizable
+        [markerPosition]="markerPosition"
+        [resizeDirection]="resizeDirection"
+        [minWidth]="minWidth" 
+        [minHeight]="minHeight" 
+        (onResize)="onResize($event)">
+        <p>Resize me</p>
+</div>
+

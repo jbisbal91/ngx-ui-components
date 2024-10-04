@@ -4,16 +4,12 @@ import {
   ElementRef,
   EventEmitter,
   Input,
-  OnChanges,
   OnInit,
   Output,
   Renderer2,
-  SimpleChanges,
   booleanAttribute,
 } from '@angular/core';
 import { NgxMode } from './typings';
-import { ColorConverter } from 'ngx-eagle/core/services';
-import { ColorContrast } from 'ngx-eagle/core/types';
 
 @Component({
   selector: 'ngx-tag',
@@ -42,9 +38,8 @@ import { ColorContrast } from 'ngx-eagle/core/types';
   standalone: true,
   imports: [NgStyle, NgIf],
 })
-export class TagComponent implements OnInit, OnChanges {
+export class TagComponent implements OnInit {
   @Input({ transform: booleanAttribute }) ngxBordered: boolean = true;
-  @Input() ngxColor!: ColorContrast | string;
   @Input({ transform: booleanAttribute }) ngxChecked: boolean = false;
   @Input() ngxMode: NgxMode = 'default';
 
@@ -57,29 +52,12 @@ export class TagComponent implements OnInit, OnChanges {
   constructor(
     private renderer: Renderer2,
     private elementRef: ElementRef,
-    private colorConverter: ColorConverter
-  ) {}
+  ) { 
+    this.backgroundColor = this.elementRef.nativeElement.style.backgroundColor;
+  }
 
   ngOnInit(): void {
     this.setTagColor();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.hasOwnProperty('ngxColor')) {
-      const newColor = changes['ngxColor'].currentValue;
-      if (typeof newColor === 'string') {
-        const { backgroundColor, overlayColor } =
-          this.colorConverter.contrastingColors(newColor);
-        this.backgroundColor = backgroundColor;
-        this.color = overlayColor;
-        this.setTagColor();
-      }
-      if (typeof newColor === 'object') {
-        this.backgroundColor = newColor.backgroundColor;
-        this.color = newColor.overlayColor;
-        this.setTagColor();
-      }
-    }
   }
 
   updateCheckedStatus(): void {

@@ -1,0 +1,19 @@
+<div class="flex gap-2">
+  <ngx-progress [ngxPercent]="75" ngxType="circle"></ngx-progress>
+  <ngx-progress
+    [ngxPercent]="70"
+    ngxColor="#FF4D4F"
+    [template]="template"
+    ngxType="circle"
+  ></ngx-progress>
+  <ngx-progress
+    [ngxPercent]="100"
+    ngxColor="#52C41A"
+    [template]="template"
+    ngxType="circle"
+  ></ngx-progress>
+</div>
+
+<ng-template #template>
+  <span class="material-symbols-outlined"> check </span>
+</ng-template>

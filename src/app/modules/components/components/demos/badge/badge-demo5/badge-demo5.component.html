@@ -1,0 +1,24 @@
+<ngx-radio-group [(ngModel)]="badgePosition">
+  <ngx-radio-button ngxValue="before"> Before </ngx-radio-button>
+  <ngx-radio-button ngxValue="after"> After </ngx-radio-button>
+</ngx-radio-group>
+
+<div class="inline-grid gap-4 mt-4">
+  <p ngxBadge="5" [ngxBadgePosition]="badgePosition">
+    Text with a medium badge on the left
+  </p>
+
+  <button
+    ngx-button
+    buttonFillMode="filled"
+    [ngxBadgePosition]="badgePosition"
+    ngxBadge="6"
+  >
+    Button
+  </button>
+
+  <ngx-avatar
+    ngxBadge="5"
+    [ngxBadgePosition]="badgePosition"
+  ></ngx-avatar>
+</div>

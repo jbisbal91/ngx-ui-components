@@ -1,6 +1,6 @@
 {
   "name": "ngx-eagle",
-  "version": "0.8.0",
+  "version": "0.8.7",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
@@ -8,6 +8,7 @@
     "@angular/core": "^16.2.0"
   },
   "dependencies": {
+    "ngx-eagle": "file:",
     "tslib": "^2.3.0"
   },
   "homepage": "https://xdevsolutions.com",
@@ -31,22 +32,27 @@
     "card",
     "carousel",
     "checkbox",
+    "date picker",
     "dialog",
     "divider",
     "drawer",
     "expansion panel",
     "grid",
+    "image-cropper",
     "input",
+    "loading",
     "paginator",
-    "pie chart",
     "progress",
     "radio button",
     "rate",
+    "resize",
     "select",
+    "signature",
     "switch",
     "table",
     "tabs",
     "tags",
-    "timeline"
+    "timeline",
+    "tooltip"
   ]
 }

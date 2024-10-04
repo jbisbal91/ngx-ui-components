@@ -1,0 +1,25 @@
+<button
+  ngx-button
+  buttonRounded="full"
+  buttonFillMode="filled"
+  (click)="openDrawer()"
+>
+  Open Drawer
+</button>
+
+<ngx-drawer
+  [(visible)]="visible"
+  [placement]="placement"
+  [backdropClosable]="false"
+  [closeDesktop]="true"
+>
+  <div class="container">
+    <div class="header">
+      <p class="title">Basic Drawer</p>
+    </div>
+    <ngx-divider></ngx-divider>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+  </div>
+</ngx-drawer>

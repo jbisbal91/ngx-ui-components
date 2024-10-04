@@ -24,9 +24,7 @@ import { NgxExpandIconPosition, NgxType } from '../typings';
 export class AccordionComponent
   implements AfterViewInit, AfterContentInit, OnChanges, OnDestroy
 {
-  
   @Input({ transform: booleanAttribute }) multi: boolean = false;
-  @Input() ngxColor: string = '';  
   @Input() ngxExpandIconPosition: NgxExpandIconPosition = 'left';
   @Input() ngxType: NgxType = 'default';
 
@@ -58,7 +56,6 @@ export class AccordionComponent
   setProp() {
     if (this.expansionPanels) {
       this.expansionPanels.forEach((exPanel) => {
-        exPanel.ngxColor = this.ngxColor;
         exPanel.ngxType = this.ngxType;
         exPanel.ngxExpandIconPosition = this.ngxExpandIconPosition;
       });

@@ -1,8 +1,8 @@
 const TabGroupPosition = ['top', 'left', 'right'] as const;
-export type NgxTabPosition = (typeof TabGroupPosition)[number];
+export type TabPosition = (typeof TabGroupPosition)[number];
 
 const TabGroupAlign = ['start', 'center', 'end'] as const;
-export type NgxAlignTabs = (typeof TabGroupAlign)[number];
+export type AlignTabs = (typeof TabGroupAlign)[number];
 
 const TabGroupMode = ['default', 'closeable'] as const;
-export type NgxMode = (typeof TabGroupMode)[number];
+export type Mode = (typeof TabGroupMode)[number];

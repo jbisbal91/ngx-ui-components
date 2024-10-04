@@ -1,0 +1,88 @@
+:root {
+    --dialog-content-bg: var(--ngx-doc-background);
+    --dialog-drag-marker-height: 56px;
+    --table-thead-background-color: var(--ngx-table-thead-background-color);
+    --table-tr-hover-background-color: var(--ngx-table-thead-background-color);
+}
+
+$compact: 600px;
+$medium: 840px;
+$expanded: 1200px;
+$large: 1600px;
+$extra-large: 1600px;
+
+article {
+    padding: 2.25rem;
+}
+
+a {
+    text-decoration: unset;
+    color: var(--ngx-theme-color);
+}
+
+.container-component-viewer {
+    display: flex;
+    grid-template-columns: 50% 50%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.component-viewer-item[ngx-col] {
+    position: static;
+}
+
+.ngx-table-docs ngx-tag {
+    border: none;
+    height: 24px;
+}
+
+ul {
+    list-style-type: none;
+    padding-inline-start: 0px;
+    padding-inline-end: 0;
+}
+
+pre {
+    margin-bottom: 1rem;
+}
+
+@media (max-width: $medium) {
+    article {
+        padding: 1.125rem;
+    }
+
+}
+
+@media (max-width: 960px) {
+    .main-article-template {
+        .component-viewer[ngx-row] {
+            display: block;
+        }
+
+        .component-viewer-item[ngx-col] {
+            min-width: 100%;
+        }
+    }
+}
+
+.main-article-template {
+    .angular-entities ngx-tag {
+        border: none;
+        text-transform: uppercase;
+    }
+
+    .when-to-use {
+        margin-left: 20px;
+        padding-left: 4px;
+        list-style-type: circle;
+        text-align: justify;
+    }
+
+    ngx-avatar {
+        margin-top: 1rem;
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+    }
+
+}

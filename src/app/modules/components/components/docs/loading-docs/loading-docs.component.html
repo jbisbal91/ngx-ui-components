@@ -1,0 +1,90 @@
+<article class="main-article-template">
+        <!---------BREADCRUMBS---------->
+        <div class="mb-4">
+                <a class="font-extrabold" routerLink="/components">Components</a>
+                <a routerLink="/components/loading"> / Loading</a>
+        </div>
+        <!---------OVERVIEW---------->
+        <h1 class="mb-4">Loading</h1>
+        <!---------WHEN TO USE---------->
+        <h4 class="mb-4">When To Use</h4>
+        <ul class="when-to-use text-sm mb-4">
+                <li>When part of the page is waiting for asynchronous data or during a rendering process, an appropriate
+                        loading animation can effectively alleviate users' inquietude.</li>
+        </ul>
+        <!---------MODULE IMPORT---------->
+        <pre><code [highlight]="moduleImport"></code></pre>
+        <!---------EXAMPLES---------->
+        <h1 class="mb-2">Examples</h1>
+        <!---------DEMO VIEWER---------->
+        <div ngx-row class="component-viewer">
+                <div class="component-viewer-item" ngx-col ngxSpan="12">
+                        <app-component-viewer [tabs]="variation1DemoLoading">
+                                <div demo-viewer-example>
+                                        <app-loading-demo1></app-loading-demo1>
+                                </div>
+                                <div demo-viewer-title>Basic Usage</div>
+                                <div demo-viewer-description>
+                                        <p>A simple loading status.</p>
+                                </div>
+                        </app-component-viewer>
+
+                </div>
+                <div class="component-viewer-item" ngx-col ngxSpan="12">
+                        <app-component-viewer [tabs]="variation2DemoLoading">
+                                <div demo-viewer-example>
+                                        <app-loading-demo2></app-loading-demo2>
+                                </div>
+                                <div demo-viewer-title>Three sizes.</div>
+                                <div demo-viewer-description>
+                                        <p>[size] represents three types of size.</p>
+                                </div>
+                        </app-component-viewer>
+                </div>
+        </div>
+
+        <div ngx-row class="component-viewer">
+                <div class="component-viewer-item" ngx-col ngxSpan="12">
+                        <app-component-viewer [tabs]="variation3DemoLoading">
+                                <div demo-viewer-example>
+                                        <app-loading-demo3></app-loading-demo3>
+                                </div>
+                                <div demo-viewer-title>[spinnerType] defines the style of the spinner.</div>
+                                <div demo-viewer-description>
+                                        <p> Bar Spinner: Animated with bars.</p>
+                                        <p>Dot Spinner: Animated with dots.</p>
+                                </div>
+                        </app-component-viewer>
+
+                </div>
+        </div>
+
+        <!---------API---------->
+        <h2 class="mt-4 mb-4">API</h2>
+        <h3 class="mt-4 mb-4">ngx-loading</h3>
+        <div class="angular-entities flex gap-2 mb-4">
+                <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+                <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+        </div>
+        <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+                <thead>
+                        <tr>
+                                <th *ngFor="let col of displayedColumns">{{ col }}</th>
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr *ngFor="let prop of propertiesLoading">
+                                <td>
+                                        <ngx-tag>{{
+                                                prop.property
+                                                }}</ngx-tag>
+                                </td>
+                                <td>{{ prop.description }}</td>
+                                <td>
+                                        <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+                                </td>
+                                <td>{{ prop.default }}</td>
+                        </tr>
+                </tbody>
+        </table>
+</article>

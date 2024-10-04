@@ -1,0 +1,31 @@
+<ngx-radio-group [(ngModel)]="mode">
+  <ngx-radio-button ngxValue="left"> Left </ngx-radio-button>
+  <ngx-radio-button ngxValue="right"> Right </ngx-radio-button>
+  <ngx-radio-button ngxValue="alternate"> Alternative </ngx-radio-button>
+</ngx-radio-group>
+
+<ngx-timeline [ngxMode]="mode">
+  <ngx-timeline-item ngxDot="Start" ngxLabel="2023-11-23">
+    <p>Create a services site</p>
+  </ngx-timeline-item>
+  <ngx-timeline-item ngxLabel="2023-11-23">
+    <p>Solve initial network problems</p>
+  </ngx-timeline-item>
+  <ngx-timeline-item [ngxDot]="ngxDot3">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, itaque.
+    Cumque, dolores odit dolorum, magnam cupiditate non, porro quibusdam
+    reiciendis doloribus consequatur modi animi necessitatibus tenetur illo
+    fugit dolorem inventore.
+  </ngx-timeline-item>
+  <ngx-timeline-item [ngxLabel]="ngxLabel4" ngxDot="End" ngxColor="#52c41a">
+    <p>Network problems being solved</p>
+  </ngx-timeline-item>
+</ngx-timeline>
+
+<ng-template #ngxDot3>
+  <span class="material-symbols-outlined"> schedule </span>
+</ng-template>
+
+<ng-template #ngxLabel4>
+  <span class="material-symbols-outlined"> check </span>
+</ng-template>

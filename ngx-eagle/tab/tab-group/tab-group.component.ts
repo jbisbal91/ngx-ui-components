@@ -12,107 +12,101 @@ import {
 } from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
 import { Tab } from '../tab/tab.interface';
-import { NgForOf, NgIf } from '@angular/common';
-import { NgxAlignTabs, NgxMode, NgxTabPosition } from '../typings';
+import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { AlignTabs, Mode, TabPosition } from '../typings';
 
+/**
+ * Represents a tab group component.
+ */
 @Component({
   selector: 'ngx-tab-group',
-  template: `
-    <ul
-      [class.ngx-tab-group-start]="ngxAlignTabs === 'start'"
-      [class.ngx-tab-group-end]="ngxAlignTabs === 'end'"
-      [class.ngx-tab-group-center]="ngxAlignTabs === 'center'"
-      [class.ngx-tab-position-top]="ngxTabPosition === 'top'"
-      [class.ngx-tab-position-left]="ngxTabPosition === 'left'"
-      [class.ngx-tab-position-right]="ngxTabPosition === 'right'"
-      *ngIf="tabs.length > 0"
-    >
-      <li
-        [class.ngx-tab-position-top]="ngxTabPosition === 'top'"
-        [class.ngx-tab-position-left]="ngxTabPosition === 'left'"
-        [class.ngx-tab-position-right]="ngxTabPosition === 'right'"
-        *ngFor="let tab of tabs; let ind = index"
-        [class.active]="tab.isActive"
-        [class.disabled]="tab.disabled"
-        (click)="selectTab(ind)"
-      >
-        <span
-          [class.ml-4]="ngxTabPosition === 'left'"
-          [class.mr-2]="ngxTabPosition === 'left'"
-          [class.ml-2]="ngxTabPosition === 'right'"
-          >{{ tab.label }}</span
-        >
-        <svg
-          class="ngx-tab-close"
-          [class.ngx-tab-position-left]="ngxTabPosition === 'left'"
-          [class.ngx-tab-position-right]="ngxTabPosition === 'right'"
-          *ngIf="ngxMode === 'closeable'"
-          (click)="closeTab(tab)"
-          xmlns="http://www.w3.org/2000/svg"
-          height="1em"
-          viewBox="0 -960 960 960"
-          width="1em"
-        >
-          <path
-            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-          />
-        </svg>
-      </li>
-    </ul>
-
-    <div
-      class="ngx-tab-content-holder"
-      [class.ml-4]="ngxTabPosition === 'left'"
-      [class.mr-4]="ngxTabPosition === 'right'"
-    >
-      <ng-content></ng-content>
-    </div>
-  `,
+  templateUrl: './tab-group.component.html',
+  styleUrls: ['./tab-group.component.scss'],
   host: {
     class: 'ngx-tab-group',
-    '[class.ngx-tab-position-top]': `ngxTabPosition === 'top'`,
-    '[class.ngx-tab-position-left]': `ngxTabPosition === 'left'`,
-    '[class.ngx-tab-position-right]': `ngxTabPosition === 'right'`,
+    '[class.ngx-tab-position-top]': `tabPosition === 'top'`,
+    '[class.ngx-tab-position-left]': `tabPosition === 'left'`,
+    '[class.ngx-tab-position-right]': `tabPosition === 'right'`,
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgForOf, NgIf],
+  imports: [NgForOf, NgIf, NgTemplateOutlet],
 })
 export class TabGroupComponent implements AfterContentInit {
+  /**
+   * The list of tabs in the tab group.
+   */
   @ContentChildren(TabComponent) public tabs!: QueryList<TabComponent>;
- 
-  @Input() ngxAlignTabs: NgxAlignTabs = 'start';
-  @Input() ngxMode: NgxMode = 'default';
-  @Input() ngxTabPosition: NgxTabPosition = 'top';
- 
+
+  /**
+   * The alignment of the tabs within the tab group.
+   */
+  @Input() alignTabs: AlignTabs = 'start';
+
+  /**
+   * The mode of the tab group.
+   */
+  @Input() mode: Mode = 'default';
+
+  /**
+   * The position of the tabs within the tab group.
+   */
+  @Input() tabPosition: TabPosition = 'top';
+
+  /**
+   * The index of the currently selected tab.
+   */
   internalSelectedIndex: number = 0;
 
+  /**
+   * Gets the index of the currently selected tab.
+   */
   @Input()
-  get ngxSelectedIndex(): number {
+  get selectedIndex(): number {
     return this.internalSelectedIndex;
   }
 
-  set ngxSelectedIndex(index: number) {
+  /**
+   * Sets the index of the currently selected tab.
+   */
+  set selectedIndex(index: number) {
     if (this.internalSelectedIndex !== index) {
       this.internalSelectedIndex = index;
-      this.ngxSelectedIndexChange.emit(index);
+      this.selectedIndexChange.emit(index);
     }
   }
 
-  @Output() ngxSelectedIndexChange: EventEmitter<number> =
+  /**
+   * Event emitted when the selected index changes.
+   */
+  @Output() selectedIndexChange: EventEmitter<number> =
     new EventEmitter<number>();
 
-  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
 
+  /**
+   * Lifecycle hook that is called after the content of the component has been initialized.
+   */
   ngAfterContentInit(): void {
-    this.selectTab(this.internalSelectedIndex);
+    Promise.resolve().then(() => {
+      this.selectTab(this.internalSelectedIndex);
+    });
   }
 
+  /**
+   * Finds a tab in the tab group by its index.
+   * @param index - The index of the tab.
+   * @returns The tab component.
+   */
   findTabByIndex(index: number) {
     const tabs = this.tabs.toArray();
     return tabs[index];
   }
 
+  /**
+   * Selects a tab in the tab group by its index.
+   * @param index - The index of the tab to select.
+   */
   selectTab(index: number) {
     let tab: Tab = this.findTabByIndex(index);
     if (tab?.disabled) {
@@ -122,10 +116,14 @@ export class TabGroupComponent implements AfterContentInit {
     if (tab) {
       tab.isActive = true;
     }
-    this.ngxSelectedIndexChange.emit(index);
+    this.selectedIndexChange.emit(index);
     this.cdr.markForCheck();
   }
 
+  /**
+   * Closes a tab in the tab group.
+   * @param tab - The tab to close.
+   */
   closeTab(tab: Tab): void {
     if (tab?.disabled) {
       return;

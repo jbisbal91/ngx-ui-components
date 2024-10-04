@@ -1,0 +1,10 @@
+<ngx-radio-group [(ngModel)]="spinnerType">
+        <ngx-radio-button ngxValue="dots"> dots </ngx-radio-button>
+        <ngx-radio-button ngxValue="bars"> bars </ngx-radio-button>
+</ngx-radio-group>
+
+<div class="flex items-center gap-4">
+        <ngx-spinner size="sm" [spinnerType]="spinnerType"></ngx-spinner>
+        <ngx-spinner [spinnerType]="spinnerType"></ngx-spinner>
+        <ngx-spinner size="lg" [spinnerType]="spinnerType"></ngx-spinner>
+</div>

@@ -1,0 +1,81 @@
+:host {
+  padding: 1.125rem;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0 16px;
+}
+
+ngx-card {
+  width: 12rem;
+  height: 12.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  margin: 0.5rem;
+  border: 1px solid var(--ngx-border-color);
+}
+
+ngx-card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .material-symbols-outlined {
+   font-size: 96px;
+  }
+}
+
+ngx-card:hover {  
+  color: var(--primary-7);
+  .material-symbols-outlined {
+    font-variation-settings:
+                        'FILL' 1,
+                        'wght' 400,
+                        'GRAD' 0,
+                        'opsz' 24
+   }
+}
+
+.input-search {
+  background: url(/assets/icons/search_fill.svg) no-repeat center left 1.25rem;
+  border: 1px solid var(--ngx-border-color) !important;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  outline: none;
+  padding-left: 3rem;
+  padding-right: 0.5rem;
+  align-items: center;
+  display: flex;
+  height: 48px;
+  width: 30rem;
+  filter: var(--ngx-theme-input-search-icon);
+}
+
+.input-search::placeholder {
+  color: var(--ngx-theme-input-search-color);
+}
+
+@media (max-width: 600px) {
+  .input-search {
+    width: 100%;
+    height: 3rem;
+    margin-left: 1.125rem;
+    margin-right: 1.125rem;
+  }
+}
+
+@media (max-width: 490px) {
+  .container {
+    padding: 0rem 1.25rem;
+  }
+
+  ngx-card {
+    width: 100%;
+    margin: 0 0 0.75rem 0;
+  }
+}
+
+

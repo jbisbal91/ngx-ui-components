@@ -1,0 +1,15 @@
+ngx-card {
+    max-width: 360px;
+}
+
+img[ngx-card-image] {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+ngx-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    gap: 0.5rem;
+}

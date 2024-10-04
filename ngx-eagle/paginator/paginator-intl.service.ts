@@ -18,11 +18,15 @@ export class NgxPaginatorIntl {
 
   lastPageLabel: string = 'Last page';
 
-  constructor() {}
+  ofLabel: string = 'of';
+
+  constructor() { }
 
   getRangeLabel(pageStatus: PageEvent) {
-    return ` ${pageStatus.currentPageIndex * pageStatus.pageSize + 1} - ${
-      pageStatus.currentPageIndex * pageStatus.pageSize + pageStatus.pageSize
-    } of ${pageStatus.length}`;
+    return ` ${pageStatus.currentPageIndex * pageStatus.pageSize + 1} - ${Math.min(
+      pageStatus.currentPageIndex * pageStatus.pageSize + pageStatus.pageSize,
+      pageStatus.length
+    )
+      } ${this.ofLabel} ${pageStatus.length}`;
   }
 }

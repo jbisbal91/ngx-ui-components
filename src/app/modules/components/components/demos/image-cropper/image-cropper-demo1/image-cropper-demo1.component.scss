@@ -1,0 +1,20 @@
+image-cropper,
+img {
+        width: 240px;
+        height: 310px;
+}
+
+img {
+        object-fit: cover;        
+}
+
+
+
+.content {
+        padding: 16px;
+        min-height: 400px;
+        max-height: 400px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+}

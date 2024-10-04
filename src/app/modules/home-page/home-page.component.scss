@@ -1,0 +1,142 @@
+.container {
+  overflow: scroll;
+  height: calc(100vh - 45px);
+}
+
+ul {
+  margin-left: 20px;
+  padding-left: 4px;
+  list-style-type: circle;
+  text-align: justify;
+}
+
+.ngx-e-subtitle {
+  clear: both;
+  font-weight: 400;
+}
+
+.logo-ngx {
+  width: 8rem;
+  height: 8rem;
+}
+
+.logo-angular {
+  width: 10rem;
+  height: 10rem;
+}
+
+.pic-plus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
+}
+
+.pic-plus span {
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+p {
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+}
+
+article {
+  padding: 1.875rem 3.125rem;
+}
+
+$compact: 600px;
+$medium: 840px;
+$expanded: 1200px;
+$large: 1600px;
+$extra-large: 1600px;
+
+@media (max-width: $medium) {
+  .container {
+    height: calc(100vh - 90px);
+  }
+
+  article {
+    padding: 1.125rem;
+  }
+
+  .pic-plus {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.cont-f-comp {
+  position: relative;
+  height: 13rem;
+  width: auto;
+  overflow: hidden;
+}
+
+.cont-card {
+  display: flex;
+  gap: 0.5rem;
+  transition: transform 0.5s ease-in-out;
+}
+
+ngx-card {
+  min-width: 12rem;
+  height: 12.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  border: 1px solid var(--ngx-border-color);
+}
+
+ngx-card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .material-symbols-outlined {
+    font-size: 96px;
+   }
+}
+
+ngx-card:hover {
+  color: var(--primary-7);
+  .material-symbols-outlined {
+    font-variation-settings:
+                        'FILL' 1,
+                        'wght' 400,
+                        'GRAD' 0,
+                        'opsz' 24
+   }
+}
+
+.skip-previous,
+.skip-next {
+  cursor: pointer;
+  top: 75px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  color: var(--skip-home-color, #5f6368);
+  background-color: var(--skip-home-bg-color, #ffffff);
+  transition: all 0.2s ease-in-out;
+  border-radius: 50%;
+  z-index: 1;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, .2), 0px 8px 10px 1px rgba(0, 0, 0, .14), 0px 3px 14px 2px rgba(0, 0, 0, .12);
+}
+
+.skip-next {
+  right: 0;
+}

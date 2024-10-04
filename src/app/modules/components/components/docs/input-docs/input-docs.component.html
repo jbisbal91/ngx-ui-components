@@ -1,0 +1,85 @@
+<article class="main-article-template">
+  <!---------BREADCRUMBS---------->
+
+  <div class="mb-4">
+    <a class="font-extrabold" routerLink="/components">Components</a>
+    <a routerLink="/components/input"> / Input</a>
+  </div>
+
+  <!---------OVERVIEW---------->
+  <h1 class="mb-4">Input</h1>
+  <p class="mb-4 text-sm">
+    A basic widget for getting the user input is a text field. Keyboard and
+    mouse can be used for providing or changing data.
+  </p>
+  <!---------WHEN TO USE---------->
+  <h4 class="mb-4">When To Use</h4>
+  <ul class="when-to-use text-sm mb-4">
+    <li>A user input in a form field is needed.</li>
+    <li>A search input is required.</li>
+  </ul>
+  <!---------MODULE IMPORT---------->
+  <pre><code [highlight]="moduleImport"></code></pre>
+  <!---------EXAMPLES---------->
+  <h1 class="mb-4">Examples</h1>
+  <!---------DEMO VIEWER---------->
+  <div ngx-row class="component-viewer">
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation1DemoInput">
+        <div demo-viewer-example>
+          <app-input-demo1></app-input-demo1>
+        </div>
+        <div demo-viewer-title>Basic</div>
+        <div demo-viewer-description>
+          <p>Basic usage of input.</p>
+        </div>
+      </app-component-viewer>
+      
+      <app-component-viewer [tabs]="variation3DemoInput">
+        <div demo-viewer-example>
+          <app-input-demo3></app-input-demo3>
+        </div>
+        <div demo-viewer-title>Login form</div>
+        <div demo-viewer-description>
+          <p>Example of login form.</p>
+        </div>
+      </app-component-viewer>
+    </div>
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation5DemoInput">
+        <div demo-viewer-example>
+          <app-input-demo5></app-input-demo5>
+        </div>
+        <div demo-viewer-title>textarea</div>
+        <div demo-viewer-description>
+          <p>Text area example</p>
+        </div>
+      </app-component-viewer>
+    </div>
+  </div>
+  <h2 class="mt-4 mb-4">API</h2>
+  <h3 class="mt-4 mb-4">ngx-outlined-text-field</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesInput">
+        <td>
+          <ngx-tag>{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+</article>

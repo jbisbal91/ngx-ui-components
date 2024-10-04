@@ -1,0 +1,92 @@
+<article class="main-article-template">
+  <!---------BREADCRUMBS---------->
+  <div class="mb-4">
+    <a class="font-extrabold" routerLink="/components">Components</a>
+    <a routerLink="/components/tags"> / Tag</a>
+  </div>
+  <!---------OVERVIEW---------->
+  <h1 class="mb-4">Tag</h1>
+  <p class="mb-4 text-sm">Tag for categorizing or markup.</p>
+  <!---------WHEN TO USE---------->
+  <h4 class="mb-4">When To Use</h4>
+  <ul class="when-to-use text-sm mb-4">
+    <li>It can be used to tag by dimension or property.</li>
+    <li>When categorizing.</li>
+  </ul>
+  <!---------MODULE IMPORT---------->
+  <pre><code [highlight]="moduleImport"></code></pre>
+  <!---------EXAMPLES---------->
+  <h1 class="mb-4">Examples</h1>
+  <!---------DEMO VIEWER---------->
+  <div ngx-row class="component-viewer">
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation1DemoTags">
+        <div demo-viewer-example>
+          <app-tag-demo1></app-tag-demo1>
+        </div>
+        <div demo-viewer-title>Basic</div>
+        <div demo-viewer-description>
+          <p>Basic usage of tag.</p>
+        </div>
+      </app-component-viewer>
+      <app-component-viewer [tabs]="variation2DemoTags">
+        <div demo-viewer-example>
+          <app-tag-demo2></app-tag-demo2>
+        </div>
+        <div demo-viewer-title>Allows three modes</div>
+        <div demo-viewer-description>
+          <p>
+            [ngxMode] represents three types of modes for displaying the tag.
+          </p>
+        </div>
+      </app-component-viewer>
+    </div>
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation3DemoTags">
+        <div demo-viewer-example>
+          <app-tag-demo3></app-tag-demo3>
+        </div>
+        <div demo-viewer-title>Allows color change</div>
+        <div demo-viewer-description>
+          <p>You can change the color by using [ngxColor].</p>
+        </div>
+      </app-component-viewer>
+      <app-component-viewer [tabs]="variation4DemoTags">
+        <div demo-viewer-example>
+          <app-tag-demo4></app-tag-demo4>
+        </div>
+        <div demo-viewer-title>Allows to check</div>
+        <div demo-viewer-description>
+          <p>Allows you to check.</p>
+        </div>
+      </app-component-viewer>
+    </div>
+  </div>
+  <h2 class="mt-4 mb-4">API</h2>
+  <h3 class="mt-4 mb-4">ngx-tag</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesBadge">
+        <td>
+          <ngx-tag>{{
+            prop.property
+          }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+                 <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+</article>

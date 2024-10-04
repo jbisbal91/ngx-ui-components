@@ -1,0 +1,4 @@
+<ngx-tag>Tag1</ngx-tag>
+<ngx-tag ngxMode="closeable" (ngxOnClose)="onClose('Tag2')">Tag2</ngx-tag>
+<ngx-tag ngxMode="checkable" (ngxCheckedChange)="onCheckedChange($event,'Tag3')">Tag3</ngx-tag>
+<ngx-tag ngxMode="checkable" ngxBordered="false" (ngxCheckedChange)="onCheckedChange($event,'Tag4')">Tag4</ngx-tag>

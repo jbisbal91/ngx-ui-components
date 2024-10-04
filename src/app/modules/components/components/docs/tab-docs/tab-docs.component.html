@@ -1,0 +1,153 @@
+<article class="main-article-template">
+  <!---------BREADCRUMBS---------->
+  <div class="mb-4">
+    <a class="font-extrabold" routerLink="/components">Components</a>
+    <a routerLink="/components/tabs"> / Tab</a>
+  </div>
+
+  <!---------OVERVIEW---------->
+  <h1 class="mb-4">Tabs</h1>
+  <p class="text-sm mb-4">
+    Tabs make it easy to switch between different views.
+  </p>
+  <!---------WHEN TO USE---------->
+  <h4 class="mb-4">When To Use</h4>
+  <ul class="when-to-use text-sm mb-4">
+    <li>Normal Tabs: for functional aspects of a page.</li>
+  </ul>
+  <!---------MODULE IMPORT---------->
+  <pre><code [highlight]="moduleImport"></code></pre>
+  <!---------EXAMPLES---------->
+  <h1 class="mb-4">Examples</h1>
+  <!---------DEMO VIEWER---------->
+  <div ngx-row class="component-viewer">
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation1DemoTabs">
+        <div demo-viewer-example>
+          <app-tab-demo1></app-tab-demo1>
+        </div>
+        <div demo-viewer-title>Basic</div>
+        <div demo-viewer-description>
+          <p>Activate by default the first tab and aligned to the beginning.</p>
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation2DemoTabs">
+        <div demo-viewer-example>
+          <app-tab-demo2></app-tab-demo2>
+        </div>
+        <div demo-viewer-title>Centered</div>
+        <div demo-viewer-description>
+          <p>Centered tabs.</p>
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation3DemoTabs">
+        <div demo-viewer-example>
+          <app-tab-demo3></app-tab-demo3>
+        </div>
+        <div demo-viewer-title>End</div>
+        <div demo-viewer-description>
+          <p>Tabs at the end.</p>
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation7DemoTabs">
+        <div demo-viewer-example>
+          <app-tab-demo7></app-tab-demo7>
+        </div>
+        <div demo-viewer-title>Tab index</div>
+        <div demo-viewer-description>
+          <p>
+            Selected tab index, you can use two-way binding
+            [(ngxSelectedIndex)].
+          </p>
+        </div>
+      </app-component-viewer>
+    </div>
+
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation4DemoTabs">
+        <div demo-viewer-example>
+          <app-tab-demo4></app-tab-demo4>
+        </div>
+        <div demo-viewer-title>Close tab</div>
+        <div demo-viewer-description>
+          <p>Tabs support closable.</p>
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation5DemoTabs">
+        <div demo-viewer-example>
+          <app-tab-demo5></app-tab-demo5>
+        </div>
+        <div demo-viewer-title>Disabled</div>
+        <div demo-viewer-description>
+          <p>Disabled a tab.</p>
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation6DemoTabs">
+        <div demo-viewer-example>
+          <app-tab-demo6></app-tab-demo6>
+        </div>
+        <div demo-viewer-title>Position</div>
+        <div demo-viewer-description>
+          <p>Tab's position: left, right or top.</p>
+        </div>
+      </app-component-viewer>
+    </div>
+  </div>
+  <!---------API---------->
+  <h2 class="mt-4 mb-4">API</h2>
+  <h3 class="mt-4 mb-4">ngx-tab-group</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesTabGroup">
+        <td>
+          <ngx-tag>{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-8 mb-4">ngx-tab</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesTab">
+        <td>
+          <ngx-tag>{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+</article>

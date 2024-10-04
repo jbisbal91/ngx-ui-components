@@ -1,0 +1,111 @@
+<article class="main-article-template">
+  <!---------BREADCRUMBS---------->
+  <div class="mb-4">
+    <a class="font-extrabold" routerLink="/components">Components</a>
+    <a routerLink="/components/select"> / Select</a>
+  </div>
+  <!---------OVERVIEW---------->
+  <h1 class="mb-4">Select</h1>
+  <p class="mb-4 text-sm">Select component to select value from options.</p>
+  <!---------WHEN TO USE---------->
+  <h4 class="mb-4">When To Use</h4>
+  <ul class="when-to-use text-sm mb-4">
+    <li>
+      A dropdown menu for displaying choices - an elegant alternative to the
+      native select element.
+    </li>
+    <li>
+      Utilizing Radio is recommended when there are fewer total options (less
+      than 5).
+    </li>
+  </ul>
+  <!---------MODULE IMPORT---------->
+  <pre><code [highlight]="moduleImport"></code></pre>
+  <!---------EXAMPLES---------->
+  <h1 class="mb-4">Examples</h1>
+  <!---------DEMO VIEWER---------->
+  <div ngx-row class="component-viewer">
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation1DemoSelect">
+        <div demo-viewer-example>
+          <app-select-demo1></app-select-demo1>
+        </div>
+        <div demo-viewer-title>Basic Usage</div>
+        <div demo-viewer-description>
+          <p>Basic Usage.</p>
+        </div>
+      </app-component-viewer>
+
+      <app-component-viewer [tabs]="variation2DemoSelect">
+        <div demo-viewer-example>
+          <app-select-demo2></app-select-demo2>
+        </div>
+        <div demo-viewer-title>Multiple selection</div>
+        <div demo-viewer-description>
+          <p>Select with multiple selection.</p>
+        </div>
+      </app-component-viewer>
+    </div>
+    <div class="component-viewer-item" ngx-col ngxSpan="12">
+      <app-component-viewer [tabs]="variation3DemoSelect">
+        <div demo-viewer-example>
+          <app-select-demo3></app-select-demo3>
+        </div>
+        <div demo-viewer-title>Select with autocomplete field</div>
+        <div demo-viewer-description>
+          <p>Search the options while expanded.</p>
+        </div>
+      </app-component-viewer>
+    </div>
+  </div>
+  <h2 class="mt-4 mb-4">API</h2>
+  <h3 class="mt-4 mb-4">ngx-outlined-select-field</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesSelect">
+        <td>
+          <ngx-tag>{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-8 mb-4">ngx-option</h3>
+  <div class="angular-entities flex gap-2 mb-4">
+    <ngx-tag ngxColor="#1890FF">component</ngx-tag>
+    <ngx-tag ngxColor="#FAAD14">standalone</ngx-tag>
+  </div>
+  <table class="ngx-table-docs" ngx-table [scroll]="{ x: 'auto' }">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prop of propertiesOption">
+        <td>
+          <ngx-tag>{{ prop.property }}</ngx-tag>
+        </td>
+        <td>{{ prop.description }}</td>
+        <td>
+          <ngx-tag ngxColor="#A0A0A0">{{ prop.type }}</ngx-tag>
+        </td>
+        <td>{{ prop.default }}</td>
+      </tr>
+    </tbody>
+  </table>
+</article>

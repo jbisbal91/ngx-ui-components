@@ -1,0 +1,16 @@
+<ngx-radio-group [(ngModel)]="ngxDotPosition">
+  <ngx-radio-button ngxValue="top"> top </ngx-radio-button>
+  <ngx-radio-button ngxValue="bottom"> bottom </ngx-radio-button>
+</ngx-radio-group>
+
+<ngx-carousel [ngxDotPosition]="ngxDotPosition">
+  <ngx-carousel-item>
+    <img src="assets/images/img/image-card.png" alt="img1"
+  /></ngx-carousel-item>
+  <ngx-carousel-item>
+    <img src="assets/images/img/image-card.png" alt="img2" />
+  </ngx-carousel-item>
+  <ngx-carousel-item>
+    <img src="assets/images/img/image-card.png" alt="img3" />
+  </ngx-carousel-item>
+</ngx-carousel>
