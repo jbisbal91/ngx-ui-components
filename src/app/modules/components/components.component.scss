@@ -18,7 +18,7 @@ nav {
 }
 
 .menu {
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 ul {
@@ -40,6 +40,14 @@ section {
   width: 100%;
 }
 
+.content_contributor {
+  padding: 32px;
+}
+
+.content_contributor a {
+  margin-right: 8px;
+}
+
 $compact: 600px;
 $medium: 840px;
 $expanded: 1200px;
@@ -50,6 +58,10 @@ $extra-large: 1600px;
   .container {
     height: calc(100vh - 135px);
   }
+
+  .content_contributor {
+    padding: 16px;
+  }
 }
 
 @media (max-width: $compact) {
@@ -58,3 +70,4 @@ $extra-large: 1600px;
     padding-inline-end: 1rem;
   }
 }
+

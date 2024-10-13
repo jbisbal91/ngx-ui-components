@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -44,14 +44,18 @@ export class RangePickerComponent implements OnInit, OnChanges, AfterViewInit {
     const today = new Date();
     this.currentMonth = today.getMonth();
     this.currentYear = today.getFullYear();    
-   
   }
 
   ngAfterViewInit(): void {
-    this.calendarWidth = this.calendarRef?.nativeElement.offsetWidth + 'px';
+    this.onResize();
     this.generateCalendar();    
     this.generateYears();
     this.scrollToActiveYear();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.calendarWidth = this.calendarRef?.nativeElement.offsetWidth + 'px';
   }
 
   openChange(open: boolean) {

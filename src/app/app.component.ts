@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { ThemeService } from './shared/services/theme/theme.service';
+import { ContributorsService } from './shared/services/contributors/contributors.service';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +17,18 @@ export class AppComponent implements OnInit {
   constructor(
     private titleService: Title,
     private router: Router,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private contributorsService: ContributorsService
   ) {}
 
   ngOnInit(): void {
+    this.getContributors();
     this.setTitle();
     this.themeService.initTheme();
+  }
+
+  getContributors() {
+    this.contributorsService.getContributors();
   }
 
   setTitle() {

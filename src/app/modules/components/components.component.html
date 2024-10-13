@@ -11,5 +11,11 @@
 <div class="container">
   <section>
     <router-outlet></router-outlet>
+    <div *ngIf="showContributors" class="content_contributor">
+      <a [href]="contributor.html_url" ngxTooltip="{{contributor.login}}"
+        *ngFor="let contributor of contributorsService.contributors$ | async">
+        <ngx-avatar [ngxSrc]="contributor.avatar_url"></ngx-avatar>
+      </a>
+    </div>
   </section>
 </div>
