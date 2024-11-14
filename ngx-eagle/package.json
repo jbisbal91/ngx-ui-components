@@ -1,6 +1,6 @@
 {
   "name": "ngx-eagle",
-  "version": "0.8.7",
+  "version": "0.8.9",
   "license": "MIT",
   "description": "UI component infrastructure and Design components for mobile and desktop Angular web applications.",
   "peerDependencies": {
@@ -11,7 +11,7 @@
     "ngx-eagle": "file:",
     "tslib": "^2.3.0"
   },
-  "homepage": "https://xdevsolutions.com",
+  "homepage": "https://ngx-eagle.web.app",
   "repository": {
     "type": "git",
     "url": "https://github.com/jbisbal91/ngx-eagle"
